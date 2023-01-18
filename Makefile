@@ -4,15 +4,9 @@
 
 SHELL := /bin/bash
 
-COMPARE_AGAINST_BRANCH=origin/master
+COMPARE_AGAINST_BRANCH=origin/CG-1226-grpc-plugin-proto-init
 
 breaking:
-	-git ls-tree -r $(COMPARE_AGAINST_BRANCH) | grep ".*\.proto$$" > /dev/null; \
-	if [ $$? -eq 0 ]; then \
-	  echo "Comparing current branch proto files with $(COMPARE_AGAINST_BRANCH)"; \
-	  docker run --rm --volume $$(pwd):/workspace --workdir /workspace bufbuild/buf breaking \
-      	--against ".git#branch=$(COMPARE_AGAINST_BRANCH)" \
-      	--config '{"version":"v1","breaking":{"use":["FILE"]}}'; \
-    else \
-   	  echo "No proto files to compare to in $(COMPARE_AGAINST_BRANCH), SKIP"; \
-   	fi
+	docker run -t --rm --volume $$(pwd):/workspace --workdir /workspace bufbuild/buf breaking \
+    	--against ".git#branch=$(COMPARE_AGAINST_BRANCH)" \
+      	--config '{"version":"v1","breaking":{"use":["FILE"]}}'
