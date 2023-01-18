@@ -20,7 +20,7 @@ def getCommitMessageInRange(startCommitHash, endCommitHash) {
 }
 
 def hasBreakingChangesSymbol(commitMessages) {
-  if (commitMessages =~ "(feat|fix|docs|chore)(.*)!:") {
+  if (commitMessages =~ "(feat|fix|docs|chore)(\\(.*\\))?!:") {
       return true
   }
   return false
