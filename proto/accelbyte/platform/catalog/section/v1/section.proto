@@ -1,0 +1,77 @@
+// Copyright (c) 2022 AccelByte Inc. All Rights Reserved.
+// This is licensed software from AccelByte Inc, for limitations
+// and restrictions contact your company contract manager.
+
+syntax = "proto3";
+
+package accelbyte.platform.catalog.section.v1;
+
+option csharp_namespace = "Accelbyte.Platform.Catalog.Section.V1";
+option go_package = "accelbyte.net/platform/catalog/section_v1";
+option java_multiple_files = true;
+option java_package = "net.accelbyte.platform.catalog.section.v1";
+option java_outer_classname = "sectionProto";
+
+service Section {
+  /**
+    GetRotationItems: get current rotation items, this method will be called by rotation type is CUSTOM
+   */
+  rpc GetRotationItems(GetRotationItemsRequest) returns (GetRotationItemsResponse);
+
+  /**
+   Backfill method trigger condition:
+   1. Rotation type is FIXED_PERIOD
+   2. Backfill type is CUSTOM
+   3. User already owned any one of current rotation items.
+   */
+  rpc Backfill(BackfillRequest) returns (BackfillResponse);
+}
+
+message GetRotationItemsRequest {
+  string        userId        = 1;
+  string        namespace     = 2;
+  SectionObject sectionObject = 3; // section short info
+}
+
+message SectionObject {
+  string                     sectionName = 1; // Section name
+  string                     sectionId   = 2; // Section id
+  int64                      startDate   = 3; // Start Date
+  int64                      endDate     = 4; // End Date
+  repeated SectionItemObject items       = 5; // Items which config in section
+}
+
+message SectionItemObject {
+  string itemId  = 1;
+  string itemSku = 2;
+}
+
+message GetRotationItemsResponse {
+  repeated SectionItemObject items     = 1; // list of items in current rotation.
+  int64                      expiredAt = 2; // expired time of items in current rotation
+}
+
+message BackfillRequest {
+  string                      userId      = 1;
+  string                      namespace   = 2;
+  repeated RotationItemObject items       = 3; // list of items in current section rotation
+  string                      sectionName = 4; // section name
+  string                      sectionId   = 5; // section id
+}
+
+message BackfillResponse {
+  repeated BackfilledItemObject backfilledItems = 1; // only need to return backfilled items.
+}
+
+message BackfilledItemObject {
+  string itemId  = 1; // will ignore item sku if fulfill item id
+  string itemSku = 2; // will use item sku to find item if item id is empty,
+  int32  index   = 3; // required, item index which you want to backfill
+}
+
+message RotationItemObject {
+  string itemId  = 1; // item id
+  string itemSku = 2; // item sku
+  bool   owned   = 3; // whether the user already owned
+  int32  index   = 4; // item index
+}

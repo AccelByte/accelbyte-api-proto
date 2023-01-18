@@ -1,0 +1,73 @@
+// This is licensed software from AccelByte Inc, for limitations
+// and restrictions contact your company contract manager.
+
+syntax = "proto3";
+
+option csharp_namespace = "AccelByte.ChatV2.Filter";
+option go_package = "accelbyte.net/chatv2/filter";
+option java_multiple_files = true;
+option java_package = "net.accelbyte.chatv2.filter";
+
+package accelbyte.chat.filter;
+
+service FilterService {
+  rpc Check(HealthCheckRequest) returns (HealthCheckResponse);
+  rpc FilterBulk(ChatMessageBulk) returns (MessageBatchResult);
+}
+
+message HealthCheckRequest {
+  string service = 1;
+}
+
+message HealthCheckResponse {
+  enum ServingStatus {
+    UNKNOWN = 0;
+    SERVING = 1;
+    NOT_SERVING = 2;
+    SERVICE_UNKNOWN = 3;
+  }
+  ServingStatus status = 1;
+}
+
+message ChatMessage {
+  enum TopicType {
+    TOPIC_PERSONAL = 0;
+    TOPIC_GROUP = 1;
+  }
+  string id = 1;
+  string userId = 2;
+  string topicId = 3;
+  TopicType topicType = 4;
+  int64 timestamp = 5;
+  string message = 6;
+}
+
+message ChatMessageBulk {
+  repeated ChatMessage messages = 1;
+}
+
+message MessageResult {
+  enum Action {
+    PASS = 0;
+    CENSORED = 1;
+    BAN_CHAT_TOPIC = 2;
+  }
+  enum Classification {
+    OTHER = 0;
+    HATESPEECH = 1;
+    BODY_SHAMING = 2;
+    BAD_WORD = 3;
+    RACIST = 4;
+  }
+  string id = 1;
+  int64 timestamp = 2;
+  Action action = 3;
+  repeated Classification classification = 4;
+  repeated string cencoredWords = 5;
+  string message = 6;
+  string referenceId = 7;
+}
+
+message MessageBatchResult {
+  repeated MessageResult data = 1;
+}
