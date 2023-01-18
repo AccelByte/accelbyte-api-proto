@@ -14,6 +14,18 @@ bitbucketCredentialsSsh = "build_account_bitbucket_key"
 bitbucketPayload = null
 bitbucketCommitHref = null
 
+def getCommitMessageInRange(startCommitHash, endCommitHash) {
+  shScript = "git log --oneline " + startCommitHash + "..." +  endCommitHash + " | cat"
+  return sh(returnStdout: true, script: shScript)
+}
+
+def hasBreakingChangesSymbol(commitMessages) {
+  if (commitMessages =~ "(feat|fix|docs|chore)(.*)!:") {
+      return true
+  }
+  return false
+}
+
 pipeline {
   agent none
   stages {
@@ -40,7 +52,16 @@ pipeline {
         label "justice-codegen-sdk"
       }
       steps {
-        sh 'make breaking -s'
+        script {
+          commitMessages = getCommitMessageInRange("38f75038fb0f", "c92a4ea8e42e")
+          echo 'Commits from pull request'
+          echo commitMessages
+          if (hasBreakingChangesSymbol(commitMessages)) {
+            echo 'This pull request has ! symbol, skip breaking changes checking'
+          } else {
+            sh 'make breaking -s'
+          }
+        }
       }
     }
   }
