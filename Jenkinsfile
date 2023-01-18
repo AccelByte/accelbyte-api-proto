@@ -35,16 +35,12 @@ pipeline {
         }
       }
     }
-    stage('Lint') {
+    stage('Check Proto Breaking Changes') {
       agent {
         label "justice-codegen-sdk"
       }
-      stages {
-        stage('Check Proto Breaking Changes') {
-          steps {
-            sh 'make breaking'
-          }
-        }
+      steps {
+        sh 'make breaking -s'
       }
     }
   }
