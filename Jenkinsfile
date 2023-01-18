@@ -53,7 +53,10 @@ pipeline {
       }
       steps {
         script {
-          commitMessages = getCommitMessageInRange("38f75038fb0f", "c92a4ea8e42e")
+          commitMessages = getCommitMessageInRange(
+            env.BITBUCKET_PULL_REQUEST_LATEST_COMMIT_FROM_TARGET_BRANCH,
+            env.BITBUCKET_PULL_REQUEST_LATEST_COMMIT_FROM_SOURCE_BRANCH
+          )
           echo 'Commits from pull request'
           echo commitMessages
           if (hasBreakingChangesSymbol(commitMessages)) {
