@@ -15,7 +15,7 @@ bitbucketPayload = null
 bitbucketCommitHref = null
 
 def getCommitMessageInRange(startCommitHash, endCommitHash) {
-  shScript = "git log --oneline " + startCommitHash + "..." +  endCommitHash + " | cat"
+  shScript = "git log --pretty=format:'%s' " + startCommitHash + "..." +  endCommitHash
   return sh(returnStdout: true, script: shScript)
 }
 
