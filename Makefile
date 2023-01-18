@@ -4,7 +4,7 @@
 
 SHELL := /bin/bash
 
-COMPARE_AGAINST_BRANCH=origin/CG-1226-grpc-plugin-proto-init
+COMPARE_AGAINST_BRANCH=origin/master
 
 breaking:
 	docker run -t --rm --volume $$(pwd):/workspace --workdir /workspace bufbuild/buf breaking \
