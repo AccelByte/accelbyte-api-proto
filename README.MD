@@ -11,3 +11,8 @@ Check current branch with `origin/master` branch for breaking changes occurred o
 ```shell
 make breaking -s
 ```
+
+This breaking changes check will be run on every PR,
+If you're intentionally want to make breaking changes put `!` in message commit such as
+`fix!: wrong chat user id` (find more [here](https://www.conventionalcommits.org/en/v1.0.0/#commit-message-with--to-draw-attention-to-breaking-change))
+so pipeline will bypass the checking.
