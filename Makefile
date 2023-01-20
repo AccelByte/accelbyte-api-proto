@@ -11,5 +11,4 @@ lint:
 
 breaking:
 	docker run -t --rm --volume $$(pwd):/workspace --workdir /workspace bufbuild/buf breaking \
-    	--against ".git#branch=$(COMPARE_AGAINST_BRANCH)" \
-      	--config '{"version":"v1","breaking":{"use":["FILE"]}}'
+    	--against ".git#branch=$(COMPARE_AGAINST_BRANCH)"
