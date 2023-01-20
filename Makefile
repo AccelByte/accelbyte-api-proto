@@ -6,6 +6,9 @@ SHELL := /bin/bash
 
 COMPARE_AGAINST_BRANCH=origin/master
 
+lint:
+	docker run -t --rm --volume $$(pwd):/workspace --workdir /workspace bufbuild/buf lint
+
 breaking:
 	docker run -t --rm --volume $$(pwd):/workspace --workdir /workspace bufbuild/buf breaking \
     	--against ".git#branch=$(COMPARE_AGAINST_BRANCH)" \
