@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package accelbyte.platform.entitlement.lootbox.v1;
+
+option csharp_namespace = "Accelbyte.Platform.Entitlement.Lootbox.V1";
+option go_package = "accelbyte.net/platform/entitlement/lootbox_v1";
+option java_multiple_files = true;
+option java_package = "net.accelbyte.platform.entitlement.lootbox.v1";
+option java_outer_classname = "lootBoxProto";
+
+service LootBox {
+  /**
+    RollLootBoxRewards
+   */
+  rpc RollLootBoxRewards(RollLootBoxRewardsRequest) returns (RollLootBoxRewardsResponse);
+}
+
+message RollLootBoxRewardsRequest {
+  string          userId    = 1;
+  string          namespace = 2;
+  int32           quantity  = 3; // the lootbox quantity to be opened
+  LootBoxItemInfo itemInfo  = 4; // lootbox item info
+}
+
+message RollLootBoxRewardsResponse {
+  repeated RewardObject rewards = 1;
+}
+
+message RewardObject {
+  string itemId  = 1;
+  string itemSku = 2;
+  int32  count   = 3; // The number of this item awarded
+}
+
+message LootBoxItemInfo {
+  string                       itemId         = 1; // lootbox item id
+  string                       itemSku        = 2; // lootbox item sku
+  int32                        rewardCount    = 3; // How many rewards can be obtained by opening a lootbox
+  repeated LootBoxRewardObject lootBoxRewards = 4; // lootbox reward config
+
+  message LootBoxRewardObject {
+    string                 name   = 1; // reward name
+    string                 type   = 2; // reward type: REWARD/PROBABILITY_GROUP
+    repeated BoxItemObject items  = 3; // reward items
+    int32                  weight = 4; // reward weight
+    double                 odds   = 5; // reward odds: [0.00, 100.00], Odds are calculated automatically(weight / total weight), keeping 2 decimal places
+  }
+}
+
+message BoxItemObject {
+  string itemId  = 1;
+  string itemSku = 2;
+  int32  count   = 3;
+}
