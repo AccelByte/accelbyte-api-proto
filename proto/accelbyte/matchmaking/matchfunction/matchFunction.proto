@@ -80,7 +80,9 @@ message Match {
   repeated Team teams = 2;
   repeated string region_preferences = 3;
   google.protobuf.Struct match_attributes = 4;
-  string client_version = 5;
+  bool backfill = 5;
+  string server_name = 6;
+  string client_version = 7;
 }
 
 message Ticket {
