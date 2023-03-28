@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+package accelbyte.platform.revocation.v1;
+
+option csharp_namespace = "Accelbyte.Platform.revocation.V1";
+option go_package = "accelbyte.net/platform/revocation_v1";
+option java_multiple_files = true;
+option java_package = "net.accelbyte.platform.revocation.v1";
+option java_outer_classname = "revocationProto";
+
+service Revocation {
+  /**
+    Revoke
+    At present, only Third-Party DLC Refund and Refund Order will trigger this grpc revocation.
+   */
+  rpc Revoke(RevokeRequest) returns (RevokeResponse);
+}
+
+/**
+  Revoke Request
+  revokeEntryType:
+    1. ITEM: Revoke by this item
+       Example:
+       - Admin Config durable entitlement revocation stragegy to CUSTOM
+       - Admin Refund an Order and this order's item is a bundle, constains item-durable-1 item-consumable-2
+       - AB will only send item-durable-1 revoke request
+    2. ENTITLEMENT: Revoke a specific entitlement directly
+    3. CURRENCY: Revoke certain amount of VC directly
+*/
+message RevokeRequest {
+  string                  revokeEntryType = 1; // ITEM, ENTITLEMENT, CURRENCY
+  string                  userId          = 2;
+  string                  namespace       = 3;
+  int32                   quantity        = 4; // The quantity of revoke entry.
+  RevokeItemObject        item            = 5; // empty if revoke entry type is not ITEM
+  RevokeEntitlementObject entitlement     = 6; // empty if revoke entry type is not ENTITLEMENT
+  RevokeCurrencyObject    currency        = 7; // empty if revoke entry type is not CURRENCY
+}
+
+message RevokeResponse {
+  string                           status           = 1; // SUCCESS/FAIL
+  string                           reason           = 2;
+  map<string, string> customRevocation = 3; // custom revocation details.
+}
+
+message RevokeItemObject {
+  string itemId          = 1;
+  string itemSku         = 2;
+  string itemType        = 3;
+  int32  useCount        = 4;
+  string entitlementType = 5;
+}
+
+message RevokeEntitlementObject {
+  string entitlementId = 1;
+  string itemId        = 2;
+  string sku           = 3;
+}
+
+message RevokeCurrencyObject {
+  string namespace     = 1;
+  string currencyCode  = 2;
+  string balanceOrigin = 3; // Playstation, Xbox, Steam, Epic, IOS, GooglePlay, Twitch, Nintendo, System, Other
+}
