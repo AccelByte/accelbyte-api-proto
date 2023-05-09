@@ -1,0 +1,187 @@
+// Copyright (c) 2023 AccelByte Inc. All Rights Reserved.
+// This is licensed software from AccelByte Inc, for limitations
+// and restrictions contact your company contract manager.
+
+// source: Basic/AsyncAPI/profile.yaml (0.1.0)
+// hash: 1aeb8c915acaa94e321b129462d0a16b64434587
+
+syntax = "proto3";
+
+package accelbyte.basic.profile.v1;
+// Version v1.0.0
+
+// --- imports ---
+
+import "google/protobuf/empty.proto";
+
+
+// --- options ---
+
+
+// --- schema objects ---
+
+// path: #/components/schemas/event
+message Event {
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+}
+
+// path: #/components/schemas/userProfile
+message UserProfile {
+    string userId = 1;
+    string firstName = 2;
+    string lastName = 3;
+    string avatarSmallUrl = 4;
+    string avatarUrl = 5;
+    string avatarLargeUrl = 6;
+    string language = 7;
+    string timeZone = 8;
+    string dateOfBirth = 9;
+    bool status = 10;
+    string zipCode = 11;
+}
+
+// path: #/components/messages/userProfileCreated/payload/properties/payload
+message AnonymousSchema1 {
+    UserProfile userProfile = 1;
+}
+
+// path: #/components/messages/userProfileCreated/payload
+message UserProfileCreatedMessage {
+    AnonymousSchema1 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/userProfileDeleted/payload/properties/payload
+message AnonymousSchema2 {
+    UserProfile userProfile = 1;
+}
+
+// path: #/components/messages/userProfileDeleted/payload
+message UserProfileDeletedMessage {
+    AnonymousSchema2 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/userProfileEnabled/payload/properties/payload
+message AnonymousSchema3 {
+    UserProfile userProfile = 1;
+}
+
+// path: #/components/messages/userProfileEnabled/payload
+message UserProfileEnabledMessage {
+    AnonymousSchema3 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/userProfileDisabled/payload/properties/payload
+message AnonymousSchema4 {
+    UserProfile userProfile = 1;
+}
+
+// path: #/components/messages/userProfileDisabled/payload
+message UserProfileDisabledMessage {
+    AnonymousSchema4 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/userProfileUpdated/payload/properties/payload
+message AnonymousSchema5 {
+    UserProfile userProfile = 1;
+}
+
+// path: #/components/messages/userProfileUpdated/payload
+message UserProfileUpdatedMessage {
+    AnonymousSchema5 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+
+// --- #/components/messages/{message_name} ---
+
+
+// --- #/channels/{channel_name}/{operation_type}/message ---
+
+// path: #/channels/userProfile/publish/message
+message UserProfilePublishMessage {
+    oneof payload {
+        UserProfileCreatedMessage variant0 = 1;
+        UserProfileDeletedMessage variant1 = 2;
+        UserProfileEnabledMessage variant2 = 3;
+        UserProfileDisabledMessage variant3 = 4;
+        UserProfileUpdatedMessage variant4 = 5;
+    }
+}
+
+
+// --- service ---
+
+service BasicServiceUserProfileEvents {
+    // User Profile Channel
+
+    // Publishes a message to the User Profile channel.
+    rpc PublishToUserProfileChannel(UserProfilePublishMessage) returns (google.protobuf.Empty);
+}

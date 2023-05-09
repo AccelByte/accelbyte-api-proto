@@ -1,0 +1,143 @@
+// Copyright (c) 2023 AccelByte Inc. All Rights Reserved.
+// This is licensed software from AccelByte Inc, for limitations
+// and restrictions contact your company contract manager.
+
+// source: Ecommerce/AsyncAPI/currency.yml (0.0.1)
+// hash: 1aeb8c915acaa94e321b129462d0a16b64434587
+
+syntax = "proto3";
+
+package accelbyte.ecommerce.currency.v1;
+// Version v1.0.0
+
+// --- imports ---
+
+import "google/protobuf/empty.proto";
+
+
+// --- options ---
+
+
+// --- schema objects ---
+
+// path: #/components/schemas/event
+message Event {
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+}
+
+// path: #/components/schemas/currency/properties/localizationDescriptions
+message AnonymousSchema1 {
+}
+
+// path: #/components/schemas/currency
+message Currency {
+    string currencyCode = 1;
+    AnonymousSchema1 localizationDescriptions = 2;
+    string currencySymbol = 3;
+    string namespace = 4;
+    string currencyType = 5;
+    int32 decimals = 6;
+    string createdAt = 7;
+    string updatedAt = 8;
+}
+
+// path: #/components/messages/currencyCreated/payload/properties/payload
+message AnonymousSchema2 {
+    Currency currency = 1;
+}
+
+// path: #/components/messages/currencyCreated/payload
+message CurrencyCreatedMessage {
+    AnonymousSchema2 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/currencyUpdated/payload/properties/payload
+message AnonymousSchema3 {
+    Currency currency = 1;
+    Currency oldCurrency = 2;
+}
+
+// path: #/components/messages/currencyUpdated/payload
+message CurrencyUpdatedMessage {
+    AnonymousSchema3 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/currencyDeleted/payload/properties/payload
+message AnonymousSchema4 {
+    Currency currency = 1;
+}
+
+// path: #/components/messages/currencyDeleted/payload
+message CurrencyDeletedMessage {
+    AnonymousSchema4 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+
+// --- #/components/messages/{message_name} ---
+
+
+// --- #/channels/{channel_name}/{operation_type}/message ---
+
+// path: #/channels/currencyManagement/publish/message
+message CurrencyManagementPublishMessage {
+    oneof payload {
+        CurrencyCreatedMessage variant0 = 1;
+        CurrencyUpdatedMessage variant1 = 2;
+        CurrencyDeletedMessage variant2 = 3;
+    }
+}
+
+
+// --- service ---
+
+service AsyncAPIForJusticeCurrencyService {
+    // Currency Management Channel
+
+    // Publishes a message to the Currency Management channel.
+    rpc PublishToCurrencyManagementChannel(CurrencyManagementPublishMessage) returns (google.protobuf.Empty);
+}

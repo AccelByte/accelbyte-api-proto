@@ -1,0 +1,408 @@
+// Copyright (c) 2023 AccelByte Inc. All Rights Reserved.
+// This is licensed software from AccelByte Inc, for limitations
+// and restrictions contact your company contract manager.
+
+// source: Legal/AsyncAPI/policy.yaml (0.1.0)
+// hash: 1aeb8c915acaa94e321b129462d0a16b64434587
+
+syntax = "proto3";
+
+package accelbyte.legal.policy.v1;
+// Version v1.0.0
+
+// --- imports ---
+
+import "google/protobuf/empty.proto";
+
+
+// --- options ---
+
+
+// --- schema objects ---
+
+// path: #/components/schemas/event
+message Event {
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+}
+
+// path: #/components/schemas/basePolicy
+message BasePolicy {
+    string id = 1;
+    string basePolicyName = 2;
+    string description = 3;
+    string typeId = 4;
+    string policyTypeName = 5;
+    repeated string affectedClientIds = 6;
+    repeated string affectedCountries = 7;
+    string createdAt = 8;
+    string updatedAt = 9;
+    bool isMandatory = 10;
+    string namespace = 11;
+    repeated string tags = 12;
+}
+
+// path: #/components/schemas/policy
+message Policy {
+    string id = 1;
+    string policyName = 2;
+    string countryCode = 3;
+    string createdAt = 4;
+    string updatedAt = 5;
+    bool shouldNotifyOnUpdate = 6;
+    string countryGroupCode = 7;
+    bool isMandatory = 8;
+    bool isDefaultOpted = 9;
+    string basePolicyId = 10;
+    string readableId = 11;
+    string description = 12;
+    bool isDefaultSelection = 13;
+}
+
+// path: #/components/schemas/versionedPolicy
+message VersionedPolicy {
+    string id = 1;
+    string policyId = 2;
+    string displayVersion = 3;
+    string description = 4;
+    string status = 5;
+    string createdAt = 6;
+    string updatedAt = 7;
+    string publishedDate = 8;
+    bool isCrucial = 9;
+    bool isCommitted = 10;
+    bool isInEffect = 11;
+}
+
+// path: #/components/schemas/localizedPolicy
+message LocalizedPolicy {
+    string id = 1;
+    string versionedPolicyId = 2;
+    string description = 3;
+    string localeCode = 4;
+    string contentType = 5;
+    string attachmentLocation = 6;
+    string attachmentChecksum = 7;
+    string attachmentVersionIdentifier = 8;
+    string status = 9;
+    string createdAt = 10;
+    string updatedAt = 11;
+    string publishedDate = 12;
+    bool isDefaultSelection = 13;
+}
+
+// path: #/components/messages/basePolicyCreated/payload/properties/payload
+message AnonymousSchema1 {
+    BasePolicy basePolicy = 1;
+}
+
+// path: #/components/messages/basePolicyCreated/payload
+message BasePolicyCreatedMessage {
+    AnonymousSchema1 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/basePolicyUpdated/payload/properties/payload
+message AnonymousSchema2 {
+    BasePolicy basePolicy = 1;
+}
+
+// path: #/components/messages/basePolicyUpdated/payload
+message BasePolicyUpdatedMessage {
+    AnonymousSchema2 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/policyCreated/payload/properties/payload
+message AnonymousSchema3 {
+    Policy policy = 1;
+}
+
+// path: #/components/messages/policyCreated/payload
+message PolicyCreatedMessage {
+    AnonymousSchema3 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/policyUpdated/payload/properties/payload
+message AnonymousSchema4 {
+    Policy policy = 1;
+}
+
+// path: #/components/messages/policyUpdated/payload
+message PolicyUpdatedMessage {
+    AnonymousSchema4 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/defaultPolicyUpdated/payload/properties/payload
+message AnonymousSchema5 {
+    Policy policy = 1;
+}
+
+// path: #/components/messages/defaultPolicyUpdated/payload
+message DefaultPolicyUpdatedMessage {
+    AnonymousSchema5 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/versionedPolicyCreated/payload/properties/payload
+message AnonymousSchema6 {
+    VersionedPolicy versionedPolicy = 1;
+}
+
+// path: #/components/messages/versionedPolicyCreated/payload
+message VersionedPolicyCreatedMessage {
+    AnonymousSchema6 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/versionedPolicyUpdated/payload/properties/payload
+message AnonymousSchema7 {
+    VersionedPolicy versionedPolicy = 1;
+}
+
+// path: #/components/messages/versionedPolicyUpdated/payload
+message VersionedPolicyUpdatedMessage {
+    AnonymousSchema7 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/versionedPolicyPublished/payload/properties/payload
+message AnonymousSchema8 {
+    VersionedPolicy versionedPolicy = 1;
+}
+
+// path: #/components/messages/versionedPolicyPublished/payload
+message VersionedPolicyPublishedMessage {
+    AnonymousSchema8 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/localizedPolicyCreated/payload/properties/payload
+message AnonymousSchema9 {
+    LocalizedPolicy localizedPolicy = 1;
+}
+
+// path: #/components/messages/localizedPolicyCreated/payload
+message LocalizedPolicyCreatedMessage {
+    AnonymousSchema9 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/localizedPolicyUpdated/payload/properties/payload
+message AnonymousSchema10 {
+    LocalizedPolicy localizedPolicy = 1;
+}
+
+// path: #/components/messages/localizedPolicyUpdated/payload
+message LocalizedPolicyUpdatedMessage {
+    AnonymousSchema10 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/defaultLocalizedPolicyUpdated/payload/properties/payload
+message AnonymousSchema11 {
+    LocalizedPolicy localizedPolicy = 1;
+}
+
+// path: #/components/messages/defaultLocalizedPolicyUpdated/payload
+message DefaultLocalizedPolicyUpdatedMessage {
+    AnonymousSchema11 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+
+// --- #/components/messages/{message_name} ---
+
+
+// --- #/channels/{channel_name}/{operation_type}/message ---
+
+// path: #/channels/basePolicy/publish/message
+message BasePolicyPublishMessage {
+    oneof payload {
+        BasePolicyCreatedMessage variant0 = 1;
+        BasePolicyUpdatedMessage variant1 = 2;
+    }
+}
+
+// path: #/channels/policy/publish/message
+message PolicyPublishMessage {
+    oneof payload {
+        PolicyCreatedMessage variant0 = 1;
+        PolicyUpdatedMessage variant1 = 2;
+        DefaultPolicyUpdatedMessage variant2 = 3;
+    }
+}
+
+// path: #/channels/versionedPolicy/publish/message
+message VersionedPolicyPublishMessage {
+    oneof payload {
+        VersionedPolicyCreatedMessage variant0 = 1;
+        VersionedPolicyUpdatedMessage variant1 = 2;
+        VersionedPolicyPublishedMessage variant2 = 3;
+    }
+}
+
+// path: #/channels/localizedPolicy/publish/message
+message LocalizedPolicyPublishMessage {
+    oneof payload {
+        LocalizedPolicyCreatedMessage variant0 = 1;
+        LocalizedPolicyUpdatedMessage variant1 = 2;
+        DefaultLocalizedPolicyUpdatedMessage variant2 = 3;
+    }
+}
+
+
+// --- service ---
+
+service LegalServicePolicyEvents {
+    // Base Policy Channel
+
+    // Publishes a message to the Base Policy channel.
+    rpc PublishToBasePolicyChannel(BasePolicyPublishMessage) returns (google.protobuf.Empty);
+
+    // Policy Channel
+
+    // Publishes a message to the Policy channel.
+    rpc PublishToPolicyChannel(PolicyPublishMessage) returns (google.protobuf.Empty);
+
+    // Versioned Policy Channel
+
+    // Publishes a message to the Versioned Policy channel.
+    rpc PublishToVersionedPolicyChannel(VersionedPolicyPublishMessage) returns (google.protobuf.Empty);
+
+    // Localized Policy Channel
+
+    // Publishes a message to the Localized Policy channel.
+    rpc PublishToLocalizedPolicyChannel(LocalizedPolicyPublishMessage) returns (google.protobuf.Empty);
+}

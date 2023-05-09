@@ -1,0 +1,216 @@
+// Copyright (c) 2023 AccelByte Inc. All Rights Reserved.
+// This is licensed software from AccelByte Inc, for limitations
+// and restrictions contact your company contract manager.
+
+// source: Ecommerce/AsyncAPI/wallet.yml (0.0.1)
+// hash: 1aeb8c915acaa94e321b129462d0a16b64434587
+
+syntax = "proto3";
+
+package accelbyte.ecommerce.wallet.v1;
+// Version v1.0.0
+
+// --- imports ---
+
+import "google/protobuf/empty.proto";
+
+
+// --- options ---
+
+
+// --- schema objects ---
+
+// path: #/components/schemas/event
+message Event {
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+}
+
+// path: #/components/schemas/walletStatusChange
+message WalletStatusChange {
+    string walletId = 1;
+    string userId = 2;
+    string status = 3;
+    string previousStatus = 4;
+}
+
+// path: #/components/schemas/walletBalanceChange
+message WalletBalanceChange {
+    string walletId = 1;
+    string namespace = 2;
+    string userId = 3;
+    string currencyCode = 4;
+    int64 balance = 5;
+    int64 amount = 6;
+    string source = 7;
+    string reason = 8;
+    string origin = 9;
+}
+
+// path: #/components/messages/walletDisabled/payload/properties/payload
+message AnonymousSchema1 {
+    WalletStatusChange walletStatusChange = 1;
+}
+
+// path: #/components/messages/walletDisabled/payload
+message WalletDisabledMessage {
+    AnonymousSchema1 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/walletEnabled/payload/properties/payload
+message AnonymousSchema2 {
+    WalletStatusChange walletStatusChange = 1;
+}
+
+// path: #/components/messages/walletEnabled/payload
+message WalletEnabledMessage {
+    AnonymousSchema2 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/walletCredited/payload/properties/payload
+message AnonymousSchema3 {
+    WalletBalanceChange walletBalanceChange = 1;
+}
+
+// path: #/components/messages/walletCredited/payload
+message WalletCreditedMessage {
+    AnonymousSchema3 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/walletDebited/payload/properties/payload
+message AnonymousSchema4 {
+    WalletBalanceChange walletBalanceChange = 1;
+}
+
+// path: #/components/messages/walletDebited/payload
+message WalletDebitedMessage {
+    AnonymousSchema4 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/walledPaid/payload/properties/payload
+message AnonymousSchema5 {
+    WalletBalanceChange walletBalanceChange = 1;
+}
+
+// path: #/components/messages/walledPaid/payload
+message WalledPaidMessage {
+    AnonymousSchema5 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/walledExpired/payload/properties/payload
+message AnonymousSchema6 {
+    WalletBalanceChange walletBalanceChange = 1;
+}
+
+// path: #/components/messages/walledExpired/payload
+message WalledExpiredMessage {
+    AnonymousSchema6 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+
+// --- #/components/messages/{message_name} ---
+
+
+// --- #/channels/{channel_name}/{operation_type}/message ---
+
+// path: #/channels/walletProcessing/publish/message
+message WalletProcessingPublishMessage {
+    oneof payload {
+        WalletDisabledMessage variant0 = 1;
+        WalletEnabledMessage variant1 = 2;
+        WalletCreditedMessage variant2 = 3;
+        WalletDebitedMessage variant3 = 4;
+        WalledPaidMessage variant4 = 5;
+        WalledExpiredMessage variant5 = 6;
+    }
+}
+
+
+// --- service ---
+
+service AsyncAPIForJusticeWalletService {
+    // Wallet Processing Channel
+
+    // Publishes a message to the Wallet Processing channel.
+    rpc PublishToWalletProcessingChannel(WalletProcessingPublishMessage) returns (google.protobuf.Empty);
+}

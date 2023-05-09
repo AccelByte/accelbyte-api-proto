@@ -1,0 +1,448 @@
+// Copyright (c) 2023 AccelByte Inc. All Rights Reserved.
+// This is licensed software from AccelByte Inc, for limitations
+// and restrictions contact your company contract manager.
+
+// source: Ecommerce/AsyncAPI/campaign.yml (0.0.1)
+// hash: 1aeb8c915acaa94e321b129462d0a16b64434587
+
+syntax = "proto3";
+
+package accelbyte.ecommerce.campaign.v1;
+// Version v1.0.0
+
+// --- imports ---
+
+import "google/protobuf/empty.proto";
+
+
+// --- options ---
+
+
+// --- schema objects ---
+
+// path: #/components/schemas/event
+message Event {
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+}
+
+// path: #/components/schemas/campaign
+message Campaign {
+    string id = 1;
+    string type = 2;
+    string namespace = 3;
+    string name = 4;
+    string description = 5;
+    repeated string tags = 6;
+    string status = 7;
+    string redeemStart = 8;
+    string redeemEnd = 9;
+    int32 maxRedeemCountPerCode = 10;
+    int32 maxRedeemCountPerCodePerUser = 11;
+    int32 maxRedeemCountPerCampaignPerUser = 12;
+    int32 maxSaleCount = 13;
+    string redeemType = 14;
+    repeated RedeemableItem items = 15;
+    string boothName = 16;
+    string createdAt = 17;
+    string updatedAt = 18;
+}
+
+// path: #/components/schemas/redeemableItem
+message RedeemableItem {
+    string itemId = 1;
+    string itemName = 2;
+    int32 quantity = 3;
+    int32 extraSubscriptionDays = 4;
+}
+
+// path: #/components/schemas/codeCreate
+message CodeCreate {
+    string campaignId = 1;
+    string campaignName = 2;
+    int64 quantity = 3;
+}
+
+// path: #/components/schemas/codeCondition
+message CodeCondition {
+    string campaignId = 1;
+    int64 batchNo = 2;
+    string value = 3;
+}
+
+// path: #/components/schemas/codeRedemption
+message CodeRedemption {
+    string userId = 1;
+    string campaignId = 2;
+    string campaignName = 3;
+    string code = 4;
+}
+
+// path: #/components/schemas/ticketAcquisition
+message TicketAcquisition {
+    string userId = 1;
+    string boothName = 2;
+    int64 count = 3;
+    string orderNo = 4;
+}
+
+// path: #/components/schemas/keyGroup
+message KeyGroup {
+    string id = 1;
+    string namespace = 2;
+    string name = 3;
+    string description = 4;
+    repeated string tags = 5;
+    string status = 6;
+    string boothName = 7;
+    string createdAt = 8;
+    string updatedAt = 9;
+}
+
+// path: #/components/schemas/keyUpload
+message KeyUpload {
+    string keyGroupId = 1;
+    string keyGroupName = 2;
+    int64 quantity = 3;
+}
+
+// path: #/components/messages/campaignCreated/payload/properties/payload
+message AnonymousSchema1 {
+    Campaign campaign = 1;
+}
+
+// path: #/components/messages/campaignCreated/payload
+message CampaignCreatedMessage {
+    AnonymousSchema1 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/campaignUpdated/payload/properties/payload
+message AnonymousSchema2 {
+    Campaign campaign = 1;
+    Campaign oldCampaign = 2;
+}
+
+// path: #/components/messages/campaignUpdated/payload
+message CampaignUpdatedMessage {
+    AnonymousSchema2 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/codeCreated/payload/properties/payload
+message AnonymousSchema3 {
+    CodeCreate codeCreate = 1;
+}
+
+// path: #/components/messages/codeCreated/payload
+message CodeCreatedMessage {
+    AnonymousSchema3 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/codeDisabled/payload/properties/payload
+message AnonymousSchema4 {
+    CodeCondition codeCondition = 1;
+}
+
+// path: #/components/messages/codeDisabled/payload
+message CodeDisabledMessage {
+    AnonymousSchema4 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/codeEnabled/payload/properties/payload
+message AnonymousSchema5 {
+    CodeCondition codeCondition = 1;
+}
+
+// path: #/components/messages/codeEnabled/payload
+message CodeEnabledMessage {
+    AnonymousSchema5 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/codeBulkDisabled/payload/properties/payload
+message AnonymousSchema6 {
+    CodeCondition codeCondition = 1;
+}
+
+// path: #/components/messages/codeBulkDisabled/payload
+message CodeBulkDisabledMessage {
+    AnonymousSchema6 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/codeBulkEnabled/payload/properties/payload
+message AnonymousSchema7 {
+    CodeCondition codeCondition = 1;
+}
+
+// path: #/components/messages/codeBulkEnabled/payload
+message CodeBulkEnabledMessage {
+    AnonymousSchema7 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/codeRedeemed/payload/properties/payload
+message AnonymousSchema8 {
+    CodeRedemption codeRedemption = 1;
+}
+
+// path: #/components/messages/codeRedeemed/payload
+message CodeRedeemedMessage {
+    AnonymousSchema8 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/ticketAcquired/payload/properties/payload
+message AnonymousSchema9 {
+    TicketAcquisition ticketAcquisition = 1;
+}
+
+// path: #/components/messages/ticketAcquired/payload
+message TicketAcquiredMessage {
+    AnonymousSchema9 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/keyGroupCreated/payload/properties/payload
+message AnonymousSchema10 {
+    KeyGroup keyGroup = 1;
+}
+
+// path: #/components/messages/keyGroupCreated/payload
+message KeyGroupCreatedMessage {
+    AnonymousSchema10 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/keyGroupUpdated/payload/properties/payload
+message AnonymousSchema11 {
+    KeyGroup keyGroup = 1;
+    KeyGroup oldKeyGroup = 2;
+}
+
+// path: #/components/messages/keyGroupUpdated/payload
+message KeyGroupUpdatedMessage {
+    AnonymousSchema11 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/keyUploaded/payload/properties/payload
+message AnonymousSchema12 {
+    KeyUpload keyUpload = 1;
+}
+
+// path: #/components/messages/keyUploaded/payload
+message KeyUploadedMessage {
+    AnonymousSchema12 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+
+// --- #/components/messages/{message_name} ---
+
+
+// --- #/channels/{channel_name}/{operation_type}/message ---
+
+// path: #/channels/campaignManagement/publish/message
+message CampaignManagementPublishMessage {
+    oneof payload {
+        CampaignCreatedMessage variant0 = 1;
+        CampaignUpdatedMessage variant1 = 2;
+        CodeCreatedMessage variant2 = 3;
+        CodeDisabledMessage variant3 = 4;
+        CodeEnabledMessage variant4 = 5;
+        CodeBulkDisabledMessage variant5 = 6;
+        CodeBulkEnabledMessage variant6 = 7;
+    }
+}
+
+// path: #/channels/keyGroupManagement/publish/message
+message KeyGroupManagementPublishMessage {
+    oneof payload {
+        KeyGroupCreatedMessage variant0 = 1;
+        KeyGroupUpdatedMessage variant1 = 2;
+        KeyUploadedMessage variant2 = 3;
+    }
+}
+
+// path: #/channels/codeRedemption/publish/message
+message CodeRedemptionPublishMessage {
+    oneof payload {
+        CodeRedeemedMessage variant0 = 1;
+    }
+}
+
+// path: #/channels/ticketSale/publish/message
+message TicketSalePublishMessage {
+    oneof payload {
+        TicketAcquiredMessage variant0 = 1;
+    }
+}
+
+
+// --- service ---
+
+service AsyncAPIForJusticeCampaignService {
+    // Campaign Management Channel
+
+    // Publishes a message to the Campaign Management channel.
+    rpc PublishToCampaignManagementChannel(CampaignManagementPublishMessage) returns (google.protobuf.Empty);
+
+    // Key Group Management Channel
+
+    // Publishes a message to the Key Group Management channel.
+    rpc PublishToKeyGroupManagementChannel(KeyGroupManagementPublishMessage) returns (google.protobuf.Empty);
+
+    // Code Redemption Channel
+
+    // Publishes a message to the Code Redemption channel.
+    rpc PublishToCodeRedemptionChannel(CodeRedemptionPublishMessage) returns (google.protobuf.Empty);
+
+    // Ticket Sale Channel
+
+    // Publishes a message to the Ticket Sale channel.
+    rpc PublishToTicketSaleChannel(TicketSalePublishMessage) returns (google.protobuf.Empty);
+}

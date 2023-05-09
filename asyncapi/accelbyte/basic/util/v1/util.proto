@@ -1,0 +1,159 @@
+// Copyright (c) 2023 AccelByte Inc. All Rights Reserved.
+// This is licensed software from AccelByte Inc, for limitations
+// and restrictions contact your company contract manager.
+
+// source: Basic/AsyncAPI/util.yaml (0.1.0)
+// hash: 1aeb8c915acaa94e321b129462d0a16b64434587
+
+syntax = "proto3";
+
+package accelbyte.basic.util.v1;
+// Version v1.0.0
+
+// --- imports ---
+
+import "google/protobuf/empty.proto";
+
+
+// --- options ---
+
+
+// --- schema objects ---
+
+// path: #/components/schemas/event
+message Event {
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+}
+
+// path: #/components/schemas/country
+message Country {
+    string code = 1;
+    string name = 2;
+}
+
+// path: #/components/schemas/countryGroup
+message CountryGroup {
+    string code = 1;
+    string name = 2;
+}
+
+// path: #/components/schemas/userContent
+message UserContent {
+    string url = 1;
+    string accessUrl = 2;
+    string method = 3;
+    string contentType = 4;
+}
+
+// path: #/components/messages/userContentUrlCreated/payload/properties/payload
+message AnonymousSchema1 {
+    UserContent simpleEvent = 1;
+}
+
+// path: #/components/messages/userContentUrlCreated/payload
+message UserContentUrlCreatedMessage {
+    AnonymousSchema1 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/countryGroupCreated/payload/properties/payload
+message AnonymousSchema2 {
+    CountryGroup countryGroup = 1;
+    repeated Country countries = 2;
+}
+
+// path: #/components/messages/countryGroupCreated/payload
+message CountryGroupCreatedMessage {
+    AnonymousSchema2 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/countryGroupUpdated/payload/properties/payload
+message AnonymousSchema3 {
+    CountryGroup countryGroup = 1;
+    repeated Country countries = 2;
+}
+
+// path: #/components/messages/countryGroupUpdated/payload
+message CountryGroupUpdatedMessage {
+    AnonymousSchema3 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+
+// --- #/components/messages/{message_name} ---
+
+
+// --- #/channels/{channel_name}/{operation_type}/message ---
+
+// path: #/channels/userContent/publish/message
+message UserContentPublishMessage {
+    oneof payload {
+        UserContentUrlCreatedMessage variant0 = 1;
+    }
+}
+
+// path: #/channels/countryGroup/publish/message
+message CountryGroupPublishMessage {
+    oneof payload {
+        CountryGroupCreatedMessage variant0 = 1;
+        CountryGroupUpdatedMessage variant1 = 2;
+    }
+}
+
+
+// --- service ---
+
+service BasicServiceUtilEvents {
+    // User Content Channel
+
+    // Publishes a message to the User Content channel.
+    rpc PublishToUserContentChannel(UserContentPublishMessage) returns (google.protobuf.Empty);
+
+    // Country Group Channel
+
+    // Publishes a message to the Country Group channel.
+    rpc PublishToCountryGroupChannel(CountryGroupPublishMessage) returns (google.protobuf.Empty);
+}

@@ -1,0 +1,737 @@
+// Copyright (c) 2023 AccelByte Inc. All Rights Reserved.
+// This is licensed software from AccelByte Inc, for limitations
+// and restrictions contact your company contract manager.
+
+// source: Ecommerce/AsyncAPI/payment.yml (0.0.1)
+// hash: 1aeb8c915acaa94e321b129462d0a16b64434587
+
+syntax = "proto3";
+
+package accelbyte.ecommerce.payment.v1;
+// Version v1.0.0
+
+// --- imports ---
+
+import "google/protobuf/empty.proto";
+
+
+// --- options ---
+
+
+// --- schema objects ---
+
+// path: #/components/schemas/event
+message Event {
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+}
+
+// path: #/components/schemas/paymentMerchantConfig
+message PaymentMerchantConfig {
+    string id = 1;
+    bool sandbox = 2;
+}
+
+// path: #/components/schemas/paymentProviderConfig
+message PaymentProviderConfig {
+    string id = 1;
+    string namespace = 2;
+    string region = 3;
+    string paymentMerchantConfigId = 4;
+}
+
+// path: #/components/schemas/paymentAccount
+message PaymentAccount {
+    string namespace = 1;
+    string userId = 2;
+    string type = 3;
+    string id = 4;
+    string paymentProvider = 5;
+}
+
+// path: #/components/schemas/currencySummary
+message CurrencySummary {
+    string currencyCode = 1;
+    string currencySymbol = 2;
+    string currencyType = 3;
+    string namespace = 4;
+    int32 decimals = 5;
+}
+
+// path: #/components/schemas/paymentTaxConfig
+message PaymentTaxConfig {
+    string configId = 1;
+    bool taxJarEnable = 2;
+}
+
+// path: #/components/schemas/paymentOrder
+message PaymentOrder {
+    string paymentOrderNo = 1;
+    string namespace = 2;
+    string userId = 3;
+    string targetNamespace = 4;
+    string targetUserId = 5;
+    string extOrderNo = 6;
+    string sku = 7;
+    string extUserId = 8;
+    bool sandbox = 9;
+    int32 price = 10;
+    string paymentProvider = 11;
+    string region = 12;
+    string language = 13;
+    CurrencySummary currency = 14;
+    string status = 15;
+    string statusReason = 16;
+    string channel = 17;
+    string previousStatus = 18;
+}
+
+// path: #/components/messages/paymentProviderConfigCreated/payload/properties/payload
+message AnonymousSchema1 {
+    PaymentProviderConfig paymentProviderConfig = 1;
+}
+
+// path: #/components/messages/paymentProviderConfigCreated/payload
+message PaymentProviderConfigCreatedMessage {
+    AnonymousSchema1 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/paymentProviderConfigUpdated/payload/properties/payload
+message AnonymousSchema2 {
+    PaymentProviderConfig paymentProviderConfig = 1;
+}
+
+// path: #/components/messages/paymentProviderConfigUpdated/payload
+message PaymentProviderConfigUpdatedMessage {
+    AnonymousSchema2 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/paymentProviderConfigDeleted/payload/properties/payload
+message AnonymousSchema3 {
+    PaymentProviderConfig paymentProviderConfig = 1;
+}
+
+// path: #/components/messages/paymentProviderConfigDeleted/payload
+message PaymentProviderConfigDeletedMessage {
+    AnonymousSchema3 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/paymentTaxConfigUpdated/payload/properties/payload
+message AnonymousSchema4 {
+    PaymentTaxConfig paymentTaxConfig = 1;
+}
+
+// path: #/components/messages/paymentTaxConfigUpdated/payload
+message PaymentTaxConfigUpdatedMessage {
+    AnonymousSchema4 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/xsollaConfigUpdated/payload/properties/payload
+message AnonymousSchema5 {
+    PaymentMerchantConfig paymentMerchantConfig = 1;
+}
+
+// path: #/components/messages/xsollaConfigUpdated/payload
+message XsollaConfigUpdatedMessage {
+    AnonymousSchema5 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/xsollaUIConfigUpdated/payload/properties/payload
+message AnonymousSchema6 {
+    PaymentMerchantConfig paymentMerchantConfig = 1;
+}
+
+// path: #/components/messages/xsollaUIConfigUpdated/payload
+message XsollaUIConfigUpdatedMessage {
+    AnonymousSchema6 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/aliPayConfigUpdated/payload/properties/payload
+message AnonymousSchema7 {
+    PaymentMerchantConfig paymentMerchantConfig = 1;
+}
+
+// path: #/components/messages/aliPayConfigUpdated/payload
+message AliPayConfigUpdatedMessage {
+    AnonymousSchema7 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/wxPayConfigUpdated/payload/properties/payload
+message AnonymousSchema8 {
+    PaymentMerchantConfig paymentMerchantConfig = 1;
+}
+
+// path: #/components/messages/wxPayConfigUpdated/payload
+message WxPayConfigUpdatedMessage {
+    AnonymousSchema8 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/wxPayCertUploaded/payload/properties/payload
+message AnonymousSchema9 {
+    PaymentMerchantConfig paymentMerchantConfig = 1;
+}
+
+// path: #/components/messages/wxPayCertUploaded/payload
+message WxPayCertUploadedMessage {
+    AnonymousSchema9 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/adyenConfigUpdated/payload/properties/payload
+message AnonymousSchema10 {
+    PaymentMerchantConfig paymentMerchantConfig = 1;
+}
+
+// path: #/components/messages/adyenConfigUpdated/payload
+message AdyenConfigUpdatedMessage {
+    AnonymousSchema10 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/stripeConfigUpdated/payload/properties/payload
+message AnonymousSchema11 {
+    PaymentMerchantConfig paymentMerchantConfig = 1;
+}
+
+// path: #/components/messages/stripeConfigUpdated/payload
+message StripeConfigUpdatedMessage {
+    AnonymousSchema11 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/payPalConfigUpdated/payload/properties/payload
+message AnonymousSchema12 {
+    PaymentMerchantConfig paymentMerchantConfig = 1;
+}
+
+// path: #/components/messages/payPalConfigUpdated/payload
+message PayPalConfigUpdatedMessage {
+    AnonymousSchema12 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/paymentOrderCreated/payload/properties/payload
+message AnonymousSchema13 {
+    PaymentOrder paymentOrder = 1;
+}
+
+// path: #/components/messages/paymentOrderCreated/payload
+message PaymentOrderCreatedMessage {
+    AnonymousSchema13 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/paymentOrderCharged/payload/properties/payload
+message AnonymousSchema14 {
+    PaymentOrder paymentOrder = 1;
+}
+
+// path: #/components/messages/paymentOrderCharged/payload
+message PaymentOrderChargedMessage {
+    AnonymousSchema14 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/paymentOrderChargeFailed/payload/properties/payload
+message AnonymousSchema15 {
+    PaymentOrder paymentOrder = 1;
+}
+
+// path: #/components/messages/paymentOrderChargeFailed/payload
+message PaymentOrderChargeFailedMessage {
+    AnonymousSchema15 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/paymentOrderRefunded/payload/properties/payload
+message AnonymousSchema16 {
+    PaymentOrder paymentOrder = 1;
+}
+
+// path: #/components/messages/paymentOrderRefunded/payload
+message PaymentOrderRefundedMessage {
+    AnonymousSchema16 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/paymentOrderRefundFailed/payload/properties/payload
+message AnonymousSchema17 {
+    PaymentOrder paymentOrder = 1;
+}
+
+// path: #/components/messages/paymentOrderRefundFailed/payload
+message PaymentOrderRefundFailedMessage {
+    AnonymousSchema17 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/paymentOrderAuthorised/payload/properties/payload
+message AnonymousSchema18 {
+    PaymentOrder paymentOrder = 1;
+}
+
+// path: #/components/messages/paymentOrderAuthorised/payload
+message PaymentOrderAuthorisedMessage {
+    AnonymousSchema18 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/paymentOrderAuthorisedFailed/payload/properties/payload
+message AnonymousSchema19 {
+    PaymentOrder paymentOrder = 1;
+}
+
+// path: #/components/messages/paymentOrderAuthorisedFailed/payload
+message PaymentOrderAuthorisedFailedMessage {
+    AnonymousSchema19 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/paymentOrderNotificationOfChargeback/payload/properties/payload
+message AnonymousSchema20 {
+    PaymentOrder paymentOrder = 1;
+}
+
+// path: #/components/messages/paymentOrderNotificationOfChargeback/payload
+message PaymentOrderNotificationOfChargebackMessage {
+    AnonymousSchema20 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/paymentOrderRequestForInformation/payload/properties/payload
+message AnonymousSchema21 {
+    PaymentOrder paymentOrder = 1;
+}
+
+// path: #/components/messages/paymentOrderRequestForInformation/payload
+message PaymentOrderRequestForInformationMessage {
+    AnonymousSchema21 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/paymentOrderChargeback/payload/properties/payload
+message AnonymousSchema22 {
+    PaymentOrder paymentOrder = 1;
+}
+
+// path: #/components/messages/paymentOrderChargeback/payload
+message PaymentOrderChargebackMessage {
+    AnonymousSchema22 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/paymentOrderChargebackReversed/payload/properties/payload
+message AnonymousSchema23 {
+    PaymentOrder paymentOrder = 1;
+}
+
+// path: #/components/messages/paymentOrderChargebackReversed/payload
+message PaymentOrderChargebackReversedMessage {
+    AnonymousSchema23 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/paymentOrderRefundRequested/payload/properties/payload
+message AnonymousSchema24 {
+    PaymentOrder paymentOrder = 1;
+}
+
+// path: #/components/messages/paymentOrderRefundRequested/payload
+message PaymentOrderRefundRequestedMessage {
+    AnonymousSchema24 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/paymentAccountDeleted/payload/properties/payload
+message AnonymousSchema25 {
+    PaymentAccount paymentAccount = 1;
+}
+
+// path: #/components/messages/paymentAccountDeleted/payload
+message PaymentAccountDeletedMessage {
+    AnonymousSchema25 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/checkoutConfigUpdated/payload/properties/payload
+message AnonymousSchema26 {
+    PaymentMerchantConfig paymentMerchantConfig = 1;
+}
+
+// path: #/components/messages/checkoutConfigUpdated/payload
+message CheckoutConfigUpdatedMessage {
+    AnonymousSchema26 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+
+// --- #/components/messages/{message_name} ---
+
+
+// --- #/channels/{channel_name}/{operation_type}/message ---
+
+// path: #/channels/paymentConfig/publish/message
+message PaymentConfigPublishMessage {
+    oneof payload {
+        PaymentProviderConfigCreatedMessage variant0 = 1;
+        PaymentProviderConfigUpdatedMessage variant1 = 2;
+        PaymentProviderConfigDeletedMessage variant2 = 3;
+        PaymentTaxConfigUpdatedMessage variant3 = 4;
+        AdyenConfigUpdatedMessage variant4 = 5;
+        StripeConfigUpdatedMessage variant5 = 6;
+        XsollaConfigUpdatedMessage variant6 = 7;
+        XsollaUIConfigUpdatedMessage variant7 = 8;
+        PayPalConfigUpdatedMessage variant8 = 9;
+        AliPayConfigUpdatedMessage variant9 = 10;
+        WxPayConfigUpdatedMessage variant10 = 11;
+        WxPayCertUploadedMessage variant11 = 12;
+        CheckoutConfigUpdatedMessage variant12 = 13;
+    }
+}
+
+// path: #/channels/paymentOrderProcessing/publish/message
+message PaymentOrderProcessingPublishMessage {
+    oneof payload {
+        PaymentOrderCreatedMessage variant0 = 1;
+        PaymentOrderChargedMessage variant1 = 2;
+        PaymentOrderChargeFailedMessage variant2 = 3;
+        PaymentOrderRefundedMessage variant3 = 4;
+        PaymentOrderRefundFailedMessage variant4 = 5;
+        PaymentOrderAuthorisedMessage variant5 = 6;
+        PaymentOrderAuthorisedFailedMessage variant6 = 7;
+        PaymentOrderNotificationOfChargebackMessage variant7 = 8;
+        PaymentOrderRequestForInformationMessage variant8 = 9;
+        PaymentOrderChargebackMessage variant9 = 10;
+        PaymentOrderChargebackReversedMessage variant10 = 11;
+        PaymentOrderRefundRequestedMessage variant11 = 12;
+    }
+}
+
+// path: #/channels/paymentAccount/publish/message
+message PaymentAccountPublishMessage {
+    oneof payload {
+        PaymentAccountDeletedMessage variant0 = 1;
+    }
+}
+
+
+// --- service ---
+
+service AsyncAPIForJusticePaymentService {
+    // Payment Config Channel
+
+    // Publishes a message to the Payment Config channel.
+    rpc PublishToPaymentConfigChannel(PaymentConfigPublishMessage) returns (google.protobuf.Empty);
+
+    // Payment Order Processing Channel
+
+    // Publishes a message to the Payment Order Processing channel.
+    rpc PublishToPaymentOrderProcessingChannel(PaymentOrderProcessingPublishMessage) returns (google.protobuf.Empty);
+
+    // Payment Account Channel
+
+    // Publishes a message to the Payment Account channel.
+    rpc PublishToPaymentAccountChannel(PaymentAccountPublishMessage) returns (google.protobuf.Empty);
+}

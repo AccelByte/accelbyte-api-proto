@@ -1,0 +1,414 @@
+// Copyright (c) 2023 AccelByte Inc. All Rights Reserved.
+// This is licensed software from AccelByte Inc, for limitations
+// and restrictions contact your company contract manager.
+
+// source: Ecommerce/AsyncAPI/integration.yml (0.0.1)
+// hash: 1aeb8c915acaa94e321b129462d0a16b64434587
+
+syntax = "proto3";
+
+package accelbyte.ecommerce.integration.v1;
+// Version v1.0.0
+
+// --- imports ---
+
+import "google/protobuf/empty.proto";
+
+
+// --- options ---
+
+
+// --- schema objects ---
+
+// path: #/components/schemas/event
+message Event {
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+}
+
+// path: #/components/schemas/iap
+message Iap {
+    string iapOrderNo = 1;
+    string namespace = 2;
+    string userId = 3;
+    string productId = 4;
+    string transactionId = 5;
+    string status = 6;
+    string statusReason = 7;
+    string region = 8;
+    string language = 9;
+    int64 quantity = 10;
+    bool sandbox = 11;
+    string type = 12;
+    string fulfilledTime = 13;
+}
+
+// path: #/components/messages/appleIAPConfigDeleted/payload
+message AppleIAPConfigDeletedMessage {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+}
+
+// path: #/components/messages/appleIAPConfigUpdated/payload
+message AppleIAPConfigUpdatedMessage {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+}
+
+// path: #/components/messages/googleIAPConfigDeleted/payload
+message GoogleIAPConfigDeletedMessage {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+}
+
+// path: #/components/messages/googleIAPConfigUpdated/payload
+message GoogleIAPConfigUpdatedMessage {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+}
+
+// path: #/components/messages/googleP12FileUpdated/payload
+message GoogleP12FileUpdatedMessage {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+}
+
+// path: #/components/messages/playStationIAPConfigDeleted/payload
+message PlayStationIAPConfigDeletedMessage {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+}
+
+// path: #/components/messages/playStationIAPConfigUpdated/payload
+message PlayStationIAPConfigUpdatedMessage {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+}
+
+// path: #/components/messages/steamIAPConfigUpdated/payload
+message SteamIAPConfigUpdatedMessage {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+}
+
+// path: #/components/messages/steamIAPConfigDeleted/payload
+message SteamIAPConfigDeletedMessage {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+}
+
+// path: #/components/messages/xblIAPConfigDeleted/payload
+message XblIAPConfigDeletedMessage {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+}
+
+// path: #/components/messages/xblIAPConfigUpdated/payload
+message XblIAPConfigUpdatedMessage {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+}
+
+// path: #/components/messages/xblBPCertFileUpdated/payload
+message XblBPCertFileUpdatedMessage {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+}
+
+// path: #/components/messages/stadiaIAPJsonFileUpdated/payload
+message StadiaIAPJsonFileUpdatedMessage {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+}
+
+// path: #/components/messages/stadiaIAPConfigDeleted/payload
+message StadiaIAPConfigDeletedMessage {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+}
+
+// path: #/components/messages/epicGamesIAPConfigDeleted/payload
+message EpicGamesIAPConfigDeletedMessage {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+}
+
+// path: #/components/messages/epicGamesIAPConfigUpdated/payload
+message EpicGamesIAPConfigUpdatedMessage {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+}
+
+// path: #/components/messages/twitchIAPConfigUpdated/payload
+message TwitchIAPConfigUpdatedMessage {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+}
+
+// path: #/components/messages/twitchIAPConfigDeleted/payload
+message TwitchIAPConfigDeletedMessage {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+}
+
+// path: #/components/messages/iapProcessed/payload/properties/payload
+message AnonymousSchema1 {
+    Iap iap = 1;
+}
+
+// path: #/components/messages/iapProcessed/payload
+message IapProcessedMessage {
+    AnonymousSchema1 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+
+// --- #/components/messages/{message_name} ---
+
+
+// --- #/channels/{channel_name}/{operation_type}/message ---
+
+// path: #/channels/iapConfigManagement/publish/message
+message IapConfigManagementPublishMessage {
+    oneof payload {
+        AppleIAPConfigDeletedMessage variant0 = 1;
+        AppleIAPConfigUpdatedMessage variant1 = 2;
+        GoogleIAPConfigDeletedMessage variant2 = 3;
+        GoogleIAPConfigUpdatedMessage variant3 = 4;
+        GoogleP12FileUpdatedMessage variant4 = 5;
+        PlayStationIAPConfigDeletedMessage variant5 = 6;
+        PlayStationIAPConfigUpdatedMessage variant6 = 7;
+        SteamIAPConfigUpdatedMessage variant7 = 8;
+        SteamIAPConfigDeletedMessage variant8 = 9;
+        XblIAPConfigDeletedMessage variant9 = 10;
+        XblIAPConfigUpdatedMessage variant10 = 11;
+        XblBPCertFileUpdatedMessage variant11 = 12;
+        StadiaIAPJsonFileUpdatedMessage variant12 = 13;
+        StadiaIAPConfigDeletedMessage variant13 = 14;
+        EpicGamesIAPConfigDeletedMessage variant14 = 15;
+        EpicGamesIAPConfigUpdatedMessage variant15 = 16;
+        TwitchIAPConfigUpdatedMessage variant16 = 17;
+        TwitchIAPConfigDeletedMessage variant17 = 18;
+    }
+}
+
+// path: #/channels/iapProcessing/publish/message
+message IapProcessingPublishMessage {
+    oneof payload {
+        IapProcessedMessage variant0 = 1;
+    }
+}
+
+
+// --- service ---
+
+service AsyncAPIForJusticeIntegrationService {
+    // Iap Config Management Channel
+
+    // Publishes a message to the Iap Config Management channel.
+    rpc PublishToIapConfigManagementChannel(IapConfigManagementPublishMessage) returns (google.protobuf.Empty);
+
+    // Iap Processing Channel
+
+    // Publishes a message to the Iap Processing channel.
+    rpc PublishToIapProcessingChannel(IapProcessingPublishMessage) returns (google.protobuf.Empty);
+}

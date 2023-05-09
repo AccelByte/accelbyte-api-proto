@@ -1,0 +1,45 @@
+converted 'API Gateway/AsyncAPI/session.yaml' to 'asyncapi/accelbyte/api_gateway/session/v1/session.proto' (new)
+converted 'Achievement/AsyncAPI/achievement.yaml' to 'asyncapi/accelbyte/achievement/achievement/v1/achievement.proto' (new)
+converted 'Basic/AsyncAPI/namespace.yaml' to 'asyncapi/accelbyte/basic/namespace/v1/namespace.proto' (new)
+converted 'Basic/AsyncAPI/profile.yaml' to 'asyncapi/accelbyte/basic/profile/v1/profile.proto' (new)
+converted 'Basic/AsyncAPI/util.yaml' to 'asyncapi/accelbyte/basic/util/v1/util.proto' (new)
+converted 'BuildInfo/AsyncAPI/buildInfo.yaml' to 'asyncapi/accelbyte/build_info/build_info/v1/buildInfo.proto' (new)
+skipping 'Chat/AsyncAPI/chat.yaml' due to: [NotImplementedError]: {'properties': {'personalChatSent': {'type': 'object', 'allOf': [{'$ref': '#/components/schemas/chatPayload'}]}}}
+converted 'CloudStorage/AsyncAPI/cloudstorage.yaml' to 'asyncapi/accelbyte/cloud_storage/cloudstorage/v1/cloudstorage.proto' (new)
+skipping 'Cloudsave/AsyncAPI/cloudsave.yaml' due to: [TypeError]: None
+converted 'DSM/AsyncAPI/dsmc.yaml' to 'asyncapi/accelbyte/dsm/dsmc/v1/dsmc.proto' (new)
+converted 'Ecommerce/AsyncAPI/campaign.yml' to 'asyncapi/accelbyte/ecommerce/campaign/v1/campaign.proto' (new)
+skipping 'Ecommerce/AsyncAPI/catalog.yml' due to: [KeyError]: 'items'
+converted 'Ecommerce/AsyncAPI/currency.yml' to 'asyncapi/accelbyte/ecommerce/currency/v1/currency.proto' (new)
+converted 'Ecommerce/AsyncAPI/entitlement.yml' to 'asyncapi/accelbyte/ecommerce/entitlement/v1/entitlement.proto' (new)
+converted 'Ecommerce/AsyncAPI/fulfillment.yml' to 'asyncapi/accelbyte/ecommerce/fulfillment/v1/fulfillment.proto' (new)
+converted 'Ecommerce/AsyncAPI/integration.yml' to 'asyncapi/accelbyte/ecommerce/integration/v1/integration.proto' (new)
+converted 'Ecommerce/AsyncAPI/order.yml' to 'asyncapi/accelbyte/ecommerce/order/v1/order.proto' (new)
+converted 'Ecommerce/AsyncAPI/payment.yml' to 'asyncapi/accelbyte/ecommerce/payment/v1/payment.proto' (new)
+converted 'Ecommerce/AsyncAPI/reward.yml' to 'asyncapi/accelbyte/ecommerce/reward/v1/reward.proto' (new)
+converted 'Ecommerce/AsyncAPI/subscription.yml' to 'asyncapi/accelbyte/ecommerce/subscription/v1/subscription.proto' (new)
+converted 'Ecommerce/AsyncAPI/wallet.yml' to 'asyncapi/accelbyte/ecommerce/wallet/v1/wallet.proto' (new)
+skipping 'GDPR/AsyncAPI/request.yaml' due to: [KeyError]: 'items'
+converted 'Group/AsyncAPI/group.yaml' to 'asyncapi/accelbyte/group/group/v1/group.proto' (new)
+skipping 'IAM/AsyncAPI/account.yaml' due to: [NotImplementedError]: {'roles': 'string'}
+converted 'IAM/AsyncAPI/client.yaml' to 'asyncapi/accelbyte/iam/client/v1/client.proto' (new)
+converted 'IAM/AsyncAPI/oauth.yaml' to 'asyncapi/accelbyte/iam/oauth/v1/oauth.proto' (new)
+converted 'IAM/AsyncAPI/rbac.yaml' to 'asyncapi/accelbyte/iam/rbac/v1/rbac.proto' (new)
+skipping 'Leaderboard/AsyncAPI/leaderboard.yaml' due to: [TypeError]: None
+converted 'Legal/AsyncAPI/agreement.yaml' to 'asyncapi/accelbyte/legal/agreement/v1/agreement.proto' (new)
+converted 'Legal/AsyncAPI/policy.yaml' to 'asyncapi/accelbyte/legal/policy/v1/policy.proto' (new)
+converted 'Legal/AsyncAPI/userMarketingInformation.yaml' to 'asyncapi/accelbyte/legal/user_marketing_information/v1/userMarketingInformation.proto' (new)
+skipping 'Lobby/AsyncAPI/chat.yaml' due to: [NotImplementedError]: {'properties': {'chat': {'type': 'object', 'allOf': [{'$ref': '#/components/schemas/chatPayload'}]}}}
+skipping 'Lobby/AsyncAPI/friends.yaml' due to: [NotImplementedError]: {'properties': {'relation': {'type': 'object', 'allOf': [{'$ref': '#/components/schemas/friendRequestsPayload'}]}}}
+skipping 'Lobby/AsyncAPI/lobby.yaml' due to: [NotImplementedError]: {'properties': {'userConnected': {'type': 'object', 'properties': {'lobbySessionId': {'type': 'string'}}}}}
+skipping 'Lobby/AsyncAPI/notification.yaml' due to: [NotImplementedError]: {'properties': {'notification': {'type': 'object', 'allOf': [{'$ref': '#/components/schemas/notificationPayload'}]}}}
+skipping 'Lobby/AsyncAPI/party.yaml' due to: [NotImplementedError]: {'properties': {'party': {'type': 'object', 'allOf': [{'$ref': '#/components/schemas/partyPayload'}, {'$ref': '#/components/schemas/invitePayload'}, {'$ref': '#/components/schemas/platformPayload'}], 'properties': {'members': {'type': 'array', 'items': {'type': 'string'}}, 'partyCode': {'type': 'string'}}}}}
+skipping 'Lobby/AsyncAPI/presence.yaml' due to: [NotImplementedError]: {'properties': {'presence': {'type': 'object', 'allOf': [{'$ref': '#/components/schemas/statusPayload'}]}}}
+skipping 'Matchmaking/AsyncAPI/matchmaking.yaml' due to: [NotImplementedError]: {'properties': {'ruleset': {'type': 'object', 'allOf': [{'$ref': '#/components/schemas/ruleset'}]}, 'description': {'type': 'string'}, 'gameMode': {'type': 'string'}, 'findMatchTimeoutSeconds': {'type': 'integer'}}}
+converted 'MatchmakingV2/AsyncAPI/notification.yaml' to 'asyncapi/accelbyte/matchmaking_v2/notification/v1/notification.proto' (new)
+converted 'Reporting/AsyncAPI/reporting.yaml' to 'asyncapi/accelbyte/reporting/reporting/v1/reporting.proto' (new)
+converted 'SeasonPass/AsyncAPI/seasonpass.yml' to 'asyncapi/accelbyte/season_pass/seasonpass/v1/seasonpass.proto' (new)
+converted 'Session/AsyncAPI/session.yaml' to 'asyncapi/accelbyte/session/session/v1/session.proto' (new)
+skipping 'SessionBrowser/AsyncAPI/sessionbrowser.yaml' due to: [NotImplementedError]: {'properties': {'gameSessionCount': {'type': 'object', 'allOf': [{'$ref': '#/components/schemas/gamePayload'}]}}}
+converted 'Social/AsyncAPI/statistic.yaml' to 'asyncapi/accelbyte/social/statistic/v1/statistic.proto' (new)
+converted 'Ugc/AsyncAPI/ugc.yaml' to 'asyncapi/accelbyte/ugc/ugc/v1/ugc.proto' (new)

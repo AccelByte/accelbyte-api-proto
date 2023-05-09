@@ -1,0 +1,115 @@
+// Copyright (c) 2023 AccelByte Inc. All Rights Reserved.
+// This is licensed software from AccelByte Inc, for limitations
+// and restrictions contact your company contract manager.
+
+// source: Legal/AsyncAPI/agreement.yaml (0.1.0)
+// hash: 1aeb8c915acaa94e321b129462d0a16b64434587
+
+syntax = "proto3";
+
+package accelbyte.legal.agreement.v1;
+// Version v1.0.0
+
+// --- imports ---
+
+import "google/protobuf/empty.proto";
+
+
+// --- options ---
+
+
+// --- schema objects ---
+
+// path: #/components/schemas/event
+message Event {
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+}
+
+// path: #/components/schemas/agreement
+message Agreement {
+    string policyId = 1;
+    string policyVersionId = 2;
+    string policyName = 3;
+    string displayVersion = 4;
+    string localizedPolicyVersionId = 5;
+    string localizedDescription = 6;
+    bool isAccepted = 7;
+    string userId = 8;
+}
+
+// path: #/components/messages/agreementCreated/payload/properties/payload
+message AnonymousSchema1 {
+    Agreement agreement = 1;
+}
+
+// path: #/components/messages/agreementCreated/payload
+message AgreementCreatedMessage {
+    AnonymousSchema1 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/agreementUpdated/payload/properties/payload
+message AnonymousSchema2 {
+    Agreement agreement = 1;
+}
+
+// path: #/components/messages/agreementUpdated/payload
+message AgreementUpdatedMessage {
+    AnonymousSchema2 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+
+// --- #/components/messages/{message_name} ---
+
+
+// --- #/channels/{channel_name}/{operation_type}/message ---
+
+// path: #/channels/agreement/publish/message
+message AgreementPublishMessage {
+    oneof payload {
+        AgreementCreatedMessage variant0 = 1;
+        AgreementUpdatedMessage variant1 = 2;
+    }
+}
+
+
+// --- service ---
+
+service LegalServiceAgreementEvents {
+    // Agreement Channel
+
+    // Publishes a message to the Agreement channel.
+    rpc PublishToAgreementChannel(AgreementPublishMessage) returns (google.protobuf.Empty);
+}

@@ -1,0 +1,605 @@
+// Copyright (c) 2023 AccelByte Inc. All Rights Reserved.
+// This is licensed software from AccelByte Inc, for limitations
+// and restrictions contact your company contract manager.
+
+// source: Ugc/AsyncAPI/ugc.yaml (0.1.0)
+// hash: 1aeb8c915acaa94e321b129462d0a16b64434587
+
+syntax = "proto3";
+
+package accelbyte.ugc.ugc.v1;
+// Version v1.0.0
+
+// --- imports ---
+
+import "google/protobuf/empty.proto";
+
+
+// --- options ---
+
+
+// --- schema objects ---
+
+// path: #/components/schemas/event
+message Event {
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+}
+
+// path: #/components/schemas/ugcContent
+message UgcContent {
+    string contentId = 1;
+    string namespace = 2;
+    string channel = 3;
+    string userId = 4;
+    string createdTime = 5;
+    bool isOfficial = 6;
+    string updatedTime = 7;
+    repeated string tags = 8;
+}
+
+// path: #/components/schemas/ugcContentDelete
+message UgcContentDelete {
+    string namespace = 1;
+    string contentId = 2;
+    string userId = 3;
+    string deleteBy = 4;
+}
+
+// path: #/components/schemas/ugcContentHide
+message UgcContentHide {
+    string namespace = 1;
+    string contentId = 2;
+    string userId = 3;
+    bool autoModeration = 4;
+}
+
+// path: #/components/schemas/ugcContentLike
+message UgcContentLike {
+    string namespace = 1;
+    string userId = 2;
+    string creatorId = 3;
+    string contentId = 4;
+}
+
+// path: #/components/schemas/ugcChannel
+message UgcChannel {
+    string namespace = 1;
+    string channelId = 2;
+    string userId = 3;
+    string channelName = 4;
+}
+
+// path: #/components/schemas/ugcChannelDeleted
+message UgcChannelDeleted {
+    string namespace = 1;
+    string channelId = 2;
+    string userId = 3;
+}
+
+// path: #/components/schemas/ugcCreator
+message UgcCreator {
+    string namespace = 1;
+    string userId = 2;
+    string creatorId = 3;
+}
+
+// path: #/components/schemas/ugcCreatorBan
+message UgcCreatorBan {
+    string namespace = 1;
+    string userId = 2;
+    string reason = 3;
+    string type = 4;
+    bool enable = 5;
+    string endDate = 6;
+}
+
+// path: #/components/schemas/ugcContentGroup
+message UgcContentGroup {
+    string namespace = 1;
+    string groupId = 2;
+    string name = 3;
+    string userId = 4;
+    repeated string contents = 5;
+    string createdTime = 6;
+}
+
+// path: #/components/messages/ugcContentUpdated/payload/properties/payload
+message AnonymousSchema1 {
+    UgcContent ugcContent = 1;
+}
+
+// path: #/components/messages/ugcContentUpdated/payload
+message UgcContentUpdatedMessage {
+    AnonymousSchema1 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/ugcContentDeleted/payload/properties/payload
+message AnonymousSchema2 {
+    UgcContentDelete ugcContentDelete = 1;
+}
+
+// path: #/components/messages/ugcContentDeleted/payload
+message UgcContentDeletedMessage {
+    AnonymousSchema2 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/ugcContentHide/payload/properties/payload
+message AnonymousSchema3 {
+    UgcContentHide ugcContentHide = 1;
+}
+
+// path: #/components/messages/ugcContentHide/payload
+message UgcContentHideMessage {
+    AnonymousSchema3 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/ugcContentUnHide/payload/properties/payload
+message AnonymousSchema4 {
+    UgcContentHide ugcContentHide = 1;
+}
+
+// path: #/components/messages/ugcContentUnHide/payload
+message UgcContentUnHideMessage {
+    AnonymousSchema4 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/ugcContentCreated/payload/properties/payload
+message AnonymousSchema5 {
+    UgcContent ugcContent = 1;
+}
+
+// path: #/components/messages/ugcContentCreated/payload
+message UgcContentCreatedMessage {
+    AnonymousSchema5 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/ugcContentLiked/payload/properties/payload
+message AnonymousSchema6 {
+    UgcContentLike ugcContentLike = 1;
+}
+
+// path: #/components/messages/ugcContentLiked/payload
+message UgcContentLikedMessage {
+    AnonymousSchema6 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/ugcContentUnLiked/payload/properties/payload
+message AnonymousSchema7 {
+    UgcContentLike ugcContentLike = 1;
+}
+
+// path: #/components/messages/ugcContentUnLiked/payload
+message UgcContentUnLikedMessage {
+    AnonymousSchema7 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/ugcChannelCreated/payload/properties/payload
+message AnonymousSchema8 {
+    UgcChannel ugcChannel = 1;
+}
+
+// path: #/components/messages/ugcChannelCreated/payload
+message UgcChannelCreatedMessage {
+    AnonymousSchema8 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/ugcChannelUpdated/payload/properties/payload
+message AnonymousSchema9 {
+    UgcChannel ugcChannel = 1;
+}
+
+// path: #/components/messages/ugcChannelUpdated/payload
+message UgcChannelUpdatedMessage {
+    AnonymousSchema9 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/ugcChannelDeleted/payload/properties/payload
+message AnonymousSchema10 {
+    UgcChannelDeleted ugcChannel = 1;
+}
+
+// path: #/components/messages/ugcChannelDeleted/payload
+message UgcChannelDeletedMessage {
+    AnonymousSchema10 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/ugcCreatorCreated/payload/properties/payload
+message AnonymousSchema11 {
+    UgcCreator ugcCreator = 1;
+}
+
+// path: #/components/messages/ugcCreatorCreated/payload
+message UgcCreatorCreatedMessage {
+    AnonymousSchema11 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/ugcCreatorFollowed/payload/properties/payload
+message AnonymousSchema12 {
+    UgcCreator ugcCreator = 1;
+}
+
+// path: #/components/messages/ugcCreatorFollowed/payload
+message UgcCreatorFollowedMessage {
+    AnonymousSchema12 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/ugcCreatorUnFollowed/payload/properties/payload
+message AnonymousSchema13 {
+    UgcCreator ugcCreator = 1;
+}
+
+// path: #/components/messages/ugcCreatorUnFollowed/payload
+message UgcCreatorUnFollowedMessage {
+    AnonymousSchema13 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/ugcCreatorDeleted/payload/properties/payload
+message AnonymousSchema14 {
+    UgcCreator ugcCreator = 1;
+}
+
+// path: #/components/messages/ugcCreatorDeleted/payload
+message UgcCreatorDeletedMessage {
+    AnonymousSchema14 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/ugcCreatorBanned/payload/properties/payload
+message AnonymousSchema15 {
+    UgcCreatorBan ugcCreatorBan = 1;
+}
+
+// path: #/components/messages/ugcCreatorBanned/payload
+message UgcCreatorBannedMessage {
+    AnonymousSchema15 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/ugcCreatorUnBanned/payload/properties/payload
+message AnonymousSchema16 {
+    UgcCreatorBan ugcCreatorBan = 1;
+}
+
+// path: #/components/messages/ugcCreatorUnBanned/payload
+message UgcCreatorUnBannedMessage {
+    AnonymousSchema16 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/ugcContentGroupCreated/payload/properties/payload
+message AnonymousSchema17 {
+    UgcContentGroup ugcContentGroup = 1;
+}
+
+// path: #/components/messages/ugcContentGroupCreated/payload
+message UgcContentGroupCreatedMessage {
+    AnonymousSchema17 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/ugcContentGroupUpdated/payload/properties/payload
+message AnonymousSchema18 {
+    UgcContentGroup ugcContentGroup = 1;
+}
+
+// path: #/components/messages/ugcContentGroupUpdated/payload
+message UgcContentGroupUpdatedMessage {
+    AnonymousSchema18 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/ugcContentGroupDeleted/payload/properties/payload
+message AnonymousSchema19 {
+    UgcContentGroup ugcContentGroup = 1;
+}
+
+// path: #/components/messages/ugcContentGroupDeleted/payload
+message UgcContentGroupDeletedMessage {
+    AnonymousSchema19 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+
+// --- #/components/messages/{message_name} ---
+
+
+// --- #/channels/{channel_name}/{operation_type}/message ---
+
+// path: #/channels/ugcContent/publish/message
+message UgcContentPublishMessage {
+    oneof payload {
+        UgcContentUpdatedMessage variant0 = 1;
+        UgcContentDeletedMessage variant1 = 2;
+        UgcContentHideMessage variant2 = 3;
+        UgcContentUnHideMessage variant3 = 4;
+        UgcContentCreatedMessage variant4 = 5;
+        UgcContentLikedMessage variant5 = 6;
+        UgcContentUnLikedMessage variant6 = 7;
+    }
+}
+
+// path: #/channels/ugcChannel/publish/message
+message UgcChannelPublishMessage {
+    oneof payload {
+        UgcChannelCreatedMessage variant0 = 1;
+        UgcChannelUpdatedMessage variant1 = 2;
+        UgcChannelDeletedMessage variant2 = 3;
+    }
+}
+
+// path: #/channels/ugcCreator/publish/message
+message UgcCreatorPublishMessage {
+    oneof payload {
+        UgcCreatorCreatedMessage variant0 = 1;
+        UgcCreatorFollowedMessage variant1 = 2;
+        UgcCreatorUnFollowedMessage variant2 = 3;
+        UgcCreatorDeletedMessage variant3 = 4;
+        UgcCreatorBannedMessage variant4 = 5;
+        UgcCreatorUnBannedMessage variant5 = 6;
+    }
+}
+
+// path: #/channels/ugcContentGroup/publish/message
+message UgcContentGroupPublishMessage {
+    oneof payload {
+        UgcContentGroupCreatedMessage variant0 = 1;
+        UgcContentGroupUpdatedMessage variant1 = 2;
+        UgcContentGroupDeletedMessage variant2 = 3;
+    }
+}
+
+
+// --- service ---
+
+service UGCServiceEvents {
+    // Ugc Content Channel
+
+    // Publishes a message to the Ugc Content channel.
+    rpc PublishToUgcContentChannel(UgcContentPublishMessage) returns (google.protobuf.Empty);
+
+    // Ugc Channel Channel
+
+    // Publishes a message to the Ugc Channel channel.
+    rpc PublishToUgcChannelChannel(UgcChannelPublishMessage) returns (google.protobuf.Empty);
+
+    // Ugc Creator Channel
+
+    // Publishes a message to the Ugc Creator channel.
+    rpc PublishToUgcCreatorChannel(UgcCreatorPublishMessage) returns (google.protobuf.Empty);
+
+    // Ugc Content Group Channel
+
+    // Publishes a message to the Ugc Content Group channel.
+    rpc PublishToUgcContentGroupChannel(UgcContentGroupPublishMessage) returns (google.protobuf.Empty);
+}

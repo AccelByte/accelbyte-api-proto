@@ -1,0 +1,341 @@
+// Copyright (c) 2023 AccelByte Inc. All Rights Reserved.
+// This is licensed software from AccelByte Inc, for limitations
+// and restrictions contact your company contract manager.
+
+// source: Ecommerce/AsyncAPI/subscription.yml (0.1.0)
+// hash: 1aeb8c915acaa94e321b129462d0a16b64434587
+
+syntax = "proto3";
+
+package accelbyte.ecommerce.subscription.v1;
+// Version v1.0.0
+
+// --- imports ---
+
+import "google/protobuf/empty.proto";
+
+
+// --- options ---
+
+
+// --- schema objects ---
+
+// path: #/components/schemas/event
+message Event {
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+}
+
+// path: #/components/schemas/subscription
+message Subscription {
+    string id = 1;
+    string namespace = 2;
+    string userId = 3;
+    string itemId = 4;
+    string sku = 5;
+    string title = 6;
+    CurrencySummary currency = 7;
+    int64 price = 8;
+    int64 trialPrice = 9;
+    Recurring recurring = 10;
+    string status = 11;
+    string chargeStatus = 12;
+    string nextBillingDate = 13;
+    string currentPeriodStart = 14;
+    string currentPeriodEnd = 15;
+    string start = 16;
+    string end = 17;
+    int64 currentCycle = 18;
+    int64 chargedCycles = 19;
+    int64 trialedCycles = 20;
+    bool inFixedFreeDays = 21;
+    bool inFixedCycleTrial = 22;
+    bool firstSubscribe = 23;
+    bool paid = 24;
+    string subscribedBy = 25;
+    string subscribedAt = 26;
+    string unsubscribedAt = 27;
+    string unsubscribeReason = 28;
+    string source = 29;
+    string region = 30;
+    string language = 31;
+    bool sandbox = 32;
+    string createdAt = 33;
+    string updateAt = 34;
+}
+
+// path: #/components/schemas/recurring
+message Recurring {
+    string cycle = 1;
+    int32 fixedFreeDays = 2;
+    int32 fixedTrialCycles = 3;
+    int32 graceDays = 4;
+}
+
+// path: #/components/schemas/currencySummary
+message CurrencySummary {
+    string currencyCode = 1;
+    string currencySymbol = 2;
+    string currencyType = 3;
+    string namespace = 4;
+    int32 decimals = 5;
+}
+
+// path: #/components/schemas/billing/properties/paymentProvider
+message AnonymousSchema1 {
+}
+
+// path: #/components/schemas/billing
+message Billing {
+    AnonymousSchema1 paymentProvider = 1;
+    string paymentMethod = 2;
+    int64 amount = 3;
+    int64 totalTax = 4;
+    int64 totalPrice = 5;
+    int64 subtotalPrice = 6;
+    string recurringOrderNo = 7;
+    string paymentOrderNo = 8;
+    string txEndTime = 9;
+    string extTxId = 10;
+}
+
+// path: #/components/messages/subscribed/payload/properties/payload
+message AnonymousSchema2 {
+    Subscription subscription = 1;
+}
+
+// path: #/components/messages/subscribed/payload
+message SubscribedMessage {
+    AnonymousSchema2 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/cancelled/payload/properties/payload
+message AnonymousSchema3 {
+    Subscription subscription = 1;
+}
+
+// path: #/components/messages/cancelled/payload
+message CancelledMessage {
+    AnonymousSchema3 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/immediateCancelled/payload/properties/payload
+message AnonymousSchema4 {
+    Subscription subscription = 1;
+}
+
+// path: #/components/messages/immediateCancelled/payload
+message ImmediateCancelledMessage {
+    AnonymousSchema4 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/resubscribed/payload/properties/payload
+message AnonymousSchema5 {
+    Subscription subscription = 1;
+}
+
+// path: #/components/messages/resubscribed/payload
+message ResubscribedMessage {
+    AnonymousSchema5 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/daysGranted/payload/properties/payload
+message AnonymousSchema6 {
+    Subscription subscription = 1;
+    int64 grantDays = 2;
+}
+
+// path: #/components/messages/daysGranted/payload
+message DaysGrantedMessage {
+    AnonymousSchema6 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/charged/payload/properties/payload
+message AnonymousSchema7 {
+    Subscription subscription = 1;
+    Billing billing = 2;
+}
+
+// path: #/components/messages/charged/payload
+message ChargedMessage {
+    AnonymousSchema7 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/chargeFailed/payload/properties/payload
+message AnonymousSchema8 {
+    Subscription subscription = 1;
+    Billing billing = 2;
+}
+
+// path: #/components/messages/chargeFailed/payload
+message ChargeFailedMessage {
+    AnonymousSchema8 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/expired/payload/properties/payload
+message AnonymousSchema9 {
+    Subscription subscription = 1;
+}
+
+// path: #/components/messages/expired/payload
+message ExpiredMessage {
+    AnonymousSchema9 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/billingAccountChanged/payload/properties/payload
+message AnonymousSchema10 {
+    Subscription subscription = 1;
+    Billing billing = 2;
+}
+
+// path: #/components/messages/billingAccountChanged/payload
+message BillingAccountChangedMessage {
+    AnonymousSchema10 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+
+// --- #/components/messages/{message_name} ---
+
+
+// --- #/channels/{channel_name}/{operation_type}/message ---
+
+// path: #/channels/subscription/publish/message
+message SubscriptionPublishMessage {
+    oneof payload {
+        SubscribedMessage variant0 = 1;
+        CancelledMessage variant1 = 2;
+        ImmediateCancelledMessage variant2 = 3;
+        ResubscribedMessage variant3 = 4;
+        DaysGrantedMessage variant4 = 5;
+        ChargedMessage variant5 = 6;
+        ChargeFailedMessage variant6 = 7;
+        ExpiredMessage variant7 = 8;
+        BillingAccountChangedMessage variant8 = 9;
+    }
+}
+
+
+// --- service ---
+
+service AsyncAPIForJusticeRewardService {
+    // Subscription Channel
+
+    // Publishes a message to the Subscription channel.
+    rpc PublishToSubscriptionChannel(SubscriptionPublishMessage) returns (google.protobuf.Empty);
+}

@@ -1,0 +1,619 @@
+// Copyright (c) 2023 AccelByte Inc. All Rights Reserved.
+// This is licensed software from AccelByte Inc, for limitations
+// and restrictions contact your company contract manager.
+
+// source: Session/AsyncAPI/session.yaml (0.1.0)
+// hash: 1aeb8c915acaa94e321b129462d0a16b64434587
+
+syntax = "proto3";
+
+package accelbyte.session.session.v1;
+// Version v1.0.0
+
+// --- imports ---
+
+import "google/protobuf/empty.proto";
+
+
+// --- options ---
+
+
+// --- schema objects ---
+
+// path: #/components/schemas/event
+message Event {
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string userId = 7;
+    string traceId = 8;
+    string sessionId = 9;
+    string spanContext = 10;
+}
+
+// path: #/components/schemas/notificationPayload
+message NotificationPayload {
+    repeated string userIds = 1;
+    string namespace = 2;
+    string topicName = 3;
+    string message = 4;
+}
+
+// path: #/components/messages/onPartyCreated/payload
+message OnPartyCreatedMessage {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string userId = 7;
+    string traceId = 8;
+    string sessionId = 9;
+    string spanContext = 10;
+}
+
+// path: #/components/messages/sessionNotification/payload/properties/payload
+message AnonymousSchema1 {
+
+    // allOf(#/components/schemas/notificationPayload)
+    repeated string userIds = 1;
+    string namespace = 2;
+    string topicName = 3;
+    string message = 4;
+}
+
+// path: #/components/messages/sessionNotification/payload
+message SessionNotificationMessage {
+    AnonymousSchema1 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/OnSessionEnded/payload/properties/payload
+message AnonymousSchema2 {
+
+    // allOf(#/components/schemas/notificationPayload)
+    repeated string userIds = 1;
+    string namespace = 2;
+    string topicName = 3;
+    string message = 4;
+}
+
+// path: #/components/messages/OnSessionEnded/payload
+message OnSessionEndedMessage {
+    AnonymousSchema2 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/GameSessionEndedEvent/payload/properties/payload
+message AnonymousSchema3 {
+
+    // allOf(#/components/schemas/notificationPayload)
+    repeated string userIds = 1;
+    string namespace = 2;
+    string topicName = 3;
+    string message = 4;
+}
+
+// path: #/components/messages/GameSessionEndedEvent/payload
+message GameSessionEndedEventMessage {
+    AnonymousSchema3 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/GameSessionInvitedEvent/payload/properties/payload
+message AnonymousSchema4 {
+
+    // allOf(#/components/schemas/notificationPayload)
+    repeated string userIds = 1;
+    string namespace = 2;
+    string topicName = 3;
+    string message = 4;
+}
+
+// path: #/components/messages/GameSessionInvitedEvent/payload
+message GameSessionInvitedEventMessage {
+    AnonymousSchema4 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/GameSessionJoinedEvent/payload/properties/payload
+message AnonymousSchema5 {
+
+    // allOf(#/components/schemas/notificationPayload)
+    repeated string userIds = 1;
+    string namespace = 2;
+    string topicName = 3;
+    string message = 4;
+}
+
+// path: #/components/messages/GameSessionJoinedEvent/payload
+message GameSessionJoinedEventMessage {
+    AnonymousSchema5 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/GameSessionMembersChangedEvent/payload/properties/payload
+message AnonymousSchema6 {
+
+    // allOf(#/components/schemas/notificationPayload)
+    repeated string userIds = 1;
+    string namespace = 2;
+    string topicName = 3;
+    string message = 4;
+}
+
+// path: #/components/messages/GameSessionMembersChangedEvent/payload
+message GameSessionMembersChangedEventMessage {
+    AnonymousSchema6 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/GameSessionKickedEvent/payload/properties/payload
+message AnonymousSchema7 {
+
+    // allOf(#/components/schemas/notificationPayload)
+    repeated string userIds = 1;
+    string namespace = 2;
+    string topicName = 3;
+    string message = 4;
+}
+
+// path: #/components/messages/GameSessionKickedEvent/payload
+message GameSessionKickedEventMessage {
+    AnonymousSchema7 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/GameSessionCreatedEvent/payload/properties/payload
+message AnonymousSchema8 {
+
+    // allOf(#/components/schemas/notificationPayload)
+    repeated string userIds = 1;
+    string namespace = 2;
+    string topicName = 3;
+    string message = 4;
+}
+
+// path: #/components/messages/GameSessionCreatedEvent/payload
+message GameSessionCreatedEventMessage {
+    AnonymousSchema8 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/GameSessionUpdatedEvent/payload/properties/payload
+message AnonymousSchema9 {
+
+    // allOf(#/components/schemas/notificationPayload)
+    repeated string userIds = 1;
+    string namespace = 2;
+    string topicName = 3;
+    string message = 4;
+}
+
+// path: #/components/messages/GameSessionUpdatedEvent/payload
+message GameSessionUpdatedEventMessage {
+    AnonymousSchema9 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/GameSessionRejectedEvent/payload/properties/payload
+message AnonymousSchema10 {
+
+    // allOf(#/components/schemas/notificationPayload)
+    repeated string userIds = 1;
+    string namespace = 2;
+    string topicName = 3;
+    string message = 4;
+}
+
+// path: #/components/messages/GameSessionRejectedEvent/payload
+message GameSessionRejectedEventMessage {
+    AnonymousSchema10 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/GameSessionDSStatusChangedEvent/payload/properties/payload
+message AnonymousSchema11 {
+
+    // allOf(#/components/schemas/notificationPayload)
+    repeated string userIds = 1;
+    string namespace = 2;
+    string topicName = 3;
+    string message = 4;
+}
+
+// path: #/components/messages/GameSessionDSStatusChangedEvent/payload
+message GameSessionDSStatusChangedEventMessage {
+    AnonymousSchema11 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/PartyCreatedEvent/payload/properties/payload
+message AnonymousSchema12 {
+
+    // allOf(#/components/schemas/notificationPayload)
+    repeated string userIds = 1;
+    string namespace = 2;
+    string topicName = 3;
+    string message = 4;
+}
+
+// path: #/components/messages/PartyCreatedEvent/payload
+message PartyCreatedEventMessage {
+    AnonymousSchema12 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/PartyUpdatedEvent/payload/properties/payload
+message AnonymousSchema13 {
+
+    // allOf(#/components/schemas/notificationPayload)
+    repeated string userIds = 1;
+    string namespace = 2;
+    string topicName = 3;
+    string message = 4;
+}
+
+// path: #/components/messages/PartyUpdatedEvent/payload
+message PartyUpdatedEventMessage {
+    AnonymousSchema13 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/PartyKickedEvent/payload/properties/payload
+message AnonymousSchema14 {
+
+    // allOf(#/components/schemas/notificationPayload)
+    repeated string userIds = 1;
+    string namespace = 2;
+    string topicName = 3;
+    string message = 4;
+}
+
+// path: #/components/messages/PartyKickedEvent/payload
+message PartyKickedEventMessage {
+    AnonymousSchema14 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/PartyInvitedEvent/payload/properties/payload
+message AnonymousSchema15 {
+
+    // allOf(#/components/schemas/notificationPayload)
+    repeated string userIds = 1;
+    string namespace = 2;
+    string topicName = 3;
+    string message = 4;
+}
+
+// path: #/components/messages/PartyInvitedEvent/payload
+message PartyInvitedEventMessage {
+    AnonymousSchema15 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/PartyRejectedEvent/payload/properties/payload
+message AnonymousSchema16 {
+
+    // allOf(#/components/schemas/notificationPayload)
+    repeated string userIds = 1;
+    string namespace = 2;
+    string topicName = 3;
+    string message = 4;
+}
+
+// path: #/components/messages/PartyRejectedEvent/payload
+message PartyRejectedEventMessage {
+    AnonymousSchema16 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/PartyJoinedEvent/payload/properties/payload
+message AnonymousSchema17 {
+
+    // allOf(#/components/schemas/notificationPayload)
+    repeated string userIds = 1;
+    string namespace = 2;
+    string topicName = 3;
+    string message = 4;
+}
+
+// path: #/components/messages/PartyJoinedEvent/payload
+message PartyJoinedEventMessage {
+    AnonymousSchema17 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/PartyMembersChangedEvent/payload/properties/payload
+message AnonymousSchema18 {
+
+    // allOf(#/components/schemas/notificationPayload)
+    repeated string userIds = 1;
+    string namespace = 2;
+    string topicName = 3;
+    string message = 4;
+}
+
+// path: #/components/messages/PartyMembersChangedEvent/payload
+message PartyMembersChangedEventMessage {
+    AnonymousSchema18 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+
+// --- #/components/messages/{message_name} ---
+
+
+// --- #/channels/{channel_name}/{operation_type}/message ---
+
+// path: #/channels/session/publish/message
+message SessionPublishMessage {
+    oneof payload {
+        OnPartyCreatedMessage variant0 = 1;
+    }
+}
+
+// path: #/channels/sessionNotification/publish/message
+message SessionNotificationPublishMessage {
+    oneof payload {
+        SessionNotificationMessage variant0 = 1;
+    }
+}
+
+// path: #/channels/sessionEvent/publish/message
+message SessionEventPublishMessage {
+    oneof payload {
+        OnSessionEndedMessage variant0 = 1;
+    }
+}
+
+// path: #/channels/mpv2SessionHistory/publish/message
+message Mpv2SessionHistoryPublishMessage {
+    oneof payload {
+        GameSessionEndedEventMessage variant0 = 1;
+        GameSessionInvitedEventMessage variant1 = 2;
+        GameSessionJoinedEventMessage variant2 = 3;
+        GameSessionMembersChangedEventMessage variant3 = 4;
+        GameSessionKickedEventMessage variant4 = 5;
+        GameSessionCreatedEventMessage variant5 = 6;
+        GameSessionUpdatedEventMessage variant6 = 7;
+        GameSessionRejectedEventMessage variant7 = 8;
+        GameSessionDSStatusChangedEventMessage variant8 = 9;
+        PartyCreatedEventMessage variant9 = 10;
+        PartyUpdatedEventMessage variant10 = 11;
+        PartyKickedEventMessage variant11 = 12;
+        PartyInvitedEventMessage variant12 = 13;
+        PartyRejectedEventMessage variant13 = 14;
+        PartyJoinedEventMessage variant14 = 15;
+        PartyMembersChangedEventMessage variant15 = 16;
+    }
+}
+
+
+// --- service ---
+
+service SessionNotificationEvents {
+    // Session Channel
+
+    // Publishes a message to the Session channel.
+    rpc PublishToSessionChannel(SessionPublishMessage) returns (google.protobuf.Empty);
+
+    // Session Notification Channel
+
+    // Publishes a message to the Session Notification channel.
+    rpc PublishToSessionNotificationChannel(SessionNotificationPublishMessage) returns (google.protobuf.Empty);
+
+    // Session Event Channel
+
+    // Publishes a message to the Session Event channel.
+    rpc PublishToSessionEventChannel(SessionEventPublishMessage) returns (google.protobuf.Empty);
+
+    // Mpv2 Session History Channel
+
+    // Publishes a message to the Mpv2 Session History channel.
+    rpc PublishToMpv2SessionHistoryChannel(Mpv2SessionHistoryPublishMessage) returns (google.protobuf.Empty);
+}

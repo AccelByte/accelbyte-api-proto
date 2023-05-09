@@ -1,0 +1,304 @@
+// Copyright (c) 2023 AccelByte Inc. All Rights Reserved.
+// This is licensed software from AccelByte Inc, for limitations
+// and restrictions contact your company contract manager.
+
+// source: DSM/AsyncAPI/dsmc.yaml (0.0.1)
+// hash: 1aeb8c915acaa94e321b129462d0a16b64434587
+
+syntax = "proto3";
+
+package accelbyte.dsm.dsmc.v1;
+// Version v1.0.0
+
+// --- imports ---
+
+import "google/protobuf/empty.proto";
+
+
+// --- options ---
+
+
+// --- schema objects ---
+
+// path: #/components/schemas/event
+message Event {
+    string clientId = 1;
+    repeated string clientIds = 2;
+    int64 eventId = 3;
+    int64 eventLevel = 4;
+    int64 eventType = 5;
+    string id = 6;
+    string name = 7;
+    string namespace = 8;
+    bool privacy = 9;
+    string service = 10;
+    string sessionId = 11;
+    string spanContext = 12;
+    string targetNamespace = 13;
+    repeated string targetUserIds = 14;
+    string timestamp = 15;
+    string topic = 16;
+    string traceId = 17;
+    string userId = 18;
+    int64 version = 19;
+}
+
+// path: #/components/schemas/allocationEvent
+message AllocationEvent {
+    string timeStamp = 1;
+    string type = 2;
+    string description = 3;
+}
+
+// path: #/components/schemas/statusHistory
+message StatusHistory {
+    string timeStamp = 1;
+    enum StatusEnum {
+        CREATING = 1;
+        READY = 2;
+        BUSY = 3;
+        REMOVING = 4;
+        UNREACHABLE = 5;
+        FAILED = 6;
+    }
+    StatusEnum status = 2;
+}
+
+// path: #/components/schemas/server/properties/ports
+message AnonymousSchema1 {
+}
+
+// path: #/components/schemas/server
+message Server {
+    repeated AllocationEvent allocationEvents = 1;
+    string allocationId = 2;
+    repeated string alternateIps = 3;
+    int64 cpuLimit = 4;
+    string createdAt = 5;
+    string customAttribute = 6;
+    string deployment = 7;
+    string gameVersion = 8;
+    string imageVersion = 9;
+    string ip = 10;
+    bool isOverrideGameVersion = 11;
+    string jobId = 12;
+    string lastUpdate = 13;
+    int64 memLimit = 14;
+    string namespace = 15;
+    string params = 16;
+    string podName = 17;
+    int64 port = 18;
+    AnonymousSchema1 ports = 19;
+    string protocol = 20;
+    string provider = 21;
+    string region = 22;
+    string sessionId = 23;
+    enum StatusEnum {
+        CREATING = 1;
+        READY = 2;
+        BUSY = 3;
+        REMOVING = 4;
+        UNREACHABLE = 5;
+        FAILED = 6;
+    }
+    StatusEnum status = 24;
+    repeated StatusHistory statusHistory = 25;
+}
+
+// path: #/components/schemas/session
+message Session {
+    string id = 1;
+    string namespace = 2;
+    string provider = 3;
+    string region = 4;
+    Server server = 5;
+}
+
+// path: #/components/schemas/dsNumEachRegionEachNamespace
+message DsNumEachRegionEachNamespace {
+}
+
+// path: #/components/messages/allocationComplete/payload/properties/payload
+message AnonymousSchema2 {
+    string server = 1;
+    repeated AllocationEvent allocationEvents = 2;
+}
+
+// path: #/components/messages/allocationComplete/payload
+message AllocationCompleteMessage {
+    AnonymousSchema2 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string clientId = 2;
+    repeated string clientIds = 3;
+    int64 eventId = 4;
+    int64 eventLevel = 5;
+    int64 eventType = 6;
+    string id = 7;
+    string name = 8;
+    string namespace = 9;
+    bool privacy = 10;
+    string service = 11;
+    string sessionId = 12;
+    string spanContext = 13;
+    string targetNamespace = 14;
+    repeated string targetUserIds = 15;
+    string timestamp = 16;
+    string topic = 17;
+    string traceId = 18;
+    string userId = 19;
+    int64 version = 20;
+}
+
+// path: #/components/messages/dsClaimed/payload/properties/payload
+message AnonymousSchema3 {
+    bool dsClaimed = 1;
+    string sessionID = 2;
+    string dsClaimedAt = 3;
+}
+
+// path: #/components/messages/dsClaimed/payload
+message DsClaimedMessage {
+    AnonymousSchema3 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string clientId = 2;
+    repeated string clientIds = 3;
+    int64 eventId = 4;
+    int64 eventLevel = 5;
+    int64 eventType = 6;
+    string id = 7;
+    string name = 8;
+    string namespace = 9;
+    bool privacy = 10;
+    string service = 11;
+    string sessionId = 12;
+    string spanContext = 13;
+    string targetNamespace = 14;
+    repeated string targetUserIds = 15;
+    string timestamp = 16;
+    string topic = 17;
+    string traceId = 18;
+    string userId = 19;
+    int64 version = 20;
+}
+
+// path: #/components/messages/dsCount/payload/properties/payload
+message AnonymousSchema4 {
+}
+
+// path: #/components/messages/dsCount/payload
+message DsCountMessage {
+    AnonymousSchema4 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string clientId = 2;
+    repeated string clientIds = 3;
+    int64 eventId = 4;
+    int64 eventLevel = 5;
+    int64 eventType = 6;
+    string id = 7;
+    string name = 8;
+    string namespace = 9;
+    bool privacy = 10;
+    string service = 11;
+    string sessionId = 12;
+    string spanContext = 13;
+    string targetNamespace = 14;
+    repeated string targetUserIds = 15;
+    string timestamp = 16;
+    string topic = 17;
+    string traceId = 18;
+    string userId = 19;
+    int64 version = 20;
+}
+
+// path: #/components/messages/dsStatusChanged/payload/properties/payload
+message AnonymousSchema5 {
+    Server server = 1;
+    bool isBuffered = 2;
+}
+
+// path: #/components/messages/dsStatusChanged/payload
+message DsStatusChangedMessage {
+    AnonymousSchema5 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string clientId = 2;
+    repeated string clientIds = 3;
+    int64 eventId = 4;
+    int64 eventLevel = 5;
+    int64 eventType = 6;
+    string id = 7;
+    string name = 8;
+    string namespace = 9;
+    bool privacy = 10;
+    string service = 11;
+    string sessionId = 12;
+    string spanContext = 13;
+    string targetNamespace = 14;
+    repeated string targetUserIds = 15;
+    string timestamp = 16;
+    string topic = 17;
+    string traceId = 18;
+    string userId = 19;
+    int64 version = 20;
+}
+
+// path: #/components/messages/sessionEnded/payload/properties/payload
+message AnonymousSchema6 {
+    Session session = 1;
+}
+
+// path: #/components/messages/sessionEnded/payload
+message SessionEndedMessage {
+    AnonymousSchema6 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string clientId = 2;
+    repeated string clientIds = 3;
+    int64 eventId = 4;
+    int64 eventLevel = 5;
+    int64 eventType = 6;
+    string id = 7;
+    string name = 8;
+    string namespace = 9;
+    bool privacy = 10;
+    string service = 11;
+    string sessionId = 12;
+    string spanContext = 13;
+    string targetNamespace = 14;
+    repeated string targetUserIds = 15;
+    string timestamp = 16;
+    string topic = 17;
+    string traceId = 18;
+    string userId = 19;
+    int64 version = 20;
+}
+
+
+// --- #/components/messages/{message_name} ---
+
+
+// --- #/channels/{channel_name}/{operation_type}/message ---
+
+// path: #/channels/dsmcontroller/publish/message
+message DsmcontrollerPublishMessage {
+    oneof payload {
+        AllocationCompleteMessage variant0 = 1;
+        DsClaimedMessage variant1 = 2;
+        DsCountMessage variant2 = 3;
+        DsStatusChangedMessage variant3 = 4;
+        SessionEndedMessage variant4 = 5;
+    }
+}
+
+
+// --- service ---
+
+service AsyncAPIForJusticeDedicatedServerManagerControllerService {
+    // Dsmcontroller Channel
+
+    // Publishes a message to the Dsmcontroller channel.
+    rpc PublishToDsmcontrollerChannel(DsmcontrollerPublishMessage) returns (google.protobuf.Empty);
+}

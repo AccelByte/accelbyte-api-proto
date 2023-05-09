@@ -1,0 +1,176 @@
+// Copyright (c) 2023 AccelByte Inc. All Rights Reserved.
+// This is licensed software from AccelByte Inc, for limitations
+// and restrictions contact your company contract manager.
+
+// source: SeasonPass/AsyncAPI/seasonpass.yml (0.1.0)
+// hash: 1aeb8c915acaa94e321b129462d0a16b64434587
+
+syntax = "proto3";
+
+package accelbyte.season_pass.seasonpass.v1;
+// Version v1.0.0
+
+// --- imports ---
+
+import "google/protobuf/empty.proto";
+
+
+// --- options ---
+
+
+// --- schema objects ---
+
+// path: #/components/schemas/event
+message Event {
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+}
+
+// path: #/components/schemas/userSeason
+message UserSeason {
+    string id = 1;
+    string namespace = 2;
+    string userId = 3;
+    string seasonId = 4;
+    repeated string enrolledPasses = 5;
+    string enrolledAt = 6;
+    int64 currentTierIndex = 7;
+    int64 lastTierIndex = 8;
+    int64 requiredExp = 9;
+    int64 currentExp = 10;
+    bool cleared = 11;
+}
+
+// path: #/components/schemas/userSeasonReward
+message UserSeasonReward {
+    string namespace = 1;
+    string userId = 2;
+    string seasonId = 3;
+    string tierIndex = 4;
+    string passCode = 5;
+    string rewardCode = 6;
+}
+
+// path: #/components/messages/userSeasonPassChanged/payload/properties/payload
+message AnonymousSchema1 {
+    UserSeason userSeason = 1;
+    repeated string grantedPasses = 2;
+}
+
+// path: #/components/messages/userSeasonPassChanged/payload
+message UserSeasonPassChangedMessage {
+    AnonymousSchema1 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/userSeasonTierUp/payload/properties/payload
+message AnonymousSchema2 {
+    UserSeason userSeason = 1;
+    int64 grantedPasses = 2;
+}
+
+// path: #/components/messages/userSeasonTierUp/payload
+message UserSeasonTierUpMessage {
+    AnonymousSchema2 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/userSeasonTierCleared/payload/properties/payload
+message AnonymousSchema3 {
+    UserSeason userSeason = 1;
+}
+
+// path: #/components/messages/userSeasonTierCleared/payload
+message UserSeasonTierClearedMessage {
+    AnonymousSchema3 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/userSeasonRewardRewarded/payload/properties/payload
+message AnonymousSchema4 {
+    UserSeasonReward userSeasonReward = 1;
+}
+
+// path: #/components/messages/userSeasonRewardRewarded/payload
+message UserSeasonRewardRewardedMessage {
+    AnonymousSchema4 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+
+// --- #/components/messages/{message_name} ---
+
+
+// --- #/channels/{channel_name}/{operation_type}/message ---
+
+// path: #/channels/userSeason/publish/message
+message UserSeasonPublishMessage {
+    oneof payload {
+        UserSeasonPassChangedMessage variant0 = 1;
+        UserSeasonTierUpMessage variant1 = 2;
+        UserSeasonTierClearedMessage variant2 = 3;
+        UserSeasonRewardRewardedMessage variant3 = 4;
+    }
+}
+
+
+// --- service ---
+
+service SeasonPassServiceEvents {
+    // User Season Channel
+
+    // Publishes a message to the User Season channel.
+    rpc PublishToUserSeasonChannel(UserSeasonPublishMessage) returns (google.protobuf.Empty);
+}

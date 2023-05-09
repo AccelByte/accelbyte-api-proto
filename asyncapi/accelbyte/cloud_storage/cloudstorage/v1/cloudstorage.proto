@@ -1,0 +1,421 @@
+// Copyright (c) 2023 AccelByte Inc. All Rights Reserved.
+// This is licensed software from AccelByte Inc, for limitations
+// and restrictions contact your company contract manager.
+
+// source: CloudStorage/AsyncAPI/cloudstorage.yaml (0.1.0)
+// hash: 1aeb8c915acaa94e321b129462d0a16b64434587
+
+syntax = "proto3";
+
+package accelbyte.cloud_storage.cloudstorage.v1;
+// Version v1.0.0
+
+// --- imports ---
+
+import "google/protobuf/empty.proto";
+
+
+// --- options ---
+
+
+// --- schema objects ---
+
+// path: #/components/schemas/event
+message Event {
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+}
+
+// path: #/components/schemas/namespaceSlotConfig
+message NamespaceSlotConfig {
+    int64 maxSlotSize = 1;
+    int64 maxSlots = 2;
+    string namespace = 3;
+}
+
+// path: #/components/schemas/slots/properties/slotInfo
+message AnonymousSchema1 {
+
+    // allOf(#/components/schemas/singleSlot)
+    string description = 1;
+    File file = 2;
+    string filename = 3;
+    AnonymousSchema2 inputStream = 4;
+    bool open = 5;
+    bool readable = 6;
+    Uri uri = 7;
+    Url url = 8;
+}
+
+// path: #/components/schemas/slots
+message Slots {
+    string checksum = 1;
+    string customAttribute = 2;
+    string dateAccessed = 3;
+    string dateCreated = 4;
+    string dateModified = 5;
+    string label = 6;
+    string mimeType = 7;
+    string namespace = 8;
+    string originalName = 9;
+    string slotId = 10;
+    string status = 11;
+    string storedName = 12;
+    repeated string tags = 13;
+    string userId = 14;
+    AnonymousSchema1 slotInfo = 15;
+}
+
+// path: #/components/schemas/singleSlot/properties/inputStream
+message AnonymousSchema2 {
+}
+
+// path: #/components/schemas/singleSlot
+message SingleSlot {
+    string description = 1;
+    File file = 2;
+    string filename = 3;
+    AnonymousSchema2 inputStream = 4;
+    bool open = 5;
+    bool readable = 6;
+    Uri uri = 7;
+    Url url = 8;
+}
+
+// path: #/components/schemas/file/properties/absoluteFile
+message AnonymousSchema3 {
+}
+
+// path: #/components/schemas/file/properties/canonicalFile
+message AnonymousSchema4 {
+}
+
+// path: #/components/schemas/file/properties/parentFile
+message AnonymousSchema5 {
+}
+
+// path: #/components/schemas/file
+message File {
+    bool absolute = 1;
+    AnonymousSchema3 absoluteFile = 2;
+    string absolutePath = 3;
+    AnonymousSchema4 canonicalFile = 4;
+    string canonicalPath = 5;
+    bool directory = 6;
+    bool file = 7;
+    int64 freeSpace = 8;
+    bool hidden = 9;
+    string name = 10;
+    string parent = 11;
+    AnonymousSchema5 parentFile = 12;
+    string path = 13;
+    int64 totalSpace = 14;
+    int64 usableSpace = 15;
+}
+
+// path: #/components/schemas/uri
+message Uri {
+    bool absolute = 1;
+    string authority = 2;
+    string fragment = 3;
+    string host = 4;
+    bool opaque = 5;
+    string path = 6;
+    int64 port = 7;
+    string query = 8;
+    string rawAuthority = 9;
+    string rawFragment = 10;
+    string rawPath = 11;
+    string rawQuery = 12;
+    string rawSchemeSpecificPart = 13;
+    string rawUserInfo = 14;
+    string scheme = 15;
+    string schemeSpecificPart = 16;
+    string userInfo = 17;
+}
+
+// path: #/components/schemas/url/properties/content
+message AnonymousSchema6 {
+}
+
+// path: #/components/schemas/url
+message Url {
+    string authority = 1;
+    AnonymousSchema6 content = 2;
+    int64 defaultPort = 3;
+    string file = 4;
+    string host = 5;
+    string path = 6;
+    int64 port = 7;
+    string protocol = 8;
+    string query = 9;
+    string ref = 10;
+    string userInfo = 11;
+}
+
+// path: #/components/schemas/slotConfig
+message SlotConfig {
+    int64 maxSlotSize = 1;
+    int64 maxSlots = 2;
+    string namespace = 3;
+    string userId = 4;
+}
+
+// path: #/components/messages/namespaceSlotConfigCreated/payload/properties/payload
+message AnonymousSchema7 {
+    NamespaceSlotConfig namespaceSlotConfig = 1;
+}
+
+// path: #/components/messages/namespaceSlotConfigCreated/payload
+message NamespaceSlotConfigCreatedMessage {
+    AnonymousSchema7 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/namespaceSlotConfigDeleted/payload/properties/payload
+message AnonymousSchema8 {
+    NamespaceSlotConfig namespaceSlotConfig = 1;
+}
+
+// path: #/components/messages/namespaceSlotConfigDeleted/payload
+message NamespaceSlotConfigDeletedMessage {
+    AnonymousSchema8 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/namespaceSlotConfigUpdated/payload/properties/payload
+message AnonymousSchema9 {
+    NamespaceSlotConfig namespaceSlotConfig = 1;
+}
+
+// path: #/components/messages/namespaceSlotConfigUpdated/payload
+message NamespaceSlotConfigUpdatedMessage {
+    AnonymousSchema9 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/slotCreated/payload/properties/payload
+message AnonymousSchema10 {
+    Slots slot = 1;
+}
+
+// path: #/components/messages/slotCreated/payload
+message SlotCreatedMessage {
+    AnonymousSchema10 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/slotDeleted/payload/properties/payload
+message AnonymousSchema11 {
+    Slots slot = 1;
+}
+
+// path: #/components/messages/slotDeleted/payload
+message SlotDeletedMessage {
+    AnonymousSchema11 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/slotUpdated/payload/properties/payload
+message AnonymousSchema12 {
+    Slots slot = 1;
+}
+
+// path: #/components/messages/slotUpdated/payload
+message SlotUpdatedMessage {
+    AnonymousSchema12 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/slotConfigCreated/payload/properties/payload
+message AnonymousSchema13 {
+    SlotConfig slotConfig = 1;
+}
+
+// path: #/components/messages/slotConfigCreated/payload
+message SlotConfigCreatedMessage {
+    AnonymousSchema13 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/slotConfigDeleted/payload/properties/payload
+message AnonymousSchema14 {
+    SlotConfig slotConfig = 1;
+}
+
+// path: #/components/messages/slotConfigDeleted/payload
+message SlotConfigDeletedMessage {
+    AnonymousSchema14 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/slotConfigUpdated/payload/properties/payload
+message AnonymousSchema15 {
+    SlotConfig slotConfig = 1;
+}
+
+// path: #/components/messages/slotConfigUpdated/payload
+message SlotConfigUpdatedMessage {
+    AnonymousSchema15 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+
+// --- #/components/messages/{message_name} ---
+
+
+// --- #/channels/{channel_name}/{operation_type}/message ---
+
+// path: #/channels/namespaceSlotConfig/publish/message
+message NamespaceSlotConfigPublishMessage {
+    oneof payload {
+        NamespaceSlotConfigCreatedMessage variant0 = 1;
+        NamespaceSlotConfigDeletedMessage variant1 = 2;
+        NamespaceSlotConfigUpdatedMessage variant2 = 3;
+    }
+}
+
+// path: #/channels/slot/publish/message
+message SlotPublishMessage {
+    oneof payload {
+        SlotCreatedMessage variant0 = 1;
+        SlotDeletedMessage variant1 = 2;
+        SlotUpdatedMessage variant2 = 3;
+    }
+}
+
+// path: #/channels/slotConfig/publish/message
+message SlotConfigPublishMessage {
+    oneof payload {
+        SlotConfigCreatedMessage variant0 = 1;
+        SlotConfigDeletedMessage variant1 = 2;
+        SlotConfigUpdatedMessage variant2 = 3;
+    }
+}
+
+
+// --- service ---
+
+service CloudStorageEvents {
+    // Namespace Slot Config Channel
+
+    // Publishes a message to the Namespace Slot Config channel.
+    rpc PublishToNamespaceSlotConfigChannel(NamespaceSlotConfigPublishMessage) returns (google.protobuf.Empty);
+
+    // Slot Channel
+
+    // Publishes a message to the Slot channel.
+    rpc PublishToSlotChannel(SlotPublishMessage) returns (google.protobuf.Empty);
+
+    // Slot Config Channel
+
+    // Publishes a message to the Slot Config channel.
+    rpc PublishToSlotConfigChannel(SlotConfigPublishMessage) returns (google.protobuf.Empty);
+}

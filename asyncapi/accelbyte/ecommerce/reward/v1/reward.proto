@@ -1,0 +1,166 @@
+// Copyright (c) 2023 AccelByte Inc. All Rights Reserved.
+// This is licensed software from AccelByte Inc, for limitations
+// and restrictions contact your company contract manager.
+
+// source: Ecommerce/AsyncAPI/reward.yml (0.1.0)
+// hash: 1aeb8c915acaa94e321b129462d0a16b64434587
+
+syntax = "proto3";
+
+package accelbyte.ecommerce.reward.v1;
+// Version v1.0.0
+
+// --- imports ---
+
+import "google/protobuf/empty.proto";
+
+
+// --- options ---
+
+
+// --- schema objects ---
+
+// path: #/components/schemas/event
+message Event {
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+}
+
+// path: #/components/schemas/rewardManage
+message RewardManage {
+    string namespace = 1;
+    string rewardCode = 2;
+    string description = 3;
+    string eventTopic = 4;
+}
+
+// path: #/components/schemas/rewardImport
+message RewardImport {
+    string namespace = 1;
+    repeated string replacedRewardCodes = 2;
+    repeated string ignoredRewardCodes = 3;
+    repeated string newRewardCodes = 4;
+    repeated string failedRewardCodes = 5;
+}
+
+// path: #/components/messages/rewardCreated/payload/properties/payload
+message AnonymousSchema1 {
+    RewardManage rewardManage = 1;
+}
+
+// path: #/components/messages/rewardCreated/payload
+message RewardCreatedMessage {
+    AnonymousSchema1 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/rewardUpdated/payload/properties/payload
+message AnonymousSchema2 {
+    RewardManage rewardManage = 1;
+}
+
+// path: #/components/messages/rewardUpdated/payload
+message RewardUpdatedMessage {
+    AnonymousSchema2 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/rewardDeleted/payload/properties/payload
+message AnonymousSchema3 {
+    RewardManage rewardManage = 1;
+}
+
+// path: #/components/messages/rewardDeleted/payload
+message RewardDeletedMessage {
+    AnonymousSchema3 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/rewardImported/payload/properties/payload
+message AnonymousSchema4 {
+    RewardImport rewardImport = 1;
+}
+
+// path: #/components/messages/rewardImported/payload
+message RewardImportedMessage {
+    AnonymousSchema4 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+
+// --- #/components/messages/{message_name} ---
+
+
+// --- #/channels/{channel_name}/{operation_type}/message ---
+
+// path: #/channels/rewardManagement/publish/message
+message RewardManagementPublishMessage {
+    oneof payload {
+        RewardCreatedMessage variant0 = 1;
+        RewardUpdatedMessage variant1 = 2;
+        RewardDeletedMessage variant2 = 3;
+        RewardImportedMessage variant3 = 4;
+    }
+}
+
+
+// --- service ---
+
+service AsyncAPIForJusticeRewardService {
+    // Reward Management Channel
+
+    // Publishes a message to the Reward Management channel.
+    rpc PublishToRewardManagementChannel(RewardManagementPublishMessage) returns (google.protobuf.Empty);
+}

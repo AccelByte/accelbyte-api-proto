@@ -1,0 +1,150 @@
+// Copyright (c) 2023 AccelByte Inc. All Rights Reserved.
+// This is licensed software from AccelByte Inc, for limitations
+// and restrictions contact your company contract manager.
+
+// source: Achievement/AsyncAPI/achievement.yaml (0.1.0)
+// hash: 1aeb8c915acaa94e321b129462d0a16b64434587
+
+syntax = "proto3";
+
+package accelbyte.achievement.achievement.v1;
+// Version v1.0.0
+
+// --- imports ---
+
+import "google/protobuf/empty.proto";
+
+
+// --- options ---
+
+
+// --- schema objects ---
+
+// path: #/components/schemas/event
+message Event {
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string timestamp = 5;
+    string clientId = 6;
+    string userId = 7;
+    string traceId = 8;
+    string sessionId = 9;
+}
+
+// path: #/components/schemas/userAchievement
+message UserAchievement {
+    string userId = 1;
+    string namespace = 2;
+    string achievementCode = 3;
+    int64 status = 4;
+    int64 achievedAt = 5;
+    string statCode = 6;
+}
+
+// path: #/components/schemas/globalAchievement
+message GlobalAchievement {
+    string achievementCode = 1;
+    string namespace = 2;
+    int64 status = 3;
+    int64 achievedAt = 4;
+}
+
+// path: #/components/schemas/achievementRewardClaimed
+message AchievementRewardClaimed {
+    string userId = 1;
+    string achievementCode = 2;
+    string namespace = 3;
+    int64 status = 4;
+    int64 achievement = 5;
+    int64 claimedAt = 6;
+}
+
+// path: #/components/messages/userAchievementUnlocked/payload/properties/payload
+message AnonymousSchema1 {
+    UserAchievement userAchievement = 1;
+}
+
+// path: #/components/messages/userAchievementUnlocked/payload
+message UserAchievementUnlockedMessage {
+    AnonymousSchema1 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+}
+
+// path: #/components/messages/globalAchievementUnlocked/payload/properties/payload
+message AnonymousSchema2 {
+    GlobalAchievement globalAchievement = 1;
+}
+
+// path: #/components/messages/globalAchievementUnlocked/payload
+message GlobalAchievementUnlockedMessage {
+    AnonymousSchema2 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+}
+
+// path: #/components/messages/achievementRewardClaimed/payload/properties/payload
+message AnonymousSchema3 {
+    AchievementRewardClaimed achievementRewardClaimed = 1;
+}
+
+// path: #/components/messages/achievementRewardClaimed/payload
+message AchievementRewardClaimedMessage {
+    AnonymousSchema3 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+}
+
+
+// --- #/components/messages/{message_name} ---
+
+
+// --- #/channels/{channel_name}/{operation_type}/message ---
+
+// path: #/channels/achievement/publish/message
+message AchievementPublishMessage {
+    oneof payload {
+        UserAchievementUnlockedMessage variant0 = 1;
+        GlobalAchievementUnlockedMessage variant1 = 2;
+        AchievementRewardClaimedMessage variant2 = 3;
+    }
+}
+
+
+// --- service ---
+
+service AchievementServiceEvents {
+    // Achievement Channel
+
+    // Publishes a message to the Achievement channel.
+    rpc PublishToAchievementChannel(AchievementPublishMessage) returns (google.protobuf.Empty);
+}
