@@ -53,7 +53,7 @@ message EnrichTicketResponse {
 message MakeMatchesRequest {
   message MakeMatchesParameters{
     Scope scope = 1;
-    Rules rules = 2;
+    Rules rules = 2; 
   }
   oneof request_type {
     MakeMatchesParameters parameters = 1;
@@ -72,9 +72,15 @@ message Rules {
   string json = 1;
 }
 
+message Party {
+  string party_id = 1;
+  repeated string user_ids = 2;
+}
+
 message Match {
   message Team {
     repeated string user_ids = 1;
+    repeated Party parties = 2;
   }
   repeated Ticket tickets = 1;
   repeated Team teams = 2;
@@ -100,9 +106,11 @@ message Ticket {
   string namespace = 8;
 }
 
+// Backfill
 message BackfillProposal {
   message Team {
     repeated string user_ids = 1;
+    repeated Party parties = 2;
   }
   string backfill_ticket_id = 1;
   google.protobuf.Timestamp   CreatedAt = 2;
@@ -132,6 +140,7 @@ message BackfillResponse {
 message BackfillTicket {
   message Team {
     repeated string user_ids = 1;
+    repeated Party parties = 2;
   }
   message PartialMatch {
     repeated Ticket tickets = 1;
