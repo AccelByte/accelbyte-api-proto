@@ -17,6 +17,10 @@ import "google/protobuf/empty.proto";
 
 // --- options ---
 
+option csharp_namespace = "AccelByte.Ecommerce.Reward";
+option go_package = "accelbyte.net/ecommerce/reward";
+option java_multiple_files = true;
+option java_package = "net.accelbyte.ecommerce.reward";
 
 // --- schema objects ---
 

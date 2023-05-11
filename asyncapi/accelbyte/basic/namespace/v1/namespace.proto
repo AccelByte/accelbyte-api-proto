@@ -17,6 +17,10 @@ import "google/protobuf/empty.proto";
 
 // --- options ---
 
+option csharp_namespace = "AccelByte.Basic.Namespace";
+option go_package = "accelbyte.net/basic/namespace";
+option java_multiple_files = true;
+option java_package = "net.accelbyte.basic.namespace";
 
 // --- schema objects ---
 

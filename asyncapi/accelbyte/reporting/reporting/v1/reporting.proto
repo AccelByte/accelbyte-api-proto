@@ -17,6 +17,10 @@ import "google/protobuf/empty.proto";
 
 // --- options ---
 
+option csharp_namespace = "AccelByte.Reporting.Reporting";
+option go_package = "accelbyte.net/reporting/reporting";
+option java_multiple_files = true;
+option java_package = "net.accelbyte.reporting.reporting";
 
 // --- schema objects ---
 

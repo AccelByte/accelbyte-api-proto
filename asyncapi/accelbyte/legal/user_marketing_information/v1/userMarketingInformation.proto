@@ -17,6 +17,10 @@ import "google/protobuf/empty.proto";
 
 // --- options ---
 
+option csharp_namespace = "AccelByte.Legal.UserMarketingInformation";
+option go_package = "accelbyte.net/legal/userMarketingInformation";
+option java_multiple_files = true;
+option java_package = "net.accelbyte.legal.userMarketingInformation";
 
 // --- schema objects ---
 

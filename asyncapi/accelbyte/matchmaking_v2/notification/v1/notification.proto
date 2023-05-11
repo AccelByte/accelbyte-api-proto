@@ -17,6 +17,10 @@ import "google/protobuf/empty.proto";
 
 // --- options ---
 
+option csharp_namespace = "AccelByte.MatchmakingV2.Notification";
+option go_package = "accelbyte.net/matchmakingV2/notification";
+option java_multiple_files = true;
+option java_package = "net.accelbyte.matchmakingV2.notification";
 
 // --- schema objects ---
 

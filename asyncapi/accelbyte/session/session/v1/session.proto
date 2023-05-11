@@ -17,6 +17,10 @@ import "google/protobuf/empty.proto";
 
 // --- options ---
 
+option csharp_namespace = "AccelByte.Session.Session";
+option go_package = "accelbyte.net/session/session";
+option java_multiple_files = true;
+option java_package = "net.accelbyte.session.session";
 
 // --- schema objects ---
 

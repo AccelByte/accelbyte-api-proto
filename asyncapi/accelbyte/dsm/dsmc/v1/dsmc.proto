@@ -17,6 +17,10 @@ import "google/protobuf/empty.proto";
 
 // --- options ---
 
+option csharp_namespace = "AccelByte.DSM.Dsmc";
+option go_package = "accelbyte.net/dsm/dsmc";
+option java_multiple_files = true;
+option java_package = "net.accelbyte.dsm.dsmc";
 
 // --- schema objects ---
 
@@ -54,12 +58,12 @@ message AllocationEvent {
 message StatusHistory {
     string timeStamp = 1;
     enum StatusEnum {
-        CREATING = 1;
-        READY = 2;
-        BUSY = 3;
-        REMOVING = 4;
-        UNREACHABLE = 5;
-        FAILED = 6;
+        CREATING = 0;
+        READY = 1;
+        BUSY = 2;
+        REMOVING = 3;
+        UNREACHABLE = 4;
+        FAILED = 5;
     }
     StatusEnum status = 2;
 }
@@ -94,12 +98,12 @@ message Server {
     string region = 22;
     string sessionId = 23;
     enum StatusEnum {
-        CREATING = 1;
-        READY = 2;
-        BUSY = 3;
-        REMOVING = 4;
-        UNREACHABLE = 5;
-        FAILED = 6;
+        CREATING = 0;
+        READY = 1;
+        BUSY = 2;
+        REMOVING = 3;
+        UNREACHABLE = 4;
+        FAILED = 5;
     }
     StatusEnum status = 24;
     repeated StatusHistory statusHistory = 25;
