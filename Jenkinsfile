@@ -43,7 +43,7 @@ def checkProtoFilesPackageName() {
 
     for (int i = 0; i < fileList.size(); i++) {
         fileName = fileList[i]
-        packageLine = sh(returnStdout: true, script: "grep ^package " + fileName).replaceAll("\\n", "")
+        packageLine = sh(returnStdout: true, script: "grep ^package '" + fileName + "'").replaceAll("\\n", "")
         isComply = checkPackageNamePattern(packageLine)
         println "Comply: [" + isComply + "] " + packageLine + " - [" + fileName + "]"
         if (!isComply) {
