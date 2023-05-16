@@ -592,18 +592,75 @@ service UGCServiceEvents {
     // Publishes a message to the Ugc Content channel.
     rpc PublishToUgcContentChannel(UgcContentPublishMessage) returns (google.protobuf.Empty);
 
+    // Publishes a UgcContentUpdatedMessage to the Ugc Content channel. (oneOf variant)
+    rpc PublishUgcContentUpdatedMessageToUgcContentChannel(UgcContentUpdatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a UgcContentDeletedMessage to the Ugc Content channel. (oneOf variant)
+    rpc PublishUgcContentDeletedMessageToUgcContentChannel(UgcContentDeletedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a UgcContentHideMessage to the Ugc Content channel. (oneOf variant)
+    rpc PublishUgcContentHideMessageToUgcContentChannel(UgcContentHideMessage) returns (google.protobuf.Empty);
+
+    // Publishes a UgcContentUnHideMessage to the Ugc Content channel. (oneOf variant)
+    rpc PublishUgcContentUnHideMessageToUgcContentChannel(UgcContentUnHideMessage) returns (google.protobuf.Empty);
+
+    // Publishes a UgcContentCreatedMessage to the Ugc Content channel. (oneOf variant)
+    rpc PublishUgcContentCreatedMessageToUgcContentChannel(UgcContentCreatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a UgcContentLikedMessage to the Ugc Content channel. (oneOf variant)
+    rpc PublishUgcContentLikedMessageToUgcContentChannel(UgcContentLikedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a UgcContentUnLikedMessage to the Ugc Content channel. (oneOf variant)
+    rpc PublishUgcContentUnLikedMessageToUgcContentChannel(UgcContentUnLikedMessage) returns (google.protobuf.Empty);
+
     // Ugc Channel Channel
 
     // Publishes a message to the Ugc Channel channel.
     rpc PublishToUgcChannelChannel(UgcChannelPublishMessage) returns (google.protobuf.Empty);
+
+    // Publishes a UgcChannelCreatedMessage to the Ugc Channel channel. (oneOf variant)
+    rpc PublishUgcChannelCreatedMessageToUgcChannelChannel(UgcChannelCreatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a UgcChannelUpdatedMessage to the Ugc Channel channel. (oneOf variant)
+    rpc PublishUgcChannelUpdatedMessageToUgcChannelChannel(UgcChannelUpdatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a UgcChannelDeletedMessage to the Ugc Channel channel. (oneOf variant)
+    rpc PublishUgcChannelDeletedMessageToUgcChannelChannel(UgcChannelDeletedMessage) returns (google.protobuf.Empty);
 
     // Ugc Creator Channel
 
     // Publishes a message to the Ugc Creator channel.
     rpc PublishToUgcCreatorChannel(UgcCreatorPublishMessage) returns (google.protobuf.Empty);
 
+    // Publishes a UgcCreatorCreatedMessage to the Ugc Creator channel. (oneOf variant)
+    rpc PublishUgcCreatorCreatedMessageToUgcCreatorChannel(UgcCreatorCreatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a UgcCreatorFollowedMessage to the Ugc Creator channel. (oneOf variant)
+    rpc PublishUgcCreatorFollowedMessageToUgcCreatorChannel(UgcCreatorFollowedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a UgcCreatorUnFollowedMessage to the Ugc Creator channel. (oneOf variant)
+    rpc PublishUgcCreatorUnFollowedMessageToUgcCreatorChannel(UgcCreatorUnFollowedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a UgcCreatorDeletedMessage to the Ugc Creator channel. (oneOf variant)
+    rpc PublishUgcCreatorDeletedMessageToUgcCreatorChannel(UgcCreatorDeletedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a UgcCreatorBannedMessage to the Ugc Creator channel. (oneOf variant)
+    rpc PublishUgcCreatorBannedMessageToUgcCreatorChannel(UgcCreatorBannedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a UgcCreatorUnBannedMessage to the Ugc Creator channel. (oneOf variant)
+    rpc PublishUgcCreatorUnBannedMessageToUgcCreatorChannel(UgcCreatorUnBannedMessage) returns (google.protobuf.Empty);
+
     // Ugc Content Group Channel
 
     // Publishes a message to the Ugc Content Group channel.
     rpc PublishToUgcContentGroupChannel(UgcContentGroupPublishMessage) returns (google.protobuf.Empty);
+
+    // Publishes a UgcContentGroupCreatedMessage to the Ugc Content Group channel. (oneOf variant)
+    rpc PublishUgcContentGroupCreatedMessageToUgcContentGroupChannel(UgcContentGroupCreatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a UgcContentGroupUpdatedMessage to the Ugc Content Group channel. (oneOf variant)
+    rpc PublishUgcContentGroupUpdatedMessageToUgcContentGroupChannel(UgcContentGroupUpdatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a UgcContentGroupDeletedMessage to the Ugc Content Group channel. (oneOf variant)
+    rpc PublishUgcContentGroupDeletedMessageToUgcContentGroupChannel(UgcContentGroupDeletedMessage) returns (google.protobuf.Empty);
 }

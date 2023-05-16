@@ -413,13 +413,40 @@ service CloudStorageEvents {
     // Publishes a message to the Namespace Slot Config channel.
     rpc PublishToNamespaceSlotConfigChannel(NamespaceSlotConfigPublishMessage) returns (google.protobuf.Empty);
 
+    // Publishes a NamespaceSlotConfigCreatedMessage to the Namespace Slot Config channel. (oneOf variant)
+    rpc PublishNamespaceSlotConfigCreatedMessageToNamespaceSlotConfigChannel(NamespaceSlotConfigCreatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a NamespaceSlotConfigDeletedMessage to the Namespace Slot Config channel. (oneOf variant)
+    rpc PublishNamespaceSlotConfigDeletedMessageToNamespaceSlotConfigChannel(NamespaceSlotConfigDeletedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a NamespaceSlotConfigUpdatedMessage to the Namespace Slot Config channel. (oneOf variant)
+    rpc PublishNamespaceSlotConfigUpdatedMessageToNamespaceSlotConfigChannel(NamespaceSlotConfigUpdatedMessage) returns (google.protobuf.Empty);
+
     // Slot Channel
 
     // Publishes a message to the Slot channel.
     rpc PublishToSlotChannel(SlotPublishMessage) returns (google.protobuf.Empty);
 
+    // Publishes a SlotCreatedMessage to the Slot channel. (oneOf variant)
+    rpc PublishSlotCreatedMessageToSlotChannel(SlotCreatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a SlotDeletedMessage to the Slot channel. (oneOf variant)
+    rpc PublishSlotDeletedMessageToSlotChannel(SlotDeletedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a SlotUpdatedMessage to the Slot channel. (oneOf variant)
+    rpc PublishSlotUpdatedMessageToSlotChannel(SlotUpdatedMessage) returns (google.protobuf.Empty);
+
     // Slot Config Channel
 
     // Publishes a message to the Slot Config channel.
     rpc PublishToSlotConfigChannel(SlotConfigPublishMessage) returns (google.protobuf.Empty);
+
+    // Publishes a SlotConfigCreatedMessage to the Slot Config channel. (oneOf variant)
+    rpc PublishSlotConfigCreatedMessageToSlotConfigChannel(SlotConfigCreatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a SlotConfigDeletedMessage to the Slot Config channel. (oneOf variant)
+    rpc PublishSlotConfigDeletedMessageToSlotConfigChannel(SlotConfigDeletedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a SlotConfigUpdatedMessage to the Slot Config channel. (oneOf variant)
+    rpc PublishSlotConfigUpdatedMessageToSlotConfigChannel(SlotConfigUpdatedMessage) returns (google.protobuf.Empty);
 }

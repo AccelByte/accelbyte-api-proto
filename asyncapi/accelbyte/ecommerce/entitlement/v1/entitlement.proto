@@ -357,13 +357,37 @@ service AsyncAPIForJusticeEntitlementService {
     // Publishes a message to the Entitlement Management channel.
     rpc PublishToEntitlementManagementChannel(EntitlementManagementPublishMessage) returns (google.protobuf.Empty);
 
+    // Publishes a EntitlementGrantedMessage to the Entitlement Management channel. (oneOf variant)
+    rpc PublishEntitlementGrantedMessageToEntitlementManagementChannel(EntitlementGrantedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a EntitlementUpdatedMessage to the Entitlement Management channel. (oneOf variant)
+    rpc PublishEntitlementUpdatedMessageToEntitlementManagementChannel(EntitlementUpdatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a EntitlementRevokedMessage to the Entitlement Management channel. (oneOf variant)
+    rpc PublishEntitlementRevokedMessageToEntitlementManagementChannel(EntitlementRevokedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a EntitlementDisabledMessage to the Entitlement Management channel. (oneOf variant)
+    rpc PublishEntitlementDisabledMessageToEntitlementManagementChannel(EntitlementDisabledMessage) returns (google.protobuf.Empty);
+
+    // Publishes a EntitlementEnabledMessage to the Entitlement Management channel. (oneOf variant)
+    rpc PublishEntitlementEnabledMessageToEntitlementManagementChannel(EntitlementEnabledMessage) returns (google.protobuf.Empty);
+
+    // Publishes a EntitlementUseCountRevokedMessage to the Entitlement Management channel. (oneOf variant)
+    rpc PublishEntitlementUseCountRevokedMessageToEntitlementManagementChannel(EntitlementUseCountRevokedMessage) returns (google.protobuf.Empty);
+
     // Entitlement Consumption Channel
 
     // Publishes a message to the Entitlement Consumption channel.
     rpc PublishToEntitlementConsumptionChannel(EntitlementConsumptionPublishMessage) returns (google.protobuf.Empty);
 
+    // Publishes a EntitlementConsumedMessage to the Entitlement Consumption channel. (oneOf variant)
+    rpc PublishEntitlementConsumedMessageToEntitlementConsumptionChannel(EntitlementConsumedMessage) returns (google.protobuf.Empty);
+
     // Entitlement Sale Channel
 
     // Publishes a message to the Entitlement Sale channel.
     rpc PublishToEntitlementSaleChannel(EntitlementSalePublishMessage) returns (google.protobuf.Empty);
+
+    // Publishes a EntitlementSellbackMessage to the Entitlement Sale channel. (oneOf variant)
+    rpc PublishEntitlementSellbackMessageToEntitlementSaleChannel(EntitlementSellbackMessage) returns (google.protobuf.Empty);
 }

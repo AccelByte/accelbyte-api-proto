@@ -157,4 +157,19 @@ service BasicServiceNamespaceEvents {
 
     // Publishes a message to the Namespace channel.
     rpc PublishToNamespaceChannel(NamespacePublishMessage) returns (google.protobuf.Empty);
+
+    // Publishes a NamespaceCreatedMessage to the Namespace channel. (oneOf variant)
+    rpc PublishNamespaceCreatedMessageToNamespaceChannel(NamespaceCreatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a NamespaceDeletedMessage to the Namespace channel. (oneOf variant)
+    rpc PublishNamespaceDeletedMessageToNamespaceChannel(NamespaceDeletedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a NamespaceEnabledMessage to the Namespace channel. (oneOf variant)
+    rpc PublishNamespaceEnabledMessageToNamespaceChannel(NamespaceEnabledMessage) returns (google.protobuf.Empty);
+
+    // Publishes a NamespaceDisabledMessage to the Namespace channel. (oneOf variant)
+    rpc PublishNamespaceDisabledMessageToNamespaceChannel(NamespaceDisabledMessage) returns (google.protobuf.Empty);
+
+    // Publishes a NamespaceDisplayNameUpdatedMessage to the Namespace channel. (oneOf variant)
+    rpc PublishNamespaceDisplayNameUpdatedMessageToNamespaceChannel(NamespaceDisplayNameUpdatedMessage) returns (google.protobuf.Empty);
 }

@@ -217,4 +217,22 @@ service AsyncAPIForJusticeWalletService {
 
     // Publishes a message to the Wallet Processing channel.
     rpc PublishToWalletProcessingChannel(WalletProcessingPublishMessage) returns (google.protobuf.Empty);
+
+    // Publishes a WalletDisabledMessage to the Wallet Processing channel. (oneOf variant)
+    rpc PublishWalletDisabledMessageToWalletProcessingChannel(WalletDisabledMessage) returns (google.protobuf.Empty);
+
+    // Publishes a WalletEnabledMessage to the Wallet Processing channel. (oneOf variant)
+    rpc PublishWalletEnabledMessageToWalletProcessingChannel(WalletEnabledMessage) returns (google.protobuf.Empty);
+
+    // Publishes a WalletCreditedMessage to the Wallet Processing channel. (oneOf variant)
+    rpc PublishWalletCreditedMessageToWalletProcessingChannel(WalletCreditedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a WalletDebitedMessage to the Wallet Processing channel. (oneOf variant)
+    rpc PublishWalletDebitedMessageToWalletProcessingChannel(WalletDebitedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a WalledPaidMessage to the Wallet Processing channel. (oneOf variant)
+    rpc PublishWalledPaidMessageToWalletProcessingChannel(WalledPaidMessage) returns (google.protobuf.Empty);
+
+    // Publishes a WalledExpiredMessage to the Wallet Processing channel. (oneOf variant)
+    rpc PublishWalledExpiredMessageToWalletProcessingChannel(WalledExpiredMessage) returns (google.protobuf.Empty);
 }

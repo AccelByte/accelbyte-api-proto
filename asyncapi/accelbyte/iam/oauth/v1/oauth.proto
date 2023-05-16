@@ -206,18 +206,33 @@ service IAMServiceOAuthEvents {
     // Publishes a message to the Oauth Request channel.
     rpc PublishToOauthRequestChannel(OauthRequestPublishMessage) returns (google.protobuf.Empty);
 
+    // Publishes a OauthRequestAuthorizedMessage to the Oauth Request channel. (oneOf variant)
+    rpc PublishOauthRequestAuthorizedMessageToOauthRequestChannel(OauthRequestAuthorizedMessage) returns (google.protobuf.Empty);
+
     // Oauth Token Channel
 
     // Publishes a message to the Oauth Token channel.
     rpc PublishToOauthTokenChannel(OauthTokenPublishMessage) returns (google.protobuf.Empty);
+
+    // Publishes a OauthTokenGeneratedMessage to the Oauth Token channel. (oneOf variant)
+    rpc PublishOauthTokenGeneratedMessageToOauthTokenChannel(OauthTokenGeneratedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a OauthTokenRevokedMessage to the Oauth Token channel. (oneOf variant)
+    rpc PublishOauthTokenRevokedMessageToOauthTokenChannel(OauthTokenRevokedMessage) returns (google.protobuf.Empty);
 
     // Oauth Third Party Request Channel
 
     // Publishes a message to the Oauth Third Party Request channel.
     rpc PublishToOauthThirdPartyRequestChannel(OauthThirdPartyRequestPublishMessage) returns (google.protobuf.Empty);
 
+    // Publishes a OauthThirdPartyRequestAuthorizedMessage to the Oauth Third Party Request channel. (oneOf variant)
+    rpc PublishOauthThirdPartyRequestAuthorizedMessageToOauthThirdPartyRequestChannel(OauthThirdPartyRequestAuthorizedMessage) returns (google.protobuf.Empty);
+
     // Oauth Third Party Token Channel
 
     // Publishes a message to the Oauth Third Party Token channel.
     rpc PublishToOauthThirdPartyTokenChannel(OauthThirdPartyTokenPublishMessage) returns (google.protobuf.Empty);
+
+    // Publishes a OauthThirdPartyTokenGeneratedMessage to the Oauth Third Party Token channel. (oneOf variant)
+    rpc PublishOauthThirdPartyTokenGeneratedMessageToOauthThirdPartyTokenChannel(OauthThirdPartyTokenGeneratedMessage) returns (google.protobuf.Empty);
 }

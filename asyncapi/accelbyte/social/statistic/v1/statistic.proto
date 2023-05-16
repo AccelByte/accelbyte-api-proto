@@ -2,7 +2,7 @@
 // This is licensed software from AccelByte Inc, for limitations
 // and restrictions contact your company contract manager.
 
-// source: Social/AsyncAPI/statistic.yaml (0.1.1)
+// source: Social/AsyncAPI/statistic.yaml (0.1.0)
 // hash: 1aeb8c915acaa94e321b129462d0a16b64434587
 
 syntax = "proto3";
@@ -662,18 +662,63 @@ service StatisticEvents {
     // Publishes a message to the Stat Management channel.
     rpc PublishToStatManagementChannel(StatManagementPublishMessage) returns (google.protobuf.Empty);
 
+    // Publishes a StatCreatedMessage to the Stat Management channel. (oneOf variant)
+    rpc PublishStatCreatedMessageToStatManagementChannel(StatCreatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a StatDeletedMessage to the Stat Management channel. (oneOf variant)
+    rpc PublishStatDeletedMessageToStatManagementChannel(StatDeletedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a StatUpdatedMessage to the Stat Management channel. (oneOf variant)
+    rpc PublishStatUpdatedMessageToStatManagementChannel(StatUpdatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a StatImportedMessage to the Stat Management channel. (oneOf variant)
+    rpc PublishStatImportedMessageToStatManagementChannel(StatImportedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a StatExportedMessage to the Stat Management channel. (oneOf variant)
+    rpc PublishStatExportedMessageToStatManagementChannel(StatExportedMessage) returns (google.protobuf.Empty);
+
     // Statistic Channel
 
     // Publishes a message to the Statistic channel.
     rpc PublishToStatisticChannel(StatisticPublishMessage) returns (google.protobuf.Empty);
+
+    // Publishes a StatItemCreatedMessage to the Statistic channel. (oneOf variant)
+    rpc PublishStatItemCreatedMessageToStatisticChannel(StatItemCreatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a StatItemUpdatedMessage to the Statistic channel. (oneOf variant)
+    rpc PublishStatItemUpdatedMessageToStatisticChannel(StatItemUpdatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a StatItemDeletedMessage to the Statistic channel. (oneOf variant)
+    rpc PublishStatItemDeletedMessageToStatisticChannel(StatItemDeletedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a GlobalStatItemUpdatedMessage to the Statistic channel. (oneOf variant)
+    rpc PublishGlobalStatItemUpdatedMessageToStatisticChannel(GlobalStatItemUpdatedMessage) returns (google.protobuf.Empty);
 
     // Stat Cycle Management Channel
 
     // Publishes a message to the Stat Cycle Management channel.
     rpc PublishToStatCycleManagementChannel(StatCycleManagementPublishMessage) returns (google.protobuf.Empty);
 
+    // Publishes a StatCycleCreatedMessage to the Stat Cycle Management channel. (oneOf variant)
+    rpc PublishStatCycleCreatedMessageToStatCycleManagementChannel(StatCycleCreatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a StatCycleUpdatedMessage to the Stat Cycle Management channel. (oneOf variant)
+    rpc PublishStatCycleUpdatedMessageToStatCycleManagementChannel(StatCycleUpdatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a StatCycleResetMessage to the Stat Cycle Management channel. (oneOf variant)
+    rpc PublishStatCycleResetMessageToStatCycleManagementChannel(StatCycleResetMessage) returns (google.protobuf.Empty);
+
+    // Publishes a StatCycleDeletedMessage to the Stat Cycle Management channel. (oneOf variant)
+    rpc PublishStatCycleDeletedMessageToStatCycleManagementChannel(StatCycleDeletedMessage) returns (google.protobuf.Empty);
+
     // Statistic Cycle Channel
 
     // Publishes a message to the Statistic Cycle channel.
     rpc PublishToStatisticCycleChannel(StatisticCyclePublishMessage) returns (google.protobuf.Empty);
+
+    // Publishes a StatItemCycleCreatedMessage to the Statistic Cycle channel. (oneOf variant)
+    rpc PublishStatItemCycleCreatedMessageToStatisticCycleChannel(StatItemCycleCreatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a StatItemCycleUpdatedMessage to the Statistic Cycle channel. (oneOf variant)
+    rpc PublishStatItemCycleUpdatedMessageToStatisticCycleChannel(StatItemCycleUpdatedMessage) returns (google.protobuf.Empty);
 }

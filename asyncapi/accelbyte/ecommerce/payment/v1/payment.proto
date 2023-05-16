@@ -729,13 +729,91 @@ service AsyncAPIForJusticePaymentService {
     // Publishes a message to the Payment Config channel.
     rpc PublishToPaymentConfigChannel(PaymentConfigPublishMessage) returns (google.protobuf.Empty);
 
+    // Publishes a PaymentProviderConfigCreatedMessage to the Payment Config channel. (oneOf variant)
+    rpc PublishPaymentProviderConfigCreatedMessageToPaymentConfigChannel(PaymentProviderConfigCreatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a PaymentProviderConfigUpdatedMessage to the Payment Config channel. (oneOf variant)
+    rpc PublishPaymentProviderConfigUpdatedMessageToPaymentConfigChannel(PaymentProviderConfigUpdatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a PaymentProviderConfigDeletedMessage to the Payment Config channel. (oneOf variant)
+    rpc PublishPaymentProviderConfigDeletedMessageToPaymentConfigChannel(PaymentProviderConfigDeletedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a PaymentTaxConfigUpdatedMessage to the Payment Config channel. (oneOf variant)
+    rpc PublishPaymentTaxConfigUpdatedMessageToPaymentConfigChannel(PaymentTaxConfigUpdatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a AdyenConfigUpdatedMessage to the Payment Config channel. (oneOf variant)
+    rpc PublishAdyenConfigUpdatedMessageToPaymentConfigChannel(AdyenConfigUpdatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a StripeConfigUpdatedMessage to the Payment Config channel. (oneOf variant)
+    rpc PublishStripeConfigUpdatedMessageToPaymentConfigChannel(StripeConfigUpdatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a XsollaConfigUpdatedMessage to the Payment Config channel. (oneOf variant)
+    rpc PublishXsollaConfigUpdatedMessageToPaymentConfigChannel(XsollaConfigUpdatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a XsollaUIConfigUpdatedMessage to the Payment Config channel. (oneOf variant)
+    rpc PublishXsollaUIConfigUpdatedMessageToPaymentConfigChannel(XsollaUIConfigUpdatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a PayPalConfigUpdatedMessage to the Payment Config channel. (oneOf variant)
+    rpc PublishPayPalConfigUpdatedMessageToPaymentConfigChannel(PayPalConfigUpdatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a AliPayConfigUpdatedMessage to the Payment Config channel. (oneOf variant)
+    rpc PublishAliPayConfigUpdatedMessageToPaymentConfigChannel(AliPayConfigUpdatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a WxPayConfigUpdatedMessage to the Payment Config channel. (oneOf variant)
+    rpc PublishWxPayConfigUpdatedMessageToPaymentConfigChannel(WxPayConfigUpdatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a WxPayCertUploadedMessage to the Payment Config channel. (oneOf variant)
+    rpc PublishWxPayCertUploadedMessageToPaymentConfigChannel(WxPayCertUploadedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a CheckoutConfigUpdatedMessage to the Payment Config channel. (oneOf variant)
+    rpc PublishCheckoutConfigUpdatedMessageToPaymentConfigChannel(CheckoutConfigUpdatedMessage) returns (google.protobuf.Empty);
+
     // Payment Order Processing Channel
 
     // Publishes a message to the Payment Order Processing channel.
     rpc PublishToPaymentOrderProcessingChannel(PaymentOrderProcessingPublishMessage) returns (google.protobuf.Empty);
 
+    // Publishes a PaymentOrderCreatedMessage to the Payment Order Processing channel. (oneOf variant)
+    rpc PublishPaymentOrderCreatedMessageToPaymentOrderProcessingChannel(PaymentOrderCreatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a PaymentOrderChargedMessage to the Payment Order Processing channel. (oneOf variant)
+    rpc PublishPaymentOrderChargedMessageToPaymentOrderProcessingChannel(PaymentOrderChargedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a PaymentOrderChargeFailedMessage to the Payment Order Processing channel. (oneOf variant)
+    rpc PublishPaymentOrderChargeFailedMessageToPaymentOrderProcessingChannel(PaymentOrderChargeFailedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a PaymentOrderRefundedMessage to the Payment Order Processing channel. (oneOf variant)
+    rpc PublishPaymentOrderRefundedMessageToPaymentOrderProcessingChannel(PaymentOrderRefundedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a PaymentOrderRefundFailedMessage to the Payment Order Processing channel. (oneOf variant)
+    rpc PublishPaymentOrderRefundFailedMessageToPaymentOrderProcessingChannel(PaymentOrderRefundFailedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a PaymentOrderAuthorisedMessage to the Payment Order Processing channel. (oneOf variant)
+    rpc PublishPaymentOrderAuthorisedMessageToPaymentOrderProcessingChannel(PaymentOrderAuthorisedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a PaymentOrderAuthorisedFailedMessage to the Payment Order Processing channel. (oneOf variant)
+    rpc PublishPaymentOrderAuthorisedFailedMessageToPaymentOrderProcessingChannel(PaymentOrderAuthorisedFailedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a PaymentOrderNotificationOfChargebackMessage to the Payment Order Processing channel. (oneOf variant)
+    rpc PublishPaymentOrderNotificationOfChargebackMessageToPaymentOrderProcessingChannel(PaymentOrderNotificationOfChargebackMessage) returns (google.protobuf.Empty);
+
+    // Publishes a PaymentOrderRequestForInformationMessage to the Payment Order Processing channel. (oneOf variant)
+    rpc PublishPaymentOrderRequestForInformationMessageToPaymentOrderProcessingChannel(PaymentOrderRequestForInformationMessage) returns (google.protobuf.Empty);
+
+    // Publishes a PaymentOrderChargebackMessage to the Payment Order Processing channel. (oneOf variant)
+    rpc PublishPaymentOrderChargebackMessageToPaymentOrderProcessingChannel(PaymentOrderChargebackMessage) returns (google.protobuf.Empty);
+
+    // Publishes a PaymentOrderChargebackReversedMessage to the Payment Order Processing channel. (oneOf variant)
+    rpc PublishPaymentOrderChargebackReversedMessageToPaymentOrderProcessingChannel(PaymentOrderChargebackReversedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a PaymentOrderRefundRequestedMessage to the Payment Order Processing channel. (oneOf variant)
+    rpc PublishPaymentOrderRefundRequestedMessageToPaymentOrderProcessingChannel(PaymentOrderRefundRequestedMessage) returns (google.protobuf.Empty);
+
     // Payment Account Channel
 
     // Publishes a message to the Payment Account channel.
     rpc PublishToPaymentAccountChannel(PaymentAccountPublishMessage) returns (google.protobuf.Empty);
+
+    // Publishes a PaymentAccountDeletedMessage to the Payment Account channel. (oneOf variant)
+    rpc PublishPaymentAccountDeletedMessageToPaymentAccountChannel(PaymentAccountDeletedMessage) returns (google.protobuf.Empty);
 }

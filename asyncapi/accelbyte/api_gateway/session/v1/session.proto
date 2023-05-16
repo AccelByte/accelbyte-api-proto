@@ -145,4 +145,13 @@ service APIGatewayServiceSessionEvents {
 
     // Publishes a message to the Session channel.
     rpc PublishToSessionChannel(SessionPublishMessage) returns (google.protobuf.Empty);
+
+    // Publishes a SessionCreatedMessage to the Session channel. (oneOf variant)
+    rpc PublishSessionCreatedMessageToSessionChannel(SessionCreatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a SessionDeletedMessage to the Session channel. (oneOf variant)
+    rpc PublishSessionDeletedMessageToSessionChannel(SessionDeletedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a SessionUpdatedMessage to the Session channel. (oneOf variant)
+    rpc PublishSessionUpdatedMessageToSessionChannel(SessionUpdatedMessage) returns (google.protobuf.Empty);
 }

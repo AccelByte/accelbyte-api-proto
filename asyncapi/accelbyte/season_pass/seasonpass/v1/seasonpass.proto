@@ -177,4 +177,16 @@ service SeasonPassServiceEvents {
 
     // Publishes a message to the User Season channel.
     rpc PublishToUserSeasonChannel(UserSeasonPublishMessage) returns (google.protobuf.Empty);
+
+    // Publishes a UserSeasonPassChangedMessage to the User Season channel. (oneOf variant)
+    rpc PublishUserSeasonPassChangedMessageToUserSeasonChannel(UserSeasonPassChangedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a UserSeasonTierUpMessage to the User Season channel. (oneOf variant)
+    rpc PublishUserSeasonTierUpMessageToUserSeasonChannel(UserSeasonTierUpMessage) returns (google.protobuf.Empty);
+
+    // Publishes a UserSeasonTierClearedMessage to the User Season channel. (oneOf variant)
+    rpc PublishUserSeasonTierClearedMessageToUserSeasonChannel(UserSeasonTierClearedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a UserSeasonRewardRewardedMessage to the User Season channel. (oneOf variant)
+    rpc PublishUserSeasonRewardRewardedMessageToUserSeasonChannel(UserSeasonRewardRewardedMessage) returns (google.protobuf.Empty);
 }

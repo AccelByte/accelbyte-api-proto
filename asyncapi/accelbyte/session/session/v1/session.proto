@@ -606,18 +606,75 @@ service SessionNotificationEvents {
     // Publishes a message to the Session channel.
     rpc PublishToSessionChannel(SessionPublishMessage) returns (google.protobuf.Empty);
 
+    // Publishes a OnPartyCreatedMessage to the Session channel. (oneOf variant)
+    rpc PublishOnPartyCreatedMessageToSessionChannel(OnPartyCreatedMessage) returns (google.protobuf.Empty);
+
     // Session Notification Channel
 
     // Publishes a message to the Session Notification channel.
     rpc PublishToSessionNotificationChannel(SessionNotificationPublishMessage) returns (google.protobuf.Empty);
+
+    // Publishes a SessionNotificationMessage to the Session Notification channel. (oneOf variant)
+    rpc PublishSessionNotificationMessageToSessionNotificationChannel(SessionNotificationMessage) returns (google.protobuf.Empty);
 
     // Session Event Channel
 
     // Publishes a message to the Session Event channel.
     rpc PublishToSessionEventChannel(SessionEventPublishMessage) returns (google.protobuf.Empty);
 
+    // Publishes a OnSessionEndedMessage to the Session Event channel. (oneOf variant)
+    rpc PublishOnSessionEndedMessageToSessionEventChannel(OnSessionEndedMessage) returns (google.protobuf.Empty);
+
     // Mpv2 Session History Channel
 
     // Publishes a message to the Mpv2 Session History channel.
     rpc PublishToMpv2SessionHistoryChannel(Mpv2SessionHistoryPublishMessage) returns (google.protobuf.Empty);
+
+    // Publishes a GameSessionEndedEventMessage to the Mpv2 Session History channel. (oneOf variant)
+    rpc PublishGameSessionEndedEventMessageToMpv2SessionHistoryChannel(GameSessionEndedEventMessage) returns (google.protobuf.Empty);
+
+    // Publishes a GameSessionInvitedEventMessage to the Mpv2 Session History channel. (oneOf variant)
+    rpc PublishGameSessionInvitedEventMessageToMpv2SessionHistoryChannel(GameSessionInvitedEventMessage) returns (google.protobuf.Empty);
+
+    // Publishes a GameSessionJoinedEventMessage to the Mpv2 Session History channel. (oneOf variant)
+    rpc PublishGameSessionJoinedEventMessageToMpv2SessionHistoryChannel(GameSessionJoinedEventMessage) returns (google.protobuf.Empty);
+
+    // Publishes a GameSessionMembersChangedEventMessage to the Mpv2 Session History channel. (oneOf variant)
+    rpc PublishGameSessionMembersChangedEventMessageToMpv2SessionHistoryChannel(GameSessionMembersChangedEventMessage) returns (google.protobuf.Empty);
+
+    // Publishes a GameSessionKickedEventMessage to the Mpv2 Session History channel. (oneOf variant)
+    rpc PublishGameSessionKickedEventMessageToMpv2SessionHistoryChannel(GameSessionKickedEventMessage) returns (google.protobuf.Empty);
+
+    // Publishes a GameSessionCreatedEventMessage to the Mpv2 Session History channel. (oneOf variant)
+    rpc PublishGameSessionCreatedEventMessageToMpv2SessionHistoryChannel(GameSessionCreatedEventMessage) returns (google.protobuf.Empty);
+
+    // Publishes a GameSessionUpdatedEventMessage to the Mpv2 Session History channel. (oneOf variant)
+    rpc PublishGameSessionUpdatedEventMessageToMpv2SessionHistoryChannel(GameSessionUpdatedEventMessage) returns (google.protobuf.Empty);
+
+    // Publishes a GameSessionRejectedEventMessage to the Mpv2 Session History channel. (oneOf variant)
+    rpc PublishGameSessionRejectedEventMessageToMpv2SessionHistoryChannel(GameSessionRejectedEventMessage) returns (google.protobuf.Empty);
+
+    // Publishes a GameSessionDSStatusChangedEventMessage to the Mpv2 Session History channel. (oneOf variant)
+    rpc PublishGameSessionDSStatusChangedEventMessageToMpv2SessionHistoryChannel(GameSessionDSStatusChangedEventMessage) returns (google.protobuf.Empty);
+
+    // Publishes a PartyCreatedEventMessage to the Mpv2 Session History channel. (oneOf variant)
+    rpc PublishPartyCreatedEventMessageToMpv2SessionHistoryChannel(PartyCreatedEventMessage) returns (google.protobuf.Empty);
+
+    // Publishes a PartyUpdatedEventMessage to the Mpv2 Session History channel. (oneOf variant)
+    rpc PublishPartyUpdatedEventMessageToMpv2SessionHistoryChannel(PartyUpdatedEventMessage) returns (google.protobuf.Empty);
+
+    // Publishes a PartyKickedEventMessage to the Mpv2 Session History channel. (oneOf variant)
+    rpc PublishPartyKickedEventMessageToMpv2SessionHistoryChannel(PartyKickedEventMessage) returns (google.protobuf.Empty);
+
+    // Publishes a PartyInvitedEventMessage to the Mpv2 Session History channel. (oneOf variant)
+    rpc PublishPartyInvitedEventMessageToMpv2SessionHistoryChannel(PartyInvitedEventMessage) returns (google.protobuf.Empty);
+
+    // Publishes a PartyRejectedEventMessage to the Mpv2 Session History channel. (oneOf variant)
+    rpc PublishPartyRejectedEventMessageToMpv2SessionHistoryChannel(PartyRejectedEventMessage) returns (google.protobuf.Empty);
+
+    // Publishes a PartyJoinedEventMessage to the Mpv2 Session History channel. (oneOf variant)
+    rpc PublishPartyJoinedEventMessageToMpv2SessionHistoryChannel(PartyJoinedEventMessage) returns (google.protobuf.Empty);
+
+    // Publishes a PartyMembersChangedEventMessage to the Mpv2 Session History channel. (oneOf variant)
+    rpc PublishPartyMembersChangedEventMessageToMpv2SessionHistoryChannel(PartyMembersChangedEventMessage) returns (google.protobuf.Empty);
 }

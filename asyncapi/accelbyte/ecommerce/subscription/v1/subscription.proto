@@ -342,4 +342,31 @@ service AsyncAPIForJusticeRewardService {
 
     // Publishes a message to the Subscription channel.
     rpc PublishToSubscriptionChannel(SubscriptionPublishMessage) returns (google.protobuf.Empty);
+
+    // Publishes a SubscribedMessage to the Subscription channel. (oneOf variant)
+    rpc PublishSubscribedMessageToSubscriptionChannel(SubscribedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a CancelledMessage to the Subscription channel. (oneOf variant)
+    rpc PublishCancelledMessageToSubscriptionChannel(CancelledMessage) returns (google.protobuf.Empty);
+
+    // Publishes a ImmediateCancelledMessage to the Subscription channel. (oneOf variant)
+    rpc PublishImmediateCancelledMessageToSubscriptionChannel(ImmediateCancelledMessage) returns (google.protobuf.Empty);
+
+    // Publishes a ResubscribedMessage to the Subscription channel. (oneOf variant)
+    rpc PublishResubscribedMessageToSubscriptionChannel(ResubscribedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a DaysGrantedMessage to the Subscription channel. (oneOf variant)
+    rpc PublishDaysGrantedMessageToSubscriptionChannel(DaysGrantedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a ChargedMessage to the Subscription channel. (oneOf variant)
+    rpc PublishChargedMessageToSubscriptionChannel(ChargedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a ChargeFailedMessage to the Subscription channel. (oneOf variant)
+    rpc PublishChargeFailedMessageToSubscriptionChannel(ChargeFailedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a ExpiredMessage to the Subscription channel. (oneOf variant)
+    rpc PublishExpiredMessageToSubscriptionChannel(ExpiredMessage) returns (google.protobuf.Empty);
+
+    // Publishes a BillingAccountChangedMessage to the Subscription channel. (oneOf variant)
+    rpc PublishBillingAccountChangedMessageToSubscriptionChannel(BillingAccountChangedMessage) returns (google.protobuf.Empty);
 }

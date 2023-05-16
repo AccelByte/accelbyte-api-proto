@@ -331,13 +331,40 @@ service IAMServiceClientEvents {
     // Publishes a message to the Client channel.
     rpc PublishToClientChannel(ClientPublishMessage) returns (google.protobuf.Empty);
 
+    // Publishes a ClientCreatedMessage to the Client channel. (oneOf variant)
+    rpc PublishClientCreatedMessageToClientChannel(ClientCreatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a ClientDeletedMessage to the Client channel. (oneOf variant)
+    rpc PublishClientDeletedMessageToClientChannel(ClientDeletedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a ClientUpdatedMessage to the Client channel. (oneOf variant)
+    rpc PublishClientUpdatedMessageToClientChannel(ClientUpdatedMessage) returns (google.protobuf.Empty);
+
     // Client Third Party Channel
 
     // Publishes a message to the Client Third Party channel.
     rpc PublishToClientThirdPartyChannel(ClientThirdPartyPublishMessage) returns (google.protobuf.Empty);
 
+    // Publishes a ClientThirdPartyCreatedMessage to the Client Third Party channel. (oneOf variant)
+    rpc PublishClientThirdPartyCreatedMessageToClientThirdPartyChannel(ClientThirdPartyCreatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a ClientThirdPartyDeletedMessage to the Client Third Party channel. (oneOf variant)
+    rpc PublishClientThirdPartyDeletedMessageToClientThirdPartyChannel(ClientThirdPartyDeletedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a ClientThirdPartyUpdatedMessage to the Client Third Party channel. (oneOf variant)
+    rpc PublishClientThirdPartyUpdatedMessageToClientThirdPartyChannel(ClientThirdPartyUpdatedMessage) returns (google.protobuf.Empty);
+
     // Client Permissions Channel
 
     // Publishes a message to the Client Permissions channel.
     rpc PublishToClientPermissionsChannel(ClientPermissionsPublishMessage) returns (google.protobuf.Empty);
+
+    // Publishes a ClientPermissionsCreatedMessage to the Client Permissions channel. (oneOf variant)
+    rpc PublishClientPermissionsCreatedMessageToClientPermissionsChannel(ClientPermissionsCreatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a ClientPermissionsDeletedMessage to the Client Permissions channel. (oneOf variant)
+    rpc PublishClientPermissionsDeletedMessageToClientPermissionsChannel(ClientPermissionsDeletedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a ClientPermissionsUpdatedMessage to the Client Permissions channel. (oneOf variant)
+    rpc PublishClientPermissionsUpdatedMessageToClientPermissionsChannel(ClientPermissionsUpdatedMessage) returns (google.protobuf.Empty);
 }

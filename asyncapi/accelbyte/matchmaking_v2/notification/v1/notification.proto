@@ -90,4 +90,7 @@ service MatchmakingV2NotificationEvents {
 
     // Publishes a message to the Freeform User Notification Request channel.
     rpc PublishToFreeformUserNotificationRequestChannel(FreeformUserNotificationRequestPublishMessage) returns (google.protobuf.Empty);
+
+    // Publishes a FreeformUserNotificationMessage to the Freeform User Notification Request channel. (oneOf variant)
+    rpc PublishFreeformUserNotificationMessageToFreeformUserNotificationRequestChannel(FreeformUserNotificationMessage) returns (google.protobuf.Empty);
 }

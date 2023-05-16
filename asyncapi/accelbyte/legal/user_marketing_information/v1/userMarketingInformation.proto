@@ -82,4 +82,7 @@ service LegalServiceUserMarketingInformationEvents {
 
     // Publishes a message to the User Marketing Information channel.
     rpc PublishToUserMarketingInformationChannel(UserMarketingInformationPublishMessage) returns (google.protobuf.Empty);
+
+    // Publishes a UserMarketingPreferenceUpdatedMessage to the User Marketing Information channel. (oneOf variant)
+    rpc PublishUserMarketingPreferenceUpdatedMessageToUserMarketingInformationChannel(UserMarketingPreferenceUpdatedMessage) returns (google.protobuf.Empty);
 }

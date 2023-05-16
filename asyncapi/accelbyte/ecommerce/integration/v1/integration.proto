@@ -411,8 +411,65 @@ service AsyncAPIForJusticeIntegrationService {
     // Publishes a message to the Iap Config Management channel.
     rpc PublishToIapConfigManagementChannel(IapConfigManagementPublishMessage) returns (google.protobuf.Empty);
 
+    // Publishes a AppleIAPConfigDeletedMessage to the Iap Config Management channel. (oneOf variant)
+    rpc PublishAppleIAPConfigDeletedMessageToIapConfigManagementChannel(AppleIAPConfigDeletedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a AppleIAPConfigUpdatedMessage to the Iap Config Management channel. (oneOf variant)
+    rpc PublishAppleIAPConfigUpdatedMessageToIapConfigManagementChannel(AppleIAPConfigUpdatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a GoogleIAPConfigDeletedMessage to the Iap Config Management channel. (oneOf variant)
+    rpc PublishGoogleIAPConfigDeletedMessageToIapConfigManagementChannel(GoogleIAPConfigDeletedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a GoogleIAPConfigUpdatedMessage to the Iap Config Management channel. (oneOf variant)
+    rpc PublishGoogleIAPConfigUpdatedMessageToIapConfigManagementChannel(GoogleIAPConfigUpdatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a GoogleP12FileUpdatedMessage to the Iap Config Management channel. (oneOf variant)
+    rpc PublishGoogleP12FileUpdatedMessageToIapConfigManagementChannel(GoogleP12FileUpdatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a PlayStationIAPConfigDeletedMessage to the Iap Config Management channel. (oneOf variant)
+    rpc PublishPlayStationIAPConfigDeletedMessageToIapConfigManagementChannel(PlayStationIAPConfigDeletedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a PlayStationIAPConfigUpdatedMessage to the Iap Config Management channel. (oneOf variant)
+    rpc PublishPlayStationIAPConfigUpdatedMessageToIapConfigManagementChannel(PlayStationIAPConfigUpdatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a SteamIAPConfigUpdatedMessage to the Iap Config Management channel. (oneOf variant)
+    rpc PublishSteamIAPConfigUpdatedMessageToIapConfigManagementChannel(SteamIAPConfigUpdatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a SteamIAPConfigDeletedMessage to the Iap Config Management channel. (oneOf variant)
+    rpc PublishSteamIAPConfigDeletedMessageToIapConfigManagementChannel(SteamIAPConfigDeletedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a XblIAPConfigDeletedMessage to the Iap Config Management channel. (oneOf variant)
+    rpc PublishXblIAPConfigDeletedMessageToIapConfigManagementChannel(XblIAPConfigDeletedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a XblIAPConfigUpdatedMessage to the Iap Config Management channel. (oneOf variant)
+    rpc PublishXblIAPConfigUpdatedMessageToIapConfigManagementChannel(XblIAPConfigUpdatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a XblBPCertFileUpdatedMessage to the Iap Config Management channel. (oneOf variant)
+    rpc PublishXblBPCertFileUpdatedMessageToIapConfigManagementChannel(XblBPCertFileUpdatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a StadiaIAPJsonFileUpdatedMessage to the Iap Config Management channel. (oneOf variant)
+    rpc PublishStadiaIAPJsonFileUpdatedMessageToIapConfigManagementChannel(StadiaIAPJsonFileUpdatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a StadiaIAPConfigDeletedMessage to the Iap Config Management channel. (oneOf variant)
+    rpc PublishStadiaIAPConfigDeletedMessageToIapConfigManagementChannel(StadiaIAPConfigDeletedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a EpicGamesIAPConfigDeletedMessage to the Iap Config Management channel. (oneOf variant)
+    rpc PublishEpicGamesIAPConfigDeletedMessageToIapConfigManagementChannel(EpicGamesIAPConfigDeletedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a EpicGamesIAPConfigUpdatedMessage to the Iap Config Management channel. (oneOf variant)
+    rpc PublishEpicGamesIAPConfigUpdatedMessageToIapConfigManagementChannel(EpicGamesIAPConfigUpdatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a TwitchIAPConfigUpdatedMessage to the Iap Config Management channel. (oneOf variant)
+    rpc PublishTwitchIAPConfigUpdatedMessageToIapConfigManagementChannel(TwitchIAPConfigUpdatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a TwitchIAPConfigDeletedMessage to the Iap Config Management channel. (oneOf variant)
+    rpc PublishTwitchIAPConfigDeletedMessageToIapConfigManagementChannel(TwitchIAPConfigDeletedMessage) returns (google.protobuf.Empty);
+
     // Iap Processing Channel
 
     // Publishes a message to the Iap Processing channel.
     rpc PublishToIapProcessingChannel(IapProcessingPublishMessage) returns (google.protobuf.Empty);
+
+    // Publishes a IapProcessedMessage to the Iap Processing channel. (oneOf variant)
+    rpc PublishIapProcessedMessageToIapProcessingChannel(IapProcessedMessage) returns (google.protobuf.Empty);
 }

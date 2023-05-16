@@ -345,18 +345,48 @@ service IAMServiceRBACEvents {
     // Publishes a message to the Role channel.
     rpc PublishToRoleChannel(RolePublishMessage) returns (google.protobuf.Empty);
 
+    // Publishes a RoleCreatedMessage to the Role channel. (oneOf variant)
+    rpc PublishRoleCreatedMessageToRoleChannel(RoleCreatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a RoleDeletedMessage to the Role channel. (oneOf variant)
+    rpc PublishRoleDeletedMessageToRoleChannel(RoleDeletedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a RoleUpdatedMessage to the Role channel. (oneOf variant)
+    rpc PublishRoleUpdatedMessageToRoleChannel(RoleUpdatedMessage) returns (google.protobuf.Empty);
+
     // Role Permissions Channel
 
     // Publishes a message to the Role Permissions channel.
     rpc PublishToRolePermissionsChannel(RolePermissionsPublishMessage) returns (google.protobuf.Empty);
+
+    // Publishes a RolePermissionCreatedMessage to the Role Permissions channel. (oneOf variant)
+    rpc PublishRolePermissionCreatedMessageToRolePermissionsChannel(RolePermissionCreatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a RolePermissionDeletedMessage to the Role Permissions channel. (oneOf variant)
+    rpc PublishRolePermissionDeletedMessageToRolePermissionsChannel(RolePermissionDeletedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a RolePermissionUpdatedMessage to the Role Permissions channel. (oneOf variant)
+    rpc PublishRolePermissionUpdatedMessageToRolePermissionsChannel(RolePermissionUpdatedMessage) returns (google.protobuf.Empty);
 
     // Role Manager Channel
 
     // Publishes a message to the Role Manager channel.
     rpc PublishToRoleManagerChannel(RoleManagerPublishMessage) returns (google.protobuf.Empty);
 
+    // Publishes a RoleManagerCreatedMessage to the Role Manager channel. (oneOf variant)
+    rpc PublishRoleManagerCreatedMessageToRoleManagerChannel(RoleManagerCreatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a RoleManagerDeletedMessage to the Role Manager channel. (oneOf variant)
+    rpc PublishRoleManagerDeletedMessageToRoleManagerChannel(RoleManagerDeletedMessage) returns (google.protobuf.Empty);
+
     // Role Member Channel
 
     // Publishes a message to the Role Member channel.
     rpc PublishToRoleMemberChannel(RoleMemberPublishMessage) returns (google.protobuf.Empty);
+
+    // Publishes a RoleMemberCreatedMessage to the Role Member channel. (oneOf variant)
+    rpc PublishRoleMemberCreatedMessageToRoleMemberChannel(RoleMemberCreatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a RoleMemberDeletedMessage to the Role Member channel. (oneOf variant)
+    rpc PublishRoleMemberDeletedMessageToRoleMemberChannel(RoleMemberDeletedMessage) returns (google.protobuf.Empty);
 }

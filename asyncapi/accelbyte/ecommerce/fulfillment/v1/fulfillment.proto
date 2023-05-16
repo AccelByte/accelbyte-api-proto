@@ -138,4 +138,7 @@ service AsyncAPIForJusticeFulfillmentService {
 
     // Publishes a message to the Fulfillment channel.
     rpc PublishToFulfillmentChannel(FulfillmentPublishMessage) returns (google.protobuf.Empty);
+
+    // Publishes a FulfillmentCompletedMessage to the Fulfillment channel. (oneOf variant)
+    rpc PublishFulfillmentCompletedMessageToFulfillmentChannel(FulfillmentCompletedMessage) returns (google.protobuf.Empty);
 }

@@ -144,4 +144,13 @@ service AsyncAPIForJusticeCurrencyService {
 
     // Publishes a message to the Currency Management channel.
     rpc PublishToCurrencyManagementChannel(CurrencyManagementPublishMessage) returns (google.protobuf.Empty);
+
+    // Publishes a CurrencyCreatedMessage to the Currency Management channel. (oneOf variant)
+    rpc PublishCurrencyCreatedMessageToCurrencyManagementChannel(CurrencyCreatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a CurrencyUpdatedMessage to the Currency Management channel. (oneOf variant)
+    rpc PublishCurrencyUpdatedMessageToCurrencyManagementChannel(CurrencyUpdatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a CurrencyDeletedMessage to the Currency Management channel. (oneOf variant)
+    rpc PublishCurrencyDeletedMessageToCurrencyManagementChannel(CurrencyDeletedMessage) returns (google.protobuf.Empty);
 }

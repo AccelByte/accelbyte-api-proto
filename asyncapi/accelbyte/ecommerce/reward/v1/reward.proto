@@ -167,4 +167,16 @@ service AsyncAPIForJusticeRewardService {
 
     // Publishes a message to the Reward Management channel.
     rpc PublishToRewardManagementChannel(RewardManagementPublishMessage) returns (google.protobuf.Empty);
+
+    // Publishes a RewardCreatedMessage to the Reward Management channel. (oneOf variant)
+    rpc PublishRewardCreatedMessageToRewardManagementChannel(RewardCreatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a RewardUpdatedMessage to the Reward Management channel. (oneOf variant)
+    rpc PublishRewardUpdatedMessageToRewardManagementChannel(RewardUpdatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a RewardDeletedMessage to the Reward Management channel. (oneOf variant)
+    rpc PublishRewardDeletedMessageToRewardManagementChannel(RewardDeletedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a RewardImportedMessage to the Reward Management channel. (oneOf variant)
+    rpc PublishRewardImportedMessageToRewardManagementChannel(RewardImportedMessage) returns (google.protobuf.Empty);
 }

@@ -88,4 +88,7 @@ service ReportingServiceEvents {
 
     // Publishes a message to the Auto Moderation channel.
     rpc PublishToAutoModerationChannel(AutoModerationPublishMessage) returns (google.protobuf.Empty);
+
+    // Publishes a HideContentMessage to the Auto Moderation channel. (oneOf variant)
+    rpc PublishHideContentMessageToAutoModerationChannel(HideContentMessage) returns (google.protobuf.Empty);
 }

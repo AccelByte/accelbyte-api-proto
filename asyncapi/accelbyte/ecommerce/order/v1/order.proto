@@ -364,4 +364,40 @@ service AsyncAPIForJusticeOrderService {
 
     // Publishes a message to the Order Processing channel.
     rpc PublishToOrderProcessingChannel(OrderProcessingPublishMessage) returns (google.protobuf.Empty);
+
+    // Publishes a OrderCreatedMessage to the Order Processing channel. (oneOf variant)
+    rpc PublishOrderCreatedMessageToOrderProcessingChannel(OrderCreatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a OrderCancelledMessage to the Order Processing channel. (oneOf variant)
+    rpc PublishOrderCancelledMessageToOrderProcessingChannel(OrderCancelledMessage) returns (google.protobuf.Empty);
+
+    // Publishes a OrderFulfilledMessage to the Order Processing channel. (oneOf variant)
+    rpc PublishOrderFulfilledMessageToOrderProcessingChannel(OrderFulfilledMessage) returns (google.protobuf.Empty);
+
+    // Publishes a OrderFulfillFailedMessage to the Order Processing channel. (oneOf variant)
+    rpc PublishOrderFulfillFailedMessageToOrderProcessingChannel(OrderFulfillFailedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a OrderChargedMessage to the Order Processing channel. (oneOf variant)
+    rpc PublishOrderChargedMessageToOrderProcessingChannel(OrderChargedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a OrderRefundedMessage to the Order Processing channel. (oneOf variant)
+    rpc PublishOrderRefundedMessageToOrderProcessingChannel(OrderRefundedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a OrderRefundRequestedMessage to the Order Processing channel. (oneOf variant)
+    rpc PublishOrderRefundRequestedMessageToOrderProcessingChannel(OrderRefundRequestedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a OrderRefundFailedMessage to the Order Processing channel. (oneOf variant)
+    rpc PublishOrderRefundFailedMessageToOrderProcessingChannel(OrderRefundFailedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a OrderChargebackMessage to the Order Processing channel. (oneOf variant)
+    rpc PublishOrderChargebackMessageToOrderProcessingChannel(OrderChargebackMessage) returns (google.protobuf.Empty);
+
+    // Publishes a OrderChargebackReversedMessage to the Order Processing channel. (oneOf variant)
+    rpc PublishOrderChargebackReversedMessageToOrderProcessingChannel(OrderChargebackReversedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a OrderExpiredMessage to the Order Processing channel. (oneOf variant)
+    rpc PublishOrderExpiredMessageToOrderProcessingChannel(OrderExpiredMessage) returns (google.protobuf.Empty);
+
+    // Publishes a OrderStatusUpdatedMessage to the Order Processing channel. (oneOf variant)
+    rpc PublishOrderStatusUpdatedMessageToOrderProcessingChannel(OrderStatusUpdatedMessage) returns (google.protobuf.Empty);
 }

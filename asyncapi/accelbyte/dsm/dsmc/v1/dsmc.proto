@@ -305,4 +305,19 @@ service AsyncAPIForJusticeDedicatedServerManagerControllerService {
 
     // Publishes a message to the Dsmcontroller channel.
     rpc PublishToDsmcontrollerChannel(DsmcontrollerPublishMessage) returns (google.protobuf.Empty);
+
+    // Publishes a AllocationCompleteMessage to the Dsmcontroller channel. (oneOf variant)
+    rpc PublishAllocationCompleteMessageToDsmcontrollerChannel(AllocationCompleteMessage) returns (google.protobuf.Empty);
+
+    // Publishes a DsClaimedMessage to the Dsmcontroller channel. (oneOf variant)
+    rpc PublishDsClaimedMessageToDsmcontrollerChannel(DsClaimedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a DsCountMessage to the Dsmcontroller channel. (oneOf variant)
+    rpc PublishDsCountMessageToDsmcontrollerChannel(DsCountMessage) returns (google.protobuf.Empty);
+
+    // Publishes a DsStatusChangedMessage to the Dsmcontroller channel. (oneOf variant)
+    rpc PublishDsStatusChangedMessageToDsmcontrollerChannel(DsStatusChangedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a SessionEndedMessage to the Dsmcontroller channel. (oneOf variant)
+    rpc PublishSessionEndedMessageToDsmcontrollerChannel(SessionEndedMessage) returns (google.protobuf.Empty);
 }

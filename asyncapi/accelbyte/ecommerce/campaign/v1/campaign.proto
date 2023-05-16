@@ -435,18 +435,54 @@ service AsyncAPIForJusticeCampaignService {
     // Publishes a message to the Campaign Management channel.
     rpc PublishToCampaignManagementChannel(CampaignManagementPublishMessage) returns (google.protobuf.Empty);
 
+    // Publishes a CampaignCreatedMessage to the Campaign Management channel. (oneOf variant)
+    rpc PublishCampaignCreatedMessageToCampaignManagementChannel(CampaignCreatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a CampaignUpdatedMessage to the Campaign Management channel. (oneOf variant)
+    rpc PublishCampaignUpdatedMessageToCampaignManagementChannel(CampaignUpdatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a CodeCreatedMessage to the Campaign Management channel. (oneOf variant)
+    rpc PublishCodeCreatedMessageToCampaignManagementChannel(CodeCreatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a CodeDisabledMessage to the Campaign Management channel. (oneOf variant)
+    rpc PublishCodeDisabledMessageToCampaignManagementChannel(CodeDisabledMessage) returns (google.protobuf.Empty);
+
+    // Publishes a CodeEnabledMessage to the Campaign Management channel. (oneOf variant)
+    rpc PublishCodeEnabledMessageToCampaignManagementChannel(CodeEnabledMessage) returns (google.protobuf.Empty);
+
+    // Publishes a CodeBulkDisabledMessage to the Campaign Management channel. (oneOf variant)
+    rpc PublishCodeBulkDisabledMessageToCampaignManagementChannel(CodeBulkDisabledMessage) returns (google.protobuf.Empty);
+
+    // Publishes a CodeBulkEnabledMessage to the Campaign Management channel. (oneOf variant)
+    rpc PublishCodeBulkEnabledMessageToCampaignManagementChannel(CodeBulkEnabledMessage) returns (google.protobuf.Empty);
+
     // Key Group Management Channel
 
     // Publishes a message to the Key Group Management channel.
     rpc PublishToKeyGroupManagementChannel(KeyGroupManagementPublishMessage) returns (google.protobuf.Empty);
+
+    // Publishes a KeyGroupCreatedMessage to the Key Group Management channel. (oneOf variant)
+    rpc PublishKeyGroupCreatedMessageToKeyGroupManagementChannel(KeyGroupCreatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a KeyGroupUpdatedMessage to the Key Group Management channel. (oneOf variant)
+    rpc PublishKeyGroupUpdatedMessageToKeyGroupManagementChannel(KeyGroupUpdatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a KeyUploadedMessage to the Key Group Management channel. (oneOf variant)
+    rpc PublishKeyUploadedMessageToKeyGroupManagementChannel(KeyUploadedMessage) returns (google.protobuf.Empty);
 
     // Code Redemption Channel
 
     // Publishes a message to the Code Redemption channel.
     rpc PublishToCodeRedemptionChannel(CodeRedemptionPublishMessage) returns (google.protobuf.Empty);
 
+    // Publishes a CodeRedeemedMessage to the Code Redemption channel. (oneOf variant)
+    rpc PublishCodeRedeemedMessageToCodeRedemptionChannel(CodeRedeemedMessage) returns (google.protobuf.Empty);
+
     // Ticket Sale Channel
 
     // Publishes a message to the Ticket Sale channel.
     rpc PublishToTicketSaleChannel(TicketSalePublishMessage) returns (google.protobuf.Empty);
+
+    // Publishes a TicketAcquiredMessage to the Ticket Sale channel. (oneOf variant)
+    rpc PublishTicketAcquiredMessageToTicketSaleChannel(TicketAcquiredMessage) returns (google.protobuf.Empty);
 }

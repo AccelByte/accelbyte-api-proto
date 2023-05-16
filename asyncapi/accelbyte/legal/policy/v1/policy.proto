@@ -395,18 +395,51 @@ service LegalServicePolicyEvents {
     // Publishes a message to the Base Policy channel.
     rpc PublishToBasePolicyChannel(BasePolicyPublishMessage) returns (google.protobuf.Empty);
 
+    // Publishes a BasePolicyCreatedMessage to the Base Policy channel. (oneOf variant)
+    rpc PublishBasePolicyCreatedMessageToBasePolicyChannel(BasePolicyCreatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a BasePolicyUpdatedMessage to the Base Policy channel. (oneOf variant)
+    rpc PublishBasePolicyUpdatedMessageToBasePolicyChannel(BasePolicyUpdatedMessage) returns (google.protobuf.Empty);
+
     // Policy Channel
 
     // Publishes a message to the Policy channel.
     rpc PublishToPolicyChannel(PolicyPublishMessage) returns (google.protobuf.Empty);
+
+    // Publishes a PolicyCreatedMessage to the Policy channel. (oneOf variant)
+    rpc PublishPolicyCreatedMessageToPolicyChannel(PolicyCreatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a PolicyUpdatedMessage to the Policy channel. (oneOf variant)
+    rpc PublishPolicyUpdatedMessageToPolicyChannel(PolicyUpdatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a DefaultPolicyUpdatedMessage to the Policy channel. (oneOf variant)
+    rpc PublishDefaultPolicyUpdatedMessageToPolicyChannel(DefaultPolicyUpdatedMessage) returns (google.protobuf.Empty);
 
     // Versioned Policy Channel
 
     // Publishes a message to the Versioned Policy channel.
     rpc PublishToVersionedPolicyChannel(VersionedPolicyPublishMessage) returns (google.protobuf.Empty);
 
+    // Publishes a VersionedPolicyCreatedMessage to the Versioned Policy channel. (oneOf variant)
+    rpc PublishVersionedPolicyCreatedMessageToVersionedPolicyChannel(VersionedPolicyCreatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a VersionedPolicyUpdatedMessage to the Versioned Policy channel. (oneOf variant)
+    rpc PublishVersionedPolicyUpdatedMessageToVersionedPolicyChannel(VersionedPolicyUpdatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a VersionedPolicyPublishedMessage to the Versioned Policy channel. (oneOf variant)
+    rpc PublishVersionedPolicyPublishedMessageToVersionedPolicyChannel(VersionedPolicyPublishedMessage) returns (google.protobuf.Empty);
+
     // Localized Policy Channel
 
     // Publishes a message to the Localized Policy channel.
     rpc PublishToLocalizedPolicyChannel(LocalizedPolicyPublishMessage) returns (google.protobuf.Empty);
+
+    // Publishes a LocalizedPolicyCreatedMessage to the Localized Policy channel. (oneOf variant)
+    rpc PublishLocalizedPolicyCreatedMessageToLocalizedPolicyChannel(LocalizedPolicyCreatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a LocalizedPolicyUpdatedMessage to the Localized Policy channel. (oneOf variant)
+    rpc PublishLocalizedPolicyUpdatedMessageToLocalizedPolicyChannel(LocalizedPolicyUpdatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a DefaultLocalizedPolicyUpdatedMessage to the Localized Policy channel. (oneOf variant)
+    rpc PublishDefaultLocalizedPolicyUpdatedMessageToLocalizedPolicyChannel(DefaultLocalizedPolicyUpdatedMessage) returns (google.protobuf.Empty);
 }

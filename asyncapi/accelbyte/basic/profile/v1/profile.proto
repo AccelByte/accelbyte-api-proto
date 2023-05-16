@@ -188,4 +188,19 @@ service BasicServiceUserProfileEvents {
 
     // Publishes a message to the User Profile channel.
     rpc PublishToUserProfileChannel(UserProfilePublishMessage) returns (google.protobuf.Empty);
+
+    // Publishes a UserProfileCreatedMessage to the User Profile channel. (oneOf variant)
+    rpc PublishUserProfileCreatedMessageToUserProfileChannel(UserProfileCreatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a UserProfileDeletedMessage to the User Profile channel. (oneOf variant)
+    rpc PublishUserProfileDeletedMessageToUserProfileChannel(UserProfileDeletedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a UserProfileEnabledMessage to the User Profile channel. (oneOf variant)
+    rpc PublishUserProfileEnabledMessageToUserProfileChannel(UserProfileEnabledMessage) returns (google.protobuf.Empty);
+
+    // Publishes a UserProfileDisabledMessage to the User Profile channel. (oneOf variant)
+    rpc PublishUserProfileDisabledMessageToUserProfileChannel(UserProfileDisabledMessage) returns (google.protobuf.Empty);
+
+    // Publishes a UserProfileUpdatedMessage to the User Profile channel. (oneOf variant)
+    rpc PublishUserProfileUpdatedMessageToUserProfileChannel(UserProfileUpdatedMessage) returns (google.protobuf.Empty);
 }

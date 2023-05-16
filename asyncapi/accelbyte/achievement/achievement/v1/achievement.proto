@@ -151,4 +151,13 @@ service AchievementServiceEvents {
 
     // Publishes a message to the Achievement channel.
     rpc PublishToAchievementChannel(AchievementPublishMessage) returns (google.protobuf.Empty);
+
+    // Publishes a UserAchievementUnlockedMessage to the Achievement channel. (oneOf variant)
+    rpc PublishUserAchievementUnlockedMessageToAchievementChannel(UserAchievementUnlockedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a GlobalAchievementUnlockedMessage to the Achievement channel. (oneOf variant)
+    rpc PublishGlobalAchievementUnlockedMessageToAchievementChannel(GlobalAchievementUnlockedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a AchievementRewardClaimedMessage to the Achievement channel. (oneOf variant)
+    rpc PublishAchievementRewardClaimedMessageToAchievementChannel(AchievementRewardClaimedMessage) returns (google.protobuf.Empty);
 }

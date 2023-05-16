@@ -116,4 +116,10 @@ service LegalServiceAgreementEvents {
 
     // Publishes a message to the Agreement channel.
     rpc PublishToAgreementChannel(AgreementPublishMessage) returns (google.protobuf.Empty);
+
+    // Publishes a AgreementCreatedMessage to the Agreement channel. (oneOf variant)
+    rpc PublishAgreementCreatedMessageToAgreementChannel(AgreementCreatedMessage) returns (google.protobuf.Empty);
+
+    // Publishes a AgreementUpdatedMessage to the Agreement channel. (oneOf variant)
+    rpc PublishAgreementUpdatedMessageToAgreementChannel(AgreementUpdatedMessage) returns (google.protobuf.Empty);
 }
