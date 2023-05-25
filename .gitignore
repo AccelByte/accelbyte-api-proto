@@ -48,3 +48,8 @@ Thumbs.db
 *.mov
 *.wmv
 
+# error files
+*.err
+
+# temporary folders (.new)
+asyncapi.new/
