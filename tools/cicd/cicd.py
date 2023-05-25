@@ -20,7 +20,9 @@ ExistingDirPath = click.Path(exists=True, file_okay=False, path_type=Path)
 header = """# Copyright (c) {} AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
-""".format(datetime.date.today().year)
+""".format(
+    datetime.date.today().year
+)
 
 fopen_kwargs = {"encoding": "utf-8", "errors": "ignore"}
 mkdir_kwargs = {"parents": True, "exist_ok": True}
@@ -175,6 +177,10 @@ def run(
         destination_dir=destination_dir,
     )
 
+    # 5. Add TIMESTAMP
+    timestamp_file = destination_dir / "TIMESTAMP"
+    timestamp(destination_file=timestamp_file, destination_dir=destination_dir)
+
 
 # noinspection PyBroadException, PyShadowingBuiltins
 def convert_to_message_class_map_properties(
@@ -198,7 +204,7 @@ def convert_to_message_class_map_properties(
             input=input,
             template="templates/message-message_class-map-properties.j2",
             output=destination_file,
-            **render_kwargs
+            **render_kwargs,
         )
         logging.info(
             "converted from '%s' to '%s'",
@@ -244,7 +250,7 @@ def convert_to_service_class_map_properties(
             input=input,
             template="templates/topic-service_class-map-properties.j2",
             output=destination_file,
-            **render_kwargs
+            **render_kwargs,
         )
         logging.info(
             "converted from '%s' to '%s'",
@@ -290,7 +296,7 @@ def convert_to_proto(
             input=input,
             template="templates/proto.j2",
             output=destination_file,
-            **render_kwargs
+            **render_kwargs,
         )
         logging.info(
             "converted from '%s' to '%s'",
@@ -364,7 +370,7 @@ def patch(
     destination_file: Path,
     patch_files: List[Path],
     destination_dir: Optional[Path] = None,
-    vendor_properties: Optional[Dict[str, Any]] = None
+    vendor_properties: Optional[Dict[str, Any]] = None,
 ) -> None:
     source_obj = yaml.safe_load(source_file.read_text(**fopen_kwargs))
 
@@ -387,13 +393,25 @@ def patch(
     destination_file.write_text(yaml.safe_dump(source_obj, **safe_dump_kwargs))
 
 
+def timestamp(destination_file: Path, destination_dir: Optional[Path] = None) -> None:
+    destination_file.write_text(datetime.datetime.utcnow().isoformat())
+    logging.info(
+        "updated timestamp '%s'",
+        destination_file.name
+        if destination_dir is None
+        else destination_file.relative_to(destination_dir),
+    )
+
+
 # noinspection PyBroadException
 def try_get_git_hash(path: Path) -> Optional[str]:
     owd = getcwd()
     chdir(str(path))
 
     try:
-        result = check_output(["git", "rev-parse", "HEAD"]).decode(encoding="utf-8").strip()
+        result = (
+            check_output(["git", "rev-parse", "HEAD"]).decode(encoding="utf-8").strip()
+        )
     except Exception:
         result = None
 
