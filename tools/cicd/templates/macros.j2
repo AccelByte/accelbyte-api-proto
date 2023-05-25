@@ -1,0 +1,112 @@
+{% macro render_schema_object(path, schema_obj) %}
+{% set prop_counter = [] %}
+{% do prop_counter.append(0) %}
+{% set schema_name = schema_obj | to_protobuf_type %}
+// path: {{ path }}
+message {{ schema_name }} {
+    {% for prop_source, props in schema_obj["x-all-properties"].items() %}
+    {% if prop_source != "this" %}
+
+    // {{ prop_source }}
+    {% endif %}
+    {% for prop_name, prop in props.items() %}
+    {% if 'x-proto-tag' in prop %}
+    {% set prop_tag = prop["x-proto-tag"] %}
+    {% else %}
+    {% set prop_tag = prop_counter | length %}
+    {% do prop_counter.append(0) %}
+    {% endif %}
+    {% if prop.type == "string" and "enum" in prop %}
+    {% set enum_type = '{}_enum'.format(prop_name) | to_pascal %}
+    enum {{ enum_type }} {
+        {% set enum_counter = [] %}
+        {% for enum_value in prop.enum %}
+        {{ enum_value | to_snake | to_upper }} = {{ enum_counter | length }};
+        {% do enum_counter.append(0) %}
+        {% endfor %}
+    }
+    {{ enum_type }} {{ prop_name | to_camel }} = {{ prop_tag }};
+    {% else %}
+    {{ prop | to_protobuf_type }} {{ prop_name | to_camel }} = {{ prop_tag }};
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+}
+{% endmacro %}
+
+{% macro render_message(name, path, message) %}
+{% set counter = [] %}
+{% do counter.append(0) %}
+// path: {{ path }}
+message {{ '{}_message'.format(name) | to_pascal }} {
+    {% if 'oneOf' in message %}
+    oneof payload {
+        {% for sub_payload in message.oneOf %}
+        {{ '{}_message'.format(sub_payload | to_protobuf_type) | to_pascal }} variant{{ loop.index0 }} = {{ counter | length }};
+        {% do counter.append(0) %}
+        {% endfor %}
+    }
+    {% elif 'payload' in message %}
+    {{ message.payload | to_protobuf_type }} payload = {{ counter | length }};
+    {% else %}
+    {{ raise('invalid state') }}
+    {% endif %}
+}
+{% endmacro %}
+
+{% macro render_service(schema) %}
+{% if schema.channels %}
+service {{ schema.info.title | to_pascal }} {
+    {% for channel_name, channel in schema.channels.items() %}
+    {% if not loop.first %}
+
+    {% endif %}
+    // {{ channel_name | to_title }} Channel
+    {% for operation_type in ['publish', 'subscribe'] %}
+    {% if operation_type in channel %}
+    {% set operation_verb = (operation_type == 'publish') | ternary('Publishes', 'Subscribes') %}
+    {% set operation = channel[operation_type] %}
+    {% set message = operation.message %}
+
+    // {{ operation_verb }} a message to the {{ channel_name | to_title }} channel.
+    {{ render_service_method(channel_name, operation_type, operation) -}}
+    {% if 'oneOf' in message %}
+
+    {% for sub_payload in message.oneOf %}
+    {% set request_name = '{}_message'.format(sub_payload | to_protobuf_type) | to_pascal %}
+    {% set method_name = '{} {} to {} Channel'.format(operation_type, request_name, channel_name) | to_pascal %}
+    {% if not loop.first %}
+
+    {% endif %}
+    // {{ operation_verb }} a {{ request_name }} to the {{ channel_name | to_title }} channel. (oneOf variant)
+    {{ render_rpc(method_name, request_name) }}
+    {% endfor %}
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+}
+{% endif %}
+{% endmacro %}
+
+{% macro render_service_method(channel_name, operation_type, operation) %}
+{% set method_name = ('operationId' in operation) |
+    ternary(
+        operation.operationId,
+        '{} to {} Channel'.format(operation_type, channel_name)
+    ) |
+    to_pascal
+%}
+{% if 'message' not in operation %}
+{{ raise('invalid state') }}
+{% elif '$ref' in operation.message %}
+{% set request_name = '{}_message'.format(operation.message | to_protobuf_type) | to_pascal %}
+{% else %}
+{% set request_name = '{}_{}_message'.format(channel_name, operation_type) | to_pascal %}
+{% endif %}
+{{ render_rpc(method_name, request_name) }}
+{% endmacro %}
+
+{% macro render_rpc(name, parameter_type, return_type='google.protobuf.Empty') -%}
+rpc {{ name }}({{ parameter_type }}) returns ({{ return_type }});
+{%- endmacro %}

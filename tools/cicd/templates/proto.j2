@@ -1,0 +1,77 @@
+{% import 'macros.j2' as macros -%}
+
+// Copyright (c) {{ today.year }} AccelByte Inc. All Rights Reserved.
+// This is licensed software from AccelByte Inc, for limitations
+// and restrictions contact your company contract manager.
+
+{% if 'x-source' in schema %}
+// source: {{ schema['x-source'] }} ({{ schema.info.version }})
+{% endif %}
+{% if schema["x-git-hash"] %}
+// git-hash: {{ schema["x-git-hash"] }}
+{% endif %}
+
+syntax = "proto3";
+
+{% set package_name = ('x-proto-package' in schema) | ternary(schema['x-proto-package'], 'package') %}
+package {{ package_name }};
+{% if 'x-proto-package-version' in schema %}
+// Version {{ schema['x-proto-package-version'] }}
+{% endif %}
+
+// --- imports ---
+
+import "google/protobuf/empty.proto";
+
+{% if schema['x-proto-imports'] %}
+{% for import in schema['x-proto-imports'] %}
+import "{{ import }}";
+{% endfor %}
+{% endif %}
+
+// --- options ---
+
+{% if schema['x-proto-options'] %}
+{% for option_name, option in schema['x-proto-options'].items() %}
+option {{ option_name }} = {{ option }};
+{% endfor %}
+{% endif %}
+
+// --- schema objects ---
+
+{% if schema['x-schema-objects'] %}
+{% for schema_uid, schema_path, schema_obj in schema['x-schema-objects'] %}
+{{ macros.render_schema_object(schema_path, schema_obj) }}
+{% endfor %}
+{% endif %}
+
+// --- #/components/messages/{message_name} ---
+
+{% if schema.components and schema.components.message %}
+{% for message_name, message in schema.components.messages.items() %}
+{% set message_path = '#/components/messages/{}'.format(message_name) %}
+{{ macros.render_message(message_name, message_path, message) }}
+{% endfor %}
+{% endif %}
+
+// --- #/channels/{channel_name}/{operation_type}/message ---
+
+{% if schema.channels %}
+{% for channel_name, channel in schema.channels.items() %}
+{% for operation_type in ['publish', 'subscribe'] %}
+{% if operation_type in channel
+   and 'message' in channel[operation_type]
+   and '$ref' not in channel[operation_type].message
+%}
+{% set message_name = '{}_{}'.format(channel_name, operation_type) | to_pascal %}
+{% set message_path = '#/channels/{}/{}/message'.format(channel_name, operation_type) %}
+{% set message = channel[operation_type].message %}
+{{ macros.render_message(message_name, message_path, message) }}
+{% endif %}
+{% endfor %}
+{% endfor %}
+{% endif %}
+
+// --- service ---
+
+{{ macros.render_service(schema) }}
