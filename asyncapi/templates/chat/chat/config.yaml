@@ -1,0 +1,3 @@
+---
+source: Chat/AsyncAPI/chat.yaml
+destination: accelbyte/chat/chat/v1/chat.proto

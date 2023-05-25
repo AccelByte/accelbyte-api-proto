@@ -1,0 +1,3 @@
+---
+source: SeasonPass/AsyncAPI/seasonpass.yml
+destination: accelbyte/season_pass/seasonpass/v1/seasonpass.proto

@@ -1,0 +1,3 @@
+---
+source: IAM/AsyncAPI/oauth.yaml
+destination: accelbyte/iam/oauth/v1/oauth.proto

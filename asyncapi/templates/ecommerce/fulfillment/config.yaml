@@ -1,0 +1,3 @@
+---
+source: Ecommerce/AsyncAPI/fulfillment.yml
+destination: accelbyte/ecommerce/fulfillment/v1/fulfillment.proto

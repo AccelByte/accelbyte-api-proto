@@ -1,0 +1,20 @@
+---
+- op: 'add'
+  path: '/x-proto-package'
+  value: 'accelbyte.lobby.lobby.v1'
+- op: 'add'
+  path: '/x-proto-package-version'
+  value: 'v1.0.0'
+- op: 'add'
+  path: '/x-proto-package-semver'
+  value:
+  - 1
+  - 0
+  - 0
+- op: 'add'
+  path: '/x-proto-options'
+  value:
+    csharp_namespace: '"AccelByte.Lobby.Lobby"'
+    go_package: '"accelbyte.net/lobby/lobby"'
+    java_multiple_files: 'true'
+    java_package: '"net.accelbyte.lobby.lobby"'

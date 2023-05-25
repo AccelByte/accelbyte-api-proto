@@ -1,0 +1,3 @@
+---
+source: Ecommerce/AsyncAPI/entitlement.yml
+destination: accelbyte/ecommerce/entitlement/v1/entitlement.proto

@@ -1,0 +1,3 @@
+---
+source: Lobby/AsyncAPI/chat.yaml
+destination: accelbyte/lobby/chat/v1/chat.proto

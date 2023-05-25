@@ -1,0 +1,3 @@
+---
+source: IAM/AsyncAPI/rbac.yaml
+destination: accelbyte/iam/rbac/v1/rbac.proto

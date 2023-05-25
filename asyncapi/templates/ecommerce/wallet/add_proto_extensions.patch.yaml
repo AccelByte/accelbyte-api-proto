@@ -1,0 +1,20 @@
+---
+- op: 'add'
+  path: '/x-proto-package'
+  value: 'accelbyte.ecommerce.wallet.v1'
+- op: 'add'
+  path: '/x-proto-package-version'
+  value: 'v1.0.0'
+- op: 'add'
+  path: '/x-proto-package-semver'
+  value:
+  - 1
+  - 0
+  - 0
+- op: 'add'
+  path: '/x-proto-options'
+  value:
+    csharp_namespace: '"AccelByte.Ecommerce.Wallet"'
+    go_package: '"accelbyte.net/ecommerce/wallet"'
+    java_multiple_files: 'true'
+    java_package: '"net.accelbyte.ecommerce.wallet"'

@@ -1,0 +1,3 @@
+---
+source: Ecommerce/AsyncAPI/subscription.yml
+destination: accelbyte/ecommerce/subscription/v1/subscription.proto

@@ -1,0 +1,3 @@
+---
+source: Basic/AsyncAPI/util.yaml
+destination: accelbyte/basic/util/v1/util.proto

@@ -1,0 +1,20 @@
+---
+- op: 'add'
+  path: '/x-proto-package'
+  value: 'accelbyte.ugc.ugc.v1'
+- op: 'add'
+  path: '/x-proto-package-version'
+  value: 'v1.0.0'
+- op: 'add'
+  path: '/x-proto-package-semver'
+  value:
+  - 1
+  - 0
+  - 0
+- op: 'add'
+  path: '/x-proto-options'
+  value:
+    csharp_namespace: '"AccelByte.Ugc.Ugc"'
+    go_package: '"accelbyte.net/ugc/ugc"'
+    java_multiple_files: 'true'
+    java_package: '"net.accelbyte.ugc.ugc"'

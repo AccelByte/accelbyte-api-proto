@@ -1,0 +1,3 @@
+---
+source: Social/AsyncAPI/statistic.yaml
+destination: accelbyte/social/statistic/v1/statistic.proto

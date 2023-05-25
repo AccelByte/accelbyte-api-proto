@@ -1,0 +1,3 @@
+---
+source: DSM/AsyncAPI/dsmc.yaml
+destination: accelbyte/dsm/dsmc/v1/dsmc.proto

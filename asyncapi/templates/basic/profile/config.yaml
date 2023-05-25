@@ -1,0 +1,3 @@
+---
+source: Basic/AsyncAPI/profile.yaml
+destination: accelbyte/basic/profile/v1/profile.proto

@@ -1,0 +1,3 @@
+---
+source: Ecommerce/AsyncAPI/order.yml
+destination: accelbyte/ecommerce/order/v1/order.proto
