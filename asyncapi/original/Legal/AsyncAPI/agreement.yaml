@@ -1,0 +1,88 @@
+asyncapi: '2.0.0'
+id: 'http://justice-legal-service'
+info:
+  title: Legal Service Agreement Events
+  version: 0.1.0
+channels:
+  agreement:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/agreementCreated'
+        - $ref: '#/components/messages/agreementUpdated'
+
+
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+        version:
+          type: integer
+        name:
+          type: string
+        namespace:
+          type: string
+        parentNamespace:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        clientId:
+          type: string
+        userId:
+          type: string
+        traceId:
+          type: string
+        sessionId:
+          type: string
+
+    agreement:
+      type: object
+      properties:
+        policyId:
+          type: string
+        policyVersionId:
+          type: string
+        policyName:
+          type: string
+        displayVersion:
+          type: string
+        localizedPolicyVersionId:
+          type: string
+        localizedDescription:
+          type: string
+        isAccepted:
+          type: boolean
+        userId:
+          type: string
+         
+
+  messages:
+    agreementCreated:
+      name: agreementCreated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              agreement:
+                $ref: '#/components/schemas/agreement'
+
+    agreementUpdated:
+      name: agreementUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              agreement:
+                $ref: '#/components/schemas/agreement'

@@ -1,0 +1,129 @@
+asyncapi: '2.0.0'
+id: 'urn:net:accelbyte:platform:reward'
+info:
+  title: AsyncAPI for justice reward service
+  version: 0.1.0
+channels:
+  rewardManagement:
+    publish:
+      message:
+        oneOf:
+          - $ref: '#/components/messages/rewardCreated'
+          - $ref: '#/components/messages/rewardUpdated'
+          - $ref: '#/components/messages/rewardDeleted'
+          - $ref: '#/components/messages/rewardImported'
+
+
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+        version:
+          type: integer
+        name:
+          type: string
+        namespace:
+          type: string
+        parentNamespace:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        clientId:
+          type: string
+        userId:
+          type: string
+        traceId:
+          type: string
+        sessionId:
+          type: string
+
+    rewardManage:
+      type: object
+      properties:
+        namespace:
+          type: string
+        rewardCode:
+          type: string
+        description:
+          type: string
+        eventTopic:
+          type: string
+
+    rewardImport:
+      type: object
+      properties:
+        namespace:
+          type: string
+        replacedRewardCodes:
+          type: array
+          items:
+            type: string
+        ignoredRewardCodes:
+          type: array
+          items:
+            type: string
+        newRewardCodes:
+          type: array
+          items:
+            type: string
+        failedRewardCodes:
+          type: array
+          items:
+            type: string
+
+  messages:
+    rewardCreated:
+      name: rewardCreated
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              rewardManage:
+                $ref: '#/components/schemas/rewardManage'
+
+    rewardUpdated:
+      name: rewardUpdated
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              rewardManage:
+                $ref: '#/components/schemas/rewardManage'
+
+    rewardDeleted:
+      name: rewardDeleted
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              rewardManage:
+                $ref: '#/components/schemas/rewardManage'
+
+    rewardImported:
+      name: rewardImported
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              rewardImport:
+                $ref: '#/components/schemas/rewardImport'

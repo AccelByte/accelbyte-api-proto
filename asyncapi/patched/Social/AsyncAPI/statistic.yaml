@@ -1,0 +1,403 @@
+asyncapi: 2.0.0
+id: http://justice-social-service
+info:
+  title: Statistic Events
+  version: 0.1.0
+channels:
+  statManagement:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/statCreated'
+        - $ref: '#/components/messages/statDeleted'
+        - $ref: '#/components/messages/statUpdated'
+        - $ref: '#/components/messages/statImported'
+        - $ref: '#/components/messages/statExported'
+  statistic:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/statItemCreated'
+        - $ref: '#/components/messages/statItemUpdated'
+        - $ref: '#/components/messages/statItemDeleted'
+        - $ref: '#/components/messages/globalStatItemUpdated'
+  statCycleManagement:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/statCycleCreated'
+        - $ref: '#/components/messages/statCycleUpdated'
+        - $ref: '#/components/messages/statCycleReset'
+        - $ref: '#/components/messages/statCycleDeleted'
+  statisticCycle:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/statItemCycleCreated'
+        - $ref: '#/components/messages/statItemCycleUpdated'
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+        version:
+          type: integer
+        name:
+          type: string
+        namespace:
+          type: string
+        parentNamespace:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        clientId:
+          type: string
+        userId:
+          type: string
+          description: as operator id
+        sessionId:
+          type: string
+    stat:
+      type: object
+      properties:
+        namespace:
+          type: string
+        statCode:
+          type: string
+        status:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        maximum:
+          type: number
+          format: double
+        minimum:
+          type: number
+          format: double
+        defaultValue:
+          type: integer
+        incrementOnly:
+          type: boolean
+        setAsGlobal:
+          type: boolean
+        setBy:
+          type: string
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        ignoreAdditionalDataOnValueRejected:
+          type: boolean
+    statExport:
+      type: object
+      properties:
+        namespace:
+          type: string
+        statCodes:
+          type: array
+          items:
+            type: string
+    statImport:
+      type: object
+      properties:
+        namespace:
+          type: string
+        replacedStatCodes:
+          type: array
+          items:
+            type: string
+        ignoredStatCodes:
+          type: array
+          items:
+            type: string
+        newStatCodes:
+          type: array
+          items:
+            type: string
+        failedStatCodes:
+          type: array
+          items:
+            type: string
+    statItem:
+      type: object
+      properties:
+        namespace:
+          type: string
+        statCode:
+          type: string
+        userId:
+          type: string
+        latestValue:
+          type: number
+          format: double
+        inc:
+          type: number
+          format: double
+        additionalData:
+          type: object
+          additionalProperties:
+            type: object
+        ignoreAdditionalDataOnValueRejected:
+          type: boolean
+    globalStatItem:
+      type: object
+      properties:
+        namespace:
+          type: string
+        statCode:
+          type: string
+        latestValue:
+          type: number
+          format: double
+        inc:
+          type: number
+          format: double
+    statCycle:
+      type: object
+      properties:
+        id:
+          type: string
+        namespace:
+          type: string
+        cycleType:
+          type: string
+        resetTime:
+          type: string
+        resetDay:
+          type: integer
+        resetDate:
+          type: integer
+        resetMonth:
+          type: integer
+        seasonPeriod:
+          type: integer
+        currentVersion:
+          type: integer
+        status:
+          type: string
+        nextReset:
+          type: string
+          format: date-time
+        start:
+          type: string
+          format: date-time
+        end:
+          type: string
+          format: date-time
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    statCycleItem:
+      type: object
+      properties:
+        namespace:
+          type: string
+        cycleId:
+          type: string
+        statCode:
+          type: string
+        userId:
+          type: string
+        updateStrategy:
+          type: string
+        cycleVersion:
+          type: integer
+        latestValue:
+          type: number
+          format: double
+        updateValue:
+          type: number
+          format: double
+  messages:
+    statCreated:
+      name: statCreated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            allOf:
+            - $ref: '#/components/schemas/stat'
+    statDeleted:
+      name: statDeleted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            allOf:
+            - $ref: '#/components/schemas/stat'
+    statUpdated:
+      name: statUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            allOf:
+            - $ref: '#/components/schemas/stat'
+    statImported:
+      name: statImported
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            allOf:
+            - $ref: '#/components/schemas/statImport'
+    statExported:
+      name: statExported
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            allOf:
+            - $ref: '#/components/schemas/statExport'
+    statItemCreated:
+      name: statItemCreated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            allOf:
+            - $ref: '#/components/schemas/statItem'
+    statItemUpdated:
+      name: statItemUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            allOf:
+            - $ref: '#/components/schemas/statItem'
+    statItemDeleted:
+      name: statItemDeleted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            allOf:
+            - $ref: '#/components/schemas/statItem'
+    globalStatItemUpdated:
+      name: globalStatItemUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            allOf:
+            - $ref: '#/components/schemas/globalStatItem'
+    statCycleCreated:
+      name: statCycleCreated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            allOf:
+            - $ref: '#/components/schemas/statCycle'
+    statCycleUpdated:
+      name: statCycleUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            allOf:
+            - $ref: '#/components/schemas/statCycle'
+    statCycleDeleted:
+      name: statCycleDeleted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            allOf:
+            - $ref: '#/components/schemas/statCycle'
+    statCycleReset:
+      name: statCycleReset
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            allOf:
+            - $ref: '#/components/schemas/statCycle'
+    statItemCycleCreated:
+      name: statItemCycleCreated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            allOf:
+            - $ref: '#/components/schemas/statCycleItem'
+    statItemCycleUpdated:
+      name: statItemCycleUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            allOf:
+            - $ref: '#/components/schemas/statCycleItem'
+x-source: Social/AsyncAPI/statistic.yaml
+x-git-hash: 93f80da7cd88a4c8ef6e1a02666d4e5b25f46fa1
+x-proto-package: accelbyte.social.statistic.v1
+x-proto-package-version: v1.0.0
+x-proto-package-semver:
+- 1
+- 0
+- 0
+x-proto-options:
+  csharp_namespace: '"AccelByte.Social.Statistic"'
+  go_package: '"accelbyte.net/social/statistic"'
+  java_multiple_files: 'true'
+  java_package: '"net.accelbyte.social.statistic"'

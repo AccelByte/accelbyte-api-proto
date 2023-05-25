@@ -1,0 +1,173 @@
+asyncapi: '2.0.0'
+id: 'urn:net:accelbyte:platform:wallet'
+info:
+  title: AsyncAPI for justice wallet service
+  version: 0.0.1
+defaultContentType: application/json
+channels:
+  walletProcessing:
+    publish:
+      message:
+        oneOf:
+          - $ref: '#/components/messages/walletDisabled'
+          - $ref: '#/components/messages/walletEnabled'
+          - $ref: '#/components/messages/walletCredited'
+          - $ref: '#/components/messages/walletDebited'
+          - $ref: '#/components/messages/walledPaid'
+          - $ref: '#/components/messages/walledExpired'
+
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+          description: event id
+        version:
+          type: integer
+        name:
+          type: string
+          description: event name
+        namespace:
+          type: string
+          description: event namespace
+        parentNamespace:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        clientId:
+          type: string
+          description: client id
+        userId:
+          type: string
+          description: the operator id
+        traceId:
+          type: string
+          description: trace id
+        sessionId:
+          type: string
+          description: session id
+
+    walletStatusChange:
+      type: object
+      properties:
+        walletId:
+          type: string
+        userId:
+          type: string
+        status:
+          type: string
+          description: wallet status
+        previousStatus:
+          type: string
+          description: wallet status before change
+
+    walletBalanceChange:
+      type: object
+      properties:
+        walletId:
+          type: string
+        namespace:
+          type: string
+        userId:
+          type: string
+        currencyCode:
+          type: string
+        balance:
+          type: integer
+          format: int64
+          description: the balance after change
+        amount:
+          type: integer
+          format: int64
+          description: change amount, positive for both credit & debit
+        source:
+          type: string
+          description: credit source
+        reason:
+          type: string
+          description: reason
+        origin:
+          type: string
+          description: origin
+
+  messages:
+    walletDisabled:
+      name: walletDisabled
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              walletStatusChange:
+                $ref: '#/components/schemas/walletStatusChange'
+
+    walletEnabled:
+      name: walletEnabled
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              walletStatusChange:
+                $ref: '#/components/schemas/walletStatusChange'
+
+    walletCredited:
+      name: walletCredited
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              walletBalanceChange:
+                $ref: '#/components/schemas/walletBalanceChange'
+
+    walletDebited:
+      name: walletDebited
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              walletBalanceChange:
+                $ref: '#/components/schemas/walletBalanceChange'
+
+    walledPaid:
+      name: walledPaid
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              walletBalanceChange:
+                $ref: '#/components/schemas/walletBalanceChange'
+
+    walledExpired:
+      name: walledExpired
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              walletBalanceChange:
+                $ref: '#/components/schemas/walletBalanceChange'

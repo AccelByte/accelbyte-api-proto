@@ -1,0 +1,145 @@
+asyncapi: 2.0.0
+id: http://justice-iam-service
+info:
+  title: IAM Service OAuth Events
+  version: 0.1.0
+channels:
+  oauthRequest:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/oauthRequestAuthorized'
+  oauthToken:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/oauthTokenGenerated'
+        - $ref: '#/components/messages/oauthTokenRevoked'
+  oauthThirdPartyRequest:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/oauthThirdPartyRequestAuthorized'
+  oauthThirdPartyToken:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/oauthThirdPartyTokenGenerated'
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+        version:
+          type: integer
+        name:
+          type: string
+        namespace:
+          type: string
+        parentNamespace:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        clientId:
+          type: string
+        userId:
+          type: string
+        traceId:
+          type: string
+        sessionId:
+          type: string
+    oauth:
+      type: object
+      properties:
+        clientId:
+          type: string
+        responseType:
+          type: string
+        platformId:
+          type: string
+    oauthThirdParty:
+      type: object
+      properties:
+        platformId:
+          type: string
+  messages:
+    oauthRequestAuthorized:
+      name: oauthRequestAuthorized
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              oauth:
+                $ref: '#/components/schemas/oauth'
+    oauthTokenGenerated:
+      name: oauthTokenGenerated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              oauth:
+                $ref: '#/components/schemas/oauth'
+    oauthTokenRevoked:
+      name: oauthTokenRevoked
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              oauth:
+                $ref: '#/components/schemas/oauth'
+    oauthThirdPartyRequestAuthorized:
+      name: oauthThirdPartyRequestAuthorized
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              oauth:
+                $ref: '#/components/schemas/oauth'
+              oauthThirdParty:
+                $ref: '#/components/schemas/oauthThirdParty'
+    oauthThirdPartyTokenGenerated:
+      name: oauthThirdPartyTokenGenerated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              oauth:
+                $ref: '#/components/schemas/oauth'
+              oauthThirdParty:
+                $ref: '#/components/schemas/oauthThirdParty'
+x-source: IAM/AsyncAPI/oauth.yaml
+x-git-hash: 93f80da7cd88a4c8ef6e1a02666d4e5b25f46fa1
+x-proto-package: accelbyte.iam.oauth.v1
+x-proto-package-version: v1.0.0
+x-proto-package-semver:
+- 1
+- 0
+- 0
+x-proto-options:
+  csharp_namespace: '"AccelByte.IAM.Oauth"'
+  go_package: '"accelbyte.net/iam/oauth"'
+  java_multiple_files: 'true'
+  java_package: '"net.accelbyte.iam.oauth"'

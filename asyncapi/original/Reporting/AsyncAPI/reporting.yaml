@@ -1,0 +1,64 @@
+asyncapi: '2.0.0'
+id: 'http://justice-reporting-service'
+info:
+  title: Reporting Service Events
+  version: 0.1.0
+channels:
+  autoModeration:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/hideContent'
+
+
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+        version:
+          type: integer
+        name:
+          type: string
+        namespace:
+          type: string
+        parentNamespace:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        clientId:
+          type: string
+        userId:
+          type: string
+        traceId:
+          type: string
+        sessionId:
+          type: string
+
+    autoHideContent:
+      type: object
+      properties:
+        namespace:
+          type: string
+        userId:
+          type: string
+        contentId:
+          type: string
+
+
+  messages:
+    hideContent:
+      name: hideContent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              autoHideContent:
+                $ref: '#/components/schemas/autoHideContent'

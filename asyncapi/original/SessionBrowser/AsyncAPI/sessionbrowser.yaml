@@ -1,0 +1,64 @@
+asyncapi: '2.0.0'
+id: 'http://justice-session-browser-service'
+info:
+  title: Session Browser Events
+  version: 0.1.0
+channels:
+  sessionBrowser:
+    publish:
+      message:
+        oneOf:
+          - $ref: '#/components/messages/gameSessionMetricUpdated'
+
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+        version:
+          type: integer
+        name:
+          type: string
+        namespace:
+          type: string
+        parentNamespace:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        clientId:
+          type: string
+        userId:
+          type: string
+        traceId:
+          type: string
+        sessionId:
+          type: string
+
+    gamePayload:
+      type: object
+      properties:
+        matchmaking:
+          type: integer
+        customGame:
+          type: integer
+        p2p:
+          type: integer
+
+  messages:
+    gameSessionMetricUpdated:
+      name: gameSessionMetricUpdated
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            properties:
+              gameSessionCount:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/gamePayload'
+

@@ -1,0 +1,264 @@
+asyncapi: 2.0.0
+id: http://justice-iam-service
+info:
+  title: IAM Service RBAC Events
+  version: 0.1.0
+channels:
+  role:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/roleCreated'
+        - $ref: '#/components/messages/roleDeleted'
+        - $ref: '#/components/messages/roleUpdated'
+  rolePermissions:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/rolePermissionCreated'
+        - $ref: '#/components/messages/rolePermissionDeleted'
+        - $ref: '#/components/messages/rolePermissionUpdated'
+  roleManager:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/roleManagerCreated'
+        - $ref: '#/components/messages/roleManagerDeleted'
+  roleMember:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/roleMemberCreated'
+        - $ref: '#/components/messages/roleMemberDeleted'
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+        version:
+          type: integer
+        name:
+          type: string
+        namespace:
+          type: string
+        parentNamespace:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        clientId:
+          type: string
+        userId:
+          type: string
+        traceId:
+          type: string
+        sessionId:
+          type: string
+    permissions:
+      type: object
+      properties:
+        resoure:
+          type: string
+        action:
+          type: string
+        SchedAction:
+          type: integer
+        SchedCron:
+          type: string
+        SchedRange:
+          type: array
+          items:
+            type: string
+    role:
+      type: object
+      properties:
+        roleId:
+          type: string
+        name:
+          type: string
+        admin:
+          type: boolean
+        roleIsWildcard:
+          type: boolean
+    roleManager:
+      type: object
+      properties:
+        userId:
+          type: string
+        namespace:
+          type: string
+        displayName:
+          type: string
+    roleMember:
+      type: object
+      properties:
+        userId:
+          type: string
+        namespace:
+          type: string
+        displayName:
+          type: string
+  messages:
+    roleCreated:
+      name: roleCreated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              role:
+                $ref: '#/components/schemas/role'
+    roleDeleted:
+      name: roleDeleted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              role:
+                $ref: '#/components/schemas/role'
+    roleUpdated:
+      name: roleUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              role:
+                $ref: '#/components/schemas/role'
+    rolePermissionCreated:
+      name: rolePermissionCreated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              role:
+                $ref: '#/components/schemas/role'
+              permissions:
+                type: array
+                items:
+                  $ref: '#/components/schemas/permissions'
+    rolePermissionDeleted:
+      name: rolePermissionDeleted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              role:
+                $ref: '#/components/schemas/role'
+              permissions:
+                type: array
+                items:
+                  $ref: '#/components/schemas/permissions'
+    rolePermissionUpdated:
+      name: rolePermissionUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              role:
+                $ref: '#/components/schemas/role'
+              permissions:
+                type: array
+                items:
+                  $ref: '#/components/schemas/permissions'
+    roleManagerCreated:
+      name: roleManagerCreated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              role:
+                $ref: '#/components/schemas/role'
+              roleManager:
+                type: array
+                items:
+                  $ref: '#/components/schemas/roleManager'
+    roleManagerDeleted:
+      name: roleManagerDeleted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              role:
+                $ref: '#/components/schemas/role'
+              roleManager:
+                type: array
+                items:
+                  $ref: '#/components/schemas/roleManager'
+    roleMemberCreated:
+      name: roleMemberCreated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              role:
+                $ref: '#/components/schemas/role'
+              roleMember:
+                type: array
+                items:
+                  $ref: '#/components/schemas/roleMember'
+    roleMemberDeleted:
+      name: roleMemberDeleted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              role:
+                $ref: '#/components/schemas/role'
+              roleMember:
+                type: array
+                items:
+                  $ref: '#/components/schemas/roleMember'
+x-source: IAM/AsyncAPI/rbac.yaml
+x-git-hash: 93f80da7cd88a4c8ef6e1a02666d4e5b25f46fa1
+x-proto-package: accelbyte.iam.rbac.v1
+x-proto-package-version: v1.0.0
+x-proto-package-semver:
+- 1
+- 0
+- 0
+x-proto-options:
+  csharp_namespace: '"AccelByte.IAM.Rbac"'
+  go_package: '"accelbyte.net/iam/rbac"'
+  java_multiple_files: 'true'
+  java_package: '"net.accelbyte.iam.rbac"'

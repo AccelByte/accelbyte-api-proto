@@ -1,0 +1,150 @@
+asyncapi: 2.0.0
+id: http://justice-chat-service
+info:
+  title: Chat Events
+  version: 0.1.0
+channels:
+  personalChat:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/personalChatSent'
+  chat:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/userConnected'
+        - $ref: '#/components/messages/userDisconnected'
+        - $ref: '#/components/messages/userChatRateLimited'
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+        version:
+          type: integer
+        name:
+          type: string
+        namespace:
+          type: string
+        parentNamespace:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        clientId:
+          type: string
+        userId:
+          type: string
+          description: UserId of the operator for this event (optional)
+        traceId:
+          type: string
+        sessionId:
+          type: string
+        spanContext:
+          type: string
+    chatPayload:
+      type: object
+      properties:
+        message_id:
+          type: string
+          format: uuid
+        sender_id:
+          type: string
+          format: uuid
+        target_id:
+          type: string
+          format: uuid
+          description: Can be partyId or userId
+        payload:
+          type: string
+        target_type:
+          type: string
+        target_members:
+          type: array
+          items:
+            type: string
+    userPayloadConnected:
+      userConnected: null
+      type: object
+    userPayloadDisconnected:
+      userDisconnected: null
+      type: object
+      properties:
+        reason:
+          type: string
+        code:
+          type: integer
+        forced:
+          type: boolean
+    userChatRateLimited:
+      userChatRateLimited: null
+      type: object
+  messages:
+    personalChatSent:
+      name: personalChatSent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            properties:
+              personalChatSent:
+                type: object
+                allOf:
+                - $ref: '#/components/schemas/chatPayload'
+    userConnected:
+      name: userConnected
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            properties:
+              userConnected:
+                type: object
+                allOf:
+                - $ref: '#/components/schemas/userPayloadConnected'
+    userDisconnected:
+      name: userDisconnected
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            properties:
+              userDisconnected:
+                type: object
+                allOf:
+                - $ref: '#/components/schemas/userPayloadDisconnected'
+    userChatRateLimited:
+      name: userChatRateLimited
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            properties:
+              userChatRateLimited:
+                type: object
+                allOf:
+                - $ref: '#/components/schemas/userChatRateLimited'
+x-source: Chat/AsyncAPI/chat.yaml
+x-git-hash: 93f80da7cd88a4c8ef6e1a02666d4e5b25f46fa1
+x-proto-package: accelbyte.chat.chat.v1
+x-proto-package-version: v1.0.0
+x-proto-package-semver:
+- 1
+- 0
+- 0
+x-proto-options:
+  csharp_namespace: '"AccelByte.Chat.Chat"'
+  go_package: '"accelbyte.net/chat/chat"'
+  java_multiple_files: 'true'
+  java_package: '"net.accelbyte.chat.chat"'

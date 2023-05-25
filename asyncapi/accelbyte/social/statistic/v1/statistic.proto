@@ -3,7 +3,7 @@
 // and restrictions contact your company contract manager.
 
 // source: Social/AsyncAPI/statistic.yaml (0.1.0)
-// hash: 1aeb8c915acaa94e321b129462d0a16b64434587
+// git-hash: 93f80da7cd88a4c8ef6e1a02666d4e5b25f46fa1
 
 syntax = "proto3";
 
@@ -57,6 +57,7 @@ message Stat {
     AnonymousSchema1 tags = 12;
     string createdAt = 13;
     string updatedAt = 14;
+    bool ignoreAdditionalDataOnValueRejected = 15;
 }
 
 // path: #/components/schemas/statExport
@@ -90,6 +91,7 @@ message StatItem {
     double latestValue = 4;
     double inc = 5;
     AnonymousSchema3 additionalData = 6;
+    bool ignoreAdditionalDataOnValueRejected = 7;
 }
 
 // path: #/components/schemas/globalStatItem
@@ -149,6 +151,7 @@ message AnonymousSchema4 {
     AnonymousSchema1 tags = 12;
     string createdAt = 13;
     string updatedAt = 14;
+    bool ignoreAdditionalDataOnValueRejected = 15;
 }
 
 // path: #/components/messages/statCreated/payload
@@ -185,6 +188,7 @@ message AnonymousSchema5 {
     AnonymousSchema1 tags = 12;
     string createdAt = 13;
     string updatedAt = 14;
+    bool ignoreAdditionalDataOnValueRejected = 15;
 }
 
 // path: #/components/messages/statDeleted/payload
@@ -221,6 +225,7 @@ message AnonymousSchema6 {
     AnonymousSchema1 tags = 12;
     string createdAt = 13;
     string updatedAt = 14;
+    bool ignoreAdditionalDataOnValueRejected = 15;
 }
 
 // path: #/components/messages/statUpdated/payload
@@ -300,6 +305,7 @@ message AnonymousSchema9 {
     double latestValue = 4;
     double inc = 5;
     AnonymousSchema3 additionalData = 6;
+    bool ignoreAdditionalDataOnValueRejected = 7;
 }
 
 // path: #/components/messages/statItemCreated/payload
@@ -328,6 +334,7 @@ message AnonymousSchema10 {
     double latestValue = 4;
     double inc = 5;
     AnonymousSchema3 additionalData = 6;
+    bool ignoreAdditionalDataOnValueRejected = 7;
 }
 
 // path: #/components/messages/statItemUpdated/payload
@@ -356,6 +363,7 @@ message AnonymousSchema11 {
     double latestValue = 4;
     double inc = 5;
     AnonymousSchema3 additionalData = 6;
+    bool ignoreAdditionalDataOnValueRejected = 7;
 }
 
 // path: #/components/messages/statItemDeleted/payload

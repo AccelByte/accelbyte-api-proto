@@ -1,0 +1,62 @@
+asyncapi: '2.0.0'
+id: 'http://justice-matchmaking-v2-service'
+info:
+  title: Matchmaking V2 Notification Events
+  version: 0.1.0
+channels:
+  freeformUserNotificationRequest:
+    publish:
+      message:
+        oneOf:
+          - $ref: '#/components/messages/freeformUserNotification'
+
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+        version:
+          type: integer
+        name:
+          type: string
+        namespace:
+          type: string
+        parentNamespace:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        traceId:
+          type: string
+        spanContext:
+          type: string
+
+
+    notificationPayload:
+      type: object
+      properties:
+        userIds:
+          type: array
+          items:
+            type: string
+        namespace:
+          type: string
+        topicName:
+          type: string
+        message:
+          type: string
+
+  messages:
+    freeformUserNotification:
+      name: freeformUserNotification
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            allOf:
+              - $ref: '#/components/schemas/notificationPayload'

@@ -1,0 +1,409 @@
+asyncapi: '2.0.0'
+id: 'urn:net:accelbyte:platform:entitlement'
+info:
+  title: AsyncAPI for justice entitlement service
+  version: 0.0.1
+defaultContentType: application/json
+channels:
+  entitlementManagement:
+    publish:
+      message:
+        oneOf:
+          - $ref: '#/components/messages/entitlementGranted'
+          - $ref: '#/components/messages/entitlementUpdated'
+          - $ref: '#/components/messages/entitlementRevoked'
+          - $ref: '#/components/messages/entitlementDisabled'
+          - $ref: '#/components/messages/entitlementEnabled'
+          - $ref: '#/components/messages/entitlementUseCountRevoked'
+
+  entitlementConsumption:
+    publish:
+      message:
+        oneOf:
+          - $ref: '#/components/messages/entitlementConsumed'
+
+  entitlementSale:
+    publish:
+      message:
+        oneOf:
+          - $ref: '#/components/messages/entitlementSellback'
+
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+          description: event id
+        version:
+          type: integer
+        name:
+          type: string
+          description: event name
+        namespace:
+          type: string
+          description: event namespace
+        parentNamespace:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        clientId:
+          type: string
+          description: client id
+        userId:
+          type: string
+          description: the operator id
+        traceId:
+          type: string
+          description: trace id
+        sessionId:
+          type: string
+          description: session id
+
+    entitlement:
+      type: object
+      properties:
+        id:
+          type: string
+          description: entitlement id
+        namespace:
+          type: string
+          description: entitlement namespace
+        clazz:
+          type: string
+          description: entitlement class
+        type:
+          type: string
+          description: entitlement type
+        status:
+          type: string
+          description: entitlement status
+        appId:
+          type: string
+          description: appId if entitlement is an app
+        appType:
+          type: string
+          description: appType if entitlement is an app
+        sku:
+          type: string
+          description: sku for purchased item
+        userId:
+          type: string
+          description: userId for this entitlement
+        itemId:
+          type: string
+          description: itemId of the entitlement
+        itemNamespace:
+          type: string
+          description: itemNamespace for the purchased item
+        name:
+          type: string
+          description: entitlement name
+        useCount:
+          type: integer
+          format: int32
+          description: useCount for entitlement
+        source:
+          type: string
+          description: entitlement source
+        startDate:
+          type: string
+          format: date-time
+          description: entitlement start date
+        endDate:
+          type: string
+          format: date-time
+          description: entitlement end date
+        grantedAt:
+          type: string
+          format: date-time
+          description: entitlement granted at
+        createdAt:
+          type: string
+          format: date-time
+          description: entitlement created at
+        updatedAt:
+          type: string
+          format: date-time
+          description: entitlement updated at
+
+    stackableEntitlement:
+      type: object
+      properties:
+        id:
+          type: string
+          description: entitlement id
+        namespace:
+          type: string
+          description: entitlement namespace
+        clazz:
+          type: string
+          description: entitlement class
+        type:
+          type: string
+          description: entitlement type
+        status:
+          type: string
+          description: entitlement status
+        appId:
+          type: string
+          description: appId if entitlement is an app
+        appType:
+          type: string
+          description: appType if entitlement is an app
+        sku:
+          type: string
+          description: sku for purchased item
+        userId:
+          type: string
+          description: userId for this entitlement
+        itemId:
+          type: string
+          description: itemId of the entitlement
+        itemNamespace:
+          type: string
+          description: itemNamespace for the purchased item
+        name:
+          type: string
+          description: entitlement name
+        useCount:
+          type: integer
+          format: int32
+          description: useCount for entitlement
+        source:
+          type: string
+          description: entitlement source
+        startDate:
+          type: string
+          format: date-time
+          description: entitlement start date
+        endDate:
+          type: string
+          format: date-time
+          description: entitlement end date
+        grantedAt:
+          type: string
+          format: date-time
+          description: entitlement granted at
+        createdAt:
+          type: string
+          format: date-time
+          description: entitlement created at
+        updatedAt:
+          type: string
+          format: date-time
+          description: entitlement updated at
+        stackable:
+          type: boolean
+          description: whether the entitlement is stackable
+        stackedUseCount:
+          type: integer
+          format: int32
+          description: the stacked use count in the entitlement
+
+    entitlementConsumption:
+      type: object
+      properties:
+        entitlementId:
+          type: string
+        entitlementName:
+          type: string
+        userId:
+          type: string
+        useCount:
+          type: integer
+          description: the useCount after entitlement was consumed
+        count:
+          type: integer
+          description: the count be consumed
+
+    entitlementUseCountRevocation:
+      type: object
+      properties:
+        entitlementId:
+          type: string
+        entitlementName:
+          type: string
+        userId:
+          type: string
+        useCount:
+          type: integer
+          description: the useCount after entitlement was revoked
+        count:
+          type: integer
+          description: the count be revoked
+
+    creditSummary:
+      type: object
+      properties:
+        walletId:
+          type: string
+        namespace:
+          type: string
+        userId:
+          type: string
+        amount:
+          type: integer
+          format: int64
+
+    entitlementSale:
+      type: object
+      properties:
+        entitlementId:
+          type: string
+        entitlementName:
+          type: string
+        entitlementType:
+          type: string
+        clazz:
+          type: string
+        userId:
+          type: string
+        useCount:
+          type: integer
+          description: the useCount after entitlement was consumed
+        count:
+          type: integer
+          description: the count be sold
+        creditSummaries:
+          type: array
+          description: credit granted
+          items:
+            $ref: '#/components/schemas/creditSummary'
+
+    entitlementRevocation:
+      type: object
+      properties:
+        entitlementIds:
+          type: array
+          items:
+            type: string
+        userId:
+          type: string
+
+    entitlementStatusChange:
+      type: object
+      properties:
+        entitlementId:
+          type: string
+        entitlementName:
+          type: string
+        userId:
+          type: string
+        status:
+          type: string
+          description: entitlement status
+        previousStatus:
+          type: string
+          description: entitlement status before change
+
+  messages:
+    entitlementGranted:
+      name: entitlementGranted
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              grants:
+                type: array
+                items:
+                  $ref: '#/components/schemas/stackableEntitlement'
+
+    entitlementUpdated:
+      name: entitlementUpdated
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              entitlement:
+                $ref: '#/components/schemas/entitlement'
+              oldEntitlement:
+                $ref: '#/components/schemas/entitlement'
+
+    entitlementConsumed:
+      name: entitlementConsumed
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              entitlementConsumption:
+                $ref: '#/components/schemas/entitlementConsumption'
+
+    entitlementUseCountRevoked:
+      name: entitlementUseCountRevoked
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              entitlementUseCountRevocation:
+                $ref: '#/components/schemas/entitlementUseCountRevocation'
+
+    entitlementRevoked:
+      name: entitlementRevoked
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              entitlementRevocation:
+                $ref: '#/components/schemas/entitlementRevocation'
+
+    entitlementDisabled:
+      name: entitlementDisabled
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              entitlementStatusChange:
+                $ref: '#/components/schemas/entitlementStatusChange'
+
+    entitlementEnabled:
+      name: entitlementEnabled
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              entitlementStatusChange:
+                $ref: '#/components/schemas/entitlementStatusChange'
+
+    entitlementSellback:
+      name: entitlementSellback
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              entitlementSale:
+                $ref: '#/components/schemas/entitlementSale'

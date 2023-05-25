@@ -1,0 +1,898 @@
+asyncapi: '2.0.0'
+id: 'http://justice-iam-service'
+info:
+  title: IAM Service Account Events
+  version: 0.1.0
+channels:
+  userAccount:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/userAccountCreated'
+        - $ref: '#/components/messages/userAccountDeleted'
+        - $ref: '#/components/messages/userAccountEnabled'
+        - $ref: '#/components/messages/userAccountDisabled'
+        - $ref: '#/components/messages/userAccountEmailUpdated'
+        - $ref: '#/components/messages/userAccountPasswordUpdated'
+        - $ref: '#/components/messages/userAccountBanned'
+        - $ref: '#/components/messages/userAccountUnbanned'
+        - $ref: '#/components/messages/userAccountVerified'
+        - $ref: '#/components/messages/userAccountLinked'
+        - $ref: '#/components/messages/userAccountUnlinked'
+        - $ref: '#/components/messages/userAccountUpgraded'
+        - $ref: '#/components/messages/gameUserAccountCreated'
+        - $ref: '#/components/messages/thirdPartyAccountCreated'
+
+  userAuthentication:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/userLoggedIn'
+        - $ref: '#/components/messages/userLoggedOut'
+        - $ref: '#/components/messages/userThirdPartyLoggedIn'
+
+  userInformation:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/userInformationCreated'
+        - $ref: '#/components/messages/userInformationDisplayNameUpdated'
+        - $ref: '#/components/messages/userInformationCountryUpdated'
+        - $ref: '#/components/messages/userInformationLanguageUpdated'
+        - $ref: '#/components/messages/userInformationDateOfBirthUpdated'
+
+  userPermissions:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/userPermissionsCreated'
+        - $ref: '#/components/messages/userPermissionsDeleted'
+
+  userRoles:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/userRolesCreated'
+        - $ref: '#/components/messages/userRolesDeleted'
+
+  countryAgeRestriction:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/countryAgeRestrictionCreated'
+
+  userTranslations:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/gameUserCreated'
+
+  userFeatureBan:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/chatAllBanned'
+        - $ref: '#/components/messages/chatSendBanned'
+        - $ref: '#/components/messages/leaderboardBanned'
+        - $ref: '#/components/messages/statisticsBanned'
+        - $ref: '#/components/messages/orderAndPaymentBanned'
+        - $ref: '#/components/messages/matchmakingBanned'
+        - $ref: '#/components/messages/ugcCreateUpdateBanned'
+
+  lobby:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/userDisconnectRequested'
+
+  deletion_account_gdpr:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/gdprRequestDataDeletionResponse'
+
+
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+        version:
+          type: integer
+        name:
+          type: string
+        namespace:
+          type: string
+        parentNamespace:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        clientId:
+          type: string
+        userId:
+          type: string
+        traceId:
+          type: string
+        sessionId:
+          type: string
+
+    permissions:
+      type: object
+      properties:
+        resoure:
+          type: string
+        action:
+          type: string
+        SchedAction:
+          type: integer
+        SchedCron:
+          type: string
+        SchedRange:
+          type: array
+          items:
+            type: string
+
+    userAuthentication:
+      type: object
+      properties:
+          platformId:
+            type: string
+          refresh:
+            type: boolean
+
+    userAccount:
+      type: object
+      properties:
+        userId:
+          type: string
+        emailAddress:
+          type: string
+        country:
+          type: string
+        namespace:
+          type: string
+
+    userGameAccount:
+      type: object
+      properties:
+        userId:
+          type: string
+        emailAddress:
+          type: string
+        gameNamespace:
+          type: string
+        country:
+          type: string
+
+    userAccountStatus:
+      type: object
+      properties:
+        deletionStatus:
+          type: boolean
+        enabled:
+          type: boolean
+        verified:
+          type: boolean
+
+    userAccountBan:
+      type: object
+      properties:
+        ban:
+          type: array
+          items:
+            type: object
+            properties:
+              banId:
+                type: string
+              name:
+                type: string
+              reason:
+                type: string
+              comment:
+                type: string
+              enabled:
+                type: boolean
+
+    userInformation:
+      type: object
+      properties:
+        displayName:
+          type: string
+        country:
+          type: string
+        language:
+          type: string
+        dateOfBirth:
+          type: string
+
+    role:
+      type: object
+      properties:
+        roleId:
+          type: string
+        name:
+          type: string
+
+    countryAgeRestriction:
+      type: object
+      properties:
+        country:
+          type: string
+        restrictedAge:
+          type: integer
+
+    thirdParty:
+      type: object
+      properties:
+        userId:
+          type: string
+        thirdPartyUserId:
+          type: string
+        platformId:
+          type: string
+        namespace:
+          type: string
+        country:
+          type: string
+
+    platform:
+      type: object
+      properties:
+        gameNamespace:
+          type: string
+        gameUserId:
+          type: string
+        country:
+          type: string
+
+    userFeatureBan:
+      type: object
+      properties:
+        userId:
+          type: string
+        namespace:
+          type: string
+        ban:
+          type: string
+        endDate:
+          type: string
+          format: date-time
+        reason:
+          type: string
+        enable:
+          type: boolean
+
+    deletionGDPR:
+      type: object
+      properties:
+        userId:
+          type: string
+        namespace:
+          type: string
+        eventId:
+          type: integer
+        code:
+          type: integer
+        message:
+          type: string
+
+    userAccountThirdParty:
+      type: object
+      properties:
+        platformId:
+          type: string
+        platformUserId:
+          type: string
+
+    userAccountLink:
+      type: object
+      properties:
+        namespace:
+          type: string
+        userId:
+          type: string
+        emailAddress:
+          type: string
+
+    userAccountUnlink:
+      type: object
+      properties:
+        userId:
+          type: string
+        emailAddress:
+          type: string
+        targetNamespace:
+          type: string
+        targetUserId:
+          type: string
+
+    userAccountUpgrade:
+      type: object
+      properties:
+        userId:
+          type: string
+        emailAddress:
+          type: string
+        publisherUserId:
+          type: string
+        namespace:
+          type: string
+        
+
+  messages:
+    userAccountCreated:
+      name: userAccountCreated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userAccount:
+                $ref: '#/components/schemas/userAccount'
+              userAccountStatus:
+                $ref: '#/components/schemas/userAccountStatus'
+              namespace:
+                type: string
+              userId:
+                type: string
+
+    userAccountDeleted:
+      name: userAccountDeleted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userAccount:
+                $ref: '#/components/schemas/userAccount'
+              userAccountStatus:
+                $ref: '#/components/schemas/userAccountStatus'
+              namespace:
+                type: string
+              userId:
+                type: string
+
+    userAccountEnabled:
+      name: userAccountEnabled
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userAccount:
+                $ref: '#/components/schemas/userAccount'
+              userAccountStatus:
+                $ref: '#/components/schemas/userAccountStatus'
+              namespace:
+                type: string
+              userId:
+                type: string
+
+    userAccountDisabled:
+      name: userAccountDisabled
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userAccount:
+                $ref: '#/components/schemas/userAccount'
+              userAccountStatus:
+                $ref: '#/components/schemas/userAccountStatus'
+              namespace:
+                type: string
+              userId:
+                type: string
+
+    userAccountEmailUpdated:
+      name: userAccountEmailUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userAccount:
+                $ref: '#/components/schemas/userAccount'
+              userAccountStatus:
+                $ref: '#/components/schemas/userAccountStatus'
+              namespace:
+                type: string
+              userId:
+                type: string
+
+    userAccountPasswordUpdated:
+      name: userAccountPasswordUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userAccount:
+                $ref: '#/components/schemas/userAccount'
+              userAccountStatus:
+                $ref: '#/components/schemas/userAccountStatus'
+              namespace:
+                type: string
+              userId:
+                type: string
+
+    userAccountBanned:
+      name: userAccountBanned
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userAccount:
+                $ref: '#/components/schemas/userAccount'
+              userAccountBan:
+                $ref: '#/components/schemas/userAccountBan'
+
+    userAccountUnbanned:
+      name: userAccountUnbanned
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userAccount:
+                $ref: '#/components/schemas/userAccount'
+              userAccountBan:
+                $ref: '#/components/schemas/userAccountBan'
+
+    userAccountVerified:
+      name: userAccountVerified
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userAccount:
+                $ref: '#/components/schemas/userAccount'
+              userAccountStatus:
+                $ref: '#/components/schemas/userAccountStatus'
+              namespace:
+                type: string
+              userId:
+                type: string
+
+    userAccountLinked:
+      name: userAccountLinked
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userAccount:
+                $ref: '#/components/schemas/userAccountLink'
+              userAccountThirdParty:
+                $ref: '#/components/schemas/userAccountThirdParty'
+
+    userAccountUnlinked:
+      name: userAccountUnlinked
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userAccount:
+                $ref: '#/components/schemas/userAccountUnlink'
+              userAccountThirdParty:
+                $ref: '#/components/schemas/userAccountThirdParty'
+
+    userAccountUpgraded:
+      name: userAccountUpgraded
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userAccount:
+                $ref: '#/components/schemas/userAccountUpgrade'
+
+    gameUserAccountCreated:
+      name: gameUserAccountCreated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userAccount:
+                $ref: '#/components/schemas/userGameAccount'
+              userAccountStatus:
+                $ref: '#/components/schemas/userAccountStatus'
+              namespace:
+                type: string
+              userId:
+                type: string
+    
+    gameUserCreated:
+      name: gameUserCreated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              platform:
+                $ref: '#/components/schemas/platform'
+    
+    thirdPartyAccountCreated:
+      name: thirdPartyAccountCreated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              thirdParty:
+                $ref: '#/components/schemas/thirdParty'
+              namespace:
+                type: string
+              userId:
+                type: string
+
+    userLoggedIn:
+      name: userLoggedIn
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userAccount:
+                $ref: '#/components/schemas/userAccount'
+              userAuthentication:
+                $ref: '#/components/schemas/userAuthentication'
+
+    userLoggedOut:
+      name: userLoggedOut
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userAccount:
+                $ref: '#/components/schemas/userAccount'
+              userAuthentication:
+                $ref: '#/components/schemas/userAuthentication'
+
+    userThirdPartyLoggedIn:
+      name: userThirdPartyLoggedIn
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userAccount:
+                $ref: '#/components/schemas/userAccount'
+              userAuthentication:
+                $ref: '#/components/schemas/userAuthentication'
+
+    userInformationCreated:
+      name: userInformationCreated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userAccount:
+                $ref: '#/components/schemas/userAccount'
+              userInformation:
+                $ref: '#/components/schemas/userInformation'
+
+    userInformationDisplayNameUpdated:
+      name: userInformationDisplayNameUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userAccount:
+                $ref: '#/components/schemas/userAccount'
+              userInformation:
+                $ref: '#/components/schemas/userInformation'
+
+    userInformationCountryUpdated:
+      name: userInformationCountryUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userAccount:
+                $ref: '#/components/schemas/userAccount'
+              userInformation:
+                $ref: '#/components/schemas/userInformation'
+
+    userInformationLanguageUpdated:
+      name: userInformationLanguageUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userAccount:
+                $ref: '#/components/schemas/userAccount'
+              userInformation:
+                $ref: '#/components/schemas/userInformation'
+
+    userInformationDateOfBirthUpdated:
+      name: userInformationDateOfBirthUpdated
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userAccount:
+                $ref: '#/components/schemas/userAccount'
+              userInformation:
+                $ref: '#/components/schemas/userInformation'
+
+    userPermissionsCreated:
+      name: userPermissionCreated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userAccount:
+                $ref: '#/components/schemas/userAccount'
+              permissions:
+                type: array
+                items:
+                  $ref: '#/components/schemas/permissions'
+
+    userPermissionsDeleted:
+      name: userPermissionDeleted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userAccount:
+                $ref: '#/components/schemas/userAccount'
+              permissions:
+                type: array
+                items:
+                  $ref: '#/components/schemas/permissions'
+
+    userRolesCreated:
+      name: userRoleCreated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userAccount:
+                $ref: '#/components/schemas/userAccount'
+              roles:
+                type: array
+                items:
+                  $ref: '#/components/schemas/role'
+
+    userRolesDeleted:
+      name: userRoleDeleted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userAccount:
+                $ref: '#/components/schemas/userAccount'
+              roles:
+                type: array
+                items:
+                  roles: string
+                  
+
+    countryAgeRestrictionCreated:
+      name: countryAgeRestrictionCreated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              countryAgeRestriction:
+                $ref: '#/components/schemas/countryAgeRestriction'   
+
+    chatAllBanned:
+      name: chatAllBanned
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userFeatureBan:
+                $ref: '#/components/schemas/userFeatureBan'
+
+    chatSendBanned:
+      name: chatSendBanned
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userFeatureBan:
+                $ref: '#/components/schemas/userFeatureBan'
+
+    leaderboardBanned:
+      name: leaderboardBanned
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userFeatureBan:
+                $ref: '#/components/schemas/userFeatureBan'
+
+    statisticsBanned:
+      name: statisticsBanned
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userFeatureBan:
+                $ref: '#/components/schemas/userFeatureBan'
+
+    orderAndPaymentBanned:
+      name: orderAndPaymentBanned
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userFeatureBan:
+                $ref: '#/components/schemas/userFeatureBan'
+
+    matchmakingBanned:
+      name: matchmakingBanned
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userFeatureBan:
+                $ref: '#/components/schemas/userFeatureBan'
+
+    ugcCreateUpdateBanned:
+      name: ugcCreateUpdateBanned
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userFeatureBan:
+                $ref: '#/components/schemas/userFeatureBan'
+
+    userDisconnectRequested:
+      name: userDisconnectRequested
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userId:
+                type: string
+
+    gdprRequestDataDeletionResponse:
+      name: gdprRequestDataDeletionResponse
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              deletionGDPR:
+                $ref: '#/components/schemas/deletionGDPR'

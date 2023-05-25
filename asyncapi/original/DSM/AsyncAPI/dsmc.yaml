@@ -1,0 +1,291 @@
+asyncapi: '2.0.0'
+id: 'urn:net:accelbyte:dsmcontroller'
+info:
+  title: AsyncAPI for justice dedicated server manager controller service
+  version: 0.0.1
+defaultContentType: application/json
+channels:
+  dsmcontroller:
+    publish:
+      message:
+        oneOf:
+          - $ref: '#/components/messages/allocationComplete'
+          - $ref: '#/components/messages/dsClaimed'
+          - $ref: '#/components/messages/dsCount'
+          - $ref: '#/components/messages/dsStatusChanged'
+          - $ref: '#/components/messages/sessionEnded'
+
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        clientId:
+          type: string
+          description: client id
+        client_ids:
+          type: array
+          items:
+            type: string
+        event_id:
+          type: integer
+          description: event id
+        event_level:
+          type: integer
+          description: event level
+        event_type:
+          type: integer
+          description: event type
+        id:
+          type: string
+          description: event id
+        name:
+          type: string
+          description: event name
+        namespace:
+          type: string
+          description: event namespace
+        privacy:
+          type: boolean
+        service:
+          type: string
+        sessionId:
+          type: string
+          description: session id
+        spanContext:
+          type: string
+          description: span context
+        target_namespace:
+          type: string
+          description: target namespace
+        target_user_ids:
+          type: array
+          items:
+            type: string
+        timestamp:
+          type: string
+          format: date-time
+        topic:
+          type: string
+        traceId:
+          type: string
+          description: trace id
+        userId:
+          type: string
+          description: the user id
+        version:
+          type: integer
+
+    allocationEvent:
+      type: object
+      properties:
+        time_stamp:
+          type: string
+          format: date-time
+        type:
+          type: string
+        description:
+          type: string
+
+    statusHistory:
+      type: object
+      properties:
+        time_stamp:
+          type: string
+          format: date-time
+        status:
+          type: string
+          enum:
+            - 'CREATING'
+            - 'READY'
+            - 'BUSY'
+            - 'REMOVING'
+            - 'UNREACHABLE'
+            - 'FAILED'
+          description: assigned server status
+
+    server:
+      type: object
+      properties:
+        allocation_events:
+          type: array
+          items:
+            $ref: '#/components/schemas/allocationEvent'
+        allocation_id:
+          type: string
+          description: nomad allocation id
+        alternate_ips:
+          type: array
+          items:
+            type: string
+        cpu_limit:
+          type: integer
+          description: server cpu limit
+        created_at:
+          type: string
+          format: date-time
+        custom_attribute:
+          type: string
+        deployment:
+          type: string
+          description: the name of deployment
+        game_version:
+          type: string
+          description: the game version used in server
+        image_version:
+          type: string
+          description: the image version used in server
+        ip:
+          type: string
+          description: server IP address
+        is_override_game_version:
+          type: boolean
+        job_id:
+          type: string
+          description: job id
+        last_update:
+          type: string
+          format: date-time
+        mem_limit:
+          type: integer
+          description: server memory limit
+        namespace:
+          type: string
+          description: server namespace
+        params:
+          type: string
+        pod_name:
+          type: string
+        port:
+          type: integer
+        ports:
+          type: object
+          additionalProperties:
+            type: integer
+        protocol:
+          type: string
+        provider:
+          type: string
+          description: infrastructure provider
+        region:
+          type: string
+          description: server region
+        session_id:
+          type: string
+          description: session id
+        status:
+          type: string
+          enum:
+            - 'CREATING'
+            - 'READY'
+            - 'BUSY'
+            - 'REMOVING'
+            - 'UNREACHABLE'
+            - 'FAILED'
+          description: server status
+        status_history:
+          type: array
+          items:
+            $ref: '#/components/schemas/statusHistory'
+
+    session:
+      type: object
+      properties:
+        id:
+          type: string
+          description: session id
+        namespace:
+          type: string
+          description: session namespace
+        provider:
+          type: string
+          description: infrastructure provider
+        region:
+          type: string
+          description: session namespace
+        Server:
+          $ref: '#/components/schemas/server'
+
+    dsNumEachRegionEachNamespace:
+      type: object
+      additionalProperties:
+        type: integer
+
+  messages:
+    allocationComplete:
+      name: allocationComplete
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              server:
+                type: string
+                description: server name
+              allocationEvents:
+                type: array
+                items:
+                  $ref: '#/components/schemas/allocationEvent'
+
+    dsClaimed:
+      name: dsClaimed
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              dsClaimed:
+                type: boolean
+                description: ds claimed or not
+              sessionID:
+                type: string
+                description: session ID
+              dsClaimedAt:
+                type: string
+                format: date-time
+
+    dsCount:
+      name: dsCount
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            additionalProperties:
+              $ref: '#/components/schemas/dsNumEachRegionEachNamespace'
+
+    dsStatusChanged:
+      name: dsStatusChanged
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              server:
+                $ref: '#/components/schemas/server'
+              isBuffered:
+                type: boolean
+
+    sessionEnded:
+      name: sessionEnded
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              session:
+                $ref: '#/components/schemas/session'

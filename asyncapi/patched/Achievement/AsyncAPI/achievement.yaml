@@ -1,0 +1,128 @@
+asyncapi: 2.0.0
+id: http://justice-achievement-service
+info:
+  title: Achievement Service Events
+  version: 0.1.0
+channels:
+  achievement:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/userAchievementUnlocked'
+        - $ref: '#/components/messages/globalAchievementUnlocked'
+        - $ref: '#/components/messages/achievementRewardClaimed'
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+        version:
+          type: integer
+        name:
+          type: string
+        namespace:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        clientId:
+          type: string
+        userId:
+          type: string
+        traceId:
+          type: string
+        sessionId:
+          type: string
+    userAchievement:
+      type: object
+      properties:
+        userId:
+          type: string
+        namespace:
+          type: string
+        achievementCode:
+          type: string
+        status:
+          type: integer
+        achievedAt:
+          type: integer
+        statCode:
+          type: string
+    globalAchievement:
+      type: object
+      properties:
+        achievementCode:
+          type: string
+        namespace:
+          type: string
+        status:
+          type: integer
+        achievedAt:
+          type: integer
+    achievementRewardClaimed:
+      type: object
+      properties:
+        userId:
+          type: string
+        achievementCode:
+          type: string
+        namespace:
+          type: string
+        status:
+          type: integer
+        achievement:
+          type: integer
+        claimedAt:
+          type: integer
+  messages:
+    userAchievementUnlocked:
+      name: userAchievementUnlocked
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userAchievement:
+                $ref: '#/components/schemas/userAchievement'
+    globalAchievementUnlocked:
+      name: globalAchievementUnlocked
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              globalAchievement:
+                $ref: '#/components/schemas/globalAchievement'
+    achievementRewardClaimed:
+      name: achievementRewardClaimed
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              achievementRewardClaimed:
+                $ref: '#/components/schemas/achievementRewardClaimed'
+x-source: Achievement/AsyncAPI/achievement.yaml
+x-git-hash: 93f80da7cd88a4c8ef6e1a02666d4e5b25f46fa1
+x-proto-package: accelbyte.achievement.achievement.v1
+x-proto-package-version: v1.0.0
+x-proto-package-semver:
+- 1
+- 0
+- 0
+x-proto-options:
+  csharp_namespace: '"AccelByte.Achievement.Achievement"'
+  go_package: '"accelbyte.net/achievement/achievement"'
+  java_multiple_files: 'true'
+  java_package: '"net.accelbyte.achievement.achievement"'

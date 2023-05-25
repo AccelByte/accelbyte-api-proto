@@ -1,0 +1,71 @@
+asyncapi: 2.0.0
+id: http://justice-matchmaking-v2-service
+info:
+  title: Matchmaking V2 Notification Events
+  version: 0.1.0
+channels:
+  freeformUserNotificationRequest:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/freeformUserNotification'
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+        version:
+          type: integer
+        name:
+          type: string
+        namespace:
+          type: string
+        parentNamespace:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        traceId:
+          type: string
+        spanContext:
+          type: string
+    notificationPayload:
+      type: object
+      properties:
+        userIds:
+          type: array
+          items:
+            type: string
+        namespace:
+          type: string
+        topicName:
+          type: string
+        message:
+          type: string
+  messages:
+    freeformUserNotification:
+      name: freeformUserNotification
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            allOf:
+            - $ref: '#/components/schemas/notificationPayload'
+x-source: MatchmakingV2/AsyncAPI/notification.yaml
+x-git-hash: 93f80da7cd88a4c8ef6e1a02666d4e5b25f46fa1
+x-proto-package: accelbyte.matchmaking_v2.notification.v1
+x-proto-package-version: v1.0.0
+x-proto-package-semver:
+- 1
+- 0
+- 0
+x-proto-options:
+  csharp_namespace: '"AccelByte.MatchmakingV2.Notification"'
+  go_package: '"accelbyte.net/matchmakingV2/notification"'
+  java_multiple_files: 'true'
+  java_package: '"net.accelbyte.matchmakingV2.notification"'

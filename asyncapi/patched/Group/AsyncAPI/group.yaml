@@ -1,0 +1,425 @@
+asyncapi: 2.0.0
+info:
+  title: Group Service Events
+  version: 1.0.0
+channels:
+  groupMember.groupMemberInvited:
+    publish:
+      summary: Inform about a user invited to join a group
+      message:
+        $ref: '#/components/messages/groupMemberInvited'
+  groupMember.groupMemberJoinRequested:
+    publish:
+      summary: Inform about a user submit request to join a group
+      message:
+        $ref: '#/components/messages/groupMemberJoinRequested'
+  groupMember.groupMemberJoinAccepted:
+    publish:
+      summary: Inform about user's join group request accepted
+      message:
+        $ref: '#/components/messages/groupMemberJoinAccepted'
+  groupMember.groupMemberJoinRejected:
+    publish:
+      summary: Inform about user's join group request rejected
+      message:
+        $ref: '#/components/messages/groupMemberJoinRejected'
+  group.groupCreated:
+    publish:
+      summary: Inform about created new group
+      message:
+        $ref: '#/components/messages/groupCreated'
+  group.groupUpdated:
+    publish:
+      summary: Inform about group updated
+      message:
+        $ref: '#/components/messages/groupUpdated'
+  group.groupCustomRulesUpdated:
+    publish:
+      summary: Inform about group Custom Rules Updated
+      message:
+        $ref: '#/components/messages/groupCustomRulesUpdated'
+  group.groupDeleted:
+    publish:
+      summary: Inform about group Deleted
+      message:
+        $ref: '#/components/messages/groupDeleted'
+  group.groupPredefinedRulesUpdated:
+    publish:
+      summary: Inform about group Predefined Rules Updated
+      message:
+        $ref: '#/components/messages/groupPredefinedRulesUpdated'
+  group.groupPredefinedRulesDeleted:
+    publish:
+      summary: Inform about group Predefined Rules Deleted
+      message:
+        $ref: '#/components/messages/groupPredefinedRulesDeleted'
+  groupRoles.groupRoleAssigned:
+    publish:
+      summary: Inform about assigned user's for specific group roles
+      message:
+        $ref: '#/components/messages/groupRoleAssigned'
+  groupRoles.groupRoleRemoved:
+    publish:
+      summary: Inform about removed user's for specific group roles
+      message:
+        $ref: '#/components/messages/groupRoleRemoved'
+  groupMember.groupMemberInvitationAccepted:
+    publish:
+      summary: Inform about user accept invitation to the specific group
+      message:
+        $ref: '#/components/messages/groupMemberInvitationAccepted'
+  groupMember.groupMemberInvitationRejected:
+    publish:
+      summary: Inform about user reject invitation to the specific group
+      message:
+        $ref: '#/components/messages/groupMemberInvitationRejected'
+  groupMember.groupMemberLeft:
+    publish:
+      summary: Inform about user left from the group
+      message:
+        $ref: '#/components/messages/groupMemberLeft'
+  groupMember.groupMemberJoinRequestCanceled:
+    publish:
+      summary: Inform about cancel request to join group
+      message:
+        $ref: '#/components/messages/groupMemberJoinRequestCanceled'
+  groupMember.groupMemberKicked:
+    publish:
+      summary: Inform about kicked user member to the specific group
+      message:
+        $ref: '#/components/messages/groupMemberKicked'
+  groupMember.groupMemberInvitationMemberCanceled:
+    publish:
+      summary: Inform about cancel invitation group member
+      message:
+        $ref: '#/components/messages/groupMemberInvitationMemberCanceled'
+components:
+  messages:
+    groupMemberInvited:
+      name: groupMemberInvited
+      payload:
+        $ref: '#/components/schemas/groupMemberInvitedPayload'
+    groupMemberJoinAccepted:
+      name: groupMemberJoinAccepted
+      payload:
+        $ref: '#/components/schemas/groupMemberJoinAcceptedPayload'
+    groupMemberJoinRejected:
+      name: groupMemberJoinRejected
+      payload:
+        $ref: '#/components/schemas/groupMemberJoinRejectedPayload'
+    groupMemberJoinRequested:
+      name: groupMemberJoinRequested
+      payload:
+        $ref: '#/components/schemas/groupMemberJoinRequestedPayload'
+    groupCreated:
+      name: groupCreated
+      payload:
+        $ref: '#/components/schemas/groupCreatedPayload'
+    groupUpdated:
+      name: groupUpdated
+      payload:
+        $ref: '#/components/schemas/groupUpdatedPayload'
+    groupCustomRulesUpdated:
+      name: groupCustomRulesUpdated
+      payload:
+        $ref: '#/components/schemas/groupCustomRulesUpdatedPayload'
+    groupDeleted:
+      name: groupDeleted
+      payload:
+        $ref: '#/components/schemas/groupDeletedPayload'
+    groupPredefinedRulesUpdated:
+      name: groupPredefinedRulesUpdated
+      payload:
+        $ref: '#/components/schemas/groupPredefinedRulesUpdatedPayload'
+    groupPredefinedRulesDeleted:
+      name: groupPredefinedRulesDeleted
+      payload:
+        $ref: '#/components/schemas/groupPredefinedRulesDeletedPayload'
+    groupRoleAssigned:
+      name: groupRoleAssigned
+      payload:
+        $ref: '#/components/schemas/groupRoleAssignedPayload'
+    groupRoleRemoved:
+      name: groupRoleRemoved
+      payload:
+        $ref: '#/components/schemas/groupRoleRemovedPayload'
+    groupMemberInvitationAccepted:
+      name: groupMemberInvitationAccepted
+      payload:
+        $ref: '#/components/schemas/groupMemberInvitationAcceptedPayload'
+    groupMemberInvitationRejected:
+      name: groupMemberInvitationRejected
+      payload:
+        $ref: '#/components/schemas/groupMemberInvitationRejectedPayload'
+    groupMemberLeft:
+      name: groupMemberLeft
+      payload:
+        $ref: '#/components/schemas/groupMemberLeftPayload'
+    groupMemberJoinRequestCanceled:
+      name: groupMemberJoinRequestCanceled
+      payload:
+        $ref: '#/components/schemas/groupMemberJoinRequestCanceledPayload'
+    groupMemberKicked:
+      name: groupMemberKicked
+      payload:
+        $ref: '#/components/schemas/groupMemberKickedPayload'
+    groupMemberInvitationMemberCanceled:
+      name: groupMemberInvitationMemberCanceled
+      payload:
+        $ref: '#/components/schemas/groupMemberInvitationMemberCanceledPayload'
+  schemas:
+    groupMemberInvitedPayload:
+      type: object
+      properties:
+        namespace:
+          type: string
+        groupId:
+          type: string
+        groupName:
+          type: string
+        requesterUserId:
+          type: string
+        invitedUserId:
+          type: string
+    groupMemberJoinRequestedPayload:
+      type: object
+      properties:
+        namespace:
+          type: string
+        groupId:
+          type: string
+        groupName:
+          type: string
+        adminIds:
+          type: array
+          items:
+            type: string
+        userId:
+          type: string
+    groupMemberJoinAcceptedPayload:
+      type: object
+      properties:
+        namespace:
+          type: string
+        groupId:
+          type: string
+        groupName:
+          type: string
+        requesterUserId:
+          type: string
+        acceptedUserId:
+          type: string
+    groupMemberJoinRejectedPayload:
+      type: object
+      properties:
+        namespace:
+          type: string
+        groupId:
+          type: string
+        groupName:
+          type: string
+        requesterUserId:
+          type: string
+        rejectedUserId:
+          type: string
+    groupCreatedPayload:
+      type: object
+      properties:
+        namespace:
+          type: string
+        groupId:
+          type: string
+        groupName:
+          type: string
+        groupDescription:
+          type: string
+        groupIcon:
+          type: string
+        groupRegion:
+          type: string
+        groupType:
+          type: string
+        userId:
+          type: string
+    groupUpdatedPayload:
+      type: object
+      properties:
+        namespace:
+          type: string
+        groupId:
+          type: string
+        groupName:
+          type: string
+        groupDescription:
+          type: string
+        groupIcon:
+          type: string
+        groupRegion:
+          type: string
+        groupType:
+          type: string
+        userId:
+          type: string
+    groupCustomRulesUpdatedPayload:
+      type: object
+      properties:
+        namespace:
+          type: string
+        groupId:
+          type: string
+        groupName:
+          type: string
+        groupCustomRules:
+          type: string
+        userId:
+          type: string
+    groupDeletedPayload:
+      type: object
+      properties:
+        namespace:
+          type: string
+        groupId:
+          type: string
+        groupName:
+          type: string
+        userId:
+          type: string
+    groupPredefinedRulesUpdatedPayload:
+      type: object
+      properties:
+        namespace:
+          type: string
+        groupId:
+          type: string
+        groupName:
+          type: string
+        groupPredefinedRules:
+          type: string
+        userId:
+          type: string
+    groupPredefinedRulesDeletedPayload:
+      type: object
+      properties:
+        namespace:
+          type: string
+        groupId:
+          type: string
+        groupName:
+          type: string
+        groupPredefinedRules:
+          type: string
+        userId:
+          type: string
+    groupRoleAssignedPayload:
+      type: object
+      properties:
+        namespace:
+          type: string
+        groupId:
+          type: string
+        groupName:
+          type: string
+        memberRoleId:
+          type: string
+        requesterUserId:
+          type: string
+        assignedUserId:
+          type: string
+    groupRoleRemovedPayload:
+      type: object
+      properties:
+        namespace:
+          type: string
+        groupId:
+          type: string
+        groupName:
+          type: string
+        memberRoleId:
+          type: string
+        requesterUserId:
+          type: string
+        removedUserId:
+          type: string
+    groupMemberInvitationAcceptedPayload:
+      type: object
+      properties:
+        namespace:
+          type: string
+        groupId:
+          type: string
+        groupName:
+          type: string
+        userId:
+          type: string
+    groupMemberInvitationRejectedPayload:
+      type: object
+      properties:
+        namespace:
+          type: string
+        groupId:
+          type: string
+        groupName:
+          type: string
+        userId:
+          type: string
+    groupMemberLeftPayload:
+      type: object
+      properties:
+        namespace:
+          type: string
+        groupId:
+          type: string
+        groupName:
+          type: string
+        userId:
+          type: string
+    groupMemberJoinRequestCanceledPayload:
+      type: object
+      properties:
+        namespace:
+          type: string
+        groupId:
+          type: string
+        groupName:
+          type: string
+        userId:
+          type: string
+    groupMemberKickedPayload:
+      type: object
+      properties:
+        namespace:
+          type: string
+        groupId:
+          type: string
+        groupName:
+          type: string
+        requesterUserId:
+          type: string
+        kickedUserId:
+          type: string
+    groupMemberInvitationMemberCanceledPayload:
+      type: object
+      properties:
+        namespace:
+          type: string
+        groupId:
+          type: string
+        groupName:
+          type: string
+        requesterUserId:
+          type: string
+        cancelledUserId:
+          type: string
+x-source: Group/AsyncAPI/group.yaml
+x-git-hash: 93f80da7cd88a4c8ef6e1a02666d4e5b25f46fa1
+x-proto-package: accelbyte.group.group.v1
+x-proto-package-version: v1.0.0
+x-proto-package-semver:
+- 1
+- 0
+- 0
+x-proto-options:
+  csharp_namespace: '"AccelByte.Group.Group"'
+  go_package: '"accelbyte.net/group/group"'
+  java_multiple_files: 'true'
+  java_package: '"net.accelbyte.group.group"'

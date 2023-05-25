@@ -1,0 +1,232 @@
+asyncapi: 2.0.0
+id: urn:net:accelbyte:platform:integration
+info:
+  title: AsyncAPI for justice integration service
+  version: 0.0.1
+defaultContentType: application/json
+channels:
+  iapConfigManagement:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/appleIAPConfigDeleted'
+        - $ref: '#/components/messages/appleIAPConfigUpdated'
+        - $ref: '#/components/messages/googleIAPConfigDeleted'
+        - $ref: '#/components/messages/googleIAPConfigUpdated'
+        - $ref: '#/components/messages/googleP12FileUpdated'
+        - $ref: '#/components/messages/playStationIAPConfigDeleted'
+        - $ref: '#/components/messages/playStationIAPConfigUpdated'
+        - $ref: '#/components/messages/steamIAPConfigUpdated'
+        - $ref: '#/components/messages/steamIAPConfigDeleted'
+        - $ref: '#/components/messages/xblIAPConfigDeleted'
+        - $ref: '#/components/messages/xblIAPConfigUpdated'
+        - $ref: '#/components/messages/xblBPCertFileUpdated'
+        - $ref: '#/components/messages/stadiaIAPJsonFileUpdated'
+        - $ref: '#/components/messages/stadiaIAPConfigDeleted'
+        - $ref: '#/components/messages/epicGamesIAPConfigDeleted'
+        - $ref: '#/components/messages/epicGamesIAPConfigUpdated'
+        - $ref: '#/components/messages/twitchIAPConfigUpdated'
+        - $ref: '#/components/messages/twitchIAPConfigDeleted'
+  iapProcessing:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/iapProcessed'
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+          description: event id
+        version:
+          type: integer
+        name:
+          type: string
+          description: event name
+        namespace:
+          type: string
+          description: event namespace
+        parentNamespace:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        clientId:
+          type: string
+          description: client id
+        userId:
+          type: string
+          description: the operator id
+        traceId:
+          type: string
+          description: trace id
+        sessionId:
+          type: string
+          description: session id
+    iap:
+      type: object
+      properties:
+        iapOrderNo:
+          type: string
+          description: iap order number
+        namespace:
+          type: string
+        userId:
+          type: string
+        productId:
+          type: string
+        transactionId:
+          type: string
+        status:
+          type: string
+        statusReason:
+          type: string
+        region:
+          type: string
+        language:
+          type: string
+        quantity:
+          type: integer
+        sandbox:
+          type: boolean
+        type:
+          type: string
+        fulfilledTime:
+          type: string
+          format: date-time
+  messages:
+    appleIAPConfigDeleted:
+      name: appleIAPConfigDeleted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+    appleIAPConfigUpdated:
+      name: appleIAPConfigUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+    googleIAPConfigDeleted:
+      name: googleIAPConfigDeleted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+    googleIAPConfigUpdated:
+      name: googleIAPConfigUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+    googleP12FileUpdated:
+      name: googleP12FileUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+    playStationIAPConfigDeleted:
+      name: playStationIAPConfigDeleted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+    playStationIAPConfigUpdated:
+      name: playStationIAPConfigUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+    steamIAPConfigUpdated:
+      name: steamIAPConfigUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+    steamIAPConfigDeleted:
+      name: steamIAPConfigDeleted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+    xblIAPConfigDeleted:
+      name: xblIAPConfigDeleted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+    xblIAPConfigUpdated:
+      name: xblIAPConfigUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+    xblBPCertFileUpdated:
+      name: xblBPCertFileUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+    stadiaIAPJsonFileUpdated:
+      name: stadiaIAPJsonFileUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+    stadiaIAPConfigDeleted:
+      name: stadiaIAPConfigDeleted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+    epicGamesIAPConfigDeleted:
+      name: epicGamesIAPConfigDeleted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+    epicGamesIAPConfigUpdated:
+      name: epicGamesIAPConfigUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+    twitchIAPConfigUpdated:
+      name: twitchIAPConfigUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+    twitchIAPConfigDeleted:
+      name: twitchIAPConfigDeleted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+    iapProcessed:
+      name: iapProcessed
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              iap:
+                $ref: '#/components/schemas/iap'
+x-source: Ecommerce/AsyncAPI/integration.yml
+x-git-hash: 93f80da7cd88a4c8ef6e1a02666d4e5b25f46fa1
+x-proto-package: accelbyte.ecommerce.integration.v1
+x-proto-package-version: v1.0.0
+x-proto-package-semver:
+- 1
+- 0
+- 0
+x-proto-options:
+  csharp_namespace: '"AccelByte.Ecommerce.Integration"'
+  go_package: '"accelbyte.net/ecommerce/integration"'
+  java_multiple_files: 'true'
+  java_package: '"net.accelbyte.ecommerce.integration"'

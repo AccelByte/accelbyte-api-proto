@@ -1,0 +1,109 @@
+asyncapi: '2.0.0'
+id: 'http://justice-basic-service'
+info:
+  title: Basic Service Namespace Events
+  version: 0.1.0
+channels:
+  namespace:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/namespaceCreated'
+        - $ref: '#/components/messages/namespaceDeleted'
+        - $ref: '#/components/messages/namespaceEnabled'
+        - $ref: '#/components/messages/namespaceDisabled'
+        - $ref: '#/components/messages/namespaceDisplayNameUpdated'
+
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+        version:
+          type: integer
+        name:
+          type: string
+        namespace:
+          type: string
+        parentNamespace:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        clientId:
+          type: string
+        userId:
+          type: string
+        traceId:
+          type: string
+        sessionId:
+          type: string
+
+    namespacePayload:
+      type: object
+      properties:
+        namespace:
+          type: string
+        parentNamespace:
+          type: string
+        displayName:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        status:
+          type: boolean
+
+
+  messages:
+    namespaceCreated:
+      name: namespaceCreated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/namespacePayload'
+
+    namespaceDeleted:
+      name: namespaceDeleted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/namespacePayload'
+
+    namespaceEnabled:
+      name: namespaceEnabled
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/namespacePayload'
+
+    namespaceDisabled:
+      name: namespaceDisabled
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/namespacePayload'
+
+    namespaceDisplayNameUpdated:
+      name: namespaceDisplayNameUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/namespacePayload'

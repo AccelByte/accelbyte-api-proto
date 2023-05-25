@@ -1,0 +1,312 @@
+asyncapi: 2.0.0
+id: urn:net:accelbyte:platform:subscription
+info:
+  title: AsyncAPI for justice reward service
+  version: 0.1.0
+channels:
+  subscription:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/subscribed'
+        - $ref: '#/components/messages/cancelled'
+        - $ref: '#/components/messages/immediateCancelled'
+        - $ref: '#/components/messages/resubscribed'
+        - $ref: '#/components/messages/daysGranted'
+        - $ref: '#/components/messages/charged'
+        - $ref: '#/components/messages/chargeFailed'
+        - $ref: '#/components/messages/expired'
+        - $ref: '#/components/messages/billingAccountChanged'
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+        version:
+          type: integer
+        name:
+          type: string
+        namespace:
+          type: string
+        parentNamespace:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        clientId:
+          type: string
+        userId:
+          type: string
+        traceId:
+          type: string
+        sessionId:
+          type: string
+    subscription:
+      type: object
+      properties:
+        id:
+          type: string
+        namespace:
+          type: string
+        userId:
+          type: string
+        itemId:
+          type: string
+        sku:
+          type: string
+        title:
+          type: string
+        currency:
+          type: object
+          $ref: '#/components/schemas/currencySummary'
+        price:
+          type: integer
+        trialPrice:
+          type: integer
+        recurring:
+          type: object
+          $ref: '#/components/schemas/recurring'
+        status:
+          type: string
+        chargeStatus:
+          type: string
+        nextBillingDate:
+          type: string
+          format: date-time
+        currentPeriodStart:
+          type: string
+          format: date-time
+        currentPeriodEnd:
+          type: string
+          format: date-time
+        start:
+          type: string
+          format: date-time
+        end:
+          type: string
+          format: date-time
+        currentCycle:
+          type: integer
+        chargedCycles:
+          type: integer
+        trialedCycles:
+          type: integer
+        inFixedFreeDays:
+          type: boolean
+        inFixedCycleTrial:
+          type: boolean
+        firstSubscribe:
+          type: boolean
+        paid:
+          type: boolean
+        subscribedBy:
+          type: string
+        subscribedAt:
+          type: string
+          format: date-time
+        unsubscribedAt:
+          type: string
+          format: date-time
+        unsubscribeReason:
+          type: string
+        source:
+          type: string
+        region:
+          type: string
+        language:
+          type: string
+        sandbox:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+        updateAt:
+          type: string
+          format: date-time
+    recurring:
+      type: object
+      properties:
+        cycle:
+          type: string
+        fixedFreeDays:
+          type: integer
+          format: int32
+          default: 0
+        fixedTrialCycles:
+          type: integer
+          format: int32
+          default: 0
+        graceDays:
+          type: integer
+          format: int32
+          default: 7
+    currencySummary:
+      type: object
+      properties:
+        currencyCode:
+          type: string
+        currencySymbol:
+          type: string
+        currencyType:
+          type: string
+        namespace:
+          type: string
+        decimals:
+          type: integer
+          format: int32
+    billing:
+      type: object
+      properties:
+        paymentProvider:
+          type: object
+        paymentMethod:
+          type: string
+        amount:
+          type: integer
+        totalTax:
+          type: integer
+        totalPrice:
+          type: integer
+        subtotalPrice:
+          type: integer
+        recurringOrderNo:
+          type: string
+        paymentOrderNo:
+          type: string
+        txEndTime:
+          type: string
+          format: date-time
+        extTxId:
+          type: string
+  messages:
+    subscribed:
+      name: subscribed
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              subscription:
+                $ref: '#/components/schemas/subscription'
+    cancelled:
+      name: cancelled
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              subscription:
+                $ref: '#/components/schemas/subscription'
+    immediateCancelled:
+      name: immediateCancelled
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              subscription:
+                $ref: '#/components/schemas/subscription'
+    resubscribed:
+      name: resubscribed
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              subscription:
+                $ref: '#/components/schemas/subscription'
+    daysGranted:
+      name: daysGranted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              subscription:
+                $ref: '#/components/schemas/subscription'
+              grantDays:
+                type: integer
+    charged:
+      name: charged
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              subscription:
+                $ref: '#/components/schemas/subscription'
+              billing:
+                $ref: '#/components/schemas/billing'
+    chargeFailed:
+      name: chargeFailed
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              subscription:
+                $ref: '#/components/schemas/subscription'
+              billing:
+                $ref: '#/components/schemas/billing'
+    expired:
+      name: expired
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              subscription:
+                $ref: '#/components/schemas/subscription'
+    billingAccountChanged:
+      name: billingAccountChanged
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              subscription:
+                $ref: '#/components/schemas/subscription'
+              billing:
+                $ref: '#/components/schemas/billing'
+x-source: Ecommerce/AsyncAPI/subscription.yml
+x-git-hash: 93f80da7cd88a4c8ef6e1a02666d4e5b25f46fa1
+x-proto-package: accelbyte.ecommerce.subscription.v1
+x-proto-package-version: v1.0.0
+x-proto-package-semver:
+- 1
+- 0
+- 0
+x-proto-options:
+  csharp_namespace: '"AccelByte.Ecommerce.Subscription"'
+  go_package: '"accelbyte.net/ecommerce/subscription"'
+  java_multiple_files: 'true'
+  java_package: '"net.accelbyte.ecommerce.subscription"'

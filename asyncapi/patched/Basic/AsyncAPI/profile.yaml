@@ -1,0 +1,141 @@
+asyncapi: 2.0.0
+id: http://justice-basic-service
+info:
+  title: Basic Service User Profile Events
+  version: 0.1.0
+channels:
+  userProfile:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/userProfileCreated'
+        - $ref: '#/components/messages/userProfileDeleted'
+        - $ref: '#/components/messages/userProfileEnabled'
+        - $ref: '#/components/messages/userProfileDisabled'
+        - $ref: '#/components/messages/userProfileUpdated'
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+        version:
+          type: integer
+        name:
+          type: string
+        namespace:
+          type: string
+        parentNamespace:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        clientId:
+          type: string
+        userId:
+          type: string
+        traceId:
+          type: string
+        sessionId:
+          type: string
+    userProfile:
+      type: object
+      properties:
+        userId:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        avatarSmallUrl:
+          type: string
+        avatarUrl:
+          type: string
+        avatarLargeUrl:
+          type: string
+        language:
+          type: string
+        timeZone:
+          type: string
+        dateOfBirth:
+          type: string
+          format: date
+        status:
+          type: boolean
+        zipCode:
+          type: string
+  messages:
+    userProfileCreated:
+      name: userProfileCreated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userProfile:
+                $ref: '#/components/schemas/userProfile'
+    userProfileDeleted:
+      name: userProfileDeleted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userProfile:
+                $ref: '#/components/schemas/userProfile'
+    userProfileEnabled:
+      name: userProfileEnabled
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userProfile:
+                $ref: '#/components/schemas/userProfile'
+    userProfileDisabled:
+      name: userProfileDisabled
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userProfile:
+                $ref: '#/components/schemas/userProfile'
+    userProfileUpdated:
+      name: userProfileUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userProfile:
+                $ref: '#/components/schemas/userProfile'
+x-source: Basic/AsyncAPI/profile.yaml
+x-git-hash: 93f80da7cd88a4c8ef6e1a02666d4e5b25f46fa1
+x-proto-package: accelbyte.basic.profile.v1
+x-proto-package-version: v1.0.0
+x-proto-package-semver:
+- 1
+- 0
+- 0
+x-proto-options:
+  csharp_namespace: '"AccelByte.Basic.Profile"'
+  go_package: '"accelbyte.net/basic/profile"'
+  java_multiple_files: 'true'
+  java_package: '"net.accelbyte.basic.profile"'

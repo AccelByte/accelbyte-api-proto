@@ -1,0 +1,294 @@
+asyncapi: '2.0.0'
+id: 'http://justice-lobby-party-service'
+info:
+  title: Lobby Party Events
+  version: 0.1.0
+channels:
+  party:
+    publish:
+      message:
+        oneOf:
+          - $ref: '#/components/messages/partyCreated'
+          - $ref: '#/components/messages/partyUserInvited'
+          - $ref: '#/components/messages/partyUserJoined'
+          - $ref: '#/components/messages/partyUserLeft'
+          - $ref: '#/components/messages/partyUserKicked'
+          - $ref: '#/components/messages/partyUserReject'
+          - $ref: '#/components/messages/partyUserNewLeader'
+          - $ref: '#/components/messages/partyDeleteCode'
+          - $ref: '#/components/messages/partyJoinViaCode'
+          - $ref: '#/components/messages/partyGenerateCode'
+          - $ref: '#/components/messages/partyGetCode'
+
+  partyChat:
+    publish:
+      message:
+        oneOf:
+          - $ref: '#/components/messages/partyChatSent'
+
+
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+        version:
+          type: integer
+        name:
+          type: string
+        namespace:
+          type: string
+        parentNamespace:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        clientId:
+          type: string
+        userId:
+          type: string
+          description: UserId of the operator for this event (optional)
+        traceId:
+          type: string
+        sessionId:
+          type: string
+        spanContext:
+          type: string
+
+    partyCode:
+      type: object
+      properties:
+        partyId:
+          type: string
+        partyCode:
+          type: string
+
+
+    partyPayload:
+      type: object
+      properties:
+        partyId:
+          type: string
+        leaderId:
+          type: string
+
+    invitePayload:
+      type: object
+      properties:
+        inviterId:
+          type: string
+        inviteesId:
+          type: array
+          items:
+            type: string
+        invitationToken:
+          type: string
+
+    platformPayload:
+      type: object
+      properties:
+        platform:
+          type: string
+        platformUserId:
+          type: string
+
+  messages:
+    partyCreated:
+      name: partyCreated
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            properties:
+              party:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/partyPayload'
+                  - $ref: '#/components/schemas/invitePayload'
+                  - $ref: '#/components/schemas/platformPayload'
+                properties:
+                  members:
+                    type: array
+                    items:
+                      type: string
+                  partyCode:
+                    type: string
+
+    partyUserInvited:
+      name: partyUserInvited
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            properties:
+              party:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/partyPayload'
+                  - $ref: '#/components/schemas/invitePayload'
+                  - $ref: '#/components/schemas/platformPayload'
+                properties:
+                  inviteeId:
+                    type: string
+
+    partyUserJoined:
+      name: partyUserJoined
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            properties:
+              party:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/partyPayload'
+                  - $ref: '#/components/schemas/invitePayload'
+                  - $ref: '#/components/schemas/platformPayload'
+
+    partyUserLeft:
+      name: partyUserLeft
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            properties:
+              party:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/partyPayload'
+                  - $ref: '#/components/schemas/invitePayload'
+                properties:
+                  leftUserId:
+                    type: string
+
+    partyUserKicked:
+      name: partyUserKicked
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            properties:
+              party:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/partyPayload'
+                  - $ref: '#/components/schemas/invitePayload'
+                properties:
+                  kickedUserId:
+                    type: string
+
+    partyUserReject:
+      name: partyUserReject
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            properties:
+              party:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/partyPayload'
+                  - $ref: '#/components/schemas/invitePayload'
+
+    partyUserNewLeader:
+      name: partyUserNewLeader
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            properties:
+              party:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/partyPayload'
+
+    partyDeleteCode:
+      name: partyDeleteCode
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          party:
+            type: object
+            properties:
+              partyId:
+                type: string
+
+    partyJoinViaCode:
+      name: partyJoinViaCode
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          party:
+            type: object
+            allOf:
+              - $ref: '#/components/schemas/platformPayload'
+            properties:
+              partyId:
+                type: string
+
+    partyChatSent:
+      name: partyChatSent
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          party:
+            type: object
+            properties:
+              messageId:
+                type: string
+              senderId:
+                type: string
+              targetId:
+                type: string
+              payload:
+                type: string
+
+    partyGenerateCode:
+      name: partyGenerateCode
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            properties:
+              party:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/partyCode'
+
+    partyGetCode:
+      name: partyGetCode
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            properties:
+              party:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/partyCode'

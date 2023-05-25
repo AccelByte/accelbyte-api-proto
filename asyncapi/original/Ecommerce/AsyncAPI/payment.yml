@@ -1,0 +1,604 @@
+asyncapi: '2.0.0'
+id: 'urn:net:accelbyte:platform:payment'
+info:
+  title: AsyncAPI for justice payment service
+  version: 0.0.1
+defaultContentType: application/json
+channels:
+  paymentConfig:
+    publish:
+      message:
+        oneOf:
+          - $ref: '#/components/messages/paymentProviderConfigCreated'
+          - $ref: '#/components/messages/paymentProviderConfigUpdated'
+          - $ref: '#/components/messages/paymentProviderConfigDeleted'
+          - $ref: '#/components/messages/paymentTaxConfigUpdated'
+          - $ref: '#/components/messages/adyenConfigUpdated'
+          - $ref: '#/components/messages/stripeConfigUpdated'
+          - $ref: '#/components/messages/xsollaConfigUpdated'
+          - $ref: '#/components/messages/xsollaUIConfigUpdated'
+          - $ref: '#/components/messages/payPalConfigUpdated'
+          - $ref: '#/components/messages/aliPayConfigUpdated'
+          - $ref: '#/components/messages/wxPayConfigUpdated'
+          - $ref: '#/components/messages/wxPayCertUploaded'
+          - $ref: '#/components/messages/checkoutConfigUpdated'
+
+  paymentOrderProcessing:
+    publish:
+      message:
+        oneOf:
+          - $ref: '#/components/messages/paymentOrderCreated'
+          - $ref: '#/components/messages/paymentOrderCharged'
+          - $ref: '#/components/messages/paymentOrderChargeFailed'
+          - $ref: '#/components/messages/paymentOrderRefunded'
+          - $ref: '#/components/messages/paymentOrderRefundFailed'
+          - $ref: '#/components/messages/paymentOrderAuthorised'
+          - $ref: '#/components/messages/paymentOrderAuthorisedFailed'
+          - $ref: '#/components/messages/paymentOrderNotificationOfChargeback'
+          - $ref: '#/components/messages/paymentOrderRequestForInformation'
+          - $ref: '#/components/messages/paymentOrderChargeback'
+          - $ref: '#/components/messages/paymentOrderChargebackReversed'
+          - $ref: '#/components/messages/paymentOrderRefundRequested'
+
+  paymentAccount:
+    publish:
+      message:
+        oneOf:
+          - $ref: '#/components/messages/paymentAccountDeleted'
+
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+          description: event id
+        version:
+          type: integer
+        name:
+          type: string
+          description: event name
+        namespace:
+          type: string
+          description: event namespace
+        parentNamespace:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        clientId:
+          type: string
+          description: client id
+        userId:
+          type: string
+          description: the operator id
+        traceId:
+          type: string
+          description: trace id
+        sessionId:
+          type: string
+          description: session id
+
+    paymentMerchantConfig:
+      type: object
+      properties:
+        id:
+          type: string
+        sandbox:
+          type: boolean
+
+    paymentProviderConfig:
+      type: object
+      properties:
+        id:
+          type: string
+        namespace:
+          type: string
+        region:
+          type: string
+        paymentMerchantConfigId:
+          type: string
+
+    paymentAccount:
+      type: object
+      properties:
+        namespace:
+          type: string
+        userId:
+          type: string
+        type:
+          type: string
+        id:
+          type: string
+          description: payment account id
+        paymentProvider:
+          type: string
+
+    currencySummary:
+      type: object
+      properties:
+        currencyCode:
+          type: string
+        currencySymbol:
+          type: string
+        currencyType:
+          type: string
+        namespace:
+          type: string
+        decimals:
+          type: integer
+          format: int32
+
+    paymentTaxConfig:
+      type: object
+      properties:
+        configId:
+          type: string
+          description: payment configuration ID
+        taxJarEnable:
+          type: boolean
+
+    paymentOrder:
+      type: object
+      properties:
+        paymentOrderNo:
+          type: string
+          description: Payment order number
+        namespace:
+          type: string
+          description: Payment order namespace
+        userId:
+          type: string
+          description: User id
+        targetNamespace:
+          type: string
+          description: The game namespace if it's an external in-game-purchase that resides in publisher namespace
+        targetUserId:
+          type: string
+          description: The user id in game namespace if it's an external in-game-purchase that resides in publisher namespace
+        extOrderNo:
+          type: string
+          description: External order number
+        sku:
+          type: string
+          description: 'optional, unique identity for the item'
+        extUserId:
+          type: string
+          description: 'optional, external user id, can be the character id'
+        sandbox:
+          type: boolean
+          description: 'isSandbox, indicate if order is sandbox'
+        price:
+          type: integer
+          format: int32
+          description: Payment order price
+        paymentProvider:
+          type: string
+          description: Payment provider
+        region:
+          type: string
+          description: Payment user region
+        language:
+          type: string
+          description: Payment user language
+        currency:
+          description: Payment order currency info
+          $ref: '#/components/schemas/currencySummary'
+        status:
+          type: string
+          description: Payment order status
+        statusReason:
+          type: string
+          description: Payment order status reason
+        channel:
+          type: string
+          description: 'Payment order channel: EXTERNAL or INTERNAL'
+        previousStatus:
+          type: string
+          description: Payment order status before change
+
+  messages:
+    paymentProviderConfigCreated:
+      name: paymentProviderConfigCreated
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              paymentProviderConfig:
+                $ref: '#/components/schemas/paymentProviderConfig'
+
+    paymentProviderConfigUpdated:
+      name: paymentProviderConfigUpdated
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              paymentProviderConfig:
+                $ref: '#/components/schemas/paymentProviderConfig'
+
+    paymentProviderConfigDeleted:
+      name: paymentProviderConfigDeleted
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              paymentProviderConfig:
+                $ref: '#/components/schemas/paymentProviderConfig'
+
+    paymentTaxConfigUpdated:
+      name: paymentTaxConfigUpdated
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              paymentTaxConfig:
+                $ref: '#/components/schemas/paymentTaxConfig'
+
+    xsollaConfigUpdated:
+      name: xsollaConfigUpdated
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              paymentMerchantConfig:
+                $ref: '#/components/schemas/paymentMerchantConfig'
+
+    xsollaUIConfigUpdated:
+      name: xsollaUIConfigUpdated
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              paymentMerchantConfig:
+                $ref: '#/components/schemas/paymentMerchantConfig'
+
+    aliPayConfigUpdated:
+      name: aliPayConfigUpdated
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              paymentMerchantConfig:
+                $ref: '#/components/schemas/paymentMerchantConfig'
+
+    wxPayConfigUpdated:
+      name: wxPayConfigUpdated
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              paymentMerchantConfig:
+                $ref: '#/components/schemas/paymentMerchantConfig'
+
+    wxPayCertUploaded:
+      name: wxPayCertUploaded
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              paymentMerchantConfig:
+                $ref: '#/components/schemas/paymentMerchantConfig'
+
+    adyenConfigUpdated:
+      name: adyenConfigUpdated
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              paymentMerchantConfig:
+                $ref: '#/components/schemas/paymentMerchantConfig'
+
+    stripeConfigUpdated:
+      name: stripeConfigUpdated
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              paymentMerchantConfig:
+                $ref: '#/components/schemas/paymentMerchantConfig'
+
+    payPalConfigUpdated:
+      name: payPalConfigUpdated
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              paymentMerchantConfig:
+                $ref: '#/components/schemas/paymentMerchantConfig'
+
+    paymentOrderCreated:
+      name: paymentOrderCreated
+      description: payment order status will be INIT
+      tags:
+        - name: WALLET
+        - name: XSOLLA
+        - name: ADYEN
+        - name: ALIPAY
+        - name: WXPAY
+        - name: PAYPAL
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              paymentOrder:
+                $ref: '#/components/schemas/paymentOrder'
+
+    paymentOrderCharged:
+      name: paymentOrderCharged
+      description: payment order status will be CHARGED
+      tags:
+        - name: WALLET
+        - name: XSOLLA
+        - name: ADYEN
+        - name: ALIPAY
+        - name: WXPAY
+        - name: PAYPAL
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              paymentOrder:
+                $ref: '#/components/schemas/paymentOrder'
+
+    paymentOrderChargeFailed:
+      name: paymentOrderChargeFailed
+      description: payment order status will be CHARGE_FAILED
+      tags:
+        - name: ADYEN
+        - name: WXPAY
+        - name: PAYPAL
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              paymentOrder:
+                $ref: '#/components/schemas/paymentOrder'
+
+    paymentOrderRefunded:
+      name: paymentOrderRefunded
+      description: payment order status will be REFUNDED
+      tags:
+        - name: WALLET
+        - name: XSOLLA
+        - name: ADYEN
+        - name: ALIPAY
+        - name: WXPAY
+        - name: PAYPAL
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              paymentOrder:
+                $ref: '#/components/schemas/paymentOrder'
+
+    paymentOrderRefundFailed:
+      name: paymentOrderRefundFailed
+      description: payment order status will be REFUND_FAILED
+      tags:
+        - name: ADYEN
+        - name: WXPAY
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              paymentOrder:
+                $ref: '#/components/schemas/paymentOrder'
+
+    paymentOrderAuthorised:
+      name: paymentOrderAuthorised
+      description: payment order status will be AUTHORISED(it only occurs when adyen isAuthoriseAsCapture false)
+      tags:
+        - name: ADYEN
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              paymentOrder:
+                $ref: '#/components/schemas/paymentOrder'
+
+    paymentOrderAuthorisedFailed:
+      name: paymentOrderAuthorisedFailed
+      description: payment order status will be AUTHORISE_FAILED(it only occurs when adyen isAuthoriseAsCapture false)
+      tags:
+        - name: ADYEN
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              paymentOrder:
+                $ref: '#/components/schemas/paymentOrder'
+
+    paymentOrderNotificationOfChargeback:
+      name: paymentOrderNotificationOfChargeback
+      description: payment order status will be NOTIFICATION_OF_CHARGEBACK
+      tags:
+        - name: ADYEN
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              paymentOrder:
+                $ref: '#/components/schemas/paymentOrder'
+
+    paymentOrderRequestForInformation:
+      name: paymentOrderRequestForInformation
+      description: payment order status will be REQUEST_FOR_INFORMATION
+      tags:
+        - name: ADYEN
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              paymentOrder:
+                $ref: '#/components/schemas/paymentOrder'
+
+    paymentOrderChargeback:
+      name: paymentOrderChargeback
+      description: payment order status will be CHARGEBACK
+      tags:
+        - name: XSOLLA
+        - name: ADYEN
+        - name: PAYPAL
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              paymentOrder:
+                $ref: '#/components/schemas/paymentOrder'
+
+    paymentOrderChargebackReversed:
+      name: paymentOrderChargebackReversed
+      description: payment order status will be CHARGEBACK_REVERSED
+      tags:
+        - name: ADYEN
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              paymentOrder:
+                $ref: '#/components/schemas/paymentOrder'
+
+    paymentOrderRefundRequested:
+      name: paymentOrderRefundRequested
+      description: payment order status will be REFUNDING/REFUNDED/REFUND_FAILED after refund requested
+      tags:
+        - name: WALLET
+        - name: XSOLLA
+        - name: ADYEN
+        - name: ALIPAY
+        - name: WXPAY
+        - name: PAYPAL
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              paymentOrder:
+                $ref: '#/components/schemas/paymentOrder'
+
+    paymentAccountDeleted:
+      name: paymentAccountDeleted
+      description: payment account deleted
+      tags:
+        - name: XSOLLA
+        - name: ADYEN
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              paymentAccount:
+                $ref: '#/components/schemas/paymentAccount'
+
+    checkoutConfigUpdated:
+      name: checkoutConfigUpdated
+      description: update checkout configuration
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              paymentMerchantConfig:
+                $ref: '#/components/schemas/paymentMerchantConfig'

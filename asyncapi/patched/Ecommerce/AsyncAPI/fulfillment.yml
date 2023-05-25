@@ -1,0 +1,186 @@
+asyncapi: 2.0.0
+id: urn:net:accelbyte:platform:fulfillment
+info:
+  title: AsyncAPI for justice fulfillment service
+  version: 0.0.1
+defaultContentType: application/json
+channels:
+  fulfillment:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/fulfillmentCompleted'
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+          description: event id
+        version:
+          type: integer
+        name:
+          type: string
+          description: event name
+        namespace:
+          type: string
+          description: event namespace
+        parentNamespace:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        clientId:
+          type: string
+          description: client id
+        userId:
+          type: string
+          description: the operator id
+        traceId:
+          type: string
+          description: trace id
+        sessionId:
+          type: string
+          description: session id
+    fulfillmentError:
+      type: object
+      properties:
+        httpStatus:
+          type: integer
+          format: int32
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+    entitlementSummary:
+      type: object
+      properties:
+        id:
+          type: string
+        namespace:
+          type: string
+        userId:
+          type: string
+        clazz:
+          type: string
+        type:
+          type: string
+        stackable:
+          type: boolean
+        stackedUseCount:
+          type: integer
+          format: int32
+        storeId:
+          type: string
+        itemId:
+          type: string
+        grantedCode:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        startDate:
+          type: string
+          format: date-time
+        endDate:
+          type: string
+          format: date-time
+    creditSummary:
+      type: object
+      properties:
+        walletId:
+          type: string
+        namespace:
+          type: string
+        userId:
+          type: string
+        amount:
+          type: integer
+          format: int64
+    fulfillmentItem:
+      type: object
+      properties:
+        itemId:
+          type: string
+        itemName:
+          type: string
+        quantity:
+          type: integer
+          format: int32
+        storeId:
+          type: string
+        itemSku:
+          type: string
+        extraSubscriptionDays:
+          type: integer
+          format: int32
+        itemType:
+          type: string
+    fulfillment:
+      type: object
+      properties:
+        userId:
+          type: string
+          description: userId
+        orderNo:
+          type: string
+          description: orderNo
+        code:
+          type: string
+          description: redeemed code
+        fulfillItems:
+          type: array
+          description: items should do fulfillment
+          items:
+            $ref: '#/components/schemas/fulfillmentItem'
+        grantedItemIds:
+          type: array
+          description: item ids already granted
+          items:
+            type: string
+        entitlementSummaries:
+          type: array
+          description: entitlement granted
+          items:
+            $ref: '#/components/schemas/entitlementSummary'
+        creditSummaries:
+          type: array
+          description: credit granted
+          items:
+            $ref: '#/components/schemas/creditSummary'
+        status:
+          type: string
+          description: fulfillment status
+        fulfillmentError:
+          $ref: '#/components/schemas/fulfillmentError'
+  messages:
+    fulfillmentCompleted:
+      name: fulfillmentCompleted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              fulfillment:
+                $ref: '#/components/schemas/fulfillment'
+x-source: Ecommerce/AsyncAPI/fulfillment.yml
+x-git-hash: 93f80da7cd88a4c8ef6e1a02666d4e5b25f46fa1
+x-proto-package: accelbyte.ecommerce.fulfillment.v1
+x-proto-package-version: v1.0.0
+x-proto-package-semver:
+- 1
+- 0
+- 0
+x-proto-options:
+  csharp_namespace: '"AccelByte.Ecommerce.Fulfillment"'
+  go_package: '"accelbyte.net/ecommerce/fulfillment"'
+  java_multiple_files: 'true'
+  java_package: '"net.accelbyte.ecommerce.fulfillment"'

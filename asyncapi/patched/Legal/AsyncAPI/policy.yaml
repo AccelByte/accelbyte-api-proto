@@ -1,0 +1,331 @@
+asyncapi: 2.0.0
+id: http://justice-legal-service
+info:
+  title: Legal Service Policy Events
+  version: 0.1.0
+channels:
+  basePolicy:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/basePolicyCreated'
+        - $ref: '#/components/messages/basePolicyUpdated'
+  policy:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/policyCreated'
+        - $ref: '#/components/messages/policyUpdated'
+        - $ref: '#/components/messages/defaultPolicyUpdated'
+  versionedPolicy:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/versionedPolicyCreated'
+        - $ref: '#/components/messages/versionedPolicyUpdated'
+        - $ref: '#/components/messages/versionedPolicyPublished'
+  localizedPolicy:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/localizedPolicyCreated'
+        - $ref: '#/components/messages/localizedPolicyUpdated'
+        - $ref: '#/components/messages/defaultLocalizedPolicyUpdated'
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+        version:
+          type: integer
+        name:
+          type: string
+        namespace:
+          type: string
+        parentNamespace:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        clientId:
+          type: string
+        userId:
+          type: string
+        traceId:
+          type: string
+        sessionId:
+          type: string
+    basePolicy:
+      type: object
+      properties:
+        id:
+          type: string
+        basePolicyName:
+          type: string
+        description:
+          type: string
+        typeId:
+          type: string
+        policyTypeName:
+          type: string
+        affectedClientIds:
+          type: array
+          items:
+            type: string
+        affectedCountries:
+          type: array
+          items:
+            type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        isMandatory:
+          type: boolean
+        namespace:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+    policy:
+      type: object
+      properties:
+        id:
+          type: string
+        policyName:
+          type: string
+        countryCode:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        shouldNotifyOnUpdate:
+          type: boolean
+        countryGroupCode:
+          type: string
+        isMandatory:
+          type: boolean
+        isDefaultOpted:
+          type: boolean
+        basePolicyId:
+          type: string
+        readableId:
+          type: string
+        description:
+          type: string
+        isDefaultSelection:
+          type: boolean
+    versionedPolicy:
+      type: object
+      properties:
+        id:
+          type: string
+        policyId:
+          type: string
+        displayVersion:
+          type: string
+        description:
+          type: string
+        status:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        publishedDate:
+          type: string
+          format: date-time
+        isCrucial:
+          type: boolean
+        isCommitted:
+          type: boolean
+        isInEffect:
+          type: boolean
+    localizedPolicy:
+      type: object
+      properties:
+        id:
+          type: string
+        versionedPolicyId:
+          type: string
+        description:
+          type: string
+        localeCode:
+          type: string
+        contentType:
+          type: string
+        attachmentLocation:
+          type: string
+        attachmentChecksum:
+          type: string
+        attachmentVersionIdentifier:
+          type: string
+        status:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        publishedDate:
+          type: string
+          format: date-time
+        isDefaultSelection:
+          type: boolean
+  messages:
+    basePolicyCreated:
+      name: basePolicyCreated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              basePolicy:
+                $ref: '#/components/schemas/basePolicy'
+    basePolicyUpdated:
+      name: basePolicyUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              basePolicy:
+                $ref: '#/components/schemas/basePolicy'
+    policyCreated:
+      name: policyCreated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              policy:
+                $ref: '#/components/schemas/policy'
+    policyUpdated:
+      name: policyUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              policy:
+                $ref: '#/components/schemas/policy'
+    defaultPolicyUpdated:
+      name: defaultPolicyUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              policy:
+                $ref: '#/components/schemas/policy'
+    versionedPolicyCreated:
+      name: versionedPolicyCreated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              versionedPolicy:
+                $ref: '#/components/schemas/versionedPolicy'
+    versionedPolicyUpdated:
+      name: versionedPolicyUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              versionedPolicy:
+                $ref: '#/components/schemas/versionedPolicy'
+    versionedPolicyPublished:
+      name: versionedPolicyPublished
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              versionedPolicy:
+                $ref: '#/components/schemas/versionedPolicy'
+    localizedPolicyCreated:
+      name: localizedPolicyCreated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              localizedPolicy:
+                $ref: '#/components/schemas/localizedPolicy'
+    localizedPolicyUpdated:
+      name: localizedPolicyUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              localizedPolicy:
+                $ref: '#/components/schemas/localizedPolicy'
+    defaultLocalizedPolicyUpdated:
+      name: defaultLocalizedPolicyUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              localizedPolicy:
+                $ref: '#/components/schemas/localizedPolicy'
+x-source: Legal/AsyncAPI/policy.yaml
+x-git-hash: 93f80da7cd88a4c8ef6e1a02666d4e5b25f46fa1
+x-proto-package: accelbyte.legal.policy.v1
+x-proto-package-version: v1.0.0
+x-proto-package-semver:
+- 1
+- 0
+- 0
+x-proto-options:
+  csharp_namespace: '"AccelByte.Legal.Policy"'
+  go_package: '"accelbyte.net/legal/policy"'
+  java_multiple_files: 'true'
+  java_package: '"net.accelbyte.legal.policy"'

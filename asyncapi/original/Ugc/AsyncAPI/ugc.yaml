@@ -1,0 +1,449 @@
+asyncapi: '2.0.0'
+id: 'http://justice-ugc-service'
+info:
+  title: UGC Service Events
+  version: 0.1.0
+channels:
+  ugcContent:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/ugcContentUpdated'
+        - $ref: '#/components/messages/ugcContentDeleted'
+        - $ref: '#/components/messages/ugcContentHide'
+        - $ref: '#/components/messages/ugcContentUnHide'
+        - $ref: '#/components/messages/ugcContentCreated'
+        - $ref: '#/components/messages/ugcContentLiked'
+        - $ref: '#/components/messages/ugcContentUnLiked'
+
+  ugcChannel:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/ugcChannelCreated'
+        - $ref: '#/components/messages/ugcChannelUpdated'
+        - $ref: '#/components/messages/ugcChannelDeleted'
+
+  ugcCreator:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/ugcCreatorCreated'
+        - $ref: '#/components/messages/ugcCreatorFollowed'
+        - $ref: '#/components/messages/ugcCreatorUnFollowed'
+        - $ref: '#/components/messages/ugcCreatorDeleted'
+        - $ref: '#/components/messages/ugcCreatorBanned'
+        - $ref: '#/components/messages/ugcCreatorUnBanned'
+
+  ugcContentGroup:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/ugcContentGroupCreated'
+        - $ref: '#/components/messages/ugcContentGroupUpdated'
+        - $ref: '#/components/messages/ugcContentGroupDeleted'
+
+
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+        version:
+          type: integer
+        name:
+          type: string
+        namespace:
+          type: string
+        parentNamespace:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        clientId:
+          type: string
+        userId:
+          type: string
+        traceId:
+          type: string
+        sessionId:
+          type: string
+
+    ugcContent:
+      type: object
+      properties:
+        contentId:
+          type: string
+        namespace:
+          type: string
+        channel:
+          type: string
+        userId:
+          type: string
+        createdTime:
+          type: string
+          format: date-time
+        isOfficial:
+          type: boolean
+        updatedTime:
+          type: string
+          format: date-time
+        tags:
+          type: array
+          items:
+            type: string
+
+    ugcContentDelete:
+      type: object
+      properties:
+        namespace:
+          type: string
+        contentId:
+          type: string
+        userId:
+          type: string
+        deleteBy:
+          type: string
+
+    ugcContentHide:
+      type: object
+      properties:
+        namespace:
+          type: string
+        contentId:
+          type: string
+        userId:
+          type: string
+        autoModeration:
+          type: boolean
+
+    ugcContentLike:
+      type: object
+      properties:
+        namespace:
+          type: string
+        userId:
+          type: string
+        creatorId:
+          type: string
+        contentId:
+          type: string
+
+    ugcChannel:
+      type: object
+      properties:
+        namespace:
+          type: string
+        channelId:
+          type: string
+        userId:
+          type: string
+        channelName:
+          type: string
+
+    ugcChannelDeleted:
+      type: object
+      properties:
+        namespace:
+          type: string
+        channelId:
+          type: string
+        userId:
+          type: string
+
+    ugcCreator:
+      type: object
+      properties:
+        namespace:
+          type: string
+        userId:
+          type: string
+        creatorId:
+          type: string
+
+    ugcCreatorBan:
+      type: object
+      properties:
+        namespace:
+          type: string
+        userId:
+          type: string
+        reason:
+          type: string
+        type:
+          type: string
+        enable:
+          type: boolean
+        endDate:
+          type: string
+          format: date-time
+
+    ugcContentGroup:
+      type: object
+      properties:
+        namespace:
+          type: string
+        groupId:
+          type: string
+        name:
+          type: string
+        userId:
+          type: string
+        contents:
+          type: array
+          items:
+            type: string
+        createdTime:
+          type: string
+          format: date-time 
+
+
+  messages:
+    ugcContentUpdated:
+      name: ugcContentUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              ugcContent:
+                $ref: '#/components/schemas/ugcContent'
+
+    ugcContentDeleted:
+      name: ugcContentDeleted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              ugcContentDelete:
+                $ref: '#/components/schemas/ugcContentDelete'
+
+    ugcContentHide:
+      name: ugcContentHide
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              ugcContentHide:
+                $ref: '#/components/schemas/ugcContentHide'
+
+    ugcContentUnHide:
+      name: ugcContentUnHide
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              ugcContentHide:
+                $ref: '#/components/schemas/ugcContentHide'
+
+    ugcContentCreated:
+      name: ugcContentCreated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              ugcContent:
+                $ref: '#/components/schemas/ugcContent'
+
+    ugcContentLiked:
+      name: ugcContentLiked
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              ugcContentLike:
+                $ref: '#/components/schemas/ugcContentLike'
+
+    ugcContentUnLiked:
+      name: ugcContentUnLiked
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              ugcContentLike:
+                $ref: '#/components/schemas/ugcContentLike'
+
+    ugcChannelCreated:
+      name: ugcChannelCreated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              ugcChannel:
+                $ref: '#/components/schemas/ugcChannel'
+
+    ugcChannelUpdated:
+      name: ugcChannelUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              ugcChannel:
+                $ref: '#/components/schemas/ugcChannel'
+
+    ugcChannelDeleted:
+      name: ugcChannelDeleted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              ugcChannel:
+                $ref: '#/components/schemas/ugcChannelDeleted'
+
+    ugcCreatorCreated:
+      name: ugcCreatorCreated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              ugcCreator:
+                $ref: '#/components/schemas/ugcCreator'
+
+    ugcCreatorFollowed:
+      name: ugcCreatorFollowed
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              ugcCreator:
+                $ref: '#/components/schemas/ugcCreator'
+
+    ugcCreatorUnFollowed:
+      name: ugcCreatorUnFollowed
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              ugcCreator:
+                $ref: '#/components/schemas/ugcCreator'
+
+    ugcCreatorDeleted:
+      name: ugcCreatorDeleted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              ugcCreator:
+                $ref: '#/components/schemas/ugcCreator'
+
+    ugcCreatorBanned:
+      name: ugcCreatorBanned
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              ugcCreatorBan:
+                $ref: '#/components/schemas/ugcCreatorBan'
+
+    ugcCreatorUnBanned:
+      name: ugcCreatorUnBanned
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              ugcCreatorBan:
+                $ref: '#/components/schemas/ugcCreatorBan'
+
+    ugcContentGroupCreated:
+      name: ugcContentGroupCreated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              ugcContentGroup:
+                $ref: '#/components/schemas/ugcContentGroup'
+
+    ugcContentGroupUpdated:
+      name: ugcContentGroupUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              ugcContentGroup:
+                $ref: '#/components/schemas/ugcContentGroup'
+    
+    ugcContentGroupDeleted:
+      name: ugcContentGroupDeleted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              ugcContentGroup:
+                $ref: '#/components/schemas/ugcContentGroup'

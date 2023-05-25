@@ -1,0 +1,278 @@
+asyncapi: '2.0.0'
+id: 'http://justice-iam-service'
+info:
+  title: IAM Service Client Events
+  version: 0.1.0
+channels:
+  client:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/clientCreated'
+        - $ref: '#/components/messages/clientDeleted'
+        - $ref: '#/components/messages/clientUpdated'
+
+  clientThirdParty:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/clientThirdPartyCreated'
+        - $ref: '#/components/messages/clientThirdPartyDeleted'
+        - $ref: '#/components/messages/clientThirdPartyUpdated'
+
+  clientPermissions:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/clientPermissionsCreated'
+        - $ref: '#/components/messages/clientPermissionsDeleted'
+        - $ref: '#/components/messages/clientPermissionsUpdated'
+
+
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+        version:
+          type: integer
+        name:
+          type: string
+        namespace:
+          type: string
+        parentNamespace:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        clientId:
+          type: string
+        userId:
+          type: string
+        traceId:
+          type: string
+        sessionId:
+          type: string
+
+    permissions:
+      type: object
+      properties:
+        resoure:
+          type: string
+        action:
+          type: string
+        SchedAction:
+          type: integer
+        SchedCron:
+          type: string
+        SchedRange:
+          type: array
+          items:
+            type: string
+
+    client:
+      type: object
+      properties:
+        clientId:
+          type: string
+        name:
+          type: string
+        clientType:
+          type: string
+        baseUri:
+          type: string
+        redirectUri:
+          type: string
+        secret:
+          type: string
+        audiences:
+          type: array
+          items:
+            type: string
+        clientPlatform:
+          type: string
+        twoFactorEnabled:
+          type: boolean
+        namespace:
+          type: string
+
+    clientCreateObj:
+      type: object
+      properties:
+        clientId:
+          type: string
+        name:
+          type: string
+        clientType:
+          type: string
+        baseUri:
+          type: string
+        redirectUri:
+          type: string
+        secret:
+          type: string
+        audiences:
+          type: array
+          items:
+            type: string
+        clientPlatform:
+          type: string
+        twoFactorEnabled:
+          type: boolean
+        namespace:
+          type: string
+        parentNamespace:
+          type: string
+
+    clientThirdParty:
+      type: object
+      properties:
+        platformId:
+          type: string
+        appId:
+          type: string
+        redirectUri:
+          type: string
+        secret:
+          type: string
+        active:
+          type: boolean
+
+
+  messages:
+    clientCreated:
+      name: clientCreated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              client:
+                $ref: '#/components/schemas/clientCreateObj'
+
+    clientDeleted:
+      name: clientDeleted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              client:
+                $ref: '#/components/schemas/client'
+
+    clientUpdated:
+      name: clientUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              client:
+                $ref: '#/components/schemas/client'
+
+    clientPermissionsCreated:
+      name: clientPermissionCreated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              client:
+                $ref: '#/components/schemas/client'
+              permissions:
+                type: array
+                items:
+                  $ref: '#/components/schemas/permissions'
+
+    clientPermissionsDeleted:
+      name: clientPermissionDeleted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              client:
+                $ref: '#/components/schemas/client'
+              permissions:
+                type: array
+                items:
+                  $ref: '#/components/schemas/permissions'
+
+    clientPermissionsUpdated:
+      name: clientPermissionUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              client:
+                $ref: '#/components/schemas/client'
+              permissions:
+                type: array
+                items:
+                  $ref: '#/components/schemas/permissions'
+
+    clientThirdPartyCreated:
+      name: clientThirdPartyCreated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              client:
+                $ref: '#/components/schemas/client'
+              clientThirdParty:
+                $ref: '#/components/schemas/clientThirdParty'
+
+    clientThirdPartyDeleted:
+      name: clientThirdPartyDeleted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              client:
+                $ref: '#/components/schemas/client'
+              clientThirdParty:
+                $ref: '#/components/schemas/clientThirdParty'
+
+    clientThirdPartyUpdated:
+      name: clientThirdPartyUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              client:
+                $ref: '#/components/schemas/client'
+              clientThirdParty:
+                $ref: '#/components/schemas/clientThirdParty'

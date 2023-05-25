@@ -1,0 +1,136 @@
+asyncapi: '2.0.0'
+id: 'http://justice-basic-service'
+info:
+  title: Basic Service User Profile Events
+  version: 0.1.0
+channels:
+  userProfile:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/userProfileCreated'
+        - $ref: '#/components/messages/userProfileDeleted'
+        - $ref: '#/components/messages/userProfileEnabled'
+        - $ref: '#/components/messages/userProfileDisabled'
+        - $ref: '#/components/messages/userProfileUpdated'
+
+
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+        version:
+          type: integer
+        name:
+          type: string
+        namespace:
+          type: string
+        parentNamespace:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        clientId:
+          type: string
+        userId:
+          type: string
+        traceId:
+          type: string
+        sessionId:
+          type: string
+
+    userProfile:
+      type: object
+      properties:
+        userId:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        avatarSmallUrl:
+          type: string
+        avatarUrl:
+          type: string
+        avatarLargeUrl:
+          type: string
+        language:
+          type: string
+        timeZone:
+          type: string
+        dateOfBirth:
+          type: string
+          format: date
+        status:
+          type: boolean
+        zipCode:
+          type: string
+
+  messages:
+    userProfileCreated:
+      name: userProfileCreated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userProfile:
+                $ref: '#/components/schemas/userProfile'
+
+    userProfileDeleted:
+      name: userProfileDeleted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userProfile:
+                $ref: '#/components/schemas/userProfile'
+
+    userProfileEnabled:
+      name: userProfileEnabled
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userProfile:
+                $ref: '#/components/schemas/userProfile'
+
+    userProfileDisabled:
+      name: userProfileDisabled
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userProfile:
+                $ref: '#/components/schemas/userProfile'
+
+    userProfileUpdated:
+      name: userProfileUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userProfile:
+                $ref: '#/components/schemas/userProfile'

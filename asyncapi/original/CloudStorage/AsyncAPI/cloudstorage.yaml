@@ -1,0 +1,357 @@
+asyncapi: '2.0.0'
+id: 'http://justice-cloudstorage-service'
+info:
+  title: Cloud Storage Events
+  version: 0.1.0
+channels:
+  namespaceSlotConfig:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/namespaceSlotConfigCreated'
+        - $ref: '#/components/messages/namespaceSlotConfigDeleted'
+        - $ref: '#/components/messages/namespaceSlotConfigUpdated'
+  slot:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/slotCreated'
+        - $ref: '#/components/messages/slotDeleted'
+        - $ref: '#/components/messages/slotUpdated'
+
+  slotConfig:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/slotConfigCreated'
+        - $ref: '#/components/messages/slotConfigDeleted'
+        - $ref: '#/components/messages/slotConfigUpdated'
+
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+        version:
+          type: integer
+        name:
+          type: string
+        namespace:
+          type: string
+        parentNamespace:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        clientId:
+          type: string
+        userId:
+          type: string
+        traceId:
+          type: string
+        sessionId:
+          type: string
+
+    namespaceSlotConfig:
+      type: object
+      properties:
+        maxSlotSize:
+          type: integer
+        maxSlots:
+          type: integer
+        namespace:
+          type: string
+
+    slots:
+      type: object
+      properties:
+        checksum:
+          type: string
+        customAttribute:
+          type: string
+        dateAccessed:
+          type: string
+          format: date-time
+        dateCreated:
+          type: string
+          format: date-time
+        date-modified:
+          type: string
+          format: date-time
+        label:
+          type: string
+        mimeType:
+          type: string
+        namespace:
+          type: string
+        originalName:
+          type: string
+        slotId:
+          type: string
+        status:
+          type: string
+        storedName:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+        userId:
+          type: string
+        slotInfo:
+          type: object
+          allOf:
+            - $ref: '#/components/schemas/singleSlot'
+
+    singleSlot:
+      type: object
+      properties:
+        description:
+          type: string
+        file:
+          type: object
+          $ref: '#/components/schemas/file'
+        filename:
+          type: string
+        inputStream:
+          type: object
+        open:
+          type: boolean
+        readable:
+          type: boolean
+        uri:
+          type: object
+          $ref: '#/components/schemas/uri'
+        url:
+          type: object
+          $ref: '#/components/schemas/url'
+
+    file:
+      type: object
+      properties:
+        absolute:
+          type: boolean
+        absoluteFile:
+          type: object
+        absolutePath:
+          type: string
+        canonicalFile:
+          type: object
+        canonicalPath:
+          type: string
+        directory:
+          type: boolean
+        file:
+          type: boolean
+        freeSpace:
+          type: integer
+        hidden:
+          type: boolean
+        name:
+          type: string
+        parent:
+          type: string
+        parentFile:
+          type: object
+        path:
+          type: string
+        totalSpace:
+          type: integer
+        usableSpace:
+          type: integer
+
+    uri:
+      type: object
+      properties:
+        absolute:
+          type: boolean
+        authority:
+          type: string
+        fragment:
+          type: string
+        host:
+          type: string
+        opaque:
+          type: boolean
+        path:
+          type: string
+        port:
+          type: integer
+        query:
+          type: string
+        rawAuthority:
+          type: string
+        rawFragment:
+          type: string
+        rawPath:
+          type: string
+        rawQuery:
+          type: string
+        rawSchemeSpecificPart:
+          type: string
+        rawUserInfo:
+          type: string
+        scheme:
+          type: string
+        schemeSpecificPart:
+          type: string
+        userInfo:
+          type: string
+
+    url:
+      type: object
+      properties:
+        authority:
+          type: string
+        content:
+          type: object
+        defaultPort:
+          type: integer
+        file:
+          type: string
+        host:
+          type: string
+        path:
+          type: string
+        port:
+          type: integer
+        protocol:
+          type: string
+        query:
+          type: string
+        ref:
+          type: string
+        userInfo:
+          type: string
+
+    slotConfig:
+      type: object
+      properties:
+        maxSlotSize:
+          type: integer
+        maxSlots:
+          type: integer
+        namespace:
+          type: string
+        userId:
+          type: string
+
+  messages:
+    namespaceSlotConfigCreated:
+      name: namespaceSlotConfigCreated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              namespaceSlotConfig:
+                $ref: '#/components/schemas/namespaceSlotConfig'
+
+    namespaceSlotConfigDeleted:
+      name: namespaceSlotConfigDeleted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              namespaceSlotConfig:
+                $ref: '#/components/schemas/namespaceSlotConfig'
+
+    namespaceSlotConfigUpdated:
+      name: namespaceSlotConfigUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              namespaceSlotConfig:
+                $ref: '#/components/schemas/namespaceSlotConfig'
+
+    slotCreated:
+      name: slotCreated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              slot:
+                $ref: '#/components/schemas/slots'
+
+    slotDeleted:
+      name: slotDeleted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              slot:
+                $ref: '#/components/schemas/slots'
+
+    slotUpdated:
+      name: slotUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              slot:
+                $ref: '#/components/schemas/slots'
+
+    slotConfigCreated:
+      name: slotConfigCreated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              slotConfig:
+                $ref: '#/components/schemas/slotConfig'
+
+    slotConfigDeleted:
+      name: slotConfigDeleted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              slotConfig:
+                $ref: '#/components/schemas/slotConfig'
+
+    slotConfigUpdated:
+      name: slotConfigUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              slotConfig:
+                $ref: '#/components/schemas/slotConfig'

@@ -1,0 +1,122 @@
+asyncapi: '2.0.0'
+id: 'http://justice-basic-service'
+info:
+  title: Basic Service Util Events
+  version: 0.1.0
+channels:
+  userContent:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/userContentUrlCreated'
+
+  countryGroup:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/countryGroupCreated'
+        - $ref: '#/components/messages/countryGroupUpdated'
+
+
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+        version:
+          type: integer
+        name:
+          type: string
+        namespace:
+          type: string
+        parentNamespace:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        clientId:
+          type: string
+        userId:
+          type: string
+        traceId:
+          type: string
+        sessionId:
+          type: string
+
+    country:
+      type: object
+      properties:
+        code:
+          type: string
+        name:
+          type: string
+
+    countryGroup:
+      type: object
+      properties:
+        code:
+          type: string
+        name:
+          type: string
+
+    userContent:
+      type: object
+      properties:
+        url:
+          type: string
+        accessUrl:
+          type: string
+        method:
+          type: string
+        contentType:
+          type: string
+
+  messages:
+    userContentUrlCreated:
+      name: userContentUrlCreated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              simpleEvent:
+                $ref: '#/components/schemas/userContent'
+
+    countryGroupCreated:
+      name: countryGroupCreated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              countryGroup:
+                $ref: '#/components/schemas/countryGroup'
+              countries:
+                type: array
+                items:
+                  $ref: '#/components/schemas/country'
+
+    countryGroupUpdated:
+      name: countryGroupUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              countryGroup:
+                $ref: '#/components/schemas/countryGroup'
+              countries:
+                type: array
+                items:
+                  $ref: '#/components/schemas/country'

@@ -1,0 +1,151 @@
+asyncapi: 2.0.0
+id: urn:net:accelbyte:seasonpass:userseason
+info:
+  title: SeasonPass Service Events
+  version: 0.1.0
+channels:
+  userSeason:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/userSeasonPassChanged'
+        - $ref: '#/components/messages/userSeasonTierUp'
+        - $ref: '#/components/messages/userSeasonTierCleared'
+        - $ref: '#/components/messages/userSeasonRewardRewarded'
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+        version:
+          type: integer
+        name:
+          type: string
+        namespace:
+          type: string
+        parentNamespace:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        clientId:
+          type: string
+        userId:
+          type: string
+        traceId:
+          type: string
+        sessionId:
+          type: string
+    userSeason:
+      type: object
+      properties:
+        id:
+          type: string
+        namespace:
+          type: string
+        userId:
+          type: string
+        seasonId:
+          type: string
+        enrolledPasses:
+          type: array
+          items:
+            type: string
+        enrolledAt:
+          type: string
+          format: date-time
+        currentTierIndex:
+          type: integer
+        lastTierIndex:
+          type: integer
+        requiredExp:
+          type: integer
+        currentExp:
+          type: integer
+        cleared:
+          type: boolean
+    userSeasonReward:
+      type: object
+      properties:
+        namespace:
+          type: string
+        userId:
+          type: string
+        seasonId:
+          type: string
+        tierIndex:
+          type: string
+        passCode:
+          type: string
+        rewardCode:
+          type: string
+  messages:
+    userSeasonPassChanged:
+      name: userSeasonPassChanged
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userSeason:
+                $ref: '#/components/schemas/userSeason'
+              grantedPasses:
+                type: array
+                items:
+                  type: string
+    userSeasonTierUp:
+      name: userSeasonTierUp
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userSeason:
+                $ref: '#/components/schemas/userSeason'
+              grantedPasses:
+                type: integer
+    userSeasonTierCleared:
+      name: userSeasonTierCleared
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userSeason:
+                $ref: '#/components/schemas/userSeason'
+    userSeasonRewardRewarded:
+      name: userSeasonRewardRewarded
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userSeasonReward:
+                $ref: '#/components/schemas/userSeasonReward'
+x-source: SeasonPass/AsyncAPI/seasonpass.yml
+x-git-hash: 93f80da7cd88a4c8ef6e1a02666d4e5b25f46fa1
+x-proto-package: accelbyte.season_pass.seasonpass.v1
+x-proto-package-version: v1.0.0
+x-proto-package-semver:
+- 1
+- 0
+- 0
+x-proto-options:
+  csharp_namespace: '"AccelByte.SeasonPass.Seasonpass"'
+  go_package: '"accelbyte.net/seasonPass/seasonpass"'
+  java_multiple_files: 'true'
+  java_package: '"net.accelbyte.seasonPass.seasonpass"'

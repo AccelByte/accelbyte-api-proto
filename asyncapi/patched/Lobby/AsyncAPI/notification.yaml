@@ -1,0 +1,314 @@
+asyncapi: 2.0.0
+id: http://justice-lobby-notification-service
+info:
+  title: Lobby Notification Events
+  version: 0.1.0
+channels:
+  notifications:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/freeformNotificationSent'
+        - $ref: '#/components/messages/freeformNotificationSentToUser'
+        - $ref: '#/components/messages/templatedNotificationCreated'
+        - $ref: '#/components/messages/templatedNotificationSent'
+        - $ref: '#/components/messages/templatedNotificationSentToUser'
+        - $ref: '#/components/messages/templatedNotificationDeleted'
+        - $ref: '#/components/messages/templatedNotificationLocalizationUpdated'
+        - $ref: '#/components/messages/templatedNotificationLocalizationDeleted'
+        - $ref: '#/components/messages/templatedNotificationLocalizationPublished'
+        - $ref: '#/components/messages/freeformNotificationSentToParty'
+        - $ref: '#/components/messages/templatedNotificationSentToParty'
+  topics:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/topicCreated'
+        - $ref: '#/components/messages/topicDeleted'
+        - $ref: '#/components/messages/topicModified'
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+        version:
+          type: integer
+        name:
+          type: string
+        namespace:
+          type: string
+        parentNamespace:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        clientId:
+          type: string
+        userId:
+          type: string
+          description: UserId of the operator for this event (optional)
+        traceId:
+          type: string
+        sessionId:
+          type: string
+        spanContext:
+          type: string
+    notificationPayload:
+      type: object
+      properties:
+        senderId:
+          type: string
+        namespace:
+          type: string
+        topic:
+          type: string
+        message:
+          type: string
+    localizedTemplatePayload:
+      type: object
+      properties:
+        namespace:
+          type: string
+        templateSlug:
+          type: string
+        templateLanguage:
+          type: string
+    topicsPayload:
+      type: object
+      properties:
+        namespace:
+          type: string
+        description:
+          type: string
+        topic:
+          type: string
+  messages:
+    freeformNotificationSent:
+      name: freeformNotificationSent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            properties:
+              notification:
+                type: object
+                allOf:
+                - $ref: '#/components/schemas/notificationPayload'
+    freeformNotificationSentToUser:
+      name: freeformNotificationSentToUser
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            properties:
+              notification:
+                type: object
+                allOf:
+                - $ref: '#/components/schemas/notificationPayload'
+                properties:
+                  targetUserId:
+                    type: string
+    freeformNotificationSentToParty:
+      name: freeformNotificationSentToParty
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            properties:
+              notification:
+                type: object
+                allOf:
+                - $ref: '#/components/schemas/notificationPayload'
+                properties:
+                  partyId:
+                    type: string
+    templatedNotificationCreated:
+      name: templatedNotificationCreated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            properties:
+              notification:
+                type: object
+                allOf:
+                - $ref: '#/components/schemas/localizedTemplatePayload'
+                properties:
+                  templateContent:
+                    type: string
+    templatedNotificationLocalizationDeleted:
+      name: templatedNotificationLocalizationDeleted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            properties:
+              notification:
+                type: object
+                allOf:
+                - $ref: '#/components/schemas/localizedTemplatePayload'
+    templatedNotificationLocalizationPublished:
+      name: templatedNotificationLocalizationPublished
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            properties:
+              notification:
+                type: object
+                allOf:
+                - $ref: '#/components/schemas/localizedTemplatePayload'
+    templatedNotificationLocalizationUpdated:
+      name: templatedNotificationLocalizationUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            properties:
+              notification:
+                type: object
+                allOf:
+                - $ref: '#/components/schemas/localizedTemplatePayload'
+                properties:
+                  templateContent:
+                    type: string
+    templatedNotificationDeleted:
+      name: templatedNotificationDeleted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            properties:
+              notification:
+                type: object
+                properties:
+                  templateSlug:
+                    type: string
+                  namespace:
+                    type: string
+    templatedNotificationSent:
+      name: templatedNotificationSent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            properties:
+              notification:
+                type: object
+                allOf:
+                - $ref: '#/components/schemas/localizedTemplatePayload'
+                properties:
+                  topic:
+                    type: string
+                  templateContext:
+                    type: object
+    templatedNotificationSentToUser:
+      name: templatedNotificationSentToUser
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            properties:
+              notification:
+                type: object
+                allOf:
+                - $ref: '#/components/schemas/localizedTemplatePayload'
+                properties:
+                  topic:
+                    type: string
+                  templateContext:
+                    type: object
+    topicCreated:
+      name: topicCreated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            properties:
+              topic:
+                type: object
+                allOf:
+                - $ref: '#/components/schemas/topicsPayload'
+    topicDeleted:
+      name: topicDeleted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            properties:
+              topic:
+                type: object
+                allOf:
+                - $ref: '#/components/schemas/topicsPayload'
+    topicModified:
+      name: topicModified
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            properties:
+              topic:
+                type: object
+                allOf:
+                - $ref: '#/components/schemas/topicsPayload'
+    templatedNotificationSentToParty:
+      name: templatedNotificationSentToParty
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            properties:
+              notification:
+                type: object
+                allOf:
+                - $ref: '#/components/schemas/localizedTemplatePayload'
+                properties:
+                  topic:
+                    type: string
+                  templateContext:
+                    type: object
+                  partyId:
+                    type: string
+x-source: Lobby/AsyncAPI/notification.yaml
+x-git-hash: 93f80da7cd88a4c8ef6e1a02666d4e5b25f46fa1
+x-proto-package: accelbyte.lobby.notification.v1
+x-proto-package-version: v1.0.0
+x-proto-package-semver:
+- 1
+- 0
+- 0
+x-proto-options:
+  csharp_namespace: '"AccelByte.Lobby.Notification"'
+  go_package: '"accelbyte.net/lobby/notification"'
+  java_multiple_files: 'true'
+  java_package: '"net.accelbyte.lobby.notification"'

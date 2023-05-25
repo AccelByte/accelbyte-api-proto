@@ -1,0 +1,150 @@
+asyncapi: 2.0.0
+id: http://justice-lobby-friends-service
+info:
+  title: Lobby Friends Events
+  version: 0.1.0
+channels:
+  friendRequests:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/friendRequestSent'
+        - $ref: '#/components/messages/friendRequestCancelled'
+        - $ref: '#/components/messages/friendRemoved'
+        - $ref: '#/components/messages/friendAddedBulk'
+  incomingFriendRequests:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/friendRequestAccepted'
+        - $ref: '#/components/messages/friendRequestRejected'
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+        version:
+          type: integer
+        name:
+          type: string
+        namespace:
+          type: string
+        parentNamespace:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        clientId:
+          type: string
+        userId:
+          type: string
+          description: UserId of the operator for this event (optional)
+        traceId:
+          type: string
+        sessionId:
+          type: string
+        spanContext:
+          type: string
+    friendRequestsPayload:
+      type: object
+      properties:
+        userId:
+          type: string
+          format: uuid
+        friendId:
+          type: string
+          format: uuid
+  messages:
+    friendRequestSent:
+      name: friendRequestSent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            properties:
+              relation:
+                type: object
+                allOf:
+                - $ref: '#/components/schemas/friendRequestsPayload'
+    friendRequestCancelled:
+      name: friendRequestCancelled
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            properties:
+              relation:
+                type: object
+                allOf:
+                - $ref: '#/components/schemas/friendRequestsPayload'
+    friendRequestAccepted:
+      name: friendRequestAccepted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            properties:
+              relation:
+                type: object
+                allOf:
+                - $ref: '#/components/schemas/friendRequestsPayload'
+    friendRequestRejected:
+      name: friendRequestRejected
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            properties:
+              relation:
+                type: object
+                allOf:
+                - $ref: '#/components/schemas/friendRequestsPayload'
+    friendRemoved:
+      name: friendRemoved
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            properties:
+              relation:
+                type: object
+                allOf:
+                - $ref: '#/components/schemas/friendRequestsPayload'
+    friendAddedBulk:
+      name: friendAddedBulk
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            properties:
+              relation:
+                type: object
+                allOf:
+                - $ref: '#/components/schemas/friendRequestsPayload'
+x-source: Lobby/AsyncAPI/friends.yaml
+x-git-hash: 93f80da7cd88a4c8ef6e1a02666d4e5b25f46fa1
+x-proto-package: accelbyte.lobby.friends.v1
+x-proto-package-version: v1.0.0
+x-proto-package-semver:
+- 1
+- 0
+- 0
+x-proto-options:
+  csharp_namespace: '"AccelByte.Lobby.Friends"'
+  go_package: '"accelbyte.net/lobby/friends"'
+  java_multiple_files: 'true'
+  java_package: '"net.accelbyte.lobby.friends"'

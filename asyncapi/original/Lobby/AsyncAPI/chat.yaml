@@ -1,0 +1,91 @@
+asyncapi: '2.0.0'
+id: 'http://justice-lobby-chat-service'
+info:
+  title: Lobby Chat Events
+  version: 0.1.0
+channels:
+  personalChat:
+    publish:
+      message:
+        oneOf:
+          - $ref: '#/components/messages/personalChatSent'
+  partyChat:
+    publish:
+      message:
+        oneOf:
+          - $ref: '#/components/messages/partyChatSent'
+
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+        version:
+          type: integer
+        name:
+          type: string
+        namespace:
+          type: string
+        parentNamespace:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        clientId:
+          type: string
+        userId:
+          type: string
+          description: UserId of the operator for this event (optional)
+        traceId:
+          type: string
+        sessionId:
+          type: string
+        spanContext:
+          type: string
+
+    chatPayload:
+      type: object
+      properties:
+        messageId:
+          type: string
+          format: uuid
+        senderId:
+          type: string
+          format: uuid
+        targetId:
+          type: string
+          format: uuid
+          description: "Can be partyId or userId"
+        payload:
+          type: string
+
+  messages:
+    personalChatSent:
+      name: personalChatSent
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            properties:
+              chat:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/chatPayload'
+
+    partyChatSent:
+      name: partyChatSent
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            properties:
+              chat:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/chatPayload'
