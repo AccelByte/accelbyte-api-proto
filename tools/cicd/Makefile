@@ -59,7 +59,7 @@ dbuild:
 drun:
 	@test -n "$(SPEC_PATH)" || (echo "SPEC_PATH is not set" ; exit 1)
 	rm -rf $$(readlink -f ../..)/asyncapi.new && mkdir $$(readlink -f ../..)/asyncapi.new && \
-		docker run --rm --tty --user $(id -u):$(id -g) \
+		docker run --rm --tty --user $$(id -u):$$(id -g) \
 			--volume $(SPEC_PATH):/data/source \
 			--volume $$(readlink -f ../..)/asyncapi/templates:/data/templates \
 			--volume $$(readlink -f ../..)/asyncapi.new:/data/destination \
