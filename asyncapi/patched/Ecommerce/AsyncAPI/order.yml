@@ -282,7 +282,6 @@ components:
               order:
                 $ref: '#/components/schemas/order'
 x-source: Ecommerce/AsyncAPI/order.yml
-x-git-hash: 93f80da7cd88a4c8ef6e1a02666d4e5b25f46fa1
 x-proto-package: accelbyte.ecommerce.order.v1
 x-proto-package-version: v1.0.0
 x-proto-package-semver:

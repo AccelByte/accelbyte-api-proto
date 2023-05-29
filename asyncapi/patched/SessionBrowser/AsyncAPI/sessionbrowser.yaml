@@ -59,7 +59,6 @@ components:
                 allOf:
                 - $ref: '#/components/schemas/gamePayload'
 x-source: SessionBrowser/AsyncAPI/sessionbrowser.yaml
-x-git-hash: 93f80da7cd88a4c8ef6e1a02666d4e5b25f46fa1
 x-proto-package: accelbyte.session_browser.sessionbrowser.v1
 x-proto-package-version: v1.0.0
 x-proto-package-semver:
