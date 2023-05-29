@@ -19,17 +19,53 @@ endif
 PYTHONE := $(PYTHOND)/$(PYTHONX)
 PYTHONV := $(VENV_DIR)/$(PYTHONE)
 
+DOCKER_FILE := Dockerfile
+DOCKER_MOUNT_DIR := $(PWD)
+DOCKER_TAG_VERSION := latest
+DOCKER_TAG := accelbyte/grpc-plugin-proto-cicd:$(DOCKER_TAG_VERSION)
+
+setup:
+	$(PYTHON) -m venv $(VENV_DIR)
+	$(PYTHONV) -m pip install --upgrade pip
+
+install_package:
+	@test -n "$(PKG_PATH)" || (echo "PKG_PATH is not set" ; exit 1)
+	$(PYTHONV) -m pip install $(PKG_PATH)
+
 style:
 	$(PYTHONV) -m black .
 
 run:
-	@test -n "$(JUSTICE_API_SPECIFICATION_REPO_PATH)" || (echo "JUSTICE_API_SPECIFICATION_REPO_PATH is not set" ; exit 1)
-	rm -f "$(PWD)/run.err"
+	@test -n "$(SPEC_PATH)" || (echo "SPEC_PATH is not set" ; exit 1)
 	$(PYTHONV) cicd.py \
 		../../asyncapi/templates \
-		$(JUSTICE_API_SPECIFICATION_REPO_PATH) \
-		../../asyncapi.new \
-		|| touch "$(PWD)/run.err"
-	[ ! -f "$(PWD)/run.err" ]
-	rm -rf ../../asyncapi
-	mv "../../asyncapi.new" "../../asyncapi"
+		$(SPEC_PATH) \
+		../../asyncapi.new && \
+		rm -rf ../../asyncapi && \
+		mv "../../asyncapi.new" "../../asyncapi"
+
+dbuild:
+	@test -n "$(CODEGEN_SDK_PATH)" || (echo "CODEGEN_SDK_PATH is not set" ; exit 1)
+	cd $(CODEGEN_SDK_PATH) && \
+		docker build \
+			--tag accelbyte/codegen:latest \
+			--file Dockerfile.proto \
+			.
+	docker build \
+		--tag $(DOCKER_TAG) \
+		--file $(DOCKER_FILE) \
+		.
+
+drun:
+	@test -n "$(SPEC_PATH)" || (echo "SPEC_PATH is not set" ; exit 1)
+	rm -rf $$(readlink -f ../..)/asyncapi.new && mkdir $$(readlink -f ../..)/asyncapi.new && \
+		docker run --rm --tty --user $(id -u):$(id -g) \
+			--volume $(SPEC_PATH):/data/source \
+			--volume $$(readlink -f ../..)/asyncapi/templates:/data/templates \
+			--volume $$(readlink -f ../..)/asyncapi.new:/data/destination \
+			$(DOCKER_TAG) \
+			/data/templates \
+			/data/source \
+			/data/destination && \
+		rm -rf $$(readlink -f ../..)/asyncapi && \
+		mv $$(readlink -f ../..)/asyncapi.new $$(readlink -f ../..)/asyncapi
