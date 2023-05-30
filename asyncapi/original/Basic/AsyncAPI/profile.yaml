@@ -47,31 +47,43 @@ components:
       properties:
         userId:
           type: string
+          description: user id
         firstName:
           type: string
+          description: first name
         lastName:
           type: string
+          description: last name
         avatarSmallUrl:
           type: string
+          description: avatar small url
         avatarUrl:
           type: string
+          description: avatar url
         avatarLargeUrl:
           type: string
+          description: avatar large url
         language:
           type: string
+          description: language
         timeZone:
           type: string
+          description: time zone
         dateOfBirth:
           type: string
           format: date
+          description: user birghday
         status:
           type: boolean
+          description: status
         zipCode:
           type: string
+          description: zip code
 
   messages:
     userProfileCreated:
       name: userProfileCreated
+      description: message is sent when user profile is created
       payload:
         type: object
         allOf:
@@ -85,6 +97,7 @@ components:
 
     userProfileDeleted:
       name: userProfileDeleted
+      description: message is sent when user profile is deleted
       payload:
         type: object
         allOf:
@@ -98,6 +111,7 @@ components:
 
     userProfileEnabled:
       name: userProfileEnabled
+      description: message is sent when user profile is enabled
       payload:
         type: object
         allOf:
@@ -111,6 +125,7 @@ components:
 
     userProfileDisabled:
       name: userProfileDisabled
+      description: message is sent when user profile is disabled
       payload:
         type: object
         allOf:
@@ -124,6 +139,7 @@ components:
 
     userProfileUpdated:
       name: userProfileUpdated
+      description: message is sent when user profile is updated
       payload:
         type: object
         allOf:

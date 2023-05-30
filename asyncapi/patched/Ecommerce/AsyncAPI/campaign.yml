@@ -71,52 +71,76 @@ components:
       properties:
         id:
           type: string
+          description: campaign id
         type:
           type: string
+          description: campaign type
+          enum:
+          - REDEMPTION
         namespace:
           type: string
+          description: namespace of this campaign
         name:
           type: string
+          description: name of this campaign
         description:
           type: string
+          description: description of this campaign
         tags:
           type: array
           items:
             type: string
+          description: tags of this campaign
         status:
           type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+          description: status of this campaign
         redeemStart:
           type: string
           format: date-time
+          description: redeem start time
         redeemEnd:
           type: string
           format: date-time
+          description: redeem end time
         maxRedeemCountPerCode:
           type: integer
           format: int32
+          description: max redeem count per code, -1 means UNLIMITED
         maxRedeemCountPerCodePerUser:
           type: integer
           format: int32
+          description: max redeem count per code per user, -1 mean UNLIMITED
         maxRedeemCountPerCampaignPerUser:
           type: integer
           format: int32
+          description: max redeem count per campaign per user, -1 mean UNLIMITED
         maxSaleCount:
           type: integer
           format: int32
+          description: max sale count, -1 mean UNLIMITED
         redeemType:
           type: string
+          enum:
+          - ITEM
+          description: redeem type
         items:
           type: array
           items:
             $ref: '#/components/schemas/redeemableItem'
         boothName:
           type: string
+          description: booth name for sale
         createdAt:
           type: string
           format: date-time
+          description: time when campaign is created
         updatedAt:
           type: string
           format: date-time
+          description: time when campaign is updated
     redeemableItem:
       type: object
       required:
@@ -161,11 +185,13 @@ components:
           description: code batch number
         value:
           type: string
+          description: code value
     codeRedemption:
       type: object
       properties:
         userId:
           type: string
+          description: user id
         campaignId:
           type: string
           description: the campaign id
@@ -174,12 +200,13 @@ components:
           description: the campaign name
         code:
           type: string
-          description: The code value
+          description: the code value
     ticketAcquisition:
       type: object
       properties:
         userId:
           type: string
+          description: user id
         boothName:
           type: string
           description: booth name
@@ -188,31 +215,44 @@ components:
           description: purchase count
         orderNo:
           type: string
+          description: order no
     keyGroup:
       type: object
       properties:
         id:
           type: string
+          description: key group id
         namespace:
           type: string
+          description: namespace of this key group
         name:
           type: string
+          description: name of key group
         description:
           type: string
+          description: description of key group
         tags:
           type: array
           items:
             type: string
+          description: tags of key group
         status:
           type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+          description: status of key group
         boothName:
           type: string
+          description: booth name for sale
         createdAt:
           type: string
           format: date-time
+          description: time when key group was created
         updatedAt:
           type: string
           format: date-time
+          description: time when key group was updated
     keyUpload:
       type: object
       properties:
@@ -228,6 +268,7 @@ components:
   messages:
     campaignCreated:
       name: campaignCreated
+      description: message is sent when campaign is created
       payload:
         type: object
         allOf:
@@ -240,6 +281,7 @@ components:
                 $ref: '#/components/schemas/campaign'
     campaignUpdated:
       name: campaignUpdated
+      description: message is sent when campaign is updated
       payload:
         type: object
         allOf:
@@ -254,6 +296,7 @@ components:
                 $ref: '#/components/schemas/campaign'
     codeCreated:
       name: codeCreated
+      description: message is when redeem codes are created
       payload:
         type: object
         allOf:
@@ -266,6 +309,7 @@ components:
                 $ref: '#/components/schemas/codeCreate'
     codeDisabled:
       name: codeDisabled
+      description: message is sent when code is disabled
       payload:
         type: object
         allOf:
@@ -278,6 +322,7 @@ components:
                 $ref: '#/components/schemas/codeCondition'
     codeEnabled:
       name: codeEnabled
+      description: message is sent when redeem code is enabled
       payload:
         type: object
         allOf:
@@ -290,6 +335,7 @@ components:
                 $ref: '#/components/schemas/codeCondition'
     codeBulkDisabled:
       name: codeBulkDisabled
+      description: message is sent when bulk codes are disabled
       payload:
         type: object
         allOf:
@@ -302,6 +348,7 @@ components:
                 $ref: '#/components/schemas/codeCondition'
     codeBulkEnabled:
       name: codeBulkEnabled
+      description: message is sent when bulk codes are enabled
       payload:
         type: object
         allOf:
@@ -314,6 +361,7 @@ components:
                 $ref: '#/components/schemas/codeCondition'
     codeRedeemed:
       name: codeRedeemed
+      description: message is sent when code is redeemed
       payload:
         type: object
         allOf:
@@ -326,6 +374,8 @@ components:
                 $ref: '#/components/schemas/codeRedemption'
     ticketAcquired:
       name: ticketAcquired
+      description: message is sent when ticket is acquired, for example, when user
+        buy a code type item
       payload:
         type: object
         allOf:
@@ -338,6 +388,7 @@ components:
                 $ref: '#/components/schemas/ticketAcquisition'
     keyGroupCreated:
       name: keyGroupCreated
+      description: message is sent when key group is created
       payload:
         type: object
         allOf:
@@ -350,6 +401,7 @@ components:
                 $ref: '#/components/schemas/keyGroup'
     keyGroupUpdated:
       name: keyGroupUpdated
+      description: message is sent when key group is updated
       payload:
         type: object
         allOf:
@@ -364,6 +416,7 @@ components:
                 $ref: '#/components/schemas/keyGroup'
     keyUploaded:
       name: keyUploaded
+      description: message is sent when upload keys
       payload:
         type: object
         allOf:

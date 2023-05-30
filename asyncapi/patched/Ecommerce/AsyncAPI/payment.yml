@@ -81,47 +81,77 @@ components:
       properties:
         id:
           type: string
+          description: payment merchant config id
         sandbox:
           type: boolean
+          description: sanbox or not
     paymentProviderConfig:
       type: object
       properties:
         id:
           type: string
+          description: payment provider config id
         namespace:
           type: string
+          description: namespace
         region:
           type: string
+          description: region, * indicates all region
         paymentMerchantConfigId:
           type: string
+          description: payment merchant config id
     paymentAccount:
       type: object
       properties:
         namespace:
           type: string
+          description: namespace
         userId:
           type: string
+          description: user id
         type:
           type: string
+          description: payment account type
+          enum:
+          - card
+          - paypal
         id:
           type: string
           description: payment account id
         paymentProvider:
           type: string
+          description: payment provider
+          enum:
+          - WALLET
+          - XSOLLA
+          - ADYEN
+          - STRIPE
+          - CHECKOUT
+          - ALIPAY
+          - WXPAY
+          - PAYPAL
     currencySummary:
       type: object
       properties:
         currencyCode:
           type: string
+          description: currency code
         currencySymbol:
           type: string
+          description: currency symbol
         currencyType:
           type: string
+          description: currency type
+          enum:
+          - REAL
+          - VIRTUAL
         namespace:
           type: string
+          description: namespace
         decimals:
           type: integer
           format: int32
+          description: decimals
     paymentTaxConfig:
       type: object
       properties:
@@ -193,6 +223,7 @@ components:
   messages:
     paymentProviderConfigCreated:
       name: paymentProviderConfigCreated
+      description: message is sent when payment provider config is created
       payload:
         type: object
         allOf:
@@ -205,6 +236,7 @@ components:
                 $ref: '#/components/schemas/paymentProviderConfig'
     paymentProviderConfigUpdated:
       name: paymentProviderConfigUpdated
+      description: message is sent when payment provider config is updated
       payload:
         type: object
         allOf:
@@ -217,6 +249,7 @@ components:
                 $ref: '#/components/schemas/paymentProviderConfig'
     paymentProviderConfigDeleted:
       name: paymentProviderConfigDeleted
+      description: message is sent when payment provider config is deleted
       payload:
         type: object
         allOf:
@@ -229,6 +262,7 @@ components:
                 $ref: '#/components/schemas/paymentProviderConfig'
     paymentTaxConfigUpdated:
       name: paymentTaxConfigUpdated
+      description: message is sent when payment tax config is updated
       payload:
         type: object
         allOf:
@@ -241,6 +275,7 @@ components:
                 $ref: '#/components/schemas/paymentTaxConfig'
     xsollaConfigUpdated:
       name: xsollaConfigUpdated
+      description: message is sent when xsolla config is updated
       payload:
         type: object
         allOf:
@@ -253,6 +288,7 @@ components:
                 $ref: '#/components/schemas/paymentMerchantConfig'
     xsollaUIConfigUpdated:
       name: xsollaUIConfigUpdated
+      description: message is sent when xsolla UI config is updated
       payload:
         type: object
         allOf:
@@ -265,6 +301,7 @@ components:
                 $ref: '#/components/schemas/paymentMerchantConfig'
     aliPayConfigUpdated:
       name: aliPayConfigUpdated
+      description: message is sent when ali pay config is updated
       payload:
         type: object
         allOf:
@@ -277,6 +314,7 @@ components:
                 $ref: '#/components/schemas/paymentMerchantConfig'
     wxPayConfigUpdated:
       name: wxPayConfigUpdated
+      description: message is sent when wx pay config is updated
       payload:
         type: object
         allOf:
@@ -289,6 +327,7 @@ components:
                 $ref: '#/components/schemas/paymentMerchantConfig'
     wxPayCertUploaded:
       name: wxPayCertUploaded
+      description: message is sent when wx pay cert config is updated
       payload:
         type: object
         allOf:
@@ -301,6 +340,7 @@ components:
                 $ref: '#/components/schemas/paymentMerchantConfig'
     adyenConfigUpdated:
       name: adyenConfigUpdated
+      description: message is sent when adyen config is updated
       payload:
         type: object
         allOf:
@@ -313,6 +353,7 @@ components:
                 $ref: '#/components/schemas/paymentMerchantConfig'
     stripeConfigUpdated:
       name: stripeConfigUpdated
+      description: message is sent when stripe config is updated
       payload:
         type: object
         allOf:
@@ -325,6 +366,7 @@ components:
                 $ref: '#/components/schemas/paymentMerchantConfig'
     payPalConfigUpdated:
       name: payPalConfigUpdated
+      description: message is sent when paypal config is updated
       payload:
         type: object
         allOf:

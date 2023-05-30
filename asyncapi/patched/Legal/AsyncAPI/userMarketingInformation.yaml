@@ -40,11 +40,14 @@ components:
       properties:
         subscribed:
           type: boolean
+          description: a flag indicates whether user accepted this policy
         userId:
           type: string
+          description: user id
   messages:
     userMarketingPreferenceUpdated:
       name: userMarketingPreferenceUpdated
+      description: message is sent when the accepted policy type is Marketing Preference
       payload:
         type: object
         allOf:

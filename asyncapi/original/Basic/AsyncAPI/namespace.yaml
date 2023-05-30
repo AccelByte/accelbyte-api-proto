@@ -48,18 +48,23 @@ components:
           type: string
         parentNamespace:
           type: string
+          description: parent namespace in multi tenant mode
         displayName:
           type: string
+          description: display name
         createdAt:
           type: string
           format: date-time
+          description: time when namespace was created
         status:
           type: boolean
+          description: status
 
 
   messages:
     namespaceCreated:
       name: namespaceCreated
+      description: message is sent when namespace is created
       payload:
         type: object
         allOf:
@@ -70,6 +75,7 @@ components:
 
     namespaceDeleted:
       name: namespaceDeleted
+      description: message is sent when namespace is deleted
       payload:
         type: object
         allOf:
@@ -80,6 +86,7 @@ components:
 
     namespaceEnabled:
       name: namespaceEnabled
+      description: message is sent when namespace is enabled
       payload:
         type: object
         allOf:
@@ -90,6 +97,7 @@ components:
 
     namespaceDisabled:
       name: namespaceDisabled
+      description: message is sent when namespace is disabled
       payload:
         type: object
         allOf:
@@ -100,6 +108,7 @@ components:
 
     namespaceDisplayNameUpdated:
       name: namespaceDisplayNameUpdated
+      description: message is sent when display name is udpated
       payload:
         type: object
         allOf:

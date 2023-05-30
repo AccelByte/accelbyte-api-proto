@@ -43,36 +43,46 @@ components:
       properties:
         namespace:
           type: string
+          description: namespace
         rewardCode:
           type: string
+          description: reward code
         description:
           type: string
+          description: reward description
         eventTopic:
           type: string
+          description: topic to listen to
     rewardImport:
       type: object
       properties:
         namespace:
           type: string
+          description: namespace
         replacedRewardCodes:
           type: array
+          description: list of replaced reward codes
           items:
             type: string
         ignoredRewardCodes:
           type: array
+          description: list of ignored reward codes
           items:
             type: string
         newRewardCodes:
           type: array
+          description: list of new reward codes
           items:
             type: string
         failedRewardCodes:
+          description: list of failed reward codes
           type: array
           items:
             type: string
   messages:
     rewardCreated:
       name: rewardCreated
+      description: message is sent when reward is created
       payload:
         type: object
         allOf:
@@ -85,6 +95,7 @@ components:
                 $ref: '#/components/schemas/rewardManage'
     rewardUpdated:
       name: rewardUpdated
+      description: message is sent when reward is updated
       payload:
         type: object
         allOf:
@@ -97,6 +108,7 @@ components:
                 $ref: '#/components/schemas/rewardManage'
     rewardDeleted:
       name: rewardDeleted
+      description: message is sent when reward is deleted
       payload:
         type: object
         allOf:
@@ -109,6 +121,7 @@ components:
                 $ref: '#/components/schemas/rewardManage'
     rewardImported:
       name: rewardImported
+      description: message is sent when import reward configuration
       payload:
         type: object
         allOf:

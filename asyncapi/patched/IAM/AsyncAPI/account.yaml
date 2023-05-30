@@ -55,6 +55,7 @@ channels:
       message:
         oneOf:
         - $ref: '#/components/messages/countryAgeRestrictionCreated'
+        - $ref: '#/components/messages/countryAgeRestrictionUpdated'
   userTranslations:
     publish:
       message:
@@ -112,54 +113,77 @@ components:
       properties:
         resoure:
           type: string
+          description: resource
         action:
           type: string
+          description: action
         SchedAction:
           type: integer
+          description: action, between 1 to 15
+          deprecated: true
         SchedCron:
           type: string
+          description: cron string or date range (both are UTC, also in cron syntax)
+            to indicate when a permission and action are in effect
+          deprecated: true
         SchedRange:
           type: array
           items:
             type: string
+          description: start and end date when a permission and action are in effect
+          deprecated: true
     userAuthentication:
       type: object
       properties:
         platformId:
           type: string
+          description: third party platform id like ps4, ps5, live
         refresh:
           type: boolean
+          description: a flag indicates this is a refresh token grant or not
     userAccount:
       type: object
       properties:
         userId:
           type: string
+          description: user id
         emailAddress:
           type: string
+          description: email address
         country:
           type: string
+          description: country
         namespace:
           type: string
+          description: namespace
     userGameAccount:
       type: object
       properties:
         userId:
           type: string
+          description: game user id in game namespace
         emailAddress:
           type: string
+          description: email address
         gameNamespace:
           type: string
+          description: game namespace
         country:
           type: string
+          description: user country
     userAccountStatus:
       type: object
       properties:
         deletionStatus:
           type: boolean
+          description: a flag indicates whether user is scheduled to be deleted or
+            not
         enabled:
           type: boolean
+          description: a flag indicates whether user account is enabled or not
         verified:
           type: boolean
+          description: a flag indicates whether user account is verified or not
     userAccountBan:
       type: object
       properties:
@@ -170,131 +194,185 @@ components:
             properties:
               banId:
                 type: string
+                description: ban id
               name:
                 type: string
+                description: ban type
               reason:
                 type: string
+                description: reason
               comment:
                 type: string
+                description: comment
               enabled:
                 type: boolean
+                description: a flag indicates whether this user ban is enabled or
+                  not
     userInformation:
       type: object
       properties:
         displayName:
           type: string
+          description: display name
+        username:
+          type: string
+          description: username
         country:
           type: string
+          description: country
         language:
           type: string
+          description: language
         dateOfBirth:
           type: string
+          description: birthday
     role:
       type: object
       properties:
         roleId:
           type: string
+          description: role id
         name:
           type: string
+          description: role name
     countryAgeRestriction:
       type: object
       properties:
         country:
           type: string
+          description: country name
         restrictedAge:
           type: integer
+          description: age restriction
     thirdParty:
       type: object
       properties:
         userId:
           type: string
+          description: publisher user id
         thirdPartyUserId:
           type: string
+          description: third party platform user id
         platformId:
           type: string
+          description: third party platform id
         namespace:
           type: string
+          description: namespace
+        displayName:
+          type: string
+          description: synced from third party, gamer tag for xbox/online id for psn,
+            etc
         country:
           type: string
+          description: country
     platform:
       type: object
       properties:
         gameNamespace:
           type: string
+          description: game namespace
         gameUserId:
           type: string
+          description: justice game user id in game namespace
         country:
           type: string
+          description: country
     userFeatureBan:
       type: object
       properties:
         userId:
           type: string
+          description: user id
         namespace:
           type: string
+          description: target namespace
         ban:
           type: string
+          description: ban type
         endDate:
           type: string
           format: date-time
+          description: end date of this ban
         reason:
           type: string
+          description: reason
         enable:
           type: boolean
+          description: a flag indicates whether this ban is enabled or not
     deletionGDPR:
       type: object
       properties:
         userId:
           type: string
+          description: user id
         namespace:
           type: string
+          description: namespace
         eventId:
           type: integer
+          description: event id
         code:
           type: integer
+          description: http code
         message:
           type: string
+          description: message details of the deletion result
     userAccountThirdParty:
       type: object
       properties:
         platformId:
           type: string
+          description: third party platform id
         platformUserId:
           type: string
+          description: third party platform user id
     userAccountLink:
       type: object
       properties:
         namespace:
           type: string
+          description: target namespace
         userId:
           type: string
+          description: user id
         emailAddress:
           type: string
+          description: email address
     userAccountUnlink:
       type: object
       properties:
         userId:
           type: string
+          description: publisher user id
         emailAddress:
           type: string
+          description: email address
         targetNamespace:
           type: string
+          description: target namespace
         targetUserId:
           type: string
+          description: target user id in target namespace
     userAccountUpgrade:
       type: object
       properties:
         userId:
           type: string
+          description: user id
         emailAddress:
           type: string
+          description: user email address
         publisherUserId:
           type: string
+          description: publisher user id
         namespace:
           type: string
+          description: namespace
   messages:
     userAccountCreated:
       name: userAccountCreated
+      description: message is sent when publisher user account is created
       payload:
         type: object
         allOf:
@@ -309,10 +387,13 @@ components:
                 $ref: '#/components/schemas/userAccountStatus'
               namespace:
                 type: string
+                description: namespace
               userId:
                 type: string
+                description: user id
     userAccountDeleted:
       name: userAccountDeleted
+      description: message is sent when user account is deleted
       payload:
         type: object
         allOf:
@@ -327,10 +408,13 @@ components:
                 $ref: '#/components/schemas/userAccountStatus'
               namespace:
                 type: string
+                description: namespace
               userId:
                 type: string
+                description: user id
     userAccountEnabled:
       name: userAccountEnabled
+      description: message is sent when user account is enabled
       payload:
         type: object
         allOf:
@@ -345,10 +429,13 @@ components:
                 $ref: '#/components/schemas/userAccountStatus'
               namespace:
                 type: string
+                description: namespace
               userId:
                 type: string
+                description: user id
     userAccountDisabled:
       name: userAccountDisabled
+      description: message is sent when user account is disabled
       payload:
         type: object
         allOf:
@@ -363,10 +450,14 @@ components:
                 $ref: '#/components/schemas/userAccountStatus'
               namespace:
                 type: string
+                description: namespace
               userId:
                 type: string
+                description: user id
     userAccountEmailUpdated:
       name: userAccountEmailUpdated
+      description: message is sent when user change own email/admin change user's
+        email, email is not verified yet
       payload:
         type: object
         allOf:
@@ -381,10 +472,13 @@ components:
                 $ref: '#/components/schemas/userAccountStatus'
               namespace:
                 type: string
+                description: namespace
               userId:
                 type: string
+                description: user id
     userAccountPasswordUpdated:
       name: userAccountPasswordUpdated
+      description: message is sent when user update password
       payload:
         type: object
         allOf:
@@ -399,10 +493,13 @@ components:
                 $ref: '#/components/schemas/userAccountStatus'
               namespace:
                 type: string
+                description: namespace
               userId:
                 type: string
+                description: user id
     userAccountBanned:
       name: userAccountBanned
+      description: message is sent when user is banned
       payload:
         type: object
         allOf:
@@ -417,6 +514,7 @@ components:
                 $ref: '#/components/schemas/userAccountBan'
     userAccountUnbanned:
       name: userAccountUnbanned
+      description: message is sent when user is unbanned
       payload:
         type: object
         allOf:
@@ -431,6 +529,7 @@ components:
                 $ref: '#/components/schemas/userAccountBan'
     userAccountVerified:
       name: userAccountVerified
+      description: message is sent when user account is verified
       payload:
         type: object
         allOf:
@@ -445,10 +544,13 @@ components:
                 $ref: '#/components/schemas/userAccountStatus'
               namespace:
                 type: string
+                description: namespace
               userId:
                 type: string
+                description: user id
     userAccountLinked:
       name: userAccountLinked
+      description: message is sent when user account is linked to a third party platform
       payload:
         type: object
         allOf:
@@ -463,6 +565,8 @@ components:
                 $ref: '#/components/schemas/userAccountThirdParty'
     userAccountUnlinked:
       name: userAccountUnlinked
+      description: message is sent when user account and third party platform are
+        unlinked
       payload:
         type: object
         allOf:
@@ -489,6 +593,7 @@ components:
                 $ref: '#/components/schemas/userAccountUpgrade'
     gameUserAccountCreated:
       name: gameUserAccountCreated
+      description: message is sent when user account in game namespace is created
       payload:
         type: object
         allOf:
@@ -507,6 +612,7 @@ components:
                 type: string
     gameUserCreated:
       name: gameUserCreated
+      description: message is sent when a game account is created
       payload:
         type: object
         allOf:
@@ -519,6 +625,8 @@ components:
                 $ref: '#/components/schemas/platform'
     thirdPartyAccountCreated:
       name: thirdPartyAccountCreated
+      description: message is sent when a third party is linked to an account or first
+        login
       payload:
         type: object
         allOf:
@@ -531,10 +639,13 @@ components:
                 $ref: '#/components/schemas/thirdParty'
               namespace:
                 type: string
+                description: publisher namespace
               userId:
                 type: string
+                description: publisher user id
     userLoggedIn:
       name: userLoggedIn
+      description: message is sent when user login
       payload:
         type: object
         allOf:
@@ -549,6 +660,7 @@ components:
                 $ref: '#/components/schemas/userAuthentication'
     userLoggedOut:
       name: userLoggedOut
+      description: message is sent when user logout
       payload:
         type: object
         allOf:
@@ -563,6 +675,7 @@ components:
                 $ref: '#/components/schemas/userAuthentication'
     userThirdPartyLoggedIn:
       name: userThirdPartyLoggedIn
+      description: message is sent when user login with a third party account
       payload:
         type: object
         allOf:
@@ -577,6 +690,7 @@ components:
                 $ref: '#/components/schemas/userAuthentication'
     userInformationCreated:
       name: userInformationCreated
+      description: message is sent when user account is created
       payload:
         type: object
         allOf:
@@ -591,6 +705,7 @@ components:
                 $ref: '#/components/schemas/userInformation'
     userInformationDisplayNameUpdated:
       name: userInformationDisplayNameUpdated
+      description: message is sent when user's display name is changed
       payload:
         type: object
         allOf:
@@ -605,6 +720,7 @@ components:
                 $ref: '#/components/schemas/userInformation'
     userInformationCountryUpdated:
       name: userInformationCountryUpdated
+      description: message is sent when user's country is changed
       payload:
         type: object
         allOf:
@@ -619,6 +735,7 @@ components:
                 $ref: '#/components/schemas/userInformation'
     userInformationLanguageUpdated:
       name: userInformationLanguageUpdated
+      description: message is sent when user's language is changed
       payload:
         type: object
         allOf:
@@ -633,6 +750,7 @@ components:
                 $ref: '#/components/schemas/userInformation'
     userInformationDateOfBirthUpdated:
       name: userInformationDateOfBirthUpdated
+      description: message is sent when user's birthday is changed
       payload:
         type: object
         allOf:
@@ -647,6 +765,7 @@ components:
                 $ref: '#/components/schemas/userInformation'
     userPermissionsCreated:
       name: userPermissionCreated
+      description: message is sent when adding user permissions
       payload:
         type: object
         allOf:
@@ -663,6 +782,7 @@ components:
                   $ref: '#/components/schemas/permissions'
     userPermissionsDeleted:
       name: userPermissionDeleted
+      description: message is sent when user's permission is deleted
       payload:
         type: object
         allOf:
@@ -679,6 +799,7 @@ components:
                   $ref: '#/components/schemas/permissions'
     userRolesCreated:
       name: userRoleCreated
+      description: message is sent when role is assigned to user
       payload:
         type: object
         allOf:
@@ -695,6 +816,7 @@ components:
                   $ref: '#/components/schemas/role'
     userRolesDeleted:
       name: userRoleDeleted
+      description: message is sent when user's role is deleted
       payload:
         type: object
         allOf:
@@ -721,8 +843,22 @@ components:
             properties:
               countryAgeRestriction:
                 $ref: '#/components/schemas/countryAgeRestriction'
+    countryAgeRestrictionUpdated:
+      name: countryAgeRestrictionUpdated
+      description: message is sent when country age restriction is updated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              countryAgeRestriction:
+                $ref: '#/components/schemas/countryAgeRestriction'
     chatAllBanned:
       name: chatAllBanned
+      description: message is sent when user is banned with feature restriction CHAT_ALL
       payload:
         type: object
         allOf:
@@ -735,6 +871,7 @@ components:
                 $ref: '#/components/schemas/userFeatureBan'
     chatSendBanned:
       name: chatSendBanned
+      description: message is sent when user is banned with feature restriction CHAT_SEND
       payload:
         type: object
         allOf:
@@ -747,6 +884,7 @@ components:
                 $ref: '#/components/schemas/userFeatureBan'
     leaderboardBanned:
       name: leaderboardBanned
+      description: message is sent when user is banned with feature restriction LEADERBOARD
       payload:
         type: object
         allOf:
@@ -759,6 +897,7 @@ components:
                 $ref: '#/components/schemas/userFeatureBan'
     statisticsBanned:
       name: statisticsBanned
+      description: message is sent when user is banned with feature restriction STATISTICS
       payload:
         type: object
         allOf:
@@ -771,6 +910,7 @@ components:
                 $ref: '#/components/schemas/userFeatureBan'
     orderAndPaymentBanned:
       name: orderAndPaymentBanned
+      description: message is sent when user is banned with feature restriction ORDER_AND_PAYMENT
       payload:
         type: object
         allOf:
@@ -783,6 +923,7 @@ components:
                 $ref: '#/components/schemas/userFeatureBan'
     matchmakingBanned:
       name: matchmakingBanned
+      description: message is sent when user is banned with feature restriction MATCHMAKING
       payload:
         type: object
         allOf:
@@ -795,6 +936,7 @@ components:
                 $ref: '#/components/schemas/userFeatureBan'
     ugcCreateUpdateBanned:
       name: ugcCreateUpdateBanned
+      description: message is sent when user is banned with feature restriction UGC_CREATE_UPDATE
       payload:
         type: object
         allOf:
@@ -807,6 +949,8 @@ components:
                 $ref: '#/components/schemas/userFeatureBan'
     userDisconnectRequested:
       name: userDisconnectRequested
+      description: message is sent when user is (scheduled to be)deleted/user's permission
+        or role is added or deleted
       payload:
         type: object
         allOf:
@@ -819,6 +963,8 @@ components:
                 type: string
     gdprRequestDataDeletionResponse:
       name: gdprRequestDataDeletionResponse
+      description: message is sent after IAM receive account deletion and then delete
+        user
       payload:
         type: object
         allOf:

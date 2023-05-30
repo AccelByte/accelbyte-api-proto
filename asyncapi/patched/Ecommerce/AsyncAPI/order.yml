@@ -59,15 +59,23 @@ components:
       properties:
         currencyCode:
           type: string
+          description: currency code
         currencySymbol:
           type: string
+          description: currency symbol
         currencyType:
           type: string
+          description: currency type
+          enum:
+          - REAL
+          - VIRTUAL
         namespace:
           type: string
+          description: namespace
         decimals:
           type: integer
           format: int32
+          description: decimals
     order:
       type: object
       properties:

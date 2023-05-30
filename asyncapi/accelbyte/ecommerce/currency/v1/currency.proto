@@ -47,7 +47,11 @@ message Currency {
     AnonymousSchema1 localizationDescriptions = 2;
     string currencySymbol = 3;
     string namespace = 4;
-    string currencyType = 5;
+    enum CurrencyTypeEnum {
+        REAL = 0;
+        VIRTUAL = 1;
+    }
+    CurrencyTypeEnum currencyType = 5;
     int32 decimals = 6;
     string createdAt = 7;
     string updatedAt = 8;

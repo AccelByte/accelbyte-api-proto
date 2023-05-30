@@ -41,7 +41,11 @@ message Event {
 message CurrencySummary {
     string currencyCode = 1;
     string currencySymbol = 2;
-    string currencyType = 3;
+    enum CurrencyTypeEnum {
+        REAL = 0;
+        VIRTUAL = 1;
+    }
+    CurrencyTypeEnum currencyType = 3;
     string namespace = 4;
     int32 decimals = 5;
 }

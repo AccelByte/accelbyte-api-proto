@@ -49,8 +49,21 @@ message EntitlementSummary {
     string id = 1;
     string namespace = 2;
     string userId = 3;
-    string clazz = 4;
-    string type = 5;
+    enum ClazzEnum {
+        APP = 0;
+        ENTITLEMENT = 1;
+        CODE = 2;
+        SUBSCRIPTION = 3;
+        MEDIA = 4;
+        OPTIONBOX = 5;
+        LOOTBOX = 6;
+    }
+    ClazzEnum clazz = 4;
+    enum TypeEnum {
+        DURABLE = 0;
+        CONSUMABLE = 1;
+    }
+    TypeEnum type = 5;
     bool stackable = 6;
     int32 stackedUseCount = 7;
     string storeId = 8;

@@ -50,19 +50,28 @@ components:
       properties:
         currencyCode:
           type: string
+          description: currency code
         localizationDescriptions:
           type: object
+          description: localized description
           additionalProperties:
             type: string
         currencySymbol:
           type: string
+          description: currency symbol
         namespace:
           type: string
+          description: namespace
         currencyType:
           type: string
+          description: currency type
+          enum:
+          - REAL
+          - VIRTUAL
         decimals:
           type: integer
           format: int32
+          description: decimals, commonly set 2 if real currency or 0 if virtual currency
         createdAt:
           type: string
           format: date-time
@@ -72,6 +81,7 @@ components:
   messages:
     currencyCreated:
       name: currencyCreated
+      description: message is sent when currency is created
       payload:
         type: object
         allOf:
@@ -84,6 +94,7 @@ components:
                 $ref: '#/components/schemas/currency'
     currencyUpdated:
       name: currencyUpdated
+      description: message is sent when currency is updated
       payload:
         type: object
         allOf:
@@ -98,6 +109,7 @@ components:
                 $ref: '#/components/schemas/currency'
     currencyDeleted:
       name: currencyDeleted
+      description: message is sent when currency is deleted
       payload:
         type: object
         allOf:

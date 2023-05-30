@@ -61,70 +61,99 @@ components:
       properties:
         resoure:
           type: string
+          description: resource
         action:
           type: string
+          description: action
         SchedAction:
           type: integer
+          description: action, between 1 to 15
+          deprecated: true
         SchedCron:
           type: string
+          description: cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect
+          deprecated: true
         SchedRange:
           type: array
           items:
             type: string
+          description: start and end date when a permission and action are in effect
+          deprecated: true
 
     client:
       type: object
       properties:
         clientId:
           type: string
+          description: client id
         name:
           type: string
+          description: client name
         clientType:
           type: string
+          description: client type, Confidential/Public
         baseUri:
           type: string
+          description: base uri of this client
         redirectUri:
           type: string
+          description: redirect uri for server to redirect to after authentication
         secret:
           type: string
+          description: client secret
         audiences:
           type: array
           items:
             type: string
+          description: target client ids who will receive token
         clientPlatform:
           type: string
+          description: third party platform that will use this client, Playstation/Xbox/Steam/Epic/IOS/GooglePlay/Nintendo
         twoFactorEnabled:
           type: boolean
+          description: a flag indicates whether tow factor is enabled or not
         namespace:
           type: string
+          description: namespace
 
     clientCreateObj:
       type: object
       properties:
         clientId:
           type: string
+          description: client id
         name:
           type: string
+          description: client name
         clientType:
           type: string
+          description: client type, Confidential/Public
         baseUri:
           type: string
+          description: base uri of this client
         redirectUri:
           type: string
+          description: redirect uri for server to redirect to after authentication
         secret:
           type: string
+          description: client secret
         audiences:
           type: array
           items:
             type: string
+          description: target client ids who will receive token
         clientPlatform:
           type: string
+          description: third party platform that will use this client, Playstation/Xbox/Steam/Epic/IOS/GooglePlay/Nintendo
         twoFactorEnabled:
           type: boolean
+          description: a flag indicates whether tow factor is enabled or not
         namespace:
           type: string
+          description: namespace
         parentNamespace:
           type: string
+          description: studio/publisher namespace in multi tenant mode
 
     clientThirdParty:
       type: object
@@ -144,6 +173,7 @@ components:
   messages:
     clientCreated:
       name: clientCreated
+      description: message is sent when an IAM oauth client is created
       payload:
         type: object
         allOf:
@@ -157,6 +187,7 @@ components:
 
     clientDeleted:
       name: clientDeleted
+      description: message is sent when IAM oauth client is deleted
       payload:
         type: object
         allOf:
@@ -170,6 +201,7 @@ components:
 
     clientUpdated:
       name: clientUpdated
+      description: message is sent when IAM oauth client is updated
       payload:
         type: object
         allOf:
@@ -183,6 +215,7 @@ components:
 
     clientPermissionsCreated:
       name: clientPermissionCreated
+      description: message is sent when adding permission to oauth client
       payload:
         type: object
         allOf:
@@ -200,6 +233,7 @@ components:
 
     clientPermissionsDeleted:
       name: clientPermissionDeleted
+      description: message is sent when client's permission is deleted
       payload:
         type: object
         allOf:
@@ -217,6 +251,7 @@ components:
 
     clientPermissionsUpdated:
       name: clientPermissionUpdated
+      description: message is sent when client's permission is updated
       payload:
         type: object
         allOf:
@@ -234,6 +269,7 @@ components:
 
     clientThirdPartyCreated:
       name: clientThirdPartyCreated
+
       payload:
         type: object
         allOf:
@@ -264,10 +300,11 @@ components:
 
     clientThirdPartyUpdated:
       name: clientThirdPartyUpdated
+      description: deprecated
       payload:
         type: object
         allOf:
-        - $ref: '#/components/schemas/event'
+          - $ref: '#/components/schemas/event'
         properties:
           payload:
             type: object

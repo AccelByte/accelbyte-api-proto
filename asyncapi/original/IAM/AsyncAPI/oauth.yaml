@@ -62,21 +62,26 @@ components:
       properties:
         clientId:
           type: string
+          description: oauth client id
         responseType:
           type: string
+          description: response type, code/token
         platformId:
           type: string
+          description: third party platform id
 
     oauthThirdParty:
       type: object
       properties:
         platformId:
           type: string
+          description: third party platform id
 
 
   messages:
     oauthRequestAuthorized:
       name: oauthRequestAuthorized
+      description: message is sent when user initializes OAuth 2.0 authorization code flow
       payload:
         type: object
         allOf:
@@ -90,6 +95,7 @@ components:
 
     oauthTokenGenerated:
       name: oauthTokenGenerated
+      description: message is sent after user successfully login/refresh token(not login by third party)
       payload:
         type: object
         allOf:
@@ -103,6 +109,7 @@ components:
 
     oauthTokenRevoked:
       name: oauthTokenRevoked
+      description: message is sent after user is revoked or token is revoked
       payload:
         type: object
         allOf:
@@ -116,6 +123,7 @@ components:
 
     oauthThirdPartyRequestAuthorized:
       name: oauthThirdPartyRequestAuthorized
+      description: message is sent after user initializes third party authorization
       payload:
         type: object
         allOf:
@@ -131,6 +139,7 @@ components:
 
     oauthThirdPartyTokenGenerated:
       name: oauthThirdPartyTokenGenerated
+      description: message is sent after user successfully login with third party account
       payload:
         type: object
         allOf:

@@ -44,13 +44,27 @@ message Iap {
     string userId = 3;
     string productId = 4;
     string transactionId = 5;
-    string status = 6;
+    enum StatusEnum {
+        VERIFIED = 0;
+        FULFILLED = 1;
+        FAILED = 2;
+    }
+    StatusEnum status = 6;
     string statusReason = 7;
     string region = 8;
     string language = 9;
     int64 quantity = 10;
     bool sandbox = 11;
-    string type = 12;
+    enum TypeEnum {
+        APPLE = 0;
+        GOOGLE = 1;
+        PLAYSTATION = 2;
+        STEAM = 3;
+        XBOX = 4;
+        EPICGAMES = 5;
+        TWITCH = 6;
+    }
+    TypeEnum type = 12;
     string fulfilledTime = 13;
 }
 

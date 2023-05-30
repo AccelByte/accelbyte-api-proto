@@ -58,24 +58,31 @@ components:
       properties:
         code:
           type: string
+          description: country group code
         name:
           type: string
+          description: country group name
 
     userContent:
       type: object
       properties:
         url:
           type: string
+          description: upload url
         accessUrl:
           type: string
+          description: access url
         method:
           type: string
+          description: method, default PUT
         contentType:
           type: string
+          description: content type
 
   messages:
     userContentUrlCreated:
       name: userContentUrlCreated
+      description: message is sent when generate upload url
       payload:
         type: object
         allOf:
@@ -89,6 +96,7 @@ components:
 
     countryGroupCreated:
       name: countryGroupCreated
+      description: message is sent when add a country group
       payload:
         type: object
         allOf:
@@ -106,6 +114,7 @@ components:
 
     countryGroupUpdated:
       name: countryGroupUpdated
+      description: message is sent when country group is updated
       payload:
         type: object
         allOf:

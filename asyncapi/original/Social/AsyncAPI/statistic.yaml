@@ -159,6 +159,14 @@ components:
            type: object
         ignoreAdditionalDataOnValueRejected:
           type: boolean
+        defaultValue:
+          type: number
+          format: double
+        requestValue:
+          type: number
+          format: double
+        updateStrategy:
+          type: string
 
     globalStatItem:
       type: object

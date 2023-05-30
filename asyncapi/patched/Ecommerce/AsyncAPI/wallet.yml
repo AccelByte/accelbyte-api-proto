@@ -53,8 +53,10 @@ components:
       properties:
         walletId:
           type: string
+          description: wallet id
         userId:
           type: string
+          description: user id
         status:
           type: string
           description: wallet status
@@ -66,12 +68,16 @@ components:
       properties:
         walletId:
           type: string
+          description: wallet id
         namespace:
           type: string
+          description: namespace
         userId:
           type: string
+          description: user id
         currencyCode:
           type: string
+          description: currency code
         balance:
           type: integer
           format: int64
@@ -92,6 +98,7 @@ components:
   messages:
     walletDisabled:
       name: walletDisabled
+      description: message is sent when wallet is disabled
       payload:
         type: object
         allOf:
@@ -104,6 +111,7 @@ components:
                 $ref: '#/components/schemas/walletStatusChange'
     walletEnabled:
       name: walletEnabled
+      description: message is sent when wallet is enabled
       payload:
         type: object
         allOf:
@@ -116,6 +124,7 @@ components:
                 $ref: '#/components/schemas/walletStatusChange'
     walletCredited:
       name: walletCredited
+      description: message is sent when credit wallet
       payload:
         type: object
         allOf:
@@ -128,6 +137,7 @@ components:
                 $ref: '#/components/schemas/walletBalanceChange'
     walletDebited:
       name: walletDebited
+      description: message is sent when debit wallet
       payload:
         type: object
         allOf:
@@ -140,6 +150,7 @@ components:
                 $ref: '#/components/schemas/walletBalanceChange'
     walledPaid:
       name: walledPaid
+      description: message is sent when pay with wallet
       payload:
         type: object
         allOf:
@@ -152,6 +163,7 @@ components:
                 $ref: '#/components/schemas/walletBalanceChange'
     walledExpired:
       name: walledExpired
+      description: message is sent when wallet balance is expired
       payload:
         type: object
         allOf:

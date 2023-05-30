@@ -208,10 +208,13 @@ components:
       properties:
         entitlementId:
           type: string
+          description: entitlement id
         entitlementName:
           type: string
+          description: entitlement name
         userId:
           type: string
+          description: user id
         useCount:
           type: integer
           description: the useCount after entitlement was consumed
@@ -224,10 +227,13 @@ components:
       properties:
         entitlementId:
           type: string
+          description: entitlement id
         entitlementName:
           type: string
+          description: entitlement name
         userId:
           type: string
+          description: user id
         useCount:
           type: integer
           description: the useCount after entitlement was revoked
@@ -240,27 +246,39 @@ components:
       properties:
         walletId:
           type: string
+          description: wallet id
         namespace:
           type: string
+          description: namespace
         userId:
           type: string
+          description: user id
         amount:
           type: integer
           format: int64
+          description: amount need to be paid
 
     entitlementSale:
       type: object
       properties:
         entitlementId:
           type: string
+          description: entitlement id
         entitlementName:
           type: string
+          description: entitlement name
         entitlementType:
           type: string
+          description: entitlement type
+          enum:
+            - DURABLE
+            - CONSUMABLE
         clazz:
           type: string
+          description: entitlement clazz
         userId:
           type: string
+          description: user id
         useCount:
           type: integer
           description: the useCount after entitlement was consumed
@@ -278,30 +296,48 @@ components:
       properties:
         entitlementIds:
           type: array
+          description: entitlement ids
           items:
             type: string
         userId:
           type: string
+          description: user id
 
     entitlementStatusChange:
       type: object
       properties:
         entitlementId:
           type: string
+          description: entitlement id
         entitlementName:
           type: string
+          description: entitlement name
         userId:
           type: string
+          description: user id
         status:
           type: string
           description: entitlement status
+          enum:
+            - ACTIVE
+            - INACTIVE
+            - CONSUMED
+            - REVOKED
+            - SOLD
         previousStatus:
           type: string
           description: entitlement status before change
+          enum:
+            - ACTIVE
+            - INACTIVE
+            - CONSUMED
+            - REVOKED
+            - SOLD
 
   messages:
     entitlementGranted:
       name: entitlementGranted
+      description: message is sent when user is granted with entitlement
       payload:
         type: object
         allOf:
@@ -317,6 +353,7 @@ components:
 
     entitlementUpdated:
       name: entitlementUpdated
+      description: message is sent when entitlement is updated
       payload:
         type: object
         allOf:
@@ -332,6 +369,7 @@ components:
 
     entitlementConsumed:
       name: entitlementConsumed
+      description: message is sent when user enetitlement is consumed
       payload:
         type: object
         allOf:
@@ -345,6 +383,7 @@ components:
 
     entitlementUseCountRevoked:
       name: entitlementUseCountRevoked
+      description: message is sent when entitlement use count is revoked, only for consumable entitlement
       payload:
         type: object
         allOf:
@@ -358,6 +397,7 @@ components:
 
     entitlementRevoked:
       name: entitlementRevoked
+      description: message is sent when entitlement is revoked
       payload:
         type: object
         allOf:
@@ -371,6 +411,7 @@ components:
 
     entitlementDisabled:
       name: entitlementDisabled
+      description: message is sent when entitlement is disabled
       payload:
         type: object
         allOf:
@@ -384,6 +425,7 @@ components:
 
     entitlementEnabled:
       name: entitlementEnabled
+      description: message is sent when entitlement is enabled
       payload:
         type: object
         allOf:
@@ -397,6 +439,7 @@ components:
 
     entitlementSellback:
       name: entitlementSellback
+      description: message is sent when user sell entitlement
       payload:
         type: object
         allOf:

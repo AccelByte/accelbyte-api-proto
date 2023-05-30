@@ -49,8 +49,21 @@ message Subscription {
     int64 price = 8;
     int64 trialPrice = 9;
     Recurring recurring = 10;
-    string status = 11;
-    string chargeStatus = 12;
+    enum StatusEnum {
+        INIT = 0;
+        ACTIVE = 1;
+        CANCELLED = 2;
+        EXPIRED = 3;
+    }
+    StatusEnum status = 11;
+    enum ChargeStatusEnum {
+        NEVER = 0;
+        SETUP = 1;
+        RECURRING_CHARGING = 2;
+        CHARGED = 3;
+        CHARGE_FAILED = 4;
+    }
+    ChargeStatusEnum chargeStatus = 12;
     string nextBillingDate = 13;
     string currentPeriodStart = 14;
     string currentPeriodEnd = 15;
@@ -63,7 +76,11 @@ message Subscription {
     bool inFixedCycleTrial = 22;
     bool firstSubscribe = 23;
     bool paid = 24;
-    string subscribedBy = 25;
+    enum SubscribedByEnum {
+        USER = 0;
+        PLATFORM = 1;
+    }
+    SubscribedByEnum subscribedBy = 25;
     string subscribedAt = 26;
     string unsubscribedAt = 27;
     string unsubscribeReason = 28;
@@ -77,7 +94,13 @@ message Subscription {
 
 // path: #/components/schemas/recurring
 message Recurring {
-    string cycle = 1;
+    enum CycleEnum {
+        WEEKLY = 0;
+        MONTHLY = 1;
+        QUARTERLY = 2;
+        YEARLY = 3;
+    }
+    CycleEnum cycle = 1;
     int32 fixedFreeDays = 2;
     int32 fixedTrialCycles = 3;
     int32 graceDays = 4;
@@ -87,7 +110,11 @@ message Recurring {
 message CurrencySummary {
     string currencyCode = 1;
     string currencySymbol = 2;
-    string currencyType = 3;
+    enum CurrencyTypeEnum {
+        REAL = 0;
+        VIRTUAL = 1;
+    }
+    CurrencyTypeEnum currencyType = 3;
     string namespace = 4;
     int32 decimals = 5;
 }

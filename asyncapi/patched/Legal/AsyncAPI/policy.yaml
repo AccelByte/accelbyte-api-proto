@@ -62,130 +62,184 @@ components:
       properties:
         id:
           type: string
+          description: base policy id
         basePolicyName:
           type: string
+          description: name of the base policy
         description:
           type: string
+          description: description of the base policy
         typeId:
           type: string
+          description: policy type id
         policyTypeName:
           type: string
+          description: policy type name, value can be Legal Document or Marketing
+            Preference
         affectedClientIds:
           type: array
           items:
             type: string
+          description: affected oauth clients
         affectedCountries:
           type: array
           items:
             type: string
+          description: countries included in the base policy
         createdAt:
           type: string
           format: date-time
+          description: time when the base policy is created
         updatedAt:
           type: string
           format: date-time
+          description: time when the base policy is updated
         isMandatory:
           type: boolean
+          description: a flag indicates whether this base policy is mandatory
         namespace:
           type: string
+          description: namesapce of the base policy
         tags:
           type: array
           items:
             type: string
+          description: tags of this base policy
     policy:
       type: object
       properties:
         id:
           type: string
+          description: policy id
         policyName:
           type: string
+          description: policy name
         countryCode:
           type: string
+          description: country code
         createdAt:
           type: string
           format: date-time
+          description: time when the policy is created
         updatedAt:
           type: string
           format: date-time
+          description: time when the policy is updated
         shouldNotifyOnUpdate:
           type: boolean
+          description: a flag indicates whether need to notify users if this policy
+            is updated
         countryGroupCode:
           type: string
+          deprecated: true
         isMandatory:
           type: boolean
+          description: a flag indicates whether this policy is mandatory
         isDefaultOpted:
           type: boolean
+          deprecated: true
         basePolicyId:
           type: string
+          deprecated: true
         readableId:
           type: string
+          deprecated: true
         description:
           type: string
+          description: description of this policy
         isDefaultSelection:
           type: boolean
+          description: a flag indicates whether this country based policy is the default
+            selected
     versionedPolicy:
       type: object
       properties:
         id:
           type: string
+          description: policy version id
         policyId:
           type: string
+          description: policy id this policy version belongs to
         displayVersion:
           type: string
+          description: display version of this policy version
         description:
           type: string
+          description: description of this policy version
         status:
           type: string
+          description: status of this policy version, values can be empty string if
+            never published or PUBLISHED/ACTIVE
         createdAt:
           type: string
           format: date-time
+          description: time when this version is created
         updatedAt:
           type: string
           format: date-time
+          description: time when this version is updated
         publishedDate:
           type: string
           format: date-time
+          description: time when this version is published
         isCrucial:
           type: boolean
+          deprecated: true
         isCommitted:
           type: boolean
+          deprecated: true
         isInEffect:
           type: boolean
+          description: a flag indicates whether this version is currently published
     localizedPolicy:
       type: object
       properties:
         id:
           type: string
+          description: localized policy version id
         versionedPolicyId:
           type: string
+          description: policy version id
         description:
           type: string
+          description: description of localized policy version
         localeCode:
           type: string
+          description: locale/language code
         contentType:
           type: string
+          description: type of the source file, text/html or text/markdown
         attachmentLocation:
           type: string
+          description: location of the source file in the storage
         attachmentChecksum:
           type: string
+          description: checksum of the source file
         attachmentVersionIdentifier:
           type: string
+          description: identifier of the source file
         status:
           type: string
+          deprecated: true
         createdAt:
           type: string
           format: date-time
+          description: time when this localized version was created
         updatedAt:
           type: string
           format: date-time
+          description: time when this localized version was updated
         publishedDate:
           type: string
           format: date-time
+          deprecated: true
         isDefaultSelection:
           type: boolean
+          deprecated: true
   messages:
     basePolicyCreated:
       name: basePolicyCreated
+      description: message is sent after base policy is created
       payload:
         type: object
         allOf:
@@ -210,6 +264,7 @@ components:
                 $ref: '#/components/schemas/basePolicy'
     policyCreated:
       name: policyCreated
+      description: message is sent when country based policy is created
       payload:
         type: object
         allOf:
@@ -222,6 +277,7 @@ components:
                 $ref: '#/components/schemas/policy'
     policyUpdated:
       name: policyUpdated
+      description: message is sent when country base policy is updated
       payload:
         type: object
         allOf:
@@ -234,6 +290,7 @@ components:
                 $ref: '#/components/schemas/policy'
     defaultPolicyUpdated:
       name: defaultPolicyUpdated
+      description: message is sent when country based policy is set to default
       payload:
         type: object
         allOf:
@@ -246,6 +303,7 @@ components:
                 $ref: '#/components/schemas/policy'
     versionedPolicyCreated:
       name: versionedPolicyCreated
+      description: message is sent when policy version is created
       payload:
         type: object
         allOf:
@@ -258,6 +316,7 @@ components:
                 $ref: '#/components/schemas/versionedPolicy'
     versionedPolicyUpdated:
       name: versionedPolicyUpdated
+      description: message is sent when policy version is updated
       payload:
         type: object
         allOf:
@@ -270,6 +329,7 @@ components:
                 $ref: '#/components/schemas/versionedPolicy'
     versionedPolicyPublished:
       name: versionedPolicyPublished
+      description: message is sent when policy version is published
       payload:
         type: object
         allOf:
@@ -282,6 +342,7 @@ components:
                 $ref: '#/components/schemas/versionedPolicy'
     localizedPolicyCreated:
       name: localizedPolicyCreated
+      description: message is sent when localized policy is created
       payload:
         type: object
         allOf:
@@ -294,6 +355,7 @@ components:
                 $ref: '#/components/schemas/localizedPolicy'
     localizedPolicyUpdated:
       name: localizedPolicyUpdated
+      description: message is sent when localized policy is updated
       payload:
         type: object
         allOf:
@@ -306,6 +368,7 @@ components:
                 $ref: '#/components/schemas/localizedPolicy'
     defaultLocalizedPolicyUpdated:
       name: defaultLocalizedPolicyUpdated
+      deprecated: true
       payload:
         type: object
         allOf:

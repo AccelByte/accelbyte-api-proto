@@ -51,36 +51,60 @@ components:
         httpStatus:
           type: integer
           format: int32
+          description: http status
         code:
           type: integer
           format: int32
+          description: error code
         message:
           type: string
+          description: error message
 
     entitlementSummary:
       type: object
       properties:
         id:
           type: string
+          description: entitlement id
         namespace:
           type: string
+          description: entitlement namespace
         userId:
           type: string
+          description: user id
         clazz:
           type: string
+          description: entitlement clazz
+          enum:
+            - APP
+            - ENTITLEMENT
+            - CODE
+            - SUBSCRIPTION
+            - MEDIA
+            - OPTIONBOX
+            - LOOTBOX
         type:
           type: string
+          description: entitlement type
+          enum:
+            - DURABLE
+            - CONSUMABLE
         stackable:
           type: boolean
+          description: a flag indicates whether the consumable entitlement is stackable
         stackedUseCount:
           type: integer
           format: int32
+          description: consumable entitlement stacked use count
         storeId:
           type: string
+          description: store id
         itemId:
           type: string
+          description: item id
         grantedCode:
           type: string
+          description: granted code
         createdAt:
           type: string
           format: date-time
@@ -90,42 +114,56 @@ components:
         startDate:
           type: string
           format: date-time
+          description: time when the entitlement becomes active
         endDate:
           type: string
           format: date-time
+          description: time when the entitlement becomes expired
 
     creditSummary:
       type: object
       properties:
         walletId:
           type: string
+          description: wallet id
         namespace:
           type: string
+          description: namespace
         userId:
           type: string
+          description: user id
         amount:
           type: integer
           format: int64
+          description: amount to be paid
+
 
     fulfillmentItem:
       type: object
       properties:
         itemId:
           type: string
+          description: item id
         itemName:
           type: string
+          description: item name
         quantity:
           type: integer
           format: int32
+          description: item quantity
         storeId:
           type: string
+          description: store id
         itemSku:
           type: string
+          description: item sku
         extraSubscriptionDays:
           type: integer
           format: int32
+          description: extra subscription days
         itemType:
           type: string
+          description: item type
 
     fulfillment:
       type: object
@@ -168,6 +206,7 @@ components:
   messages:
     fulfillmentCompleted:
       name: fulfillmentCompleted
+      description: message is sent when fulfillment is completed
       payload:
         type: object
         allOf:

@@ -66,28 +66,40 @@ components:
       properties:
         resoure:
           type: string
+          description: resource
         action:
           type: string
+          description: action
         SchedAction:
           type: integer
+          description: action, between 1 to 15
+          deprecated: true
         SchedCron:
           type: string
+          description: cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect
+          deprecated: true
         SchedRange:
           type: array
           items:
             type: string
+          description: start and end date when a permission and action are in effect
+          deprecated: true
 
     role:
       type: object
       properties:
         roleId:
           type: string
+          description: role id
         name:
           type: string
+          description: role name
         admin:
           type: boolean
+          description: a flag indicates whether this role is an admin role
         roleIsWildcard:
           type: boolean
+          description: a flag indicates whether this role is an global role
 
     roleManager:
       type: object
@@ -104,15 +116,19 @@ components:
       properties:
         userId:
           type: string
+          description: user id
         namespace:
-          type: string  
+          type: string
+          description: namespace
         displayName:
           type: string
+          description: display name
 
 
   messages:
     roleCreated:
       name: roleCreated
+      description: message is sent when role is created
       payload:
         type: object
         allOf:
@@ -126,6 +142,7 @@ components:
 
     roleDeleted:
       name: roleDeleted
+      description: message is sent when role is deleted
       payload:
         type: object
         allOf:
@@ -139,6 +156,7 @@ components:
 
     roleUpdated:
       name: roleUpdated
+      description: message is sent when role is updated
       payload:
         type: object
         allOf:
@@ -152,6 +170,7 @@ components:
 
     rolePermissionCreated:
       name: rolePermissionCreated
+      description: message is sent when adding role permissions
       payload:
         type: object
         allOf:
@@ -169,6 +188,7 @@ components:
 
     rolePermissionDeleted:
       name: rolePermissionDeleted
+      description: message is sent when role permission is deleted
       payload:
         type: object
         allOf:
@@ -186,6 +206,7 @@ components:
 
     rolePermissionUpdated:
       name: rolePermissionUpdated
+      description: message is sent when role permission is updated
       payload:
         type: object
         allOf:
@@ -203,6 +224,7 @@ components:
 
     roleManagerCreated:
       name: roleManagerCreated
+      description: deprecated
       payload:
         type: object
         allOf:
@@ -220,6 +242,7 @@ components:
 
     roleManagerDeleted:
       name: roleManagerDeleted
+      description: deprecated
       payload:
         type: object
         allOf:
@@ -237,6 +260,7 @@ components:
 
     roleMemberCreated:
       name: roleMemberCreated
+      description: message is sent when role is assigned to user
       payload:
         type: object
         allOf:
@@ -254,6 +278,7 @@ components:
 
     roleMemberDeleted:
       name: roleMemberDeleted
+      description: message is sent when user's role is removed
       payload:
         type: object
         allOf:

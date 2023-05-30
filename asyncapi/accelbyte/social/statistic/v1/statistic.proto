@@ -91,6 +91,9 @@ message StatItem {
     double inc = 5;
     AnonymousSchema3 additionalData = 6;
     bool ignoreAdditionalDataOnValueRejected = 7;
+    double defaultValue = 8;
+    double requestValue = 9;
+    string updateStrategy = 10;
 }
 
 // path: #/components/schemas/globalStatItem
@@ -305,6 +308,9 @@ message AnonymousSchema9 {
     double inc = 5;
     AnonymousSchema3 additionalData = 6;
     bool ignoreAdditionalDataOnValueRejected = 7;
+    double defaultValue = 8;
+    double requestValue = 9;
+    string updateStrategy = 10;
 }
 
 // path: #/components/messages/statItemCreated/payload
@@ -334,6 +340,9 @@ message AnonymousSchema10 {
     double inc = 5;
     AnonymousSchema3 additionalData = 6;
     bool ignoreAdditionalDataOnValueRejected = 7;
+    double defaultValue = 8;
+    double requestValue = 9;
+    string updateStrategy = 10;
 }
 
 // path: #/components/messages/statItemUpdated/payload
@@ -363,6 +372,9 @@ message AnonymousSchema11 {
     double inc = 5;
     AnonymousSchema3 additionalData = 6;
     bool ignoreAdditionalDataOnValueRejected = 7;
+    double defaultValue = 8;
+    double requestValue = 9;
+    string updateStrategy = 10;
 }
 
 // path: #/components/messages/statItemDeleted/payload

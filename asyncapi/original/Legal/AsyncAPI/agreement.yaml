@@ -44,25 +44,34 @@ components:
       properties:
         policyId:
           type: string
+          description: policy id
         policyVersionId:
           type: string
+          description: policy version id
         policyName:
           type: string
+          description: policy name
         displayVersion:
           type: string
+          description: display version of policy version
         localizedPolicyVersionId:
           type: string
+          description: localized policy version id
         localizedDescription:
           type: string
+          description: description of localized policy
         isAccepted:
           type: boolean
+          description: a flag indicates whether user accepted this policy
         userId:
           type: string
+          description: user id, can be publisher/game user id
          
 
   messages:
     agreementCreated:
       name: agreementCreated
+      description: message is sent after user accepts legal documentation
       payload:
         type: object
         allOf:
@@ -76,6 +85,7 @@ components:
 
     agreementUpdated:
       name: agreementUpdated
+      description: message is sent after user accepts legal documentation
       payload:
         type: object
         allOf:
