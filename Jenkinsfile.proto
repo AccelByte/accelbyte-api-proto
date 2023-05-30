@@ -70,7 +70,7 @@ pipeline {
         stage("Update") {
             steps {
                 script {
-                    if (sh(script: "git add asyncapi && git status --porcelain asyncapi", returnStatus: true) == 0) {
+                    if (sh(script: "git add asyncapi && git status --porcelain asyncapi | grep -v -e 'TIMESTAMP'", returnStatus: true) == 0) {
                         zip(zipFile: "asyncapi.zip", dir: "asyncapi/", overwrite: true, archive: true)
 
                         repoBranchName = sh(script: "echo ${env.GIT_BRANCH} | grep -oP '(?<=origin/).+'", returnStdout: true).trim()
