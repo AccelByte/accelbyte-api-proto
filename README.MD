@@ -1,4 +1,4 @@
-# gRPC Plugin Proto
+# Justice API Proto
 
 Centralize place for protobuf files
 

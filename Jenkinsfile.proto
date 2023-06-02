@@ -12,7 +12,7 @@ bitbucketNamespace = "accelbyte"
 bitbucketCredentialsHttps = "bitbucket-build-extend-https"
 bitbucketCredentialsSsh = "bitbucket-build-extend-ssh"
 
-repoName = "grpc-plugin-proto"
+repoName = "justice-api-proto"
 repoPath = null
 repoBranchName = null
 repoCommitHash = null
