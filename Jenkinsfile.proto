@@ -23,7 +23,7 @@ specRepoName = "justice-api-specification"
 specRepoPath = null
 specRepoCommitHash = null
 
-codegenRepoName = "justice-codegen-sdk-v2"
+codegenRepoName = "justice-codegen-modular-sdk"
 codegenRepoPath = null
 codegenRepoCommitHash = null
 
