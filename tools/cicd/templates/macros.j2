@@ -47,7 +47,7 @@ message {{ schema_name }} {
     enum {{ enum_type }} {
         {% set enum_counter = [] %}
         {% for enum_value in prop.enum %}
-        {{ enum_value | to_snake | to_upper }} = {{ enum_counter | length }};
+        {{ enum_type | alphaonly | to_upper }}_{{ enum_value | to_snake | to_upper }} = {{ enum_counter | length }};
         {% do enum_counter.append(0) %}
         {% endfor %}
     }
