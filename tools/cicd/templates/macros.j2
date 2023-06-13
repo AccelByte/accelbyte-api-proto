@@ -2,6 +2,28 @@
 {{ '{}_{}'.format(channel_name, operation_type) | to_pascal }}
 {%- endmacro %}
 
+{% macro format_method_name(channel_name, operation_type, operation) -%}
+{% set method_name = ('operationId' in operation) |
+    ternary(
+        operation.operationId,
+        '{} to {} Channel'.format(operation_type, channel_name)
+    ) |
+    to_pascal
+%}
+{{ method_name }}
+{%- endmacro %}
+
+{% macro format_request_name(channel_name, operation_type, operation) -%}
+{% if 'message' not in operation %}
+{{ raise('invalid state') }}
+{% elif '$ref' in operation.message %}
+{% set request_name = operation.message | to_protobuf_type | to_pascal %}
+{% else %}
+{% set request_name = format_channel_operation(channel_name, operation_type) %}
+{% endif %}
+{{ request_name }}
+{%- endmacro %}
+
 {% macro render_schema_object(path, schema_obj) %}
 {% set prop_counter = [] %}
 {% do prop_counter.append(0) %}
@@ -73,7 +95,9 @@ service {{ schema.info.title | to_pascal }} {
     {% set message = operation.message %}
 
     // {{ operation_verb }} a message to the {{ channel_name | to_title }} channel.
-    {{ render_service_method(channel_name, operation_type, operation) -}}
+    {% set method_name = format_method_name(channel_name, operation_type, operation) %}
+    {% set request_name = format_request_name(channel_name, operation_type, operation) %}
+    {{ render_rpc(method_name, request_name) }}
     {% if 'oneOf' in message %}
 
     {% for sub_message in message.oneOf %}
@@ -91,24 +115,6 @@ service {{ schema.info.title | to_pascal }} {
     {% endfor %}
 }
 {% endif %}
-{% endmacro %}
-
-{% macro render_service_method(channel_name, operation_type, operation) %}
-{% set method_name = ('operationId' in operation) |
-    ternary(
-        operation.operationId,
-        '{} to {} Channel'.format(operation_type, channel_name)
-    ) |
-    to_pascal
-%}
-{% if 'message' not in operation %}
-{{ raise('invalid state') }}
-{% elif '$ref' in operation.message %}
-{% set request_name = operation.message | to_protobuf_type | to_pascal %}
-{% else %}
-{% set request_name = format_channel_operation(channel_name, operation_type) %}
-{% endif %}
-{{ render_rpc(method_name, request_name) }}
 {% endmacro %}
 
 {% macro render_rpc(name, parameter_type, return_type='google.protobuf.Empty') -%}
