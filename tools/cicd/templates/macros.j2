@@ -80,6 +80,10 @@ message {{ name | to_pascal }} {
 }
 {% endmacro %}
 
+{% macro render_rpc(name, parameter_type, return_type='google.protobuf.Empty') -%}
+rpc {{ name }}({{ parameter_type }}) returns ({{ return_type }});
+{%- endmacro %}
+
 {% macro render_service(schema) %}
 {% if schema.channels %}
 service {{ schema.info.title | to_pascal }} {
@@ -94,9 +98,9 @@ service {{ schema.info.title | to_pascal }} {
     {% set operation = channel[operation_type] %}
     {% set message = operation.message %}
 
-    // {{ operation_verb }} a message to the {{ channel_name | to_title }} channel.
     {% set method_name = format_method_name(channel_name, operation_type, operation) %}
     {% set request_name = format_request_name(channel_name, operation_type, operation) %}
+    // {{ operation_verb }} a message to the {{ channel_name | to_title }} channel.
     {{ render_rpc(method_name, request_name) }}
     {% if 'oneOf' in message %}
 
@@ -117,6 +121,34 @@ service {{ schema.info.title | to_pascal }} {
 {% endif %}
 {% endmacro %}
 
-{% macro render_rpc(name, parameter_type, return_type='google.protobuf.Empty') -%}
-rpc {{ name }}({{ parameter_type }}) returns ({{ return_type }});
-{%- endmacro %}
+{% macro render_service2(schema) %}
+{% if schema.channels %}
+    {% for channel_name, channel in schema.channels.items() %}
+    {% for operation_type in ['publish', 'subscribe'] %}
+    {% if operation_type in channel %}
+    {% set operation_verb = (operation_type == 'publish') | ternary('Publishes', 'Subscribes') %}
+    {% set operation = channel[operation_type] %}
+    {% set message = operation.message %}
+    {% set method_name = format_method_name(channel_name, operation_type, operation) %}
+    {% set request_name = format_request_name(channel_name, operation_type, operation) %}
+
+// {{ operation_verb }} a message to the {{ channel_name | to_title }} channel.
+service {{ method_name }}Service {
+    {{ render_rpc(method_name, request_name) }}
+}
+    {% if 'oneOf' in message %}
+    {% for sub_message in message.oneOf %}
+    {% set request_name = sub_message | get_message_payload(schema) | to_protobuf_type | to_pascal %}
+    {% set method_name = '{} {} to {} Channel'.format(operation_type, request_name, channel_name) | to_pascal %}
+
+// {{ operation_verb }} a {{ request_name }} to the {{ channel_name | to_title }} channel. (oneOf variant)
+service {{ method_name }}Service {
+    {{ render_rpc(method_name, request_name) }}
+}
+    {% endfor %}
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+{% endif %}
+{% endmacro %}

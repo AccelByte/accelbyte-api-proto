@@ -24,6 +24,7 @@ header = """# Copyright (c) {} AccelByte Inc. All Rights Reserved.
     datetime.date.today().year
 )
 
+default_template_file = "templates/proto.j2"
 fopen_kwargs = {"encoding": "utf-8", "errors": "ignore"}
 mkdir_kwargs = {"parents": True, "exist_ok": True}
 render_kwargs = {
@@ -77,10 +78,12 @@ imports = SimpleNamespace(
 @click.argument("template_dir", type=ExistingDirPath)
 @click.argument("source_dir", type=ExistingDirPath)
 @click.argument("destination_dir", type=DirPath)
+@click.option("--template_file")
 def run(
     template_dir: Path,
     source_dir: Path,
     destination_dir: Path,
+    template_file: Optional[str] = None,
 ) -> None:
     template_dir_copy = destination_dir / template_dir.name
     if template_dir_copy.exists():
@@ -135,6 +138,7 @@ def run(
             destination_file=dst_proto,
             source_dir=destination_dir,
             destination_dir=destination_dir,
+            template_file=template_file,
         )
 
         # 3.b. Convert to .mc.properties
@@ -280,6 +284,7 @@ def convert_to_proto(
     destination_file: Path,
     source_dir: Optional[Path] = None,
     destination_dir: Optional[Path] = None,
+    template_file: Optional[str] = None,
 ) -> bool:
     if not all(imports.__dict__.values()):
         logging.warning(
@@ -294,18 +299,19 @@ def convert_to_proto(
         input = imports.processor_class()(str(source_file))
         imports.render(
             input=input,
-            template="templates/proto.j2",
+            template=template_file or default_template_file,
             output=destination_file,
             **render_kwargs,
         )
         logging.info(
-            "converted from '%s' to '%s'",
+            "converted from '%s' to '%s' (%s)",
             source_file.name
             if source_dir is None
             else source_file.relative_to(source_dir),
             destination_file.name
             if destination_dir is None
             else destination_file.relative_to(destination_dir),
+            template_file,
         )
     except Exception as error:
         logging.warning(

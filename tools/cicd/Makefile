@@ -44,6 +44,16 @@ run:
 		rm -rf ../../asyncapi && \
 		mv "../../asyncapi.new" "../../asyncapi"
 
+run_1rpc1s:
+	@test -n "$(SPEC_PATH)" || (echo "SPEC_PATH is not set" ; exit 1)
+	$(PYTHONV) cicd.py \
+		../../asyncapi/templates \
+		$(SPEC_PATH) \
+		../../asyncapi.new \
+		--template_file "templates/proto-1rpc1s.j2" && \
+		rm -rf ../../asyncapi-1rpc1s && \
+		mv "../../asyncapi.new" "../../asyncapi-1rpc1s"
+
 dbuild:
 	@test -n "$(CODEGEN_SDK_PATH)" || (echo "CODEGEN_SDK_PATH is not set" ; exit 1)
 	cd $(CODEGEN_SDK_PATH) && \
@@ -69,3 +79,18 @@ drun:
 			/data/destination && \
 		rm -rf $$(readlink -f ../..)/asyncapi && \
 		mv $$(readlink -f ../..)/asyncapi.new $$(readlink -f ../..)/asyncapi
+
+drun_1rpc1s:
+	@test -n "$(SPEC_PATH)" || (echo "SPEC_PATH is not set" ; exit 1)
+	rm -rf $$(readlink -f ../..)/asyncapi.new && mkdir $$(readlink -f ../..)/asyncapi.new && \
+		docker run --rm --tty --user $$(id -u):$$(id -g) \
+			--volume $(SPEC_PATH):/data/source \
+			--volume $$(readlink -f ../..)/asyncapi/templates:/data/templates \
+			--volume $$(readlink -f ../..)/asyncapi.new:/data/destination \
+			$(DOCKER_TAG) \
+			/data/templates \
+			/data/source \
+			/data/destination \
+			--template_file "/app/templates/proto-1rpc1s.j2" && \
+		rm -rf $$(readlink -f ../..)/asyncapi-1rpc1s && \
+		mv $$(readlink -f ../..)/asyncapi.new $$(readlink -f ../..)/asyncapi-1rpc1s
