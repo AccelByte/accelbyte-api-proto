@@ -50,18 +50,18 @@ message EntitlementSummary {
     string namespace = 2;
     string userId = 3;
     enum ClazzEnum {
-        APP = 0;
-        ENTITLEMENT = 1;
-        CODE = 2;
-        SUBSCRIPTION = 3;
-        MEDIA = 4;
-        OPTIONBOX = 5;
-        LOOTBOX = 6;
+        CLAZZENUM_APP = 0;
+        CLAZZENUM_ENTITLEMENT = 1;
+        CLAZZENUM_CODE = 2;
+        CLAZZENUM_SUBSCRIPTION = 3;
+        CLAZZENUM_MEDIA = 4;
+        CLAZZENUM_OPTIONBOX = 5;
+        CLAZZENUM_LOOTBOX = 6;
     }
     ClazzEnum clazz = 4;
     enum TypeEnum {
-        DURABLE = 0;
-        CONSUMABLE = 1;
+        TYPEENUM_DURABLE = 0;
+        TYPEENUM_CONSUMABLE = 1;
     }
     TypeEnum type = 5;
     bool stackable = 6;

@@ -42,8 +42,8 @@ message CurrencySummary {
     string currencyCode = 1;
     string currencySymbol = 2;
     enum CurrencyTypeEnum {
-        REAL = 0;
-        VIRTUAL = 1;
+        CURRENCYTYPEENUM_REAL = 0;
+        CURRENCYTYPEENUM_VIRTUAL = 1;
     }
     CurrencyTypeEnum currencyType = 3;
     string namespace = 4;

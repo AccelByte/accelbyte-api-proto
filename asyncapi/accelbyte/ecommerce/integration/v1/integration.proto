@@ -45,9 +45,9 @@ message Iap {
     string productId = 4;
     string transactionId = 5;
     enum StatusEnum {
-        VERIFIED = 0;
-        FULFILLED = 1;
-        FAILED = 2;
+        STATUSENUM_VERIFIED = 0;
+        STATUSENUM_FULFILLED = 1;
+        STATUSENUM_FAILED = 2;
     }
     StatusEnum status = 6;
     string statusReason = 7;
@@ -56,13 +56,13 @@ message Iap {
     int64 quantity = 10;
     bool sandbox = 11;
     enum TypeEnum {
-        APPLE = 0;
-        GOOGLE = 1;
-        PLAYSTATION = 2;
-        STEAM = 3;
-        XBOX = 4;
-        EPICGAMES = 5;
-        TWITCH = 6;
+        TYPEENUM_APPLE = 0;
+        TYPEENUM_GOOGLE = 1;
+        TYPEENUM_PLAYSTATION = 2;
+        TYPEENUM_STEAM = 3;
+        TYPEENUM_XBOX = 4;
+        TYPEENUM_EPICGAMES = 5;
+        TYPEENUM_TWITCH = 6;
     }
     TypeEnum type = 12;
     string fulfilledTime = 13;

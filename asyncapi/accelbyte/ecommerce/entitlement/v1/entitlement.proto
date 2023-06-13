@@ -116,8 +116,8 @@ message EntitlementSale {
     string entitlementId = 1;
     string entitlementName = 2;
     enum EntitlementTypeEnum {
-        DURABLE = 0;
-        CONSUMABLE = 1;
+        ENTITLEMENTTYPEENUM_DURABLE = 0;
+        ENTITLEMENTTYPEENUM_CONSUMABLE = 1;
     }
     EntitlementTypeEnum entitlementType = 3;
     string clazz = 4;
@@ -139,19 +139,19 @@ message EntitlementStatusChange {
     string entitlementName = 2;
     string userId = 3;
     enum StatusEnum {
-        ACTIVE = 0;
-        INACTIVE = 1;
-        CONSUMED = 2;
-        REVOKED = 3;
-        SOLD = 4;
+        STATUSENUM_ACTIVE = 0;
+        STATUSENUM_INACTIVE = 1;
+        STATUSENUM_CONSUMED = 2;
+        STATUSENUM_REVOKED = 3;
+        STATUSENUM_SOLD = 4;
     }
     StatusEnum status = 4;
     enum PreviousStatusEnum {
-        ACTIVE = 0;
-        INACTIVE = 1;
-        CONSUMED = 2;
-        REVOKED = 3;
-        SOLD = 4;
+        PREVIOUSSTATUSENUM_ACTIVE = 0;
+        PREVIOUSSTATUSENUM_INACTIVE = 1;
+        PREVIOUSSTATUSENUM_CONSUMED = 2;
+        PREVIOUSSTATUSENUM_REVOKED = 3;
+        PREVIOUSSTATUSENUM_SOLD = 4;
     }
     PreviousStatusEnum previousStatus = 5;
 }

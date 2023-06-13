@@ -41,7 +41,7 @@ message Event {
 message Campaign {
     string id = 1;
     enum TypeEnum {
-        REDEMPTION = 0;
+        TYPEENUM_REDEMPTION = 0;
     }
     TypeEnum type = 2;
     string namespace = 3;
@@ -49,8 +49,8 @@ message Campaign {
     string description = 5;
     repeated string tags = 6;
     enum StatusEnum {
-        ACTIVE = 0;
-        INACTIVE = 1;
+        STATUSENUM_ACTIVE = 0;
+        STATUSENUM_INACTIVE = 1;
     }
     StatusEnum status = 7;
     string redeemStart = 8;
@@ -60,7 +60,7 @@ message Campaign {
     int32 maxRedeemCountPerCampaignPerUser = 12;
     int32 maxSaleCount = 13;
     enum RedeemTypeEnum {
-        ITEM = 0;
+        REDEEMTYPEENUM_ITEM = 0;
     }
     RedeemTypeEnum redeemType = 14;
     repeated RedeemableItem items = 15;
@@ -115,8 +115,8 @@ message KeyGroup {
     string description = 4;
     repeated string tags = 5;
     enum StatusEnum {
-        ACTIVE = 0;
-        INACTIVE = 1;
+        STATUSENUM_ACTIVE = 0;
+        STATUSENUM_INACTIVE = 1;
     }
     StatusEnum status = 6;
     string boothName = 7;

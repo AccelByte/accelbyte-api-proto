@@ -48,8 +48,8 @@ message Currency {
     string currencySymbol = 3;
     string namespace = 4;
     enum CurrencyTypeEnum {
-        REAL = 0;
-        VIRTUAL = 1;
+        CURRENCYTYPEENUM_REAL = 0;
+        CURRENCYTYPEENUM_VIRTUAL = 1;
     }
     CurrencyTypeEnum currencyType = 5;
     int32 decimals = 6;

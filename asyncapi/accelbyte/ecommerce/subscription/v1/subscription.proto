@@ -50,18 +50,18 @@ message Subscription {
     int64 trialPrice = 9;
     Recurring recurring = 10;
     enum StatusEnum {
-        INIT = 0;
-        ACTIVE = 1;
-        CANCELLED = 2;
-        EXPIRED = 3;
+        STATUSENUM_INIT = 0;
+        STATUSENUM_ACTIVE = 1;
+        STATUSENUM_CANCELLED = 2;
+        STATUSENUM_EXPIRED = 3;
     }
     StatusEnum status = 11;
     enum ChargeStatusEnum {
-        NEVER = 0;
-        SETUP = 1;
-        RECURRING_CHARGING = 2;
-        CHARGED = 3;
-        CHARGE_FAILED = 4;
+        CHARGESTATUSENUM_NEVER = 0;
+        CHARGESTATUSENUM_SETUP = 1;
+        CHARGESTATUSENUM_RECURRING_CHARGING = 2;
+        CHARGESTATUSENUM_CHARGED = 3;
+        CHARGESTATUSENUM_CHARGE_FAILED = 4;
     }
     ChargeStatusEnum chargeStatus = 12;
     string nextBillingDate = 13;
@@ -77,8 +77,8 @@ message Subscription {
     bool firstSubscribe = 23;
     bool paid = 24;
     enum SubscribedByEnum {
-        USER = 0;
-        PLATFORM = 1;
+        SUBSCRIBEDBYENUM_USER = 0;
+        SUBSCRIBEDBYENUM_PLATFORM = 1;
     }
     SubscribedByEnum subscribedBy = 25;
     string subscribedAt = 26;
@@ -95,10 +95,10 @@ message Subscription {
 // path: #/components/schemas/recurring
 message Recurring {
     enum CycleEnum {
-        WEEKLY = 0;
-        MONTHLY = 1;
-        QUARTERLY = 2;
-        YEARLY = 3;
+        CYCLEENUM_WEEKLY = 0;
+        CYCLEENUM_MONTHLY = 1;
+        CYCLEENUM_QUARTERLY = 2;
+        CYCLEENUM_YEARLY = 3;
     }
     CycleEnum cycle = 1;
     int32 fixedFreeDays = 2;
@@ -111,8 +111,8 @@ message CurrencySummary {
     string currencyCode = 1;
     string currencySymbol = 2;
     enum CurrencyTypeEnum {
-        REAL = 0;
-        VIRTUAL = 1;
+        CURRENCYTYPEENUM_REAL = 0;
+        CURRENCYTYPEENUM_VIRTUAL = 1;
     }
     CurrencyTypeEnum currencyType = 3;
     string namespace = 4;

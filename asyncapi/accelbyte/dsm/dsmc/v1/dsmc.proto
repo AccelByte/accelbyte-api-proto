@@ -57,12 +57,12 @@ message AllocationEvent {
 message StatusHistory {
     string timeStamp = 1;
     enum StatusEnum {
-        CREATING = 0;
-        READY = 1;
-        BUSY = 2;
-        REMOVING = 3;
-        UNREACHABLE = 4;
-        FAILED = 5;
+        STATUSENUM_CREATING = 0;
+        STATUSENUM_READY = 1;
+        STATUSENUM_BUSY = 2;
+        STATUSENUM_REMOVING = 3;
+        STATUSENUM_UNREACHABLE = 4;
+        STATUSENUM_FAILED = 5;
     }
     StatusEnum status = 2;
 }
@@ -97,12 +97,12 @@ message Server {
     string region = 22;
     string sessionId = 23;
     enum StatusEnum {
-        CREATING = 0;
-        READY = 1;
-        BUSY = 2;
-        REMOVING = 3;
-        UNREACHABLE = 4;
-        FAILED = 5;
+        STATUSENUM_CREATING = 0;
+        STATUSENUM_READY = 1;
+        STATUSENUM_BUSY = 2;
+        STATUSENUM_REMOVING = 3;
+        STATUSENUM_UNREACHABLE = 4;
+        STATUSENUM_FAILED = 5;
     }
     StatusEnum status = 24;
     repeated StatusHistory statusHistory = 25;

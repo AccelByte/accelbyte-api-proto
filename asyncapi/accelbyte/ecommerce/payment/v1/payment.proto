@@ -56,20 +56,20 @@ message PaymentAccount {
     string namespace = 1;
     string userId = 2;
     enum TypeEnum {
-        CARD = 0;
-        PAYPAL = 1;
+        TYPEENUM_CARD = 0;
+        TYPEENUM_PAYPAL = 1;
     }
     TypeEnum type = 3;
     string id = 4;
     enum PaymentProviderEnum {
-        WALLET = 0;
-        XSOLLA = 1;
-        ADYEN = 2;
-        STRIPE = 3;
-        CHECKOUT = 4;
-        ALIPAY = 5;
-        WXPAY = 6;
-        PAYPAL = 7;
+        PAYMENTPROVIDERENUM_WALLET = 0;
+        PAYMENTPROVIDERENUM_XSOLLA = 1;
+        PAYMENTPROVIDERENUM_ADYEN = 2;
+        PAYMENTPROVIDERENUM_STRIPE = 3;
+        PAYMENTPROVIDERENUM_CHECKOUT = 4;
+        PAYMENTPROVIDERENUM_ALIPAY = 5;
+        PAYMENTPROVIDERENUM_WXPAY = 6;
+        PAYMENTPROVIDERENUM_PAYPAL = 7;
     }
     PaymentProviderEnum paymentProvider = 5;
 }
@@ -79,8 +79,8 @@ message CurrencySummary {
     string currencyCode = 1;
     string currencySymbol = 2;
     enum CurrencyTypeEnum {
-        REAL = 0;
-        VIRTUAL = 1;
+        CURRENCYTYPEENUM_REAL = 0;
+        CURRENCYTYPEENUM_VIRTUAL = 1;
     }
     CurrencyTypeEnum currencyType = 3;
     string namespace = 4;
