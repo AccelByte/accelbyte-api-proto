@@ -8,13 +8,13 @@
 {% set message = operation.message %}
 {% if '$ref' in message %}
 {% set message_name = message['$ref'].split('/')[-1] %}
-{% set class_name = '{}_message'.format(message | to_protobuf_type) | to_pascal %}
+{% set class_name = message | to_protobuf_type | to_pascal %}
 {{ channel_name }}.{{ message_name }} = {{ java_package_name }}.{{ class_name }}
 {% elif 'oneOf' in message %}
-{% for sub_payload in message.oneOf %}
-{% if '$ref' not in sub_payload %}{{ "'$ref' not found in sub_payload[{}]".format(loop.index0) | raise }}{% endif %}
-{% set message_name = sub_payload['$ref'].split('/')[-1] %}
-{% set class_name = '{}_message'.format(sub_payload | to_protobuf_type) | to_pascal %}
+{% for sub_message in message.oneOf %}
+{% if '$ref' not in sub_message %}{{ "'$ref' not found in sub_message[{}]".format(loop.index0) | raise }}{% endif %}
+{% set message_name = sub_message['$ref'].split('/')[-1] %}
+{% set class_name = sub_message | get_message_payload(schema) | to_protobuf_type | to_pascal %}
 {{ channel_name }}.{{ message_name }} = {{ java_package_name }}.{{ class_name }}
 {% endfor %}
 {% endif %}

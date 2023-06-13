@@ -47,7 +47,7 @@ option {{ option_name }} = {{ option }};
 
 // --- #/components/messages/{message_name} ---
 
-{% if schema.components and schema.components.message %}
+{% if schema.components and schema.components.messages %}
 {% for message_name, message in schema.components.messages.items() %}
 {% set message_path = '#/components/messages/{}'.format(message_name) %}
 {{ macros.render_message(message_name, message_path, message) }}
@@ -63,7 +63,7 @@ option {{ option_name }} = {{ option }};
    and 'message' in channel[operation_type]
    and '$ref' not in channel[operation_type].message
 %}
-{% set message_name = '{}_{}'.format(channel_name, operation_type) | to_pascal %}
+{% set message_name = macros.format_channel_operation(channel_name, operation_type) %}
 {% set message_path = '#/channels/{}/{}/message'.format(channel_name, operation_type) %}
 {% set message = channel[operation_type].message %}
 {{ macros.render_message(message_name, message_path, message) }}

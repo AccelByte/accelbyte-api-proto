@@ -1,3 +1,7 @@
+{% macro format_channel_operation(channel_name, operation_type) -%}
+{{ '{}_{}'.format(channel_name, operation_type) | to_pascal }}
+{%- endmacro %}
+
 {% macro render_schema_object(path, schema_obj) %}
 {% set prop_counter = [] %}
 {% do prop_counter.append(0) %}
@@ -38,11 +42,11 @@ message {{ schema_name }} {
 {% set counter = [] %}
 {% do counter.append(0) %}
 // path: {{ path }}
-message {{ '{}_message'.format(name) | to_pascal }} {
+message {{ name | to_pascal }} {
     {% if 'oneOf' in message %}
     oneof payload {
-        {% for sub_payload in message.oneOf %}
-        {{ '{}_message'.format(sub_payload | to_protobuf_type) | to_pascal }} variant{{ loop.index0 }} = {{ counter | length }};
+        {% for sub_message in message.oneOf %}
+        {{ sub_message | to_protobuf_type | to_pascal }} variant{{ loop.index0 }} = {{ counter | length }};
         {% do counter.append(0) %}
         {% endfor %}
     }
@@ -72,8 +76,8 @@ service {{ schema.info.title | to_pascal }} {
     {{ render_service_method(channel_name, operation_type, operation) -}}
     {% if 'oneOf' in message %}
 
-    {% for sub_payload in message.oneOf %}
-    {% set request_name = '{}_message'.format(sub_payload | to_protobuf_type) | to_pascal %}
+    {% for sub_message in message.oneOf %}
+    {% set request_name = sub_message | get_message_payload(schema) | to_protobuf_type | to_pascal %}
     {% set method_name = '{} {} to {} Channel'.format(operation_type, request_name, channel_name) | to_pascal %}
     {% if not loop.first %}
 
@@ -100,9 +104,9 @@ service {{ schema.info.title | to_pascal }} {
 {% if 'message' not in operation %}
 {{ raise('invalid state') }}
 {% elif '$ref' in operation.message %}
-{% set request_name = '{}_message'.format(operation.message | to_protobuf_type) | to_pascal %}
+{% set request_name = operation.message | to_protobuf_type | to_pascal %}
 {% else %}
-{% set request_name = '{}_{}_message'.format(channel_name, operation_type) | to_pascal %}
+{% set request_name = format_channel_operation(channel_name, operation_type) %}
 {% endif %}
 {{ render_rpc(method_name, request_name) }}
 {% endmacro %}
