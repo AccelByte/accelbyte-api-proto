@@ -536,49 +536,144 @@ message UgcContentGroupDeletedMessage {
 
 // --- #/components/messages/{message_name} ---
 
+// path: #/components/messages/ugcContentUpdated
+message UgcContentUpdated {
+    UgcContentUpdatedMessage payload = 1;
+}
+
+// path: #/components/messages/ugcContentDeleted
+message UgcContentDeleted {
+    UgcContentDeletedMessage payload = 1;
+}
+
+// path: #/components/messages/ugcContentHide
+message UgcContentHide {
+    UgcContentHideMessage payload = 1;
+}
+
+// path: #/components/messages/ugcContentUnHide
+message UgcContentUnHide {
+    UgcContentUnHideMessage payload = 1;
+}
+
+// path: #/components/messages/ugcContentCreated
+message UgcContentCreated {
+    UgcContentCreatedMessage payload = 1;
+}
+
+// path: #/components/messages/ugcContentLiked
+message UgcContentLiked {
+    UgcContentLikedMessage payload = 1;
+}
+
+// path: #/components/messages/ugcContentUnLiked
+message UgcContentUnLiked {
+    UgcContentUnLikedMessage payload = 1;
+}
+
+// path: #/components/messages/ugcChannelCreated
+message UgcChannelCreated {
+    UgcChannelCreatedMessage payload = 1;
+}
+
+// path: #/components/messages/ugcChannelUpdated
+message UgcChannelUpdated {
+    UgcChannelUpdatedMessage payload = 1;
+}
+
+// path: #/components/messages/ugcChannelDeleted
+message UgcChannelDeleted {
+    UgcChannelDeletedMessage payload = 1;
+}
+
+// path: #/components/messages/ugcCreatorCreated
+message UgcCreatorCreated {
+    UgcCreatorCreatedMessage payload = 1;
+}
+
+// path: #/components/messages/ugcCreatorFollowed
+message UgcCreatorFollowed {
+    UgcCreatorFollowedMessage payload = 1;
+}
+
+// path: #/components/messages/ugcCreatorUnFollowed
+message UgcCreatorUnFollowed {
+    UgcCreatorUnFollowedMessage payload = 1;
+}
+
+// path: #/components/messages/ugcCreatorDeleted
+message UgcCreatorDeleted {
+    UgcCreatorDeletedMessage payload = 1;
+}
+
+// path: #/components/messages/ugcCreatorBanned
+message UgcCreatorBanned {
+    UgcCreatorBannedMessage payload = 1;
+}
+
+// path: #/components/messages/ugcCreatorUnBanned
+message UgcCreatorUnBanned {
+    UgcCreatorUnBannedMessage payload = 1;
+}
+
+// path: #/components/messages/ugcContentGroupCreated
+message UgcContentGroupCreated {
+    UgcContentGroupCreatedMessage payload = 1;
+}
+
+// path: #/components/messages/ugcContentGroupUpdated
+message UgcContentGroupUpdated {
+    UgcContentGroupUpdatedMessage payload = 1;
+}
+
+// path: #/components/messages/ugcContentGroupDeleted
+message UgcContentGroupDeleted {
+    UgcContentGroupDeletedMessage payload = 1;
+}
+
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
 // path: #/channels/ugcContent/publish/message
-message UgcContentPublishMessage {
+message UgcContentPublish {
     oneof payload {
-        UgcContentUpdatedMessage variant0 = 1;
-        UgcContentDeletedMessage variant1 = 2;
-        UgcContentHideMessage variant2 = 3;
-        UgcContentUnHideMessage variant3 = 4;
-        UgcContentCreatedMessage variant4 = 5;
-        UgcContentLikedMessage variant5 = 6;
-        UgcContentUnLikedMessage variant6 = 7;
+        UgcContentUpdated variant0 = 1;
+        UgcContentDeleted variant1 = 2;
+        UgcContentHide variant2 = 3;
+        UgcContentUnHide variant3 = 4;
+        UgcContentCreated variant4 = 5;
+        UgcContentLiked variant5 = 6;
+        UgcContentUnLiked variant6 = 7;
     }
 }
 
 // path: #/channels/ugcChannel/publish/message
-message UgcChannelPublishMessage {
+message UgcChannelPublish {
     oneof payload {
-        UgcChannelCreatedMessage variant0 = 1;
-        UgcChannelUpdatedMessage variant1 = 2;
-        UgcChannelDeletedMessage variant2 = 3;
+        UgcChannelCreated variant0 = 1;
+        UgcChannelUpdated variant1 = 2;
+        UgcChannelDeleted variant2 = 3;
     }
 }
 
 // path: #/channels/ugcCreator/publish/message
-message UgcCreatorPublishMessage {
+message UgcCreatorPublish {
     oneof payload {
-        UgcCreatorCreatedMessage variant0 = 1;
-        UgcCreatorFollowedMessage variant1 = 2;
-        UgcCreatorUnFollowedMessage variant2 = 3;
-        UgcCreatorDeletedMessage variant3 = 4;
-        UgcCreatorBannedMessage variant4 = 5;
-        UgcCreatorUnBannedMessage variant5 = 6;
+        UgcCreatorCreated variant0 = 1;
+        UgcCreatorFollowed variant1 = 2;
+        UgcCreatorUnFollowed variant2 = 3;
+        UgcCreatorDeleted variant3 = 4;
+        UgcCreatorBanned variant4 = 5;
+        UgcCreatorUnBanned variant5 = 6;
     }
 }
 
 // path: #/channels/ugcContentGroup/publish/message
-message UgcContentGroupPublishMessage {
+message UgcContentGroupPublish {
     oneof payload {
-        UgcContentGroupCreatedMessage variant0 = 1;
-        UgcContentGroupUpdatedMessage variant1 = 2;
-        UgcContentGroupDeletedMessage variant2 = 3;
+        UgcContentGroupCreated variant0 = 1;
+        UgcContentGroupUpdated variant1 = 2;
+        UgcContentGroupDeleted variant2 = 3;
     }
 }
 
@@ -589,7 +684,7 @@ service UGCServiceEvents {
     // Ugc Content Channel
 
     // Publishes a message to the Ugc Content channel.
-    rpc PublishToUgcContentChannel(UgcContentPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToUgcContentChannel(UgcContentPublish) returns (google.protobuf.Empty);
 
     // Publishes a UgcContentUpdatedMessage to the Ugc Content channel. (oneOf variant)
     rpc PublishUgcContentUpdatedMessageToUgcContentChannel(UgcContentUpdatedMessage) returns (google.protobuf.Empty);
@@ -615,7 +710,7 @@ service UGCServiceEvents {
     // Ugc Channel Channel
 
     // Publishes a message to the Ugc Channel channel.
-    rpc PublishToUgcChannelChannel(UgcChannelPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToUgcChannelChannel(UgcChannelPublish) returns (google.protobuf.Empty);
 
     // Publishes a UgcChannelCreatedMessage to the Ugc Channel channel. (oneOf variant)
     rpc PublishUgcChannelCreatedMessageToUgcChannelChannel(UgcChannelCreatedMessage) returns (google.protobuf.Empty);
@@ -629,7 +724,7 @@ service UGCServiceEvents {
     // Ugc Creator Channel
 
     // Publishes a message to the Ugc Creator channel.
-    rpc PublishToUgcCreatorChannel(UgcCreatorPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToUgcCreatorChannel(UgcCreatorPublish) returns (google.protobuf.Empty);
 
     // Publishes a UgcCreatorCreatedMessage to the Ugc Creator channel. (oneOf variant)
     rpc PublishUgcCreatorCreatedMessageToUgcCreatorChannel(UgcCreatorCreatedMessage) returns (google.protobuf.Empty);
@@ -652,7 +747,7 @@ service UGCServiceEvents {
     // Ugc Content Group Channel
 
     // Publishes a message to the Ugc Content Group channel.
-    rpc PublishToUgcContentGroupChannel(UgcContentGroupPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToUgcContentGroupChannel(UgcContentGroupPublish) returns (google.protobuf.Empty);
 
     // Publishes a UgcContentGroupCreatedMessage to the Ugc Content Group channel. (oneOf variant)
     rpc PublishUgcContentGroupCreatedMessageToUgcContentGroupChannel(UgcContentGroupCreatedMessage) returns (google.protobuf.Empty);

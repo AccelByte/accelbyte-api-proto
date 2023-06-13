@@ -132,13 +132,18 @@ message FulfillmentCompletedMessage {
 
 // --- #/components/messages/{message_name} ---
 
+// path: #/components/messages/fulfillmentCompleted
+message FulfillmentCompleted {
+    FulfillmentCompletedMessage payload = 1;
+}
+
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
 // path: #/channels/fulfillment/publish/message
-message FulfillmentPublishMessage {
+message FulfillmentPublish {
     oneof payload {
-        FulfillmentCompletedMessage variant0 = 1;
+        FulfillmentCompleted variant0 = 1;
     }
 }
 
@@ -149,7 +154,7 @@ service AsyncAPIForJusticeFulfillmentService {
     // Fulfillment Channel
 
     // Publishes a message to the Fulfillment channel.
-    rpc PublishToFulfillmentChannel(FulfillmentPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToFulfillmentChannel(FulfillmentPublish) returns (google.protobuf.Empty);
 
     // Publishes a FulfillmentCompletedMessage to the Fulfillment channel. (oneOf variant)
     rpc PublishFulfillmentCompletedMessageToFulfillmentChannel(FulfillmentCompletedMessage) returns (google.protobuf.Empty);

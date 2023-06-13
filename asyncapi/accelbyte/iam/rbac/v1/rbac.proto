@@ -298,40 +298,90 @@ message RoleMemberDeletedMessage {
 
 // --- #/components/messages/{message_name} ---
 
+// path: #/components/messages/roleCreated
+message RoleCreated {
+    RoleCreatedMessage payload = 1;
+}
+
+// path: #/components/messages/roleDeleted
+message RoleDeleted {
+    RoleDeletedMessage payload = 1;
+}
+
+// path: #/components/messages/roleUpdated
+message RoleUpdated {
+    RoleUpdatedMessage payload = 1;
+}
+
+// path: #/components/messages/rolePermissionCreated
+message RolePermissionCreated {
+    RolePermissionCreatedMessage payload = 1;
+}
+
+// path: #/components/messages/rolePermissionDeleted
+message RolePermissionDeleted {
+    RolePermissionDeletedMessage payload = 1;
+}
+
+// path: #/components/messages/rolePermissionUpdated
+message RolePermissionUpdated {
+    RolePermissionUpdatedMessage payload = 1;
+}
+
+// path: #/components/messages/roleManagerCreated
+message RoleManagerCreated {
+    RoleManagerCreatedMessage payload = 1;
+}
+
+// path: #/components/messages/roleManagerDeleted
+message RoleManagerDeleted {
+    RoleManagerDeletedMessage payload = 1;
+}
+
+// path: #/components/messages/roleMemberCreated
+message RoleMemberCreated {
+    RoleMemberCreatedMessage payload = 1;
+}
+
+// path: #/components/messages/roleMemberDeleted
+message RoleMemberDeleted {
+    RoleMemberDeletedMessage payload = 1;
+}
+
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
 // path: #/channels/role/publish/message
-message RolePublishMessage {
+message RolePublish {
     oneof payload {
-        RoleCreatedMessage variant0 = 1;
-        RoleDeletedMessage variant1 = 2;
-        RoleUpdatedMessage variant2 = 3;
+        RoleCreated variant0 = 1;
+        RoleDeleted variant1 = 2;
+        RoleUpdated variant2 = 3;
     }
 }
 
 // path: #/channels/rolePermissions/publish/message
-message RolePermissionsPublishMessage {
+message RolePermissionsPublish {
     oneof payload {
-        RolePermissionCreatedMessage variant0 = 1;
-        RolePermissionDeletedMessage variant1 = 2;
-        RolePermissionUpdatedMessage variant2 = 3;
+        RolePermissionCreated variant0 = 1;
+        RolePermissionDeleted variant1 = 2;
+        RolePermissionUpdated variant2 = 3;
     }
 }
 
 // path: #/channels/roleManager/publish/message
-message RoleManagerPublishMessage {
+message RoleManagerPublish {
     oneof payload {
-        RoleManagerCreatedMessage variant0 = 1;
-        RoleManagerDeletedMessage variant1 = 2;
+        RoleManagerCreated variant0 = 1;
+        RoleManagerDeleted variant1 = 2;
     }
 }
 
 // path: #/channels/roleMember/publish/message
-message RoleMemberPublishMessage {
+message RoleMemberPublish {
     oneof payload {
-        RoleMemberCreatedMessage variant0 = 1;
-        RoleMemberDeletedMessage variant1 = 2;
+        RoleMemberCreated variant0 = 1;
+        RoleMemberDeleted variant1 = 2;
     }
 }
 
@@ -342,7 +392,7 @@ service IAMServiceRBACEvents {
     // Role Channel
 
     // Publishes a message to the Role channel.
-    rpc PublishToRoleChannel(RolePublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToRoleChannel(RolePublish) returns (google.protobuf.Empty);
 
     // Publishes a RoleCreatedMessage to the Role channel. (oneOf variant)
     rpc PublishRoleCreatedMessageToRoleChannel(RoleCreatedMessage) returns (google.protobuf.Empty);
@@ -356,7 +406,7 @@ service IAMServiceRBACEvents {
     // Role Permissions Channel
 
     // Publishes a message to the Role Permissions channel.
-    rpc PublishToRolePermissionsChannel(RolePermissionsPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToRolePermissionsChannel(RolePermissionsPublish) returns (google.protobuf.Empty);
 
     // Publishes a RolePermissionCreatedMessage to the Role Permissions channel. (oneOf variant)
     rpc PublishRolePermissionCreatedMessageToRolePermissionsChannel(RolePermissionCreatedMessage) returns (google.protobuf.Empty);
@@ -370,7 +420,7 @@ service IAMServiceRBACEvents {
     // Role Manager Channel
 
     // Publishes a message to the Role Manager channel.
-    rpc PublishToRoleManagerChannel(RoleManagerPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToRoleManagerChannel(RoleManagerPublish) returns (google.protobuf.Empty);
 
     // Publishes a RoleManagerCreatedMessage to the Role Manager channel. (oneOf variant)
     rpc PublishRoleManagerCreatedMessageToRoleManagerChannel(RoleManagerCreatedMessage) returns (google.protobuf.Empty);
@@ -381,7 +431,7 @@ service IAMServiceRBACEvents {
     // Role Member Channel
 
     // Publishes a message to the Role Member channel.
-    rpc PublishToRoleMemberChannel(RoleMemberPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToRoleMemberChannel(RoleMemberPublish) returns (google.protobuf.Empty);
 
     // Publishes a RoleMemberCreatedMessage to the Role Member channel. (oneOf variant)
     rpc PublishRoleMemberCreatedMessageToRoleMemberChannel(RoleMemberCreatedMessage) returns (google.protobuf.Empty);

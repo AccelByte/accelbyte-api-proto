@@ -127,15 +127,30 @@ message CurrencyDeletedMessage {
 
 // --- #/components/messages/{message_name} ---
 
+// path: #/components/messages/currencyCreated
+message CurrencyCreated {
+    CurrencyCreatedMessage payload = 1;
+}
+
+// path: #/components/messages/currencyUpdated
+message CurrencyUpdated {
+    CurrencyUpdatedMessage payload = 1;
+}
+
+// path: #/components/messages/currencyDeleted
+message CurrencyDeleted {
+    CurrencyDeletedMessage payload = 1;
+}
+
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
 // path: #/channels/currencyManagement/publish/message
-message CurrencyManagementPublishMessage {
+message CurrencyManagementPublish {
     oneof payload {
-        CurrencyCreatedMessage variant0 = 1;
-        CurrencyUpdatedMessage variant1 = 2;
-        CurrencyDeletedMessage variant2 = 3;
+        CurrencyCreated variant0 = 1;
+        CurrencyUpdated variant1 = 2;
+        CurrencyDeleted variant2 = 3;
     }
 }
 
@@ -146,7 +161,7 @@ service AsyncAPIForJusticeCurrencyService {
     // Currency Management Channel
 
     // Publishes a message to the Currency Management channel.
-    rpc PublishToCurrencyManagementChannel(CurrencyManagementPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToCurrencyManagementChannel(CurrencyManagementPublish) returns (google.protobuf.Empty);
 
     // Publishes a CurrencyCreatedMessage to the Currency Management channel. (oneOf variant)
     rpc PublishCurrencyCreatedMessageToCurrencyManagementChannel(CurrencyCreatedMessage) returns (google.protobuf.Empty);

@@ -400,42 +400,102 @@ message KeyUploadedMessage {
 
 // --- #/components/messages/{message_name} ---
 
+// path: #/components/messages/campaignCreated
+message CampaignCreated {
+    CampaignCreatedMessage payload = 1;
+}
+
+// path: #/components/messages/campaignUpdated
+message CampaignUpdated {
+    CampaignUpdatedMessage payload = 1;
+}
+
+// path: #/components/messages/codeCreated
+message CodeCreated {
+    CodeCreatedMessage payload = 1;
+}
+
+// path: #/components/messages/codeDisabled
+message CodeDisabled {
+    CodeDisabledMessage payload = 1;
+}
+
+// path: #/components/messages/codeEnabled
+message CodeEnabled {
+    CodeEnabledMessage payload = 1;
+}
+
+// path: #/components/messages/codeBulkDisabled
+message CodeBulkDisabled {
+    CodeBulkDisabledMessage payload = 1;
+}
+
+// path: #/components/messages/codeBulkEnabled
+message CodeBulkEnabled {
+    CodeBulkEnabledMessage payload = 1;
+}
+
+// path: #/components/messages/codeRedeemed
+message CodeRedeemed {
+    CodeRedeemedMessage payload = 1;
+}
+
+// path: #/components/messages/ticketAcquired
+message TicketAcquired {
+    TicketAcquiredMessage payload = 1;
+}
+
+// path: #/components/messages/keyGroupCreated
+message KeyGroupCreated {
+    KeyGroupCreatedMessage payload = 1;
+}
+
+// path: #/components/messages/keyGroupUpdated
+message KeyGroupUpdated {
+    KeyGroupUpdatedMessage payload = 1;
+}
+
+// path: #/components/messages/keyUploaded
+message KeyUploaded {
+    KeyUploadedMessage payload = 1;
+}
+
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
 // path: #/channels/campaignManagement/publish/message
-message CampaignManagementPublishMessage {
+message CampaignManagementPublish {
     oneof payload {
-        CampaignCreatedMessage variant0 = 1;
-        CampaignUpdatedMessage variant1 = 2;
-        CodeCreatedMessage variant2 = 3;
-        CodeDisabledMessage variant3 = 4;
-        CodeEnabledMessage variant4 = 5;
-        CodeBulkDisabledMessage variant5 = 6;
-        CodeBulkEnabledMessage variant6 = 7;
+        CampaignCreated variant0 = 1;
+        CampaignUpdated variant1 = 2;
+        CodeCreated variant2 = 3;
+        CodeDisabled variant3 = 4;
+        CodeEnabled variant4 = 5;
+        CodeBulkDisabled variant5 = 6;
+        CodeBulkEnabled variant6 = 7;
     }
 }
 
 // path: #/channels/keyGroupManagement/publish/message
-message KeyGroupManagementPublishMessage {
+message KeyGroupManagementPublish {
     oneof payload {
-        KeyGroupCreatedMessage variant0 = 1;
-        KeyGroupUpdatedMessage variant1 = 2;
-        KeyUploadedMessage variant2 = 3;
+        KeyGroupCreated variant0 = 1;
+        KeyGroupUpdated variant1 = 2;
+        KeyUploaded variant2 = 3;
     }
 }
 
 // path: #/channels/codeRedemption/publish/message
-message CodeRedemptionPublishMessage {
+message CodeRedemptionPublish {
     oneof payload {
-        CodeRedeemedMessage variant0 = 1;
+        CodeRedeemed variant0 = 1;
     }
 }
 
 // path: #/channels/ticketSale/publish/message
-message TicketSalePublishMessage {
+message TicketSalePublish {
     oneof payload {
-        TicketAcquiredMessage variant0 = 1;
+        TicketAcquired variant0 = 1;
     }
 }
 
@@ -446,7 +506,7 @@ service AsyncAPIForJusticeCampaignService {
     // Campaign Management Channel
 
     // Publishes a message to the Campaign Management channel.
-    rpc PublishToCampaignManagementChannel(CampaignManagementPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToCampaignManagementChannel(CampaignManagementPublish) returns (google.protobuf.Empty);
 
     // Publishes a CampaignCreatedMessage to the Campaign Management channel. (oneOf variant)
     rpc PublishCampaignCreatedMessageToCampaignManagementChannel(CampaignCreatedMessage) returns (google.protobuf.Empty);
@@ -472,7 +532,7 @@ service AsyncAPIForJusticeCampaignService {
     // Key Group Management Channel
 
     // Publishes a message to the Key Group Management channel.
-    rpc PublishToKeyGroupManagementChannel(KeyGroupManagementPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToKeyGroupManagementChannel(KeyGroupManagementPublish) returns (google.protobuf.Empty);
 
     // Publishes a KeyGroupCreatedMessage to the Key Group Management channel. (oneOf variant)
     rpc PublishKeyGroupCreatedMessageToKeyGroupManagementChannel(KeyGroupCreatedMessage) returns (google.protobuf.Empty);
@@ -486,7 +546,7 @@ service AsyncAPIForJusticeCampaignService {
     // Code Redemption Channel
 
     // Publishes a message to the Code Redemption channel.
-    rpc PublishToCodeRedemptionChannel(CodeRedemptionPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToCodeRedemptionChannel(CodeRedemptionPublish) returns (google.protobuf.Empty);
 
     // Publishes a CodeRedeemedMessage to the Code Redemption channel. (oneOf variant)
     rpc PublishCodeRedeemedMessageToCodeRedemptionChannel(CodeRedeemedMessage) returns (google.protobuf.Empty);
@@ -494,7 +554,7 @@ service AsyncAPIForJusticeCampaignService {
     // Ticket Sale Channel
 
     // Publishes a message to the Ticket Sale channel.
-    rpc PublishToTicketSaleChannel(TicketSalePublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToTicketSaleChannel(TicketSalePublish) returns (google.protobuf.Empty);
 
     // Publishes a TicketAcquiredMessage to the Ticket Sale channel. (oneOf variant)
     rpc PublishTicketAcquiredMessageToTicketSaleChannel(TicketAcquiredMessage) returns (google.protobuf.Empty);

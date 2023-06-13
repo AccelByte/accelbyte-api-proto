@@ -155,16 +155,36 @@ message UserSeasonRewardRewardedMessage {
 
 // --- #/components/messages/{message_name} ---
 
+// path: #/components/messages/userSeasonPassChanged
+message UserSeasonPassChanged {
+    UserSeasonPassChangedMessage payload = 1;
+}
+
+// path: #/components/messages/userSeasonTierUp
+message UserSeasonTierUp {
+    UserSeasonTierUpMessage payload = 1;
+}
+
+// path: #/components/messages/userSeasonTierCleared
+message UserSeasonTierCleared {
+    UserSeasonTierClearedMessage payload = 1;
+}
+
+// path: #/components/messages/userSeasonRewardRewarded
+message UserSeasonRewardRewarded {
+    UserSeasonRewardRewardedMessage payload = 1;
+}
+
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
 // path: #/channels/userSeason/publish/message
-message UserSeasonPublishMessage {
+message UserSeasonPublish {
     oneof payload {
-        UserSeasonPassChangedMessage variant0 = 1;
-        UserSeasonTierUpMessage variant1 = 2;
-        UserSeasonTierClearedMessage variant2 = 3;
-        UserSeasonRewardRewardedMessage variant3 = 4;
+        UserSeasonPassChanged variant0 = 1;
+        UserSeasonTierUp variant1 = 2;
+        UserSeasonTierCleared variant2 = 3;
+        UserSeasonRewardRewarded variant3 = 4;
     }
 }
 
@@ -175,7 +195,7 @@ service SeasonPassServiceEvents {
     // User Season Channel
 
     // Publishes a message to the User Season channel.
-    rpc PublishToUserSeasonChannel(UserSeasonPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToUserSeasonChannel(UserSeasonPublish) returns (google.protobuf.Empty);
 
     // Publishes a UserSeasonPassChangedMessage to the User Season channel. (oneOf variant)
     rpc PublishUserSeasonPassChangedMessageToUserSeasonChannel(UserSeasonPassChangedMessage) returns (google.protobuf.Empty);

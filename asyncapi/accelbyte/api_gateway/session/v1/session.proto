@@ -124,15 +124,30 @@ message SessionUpdatedMessage {
 
 // --- #/components/messages/{message_name} ---
 
+// path: #/components/messages/sessionCreated
+message SessionCreated {
+    SessionCreatedMessage payload = 1;
+}
+
+// path: #/components/messages/sessionDeleted
+message SessionDeleted {
+    SessionDeletedMessage payload = 1;
+}
+
+// path: #/components/messages/sessionUpdated
+message SessionUpdated {
+    SessionUpdatedMessage payload = 1;
+}
+
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
 // path: #/channels/session/publish/message
-message SessionPublishMessage {
+message SessionPublish {
     oneof payload {
-        SessionCreatedMessage variant0 = 1;
-        SessionDeletedMessage variant1 = 2;
-        SessionUpdatedMessage variant2 = 3;
+        SessionCreated variant0 = 1;
+        SessionDeleted variant1 = 2;
+        SessionUpdated variant2 = 3;
     }
 }
 
@@ -143,7 +158,7 @@ service APIGatewayServiceSessionEvents {
     // Session Channel
 
     // Publishes a message to the Session channel.
-    rpc PublishToSessionChannel(SessionPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToSessionChannel(SessionPublish) returns (google.protobuf.Empty);
 
     // Publishes a SessionCreatedMessage to the Session channel. (oneOf variant)
     rpc PublishSessionCreatedMessageToSessionChannel(SessionCreatedMessage) returns (google.protobuf.Empty);

@@ -96,14 +96,24 @@ message AgreementUpdatedMessage {
 
 // --- #/components/messages/{message_name} ---
 
+// path: #/components/messages/agreementCreated
+message AgreementCreated {
+    AgreementCreatedMessage payload = 1;
+}
+
+// path: #/components/messages/agreementUpdated
+message AgreementUpdated {
+    AgreementUpdatedMessage payload = 1;
+}
+
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
 // path: #/channels/agreement/publish/message
-message AgreementPublishMessage {
+message AgreementPublish {
     oneof payload {
-        AgreementCreatedMessage variant0 = 1;
-        AgreementUpdatedMessage variant1 = 2;
+        AgreementCreated variant0 = 1;
+        AgreementUpdated variant1 = 2;
     }
 }
 
@@ -114,7 +124,7 @@ service LegalServiceAgreementEvents {
     // Agreement Channel
 
     // Publishes a message to the Agreement channel.
-    rpc PublishToAgreementChannel(AgreementPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToAgreementChannel(AgreementPublish) returns (google.protobuf.Empty);
 
     // Publishes a AgreementCreatedMessage to the Agreement channel. (oneOf variant)
     rpc PublishAgreementCreatedMessageToAgreementChannel(AgreementCreatedMessage) returns (google.protobuf.Empty);

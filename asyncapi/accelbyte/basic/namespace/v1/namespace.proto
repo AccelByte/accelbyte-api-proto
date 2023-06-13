@@ -134,17 +134,42 @@ message NamespaceDisplayNameUpdatedMessage {
 
 // --- #/components/messages/{message_name} ---
 
+// path: #/components/messages/namespaceCreated
+message NamespaceCreated {
+    NamespaceCreatedMessage payload = 1;
+}
+
+// path: #/components/messages/namespaceDeleted
+message NamespaceDeleted {
+    NamespaceDeletedMessage payload = 1;
+}
+
+// path: #/components/messages/namespaceEnabled
+message NamespaceEnabled {
+    NamespaceEnabledMessage payload = 1;
+}
+
+// path: #/components/messages/namespaceDisabled
+message NamespaceDisabled {
+    NamespaceDisabledMessage payload = 1;
+}
+
+// path: #/components/messages/namespaceDisplayNameUpdated
+message NamespaceDisplayNameUpdated {
+    NamespaceDisplayNameUpdatedMessage payload = 1;
+}
+
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
 // path: #/channels/namespace/publish/message
-message NamespacePublishMessage {
+message NamespacePublish {
     oneof payload {
-        NamespaceCreatedMessage variant0 = 1;
-        NamespaceDeletedMessage variant1 = 2;
-        NamespaceEnabledMessage variant2 = 3;
-        NamespaceDisabledMessage variant3 = 4;
-        NamespaceDisplayNameUpdatedMessage variant4 = 5;
+        NamespaceCreated variant0 = 1;
+        NamespaceDeleted variant1 = 2;
+        NamespaceEnabled variant2 = 3;
+        NamespaceDisabled variant3 = 4;
+        NamespaceDisplayNameUpdated variant4 = 5;
     }
 }
 
@@ -155,7 +180,7 @@ service BasicServiceNamespaceEvents {
     // Namespace Channel
 
     // Publishes a message to the Namespace channel.
-    rpc PublishToNamespaceChannel(NamespacePublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToNamespaceChannel(NamespacePublish) returns (google.protobuf.Empty);
 
     // Publishes a NamespaceCreatedMessage to the Namespace channel. (oneOf variant)
     rpc PublishNamespaceCreatedMessageToNamespaceChannel(NamespaceCreatedMessage) returns (google.protobuf.Empty);

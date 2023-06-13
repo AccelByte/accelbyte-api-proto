@@ -540,68 +540,168 @@ message VersionHistoryUpdatedMessage {
 
 // --- #/components/messages/{message_name} ---
 
+// path: #/components/messages/blockCreated
+message BlockCreated {
+    BlockCreatedMessage payload = 1;
+}
+
+// path: #/components/messages/blockUpdated
+message BlockUpdated {
+    BlockUpdatedMessage payload = 1;
+}
+
+// path: #/components/messages/blockMissingBytesCommitted
+message BlockMissingBytesCommitted {
+    BlockMissingBytesCommittedMessage payload = 1;
+}
+
+// path: #/components/messages/blockUploadCommitted
+message BlockUploadCommitted {
+    BlockUploadCommittedMessage payload = 1;
+}
+
+// path: #/components/messages/buildCreated
+message BuildCreated {
+    BuildCreatedMessage payload = 1;
+}
+
+// path: #/components/messages/buildUpdated
+message BuildUpdated {
+    BuildUpdatedMessage payload = 1;
+}
+
+// path: #/components/messages/buildCurrentStatusSet
+message BuildCurrentStatusSet {
+    BuildCurrentStatusSetMessage payload = 1;
+}
+
+// path: #/components/messages/buildDeleted
+message BuildDeleted {
+    BuildDeletedMessage payload = 1;
+}
+
+// path: #/components/messages/diffStatusCreated
+message DiffStatusCreated {
+    DiffStatusCreatedMessage payload = 1;
+}
+
+// path: #/components/messages/diffStatusUpdated
+message DiffStatusUpdated {
+    DiffStatusUpdatedMessage payload = 1;
+}
+
+// path: #/components/messages/diffStatusCommitted
+message DiffStatusCommitted {
+    DiffStatusCommittedMessage payload = 1;
+}
+
+// path: #/components/messages/diffTriggerCreated
+message DiffTriggerCreated {
+    DiffTriggerCreatedMessage payload = 1;
+}
+
+// path: #/components/messages/diffTriggerUpdated
+message DiffTriggerUpdated {
+    DiffTriggerUpdatedMessage payload = 1;
+}
+
+// path: #/components/messages/diffTriggerToggled
+message DiffTriggerToggled {
+    DiffTriggerToggledMessage payload = 1;
+}
+
+// path: #/components/messages/drmActivationCreated
+message DrmActivationCreated {
+    DrmActivationCreatedMessage payload = 1;
+}
+
+// path: #/components/messages/drmActivationUpdated
+message DrmActivationUpdated {
+    DrmActivationUpdatedMessage payload = 1;
+}
+
+// path: #/components/messages/releaseNoteCreated
+message ReleaseNoteCreated {
+    ReleaseNoteCreatedMessage payload = 1;
+}
+
+// path: #/components/messages/releaseNoteUpdated
+message ReleaseNoteUpdated {
+    ReleaseNoteUpdatedMessage payload = 1;
+}
+
+// path: #/components/messages/versionHistoryCreated
+message VersionHistoryCreated {
+    VersionHistoryCreatedMessage payload = 1;
+}
+
+// path: #/components/messages/versionHistoryUpdated
+message VersionHistoryUpdated {
+    VersionHistoryUpdatedMessage payload = 1;
+}
+
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
 // path: #/channels/block/publish/message
-message BlockPublishMessage {
+message BlockPublish {
     oneof payload {
-        BlockCreatedMessage variant0 = 1;
-        BlockUpdatedMessage variant1 = 2;
-        BlockMissingBytesCommittedMessage variant2 = 3;
-        BlockUploadCommittedMessage variant3 = 4;
+        BlockCreated variant0 = 1;
+        BlockUpdated variant1 = 2;
+        BlockMissingBytesCommitted variant2 = 3;
+        BlockUploadCommitted variant3 = 4;
     }
 }
 
 // path: #/channels/build/publish/message
-message BuildPublishMessage {
+message BuildPublish {
     oneof payload {
-        BuildCreatedMessage variant0 = 1;
-        BuildUpdatedMessage variant1 = 2;
-        BuildCurrentStatusSetMessage variant2 = 3;
-        BuildDeletedMessage variant3 = 4;
+        BuildCreated variant0 = 1;
+        BuildUpdated variant1 = 2;
+        BuildCurrentStatusSet variant2 = 3;
+        BuildDeleted variant3 = 4;
     }
 }
 
 // path: #/channels/diffStatus/publish/message
-message DiffStatusPublishMessage {
+message DiffStatusPublish {
     oneof payload {
-        DiffStatusCreatedMessage variant0 = 1;
-        DiffStatusUpdatedMessage variant1 = 2;
-        DiffStatusCommittedMessage variant2 = 3;
+        DiffStatusCreated variant0 = 1;
+        DiffStatusUpdated variant1 = 2;
+        DiffStatusCommitted variant2 = 3;
     }
 }
 
 // path: #/channels/diffTrigger/publish/message
-message DiffTriggerPublishMessage {
+message DiffTriggerPublish {
     oneof payload {
-        DiffTriggerCreatedMessage variant0 = 1;
-        DiffTriggerUpdatedMessage variant1 = 2;
-        DiffTriggerToggledMessage variant2 = 3;
+        DiffTriggerCreated variant0 = 1;
+        DiffTriggerUpdated variant1 = 2;
+        DiffTriggerToggled variant2 = 3;
     }
 }
 
 // path: #/channels/drmActivation/publish/message
-message DrmActivationPublishMessage {
+message DrmActivationPublish {
     oneof payload {
-        DrmActivationCreatedMessage variant0 = 1;
-        DrmActivationUpdatedMessage variant1 = 2;
+        DrmActivationCreated variant0 = 1;
+        DrmActivationUpdated variant1 = 2;
     }
 }
 
 // path: #/channels/releaseNote/publish/message
-message ReleaseNotePublishMessage {
+message ReleaseNotePublish {
     oneof payload {
-        ReleaseNoteCreatedMessage variant0 = 1;
-        ReleaseNoteUpdatedMessage variant1 = 2;
+        ReleaseNoteCreated variant0 = 1;
+        ReleaseNoteUpdated variant1 = 2;
     }
 }
 
 // path: #/channels/versionHistory/publish/message
-message VersionHistoryPublishMessage {
+message VersionHistoryPublish {
     oneof payload {
-        VersionHistoryCreatedMessage variant0 = 1;
-        VersionHistoryUpdatedMessage variant1 = 2;
+        VersionHistoryCreated variant0 = 1;
+        VersionHistoryUpdated variant1 = 2;
     }
 }
 
@@ -612,7 +712,7 @@ service BuildInfoServiceEvents {
     // Block Channel
 
     // Publishes a message to the Block channel.
-    rpc PublishToBlockChannel(BlockPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToBlockChannel(BlockPublish) returns (google.protobuf.Empty);
 
     // Publishes a BlockCreatedMessage to the Block channel. (oneOf variant)
     rpc PublishBlockCreatedMessageToBlockChannel(BlockCreatedMessage) returns (google.protobuf.Empty);
@@ -629,7 +729,7 @@ service BuildInfoServiceEvents {
     // Build Channel
 
     // Publishes a message to the Build channel.
-    rpc PublishToBuildChannel(BuildPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToBuildChannel(BuildPublish) returns (google.protobuf.Empty);
 
     // Publishes a BuildCreatedMessage to the Build channel. (oneOf variant)
     rpc PublishBuildCreatedMessageToBuildChannel(BuildCreatedMessage) returns (google.protobuf.Empty);
@@ -646,7 +746,7 @@ service BuildInfoServiceEvents {
     // Diff Status Channel
 
     // Publishes a message to the Diff Status channel.
-    rpc PublishToDiffStatusChannel(DiffStatusPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToDiffStatusChannel(DiffStatusPublish) returns (google.protobuf.Empty);
 
     // Publishes a DiffStatusCreatedMessage to the Diff Status channel. (oneOf variant)
     rpc PublishDiffStatusCreatedMessageToDiffStatusChannel(DiffStatusCreatedMessage) returns (google.protobuf.Empty);
@@ -660,7 +760,7 @@ service BuildInfoServiceEvents {
     // Diff Trigger Channel
 
     // Publishes a message to the Diff Trigger channel.
-    rpc PublishToDiffTriggerChannel(DiffTriggerPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToDiffTriggerChannel(DiffTriggerPublish) returns (google.protobuf.Empty);
 
     // Publishes a DiffTriggerCreatedMessage to the Diff Trigger channel. (oneOf variant)
     rpc PublishDiffTriggerCreatedMessageToDiffTriggerChannel(DiffTriggerCreatedMessage) returns (google.protobuf.Empty);
@@ -674,7 +774,7 @@ service BuildInfoServiceEvents {
     // Drm Activation Channel
 
     // Publishes a message to the Drm Activation channel.
-    rpc PublishToDrmActivationChannel(DrmActivationPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToDrmActivationChannel(DrmActivationPublish) returns (google.protobuf.Empty);
 
     // Publishes a DrmActivationCreatedMessage to the Drm Activation channel. (oneOf variant)
     rpc PublishDrmActivationCreatedMessageToDrmActivationChannel(DrmActivationCreatedMessage) returns (google.protobuf.Empty);
@@ -685,7 +785,7 @@ service BuildInfoServiceEvents {
     // Release Note Channel
 
     // Publishes a message to the Release Note channel.
-    rpc PublishToReleaseNoteChannel(ReleaseNotePublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToReleaseNoteChannel(ReleaseNotePublish) returns (google.protobuf.Empty);
 
     // Publishes a ReleaseNoteCreatedMessage to the Release Note channel. (oneOf variant)
     rpc PublishReleaseNoteCreatedMessageToReleaseNoteChannel(ReleaseNoteCreatedMessage) returns (google.protobuf.Empty);
@@ -696,7 +796,7 @@ service BuildInfoServiceEvents {
     // Version History Channel
 
     // Publishes a message to the Version History channel.
-    rpc PublishToVersionHistoryChannel(VersionHistoryPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToVersionHistoryChannel(VersionHistoryPublish) returns (google.protobuf.Empty);
 
     // Publishes a VersionHistoryCreatedMessage to the Version History channel. (oneOf variant)
     rpc PublishVersionHistoryCreatedMessageToVersionHistoryChannel(VersionHistoryCreatedMessage) returns (google.protobuf.Empty);

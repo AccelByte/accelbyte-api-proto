@@ -342,21 +342,66 @@ message BillingAccountChangedMessage {
 
 // --- #/components/messages/{message_name} ---
 
+// path: #/components/messages/subscribed
+message Subscribed {
+    SubscribedMessage payload = 1;
+}
+
+// path: #/components/messages/cancelled
+message Cancelled {
+    CancelledMessage payload = 1;
+}
+
+// path: #/components/messages/immediateCancelled
+message ImmediateCancelled {
+    ImmediateCancelledMessage payload = 1;
+}
+
+// path: #/components/messages/resubscribed
+message Resubscribed {
+    ResubscribedMessage payload = 1;
+}
+
+// path: #/components/messages/daysGranted
+message DaysGranted {
+    DaysGrantedMessage payload = 1;
+}
+
+// path: #/components/messages/charged
+message Charged {
+    ChargedMessage payload = 1;
+}
+
+// path: #/components/messages/chargeFailed
+message ChargeFailed {
+    ChargeFailedMessage payload = 1;
+}
+
+// path: #/components/messages/expired
+message Expired {
+    ExpiredMessage payload = 1;
+}
+
+// path: #/components/messages/billingAccountChanged
+message BillingAccountChanged {
+    BillingAccountChangedMessage payload = 1;
+}
+
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
 // path: #/channels/subscription/publish/message
-message SubscriptionPublishMessage {
+message SubscriptionPublish {
     oneof payload {
-        SubscribedMessage variant0 = 1;
-        CancelledMessage variant1 = 2;
-        ImmediateCancelledMessage variant2 = 3;
-        ResubscribedMessage variant3 = 4;
-        DaysGrantedMessage variant4 = 5;
-        ChargedMessage variant5 = 6;
-        ChargeFailedMessage variant6 = 7;
-        ExpiredMessage variant7 = 8;
-        BillingAccountChangedMessage variant8 = 9;
+        Subscribed variant0 = 1;
+        Cancelled variant1 = 2;
+        ImmediateCancelled variant2 = 3;
+        Resubscribed variant3 = 4;
+        DaysGranted variant4 = 5;
+        Charged variant5 = 6;
+        ChargeFailed variant6 = 7;
+        Expired variant7 = 8;
+        BillingAccountChanged variant8 = 9;
     }
 }
 
@@ -367,7 +412,7 @@ service AsyncAPIForJusticeRewardService {
     // Subscription Channel
 
     // Publishes a message to the Subscription channel.
-    rpc PublishToSubscriptionChannel(SubscriptionPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToSubscriptionChannel(SubscriptionPublish) returns (google.protobuf.Empty);
 
     // Publishes a SubscribedMessage to the Subscription channel. (oneOf variant)
     rpc PublishSubscribedMessageToSubscriptionChannel(SubscribedMessage) returns (google.protobuf.Empty);

@@ -338,24 +338,84 @@ message OrderExpiredMessage {
 
 // --- #/components/messages/{message_name} ---
 
+// path: #/components/messages/orderCreated
+message OrderCreated {
+    OrderCreatedMessage payload = 1;
+}
+
+// path: #/components/messages/orderCancelled
+message OrderCancelled {
+    OrderCancelledMessage payload = 1;
+}
+
+// path: #/components/messages/orderRefundRequested
+message OrderRefundRequested {
+    OrderRefundRequestedMessage payload = 1;
+}
+
+// path: #/components/messages/orderStatusUpdated
+message OrderStatusUpdated {
+    OrderStatusUpdatedMessage payload = 1;
+}
+
+// path: #/components/messages/orderFulfilled
+message OrderFulfilled {
+    OrderFulfilledMessage payload = 1;
+}
+
+// path: #/components/messages/orderFulfillFailed
+message OrderFulfillFailed {
+    OrderFulfillFailedMessage payload = 1;
+}
+
+// path: #/components/messages/orderCharged
+message OrderCharged {
+    OrderChargedMessage payload = 1;
+}
+
+// path: #/components/messages/orderRefunded
+message OrderRefunded {
+    OrderRefundedMessage payload = 1;
+}
+
+// path: #/components/messages/orderRefundFailed
+message OrderRefundFailed {
+    OrderRefundFailedMessage payload = 1;
+}
+
+// path: #/components/messages/orderChargeback
+message OrderChargeback {
+    OrderChargebackMessage payload = 1;
+}
+
+// path: #/components/messages/orderChargebackReversed
+message OrderChargebackReversed {
+    OrderChargebackReversedMessage payload = 1;
+}
+
+// path: #/components/messages/orderExpired
+message OrderExpired {
+    OrderExpiredMessage payload = 1;
+}
+
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
 // path: #/channels/orderProcessing/publish/message
-message OrderProcessingPublishMessage {
+message OrderProcessingPublish {
     oneof payload {
-        OrderCreatedMessage variant0 = 1;
-        OrderCancelledMessage variant1 = 2;
-        OrderFulfilledMessage variant2 = 3;
-        OrderFulfillFailedMessage variant3 = 4;
-        OrderChargedMessage variant4 = 5;
-        OrderRefundedMessage variant5 = 6;
-        OrderRefundRequestedMessage variant6 = 7;
-        OrderRefundFailedMessage variant7 = 8;
-        OrderChargebackMessage variant8 = 9;
-        OrderChargebackReversedMessage variant9 = 10;
-        OrderExpiredMessage variant10 = 11;
-        OrderStatusUpdatedMessage variant11 = 12;
+        OrderCreated variant0 = 1;
+        OrderCancelled variant1 = 2;
+        OrderFulfilled variant2 = 3;
+        OrderFulfillFailed variant3 = 4;
+        OrderCharged variant4 = 5;
+        OrderRefunded variant5 = 6;
+        OrderRefundRequested variant6 = 7;
+        OrderRefundFailed variant7 = 8;
+        OrderChargeback variant8 = 9;
+        OrderChargebackReversed variant9 = 10;
+        OrderExpired variant10 = 11;
+        OrderStatusUpdated variant11 = 12;
     }
 }
 
@@ -366,7 +426,7 @@ service AsyncAPIForJusticeOrderService {
     // Order Processing Channel
 
     // Publishes a message to the Order Processing channel.
-    rpc PublishToOrderProcessingChannel(OrderProcessingPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToOrderProcessingChannel(OrderProcessingPublish) returns (google.protobuf.Empty);
 
     // Publishes a OrderCreatedMessage to the Order Processing channel. (oneOf variant)
     rpc PublishOrderCreatedMessageToOrderProcessingChannel(OrderCreatedMessage) returns (google.protobuf.Empty);

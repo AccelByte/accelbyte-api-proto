@@ -347,41 +347,96 @@ message DefaultLocalizedPolicyUpdatedMessage {
 
 // --- #/components/messages/{message_name} ---
 
+// path: #/components/messages/basePolicyCreated
+message BasePolicyCreated {
+    BasePolicyCreatedMessage payload = 1;
+}
+
+// path: #/components/messages/basePolicyUpdated
+message BasePolicyUpdated {
+    BasePolicyUpdatedMessage payload = 1;
+}
+
+// path: #/components/messages/policyCreated
+message PolicyCreated {
+    PolicyCreatedMessage payload = 1;
+}
+
+// path: #/components/messages/policyUpdated
+message PolicyUpdated {
+    PolicyUpdatedMessage payload = 1;
+}
+
+// path: #/components/messages/defaultPolicyUpdated
+message DefaultPolicyUpdated {
+    DefaultPolicyUpdatedMessage payload = 1;
+}
+
+// path: #/components/messages/versionedPolicyCreated
+message VersionedPolicyCreated {
+    VersionedPolicyCreatedMessage payload = 1;
+}
+
+// path: #/components/messages/versionedPolicyUpdated
+message VersionedPolicyUpdated {
+    VersionedPolicyUpdatedMessage payload = 1;
+}
+
+// path: #/components/messages/versionedPolicyPublished
+message VersionedPolicyPublished {
+    VersionedPolicyPublishedMessage payload = 1;
+}
+
+// path: #/components/messages/localizedPolicyCreated
+message LocalizedPolicyCreated {
+    LocalizedPolicyCreatedMessage payload = 1;
+}
+
+// path: #/components/messages/localizedPolicyUpdated
+message LocalizedPolicyUpdated {
+    LocalizedPolicyUpdatedMessage payload = 1;
+}
+
+// path: #/components/messages/defaultLocalizedPolicyUpdated
+message DefaultLocalizedPolicyUpdated {
+    DefaultLocalizedPolicyUpdatedMessage payload = 1;
+}
+
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
 // path: #/channels/basePolicy/publish/message
-message BasePolicyPublishMessage {
+message BasePolicyPublish {
     oneof payload {
-        BasePolicyCreatedMessage variant0 = 1;
-        BasePolicyUpdatedMessage variant1 = 2;
+        BasePolicyCreated variant0 = 1;
+        BasePolicyUpdated variant1 = 2;
     }
 }
 
 // path: #/channels/policy/publish/message
-message PolicyPublishMessage {
+message PolicyPublish {
     oneof payload {
-        PolicyCreatedMessage variant0 = 1;
-        PolicyUpdatedMessage variant1 = 2;
-        DefaultPolicyUpdatedMessage variant2 = 3;
+        PolicyCreated variant0 = 1;
+        PolicyUpdated variant1 = 2;
+        DefaultPolicyUpdated variant2 = 3;
     }
 }
 
 // path: #/channels/versionedPolicy/publish/message
-message VersionedPolicyPublishMessage {
+message VersionedPolicyPublish {
     oneof payload {
-        VersionedPolicyCreatedMessage variant0 = 1;
-        VersionedPolicyUpdatedMessage variant1 = 2;
-        VersionedPolicyPublishedMessage variant2 = 3;
+        VersionedPolicyCreated variant0 = 1;
+        VersionedPolicyUpdated variant1 = 2;
+        VersionedPolicyPublished variant2 = 3;
     }
 }
 
 // path: #/channels/localizedPolicy/publish/message
-message LocalizedPolicyPublishMessage {
+message LocalizedPolicyPublish {
     oneof payload {
-        LocalizedPolicyCreatedMessage variant0 = 1;
-        LocalizedPolicyUpdatedMessage variant1 = 2;
-        DefaultLocalizedPolicyUpdatedMessage variant2 = 3;
+        LocalizedPolicyCreated variant0 = 1;
+        LocalizedPolicyUpdated variant1 = 2;
+        DefaultLocalizedPolicyUpdated variant2 = 3;
     }
 }
 
@@ -392,7 +447,7 @@ service LegalServicePolicyEvents {
     // Base Policy Channel
 
     // Publishes a message to the Base Policy channel.
-    rpc PublishToBasePolicyChannel(BasePolicyPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToBasePolicyChannel(BasePolicyPublish) returns (google.protobuf.Empty);
 
     // Publishes a BasePolicyCreatedMessage to the Base Policy channel. (oneOf variant)
     rpc PublishBasePolicyCreatedMessageToBasePolicyChannel(BasePolicyCreatedMessage) returns (google.protobuf.Empty);
@@ -403,7 +458,7 @@ service LegalServicePolicyEvents {
     // Policy Channel
 
     // Publishes a message to the Policy channel.
-    rpc PublishToPolicyChannel(PolicyPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToPolicyChannel(PolicyPublish) returns (google.protobuf.Empty);
 
     // Publishes a PolicyCreatedMessage to the Policy channel. (oneOf variant)
     rpc PublishPolicyCreatedMessageToPolicyChannel(PolicyCreatedMessage) returns (google.protobuf.Empty);
@@ -417,7 +472,7 @@ service LegalServicePolicyEvents {
     // Versioned Policy Channel
 
     // Publishes a message to the Versioned Policy channel.
-    rpc PublishToVersionedPolicyChannel(VersionedPolicyPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToVersionedPolicyChannel(VersionedPolicyPublish) returns (google.protobuf.Empty);
 
     // Publishes a VersionedPolicyCreatedMessage to the Versioned Policy channel. (oneOf variant)
     rpc PublishVersionedPolicyCreatedMessageToVersionedPolicyChannel(VersionedPolicyCreatedMessage) returns (google.protobuf.Empty);
@@ -431,7 +486,7 @@ service LegalServicePolicyEvents {
     // Localized Policy Channel
 
     // Publishes a message to the Localized Policy channel.
-    rpc PublishToLocalizedPolicyChannel(LocalizedPolicyPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToLocalizedPolicyChannel(LocalizedPolicyPublish) returns (google.protobuf.Empty);
 
     // Publishes a LocalizedPolicyCreatedMessage to the Localized Policy channel. (oneOf variant)
     rpc PublishLocalizedPolicyCreatedMessageToLocalizedPolicyChannel(LocalizedPolicyCreatedMessage) returns (google.protobuf.Empty);

@@ -71,13 +71,18 @@ message FreeformUserNotificationMessage {
 
 // --- #/components/messages/{message_name} ---
 
+// path: #/components/messages/freeformUserNotification
+message FreeformUserNotification {
+    FreeformUserNotificationMessage payload = 1;
+}
+
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
 // path: #/channels/freeformUserNotificationRequest/publish/message
-message FreeformUserNotificationRequestPublishMessage {
+message FreeformUserNotificationRequestPublish {
     oneof payload {
-        FreeformUserNotificationMessage variant0 = 1;
+        FreeformUserNotification variant0 = 1;
     }
 }
 
@@ -88,7 +93,7 @@ service MatchmakingV2NotificationEvents {
     // Freeform User Notification Request Channel
 
     // Publishes a message to the Freeform User Notification Request channel.
-    rpc PublishToFreeformUserNotificationRequestChannel(FreeformUserNotificationRequestPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToFreeformUserNotificationRequestChannel(FreeformUserNotificationRequestPublish) returns (google.protobuf.Empty);
 
     // Publishes a FreeformUserNotificationMessage to the Freeform User Notification Request channel. (oneOf variant)
     rpc PublishFreeformUserNotificationMessageToFreeformUserNotificationRequestChannel(FreeformUserNotificationMessage) returns (google.protobuf.Empty);

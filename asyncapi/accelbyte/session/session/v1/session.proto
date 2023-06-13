@@ -550,49 +550,144 @@ message PartyMembersChangedEventMessage {
 
 // --- #/components/messages/{message_name} ---
 
+// path: #/components/messages/onPartyCreated
+message OnPartyCreated {
+    OnPartyCreatedMessage payload = 1;
+}
+
+// path: #/components/messages/sessionNotification
+message SessionNotification {
+    SessionNotificationMessage payload = 1;
+}
+
+// path: #/components/messages/OnSessionEnded
+message OnSessionEnded {
+    OnSessionEndedMessage payload = 1;
+}
+
+// path: #/components/messages/GameSessionEndedEvent
+message GameSessionEndedEvent {
+    GameSessionEndedEventMessage payload = 1;
+}
+
+// path: #/components/messages/GameSessionInvitedEvent
+message GameSessionInvitedEvent {
+    GameSessionInvitedEventMessage payload = 1;
+}
+
+// path: #/components/messages/GameSessionJoinedEvent
+message GameSessionJoinedEvent {
+    GameSessionJoinedEventMessage payload = 1;
+}
+
+// path: #/components/messages/GameSessionMembersChangedEvent
+message GameSessionMembersChangedEvent {
+    GameSessionMembersChangedEventMessage payload = 1;
+}
+
+// path: #/components/messages/GameSessionKickedEvent
+message GameSessionKickedEvent {
+    GameSessionKickedEventMessage payload = 1;
+}
+
+// path: #/components/messages/GameSessionCreatedEvent
+message GameSessionCreatedEvent {
+    GameSessionCreatedEventMessage payload = 1;
+}
+
+// path: #/components/messages/GameSessionUpdatedEvent
+message GameSessionUpdatedEvent {
+    GameSessionUpdatedEventMessage payload = 1;
+}
+
+// path: #/components/messages/GameSessionRejectedEvent
+message GameSessionRejectedEvent {
+    GameSessionRejectedEventMessage payload = 1;
+}
+
+// path: #/components/messages/GameSessionDSStatusChangedEvent
+message GameSessionDSStatusChangedEvent {
+    GameSessionDSStatusChangedEventMessage payload = 1;
+}
+
+// path: #/components/messages/PartyCreatedEvent
+message PartyCreatedEvent {
+    PartyCreatedEventMessage payload = 1;
+}
+
+// path: #/components/messages/PartyUpdatedEvent
+message PartyUpdatedEvent {
+    PartyUpdatedEventMessage payload = 1;
+}
+
+// path: #/components/messages/PartyKickedEvent
+message PartyKickedEvent {
+    PartyKickedEventMessage payload = 1;
+}
+
+// path: #/components/messages/PartyInvitedEvent
+message PartyInvitedEvent {
+    PartyInvitedEventMessage payload = 1;
+}
+
+// path: #/components/messages/PartyRejectedEvent
+message PartyRejectedEvent {
+    PartyRejectedEventMessage payload = 1;
+}
+
+// path: #/components/messages/PartyJoinedEvent
+message PartyJoinedEvent {
+    PartyJoinedEventMessage payload = 1;
+}
+
+// path: #/components/messages/PartyMembersChangedEvent
+message PartyMembersChangedEvent {
+    PartyMembersChangedEventMessage payload = 1;
+}
+
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
 // path: #/channels/session/publish/message
-message SessionPublishMessage {
+message SessionPublish {
     oneof payload {
-        OnPartyCreatedMessage variant0 = 1;
+        OnPartyCreated variant0 = 1;
     }
 }
 
 // path: #/channels/sessionNotification/publish/message
-message SessionNotificationPublishMessage {
+message SessionNotificationPublish {
     oneof payload {
-        SessionNotificationMessage variant0 = 1;
+        SessionNotification variant0 = 1;
     }
 }
 
 // path: #/channels/sessionEvent/publish/message
-message SessionEventPublishMessage {
+message SessionEventPublish {
     oneof payload {
-        OnSessionEndedMessage variant0 = 1;
+        OnSessionEnded variant0 = 1;
     }
 }
 
 // path: #/channels/mpv2SessionHistory/publish/message
-message Mpv2SessionHistoryPublishMessage {
+message Mpv2SessionHistoryPublish {
     oneof payload {
-        GameSessionEndedEventMessage variant0 = 1;
-        GameSessionInvitedEventMessage variant1 = 2;
-        GameSessionJoinedEventMessage variant2 = 3;
-        GameSessionMembersChangedEventMessage variant3 = 4;
-        GameSessionKickedEventMessage variant4 = 5;
-        GameSessionCreatedEventMessage variant5 = 6;
-        GameSessionUpdatedEventMessage variant6 = 7;
-        GameSessionRejectedEventMessage variant7 = 8;
-        GameSessionDSStatusChangedEventMessage variant8 = 9;
-        PartyCreatedEventMessage variant9 = 10;
-        PartyUpdatedEventMessage variant10 = 11;
-        PartyKickedEventMessage variant11 = 12;
-        PartyInvitedEventMessage variant12 = 13;
-        PartyRejectedEventMessage variant13 = 14;
-        PartyJoinedEventMessage variant14 = 15;
-        PartyMembersChangedEventMessage variant15 = 16;
+        GameSessionEndedEvent variant0 = 1;
+        GameSessionInvitedEvent variant1 = 2;
+        GameSessionJoinedEvent variant2 = 3;
+        GameSessionMembersChangedEvent variant3 = 4;
+        GameSessionKickedEvent variant4 = 5;
+        GameSessionCreatedEvent variant5 = 6;
+        GameSessionUpdatedEvent variant6 = 7;
+        GameSessionRejectedEvent variant7 = 8;
+        GameSessionDSStatusChangedEvent variant8 = 9;
+        PartyCreatedEvent variant9 = 10;
+        PartyUpdatedEvent variant10 = 11;
+        PartyKickedEvent variant11 = 12;
+        PartyInvitedEvent variant12 = 13;
+        PartyRejectedEvent variant13 = 14;
+        PartyJoinedEvent variant14 = 15;
+        PartyMembersChangedEvent variant15 = 16;
     }
 }
 
@@ -603,7 +698,7 @@ service SessionNotificationEvents {
     // Session Channel
 
     // Publishes a message to the Session channel.
-    rpc PublishToSessionChannel(SessionPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToSessionChannel(SessionPublish) returns (google.protobuf.Empty);
 
     // Publishes a OnPartyCreatedMessage to the Session channel. (oneOf variant)
     rpc PublishOnPartyCreatedMessageToSessionChannel(OnPartyCreatedMessage) returns (google.protobuf.Empty);
@@ -611,7 +706,7 @@ service SessionNotificationEvents {
     // Session Notification Channel
 
     // Publishes a message to the Session Notification channel.
-    rpc PublishToSessionNotificationChannel(SessionNotificationPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToSessionNotificationChannel(SessionNotificationPublish) returns (google.protobuf.Empty);
 
     // Publishes a SessionNotificationMessage to the Session Notification channel. (oneOf variant)
     rpc PublishSessionNotificationMessageToSessionNotificationChannel(SessionNotificationMessage) returns (google.protobuf.Empty);
@@ -619,7 +714,7 @@ service SessionNotificationEvents {
     // Session Event Channel
 
     // Publishes a message to the Session Event channel.
-    rpc PublishToSessionEventChannel(SessionEventPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToSessionEventChannel(SessionEventPublish) returns (google.protobuf.Empty);
 
     // Publishes a OnSessionEndedMessage to the Session Event channel. (oneOf variant)
     rpc PublishOnSessionEndedMessageToSessionEventChannel(OnSessionEndedMessage) returns (google.protobuf.Empty);
@@ -627,7 +722,7 @@ service SessionNotificationEvents {
     // Mpv2 Session History Channel
 
     // Publishes a message to the Mpv2 Session History channel.
-    rpc PublishToMpv2SessionHistoryChannel(Mpv2SessionHistoryPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToMpv2SessionHistoryChannel(Mpv2SessionHistoryPublish) returns (google.protobuf.Empty);
 
     // Publishes a GameSessionEndedEventMessage to the Mpv2 Session History channel. (oneOf variant)
     rpc PublishGameSessionEndedEventMessageToMpv2SessionHistoryChannel(GameSessionEndedEventMessage) returns (google.protobuf.Empty);

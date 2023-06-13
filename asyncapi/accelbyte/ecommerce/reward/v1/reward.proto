@@ -145,16 +145,36 @@ message RewardImportedMessage {
 
 // --- #/components/messages/{message_name} ---
 
+// path: #/components/messages/rewardCreated
+message RewardCreated {
+    RewardCreatedMessage payload = 1;
+}
+
+// path: #/components/messages/rewardUpdated
+message RewardUpdated {
+    RewardUpdatedMessage payload = 1;
+}
+
+// path: #/components/messages/rewardDeleted
+message RewardDeleted {
+    RewardDeletedMessage payload = 1;
+}
+
+// path: #/components/messages/rewardImported
+message RewardImported {
+    RewardImportedMessage payload = 1;
+}
+
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
 // path: #/channels/rewardManagement/publish/message
-message RewardManagementPublishMessage {
+message RewardManagementPublish {
     oneof payload {
-        RewardCreatedMessage variant0 = 1;
-        RewardUpdatedMessage variant1 = 2;
-        RewardDeletedMessage variant2 = 3;
-        RewardImportedMessage variant3 = 4;
+        RewardCreated variant0 = 1;
+        RewardUpdated variant1 = 2;
+        RewardDeleted variant2 = 3;
+        RewardImported variant3 = 4;
     }
 }
 
@@ -165,7 +185,7 @@ service AsyncAPIForJusticeRewardService {
     // Reward Management Channel
 
     // Publishes a message to the Reward Management channel.
-    rpc PublishToRewardManagementChannel(RewardManagementPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToRewardManagementChannel(RewardManagementPublish) returns (google.protobuf.Empty);
 
     // Publishes a RewardCreatedMessage to the Reward Management channel. (oneOf variant)
     rpc PublishRewardCreatedMessageToRewardManagementChannel(RewardCreatedMessage) returns (google.protobuf.Empty);

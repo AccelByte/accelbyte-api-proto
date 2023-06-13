@@ -63,13 +63,18 @@ message UserMarketingPreferenceUpdatedMessage {
 
 // --- #/components/messages/{message_name} ---
 
+// path: #/components/messages/userMarketingPreferenceUpdated
+message UserMarketingPreferenceUpdated {
+    UserMarketingPreferenceUpdatedMessage payload = 1;
+}
+
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
 // path: #/channels/userMarketingInformation/publish/message
-message UserMarketingInformationPublishMessage {
+message UserMarketingInformationPublish {
     oneof payload {
-        UserMarketingPreferenceUpdatedMessage variant0 = 1;
+        UserMarketingPreferenceUpdated variant0 = 1;
     }
 }
 
@@ -80,7 +85,7 @@ service LegalServiceUserMarketingInformationEvents {
     // User Marketing Information Channel
 
     // Publishes a message to the User Marketing Information channel.
-    rpc PublishToUserMarketingInformationChannel(UserMarketingInformationPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToUserMarketingInformationChannel(UserMarketingInformationPublish) returns (google.protobuf.Empty);
 
     // Publishes a UserMarketingPreferenceUpdatedMessage to the User Marketing Information channel. (oneOf variant)
     rpc PublishUserMarketingPreferenceUpdatedMessageToUserMarketingInformationChannel(UserMarketingPreferenceUpdatedMessage) returns (google.protobuf.Empty);

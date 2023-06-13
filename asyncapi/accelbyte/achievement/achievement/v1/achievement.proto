@@ -130,15 +130,30 @@ message AchievementRewardClaimedMessage {
 
 // --- #/components/messages/{message_name} ---
 
+// path: #/components/messages/userAchievementUnlocked
+message UserAchievementUnlocked {
+    UserAchievementUnlockedMessage payload = 1;
+}
+
+// path: #/components/messages/globalAchievementUnlocked
+message GlobalAchievementUnlocked {
+    GlobalAchievementUnlockedMessage payload = 1;
+}
+
+// path: #/components/messages/achievementRewardClaimed
+message AchievementRewardClaimed {
+    AchievementRewardClaimedMessage payload = 1;
+}
+
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
 // path: #/channels/achievement/publish/message
-message AchievementPublishMessage {
+message AchievementPublish {
     oneof payload {
-        UserAchievementUnlockedMessage variant0 = 1;
-        GlobalAchievementUnlockedMessage variant1 = 2;
-        AchievementRewardClaimedMessage variant2 = 3;
+        UserAchievementUnlocked variant0 = 1;
+        GlobalAchievementUnlocked variant1 = 2;
+        AchievementRewardClaimed variant2 = 3;
     }
 }
 
@@ -149,7 +164,7 @@ service AchievementServiceEvents {
     // Achievement Channel
 
     // Publishes a message to the Achievement channel.
-    rpc PublishToAchievementChannel(AchievementPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToAchievementChannel(AchievementPublish) returns (google.protobuf.Empty);
 
     // Publishes a UserAchievementUnlockedMessage to the Achievement channel. (oneOf variant)
     rpc PublishUserAchievementUnlockedMessageToAchievementChannel(UserAchievementUnlockedMessage) returns (google.protobuf.Empty);

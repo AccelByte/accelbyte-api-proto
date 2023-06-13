@@ -282,17 +282,42 @@ message SessionEndedMessage {
 
 // --- #/components/messages/{message_name} ---
 
+// path: #/components/messages/allocationComplete
+message AllocationComplete {
+    AllocationCompleteMessage payload = 1;
+}
+
+// path: #/components/messages/dsClaimed
+message DsClaimed {
+    DsClaimedMessage payload = 1;
+}
+
+// path: #/components/messages/dsCount
+message DsCount {
+    DsCountMessage payload = 1;
+}
+
+// path: #/components/messages/dsStatusChanged
+message DsStatusChanged {
+    DsStatusChangedMessage payload = 1;
+}
+
+// path: #/components/messages/sessionEnded
+message SessionEnded {
+    SessionEndedMessage payload = 1;
+}
+
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
 // path: #/channels/dsmcontroller/publish/message
-message DsmcontrollerPublishMessage {
+message DsmcontrollerPublish {
     oneof payload {
-        AllocationCompleteMessage variant0 = 1;
-        DsClaimedMessage variant1 = 2;
-        DsCountMessage variant2 = 3;
-        DsStatusChangedMessage variant3 = 4;
-        SessionEndedMessage variant4 = 5;
+        AllocationComplete variant0 = 1;
+        DsClaimed variant1 = 2;
+        DsCount variant2 = 3;
+        DsStatusChanged variant3 = 4;
+        SessionEnded variant4 = 5;
     }
 }
 
@@ -303,7 +328,7 @@ service AsyncAPIForJusticeDedicatedServerManagerControllerService {
     // Dsmcontroller Channel
 
     // Publishes a message to the Dsmcontroller channel.
-    rpc PublishToDsmcontrollerChannel(DsmcontrollerPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToDsmcontrollerChannel(DsmcontrollerPublish) returns (google.protobuf.Empty);
 
     // Publishes a AllocationCompleteMessage to the Dsmcontroller channel. (oneOf variant)
     rpc PublishAllocationCompleteMessageToDsmcontrollerChannel(AllocationCompleteMessage) returns (google.protobuf.Empty);

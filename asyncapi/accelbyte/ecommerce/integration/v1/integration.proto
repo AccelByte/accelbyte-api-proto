@@ -381,37 +381,132 @@ message IapProcessedMessage {
 
 // --- #/components/messages/{message_name} ---
 
+// path: #/components/messages/appleIAPConfigDeleted
+message AppleIAPConfigDeleted {
+    AppleIAPConfigDeletedMessage payload = 1;
+}
+
+// path: #/components/messages/appleIAPConfigUpdated
+message AppleIAPConfigUpdated {
+    AppleIAPConfigUpdatedMessage payload = 1;
+}
+
+// path: #/components/messages/googleIAPConfigDeleted
+message GoogleIAPConfigDeleted {
+    GoogleIAPConfigDeletedMessage payload = 1;
+}
+
+// path: #/components/messages/googleIAPConfigUpdated
+message GoogleIAPConfigUpdated {
+    GoogleIAPConfigUpdatedMessage payload = 1;
+}
+
+// path: #/components/messages/googleP12FileUpdated
+message GoogleP12FileUpdated {
+    GoogleP12FileUpdatedMessage payload = 1;
+}
+
+// path: #/components/messages/playStationIAPConfigDeleted
+message PlayStationIAPConfigDeleted {
+    PlayStationIAPConfigDeletedMessage payload = 1;
+}
+
+// path: #/components/messages/playStationIAPConfigUpdated
+message PlayStationIAPConfigUpdated {
+    PlayStationIAPConfigUpdatedMessage payload = 1;
+}
+
+// path: #/components/messages/steamIAPConfigUpdated
+message SteamIAPConfigUpdated {
+    SteamIAPConfigUpdatedMessage payload = 1;
+}
+
+// path: #/components/messages/steamIAPConfigDeleted
+message SteamIAPConfigDeleted {
+    SteamIAPConfigDeletedMessage payload = 1;
+}
+
+// path: #/components/messages/xblIAPConfigDeleted
+message XblIAPConfigDeleted {
+    XblIAPConfigDeletedMessage payload = 1;
+}
+
+// path: #/components/messages/xblIAPConfigUpdated
+message XblIAPConfigUpdated {
+    XblIAPConfigUpdatedMessage payload = 1;
+}
+
+// path: #/components/messages/xblBPCertFileUpdated
+message XblBPCertFileUpdated {
+    XblBPCertFileUpdatedMessage payload = 1;
+}
+
+// path: #/components/messages/stadiaIAPJsonFileUpdated
+message StadiaIAPJsonFileUpdated {
+    StadiaIAPJsonFileUpdatedMessage payload = 1;
+}
+
+// path: #/components/messages/stadiaIAPConfigDeleted
+message StadiaIAPConfigDeleted {
+    StadiaIAPConfigDeletedMessage payload = 1;
+}
+
+// path: #/components/messages/epicGamesIAPConfigDeleted
+message EpicGamesIAPConfigDeleted {
+    EpicGamesIAPConfigDeletedMessage payload = 1;
+}
+
+// path: #/components/messages/epicGamesIAPConfigUpdated
+message EpicGamesIAPConfigUpdated {
+    EpicGamesIAPConfigUpdatedMessage payload = 1;
+}
+
+// path: #/components/messages/twitchIAPConfigUpdated
+message TwitchIAPConfigUpdated {
+    TwitchIAPConfigUpdatedMessage payload = 1;
+}
+
+// path: #/components/messages/twitchIAPConfigDeleted
+message TwitchIAPConfigDeleted {
+    TwitchIAPConfigDeletedMessage payload = 1;
+}
+
+// path: #/components/messages/iapProcessed
+message IapProcessed {
+    IapProcessedMessage payload = 1;
+}
+
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
 // path: #/channels/iapConfigManagement/publish/message
-message IapConfigManagementPublishMessage {
+message IapConfigManagementPublish {
     oneof payload {
-        AppleIAPConfigDeletedMessage variant0 = 1;
-        AppleIAPConfigUpdatedMessage variant1 = 2;
-        GoogleIAPConfigDeletedMessage variant2 = 3;
-        GoogleIAPConfigUpdatedMessage variant3 = 4;
-        GoogleP12FileUpdatedMessage variant4 = 5;
-        PlayStationIAPConfigDeletedMessage variant5 = 6;
-        PlayStationIAPConfigUpdatedMessage variant6 = 7;
-        SteamIAPConfigUpdatedMessage variant7 = 8;
-        SteamIAPConfigDeletedMessage variant8 = 9;
-        XblIAPConfigDeletedMessage variant9 = 10;
-        XblIAPConfigUpdatedMessage variant10 = 11;
-        XblBPCertFileUpdatedMessage variant11 = 12;
-        StadiaIAPJsonFileUpdatedMessage variant12 = 13;
-        StadiaIAPConfigDeletedMessage variant13 = 14;
-        EpicGamesIAPConfigDeletedMessage variant14 = 15;
-        EpicGamesIAPConfigUpdatedMessage variant15 = 16;
-        TwitchIAPConfigUpdatedMessage variant16 = 17;
-        TwitchIAPConfigDeletedMessage variant17 = 18;
+        AppleIAPConfigDeleted variant0 = 1;
+        AppleIAPConfigUpdated variant1 = 2;
+        GoogleIAPConfigDeleted variant2 = 3;
+        GoogleIAPConfigUpdated variant3 = 4;
+        GoogleP12FileUpdated variant4 = 5;
+        PlayStationIAPConfigDeleted variant5 = 6;
+        PlayStationIAPConfigUpdated variant6 = 7;
+        SteamIAPConfigUpdated variant7 = 8;
+        SteamIAPConfigDeleted variant8 = 9;
+        XblIAPConfigDeleted variant9 = 10;
+        XblIAPConfigUpdated variant10 = 11;
+        XblBPCertFileUpdated variant11 = 12;
+        StadiaIAPJsonFileUpdated variant12 = 13;
+        StadiaIAPConfigDeleted variant13 = 14;
+        EpicGamesIAPConfigDeleted variant14 = 15;
+        EpicGamesIAPConfigUpdated variant15 = 16;
+        TwitchIAPConfigUpdated variant16 = 17;
+        TwitchIAPConfigDeleted variant17 = 18;
     }
 }
 
 // path: #/channels/iapProcessing/publish/message
-message IapProcessingPublishMessage {
+message IapProcessingPublish {
     oneof payload {
-        IapProcessedMessage variant0 = 1;
+        IapProcessed variant0 = 1;
     }
 }
 
@@ -422,7 +517,7 @@ service AsyncAPIForJusticeIntegrationService {
     // Iap Config Management Channel
 
     // Publishes a message to the Iap Config Management channel.
-    rpc PublishToIapConfigManagementChannel(IapConfigManagementPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToIapConfigManagementChannel(IapConfigManagementPublish) returns (google.protobuf.Empty);
 
     // Publishes a AppleIAPConfigDeletedMessage to the Iap Config Management channel. (oneOf variant)
     rpc PublishAppleIAPConfigDeletedMessageToIapConfigManagementChannel(AppleIAPConfigDeletedMessage) returns (google.protobuf.Empty);
@@ -481,7 +576,7 @@ service AsyncAPIForJusticeIntegrationService {
     // Iap Processing Channel
 
     // Publishes a message to the Iap Processing channel.
-    rpc PublishToIapProcessingChannel(IapProcessingPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToIapProcessingChannel(IapProcessingPublish) returns (google.protobuf.Empty);
 
     // Publishes a IapProcessedMessage to the Iap Processing channel. (oneOf variant)
     rpc PublishIapProcessedMessageToIapProcessingChannel(IapProcessedMessage) returns (google.protobuf.Empty);

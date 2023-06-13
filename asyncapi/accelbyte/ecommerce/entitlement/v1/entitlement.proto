@@ -336,32 +336,72 @@ message EntitlementSellbackMessage {
 
 // --- #/components/messages/{message_name} ---
 
+// path: #/components/messages/entitlementGranted
+message EntitlementGranted {
+    EntitlementGrantedMessage payload = 1;
+}
+
+// path: #/components/messages/entitlementUpdated
+message EntitlementUpdated {
+    EntitlementUpdatedMessage payload = 1;
+}
+
+// path: #/components/messages/entitlementConsumed
+message EntitlementConsumed {
+    EntitlementConsumedMessage payload = 1;
+}
+
+// path: #/components/messages/entitlementUseCountRevoked
+message EntitlementUseCountRevoked {
+    EntitlementUseCountRevokedMessage payload = 1;
+}
+
+// path: #/components/messages/entitlementRevoked
+message EntitlementRevoked {
+    EntitlementRevokedMessage payload = 1;
+}
+
+// path: #/components/messages/entitlementDisabled
+message EntitlementDisabled {
+    EntitlementDisabledMessage payload = 1;
+}
+
+// path: #/components/messages/entitlementEnabled
+message EntitlementEnabled {
+    EntitlementEnabledMessage payload = 1;
+}
+
+// path: #/components/messages/entitlementSellback
+message EntitlementSellback {
+    EntitlementSellbackMessage payload = 1;
+}
+
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
 // path: #/channels/entitlementManagement/publish/message
-message EntitlementManagementPublishMessage {
+message EntitlementManagementPublish {
     oneof payload {
-        EntitlementGrantedMessage variant0 = 1;
-        EntitlementUpdatedMessage variant1 = 2;
-        EntitlementRevokedMessage variant2 = 3;
-        EntitlementDisabledMessage variant3 = 4;
-        EntitlementEnabledMessage variant4 = 5;
-        EntitlementUseCountRevokedMessage variant5 = 6;
+        EntitlementGranted variant0 = 1;
+        EntitlementUpdated variant1 = 2;
+        EntitlementRevoked variant2 = 3;
+        EntitlementDisabled variant3 = 4;
+        EntitlementEnabled variant4 = 5;
+        EntitlementUseCountRevoked variant5 = 6;
     }
 }
 
 // path: #/channels/entitlementConsumption/publish/message
-message EntitlementConsumptionPublishMessage {
+message EntitlementConsumptionPublish {
     oneof payload {
-        EntitlementConsumedMessage variant0 = 1;
+        EntitlementConsumed variant0 = 1;
     }
 }
 
 // path: #/channels/entitlementSale/publish/message
-message EntitlementSalePublishMessage {
+message EntitlementSalePublish {
     oneof payload {
-        EntitlementSellbackMessage variant0 = 1;
+        EntitlementSellback variant0 = 1;
     }
 }
 
@@ -372,7 +412,7 @@ service AsyncAPIForJusticeEntitlementService {
     // Entitlement Management Channel
 
     // Publishes a message to the Entitlement Management channel.
-    rpc PublishToEntitlementManagementChannel(EntitlementManagementPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToEntitlementManagementChannel(EntitlementManagementPublish) returns (google.protobuf.Empty);
 
     // Publishes a EntitlementGrantedMessage to the Entitlement Management channel. (oneOf variant)
     rpc PublishEntitlementGrantedMessageToEntitlementManagementChannel(EntitlementGrantedMessage) returns (google.protobuf.Empty);
@@ -395,7 +435,7 @@ service AsyncAPIForJusticeEntitlementService {
     // Entitlement Consumption Channel
 
     // Publishes a message to the Entitlement Consumption channel.
-    rpc PublishToEntitlementConsumptionChannel(EntitlementConsumptionPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToEntitlementConsumptionChannel(EntitlementConsumptionPublish) returns (google.protobuf.Empty);
 
     // Publishes a EntitlementConsumedMessage to the Entitlement Consumption channel. (oneOf variant)
     rpc PublishEntitlementConsumedMessageToEntitlementConsumptionChannel(EntitlementConsumedMessage) returns (google.protobuf.Empty);
@@ -403,7 +443,7 @@ service AsyncAPIForJusticeEntitlementService {
     // Entitlement Sale Channel
 
     // Publishes a message to the Entitlement Sale channel.
-    rpc PublishToEntitlementSaleChannel(EntitlementSalePublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToEntitlementSaleChannel(EntitlementSalePublish) returns (google.protobuf.Empty);
 
     // Publishes a EntitlementSellbackMessage to the Entitlement Sale channel. (oneOf variant)
     rpc PublishEntitlementSellbackMessageToEntitlementSaleChannel(EntitlementSellbackMessage) returns (google.protobuf.Empty);

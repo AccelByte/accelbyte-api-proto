@@ -69,13 +69,18 @@ message HideContentMessage {
 
 // --- #/components/messages/{message_name} ---
 
+// path: #/components/messages/hideContent
+message HideContent {
+    HideContentMessage payload = 1;
+}
+
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
 // path: #/channels/autoModeration/publish/message
-message AutoModerationPublishMessage {
+message AutoModerationPublish {
     oneof payload {
-        HideContentMessage variant0 = 1;
+        HideContent variant0 = 1;
     }
 }
 
@@ -86,7 +91,7 @@ service ReportingServiceEvents {
     // Auto Moderation Channel
 
     // Publishes a message to the Auto Moderation channel.
-    rpc PublishToAutoModerationChannel(AutoModerationPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToAutoModerationChannel(AutoModerationPublish) returns (google.protobuf.Empty);
 
     // Publishes a HideContentMessage to the Auto Moderation channel. (oneOf variant)
     rpc PublishHideContentMessageToAutoModerationChannel(HideContentMessage) returns (google.protobuf.Empty);

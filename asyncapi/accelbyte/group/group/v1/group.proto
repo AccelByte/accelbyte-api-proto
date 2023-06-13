@@ -191,6 +191,96 @@ message GroupMemberInvitationMemberCanceledPayload {
 
 // --- #/components/messages/{message_name} ---
 
+// path: #/components/messages/groupMemberInvited
+message GroupMemberInvited {
+    GroupMemberInvitedPayload payload = 1;
+}
+
+// path: #/components/messages/groupMemberJoinAccepted
+message GroupMemberJoinAccepted {
+    GroupMemberJoinAcceptedPayload payload = 1;
+}
+
+// path: #/components/messages/groupMemberJoinRejected
+message GroupMemberJoinRejected {
+    GroupMemberJoinRejectedPayload payload = 1;
+}
+
+// path: #/components/messages/groupMemberJoinRequested
+message GroupMemberJoinRequested {
+    GroupMemberJoinRequestedPayload payload = 1;
+}
+
+// path: #/components/messages/groupCreated
+message GroupCreated {
+    GroupCreatedPayload payload = 1;
+}
+
+// path: #/components/messages/groupUpdated
+message GroupUpdated {
+    GroupUpdatedPayload payload = 1;
+}
+
+// path: #/components/messages/groupCustomRulesUpdated
+message GroupCustomRulesUpdated {
+    GroupCustomRulesUpdatedPayload payload = 1;
+}
+
+// path: #/components/messages/groupDeleted
+message GroupDeleted {
+    GroupDeletedPayload payload = 1;
+}
+
+// path: #/components/messages/groupPredefinedRulesUpdated
+message GroupPredefinedRulesUpdated {
+    GroupPredefinedRulesUpdatedPayload payload = 1;
+}
+
+// path: #/components/messages/groupPredefinedRulesDeleted
+message GroupPredefinedRulesDeleted {
+    GroupPredefinedRulesDeletedPayload payload = 1;
+}
+
+// path: #/components/messages/groupRoleAssigned
+message GroupRoleAssigned {
+    GroupRoleAssignedPayload payload = 1;
+}
+
+// path: #/components/messages/groupRoleRemoved
+message GroupRoleRemoved {
+    GroupRoleRemovedPayload payload = 1;
+}
+
+// path: #/components/messages/groupMemberInvitationAccepted
+message GroupMemberInvitationAccepted {
+    GroupMemberInvitationAcceptedPayload payload = 1;
+}
+
+// path: #/components/messages/groupMemberInvitationRejected
+message GroupMemberInvitationRejected {
+    GroupMemberInvitationRejectedPayload payload = 1;
+}
+
+// path: #/components/messages/groupMemberLeft
+message GroupMemberLeft {
+    GroupMemberLeftPayload payload = 1;
+}
+
+// path: #/components/messages/groupMemberJoinRequestCanceled
+message GroupMemberJoinRequestCanceled {
+    GroupMemberJoinRequestCanceledPayload payload = 1;
+}
+
+// path: #/components/messages/groupMemberKicked
+message GroupMemberKicked {
+    GroupMemberKickedPayload payload = 1;
+}
+
+// path: #/components/messages/groupMemberInvitationMemberCanceled
+message GroupMemberInvitationMemberCanceled {
+    GroupMemberInvitationMemberCanceledPayload payload = 1;
+}
+
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
@@ -201,90 +291,90 @@ service GroupServiceEvents {
     // Group Member Group Member Invited Channel
 
     // Publishes a message to the Group Member Group Member Invited channel.
-    rpc PublishToGroupMemberGroupMemberInvitedChannel(GroupMemberInvitedMessage) returns (google.protobuf.Empty);
+    rpc PublishToGroupMemberGroupMemberInvitedChannel(GroupMemberInvited) returns (google.protobuf.Empty);
 
     // Group Member Group Member Join Requested Channel
 
     // Publishes a message to the Group Member Group Member Join Requested channel.
-    rpc PublishToGroupMemberGroupMemberJoinRequestedChannel(GroupMemberJoinRequestedMessage) returns (google.protobuf.Empty);
+    rpc PublishToGroupMemberGroupMemberJoinRequestedChannel(GroupMemberJoinRequested) returns (google.protobuf.Empty);
 
     // Group Member Group Member Join Accepted Channel
 
     // Publishes a message to the Group Member Group Member Join Accepted channel.
-    rpc PublishToGroupMemberGroupMemberJoinAcceptedChannel(GroupMemberJoinAcceptedMessage) returns (google.protobuf.Empty);
+    rpc PublishToGroupMemberGroupMemberJoinAcceptedChannel(GroupMemberJoinAccepted) returns (google.protobuf.Empty);
 
     // Group Member Group Member Join Rejected Channel
 
     // Publishes a message to the Group Member Group Member Join Rejected channel.
-    rpc PublishToGroupMemberGroupMemberJoinRejectedChannel(GroupMemberJoinRejectedMessage) returns (google.protobuf.Empty);
+    rpc PublishToGroupMemberGroupMemberJoinRejectedChannel(GroupMemberJoinRejected) returns (google.protobuf.Empty);
 
     // Group Group Created Channel
 
     // Publishes a message to the Group Group Created channel.
-    rpc PublishToGroupGroupCreatedChannel(GroupCreatedMessage) returns (google.protobuf.Empty);
+    rpc PublishToGroupGroupCreatedChannel(GroupCreated) returns (google.protobuf.Empty);
 
     // Group Group Updated Channel
 
     // Publishes a message to the Group Group Updated channel.
-    rpc PublishToGroupGroupUpdatedChannel(GroupUpdatedMessage) returns (google.protobuf.Empty);
+    rpc PublishToGroupGroupUpdatedChannel(GroupUpdated) returns (google.protobuf.Empty);
 
     // Group Group Custom Rules Updated Channel
 
     // Publishes a message to the Group Group Custom Rules Updated channel.
-    rpc PublishToGroupGroupCustomRulesUpdatedChannel(GroupCustomRulesUpdatedMessage) returns (google.protobuf.Empty);
+    rpc PublishToGroupGroupCustomRulesUpdatedChannel(GroupCustomRulesUpdated) returns (google.protobuf.Empty);
 
     // Group Group Deleted Channel
 
     // Publishes a message to the Group Group Deleted channel.
-    rpc PublishToGroupGroupDeletedChannel(GroupDeletedMessage) returns (google.protobuf.Empty);
+    rpc PublishToGroupGroupDeletedChannel(GroupDeleted) returns (google.protobuf.Empty);
 
     // Group Group Predefined Rules Updated Channel
 
     // Publishes a message to the Group Group Predefined Rules Updated channel.
-    rpc PublishToGroupGroupPredefinedRulesUpdatedChannel(GroupPredefinedRulesUpdatedMessage) returns (google.protobuf.Empty);
+    rpc PublishToGroupGroupPredefinedRulesUpdatedChannel(GroupPredefinedRulesUpdated) returns (google.protobuf.Empty);
 
     // Group Group Predefined Rules Deleted Channel
 
     // Publishes a message to the Group Group Predefined Rules Deleted channel.
-    rpc PublishToGroupGroupPredefinedRulesDeletedChannel(GroupPredefinedRulesDeletedMessage) returns (google.protobuf.Empty);
+    rpc PublishToGroupGroupPredefinedRulesDeletedChannel(GroupPredefinedRulesDeleted) returns (google.protobuf.Empty);
 
     // Group Roles Group Role Assigned Channel
 
     // Publishes a message to the Group Roles Group Role Assigned channel.
-    rpc PublishToGroupRolesGroupRoleAssignedChannel(GroupRoleAssignedMessage) returns (google.protobuf.Empty);
+    rpc PublishToGroupRolesGroupRoleAssignedChannel(GroupRoleAssigned) returns (google.protobuf.Empty);
 
     // Group Roles Group Role Removed Channel
 
     // Publishes a message to the Group Roles Group Role Removed channel.
-    rpc PublishToGroupRolesGroupRoleRemovedChannel(GroupRoleRemovedMessage) returns (google.protobuf.Empty);
+    rpc PublishToGroupRolesGroupRoleRemovedChannel(GroupRoleRemoved) returns (google.protobuf.Empty);
 
     // Group Member Group Member Invitation Accepted Channel
 
     // Publishes a message to the Group Member Group Member Invitation Accepted channel.
-    rpc PublishToGroupMemberGroupMemberInvitationAcceptedChannel(GroupMemberInvitationAcceptedMessage) returns (google.protobuf.Empty);
+    rpc PublishToGroupMemberGroupMemberInvitationAcceptedChannel(GroupMemberInvitationAccepted) returns (google.protobuf.Empty);
 
     // Group Member Group Member Invitation Rejected Channel
 
     // Publishes a message to the Group Member Group Member Invitation Rejected channel.
-    rpc PublishToGroupMemberGroupMemberInvitationRejectedChannel(GroupMemberInvitationRejectedMessage) returns (google.protobuf.Empty);
+    rpc PublishToGroupMemberGroupMemberInvitationRejectedChannel(GroupMemberInvitationRejected) returns (google.protobuf.Empty);
 
     // Group Member Group Member Left Channel
 
     // Publishes a message to the Group Member Group Member Left channel.
-    rpc PublishToGroupMemberGroupMemberLeftChannel(GroupMemberLeftMessage) returns (google.protobuf.Empty);
+    rpc PublishToGroupMemberGroupMemberLeftChannel(GroupMemberLeft) returns (google.protobuf.Empty);
 
     // Group Member Group Member Join Request Canceled Channel
 
     // Publishes a message to the Group Member Group Member Join Request Canceled channel.
-    rpc PublishToGroupMemberGroupMemberJoinRequestCanceledChannel(GroupMemberJoinRequestCanceledMessage) returns (google.protobuf.Empty);
+    rpc PublishToGroupMemberGroupMemberJoinRequestCanceledChannel(GroupMemberJoinRequestCanceled) returns (google.protobuf.Empty);
 
     // Group Member Group Member Kicked Channel
 
     // Publishes a message to the Group Member Group Member Kicked channel.
-    rpc PublishToGroupMemberGroupMemberKickedChannel(GroupMemberKickedMessage) returns (google.protobuf.Empty);
+    rpc PublishToGroupMemberGroupMemberKickedChannel(GroupMemberKicked) returns (google.protobuf.Empty);
 
     // Group Member Group Member Invitation Member Canceled Channel
 
     // Publishes a message to the Group Member Group Member Invitation Member Canceled channel.
-    rpc PublishToGroupMemberGroupMemberInvitationMemberCanceledChannel(GroupMemberInvitationMemberCanceledMessage) returns (google.protobuf.Empty);
+    rpc PublishToGroupMemberGroupMemberInvitationMemberCanceledChannel(GroupMemberInvitationMemberCanceled) returns (google.protobuf.Empty);
 }

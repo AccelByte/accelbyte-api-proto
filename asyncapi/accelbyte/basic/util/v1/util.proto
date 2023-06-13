@@ -128,21 +128,36 @@ message CountryGroupUpdatedMessage {
 
 // --- #/components/messages/{message_name} ---
 
+// path: #/components/messages/userContentUrlCreated
+message UserContentUrlCreated {
+    UserContentUrlCreatedMessage payload = 1;
+}
+
+// path: #/components/messages/countryGroupCreated
+message CountryGroupCreated {
+    CountryGroupCreatedMessage payload = 1;
+}
+
+// path: #/components/messages/countryGroupUpdated
+message CountryGroupUpdated {
+    CountryGroupUpdatedMessage payload = 1;
+}
+
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
 // path: #/channels/userContent/publish/message
-message UserContentPublishMessage {
+message UserContentPublish {
     oneof payload {
-        UserContentUrlCreatedMessage variant0 = 1;
+        UserContentUrlCreated variant0 = 1;
     }
 }
 
 // path: #/channels/countryGroup/publish/message
-message CountryGroupPublishMessage {
+message CountryGroupPublish {
     oneof payload {
-        CountryGroupCreatedMessage variant0 = 1;
-        CountryGroupUpdatedMessage variant1 = 2;
+        CountryGroupCreated variant0 = 1;
+        CountryGroupUpdated variant1 = 2;
     }
 }
 
@@ -153,7 +168,7 @@ service BasicServiceUtilEvents {
     // User Content Channel
 
     // Publishes a message to the User Content channel.
-    rpc PublishToUserContentChannel(UserContentPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToUserContentChannel(UserContentPublish) returns (google.protobuf.Empty);
 
     // Publishes a UserContentUrlCreatedMessage to the User Content channel. (oneOf variant)
     rpc PublishUserContentUrlCreatedMessageToUserContentChannel(UserContentUrlCreatedMessage) returns (google.protobuf.Empty);
@@ -161,7 +176,7 @@ service BasicServiceUtilEvents {
     // Country Group Channel
 
     // Publishes a message to the Country Group channel.
-    rpc PublishToCountryGroupChannel(CountryGroupPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToCountryGroupChannel(CountryGroupPublish) returns (google.protobuf.Empty);
 
     // Publishes a CountryGroupCreatedMessage to the Country Group channel. (oneOf variant)
     rpc PublishCountryGroupCreatedMessageToCountryGroupChannel(CountryGroupCreatedMessage) returns (google.protobuf.Empty);

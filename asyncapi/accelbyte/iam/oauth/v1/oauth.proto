@@ -164,35 +164,60 @@ message OauthThirdPartyTokenGeneratedMessage {
 
 // --- #/components/messages/{message_name} ---
 
+// path: #/components/messages/oauthRequestAuthorized
+message OauthRequestAuthorized {
+    OauthRequestAuthorizedMessage payload = 1;
+}
+
+// path: #/components/messages/oauthTokenGenerated
+message OauthTokenGenerated {
+    OauthTokenGeneratedMessage payload = 1;
+}
+
+// path: #/components/messages/oauthTokenRevoked
+message OauthTokenRevoked {
+    OauthTokenRevokedMessage payload = 1;
+}
+
+// path: #/components/messages/oauthThirdPartyRequestAuthorized
+message OauthThirdPartyRequestAuthorized {
+    OauthThirdPartyRequestAuthorizedMessage payload = 1;
+}
+
+// path: #/components/messages/oauthThirdPartyTokenGenerated
+message OauthThirdPartyTokenGenerated {
+    OauthThirdPartyTokenGeneratedMessage payload = 1;
+}
+
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
 // path: #/channels/oauthRequest/publish/message
-message OauthRequestPublishMessage {
+message OauthRequestPublish {
     oneof payload {
-        OauthRequestAuthorizedMessage variant0 = 1;
+        OauthRequestAuthorized variant0 = 1;
     }
 }
 
 // path: #/channels/oauthToken/publish/message
-message OauthTokenPublishMessage {
+message OauthTokenPublish {
     oneof payload {
-        OauthTokenGeneratedMessage variant0 = 1;
-        OauthTokenRevokedMessage variant1 = 2;
+        OauthTokenGenerated variant0 = 1;
+        OauthTokenRevoked variant1 = 2;
     }
 }
 
 // path: #/channels/oauthThirdPartyRequest/publish/message
-message OauthThirdPartyRequestPublishMessage {
+message OauthThirdPartyRequestPublish {
     oneof payload {
-        OauthThirdPartyRequestAuthorizedMessage variant0 = 1;
+        OauthThirdPartyRequestAuthorized variant0 = 1;
     }
 }
 
 // path: #/channels/oauthThirdPartyToken/publish/message
-message OauthThirdPartyTokenPublishMessage {
+message OauthThirdPartyTokenPublish {
     oneof payload {
-        OauthThirdPartyTokenGeneratedMessage variant0 = 1;
+        OauthThirdPartyTokenGenerated variant0 = 1;
     }
 }
 
@@ -203,7 +228,7 @@ service IAMServiceOAuthEvents {
     // Oauth Request Channel
 
     // Publishes a message to the Oauth Request channel.
-    rpc PublishToOauthRequestChannel(OauthRequestPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToOauthRequestChannel(OauthRequestPublish) returns (google.protobuf.Empty);
 
     // Publishes a OauthRequestAuthorizedMessage to the Oauth Request channel. (oneOf variant)
     rpc PublishOauthRequestAuthorizedMessageToOauthRequestChannel(OauthRequestAuthorizedMessage) returns (google.protobuf.Empty);
@@ -211,7 +236,7 @@ service IAMServiceOAuthEvents {
     // Oauth Token Channel
 
     // Publishes a message to the Oauth Token channel.
-    rpc PublishToOauthTokenChannel(OauthTokenPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToOauthTokenChannel(OauthTokenPublish) returns (google.protobuf.Empty);
 
     // Publishes a OauthTokenGeneratedMessage to the Oauth Token channel. (oneOf variant)
     rpc PublishOauthTokenGeneratedMessageToOauthTokenChannel(OauthTokenGeneratedMessage) returns (google.protobuf.Empty);
@@ -222,7 +247,7 @@ service IAMServiceOAuthEvents {
     // Oauth Third Party Request Channel
 
     // Publishes a message to the Oauth Third Party Request channel.
-    rpc PublishToOauthThirdPartyRequestChannel(OauthThirdPartyRequestPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToOauthThirdPartyRequestChannel(OauthThirdPartyRequestPublish) returns (google.protobuf.Empty);
 
     // Publishes a OauthThirdPartyRequestAuthorizedMessage to the Oauth Third Party Request channel. (oneOf variant)
     rpc PublishOauthThirdPartyRequestAuthorizedMessageToOauthThirdPartyRequestChannel(OauthThirdPartyRequestAuthorizedMessage) returns (google.protobuf.Empty);
@@ -230,7 +255,7 @@ service IAMServiceOAuthEvents {
     // Oauth Third Party Token Channel
 
     // Publishes a message to the Oauth Third Party Token channel.
-    rpc PublishToOauthThirdPartyTokenChannel(OauthThirdPartyTokenPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToOauthThirdPartyTokenChannel(OauthThirdPartyTokenPublish) returns (google.protobuf.Empty);
 
     // Publishes a OauthThirdPartyTokenGeneratedMessage to the Oauth Third Party Token channel. (oneOf variant)
     rpc PublishOauthThirdPartyTokenGeneratedMessageToOauthThirdPartyTokenChannel(OauthThirdPartyTokenGeneratedMessage) returns (google.protobuf.Empty);

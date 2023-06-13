@@ -690,50 +690,180 @@ message CheckoutConfigUpdatedMessage {
 
 // --- #/components/messages/{message_name} ---
 
+// path: #/components/messages/paymentProviderConfigCreated
+message PaymentProviderConfigCreated {
+    PaymentProviderConfigCreatedMessage payload = 1;
+}
+
+// path: #/components/messages/paymentProviderConfigUpdated
+message PaymentProviderConfigUpdated {
+    PaymentProviderConfigUpdatedMessage payload = 1;
+}
+
+// path: #/components/messages/paymentProviderConfigDeleted
+message PaymentProviderConfigDeleted {
+    PaymentProviderConfigDeletedMessage payload = 1;
+}
+
+// path: #/components/messages/paymentTaxConfigUpdated
+message PaymentTaxConfigUpdated {
+    PaymentTaxConfigUpdatedMessage payload = 1;
+}
+
+// path: #/components/messages/xsollaConfigUpdated
+message XsollaConfigUpdated {
+    XsollaConfigUpdatedMessage payload = 1;
+}
+
+// path: #/components/messages/xsollaUIConfigUpdated
+message XsollaUIConfigUpdated {
+    XsollaUIConfigUpdatedMessage payload = 1;
+}
+
+// path: #/components/messages/aliPayConfigUpdated
+message AliPayConfigUpdated {
+    AliPayConfigUpdatedMessage payload = 1;
+}
+
+// path: #/components/messages/wxPayConfigUpdated
+message WxPayConfigUpdated {
+    WxPayConfigUpdatedMessage payload = 1;
+}
+
+// path: #/components/messages/wxPayCertUploaded
+message WxPayCertUploaded {
+    WxPayCertUploadedMessage payload = 1;
+}
+
+// path: #/components/messages/adyenConfigUpdated
+message AdyenConfigUpdated {
+    AdyenConfigUpdatedMessage payload = 1;
+}
+
+// path: #/components/messages/stripeConfigUpdated
+message StripeConfigUpdated {
+    StripeConfigUpdatedMessage payload = 1;
+}
+
+// path: #/components/messages/payPalConfigUpdated
+message PayPalConfigUpdated {
+    PayPalConfigUpdatedMessage payload = 1;
+}
+
+// path: #/components/messages/paymentOrderCreated
+message PaymentOrderCreated {
+    PaymentOrderCreatedMessage payload = 1;
+}
+
+// path: #/components/messages/paymentOrderCharged
+message PaymentOrderCharged {
+    PaymentOrderChargedMessage payload = 1;
+}
+
+// path: #/components/messages/paymentOrderChargeFailed
+message PaymentOrderChargeFailed {
+    PaymentOrderChargeFailedMessage payload = 1;
+}
+
+// path: #/components/messages/paymentOrderRefunded
+message PaymentOrderRefunded {
+    PaymentOrderRefundedMessage payload = 1;
+}
+
+// path: #/components/messages/paymentOrderRefundFailed
+message PaymentOrderRefundFailed {
+    PaymentOrderRefundFailedMessage payload = 1;
+}
+
+// path: #/components/messages/paymentOrderAuthorised
+message PaymentOrderAuthorised {
+    PaymentOrderAuthorisedMessage payload = 1;
+}
+
+// path: #/components/messages/paymentOrderAuthorisedFailed
+message PaymentOrderAuthorisedFailed {
+    PaymentOrderAuthorisedFailedMessage payload = 1;
+}
+
+// path: #/components/messages/paymentOrderNotificationOfChargeback
+message PaymentOrderNotificationOfChargeback {
+    PaymentOrderNotificationOfChargebackMessage payload = 1;
+}
+
+// path: #/components/messages/paymentOrderRequestForInformation
+message PaymentOrderRequestForInformation {
+    PaymentOrderRequestForInformationMessage payload = 1;
+}
+
+// path: #/components/messages/paymentOrderChargeback
+message PaymentOrderChargeback {
+    PaymentOrderChargebackMessage payload = 1;
+}
+
+// path: #/components/messages/paymentOrderChargebackReversed
+message PaymentOrderChargebackReversed {
+    PaymentOrderChargebackReversedMessage payload = 1;
+}
+
+// path: #/components/messages/paymentOrderRefundRequested
+message PaymentOrderRefundRequested {
+    PaymentOrderRefundRequestedMessage payload = 1;
+}
+
+// path: #/components/messages/paymentAccountDeleted
+message PaymentAccountDeleted {
+    PaymentAccountDeletedMessage payload = 1;
+}
+
+// path: #/components/messages/checkoutConfigUpdated
+message CheckoutConfigUpdated {
+    CheckoutConfigUpdatedMessage payload = 1;
+}
+
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
 // path: #/channels/paymentConfig/publish/message
-message PaymentConfigPublishMessage {
+message PaymentConfigPublish {
     oneof payload {
-        PaymentProviderConfigCreatedMessage variant0 = 1;
-        PaymentProviderConfigUpdatedMessage variant1 = 2;
-        PaymentProviderConfigDeletedMessage variant2 = 3;
-        PaymentTaxConfigUpdatedMessage variant3 = 4;
-        AdyenConfigUpdatedMessage variant4 = 5;
-        StripeConfigUpdatedMessage variant5 = 6;
-        XsollaConfigUpdatedMessage variant6 = 7;
-        XsollaUIConfigUpdatedMessage variant7 = 8;
-        PayPalConfigUpdatedMessage variant8 = 9;
-        AliPayConfigUpdatedMessage variant9 = 10;
-        WxPayConfigUpdatedMessage variant10 = 11;
-        WxPayCertUploadedMessage variant11 = 12;
-        CheckoutConfigUpdatedMessage variant12 = 13;
+        PaymentProviderConfigCreated variant0 = 1;
+        PaymentProviderConfigUpdated variant1 = 2;
+        PaymentProviderConfigDeleted variant2 = 3;
+        PaymentTaxConfigUpdated variant3 = 4;
+        AdyenConfigUpdated variant4 = 5;
+        StripeConfigUpdated variant5 = 6;
+        XsollaConfigUpdated variant6 = 7;
+        XsollaUIConfigUpdated variant7 = 8;
+        PayPalConfigUpdated variant8 = 9;
+        AliPayConfigUpdated variant9 = 10;
+        WxPayConfigUpdated variant10 = 11;
+        WxPayCertUploaded variant11 = 12;
+        CheckoutConfigUpdated variant12 = 13;
     }
 }
 
 // path: #/channels/paymentOrderProcessing/publish/message
-message PaymentOrderProcessingPublishMessage {
+message PaymentOrderProcessingPublish {
     oneof payload {
-        PaymentOrderCreatedMessage variant0 = 1;
-        PaymentOrderChargedMessage variant1 = 2;
-        PaymentOrderChargeFailedMessage variant2 = 3;
-        PaymentOrderRefundedMessage variant3 = 4;
-        PaymentOrderRefundFailedMessage variant4 = 5;
-        PaymentOrderAuthorisedMessage variant5 = 6;
-        PaymentOrderAuthorisedFailedMessage variant6 = 7;
-        PaymentOrderNotificationOfChargebackMessage variant7 = 8;
-        PaymentOrderRequestForInformationMessage variant8 = 9;
-        PaymentOrderChargebackMessage variant9 = 10;
-        PaymentOrderChargebackReversedMessage variant10 = 11;
-        PaymentOrderRefundRequestedMessage variant11 = 12;
+        PaymentOrderCreated variant0 = 1;
+        PaymentOrderCharged variant1 = 2;
+        PaymentOrderChargeFailed variant2 = 3;
+        PaymentOrderRefunded variant3 = 4;
+        PaymentOrderRefundFailed variant4 = 5;
+        PaymentOrderAuthorised variant5 = 6;
+        PaymentOrderAuthorisedFailed variant6 = 7;
+        PaymentOrderNotificationOfChargeback variant7 = 8;
+        PaymentOrderRequestForInformation variant8 = 9;
+        PaymentOrderChargeback variant9 = 10;
+        PaymentOrderChargebackReversed variant10 = 11;
+        PaymentOrderRefundRequested variant11 = 12;
     }
 }
 
 // path: #/channels/paymentAccount/publish/message
-message PaymentAccountPublishMessage {
+message PaymentAccountPublish {
     oneof payload {
-        PaymentAccountDeletedMessage variant0 = 1;
+        PaymentAccountDeleted variant0 = 1;
     }
 }
 
@@ -744,7 +874,7 @@ service AsyncAPIForJusticePaymentService {
     // Payment Config Channel
 
     // Publishes a message to the Payment Config channel.
-    rpc PublishToPaymentConfigChannel(PaymentConfigPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToPaymentConfigChannel(PaymentConfigPublish) returns (google.protobuf.Empty);
 
     // Publishes a PaymentProviderConfigCreatedMessage to the Payment Config channel. (oneOf variant)
     rpc PublishPaymentProviderConfigCreatedMessageToPaymentConfigChannel(PaymentProviderConfigCreatedMessage) returns (google.protobuf.Empty);
@@ -788,7 +918,7 @@ service AsyncAPIForJusticePaymentService {
     // Payment Order Processing Channel
 
     // Publishes a message to the Payment Order Processing channel.
-    rpc PublishToPaymentOrderProcessingChannel(PaymentOrderProcessingPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToPaymentOrderProcessingChannel(PaymentOrderProcessingPublish) returns (google.protobuf.Empty);
 
     // Publishes a PaymentOrderCreatedMessage to the Payment Order Processing channel. (oneOf variant)
     rpc PublishPaymentOrderCreatedMessageToPaymentOrderProcessingChannel(PaymentOrderCreatedMessage) returns (google.protobuf.Empty);
@@ -829,7 +959,7 @@ service AsyncAPIForJusticePaymentService {
     // Payment Account Channel
 
     // Publishes a message to the Payment Account channel.
-    rpc PublishToPaymentAccountChannel(PaymentAccountPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToPaymentAccountChannel(PaymentAccountPublish) returns (google.protobuf.Empty);
 
     // Publishes a PaymentAccountDeletedMessage to the Payment Account channel. (oneOf variant)
     rpc PublishPaymentAccountDeletedMessageToPaymentAccountChannel(PaymentAccountDeletedMessage) returns (google.protobuf.Empty);

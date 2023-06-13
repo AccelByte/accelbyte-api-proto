@@ -193,18 +193,48 @@ message WalledExpiredMessage {
 
 // --- #/components/messages/{message_name} ---
 
+// path: #/components/messages/walletDisabled
+message WalletDisabled {
+    WalletDisabledMessage payload = 1;
+}
+
+// path: #/components/messages/walletEnabled
+message WalletEnabled {
+    WalletEnabledMessage payload = 1;
+}
+
+// path: #/components/messages/walletCredited
+message WalletCredited {
+    WalletCreditedMessage payload = 1;
+}
+
+// path: #/components/messages/walletDebited
+message WalletDebited {
+    WalletDebitedMessage payload = 1;
+}
+
+// path: #/components/messages/walledPaid
+message WalledPaid {
+    WalledPaidMessage payload = 1;
+}
+
+// path: #/components/messages/walledExpired
+message WalledExpired {
+    WalledExpiredMessage payload = 1;
+}
+
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
 // path: #/channels/walletProcessing/publish/message
-message WalletProcessingPublishMessage {
+message WalletProcessingPublish {
     oneof payload {
-        WalletDisabledMessage variant0 = 1;
-        WalletEnabledMessage variant1 = 2;
-        WalletCreditedMessage variant2 = 3;
-        WalletDebitedMessage variant3 = 4;
-        WalledPaidMessage variant4 = 5;
-        WalledExpiredMessage variant5 = 6;
+        WalletDisabled variant0 = 1;
+        WalletEnabled variant1 = 2;
+        WalletCredited variant2 = 3;
+        WalletDebited variant3 = 4;
+        WalledPaid variant4 = 5;
+        WalledExpired variant5 = 6;
     }
 }
 
@@ -215,7 +245,7 @@ service AsyncAPIForJusticeWalletService {
     // Wallet Processing Channel
 
     // Publishes a message to the Wallet Processing channel.
-    rpc PublishToWalletProcessingChannel(WalletProcessingPublishMessage) returns (google.protobuf.Empty);
+    rpc PublishToWalletProcessingChannel(WalletProcessingPublish) returns (google.protobuf.Empty);
 
     // Publishes a WalletDisabledMessage to the Wallet Processing channel. (oneOf variant)
     rpc PublishWalletDisabledMessageToWalletProcessingChannel(WalletDisabledMessage) returns (google.protobuf.Empty);
