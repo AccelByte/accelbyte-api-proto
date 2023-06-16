@@ -3,12 +3,13 @@
 
 syntax = "proto3";
 
+package accelbyte.chat.filter;
+// Version v1.0.0
+
 option csharp_namespace = "AccelByte.ChatV2.Filter";
 option go_package = "accelbyte.net/chatv2/filter";
 option java_multiple_files = true;
 option java_package = "net.accelbyte.chatv2.filter";
-
-package accelbyte.chat.filter;
 
 service FilterService {
   rpc Check(HealthCheckRequest) returns (HealthCheckResponse);
