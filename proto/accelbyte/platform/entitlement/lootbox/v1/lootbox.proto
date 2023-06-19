@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 package accelbyte.platform.entitlement.lootbox.v1;
+// Version v1.0.0
 
 option csharp_namespace = "Accelbyte.Platform.Entitlement.Lootbox.V1";
 option go_package = "accelbyte.net/platform/entitlement/lootbox_v1";

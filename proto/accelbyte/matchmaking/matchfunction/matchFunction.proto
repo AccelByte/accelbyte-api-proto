@@ -4,12 +4,13 @@
 
 syntax = "proto3";
 
+package accelbyte.matchmaking.matchfunction;
+// Version v1.0.0
+
 option csharp_namespace = "AccelByte.MatchmakingV2.MatchFunction";
 option go_package = "accelbyte.net/matchmakingv2/matchfunction";
 option java_multiple_files = true;
 option java_package = "net.accelbyte.matchmakingv2.matchfunction";
-
-package accelbyte.matchmaking.matchfunction;
 
 import "google/protobuf/struct.proto";
 import "google/protobuf/timestamp.proto";

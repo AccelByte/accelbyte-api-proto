@@ -5,6 +5,7 @@
 syntax = "proto3";
 
 package accelbyte.platform.catalog.section.v1;
+// Version v1.0.0
 
 option csharp_namespace = "Accelbyte.Platform.Catalog.Section.V1";
 option go_package = "accelbyte.net/platform/catalog/section_v1";
