@@ -50,6 +50,7 @@ option {{ option_name }} = {{ option }};
 {% if schema.components and schema.components.messages %}
 {% for message_name, message in schema.components.messages.items() %}
 {% set message_path = '#/components/messages/{}'.format(message_name) %}
+{% set message_name = '{}Message'.format(message_name) %}
 {{ macros.render_message(message_name, message_path, message) }}
 {% endfor %}
 {% endif %}

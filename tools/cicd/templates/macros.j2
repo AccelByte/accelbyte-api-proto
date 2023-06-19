@@ -129,23 +129,27 @@ service {{ schema.info.title | to_pascal }} {
     {% set operation_verb = (operation_type == 'publish') | ternary('Publishes', 'Subscribes') %}
     {% set operation = channel[operation_type] %}
     {% set message = operation.message %}
-    {% set method_name = format_method_name(channel_name, operation_type, operation) %}
-    {% set request_name = format_request_name(channel_name, operation_type, operation) %}
-
-// {{ operation_verb }} a message to the {{ channel_name | to_title }} channel.
-service {{ method_name }}Service {
-    {{ render_rpc(method_name, request_name) }}
-}
     {% if 'oneOf' in message %}
     {% for sub_message in message.oneOf %}
+    {% set message_name = sub_message | to_protobuf_type | to_pascal %}
+    {% set service_name = '{}_{}_Service'.format(channel_name, message_name) | to_pascal %}
     {% set request_name = sub_message | get_message_payload(schema) | to_protobuf_type | to_pascal %}
-    {% set method_name = '{} {} to {} Channel'.format(operation_type, request_name, channel_name) | to_pascal %}
+    {% set method_name = 'OnMessage' %}
 
-// {{ operation_verb }} a {{ request_name }} to the {{ channel_name | to_title }} channel. (oneOf variant)
-service {{ method_name }}Service {
-    {{ render_rpc(method_name, request_name) }}
+// {{ operation_verb }} a {{ request_name }} to the {{ channel_name | to_title }} channel. (oneOf variant) ({{ channel_name }} {{ message_name }})
+service {{ service_name }} {
+    {{ render_rpc('OnMessage', request_name) }}
 }
     {% endfor %}
+    {% else %}
+    {% set request_name = format_request_name(channel_name, operation_type, operation) %}
+    {% set service_name = '{}_{}Service'.format(channel_name, request_name) | to_pascal %}
+    {% set method_name = 'OnMessage' %}
+
+// {{ operation_verb }} a message to the {{ channel_name | to_title }} channel. ({{ channel_name }} {{ request_name }})
+service {{ service_name }} {
+    {{ render_rpc(method_name, request_name) }}
+}
     {% endif %}
     {% endif %}
     {% endfor %}

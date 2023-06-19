@@ -62,8 +62,7 @@ pipeline {
         stage("Run") {
             steps {
                 dir("tools/cicd") {
-                    sh "make dbuild drun CODEGEN_SDK_PATH=${codegenRepoPath} SPEC_PATH=${specRepoPath}"
-                    sh "make drun_1rpc1s CODEGEN_SDK_PATH=${codegenRepoPath} SPEC_PATH=${specRepoPath}"
+                    sh "make dbuild drun_1rpc1s CODEGEN_SDK_PATH=${codegenRepoPath} SPEC_PATH=${specRepoPath}"
                 }
             }
         }

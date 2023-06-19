@@ -1,0 +1,23 @@
+{% import 'macros.j2' as macros -%}
+{% set java_package_name = schema["x-proto-options"]["java_package"][1:-1] -%}
+
+# {{ schema.info.title }}
+{% for channel_name, channel in schema.channels.items() %}
+{% for operation_type in ['publish', 'subscribe'] %}
+{% if operation_type not in channel %}{% continue %}{% endif %}
+{% set operation = channel[operation_type] %}
+{% set message = operation.message %}
+{% if 'oneOf' in message %}
+{% for sub_message in message.oneOf %}
+{% set message_name = sub_message | to_protobuf_type(format=False) %}
+{% set service_name = '{}_{}_Service'.format(channel_name, message_name) | to_pascal %}
+{{ channel_name }}.{{ message_name }} = {{ java_package_name }}.{{ service_name }}
+{% endfor %}
+{% else %}
+{% set message_name = message | to_protobuf_type(format=False) %}
+{% set request_name = macros.format_request_name(channel_name, operation_type, operation) %}
+{% set service_name = '{}_{}Service'.format(channel_name, request_name) | to_pascal %}
+{{ channel_name }}.{{ message_name }} = {{ java_package_name }}.{{ service_name }}
+{% endif %}
+{% endfor %}
+{% endfor %}
