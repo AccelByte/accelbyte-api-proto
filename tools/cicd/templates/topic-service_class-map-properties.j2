@@ -1,6 +1,0 @@
-{% set java_package_name = schema["x-proto-options"]["java_package"][1:-1] -%}
-
-# {{ schema.info.title }}
-{% for channel_name, channel in schema.channels.items() %}
-{{ channel_name }} = {{ java_package_name }}.{{ schema.info.title | to_pascal }}
-{% endfor %}

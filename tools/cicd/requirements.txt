@@ -1,4 +1,0 @@
-black
-click
-jsonpatchplus
-PyYAML

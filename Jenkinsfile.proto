@@ -27,6 +27,10 @@ codegenRepoName = "justice-codegen-modular-sdk"
 codegenRepoPath = null
 codegenRepoCommitHash = null
 
+toolsRepoName = "justice-api-proto-tools"
+toolsRepoPath = null
+toolsRepoCommitHash = null
+
 slackActivityChannel = "#activity-extend-engineering"
 
 pipeline {
@@ -40,13 +44,16 @@ pipeline {
                     repoPath = "${env.WORKSPACE}/${repoName}"
                     specRepoPath = "${env.WORKSPACE}/${specRepoName}"
                     codegenRepoPath = "${env.WORKSPACE}/${codegenRepoName}"
+                    toolsRepoPath = "${env.WORKSPACE}/${toolsRepoName}"
 
                     sh "rm -rf ${specRepoPath}"
-                    sh "rm -rf ${codegenRepoName}"
+                    sh "rm -rf ${codegenRepoPath}"
+                    sh "rm -rf ${toolsRepoPath}"
 
                     sshagent(credentials: [bitbucketCredentialsSsh]) {
                         sh "git clone --depth 1 git@bitbucket.org:${bitbucketNamespace}/${specRepoName}.git ${specRepoPath}"
                         sh "git clone --depth 1 git@bitbucket.org:${bitbucketNamespace}/${codegenRepoName}.git ${codegenRepoPath}"
+                        sh "git clone --depth 1 git@bitbucket.org:${bitbucketNamespace}/${toolsRepoName}.git ${toolsRepoPath}"
                     }
 
                     dir(specRepoPath) {
@@ -55,13 +62,16 @@ pipeline {
                     dir(codegenRepoPath) {
                         codegenRepoCommitHash = sh(returnStdout: true, script: "git rev-parse HEAD").trim()
                     }
+                    dir(toolsRepoPath) {
+                        toolsRepoCommitHash = sh(returnStdout: true, script: "git rev-parse HEAD").trim()
+                    }
                 }
             }
         }
 
         stage("Run") {
             steps {
-                dir("tools/cicd") {
+                dir("${toolsRepoPath}/cicd") {
                     sh "make dbuild drun_1rpc1s CODEGEN_SDK_PATH=${codegenRepoPath} SPEC_PATH=${specRepoPath}"
                 }
             }
