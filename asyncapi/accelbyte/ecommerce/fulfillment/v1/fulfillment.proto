@@ -113,7 +113,7 @@ message AnonymousSchema1 {
 }
 
 // path: #/components/messages/fulfillmentCompleted/payload
-message FulfillmentCompletedMessage {
+message FulfillmentCompleted {
     AnonymousSchema1 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -133,8 +133,8 @@ message FulfillmentCompletedMessage {
 // --- #/components/messages/{message_name} ---
 
 // path: #/components/messages/fulfillmentCompleted
-message FulfillmentCompleted {
-    FulfillmentCompletedMessage payload = 1;
+message FulfillmentCompletedMessage {
+    FulfillmentCompleted payload = 1;
 }
 
 
@@ -150,12 +150,8 @@ message FulfillmentPublish {
 
 // --- service ---
 
-service AsyncAPIForJusticeFulfillmentService {
-    // Fulfillment Channel
 
-    // Publishes a message to the Fulfillment channel.
-    rpc PublishToFulfillmentChannel(FulfillmentPublish) returns (google.protobuf.Empty);
-
-    // Publishes a FulfillmentCompletedMessage to the Fulfillment channel. (oneOf variant)
-    rpc PublishFulfillmentCompletedMessageToFulfillmentChannel(FulfillmentCompletedMessage) returns (google.protobuf.Empty);
+// Publishes a FulfillmentCompleted to the Fulfillment channel. (oneOf variant) (fulfillment FulfillmentCompleted)
+service FulfillmentFulfillmentCompletedService {
+    rpc OnMessage(FulfillmentCompleted) returns (google.protobuf.Empty);
 }

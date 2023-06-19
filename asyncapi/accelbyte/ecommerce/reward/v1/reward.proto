@@ -60,7 +60,7 @@ message AnonymousSchema1 {
 }
 
 // path: #/components/messages/rewardCreated/payload
-message RewardCreatedMessage {
+message RewardCreated {
     AnonymousSchema1 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -82,7 +82,7 @@ message AnonymousSchema2 {
 }
 
 // path: #/components/messages/rewardUpdated/payload
-message RewardUpdatedMessage {
+message RewardUpdated {
     AnonymousSchema2 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -104,7 +104,7 @@ message AnonymousSchema3 {
 }
 
 // path: #/components/messages/rewardDeleted/payload
-message RewardDeletedMessage {
+message RewardDeleted {
     AnonymousSchema3 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -126,7 +126,7 @@ message AnonymousSchema4 {
 }
 
 // path: #/components/messages/rewardImported/payload
-message RewardImportedMessage {
+message RewardImported {
     AnonymousSchema4 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -146,23 +146,23 @@ message RewardImportedMessage {
 // --- #/components/messages/{message_name} ---
 
 // path: #/components/messages/rewardCreated
-message RewardCreated {
-    RewardCreatedMessage payload = 1;
+message RewardCreatedMessage {
+    RewardCreated payload = 1;
 }
 
 // path: #/components/messages/rewardUpdated
-message RewardUpdated {
-    RewardUpdatedMessage payload = 1;
+message RewardUpdatedMessage {
+    RewardUpdated payload = 1;
 }
 
 // path: #/components/messages/rewardDeleted
-message RewardDeleted {
-    RewardDeletedMessage payload = 1;
+message RewardDeletedMessage {
+    RewardDeleted payload = 1;
 }
 
 // path: #/components/messages/rewardImported
-message RewardImported {
-    RewardImportedMessage payload = 1;
+message RewardImportedMessage {
+    RewardImported payload = 1;
 }
 
 
@@ -181,21 +181,23 @@ message RewardManagementPublish {
 
 // --- service ---
 
-service AsyncAPIForJusticeRewardService {
-    // Reward Management Channel
 
-    // Publishes a message to the Reward Management channel.
-    rpc PublishToRewardManagementChannel(RewardManagementPublish) returns (google.protobuf.Empty);
+// Publishes a RewardCreated to the Reward Management channel. (oneOf variant) (rewardManagement RewardCreated)
+service RewardManagementRewardCreatedService {
+    rpc OnMessage(RewardCreated) returns (google.protobuf.Empty);
+}
 
-    // Publishes a RewardCreatedMessage to the Reward Management channel. (oneOf variant)
-    rpc PublishRewardCreatedMessageToRewardManagementChannel(RewardCreatedMessage) returns (google.protobuf.Empty);
+// Publishes a RewardUpdated to the Reward Management channel. (oneOf variant) (rewardManagement RewardUpdated)
+service RewardManagementRewardUpdatedService {
+    rpc OnMessage(RewardUpdated) returns (google.protobuf.Empty);
+}
 
-    // Publishes a RewardUpdatedMessage to the Reward Management channel. (oneOf variant)
-    rpc PublishRewardUpdatedMessageToRewardManagementChannel(RewardUpdatedMessage) returns (google.protobuf.Empty);
+// Publishes a RewardDeleted to the Reward Management channel. (oneOf variant) (rewardManagement RewardDeleted)
+service RewardManagementRewardDeletedService {
+    rpc OnMessage(RewardDeleted) returns (google.protobuf.Empty);
+}
 
-    // Publishes a RewardDeletedMessage to the Reward Management channel. (oneOf variant)
-    rpc PublishRewardDeletedMessageToRewardManagementChannel(RewardDeletedMessage) returns (google.protobuf.Empty);
-
-    // Publishes a RewardImportedMessage to the Reward Management channel. (oneOf variant)
-    rpc PublishRewardImportedMessageToRewardManagementChannel(RewardImportedMessage) returns (google.protobuf.Empty);
+// Publishes a RewardImported to the Reward Management channel. (oneOf variant) (rewardManagement RewardImported)
+service RewardManagementRewardImportedService {
+    rpc OnMessage(RewardImported) returns (google.protobuf.Empty);
 }

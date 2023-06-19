@@ -69,7 +69,7 @@ message AnonymousSchema1 {
 }
 
 // path: #/components/messages/userSeasonPassChanged/payload
-message UserSeasonPassChangedMessage {
+message UserSeasonPassChanged {
     AnonymousSchema1 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -92,7 +92,7 @@ message AnonymousSchema2 {
 }
 
 // path: #/components/messages/userSeasonTierUp/payload
-message UserSeasonTierUpMessage {
+message UserSeasonTierUp {
     AnonymousSchema2 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -114,7 +114,7 @@ message AnonymousSchema3 {
 }
 
 // path: #/components/messages/userSeasonTierCleared/payload
-message UserSeasonTierClearedMessage {
+message UserSeasonTierCleared {
     AnonymousSchema3 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -136,7 +136,7 @@ message AnonymousSchema4 {
 }
 
 // path: #/components/messages/userSeasonRewardRewarded/payload
-message UserSeasonRewardRewardedMessage {
+message UserSeasonRewardRewarded {
     AnonymousSchema4 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -156,23 +156,23 @@ message UserSeasonRewardRewardedMessage {
 // --- #/components/messages/{message_name} ---
 
 // path: #/components/messages/userSeasonPassChanged
-message UserSeasonPassChanged {
-    UserSeasonPassChangedMessage payload = 1;
+message UserSeasonPassChangedMessage {
+    UserSeasonPassChanged payload = 1;
 }
 
 // path: #/components/messages/userSeasonTierUp
-message UserSeasonTierUp {
-    UserSeasonTierUpMessage payload = 1;
+message UserSeasonTierUpMessage {
+    UserSeasonTierUp payload = 1;
 }
 
 // path: #/components/messages/userSeasonTierCleared
-message UserSeasonTierCleared {
-    UserSeasonTierClearedMessage payload = 1;
+message UserSeasonTierClearedMessage {
+    UserSeasonTierCleared payload = 1;
 }
 
 // path: #/components/messages/userSeasonRewardRewarded
-message UserSeasonRewardRewarded {
-    UserSeasonRewardRewardedMessage payload = 1;
+message UserSeasonRewardRewardedMessage {
+    UserSeasonRewardRewarded payload = 1;
 }
 
 
@@ -191,21 +191,23 @@ message UserSeasonPublish {
 
 // --- service ---
 
-service SeasonPassServiceEvents {
-    // User Season Channel
 
-    // Publishes a message to the User Season channel.
-    rpc PublishToUserSeasonChannel(UserSeasonPublish) returns (google.protobuf.Empty);
+// Publishes a UserSeasonPassChanged to the User Season channel. (oneOf variant) (userSeason UserSeasonPassChanged)
+service UserSeasonUserSeasonPassChangedService {
+    rpc OnMessage(UserSeasonPassChanged) returns (google.protobuf.Empty);
+}
 
-    // Publishes a UserSeasonPassChangedMessage to the User Season channel. (oneOf variant)
-    rpc PublishUserSeasonPassChangedMessageToUserSeasonChannel(UserSeasonPassChangedMessage) returns (google.protobuf.Empty);
+// Publishes a UserSeasonTierUp to the User Season channel. (oneOf variant) (userSeason UserSeasonTierUp)
+service UserSeasonUserSeasonTierUpService {
+    rpc OnMessage(UserSeasonTierUp) returns (google.protobuf.Empty);
+}
 
-    // Publishes a UserSeasonTierUpMessage to the User Season channel. (oneOf variant)
-    rpc PublishUserSeasonTierUpMessageToUserSeasonChannel(UserSeasonTierUpMessage) returns (google.protobuf.Empty);
+// Publishes a UserSeasonTierCleared to the User Season channel. (oneOf variant) (userSeason UserSeasonTierCleared)
+service UserSeasonUserSeasonTierClearedService {
+    rpc OnMessage(UserSeasonTierCleared) returns (google.protobuf.Empty);
+}
 
-    // Publishes a UserSeasonTierClearedMessage to the User Season channel. (oneOf variant)
-    rpc PublishUserSeasonTierClearedMessageToUserSeasonChannel(UserSeasonTierClearedMessage) returns (google.protobuf.Empty);
-
-    // Publishes a UserSeasonRewardRewardedMessage to the User Season channel. (oneOf variant)
-    rpc PublishUserSeasonRewardRewardedMessageToUserSeasonChannel(UserSeasonRewardRewardedMessage) returns (google.protobuf.Empty);
+// Publishes a UserSeasonRewardRewarded to the User Season channel. (oneOf variant) (userSeason UserSeasonRewardRewarded)
+service UserSeasonUserSeasonRewardRewardedService {
+    rpc OnMessage(UserSeasonRewardRewarded) returns (google.protobuf.Empty);
 }

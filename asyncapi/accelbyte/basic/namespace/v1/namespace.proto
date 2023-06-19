@@ -47,7 +47,7 @@ message NamespacePayload {
 }
 
 // path: #/components/messages/namespaceCreated/payload
-message NamespaceCreatedMessage {
+message NamespaceCreated {
     NamespacePayload payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -64,7 +64,7 @@ message NamespaceCreatedMessage {
 }
 
 // path: #/components/messages/namespaceDeleted/payload
-message NamespaceDeletedMessage {
+message NamespaceDeleted {
     NamespacePayload payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -81,7 +81,7 @@ message NamespaceDeletedMessage {
 }
 
 // path: #/components/messages/namespaceEnabled/payload
-message NamespaceEnabledMessage {
+message NamespaceEnabled {
     NamespacePayload payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -98,7 +98,7 @@ message NamespaceEnabledMessage {
 }
 
 // path: #/components/messages/namespaceDisabled/payload
-message NamespaceDisabledMessage {
+message NamespaceDisabled {
     NamespacePayload payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -115,7 +115,7 @@ message NamespaceDisabledMessage {
 }
 
 // path: #/components/messages/namespaceDisplayNameUpdated/payload
-message NamespaceDisplayNameUpdatedMessage {
+message NamespaceDisplayNameUpdated {
     NamespacePayload payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -135,28 +135,28 @@ message NamespaceDisplayNameUpdatedMessage {
 // --- #/components/messages/{message_name} ---
 
 // path: #/components/messages/namespaceCreated
-message NamespaceCreated {
-    NamespaceCreatedMessage payload = 1;
+message NamespaceCreatedMessage {
+    NamespaceCreated payload = 1;
 }
 
 // path: #/components/messages/namespaceDeleted
-message NamespaceDeleted {
-    NamespaceDeletedMessage payload = 1;
+message NamespaceDeletedMessage {
+    NamespaceDeleted payload = 1;
 }
 
 // path: #/components/messages/namespaceEnabled
-message NamespaceEnabled {
-    NamespaceEnabledMessage payload = 1;
+message NamespaceEnabledMessage {
+    NamespaceEnabled payload = 1;
 }
 
 // path: #/components/messages/namespaceDisabled
-message NamespaceDisabled {
-    NamespaceDisabledMessage payload = 1;
+message NamespaceDisabledMessage {
+    NamespaceDisabled payload = 1;
 }
 
 // path: #/components/messages/namespaceDisplayNameUpdated
-message NamespaceDisplayNameUpdated {
-    NamespaceDisplayNameUpdatedMessage payload = 1;
+message NamespaceDisplayNameUpdatedMessage {
+    NamespaceDisplayNameUpdated payload = 1;
 }
 
 
@@ -176,24 +176,28 @@ message NamespacePublish {
 
 // --- service ---
 
-service BasicServiceNamespaceEvents {
-    // Namespace Channel
 
-    // Publishes a message to the Namespace channel.
-    rpc PublishToNamespaceChannel(NamespacePublish) returns (google.protobuf.Empty);
+// Publishes a NamespaceCreated to the Namespace channel. (oneOf variant) (namespace NamespaceCreated)
+service NamespaceNamespaceCreatedService {
+    rpc OnMessage(NamespaceCreated) returns (google.protobuf.Empty);
+}
 
-    // Publishes a NamespaceCreatedMessage to the Namespace channel. (oneOf variant)
-    rpc PublishNamespaceCreatedMessageToNamespaceChannel(NamespaceCreatedMessage) returns (google.protobuf.Empty);
+// Publishes a NamespaceDeleted to the Namespace channel. (oneOf variant) (namespace NamespaceDeleted)
+service NamespaceNamespaceDeletedService {
+    rpc OnMessage(NamespaceDeleted) returns (google.protobuf.Empty);
+}
 
-    // Publishes a NamespaceDeletedMessage to the Namespace channel. (oneOf variant)
-    rpc PublishNamespaceDeletedMessageToNamespaceChannel(NamespaceDeletedMessage) returns (google.protobuf.Empty);
+// Publishes a NamespaceEnabled to the Namespace channel. (oneOf variant) (namespace NamespaceEnabled)
+service NamespaceNamespaceEnabledService {
+    rpc OnMessage(NamespaceEnabled) returns (google.protobuf.Empty);
+}
 
-    // Publishes a NamespaceEnabledMessage to the Namespace channel. (oneOf variant)
-    rpc PublishNamespaceEnabledMessageToNamespaceChannel(NamespaceEnabledMessage) returns (google.protobuf.Empty);
+// Publishes a NamespaceDisabled to the Namespace channel. (oneOf variant) (namespace NamespaceDisabled)
+service NamespaceNamespaceDisabledService {
+    rpc OnMessage(NamespaceDisabled) returns (google.protobuf.Empty);
+}
 
-    // Publishes a NamespaceDisabledMessage to the Namespace channel. (oneOf variant)
-    rpc PublishNamespaceDisabledMessageToNamespaceChannel(NamespaceDisabledMessage) returns (google.protobuf.Empty);
-
-    // Publishes a NamespaceDisplayNameUpdatedMessage to the Namespace channel. (oneOf variant)
-    rpc PublishNamespaceDisplayNameUpdatedMessageToNamespaceChannel(NamespaceDisplayNameUpdatedMessage) returns (google.protobuf.Empty);
+// Publishes a NamespaceDisplayNameUpdated to the Namespace channel. (oneOf variant) (namespace NamespaceDisplayNameUpdated)
+service NamespaceNamespaceDisplayNameUpdatedService {
+    rpc OnMessage(NamespaceDisplayNameUpdated) returns (google.protobuf.Empty);
 }

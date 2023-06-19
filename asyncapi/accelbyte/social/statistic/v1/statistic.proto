@@ -157,7 +157,7 @@ message AnonymousSchema4 {
 }
 
 // path: #/components/messages/statCreated/payload
-message StatCreatedMessage {
+message StatCreated {
     AnonymousSchema4 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -194,7 +194,7 @@ message AnonymousSchema5 {
 }
 
 // path: #/components/messages/statDeleted/payload
-message StatDeletedMessage {
+message StatDeleted {
     AnonymousSchema5 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -231,7 +231,7 @@ message AnonymousSchema6 {
 }
 
 // path: #/components/messages/statUpdated/payload
-message StatUpdatedMessage {
+message StatUpdated {
     AnonymousSchema6 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -258,7 +258,7 @@ message AnonymousSchema7 {
 }
 
 // path: #/components/messages/statImported/payload
-message StatImportedMessage {
+message StatImported {
     AnonymousSchema7 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -282,7 +282,7 @@ message AnonymousSchema8 {
 }
 
 // path: #/components/messages/statExported/payload
-message StatExportedMessage {
+message StatExported {
     AnonymousSchema8 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -314,7 +314,7 @@ message AnonymousSchema9 {
 }
 
 // path: #/components/messages/statItemCreated/payload
-message StatItemCreatedMessage {
+message StatItemCreated {
     AnonymousSchema9 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -346,7 +346,7 @@ message AnonymousSchema10 {
 }
 
 // path: #/components/messages/statItemUpdated/payload
-message StatItemUpdatedMessage {
+message StatItemUpdated {
     AnonymousSchema10 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -378,7 +378,7 @@ message AnonymousSchema11 {
 }
 
 // path: #/components/messages/statItemDeleted/payload
-message StatItemDeletedMessage {
+message StatItemDeleted {
     AnonymousSchema11 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -404,7 +404,7 @@ message AnonymousSchema12 {
 }
 
 // path: #/components/messages/globalStatItemUpdated/payload
-message GlobalStatItemUpdatedMessage {
+message GlobalStatItemUpdated {
     AnonymousSchema12 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -441,7 +441,7 @@ message AnonymousSchema13 {
 }
 
 // path: #/components/messages/statCycleCreated/payload
-message StatCycleCreatedMessage {
+message StatCycleCreated {
     AnonymousSchema13 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -478,7 +478,7 @@ message AnonymousSchema14 {
 }
 
 // path: #/components/messages/statCycleUpdated/payload
-message StatCycleUpdatedMessage {
+message StatCycleUpdated {
     AnonymousSchema14 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -515,7 +515,7 @@ message AnonymousSchema15 {
 }
 
 // path: #/components/messages/statCycleDeleted/payload
-message StatCycleDeletedMessage {
+message StatCycleDeleted {
     AnonymousSchema15 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -552,7 +552,7 @@ message AnonymousSchema16 {
 }
 
 // path: #/components/messages/statCycleReset/payload
-message StatCycleResetMessage {
+message StatCycleReset {
     AnonymousSchema16 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -582,7 +582,7 @@ message AnonymousSchema17 {
 }
 
 // path: #/components/messages/statItemCycleCreated/payload
-message StatItemCycleCreatedMessage {
+message StatItemCycleCreated {
     AnonymousSchema17 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -612,7 +612,7 @@ message AnonymousSchema18 {
 }
 
 // path: #/components/messages/statItemCycleUpdated/payload
-message StatItemCycleUpdatedMessage {
+message StatItemCycleUpdated {
     AnonymousSchema18 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -631,78 +631,78 @@ message StatItemCycleUpdatedMessage {
 // --- #/components/messages/{message_name} ---
 
 // path: #/components/messages/statCreated
-message StatCreated {
-    StatCreatedMessage payload = 1;
+message StatCreatedMessage {
+    StatCreated payload = 1;
 }
 
 // path: #/components/messages/statDeleted
-message StatDeleted {
-    StatDeletedMessage payload = 1;
+message StatDeletedMessage {
+    StatDeleted payload = 1;
 }
 
 // path: #/components/messages/statUpdated
-message StatUpdated {
-    StatUpdatedMessage payload = 1;
+message StatUpdatedMessage {
+    StatUpdated payload = 1;
 }
 
 // path: #/components/messages/statImported
-message StatImported {
-    StatImportedMessage payload = 1;
+message StatImportedMessage {
+    StatImported payload = 1;
 }
 
 // path: #/components/messages/statExported
-message StatExported {
-    StatExportedMessage payload = 1;
+message StatExportedMessage {
+    StatExported payload = 1;
 }
 
 // path: #/components/messages/statItemCreated
-message StatItemCreated {
-    StatItemCreatedMessage payload = 1;
+message StatItemCreatedMessage {
+    StatItemCreated payload = 1;
 }
 
 // path: #/components/messages/statItemUpdated
-message StatItemUpdated {
-    StatItemUpdatedMessage payload = 1;
+message StatItemUpdatedMessage {
+    StatItemUpdated payload = 1;
 }
 
 // path: #/components/messages/statItemDeleted
-message StatItemDeleted {
-    StatItemDeletedMessage payload = 1;
+message StatItemDeletedMessage {
+    StatItemDeleted payload = 1;
 }
 
 // path: #/components/messages/globalStatItemUpdated
-message GlobalStatItemUpdated {
-    GlobalStatItemUpdatedMessage payload = 1;
+message GlobalStatItemUpdatedMessage {
+    GlobalStatItemUpdated payload = 1;
 }
 
 // path: #/components/messages/statCycleCreated
-message StatCycleCreated {
-    StatCycleCreatedMessage payload = 1;
+message StatCycleCreatedMessage {
+    StatCycleCreated payload = 1;
 }
 
 // path: #/components/messages/statCycleUpdated
-message StatCycleUpdated {
-    StatCycleUpdatedMessage payload = 1;
+message StatCycleUpdatedMessage {
+    StatCycleUpdated payload = 1;
 }
 
 // path: #/components/messages/statCycleDeleted
-message StatCycleDeleted {
-    StatCycleDeletedMessage payload = 1;
+message StatCycleDeletedMessage {
+    StatCycleDeleted payload = 1;
 }
 
 // path: #/components/messages/statCycleReset
-message StatCycleReset {
-    StatCycleResetMessage payload = 1;
+message StatCycleResetMessage {
+    StatCycleReset payload = 1;
 }
 
 // path: #/components/messages/statItemCycleCreated
-message StatItemCycleCreated {
-    StatItemCycleCreatedMessage payload = 1;
+message StatItemCycleCreatedMessage {
+    StatItemCycleCreated payload = 1;
 }
 
 // path: #/components/messages/statItemCycleUpdated
-message StatItemCycleUpdated {
-    StatItemCycleUpdatedMessage payload = 1;
+message StatItemCycleUpdatedMessage {
+    StatItemCycleUpdated payload = 1;
 }
 
 
@@ -750,69 +750,78 @@ message StatisticCyclePublish {
 
 // --- service ---
 
-service StatisticEvents {
-    // Stat Management Channel
 
-    // Publishes a message to the Stat Management channel.
-    rpc PublishToStatManagementChannel(StatManagementPublish) returns (google.protobuf.Empty);
+// Publishes a StatCreated to the Stat Management channel. (oneOf variant) (statManagement StatCreated)
+service StatManagementStatCreatedService {
+    rpc OnMessage(StatCreated) returns (google.protobuf.Empty);
+}
 
-    // Publishes a StatCreatedMessage to the Stat Management channel. (oneOf variant)
-    rpc PublishStatCreatedMessageToStatManagementChannel(StatCreatedMessage) returns (google.protobuf.Empty);
+// Publishes a StatDeleted to the Stat Management channel. (oneOf variant) (statManagement StatDeleted)
+service StatManagementStatDeletedService {
+    rpc OnMessage(StatDeleted) returns (google.protobuf.Empty);
+}
 
-    // Publishes a StatDeletedMessage to the Stat Management channel. (oneOf variant)
-    rpc PublishStatDeletedMessageToStatManagementChannel(StatDeletedMessage) returns (google.protobuf.Empty);
+// Publishes a StatUpdated to the Stat Management channel. (oneOf variant) (statManagement StatUpdated)
+service StatManagementStatUpdatedService {
+    rpc OnMessage(StatUpdated) returns (google.protobuf.Empty);
+}
 
-    // Publishes a StatUpdatedMessage to the Stat Management channel. (oneOf variant)
-    rpc PublishStatUpdatedMessageToStatManagementChannel(StatUpdatedMessage) returns (google.protobuf.Empty);
+// Publishes a StatImported to the Stat Management channel. (oneOf variant) (statManagement StatImported)
+service StatManagementStatImportedService {
+    rpc OnMessage(StatImported) returns (google.protobuf.Empty);
+}
 
-    // Publishes a StatImportedMessage to the Stat Management channel. (oneOf variant)
-    rpc PublishStatImportedMessageToStatManagementChannel(StatImportedMessage) returns (google.protobuf.Empty);
+// Publishes a StatExported to the Stat Management channel. (oneOf variant) (statManagement StatExported)
+service StatManagementStatExportedService {
+    rpc OnMessage(StatExported) returns (google.protobuf.Empty);
+}
 
-    // Publishes a StatExportedMessage to the Stat Management channel. (oneOf variant)
-    rpc PublishStatExportedMessageToStatManagementChannel(StatExportedMessage) returns (google.protobuf.Empty);
+// Publishes a StatItemCreated to the Statistic channel. (oneOf variant) (statistic StatItemCreated)
+service StatisticStatItemCreatedService {
+    rpc OnMessage(StatItemCreated) returns (google.protobuf.Empty);
+}
 
-    // Statistic Channel
+// Publishes a StatItemUpdated to the Statistic channel. (oneOf variant) (statistic StatItemUpdated)
+service StatisticStatItemUpdatedService {
+    rpc OnMessage(StatItemUpdated) returns (google.protobuf.Empty);
+}
 
-    // Publishes a message to the Statistic channel.
-    rpc PublishToStatisticChannel(StatisticPublish) returns (google.protobuf.Empty);
+// Publishes a StatItemDeleted to the Statistic channel. (oneOf variant) (statistic StatItemDeleted)
+service StatisticStatItemDeletedService {
+    rpc OnMessage(StatItemDeleted) returns (google.protobuf.Empty);
+}
 
-    // Publishes a StatItemCreatedMessage to the Statistic channel. (oneOf variant)
-    rpc PublishStatItemCreatedMessageToStatisticChannel(StatItemCreatedMessage) returns (google.protobuf.Empty);
+// Publishes a GlobalStatItemUpdated to the Statistic channel. (oneOf variant) (statistic GlobalStatItemUpdated)
+service StatisticGlobalStatItemUpdatedService {
+    rpc OnMessage(GlobalStatItemUpdated) returns (google.protobuf.Empty);
+}
 
-    // Publishes a StatItemUpdatedMessage to the Statistic channel. (oneOf variant)
-    rpc PublishStatItemUpdatedMessageToStatisticChannel(StatItemUpdatedMessage) returns (google.protobuf.Empty);
+// Publishes a StatCycleCreated to the Stat Cycle Management channel. (oneOf variant) (statCycleManagement StatCycleCreated)
+service StatCycleManagementStatCycleCreatedService {
+    rpc OnMessage(StatCycleCreated) returns (google.protobuf.Empty);
+}
 
-    // Publishes a StatItemDeletedMessage to the Statistic channel. (oneOf variant)
-    rpc PublishStatItemDeletedMessageToStatisticChannel(StatItemDeletedMessage) returns (google.protobuf.Empty);
+// Publishes a StatCycleUpdated to the Stat Cycle Management channel. (oneOf variant) (statCycleManagement StatCycleUpdated)
+service StatCycleManagementStatCycleUpdatedService {
+    rpc OnMessage(StatCycleUpdated) returns (google.protobuf.Empty);
+}
 
-    // Publishes a GlobalStatItemUpdatedMessage to the Statistic channel. (oneOf variant)
-    rpc PublishGlobalStatItemUpdatedMessageToStatisticChannel(GlobalStatItemUpdatedMessage) returns (google.protobuf.Empty);
+// Publishes a StatCycleReset to the Stat Cycle Management channel. (oneOf variant) (statCycleManagement StatCycleReset)
+service StatCycleManagementStatCycleResetService {
+    rpc OnMessage(StatCycleReset) returns (google.protobuf.Empty);
+}
 
-    // Stat Cycle Management Channel
+// Publishes a StatCycleDeleted to the Stat Cycle Management channel. (oneOf variant) (statCycleManagement StatCycleDeleted)
+service StatCycleManagementStatCycleDeletedService {
+    rpc OnMessage(StatCycleDeleted) returns (google.protobuf.Empty);
+}
 
-    // Publishes a message to the Stat Cycle Management channel.
-    rpc PublishToStatCycleManagementChannel(StatCycleManagementPublish) returns (google.protobuf.Empty);
+// Publishes a StatItemCycleCreated to the Statistic Cycle channel. (oneOf variant) (statisticCycle StatItemCycleCreated)
+service StatisticCycleStatItemCycleCreatedService {
+    rpc OnMessage(StatItemCycleCreated) returns (google.protobuf.Empty);
+}
 
-    // Publishes a StatCycleCreatedMessage to the Stat Cycle Management channel. (oneOf variant)
-    rpc PublishStatCycleCreatedMessageToStatCycleManagementChannel(StatCycleCreatedMessage) returns (google.protobuf.Empty);
-
-    // Publishes a StatCycleUpdatedMessage to the Stat Cycle Management channel. (oneOf variant)
-    rpc PublishStatCycleUpdatedMessageToStatCycleManagementChannel(StatCycleUpdatedMessage) returns (google.protobuf.Empty);
-
-    // Publishes a StatCycleResetMessage to the Stat Cycle Management channel. (oneOf variant)
-    rpc PublishStatCycleResetMessageToStatCycleManagementChannel(StatCycleResetMessage) returns (google.protobuf.Empty);
-
-    // Publishes a StatCycleDeletedMessage to the Stat Cycle Management channel. (oneOf variant)
-    rpc PublishStatCycleDeletedMessageToStatCycleManagementChannel(StatCycleDeletedMessage) returns (google.protobuf.Empty);
-
-    // Statistic Cycle Channel
-
-    // Publishes a message to the Statistic Cycle channel.
-    rpc PublishToStatisticCycleChannel(StatisticCyclePublish) returns (google.protobuf.Empty);
-
-    // Publishes a StatItemCycleCreatedMessage to the Statistic Cycle channel. (oneOf variant)
-    rpc PublishStatItemCycleCreatedMessageToStatisticCycleChannel(StatItemCycleCreatedMessage) returns (google.protobuf.Empty);
-
-    // Publishes a StatItemCycleUpdatedMessage to the Statistic Cycle channel. (oneOf variant)
-    rpc PublishStatItemCycleUpdatedMessageToStatisticCycleChannel(StatItemCycleUpdatedMessage) returns (google.protobuf.Empty);
+// Publishes a StatItemCycleUpdated to the Statistic Cycle channel. (oneOf variant) (statisticCycle StatItemCycleUpdated)
+service StatisticCycleStatItemCycleUpdatedService {
+    rpc OnMessage(StatItemCycleUpdated) returns (google.protobuf.Empty);
 }

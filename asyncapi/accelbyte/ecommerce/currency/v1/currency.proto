@@ -63,7 +63,7 @@ message AnonymousSchema2 {
 }
 
 // path: #/components/messages/currencyCreated/payload
-message CurrencyCreatedMessage {
+message CurrencyCreated {
     AnonymousSchema2 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -86,7 +86,7 @@ message AnonymousSchema3 {
 }
 
 // path: #/components/messages/currencyUpdated/payload
-message CurrencyUpdatedMessage {
+message CurrencyUpdated {
     AnonymousSchema3 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -108,7 +108,7 @@ message AnonymousSchema4 {
 }
 
 // path: #/components/messages/currencyDeleted/payload
-message CurrencyDeletedMessage {
+message CurrencyDeleted {
     AnonymousSchema4 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -128,18 +128,18 @@ message CurrencyDeletedMessage {
 // --- #/components/messages/{message_name} ---
 
 // path: #/components/messages/currencyCreated
-message CurrencyCreated {
-    CurrencyCreatedMessage payload = 1;
+message CurrencyCreatedMessage {
+    CurrencyCreated payload = 1;
 }
 
 // path: #/components/messages/currencyUpdated
-message CurrencyUpdated {
-    CurrencyUpdatedMessage payload = 1;
+message CurrencyUpdatedMessage {
+    CurrencyUpdated payload = 1;
 }
 
 // path: #/components/messages/currencyDeleted
-message CurrencyDeleted {
-    CurrencyDeletedMessage payload = 1;
+message CurrencyDeletedMessage {
+    CurrencyDeleted payload = 1;
 }
 
 
@@ -157,18 +157,18 @@ message CurrencyManagementPublish {
 
 // --- service ---
 
-service AsyncAPIForJusticeCurrencyService {
-    // Currency Management Channel
 
-    // Publishes a message to the Currency Management channel.
-    rpc PublishToCurrencyManagementChannel(CurrencyManagementPublish) returns (google.protobuf.Empty);
+// Publishes a CurrencyCreated to the Currency Management channel. (oneOf variant) (currencyManagement CurrencyCreated)
+service CurrencyManagementCurrencyCreatedService {
+    rpc OnMessage(CurrencyCreated) returns (google.protobuf.Empty);
+}
 
-    // Publishes a CurrencyCreatedMessage to the Currency Management channel. (oneOf variant)
-    rpc PublishCurrencyCreatedMessageToCurrencyManagementChannel(CurrencyCreatedMessage) returns (google.protobuf.Empty);
+// Publishes a CurrencyUpdated to the Currency Management channel. (oneOf variant) (currencyManagement CurrencyUpdated)
+service CurrencyManagementCurrencyUpdatedService {
+    rpc OnMessage(CurrencyUpdated) returns (google.protobuf.Empty);
+}
 
-    // Publishes a CurrencyUpdatedMessage to the Currency Management channel. (oneOf variant)
-    rpc PublishCurrencyUpdatedMessageToCurrencyManagementChannel(CurrencyUpdatedMessage) returns (google.protobuf.Empty);
-
-    // Publishes a CurrencyDeletedMessage to the Currency Management channel. (oneOf variant)
-    rpc PublishCurrencyDeletedMessageToCurrencyManagementChannel(CurrencyDeletedMessage) returns (google.protobuf.Empty);
+// Publishes a CurrencyDeleted to the Currency Management channel. (oneOf variant) (currencyManagement CurrencyDeleted)
+service CurrencyManagementCurrencyDeletedService {
+    rpc OnMessage(CurrencyDeleted) returns (google.protobuf.Empty);
 }

@@ -55,7 +55,7 @@ message AnonymousSchema1 {
 }
 
 // path: #/components/messages/oauthRequestAuthorized/payload
-message OauthRequestAuthorizedMessage {
+message OauthRequestAuthorized {
     AnonymousSchema1 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -77,7 +77,7 @@ message AnonymousSchema2 {
 }
 
 // path: #/components/messages/oauthTokenGenerated/payload
-message OauthTokenGeneratedMessage {
+message OauthTokenGenerated {
     AnonymousSchema2 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -99,7 +99,7 @@ message AnonymousSchema3 {
 }
 
 // path: #/components/messages/oauthTokenRevoked/payload
-message OauthTokenRevokedMessage {
+message OauthTokenRevoked {
     AnonymousSchema3 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -122,7 +122,7 @@ message AnonymousSchema4 {
 }
 
 // path: #/components/messages/oauthThirdPartyRequestAuthorized/payload
-message OauthThirdPartyRequestAuthorizedMessage {
+message OauthThirdPartyRequestAuthorized {
     AnonymousSchema4 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -145,7 +145,7 @@ message AnonymousSchema5 {
 }
 
 // path: #/components/messages/oauthThirdPartyTokenGenerated/payload
-message OauthThirdPartyTokenGeneratedMessage {
+message OauthThirdPartyTokenGenerated {
     AnonymousSchema5 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -165,28 +165,28 @@ message OauthThirdPartyTokenGeneratedMessage {
 // --- #/components/messages/{message_name} ---
 
 // path: #/components/messages/oauthRequestAuthorized
-message OauthRequestAuthorized {
-    OauthRequestAuthorizedMessage payload = 1;
+message OauthRequestAuthorizedMessage {
+    OauthRequestAuthorized payload = 1;
 }
 
 // path: #/components/messages/oauthTokenGenerated
-message OauthTokenGenerated {
-    OauthTokenGeneratedMessage payload = 1;
+message OauthTokenGeneratedMessage {
+    OauthTokenGenerated payload = 1;
 }
 
 // path: #/components/messages/oauthTokenRevoked
-message OauthTokenRevoked {
-    OauthTokenRevokedMessage payload = 1;
+message OauthTokenRevokedMessage {
+    OauthTokenRevoked payload = 1;
 }
 
 // path: #/components/messages/oauthThirdPartyRequestAuthorized
-message OauthThirdPartyRequestAuthorized {
-    OauthThirdPartyRequestAuthorizedMessage payload = 1;
+message OauthThirdPartyRequestAuthorizedMessage {
+    OauthThirdPartyRequestAuthorized payload = 1;
 }
 
 // path: #/components/messages/oauthThirdPartyTokenGenerated
-message OauthThirdPartyTokenGenerated {
-    OauthThirdPartyTokenGeneratedMessage payload = 1;
+message OauthThirdPartyTokenGeneratedMessage {
+    OauthThirdPartyTokenGenerated payload = 1;
 }
 
 
@@ -224,39 +224,28 @@ message OauthThirdPartyTokenPublish {
 
 // --- service ---
 
-service IAMServiceOAuthEvents {
-    // Oauth Request Channel
 
-    // Publishes a message to the Oauth Request channel.
-    rpc PublishToOauthRequestChannel(OauthRequestPublish) returns (google.protobuf.Empty);
+// Publishes a OauthRequestAuthorized to the Oauth Request channel. (oneOf variant) (oauthRequest OauthRequestAuthorized)
+service OauthRequestOauthRequestAuthorizedService {
+    rpc OnMessage(OauthRequestAuthorized) returns (google.protobuf.Empty);
+}
 
-    // Publishes a OauthRequestAuthorizedMessage to the Oauth Request channel. (oneOf variant)
-    rpc PublishOauthRequestAuthorizedMessageToOauthRequestChannel(OauthRequestAuthorizedMessage) returns (google.protobuf.Empty);
+// Publishes a OauthTokenGenerated to the Oauth Token channel. (oneOf variant) (oauthToken OauthTokenGenerated)
+service OauthTokenOauthTokenGeneratedService {
+    rpc OnMessage(OauthTokenGenerated) returns (google.protobuf.Empty);
+}
 
-    // Oauth Token Channel
+// Publishes a OauthTokenRevoked to the Oauth Token channel. (oneOf variant) (oauthToken OauthTokenRevoked)
+service OauthTokenOauthTokenRevokedService {
+    rpc OnMessage(OauthTokenRevoked) returns (google.protobuf.Empty);
+}
 
-    // Publishes a message to the Oauth Token channel.
-    rpc PublishToOauthTokenChannel(OauthTokenPublish) returns (google.protobuf.Empty);
+// Publishes a OauthThirdPartyRequestAuthorized to the Oauth Third Party Request channel. (oneOf variant) (oauthThirdPartyRequest OauthThirdPartyRequestAuthorized)
+service OauthThirdPartyRequestOauthThirdPartyRequestAuthorizedService {
+    rpc OnMessage(OauthThirdPartyRequestAuthorized) returns (google.protobuf.Empty);
+}
 
-    // Publishes a OauthTokenGeneratedMessage to the Oauth Token channel. (oneOf variant)
-    rpc PublishOauthTokenGeneratedMessageToOauthTokenChannel(OauthTokenGeneratedMessage) returns (google.protobuf.Empty);
-
-    // Publishes a OauthTokenRevokedMessage to the Oauth Token channel. (oneOf variant)
-    rpc PublishOauthTokenRevokedMessageToOauthTokenChannel(OauthTokenRevokedMessage) returns (google.protobuf.Empty);
-
-    // Oauth Third Party Request Channel
-
-    // Publishes a message to the Oauth Third Party Request channel.
-    rpc PublishToOauthThirdPartyRequestChannel(OauthThirdPartyRequestPublish) returns (google.protobuf.Empty);
-
-    // Publishes a OauthThirdPartyRequestAuthorizedMessage to the Oauth Third Party Request channel. (oneOf variant)
-    rpc PublishOauthThirdPartyRequestAuthorizedMessageToOauthThirdPartyRequestChannel(OauthThirdPartyRequestAuthorizedMessage) returns (google.protobuf.Empty);
-
-    // Oauth Third Party Token Channel
-
-    // Publishes a message to the Oauth Third Party Token channel.
-    rpc PublishToOauthThirdPartyTokenChannel(OauthThirdPartyTokenPublish) returns (google.protobuf.Empty);
-
-    // Publishes a OauthThirdPartyTokenGeneratedMessage to the Oauth Third Party Token channel. (oneOf variant)
-    rpc PublishOauthThirdPartyTokenGeneratedMessageToOauthThirdPartyTokenChannel(OauthThirdPartyTokenGeneratedMessage) returns (google.protobuf.Empty);
+// Publishes a OauthThirdPartyTokenGenerated to the Oauth Third Party Token channel. (oneOf variant) (oauthThirdPartyToken OauthThirdPartyTokenGenerated)
+service OauthThirdPartyTokenOauthThirdPartyTokenGeneratedService {
+    rpc OnMessage(OauthThirdPartyTokenGenerated) returns (google.protobuf.Empty);
 }

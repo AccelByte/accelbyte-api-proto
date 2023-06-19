@@ -54,7 +54,7 @@ message AnonymousSchema1 {
 }
 
 // path: #/components/messages/freeformUserNotification/payload
-message FreeformUserNotificationMessage {
+message FreeformUserNotification {
     AnonymousSchema1 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -72,8 +72,8 @@ message FreeformUserNotificationMessage {
 // --- #/components/messages/{message_name} ---
 
 // path: #/components/messages/freeformUserNotification
-message FreeformUserNotification {
-    FreeformUserNotificationMessage payload = 1;
+message FreeformUserNotificationMessage {
+    FreeformUserNotification payload = 1;
 }
 
 
@@ -89,12 +89,8 @@ message FreeformUserNotificationRequestPublish {
 
 // --- service ---
 
-service MatchmakingV2NotificationEvents {
-    // Freeform User Notification Request Channel
 
-    // Publishes a message to the Freeform User Notification Request channel.
-    rpc PublishToFreeformUserNotificationRequestChannel(FreeformUserNotificationRequestPublish) returns (google.protobuf.Empty);
-
-    // Publishes a FreeformUserNotificationMessage to the Freeform User Notification Request channel. (oneOf variant)
-    rpc PublishFreeformUserNotificationMessageToFreeformUserNotificationRequestChannel(FreeformUserNotificationMessage) returns (google.protobuf.Empty);
+// Publishes a FreeformUserNotification to the Freeform User Notification Request channel. (oneOf variant) (freeformUserNotificationRequest FreeformUserNotification)
+service FreeformUserNotificationRequestFreeformUserNotificationService {
+    rpc OnMessage(FreeformUserNotification) returns (google.protobuf.Empty);
 }

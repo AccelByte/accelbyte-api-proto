@@ -64,7 +64,7 @@ message AnonymousSchema1 {
 }
 
 // path: #/components/messages/walletDisabled/payload
-message WalletDisabledMessage {
+message WalletDisabled {
     AnonymousSchema1 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -86,7 +86,7 @@ message AnonymousSchema2 {
 }
 
 // path: #/components/messages/walletEnabled/payload
-message WalletEnabledMessage {
+message WalletEnabled {
     AnonymousSchema2 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -108,7 +108,7 @@ message AnonymousSchema3 {
 }
 
 // path: #/components/messages/walletCredited/payload
-message WalletCreditedMessage {
+message WalletCredited {
     AnonymousSchema3 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -130,7 +130,7 @@ message AnonymousSchema4 {
 }
 
 // path: #/components/messages/walletDebited/payload
-message WalletDebitedMessage {
+message WalletDebited {
     AnonymousSchema4 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -152,7 +152,7 @@ message AnonymousSchema5 {
 }
 
 // path: #/components/messages/walledPaid/payload
-message WalledPaidMessage {
+message WalledPaid {
     AnonymousSchema5 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -174,7 +174,7 @@ message AnonymousSchema6 {
 }
 
 // path: #/components/messages/walledExpired/payload
-message WalledExpiredMessage {
+message WalledExpired {
     AnonymousSchema6 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -194,33 +194,33 @@ message WalledExpiredMessage {
 // --- #/components/messages/{message_name} ---
 
 // path: #/components/messages/walletDisabled
-message WalletDisabled {
-    WalletDisabledMessage payload = 1;
+message WalletDisabledMessage {
+    WalletDisabled payload = 1;
 }
 
 // path: #/components/messages/walletEnabled
-message WalletEnabled {
-    WalletEnabledMessage payload = 1;
+message WalletEnabledMessage {
+    WalletEnabled payload = 1;
 }
 
 // path: #/components/messages/walletCredited
-message WalletCredited {
-    WalletCreditedMessage payload = 1;
+message WalletCreditedMessage {
+    WalletCredited payload = 1;
 }
 
 // path: #/components/messages/walletDebited
-message WalletDebited {
-    WalletDebitedMessage payload = 1;
+message WalletDebitedMessage {
+    WalletDebited payload = 1;
 }
 
 // path: #/components/messages/walledPaid
-message WalledPaid {
-    WalledPaidMessage payload = 1;
+message WalledPaidMessage {
+    WalledPaid payload = 1;
 }
 
 // path: #/components/messages/walledExpired
-message WalledExpired {
-    WalledExpiredMessage payload = 1;
+message WalledExpiredMessage {
+    WalledExpired payload = 1;
 }
 
 
@@ -241,27 +241,33 @@ message WalletProcessingPublish {
 
 // --- service ---
 
-service AsyncAPIForJusticeWalletService {
-    // Wallet Processing Channel
 
-    // Publishes a message to the Wallet Processing channel.
-    rpc PublishToWalletProcessingChannel(WalletProcessingPublish) returns (google.protobuf.Empty);
+// Publishes a WalletDisabled to the Wallet Processing channel. (oneOf variant) (walletProcessing WalletDisabled)
+service WalletProcessingWalletDisabledService {
+    rpc OnMessage(WalletDisabled) returns (google.protobuf.Empty);
+}
 
-    // Publishes a WalletDisabledMessage to the Wallet Processing channel. (oneOf variant)
-    rpc PublishWalletDisabledMessageToWalletProcessingChannel(WalletDisabledMessage) returns (google.protobuf.Empty);
+// Publishes a WalletEnabled to the Wallet Processing channel. (oneOf variant) (walletProcessing WalletEnabled)
+service WalletProcessingWalletEnabledService {
+    rpc OnMessage(WalletEnabled) returns (google.protobuf.Empty);
+}
 
-    // Publishes a WalletEnabledMessage to the Wallet Processing channel. (oneOf variant)
-    rpc PublishWalletEnabledMessageToWalletProcessingChannel(WalletEnabledMessage) returns (google.protobuf.Empty);
+// Publishes a WalletCredited to the Wallet Processing channel. (oneOf variant) (walletProcessing WalletCredited)
+service WalletProcessingWalletCreditedService {
+    rpc OnMessage(WalletCredited) returns (google.protobuf.Empty);
+}
 
-    // Publishes a WalletCreditedMessage to the Wallet Processing channel. (oneOf variant)
-    rpc PublishWalletCreditedMessageToWalletProcessingChannel(WalletCreditedMessage) returns (google.protobuf.Empty);
+// Publishes a WalletDebited to the Wallet Processing channel. (oneOf variant) (walletProcessing WalletDebited)
+service WalletProcessingWalletDebitedService {
+    rpc OnMessage(WalletDebited) returns (google.protobuf.Empty);
+}
 
-    // Publishes a WalletDebitedMessage to the Wallet Processing channel. (oneOf variant)
-    rpc PublishWalletDebitedMessageToWalletProcessingChannel(WalletDebitedMessage) returns (google.protobuf.Empty);
+// Publishes a WalledPaid to the Wallet Processing channel. (oneOf variant) (walletProcessing WalledPaid)
+service WalletProcessingWalledPaidService {
+    rpc OnMessage(WalledPaid) returns (google.protobuf.Empty);
+}
 
-    // Publishes a WalledPaidMessage to the Wallet Processing channel. (oneOf variant)
-    rpc PublishWalledPaidMessageToWalletProcessingChannel(WalledPaidMessage) returns (google.protobuf.Empty);
-
-    // Publishes a WalledExpiredMessage to the Wallet Processing channel. (oneOf variant)
-    rpc PublishWalledExpiredMessageToWalletProcessingChannel(WalledExpiredMessage) returns (google.protobuf.Empty);
+// Publishes a WalledExpired to the Wallet Processing channel. (oneOf variant) (walletProcessing WalledExpired)
+service WalletProcessingWalledExpiredService {
+    rpc OnMessage(WalledExpired) returns (google.protobuf.Empty);
 }

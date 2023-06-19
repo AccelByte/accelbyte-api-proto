@@ -44,7 +44,7 @@ message UserMarketingPreferencePayload {
 }
 
 // path: #/components/messages/userMarketingPreferenceUpdated/payload
-message UserMarketingPreferenceUpdatedMessage {
+message UserMarketingPreferenceUpdated {
     UserMarketingPreferencePayload payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -64,8 +64,8 @@ message UserMarketingPreferenceUpdatedMessage {
 // --- #/components/messages/{message_name} ---
 
 // path: #/components/messages/userMarketingPreferenceUpdated
-message UserMarketingPreferenceUpdated {
-    UserMarketingPreferenceUpdatedMessage payload = 1;
+message UserMarketingPreferenceUpdatedMessage {
+    UserMarketingPreferenceUpdated payload = 1;
 }
 
 
@@ -81,12 +81,8 @@ message UserMarketingInformationPublish {
 
 // --- service ---
 
-service LegalServiceUserMarketingInformationEvents {
-    // User Marketing Information Channel
 
-    // Publishes a message to the User Marketing Information channel.
-    rpc PublishToUserMarketingInformationChannel(UserMarketingInformationPublish) returns (google.protobuf.Empty);
-
-    // Publishes a UserMarketingPreferenceUpdatedMessage to the User Marketing Information channel. (oneOf variant)
-    rpc PublishUserMarketingPreferenceUpdatedMessageToUserMarketingInformationChannel(UserMarketingPreferenceUpdatedMessage) returns (google.protobuf.Empty);
+// Publishes a UserMarketingPreferenceUpdated to the User Marketing Information channel. (oneOf variant) (userMarketingInformation UserMarketingPreferenceUpdated)
+service UserMarketingInformationUserMarketingPreferenceUpdatedService {
+    rpc OnMessage(UserMarketingPreferenceUpdated) returns (google.protobuf.Empty);
 }

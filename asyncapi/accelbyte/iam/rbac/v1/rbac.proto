@@ -74,7 +74,7 @@ message AnonymousSchema1 {
 }
 
 // path: #/components/messages/roleCreated/payload
-message RoleCreatedMessage {
+message RoleCreated {
     AnonymousSchema1 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -96,7 +96,7 @@ message AnonymousSchema2 {
 }
 
 // path: #/components/messages/roleDeleted/payload
-message RoleDeletedMessage {
+message RoleDeleted {
     AnonymousSchema2 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -118,7 +118,7 @@ message AnonymousSchema3 {
 }
 
 // path: #/components/messages/roleUpdated/payload
-message RoleUpdatedMessage {
+message RoleUpdated {
     AnonymousSchema3 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -141,7 +141,7 @@ message AnonymousSchema4 {
 }
 
 // path: #/components/messages/rolePermissionCreated/payload
-message RolePermissionCreatedMessage {
+message RolePermissionCreated {
     AnonymousSchema4 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -164,7 +164,7 @@ message AnonymousSchema5 {
 }
 
 // path: #/components/messages/rolePermissionDeleted/payload
-message RolePermissionDeletedMessage {
+message RolePermissionDeleted {
     AnonymousSchema5 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -187,7 +187,7 @@ message AnonymousSchema6 {
 }
 
 // path: #/components/messages/rolePermissionUpdated/payload
-message RolePermissionUpdatedMessage {
+message RolePermissionUpdated {
     AnonymousSchema6 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -210,7 +210,7 @@ message AnonymousSchema7 {
 }
 
 // path: #/components/messages/roleManagerCreated/payload
-message RoleManagerCreatedMessage {
+message RoleManagerCreated {
     AnonymousSchema7 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -233,7 +233,7 @@ message AnonymousSchema8 {
 }
 
 // path: #/components/messages/roleManagerDeleted/payload
-message RoleManagerDeletedMessage {
+message RoleManagerDeleted {
     AnonymousSchema8 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -256,7 +256,7 @@ message AnonymousSchema9 {
 }
 
 // path: #/components/messages/roleMemberCreated/payload
-message RoleMemberCreatedMessage {
+message RoleMemberCreated {
     AnonymousSchema9 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -279,7 +279,7 @@ message AnonymousSchema10 {
 }
 
 // path: #/components/messages/roleMemberDeleted/payload
-message RoleMemberDeletedMessage {
+message RoleMemberDeleted {
     AnonymousSchema10 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -299,53 +299,53 @@ message RoleMemberDeletedMessage {
 // --- #/components/messages/{message_name} ---
 
 // path: #/components/messages/roleCreated
-message RoleCreated {
-    RoleCreatedMessage payload = 1;
+message RoleCreatedMessage {
+    RoleCreated payload = 1;
 }
 
 // path: #/components/messages/roleDeleted
-message RoleDeleted {
-    RoleDeletedMessage payload = 1;
+message RoleDeletedMessage {
+    RoleDeleted payload = 1;
 }
 
 // path: #/components/messages/roleUpdated
-message RoleUpdated {
-    RoleUpdatedMessage payload = 1;
+message RoleUpdatedMessage {
+    RoleUpdated payload = 1;
 }
 
 // path: #/components/messages/rolePermissionCreated
-message RolePermissionCreated {
-    RolePermissionCreatedMessage payload = 1;
+message RolePermissionCreatedMessage {
+    RolePermissionCreated payload = 1;
 }
 
 // path: #/components/messages/rolePermissionDeleted
-message RolePermissionDeleted {
-    RolePermissionDeletedMessage payload = 1;
+message RolePermissionDeletedMessage {
+    RolePermissionDeleted payload = 1;
 }
 
 // path: #/components/messages/rolePermissionUpdated
-message RolePermissionUpdated {
-    RolePermissionUpdatedMessage payload = 1;
+message RolePermissionUpdatedMessage {
+    RolePermissionUpdated payload = 1;
 }
 
 // path: #/components/messages/roleManagerCreated
-message RoleManagerCreated {
-    RoleManagerCreatedMessage payload = 1;
+message RoleManagerCreatedMessage {
+    RoleManagerCreated payload = 1;
 }
 
 // path: #/components/messages/roleManagerDeleted
-message RoleManagerDeleted {
-    RoleManagerDeletedMessage payload = 1;
+message RoleManagerDeletedMessage {
+    RoleManagerDeleted payload = 1;
 }
 
 // path: #/components/messages/roleMemberCreated
-message RoleMemberCreated {
-    RoleMemberCreatedMessage payload = 1;
+message RoleMemberCreatedMessage {
+    RoleMemberCreated payload = 1;
 }
 
 // path: #/components/messages/roleMemberDeleted
-message RoleMemberDeleted {
-    RoleMemberDeletedMessage payload = 1;
+message RoleMemberDeletedMessage {
+    RoleMemberDeleted payload = 1;
 }
 
 
@@ -388,54 +388,53 @@ message RoleMemberPublish {
 
 // --- service ---
 
-service IAMServiceRBACEvents {
-    // Role Channel
 
-    // Publishes a message to the Role channel.
-    rpc PublishToRoleChannel(RolePublish) returns (google.protobuf.Empty);
+// Publishes a RoleCreated to the Role channel. (oneOf variant) (role RoleCreated)
+service RoleRoleCreatedService {
+    rpc OnMessage(RoleCreated) returns (google.protobuf.Empty);
+}
 
-    // Publishes a RoleCreatedMessage to the Role channel. (oneOf variant)
-    rpc PublishRoleCreatedMessageToRoleChannel(RoleCreatedMessage) returns (google.protobuf.Empty);
+// Publishes a RoleDeleted to the Role channel. (oneOf variant) (role RoleDeleted)
+service RoleRoleDeletedService {
+    rpc OnMessage(RoleDeleted) returns (google.protobuf.Empty);
+}
 
-    // Publishes a RoleDeletedMessage to the Role channel. (oneOf variant)
-    rpc PublishRoleDeletedMessageToRoleChannel(RoleDeletedMessage) returns (google.protobuf.Empty);
+// Publishes a RoleUpdated to the Role channel. (oneOf variant) (role RoleUpdated)
+service RoleRoleUpdatedService {
+    rpc OnMessage(RoleUpdated) returns (google.protobuf.Empty);
+}
 
-    // Publishes a RoleUpdatedMessage to the Role channel. (oneOf variant)
-    rpc PublishRoleUpdatedMessageToRoleChannel(RoleUpdatedMessage) returns (google.protobuf.Empty);
+// Publishes a RolePermissionCreated to the Role Permissions channel. (oneOf variant) (rolePermissions RolePermissionCreated)
+service RolePermissionsRolePermissionCreatedService {
+    rpc OnMessage(RolePermissionCreated) returns (google.protobuf.Empty);
+}
 
-    // Role Permissions Channel
+// Publishes a RolePermissionDeleted to the Role Permissions channel. (oneOf variant) (rolePermissions RolePermissionDeleted)
+service RolePermissionsRolePermissionDeletedService {
+    rpc OnMessage(RolePermissionDeleted) returns (google.protobuf.Empty);
+}
 
-    // Publishes a message to the Role Permissions channel.
-    rpc PublishToRolePermissionsChannel(RolePermissionsPublish) returns (google.protobuf.Empty);
+// Publishes a RolePermissionUpdated to the Role Permissions channel. (oneOf variant) (rolePermissions RolePermissionUpdated)
+service RolePermissionsRolePermissionUpdatedService {
+    rpc OnMessage(RolePermissionUpdated) returns (google.protobuf.Empty);
+}
 
-    // Publishes a RolePermissionCreatedMessage to the Role Permissions channel. (oneOf variant)
-    rpc PublishRolePermissionCreatedMessageToRolePermissionsChannel(RolePermissionCreatedMessage) returns (google.protobuf.Empty);
+// Publishes a RoleManagerCreated to the Role Manager channel. (oneOf variant) (roleManager RoleManagerCreated)
+service RoleManagerRoleManagerCreatedService {
+    rpc OnMessage(RoleManagerCreated) returns (google.protobuf.Empty);
+}
 
-    // Publishes a RolePermissionDeletedMessage to the Role Permissions channel. (oneOf variant)
-    rpc PublishRolePermissionDeletedMessageToRolePermissionsChannel(RolePermissionDeletedMessage) returns (google.protobuf.Empty);
+// Publishes a RoleManagerDeleted to the Role Manager channel. (oneOf variant) (roleManager RoleManagerDeleted)
+service RoleManagerRoleManagerDeletedService {
+    rpc OnMessage(RoleManagerDeleted) returns (google.protobuf.Empty);
+}
 
-    // Publishes a RolePermissionUpdatedMessage to the Role Permissions channel. (oneOf variant)
-    rpc PublishRolePermissionUpdatedMessageToRolePermissionsChannel(RolePermissionUpdatedMessage) returns (google.protobuf.Empty);
+// Publishes a RoleMemberCreated to the Role Member channel. (oneOf variant) (roleMember RoleMemberCreated)
+service RoleMemberRoleMemberCreatedService {
+    rpc OnMessage(RoleMemberCreated) returns (google.protobuf.Empty);
+}
 
-    // Role Manager Channel
-
-    // Publishes a message to the Role Manager channel.
-    rpc PublishToRoleManagerChannel(RoleManagerPublish) returns (google.protobuf.Empty);
-
-    // Publishes a RoleManagerCreatedMessage to the Role Manager channel. (oneOf variant)
-    rpc PublishRoleManagerCreatedMessageToRoleManagerChannel(RoleManagerCreatedMessage) returns (google.protobuf.Empty);
-
-    // Publishes a RoleManagerDeletedMessage to the Role Manager channel. (oneOf variant)
-    rpc PublishRoleManagerDeletedMessageToRoleManagerChannel(RoleManagerDeletedMessage) returns (google.protobuf.Empty);
-
-    // Role Member Channel
-
-    // Publishes a message to the Role Member channel.
-    rpc PublishToRoleMemberChannel(RoleMemberPublish) returns (google.protobuf.Empty);
-
-    // Publishes a RoleMemberCreatedMessage to the Role Member channel. (oneOf variant)
-    rpc PublishRoleMemberCreatedMessageToRoleMemberChannel(RoleMemberCreatedMessage) returns (google.protobuf.Empty);
-
-    // Publishes a RoleMemberDeletedMessage to the Role Member channel. (oneOf variant)
-    rpc PublishRoleMemberDeletedMessageToRoleMemberChannel(RoleMemberDeletedMessage) returns (google.protobuf.Empty);
+// Publishes a RoleMemberDeleted to the Role Member channel. (oneOf variant) (roleMember RoleMemberDeleted)
+service RoleMemberRoleMemberDeletedService {
+    rpc OnMessage(RoleMemberDeleted) returns (google.protobuf.Empty);
 }

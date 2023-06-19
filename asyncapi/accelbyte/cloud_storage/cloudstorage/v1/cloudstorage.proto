@@ -178,7 +178,7 @@ message AnonymousSchema7 {
 }
 
 // path: #/components/messages/namespaceSlotConfigCreated/payload
-message NamespaceSlotConfigCreatedMessage {
+message NamespaceSlotConfigCreated {
     AnonymousSchema7 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -200,7 +200,7 @@ message AnonymousSchema8 {
 }
 
 // path: #/components/messages/namespaceSlotConfigDeleted/payload
-message NamespaceSlotConfigDeletedMessage {
+message NamespaceSlotConfigDeleted {
     AnonymousSchema8 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -222,7 +222,7 @@ message AnonymousSchema9 {
 }
 
 // path: #/components/messages/namespaceSlotConfigUpdated/payload
-message NamespaceSlotConfigUpdatedMessage {
+message NamespaceSlotConfigUpdated {
     AnonymousSchema9 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -244,7 +244,7 @@ message AnonymousSchema10 {
 }
 
 // path: #/components/messages/slotCreated/payload
-message SlotCreatedMessage {
+message SlotCreated {
     AnonymousSchema10 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -266,7 +266,7 @@ message AnonymousSchema11 {
 }
 
 // path: #/components/messages/slotDeleted/payload
-message SlotDeletedMessage {
+message SlotDeleted {
     AnonymousSchema11 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -288,7 +288,7 @@ message AnonymousSchema12 {
 }
 
 // path: #/components/messages/slotUpdated/payload
-message SlotUpdatedMessage {
+message SlotUpdated {
     AnonymousSchema12 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -310,7 +310,7 @@ message AnonymousSchema13 {
 }
 
 // path: #/components/messages/slotConfigCreated/payload
-message SlotConfigCreatedMessage {
+message SlotConfigCreated {
     AnonymousSchema13 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -332,7 +332,7 @@ message AnonymousSchema14 {
 }
 
 // path: #/components/messages/slotConfigDeleted/payload
-message SlotConfigDeletedMessage {
+message SlotConfigDeleted {
     AnonymousSchema14 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -354,7 +354,7 @@ message AnonymousSchema15 {
 }
 
 // path: #/components/messages/slotConfigUpdated/payload
-message SlotConfigUpdatedMessage {
+message SlotConfigUpdated {
     AnonymousSchema15 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -374,48 +374,48 @@ message SlotConfigUpdatedMessage {
 // --- #/components/messages/{message_name} ---
 
 // path: #/components/messages/namespaceSlotConfigCreated
-message NamespaceSlotConfigCreated {
-    NamespaceSlotConfigCreatedMessage payload = 1;
+message NamespaceSlotConfigCreatedMessage {
+    NamespaceSlotConfigCreated payload = 1;
 }
 
 // path: #/components/messages/namespaceSlotConfigDeleted
-message NamespaceSlotConfigDeleted {
-    NamespaceSlotConfigDeletedMessage payload = 1;
+message NamespaceSlotConfigDeletedMessage {
+    NamespaceSlotConfigDeleted payload = 1;
 }
 
 // path: #/components/messages/namespaceSlotConfigUpdated
-message NamespaceSlotConfigUpdated {
-    NamespaceSlotConfigUpdatedMessage payload = 1;
+message NamespaceSlotConfigUpdatedMessage {
+    NamespaceSlotConfigUpdated payload = 1;
 }
 
 // path: #/components/messages/slotCreated
-message SlotCreated {
-    SlotCreatedMessage payload = 1;
+message SlotCreatedMessage {
+    SlotCreated payload = 1;
 }
 
 // path: #/components/messages/slotDeleted
-message SlotDeleted {
-    SlotDeletedMessage payload = 1;
+message SlotDeletedMessage {
+    SlotDeleted payload = 1;
 }
 
 // path: #/components/messages/slotUpdated
-message SlotUpdated {
-    SlotUpdatedMessage payload = 1;
+message SlotUpdatedMessage {
+    SlotUpdated payload = 1;
 }
 
 // path: #/components/messages/slotConfigCreated
-message SlotConfigCreated {
-    SlotConfigCreatedMessage payload = 1;
+message SlotConfigCreatedMessage {
+    SlotConfigCreated payload = 1;
 }
 
 // path: #/components/messages/slotConfigDeleted
-message SlotConfigDeleted {
-    SlotConfigDeletedMessage payload = 1;
+message SlotConfigDeletedMessage {
+    SlotConfigDeleted payload = 1;
 }
 
 // path: #/components/messages/slotConfigUpdated
-message SlotConfigUpdated {
-    SlotConfigUpdatedMessage payload = 1;
+message SlotConfigUpdatedMessage {
+    SlotConfigUpdated payload = 1;
 }
 
 
@@ -451,46 +451,48 @@ message SlotConfigPublish {
 
 // --- service ---
 
-service CloudStorageEvents {
-    // Namespace Slot Config Channel
 
-    // Publishes a message to the Namespace Slot Config channel.
-    rpc PublishToNamespaceSlotConfigChannel(NamespaceSlotConfigPublish) returns (google.protobuf.Empty);
+// Publishes a NamespaceSlotConfigCreated to the Namespace Slot Config channel. (oneOf variant) (namespaceSlotConfig NamespaceSlotConfigCreated)
+service NamespaceSlotConfigNamespaceSlotConfigCreatedService {
+    rpc OnMessage(NamespaceSlotConfigCreated) returns (google.protobuf.Empty);
+}
 
-    // Publishes a NamespaceSlotConfigCreatedMessage to the Namespace Slot Config channel. (oneOf variant)
-    rpc PublishNamespaceSlotConfigCreatedMessageToNamespaceSlotConfigChannel(NamespaceSlotConfigCreatedMessage) returns (google.protobuf.Empty);
+// Publishes a NamespaceSlotConfigDeleted to the Namespace Slot Config channel. (oneOf variant) (namespaceSlotConfig NamespaceSlotConfigDeleted)
+service NamespaceSlotConfigNamespaceSlotConfigDeletedService {
+    rpc OnMessage(NamespaceSlotConfigDeleted) returns (google.protobuf.Empty);
+}
 
-    // Publishes a NamespaceSlotConfigDeletedMessage to the Namespace Slot Config channel. (oneOf variant)
-    rpc PublishNamespaceSlotConfigDeletedMessageToNamespaceSlotConfigChannel(NamespaceSlotConfigDeletedMessage) returns (google.protobuf.Empty);
+// Publishes a NamespaceSlotConfigUpdated to the Namespace Slot Config channel. (oneOf variant) (namespaceSlotConfig NamespaceSlotConfigUpdated)
+service NamespaceSlotConfigNamespaceSlotConfigUpdatedService {
+    rpc OnMessage(NamespaceSlotConfigUpdated) returns (google.protobuf.Empty);
+}
 
-    // Publishes a NamespaceSlotConfigUpdatedMessage to the Namespace Slot Config channel. (oneOf variant)
-    rpc PublishNamespaceSlotConfigUpdatedMessageToNamespaceSlotConfigChannel(NamespaceSlotConfigUpdatedMessage) returns (google.protobuf.Empty);
+// Publishes a SlotCreated to the Slot channel. (oneOf variant) (slot SlotCreated)
+service SlotSlotCreatedService {
+    rpc OnMessage(SlotCreated) returns (google.protobuf.Empty);
+}
 
-    // Slot Channel
+// Publishes a SlotDeleted to the Slot channel. (oneOf variant) (slot SlotDeleted)
+service SlotSlotDeletedService {
+    rpc OnMessage(SlotDeleted) returns (google.protobuf.Empty);
+}
 
-    // Publishes a message to the Slot channel.
-    rpc PublishToSlotChannel(SlotPublish) returns (google.protobuf.Empty);
+// Publishes a SlotUpdated to the Slot channel. (oneOf variant) (slot SlotUpdated)
+service SlotSlotUpdatedService {
+    rpc OnMessage(SlotUpdated) returns (google.protobuf.Empty);
+}
 
-    // Publishes a SlotCreatedMessage to the Slot channel. (oneOf variant)
-    rpc PublishSlotCreatedMessageToSlotChannel(SlotCreatedMessage) returns (google.protobuf.Empty);
+// Publishes a SlotConfigCreated to the Slot Config channel. (oneOf variant) (slotConfig SlotConfigCreated)
+service SlotConfigSlotConfigCreatedService {
+    rpc OnMessage(SlotConfigCreated) returns (google.protobuf.Empty);
+}
 
-    // Publishes a SlotDeletedMessage to the Slot channel. (oneOf variant)
-    rpc PublishSlotDeletedMessageToSlotChannel(SlotDeletedMessage) returns (google.protobuf.Empty);
+// Publishes a SlotConfigDeleted to the Slot Config channel. (oneOf variant) (slotConfig SlotConfigDeleted)
+service SlotConfigSlotConfigDeletedService {
+    rpc OnMessage(SlotConfigDeleted) returns (google.protobuf.Empty);
+}
 
-    // Publishes a SlotUpdatedMessage to the Slot channel. (oneOf variant)
-    rpc PublishSlotUpdatedMessageToSlotChannel(SlotUpdatedMessage) returns (google.protobuf.Empty);
-
-    // Slot Config Channel
-
-    // Publishes a message to the Slot Config channel.
-    rpc PublishToSlotConfigChannel(SlotConfigPublish) returns (google.protobuf.Empty);
-
-    // Publishes a SlotConfigCreatedMessage to the Slot Config channel. (oneOf variant)
-    rpc PublishSlotConfigCreatedMessageToSlotConfigChannel(SlotConfigCreatedMessage) returns (google.protobuf.Empty);
-
-    // Publishes a SlotConfigDeletedMessage to the Slot Config channel. (oneOf variant)
-    rpc PublishSlotConfigDeletedMessageToSlotConfigChannel(SlotConfigDeletedMessage) returns (google.protobuf.Empty);
-
-    // Publishes a SlotConfigUpdatedMessage to the Slot Config channel. (oneOf variant)
-    rpc PublishSlotConfigUpdatedMessageToSlotConfigChannel(SlotConfigUpdatedMessage) returns (google.protobuf.Empty);
+// Publishes a SlotConfigUpdated to the Slot Config channel. (oneOf variant) (slotConfig SlotConfigUpdated)
+service SlotConfigSlotConfigUpdatedService {
+    rpc OnMessage(SlotConfigUpdated) returns (google.protobuf.Empty);
 }

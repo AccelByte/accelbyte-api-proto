@@ -58,7 +58,7 @@ message AnonymousSchema1 {
 }
 
 // path: #/components/messages/userProfileCreated/payload
-message UserProfileCreatedMessage {
+message UserProfileCreated {
     AnonymousSchema1 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -80,7 +80,7 @@ message AnonymousSchema2 {
 }
 
 // path: #/components/messages/userProfileDeleted/payload
-message UserProfileDeletedMessage {
+message UserProfileDeleted {
     AnonymousSchema2 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -102,7 +102,7 @@ message AnonymousSchema3 {
 }
 
 // path: #/components/messages/userProfileEnabled/payload
-message UserProfileEnabledMessage {
+message UserProfileEnabled {
     AnonymousSchema3 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -124,7 +124,7 @@ message AnonymousSchema4 {
 }
 
 // path: #/components/messages/userProfileDisabled/payload
-message UserProfileDisabledMessage {
+message UserProfileDisabled {
     AnonymousSchema4 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -146,7 +146,7 @@ message AnonymousSchema5 {
 }
 
 // path: #/components/messages/userProfileUpdated/payload
-message UserProfileUpdatedMessage {
+message UserProfileUpdated {
     AnonymousSchema5 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -166,28 +166,28 @@ message UserProfileUpdatedMessage {
 // --- #/components/messages/{message_name} ---
 
 // path: #/components/messages/userProfileCreated
-message UserProfileCreated {
-    UserProfileCreatedMessage payload = 1;
+message UserProfileCreatedMessage {
+    UserProfileCreated payload = 1;
 }
 
 // path: #/components/messages/userProfileDeleted
-message UserProfileDeleted {
-    UserProfileDeletedMessage payload = 1;
+message UserProfileDeletedMessage {
+    UserProfileDeleted payload = 1;
 }
 
 // path: #/components/messages/userProfileEnabled
-message UserProfileEnabled {
-    UserProfileEnabledMessage payload = 1;
+message UserProfileEnabledMessage {
+    UserProfileEnabled payload = 1;
 }
 
 // path: #/components/messages/userProfileDisabled
-message UserProfileDisabled {
-    UserProfileDisabledMessage payload = 1;
+message UserProfileDisabledMessage {
+    UserProfileDisabled payload = 1;
 }
 
 // path: #/components/messages/userProfileUpdated
-message UserProfileUpdated {
-    UserProfileUpdatedMessage payload = 1;
+message UserProfileUpdatedMessage {
+    UserProfileUpdated payload = 1;
 }
 
 
@@ -207,24 +207,28 @@ message UserProfilePublish {
 
 // --- service ---
 
-service BasicServiceUserProfileEvents {
-    // User Profile Channel
 
-    // Publishes a message to the User Profile channel.
-    rpc PublishToUserProfileChannel(UserProfilePublish) returns (google.protobuf.Empty);
+// Publishes a UserProfileCreated to the User Profile channel. (oneOf variant) (userProfile UserProfileCreated)
+service UserProfileUserProfileCreatedService {
+    rpc OnMessage(UserProfileCreated) returns (google.protobuf.Empty);
+}
 
-    // Publishes a UserProfileCreatedMessage to the User Profile channel. (oneOf variant)
-    rpc PublishUserProfileCreatedMessageToUserProfileChannel(UserProfileCreatedMessage) returns (google.protobuf.Empty);
+// Publishes a UserProfileDeleted to the User Profile channel. (oneOf variant) (userProfile UserProfileDeleted)
+service UserProfileUserProfileDeletedService {
+    rpc OnMessage(UserProfileDeleted) returns (google.protobuf.Empty);
+}
 
-    // Publishes a UserProfileDeletedMessage to the User Profile channel. (oneOf variant)
-    rpc PublishUserProfileDeletedMessageToUserProfileChannel(UserProfileDeletedMessage) returns (google.protobuf.Empty);
+// Publishes a UserProfileEnabled to the User Profile channel. (oneOf variant) (userProfile UserProfileEnabled)
+service UserProfileUserProfileEnabledService {
+    rpc OnMessage(UserProfileEnabled) returns (google.protobuf.Empty);
+}
 
-    // Publishes a UserProfileEnabledMessage to the User Profile channel. (oneOf variant)
-    rpc PublishUserProfileEnabledMessageToUserProfileChannel(UserProfileEnabledMessage) returns (google.protobuf.Empty);
+// Publishes a UserProfileDisabled to the User Profile channel. (oneOf variant) (userProfile UserProfileDisabled)
+service UserProfileUserProfileDisabledService {
+    rpc OnMessage(UserProfileDisabled) returns (google.protobuf.Empty);
+}
 
-    // Publishes a UserProfileDisabledMessage to the User Profile channel. (oneOf variant)
-    rpc PublishUserProfileDisabledMessageToUserProfileChannel(UserProfileDisabledMessage) returns (google.protobuf.Empty);
-
-    // Publishes a UserProfileUpdatedMessage to the User Profile channel. (oneOf variant)
-    rpc PublishUserProfileUpdatedMessageToUserProfileChannel(UserProfileUpdatedMessage) returns (google.protobuf.Empty);
+// Publishes a UserProfileUpdated to the User Profile channel. (oneOf variant) (userProfile UserProfileUpdated)
+service UserProfileUserProfileUpdatedService {
+    rpc OnMessage(UserProfileUpdated) returns (google.protobuf.Empty);
 }

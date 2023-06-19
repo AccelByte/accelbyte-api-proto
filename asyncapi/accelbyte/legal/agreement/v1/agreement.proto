@@ -55,7 +55,7 @@ message AnonymousSchema1 {
 }
 
 // path: #/components/messages/agreementCreated/payload
-message AgreementCreatedMessage {
+message AgreementCreated {
     AnonymousSchema1 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -77,7 +77,7 @@ message AnonymousSchema2 {
 }
 
 // path: #/components/messages/agreementUpdated/payload
-message AgreementUpdatedMessage {
+message AgreementUpdated {
     AnonymousSchema2 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -97,13 +97,13 @@ message AgreementUpdatedMessage {
 // --- #/components/messages/{message_name} ---
 
 // path: #/components/messages/agreementCreated
-message AgreementCreated {
-    AgreementCreatedMessage payload = 1;
+message AgreementCreatedMessage {
+    AgreementCreated payload = 1;
 }
 
 // path: #/components/messages/agreementUpdated
-message AgreementUpdated {
-    AgreementUpdatedMessage payload = 1;
+message AgreementUpdatedMessage {
+    AgreementUpdated payload = 1;
 }
 
 
@@ -120,15 +120,13 @@ message AgreementPublish {
 
 // --- service ---
 
-service LegalServiceAgreementEvents {
-    // Agreement Channel
 
-    // Publishes a message to the Agreement channel.
-    rpc PublishToAgreementChannel(AgreementPublish) returns (google.protobuf.Empty);
+// Publishes a AgreementCreated to the Agreement channel. (oneOf variant) (agreement AgreementCreated)
+service AgreementAgreementCreatedService {
+    rpc OnMessage(AgreementCreated) returns (google.protobuf.Empty);
+}
 
-    // Publishes a AgreementCreatedMessage to the Agreement channel. (oneOf variant)
-    rpc PublishAgreementCreatedMessageToAgreementChannel(AgreementCreatedMessage) returns (google.protobuf.Empty);
-
-    // Publishes a AgreementUpdatedMessage to the Agreement channel. (oneOf variant)
-    rpc PublishAgreementUpdatedMessageToAgreementChannel(AgreementUpdatedMessage) returns (google.protobuf.Empty);
+// Publishes a AgreementUpdated to the Agreement channel. (oneOf variant) (agreement AgreementUpdated)
+service AgreementAgreementUpdatedService {
+    rpc OnMessage(AgreementUpdated) returns (google.protobuf.Empty);
 }

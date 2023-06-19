@@ -61,7 +61,7 @@ message AnonymousSchema1 {
 }
 
 // path: #/components/messages/sessionCreated/payload
-message SessionCreatedMessage {
+message SessionCreated {
     AnonymousSchema1 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -83,7 +83,7 @@ message AnonymousSchema2 {
 }
 
 // path: #/components/messages/sessionDeleted/payload
-message SessionDeletedMessage {
+message SessionDeleted {
     AnonymousSchema2 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -105,7 +105,7 @@ message AnonymousSchema3 {
 }
 
 // path: #/components/messages/sessionUpdated/payload
-message SessionUpdatedMessage {
+message SessionUpdated {
     AnonymousSchema3 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -125,18 +125,18 @@ message SessionUpdatedMessage {
 // --- #/components/messages/{message_name} ---
 
 // path: #/components/messages/sessionCreated
-message SessionCreated {
-    SessionCreatedMessage payload = 1;
+message SessionCreatedMessage {
+    SessionCreated payload = 1;
 }
 
 // path: #/components/messages/sessionDeleted
-message SessionDeleted {
-    SessionDeletedMessage payload = 1;
+message SessionDeletedMessage {
+    SessionDeleted payload = 1;
 }
 
 // path: #/components/messages/sessionUpdated
-message SessionUpdated {
-    SessionUpdatedMessage payload = 1;
+message SessionUpdatedMessage {
+    SessionUpdated payload = 1;
 }
 
 
@@ -154,18 +154,18 @@ message SessionPublish {
 
 // --- service ---
 
-service APIGatewayServiceSessionEvents {
-    // Session Channel
 
-    // Publishes a message to the Session channel.
-    rpc PublishToSessionChannel(SessionPublish) returns (google.protobuf.Empty);
+// Publishes a SessionCreated to the Session channel. (oneOf variant) (session SessionCreated)
+service SessionSessionCreatedService {
+    rpc OnMessage(SessionCreated) returns (google.protobuf.Empty);
+}
 
-    // Publishes a SessionCreatedMessage to the Session channel. (oneOf variant)
-    rpc PublishSessionCreatedMessageToSessionChannel(SessionCreatedMessage) returns (google.protobuf.Empty);
+// Publishes a SessionDeleted to the Session channel. (oneOf variant) (session SessionDeleted)
+service SessionSessionDeletedService {
+    rpc OnMessage(SessionDeleted) returns (google.protobuf.Empty);
+}
 
-    // Publishes a SessionDeletedMessage to the Session channel. (oneOf variant)
-    rpc PublishSessionDeletedMessageToSessionChannel(SessionDeletedMessage) returns (google.protobuf.Empty);
-
-    // Publishes a SessionUpdatedMessage to the Session channel. (oneOf variant)
-    rpc PublishSessionUpdatedMessageToSessionChannel(SessionUpdatedMessage) returns (google.protobuf.Empty);
+// Publishes a SessionUpdated to the Session channel. (oneOf variant) (session SessionUpdated)
+service SessionSessionUpdatedService {
+    rpc OnMessage(SessionUpdated) returns (google.protobuf.Empty);
 }

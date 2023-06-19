@@ -77,7 +77,7 @@ message AnonymousSchema1 {
 }
 
 // path: #/components/messages/orderCreated/payload
-message OrderCreatedMessage {
+message OrderCreated {
     AnonymousSchema1 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -99,7 +99,7 @@ message AnonymousSchema2 {
 }
 
 // path: #/components/messages/orderCancelled/payload
-message OrderCancelledMessage {
+message OrderCancelled {
     AnonymousSchema2 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -121,7 +121,7 @@ message AnonymousSchema3 {
 }
 
 // path: #/components/messages/orderRefundRequested/payload
-message OrderRefundRequestedMessage {
+message OrderRefundRequested {
     AnonymousSchema3 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -143,7 +143,7 @@ message AnonymousSchema4 {
 }
 
 // path: #/components/messages/orderStatusUpdated/payload
-message OrderStatusUpdatedMessage {
+message OrderStatusUpdated {
     AnonymousSchema4 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -165,7 +165,7 @@ message AnonymousSchema5 {
 }
 
 // path: #/components/messages/orderFulfilled/payload
-message OrderFulfilledMessage {
+message OrderFulfilled {
     AnonymousSchema5 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -187,7 +187,7 @@ message AnonymousSchema6 {
 }
 
 // path: #/components/messages/orderFulfillFailed/payload
-message OrderFulfillFailedMessage {
+message OrderFulfillFailed {
     AnonymousSchema6 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -209,7 +209,7 @@ message AnonymousSchema7 {
 }
 
 // path: #/components/messages/orderCharged/payload
-message OrderChargedMessage {
+message OrderCharged {
     AnonymousSchema7 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -231,7 +231,7 @@ message AnonymousSchema8 {
 }
 
 // path: #/components/messages/orderRefunded/payload
-message OrderRefundedMessage {
+message OrderRefunded {
     AnonymousSchema8 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -253,7 +253,7 @@ message AnonymousSchema9 {
 }
 
 // path: #/components/messages/orderRefundFailed/payload
-message OrderRefundFailedMessage {
+message OrderRefundFailed {
     AnonymousSchema9 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -275,7 +275,7 @@ message AnonymousSchema10 {
 }
 
 // path: #/components/messages/orderChargeback/payload
-message OrderChargebackMessage {
+message OrderChargeback {
     AnonymousSchema10 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -297,7 +297,7 @@ message AnonymousSchema11 {
 }
 
 // path: #/components/messages/orderChargebackReversed/payload
-message OrderChargebackReversedMessage {
+message OrderChargebackReversed {
     AnonymousSchema11 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -319,7 +319,7 @@ message AnonymousSchema12 {
 }
 
 // path: #/components/messages/orderExpired/payload
-message OrderExpiredMessage {
+message OrderExpired {
     AnonymousSchema12 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -339,63 +339,63 @@ message OrderExpiredMessage {
 // --- #/components/messages/{message_name} ---
 
 // path: #/components/messages/orderCreated
-message OrderCreated {
-    OrderCreatedMessage payload = 1;
+message OrderCreatedMessage {
+    OrderCreated payload = 1;
 }
 
 // path: #/components/messages/orderCancelled
-message OrderCancelled {
-    OrderCancelledMessage payload = 1;
+message OrderCancelledMessage {
+    OrderCancelled payload = 1;
 }
 
 // path: #/components/messages/orderRefundRequested
-message OrderRefundRequested {
-    OrderRefundRequestedMessage payload = 1;
+message OrderRefundRequestedMessage {
+    OrderRefundRequested payload = 1;
 }
 
 // path: #/components/messages/orderStatusUpdated
-message OrderStatusUpdated {
-    OrderStatusUpdatedMessage payload = 1;
+message OrderStatusUpdatedMessage {
+    OrderStatusUpdated payload = 1;
 }
 
 // path: #/components/messages/orderFulfilled
-message OrderFulfilled {
-    OrderFulfilledMessage payload = 1;
+message OrderFulfilledMessage {
+    OrderFulfilled payload = 1;
 }
 
 // path: #/components/messages/orderFulfillFailed
-message OrderFulfillFailed {
-    OrderFulfillFailedMessage payload = 1;
+message OrderFulfillFailedMessage {
+    OrderFulfillFailed payload = 1;
 }
 
 // path: #/components/messages/orderCharged
-message OrderCharged {
-    OrderChargedMessage payload = 1;
+message OrderChargedMessage {
+    OrderCharged payload = 1;
 }
 
 // path: #/components/messages/orderRefunded
-message OrderRefunded {
-    OrderRefundedMessage payload = 1;
+message OrderRefundedMessage {
+    OrderRefunded payload = 1;
 }
 
 // path: #/components/messages/orderRefundFailed
-message OrderRefundFailed {
-    OrderRefundFailedMessage payload = 1;
+message OrderRefundFailedMessage {
+    OrderRefundFailed payload = 1;
 }
 
 // path: #/components/messages/orderChargeback
-message OrderChargeback {
-    OrderChargebackMessage payload = 1;
+message OrderChargebackMessage {
+    OrderChargeback payload = 1;
 }
 
 // path: #/components/messages/orderChargebackReversed
-message OrderChargebackReversed {
-    OrderChargebackReversedMessage payload = 1;
+message OrderChargebackReversedMessage {
+    OrderChargebackReversed payload = 1;
 }
 
 // path: #/components/messages/orderExpired
-message OrderExpired {
-    OrderExpiredMessage payload = 1;
+message OrderExpiredMessage {
+    OrderExpired payload = 1;
 }
 
 
@@ -422,45 +422,63 @@ message OrderProcessingPublish {
 
 // --- service ---
 
-service AsyncAPIForJusticeOrderService {
-    // Order Processing Channel
 
-    // Publishes a message to the Order Processing channel.
-    rpc PublishToOrderProcessingChannel(OrderProcessingPublish) returns (google.protobuf.Empty);
+// Publishes a OrderCreated to the Order Processing channel. (oneOf variant) (orderProcessing OrderCreated)
+service OrderProcessingOrderCreatedService {
+    rpc OnMessage(OrderCreated) returns (google.protobuf.Empty);
+}
 
-    // Publishes a OrderCreatedMessage to the Order Processing channel. (oneOf variant)
-    rpc PublishOrderCreatedMessageToOrderProcessingChannel(OrderCreatedMessage) returns (google.protobuf.Empty);
+// Publishes a OrderCancelled to the Order Processing channel. (oneOf variant) (orderProcessing OrderCancelled)
+service OrderProcessingOrderCancelledService {
+    rpc OnMessage(OrderCancelled) returns (google.protobuf.Empty);
+}
 
-    // Publishes a OrderCancelledMessage to the Order Processing channel. (oneOf variant)
-    rpc PublishOrderCancelledMessageToOrderProcessingChannel(OrderCancelledMessage) returns (google.protobuf.Empty);
+// Publishes a OrderFulfilled to the Order Processing channel. (oneOf variant) (orderProcessing OrderFulfilled)
+service OrderProcessingOrderFulfilledService {
+    rpc OnMessage(OrderFulfilled) returns (google.protobuf.Empty);
+}
 
-    // Publishes a OrderFulfilledMessage to the Order Processing channel. (oneOf variant)
-    rpc PublishOrderFulfilledMessageToOrderProcessingChannel(OrderFulfilledMessage) returns (google.protobuf.Empty);
+// Publishes a OrderFulfillFailed to the Order Processing channel. (oneOf variant) (orderProcessing OrderFulfillFailed)
+service OrderProcessingOrderFulfillFailedService {
+    rpc OnMessage(OrderFulfillFailed) returns (google.protobuf.Empty);
+}
 
-    // Publishes a OrderFulfillFailedMessage to the Order Processing channel. (oneOf variant)
-    rpc PublishOrderFulfillFailedMessageToOrderProcessingChannel(OrderFulfillFailedMessage) returns (google.protobuf.Empty);
+// Publishes a OrderCharged to the Order Processing channel. (oneOf variant) (orderProcessing OrderCharged)
+service OrderProcessingOrderChargedService {
+    rpc OnMessage(OrderCharged) returns (google.protobuf.Empty);
+}
 
-    // Publishes a OrderChargedMessage to the Order Processing channel. (oneOf variant)
-    rpc PublishOrderChargedMessageToOrderProcessingChannel(OrderChargedMessage) returns (google.protobuf.Empty);
+// Publishes a OrderRefunded to the Order Processing channel. (oneOf variant) (orderProcessing OrderRefunded)
+service OrderProcessingOrderRefundedService {
+    rpc OnMessage(OrderRefunded) returns (google.protobuf.Empty);
+}
 
-    // Publishes a OrderRefundedMessage to the Order Processing channel. (oneOf variant)
-    rpc PublishOrderRefundedMessageToOrderProcessingChannel(OrderRefundedMessage) returns (google.protobuf.Empty);
+// Publishes a OrderRefundRequested to the Order Processing channel. (oneOf variant) (orderProcessing OrderRefundRequested)
+service OrderProcessingOrderRefundRequestedService {
+    rpc OnMessage(OrderRefundRequested) returns (google.protobuf.Empty);
+}
 
-    // Publishes a OrderRefundRequestedMessage to the Order Processing channel. (oneOf variant)
-    rpc PublishOrderRefundRequestedMessageToOrderProcessingChannel(OrderRefundRequestedMessage) returns (google.protobuf.Empty);
+// Publishes a OrderRefundFailed to the Order Processing channel. (oneOf variant) (orderProcessing OrderRefundFailed)
+service OrderProcessingOrderRefundFailedService {
+    rpc OnMessage(OrderRefundFailed) returns (google.protobuf.Empty);
+}
 
-    // Publishes a OrderRefundFailedMessage to the Order Processing channel. (oneOf variant)
-    rpc PublishOrderRefundFailedMessageToOrderProcessingChannel(OrderRefundFailedMessage) returns (google.protobuf.Empty);
+// Publishes a OrderChargeback to the Order Processing channel. (oneOf variant) (orderProcessing OrderChargeback)
+service OrderProcessingOrderChargebackService {
+    rpc OnMessage(OrderChargeback) returns (google.protobuf.Empty);
+}
 
-    // Publishes a OrderChargebackMessage to the Order Processing channel. (oneOf variant)
-    rpc PublishOrderChargebackMessageToOrderProcessingChannel(OrderChargebackMessage) returns (google.protobuf.Empty);
+// Publishes a OrderChargebackReversed to the Order Processing channel. (oneOf variant) (orderProcessing OrderChargebackReversed)
+service OrderProcessingOrderChargebackReversedService {
+    rpc OnMessage(OrderChargebackReversed) returns (google.protobuf.Empty);
+}
 
-    // Publishes a OrderChargebackReversedMessage to the Order Processing channel. (oneOf variant)
-    rpc PublishOrderChargebackReversedMessageToOrderProcessingChannel(OrderChargebackReversedMessage) returns (google.protobuf.Empty);
+// Publishes a OrderExpired to the Order Processing channel. (oneOf variant) (orderProcessing OrderExpired)
+service OrderProcessingOrderExpiredService {
+    rpc OnMessage(OrderExpired) returns (google.protobuf.Empty);
+}
 
-    // Publishes a OrderExpiredMessage to the Order Processing channel. (oneOf variant)
-    rpc PublishOrderExpiredMessageToOrderProcessingChannel(OrderExpiredMessage) returns (google.protobuf.Empty);
-
-    // Publishes a OrderStatusUpdatedMessage to the Order Processing channel. (oneOf variant)
-    rpc PublishOrderStatusUpdatedMessageToOrderProcessingChannel(OrderStatusUpdatedMessage) returns (google.protobuf.Empty);
+// Publishes a OrderStatusUpdated to the Order Processing channel. (oneOf variant) (orderProcessing OrderStatusUpdated)
+service OrderProcessingOrderStatusUpdatedService {
+    rpc OnMessage(OrderStatusUpdated) returns (google.protobuf.Empty);
 }

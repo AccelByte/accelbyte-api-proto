@@ -46,7 +46,7 @@ message NotificationPayload {
 }
 
 // path: #/components/messages/onPartyCreated/payload
-message OnPartyCreatedMessage {
+message OnPartyCreated {
 
     // allOf(#/components/schemas/event)
     string id = 1;
@@ -72,7 +72,7 @@ message AnonymousSchema1 {
 }
 
 // path: #/components/messages/sessionNotification/payload
-message SessionNotificationMessage {
+message SessionNotification {
     AnonymousSchema1 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -99,7 +99,7 @@ message AnonymousSchema2 {
 }
 
 // path: #/components/messages/OnSessionEnded/payload
-message OnSessionEndedMessage {
+message OnSessionEnded {
     AnonymousSchema2 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -126,7 +126,7 @@ message AnonymousSchema3 {
 }
 
 // path: #/components/messages/GameSessionEndedEvent/payload
-message GameSessionEndedEventMessage {
+message GameSessionEndedEvent {
     AnonymousSchema3 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -153,7 +153,7 @@ message AnonymousSchema4 {
 }
 
 // path: #/components/messages/GameSessionInvitedEvent/payload
-message GameSessionInvitedEventMessage {
+message GameSessionInvitedEvent {
     AnonymousSchema4 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -180,7 +180,7 @@ message AnonymousSchema5 {
 }
 
 // path: #/components/messages/GameSessionJoinedEvent/payload
-message GameSessionJoinedEventMessage {
+message GameSessionJoinedEvent {
     AnonymousSchema5 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -207,7 +207,7 @@ message AnonymousSchema6 {
 }
 
 // path: #/components/messages/GameSessionMembersChangedEvent/payload
-message GameSessionMembersChangedEventMessage {
+message GameSessionMembersChangedEvent {
     AnonymousSchema6 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -234,7 +234,7 @@ message AnonymousSchema7 {
 }
 
 // path: #/components/messages/GameSessionKickedEvent/payload
-message GameSessionKickedEventMessage {
+message GameSessionKickedEvent {
     AnonymousSchema7 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -261,7 +261,7 @@ message AnonymousSchema8 {
 }
 
 // path: #/components/messages/GameSessionCreatedEvent/payload
-message GameSessionCreatedEventMessage {
+message GameSessionCreatedEvent {
     AnonymousSchema8 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -288,7 +288,7 @@ message AnonymousSchema9 {
 }
 
 // path: #/components/messages/GameSessionUpdatedEvent/payload
-message GameSessionUpdatedEventMessage {
+message GameSessionUpdatedEvent {
     AnonymousSchema9 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -315,7 +315,7 @@ message AnonymousSchema10 {
 }
 
 // path: #/components/messages/GameSessionRejectedEvent/payload
-message GameSessionRejectedEventMessage {
+message GameSessionRejectedEvent {
     AnonymousSchema10 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -342,7 +342,7 @@ message AnonymousSchema11 {
 }
 
 // path: #/components/messages/GameSessionDSStatusChangedEvent/payload
-message GameSessionDSStatusChangedEventMessage {
+message GameSessionDSStatusChangedEvent {
     AnonymousSchema11 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -369,7 +369,7 @@ message AnonymousSchema12 {
 }
 
 // path: #/components/messages/PartyCreatedEvent/payload
-message PartyCreatedEventMessage {
+message PartyCreatedEvent {
     AnonymousSchema12 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -396,7 +396,7 @@ message AnonymousSchema13 {
 }
 
 // path: #/components/messages/PartyUpdatedEvent/payload
-message PartyUpdatedEventMessage {
+message PartyUpdatedEvent {
     AnonymousSchema13 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -423,7 +423,7 @@ message AnonymousSchema14 {
 }
 
 // path: #/components/messages/PartyKickedEvent/payload
-message PartyKickedEventMessage {
+message PartyKickedEvent {
     AnonymousSchema14 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -450,7 +450,7 @@ message AnonymousSchema15 {
 }
 
 // path: #/components/messages/PartyInvitedEvent/payload
-message PartyInvitedEventMessage {
+message PartyInvitedEvent {
     AnonymousSchema15 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -477,7 +477,7 @@ message AnonymousSchema16 {
 }
 
 // path: #/components/messages/PartyRejectedEvent/payload
-message PartyRejectedEventMessage {
+message PartyRejectedEvent {
     AnonymousSchema16 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -504,7 +504,7 @@ message AnonymousSchema17 {
 }
 
 // path: #/components/messages/PartyJoinedEvent/payload
-message PartyJoinedEventMessage {
+message PartyJoinedEvent {
     AnonymousSchema17 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -531,7 +531,7 @@ message AnonymousSchema18 {
 }
 
 // path: #/components/messages/PartyMembersChangedEvent/payload
-message PartyMembersChangedEventMessage {
+message PartyMembersChangedEvent {
     AnonymousSchema18 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -551,98 +551,98 @@ message PartyMembersChangedEventMessage {
 // --- #/components/messages/{message_name} ---
 
 // path: #/components/messages/onPartyCreated
-message OnPartyCreated {
-    OnPartyCreatedMessage payload = 1;
+message OnPartyCreatedMessage {
+    OnPartyCreated payload = 1;
 }
 
 // path: #/components/messages/sessionNotification
-message SessionNotification {
-    SessionNotificationMessage payload = 1;
+message SessionNotificationMessage {
+    SessionNotification payload = 1;
 }
 
 // path: #/components/messages/OnSessionEnded
-message OnSessionEnded {
-    OnSessionEndedMessage payload = 1;
+message OnSessionEndedMessage {
+    OnSessionEnded payload = 1;
 }
 
 // path: #/components/messages/GameSessionEndedEvent
-message GameSessionEndedEvent {
-    GameSessionEndedEventMessage payload = 1;
+message GameSessionEndedEventMessage {
+    GameSessionEndedEvent payload = 1;
 }
 
 // path: #/components/messages/GameSessionInvitedEvent
-message GameSessionInvitedEvent {
-    GameSessionInvitedEventMessage payload = 1;
+message GameSessionInvitedEventMessage {
+    GameSessionInvitedEvent payload = 1;
 }
 
 // path: #/components/messages/GameSessionJoinedEvent
-message GameSessionJoinedEvent {
-    GameSessionJoinedEventMessage payload = 1;
+message GameSessionJoinedEventMessage {
+    GameSessionJoinedEvent payload = 1;
 }
 
 // path: #/components/messages/GameSessionMembersChangedEvent
-message GameSessionMembersChangedEvent {
-    GameSessionMembersChangedEventMessage payload = 1;
+message GameSessionMembersChangedEventMessage {
+    GameSessionMembersChangedEvent payload = 1;
 }
 
 // path: #/components/messages/GameSessionKickedEvent
-message GameSessionKickedEvent {
-    GameSessionKickedEventMessage payload = 1;
+message GameSessionKickedEventMessage {
+    GameSessionKickedEvent payload = 1;
 }
 
 // path: #/components/messages/GameSessionCreatedEvent
-message GameSessionCreatedEvent {
-    GameSessionCreatedEventMessage payload = 1;
+message GameSessionCreatedEventMessage {
+    GameSessionCreatedEvent payload = 1;
 }
 
 // path: #/components/messages/GameSessionUpdatedEvent
-message GameSessionUpdatedEvent {
-    GameSessionUpdatedEventMessage payload = 1;
+message GameSessionUpdatedEventMessage {
+    GameSessionUpdatedEvent payload = 1;
 }
 
 // path: #/components/messages/GameSessionRejectedEvent
-message GameSessionRejectedEvent {
-    GameSessionRejectedEventMessage payload = 1;
+message GameSessionRejectedEventMessage {
+    GameSessionRejectedEvent payload = 1;
 }
 
 // path: #/components/messages/GameSessionDSStatusChangedEvent
-message GameSessionDSStatusChangedEvent {
-    GameSessionDSStatusChangedEventMessage payload = 1;
+message GameSessionDSStatusChangedEventMessage {
+    GameSessionDSStatusChangedEvent payload = 1;
 }
 
 // path: #/components/messages/PartyCreatedEvent
-message PartyCreatedEvent {
-    PartyCreatedEventMessage payload = 1;
+message PartyCreatedEventMessage {
+    PartyCreatedEvent payload = 1;
 }
 
 // path: #/components/messages/PartyUpdatedEvent
-message PartyUpdatedEvent {
-    PartyUpdatedEventMessage payload = 1;
+message PartyUpdatedEventMessage {
+    PartyUpdatedEvent payload = 1;
 }
 
 // path: #/components/messages/PartyKickedEvent
-message PartyKickedEvent {
-    PartyKickedEventMessage payload = 1;
+message PartyKickedEventMessage {
+    PartyKickedEvent payload = 1;
 }
 
 // path: #/components/messages/PartyInvitedEvent
-message PartyInvitedEvent {
-    PartyInvitedEventMessage payload = 1;
+message PartyInvitedEventMessage {
+    PartyInvitedEvent payload = 1;
 }
 
 // path: #/components/messages/PartyRejectedEvent
-message PartyRejectedEvent {
-    PartyRejectedEventMessage payload = 1;
+message PartyRejectedEventMessage {
+    PartyRejectedEvent payload = 1;
 }
 
 // path: #/components/messages/PartyJoinedEvent
-message PartyJoinedEvent {
-    PartyJoinedEventMessage payload = 1;
+message PartyJoinedEventMessage {
+    PartyJoinedEvent payload = 1;
 }
 
 // path: #/components/messages/PartyMembersChangedEvent
-message PartyMembersChangedEvent {
-    PartyMembersChangedEventMessage payload = 1;
+message PartyMembersChangedEventMessage {
+    PartyMembersChangedEvent payload = 1;
 }
 
 
@@ -694,81 +694,98 @@ message Mpv2SessionHistoryPublish {
 
 // --- service ---
 
-service SessionNotificationEvents {
-    // Session Channel
 
-    // Publishes a message to the Session channel.
-    rpc PublishToSessionChannel(SessionPublish) returns (google.protobuf.Empty);
+// Publishes a OnPartyCreated to the Session channel. (oneOf variant) (session OnPartyCreated)
+service SessionOnPartyCreatedService {
+    rpc OnMessage(OnPartyCreated) returns (google.protobuf.Empty);
+}
 
-    // Publishes a OnPartyCreatedMessage to the Session channel. (oneOf variant)
-    rpc PublishOnPartyCreatedMessageToSessionChannel(OnPartyCreatedMessage) returns (google.protobuf.Empty);
+// Publishes a SessionNotification to the Session Notification channel. (oneOf variant) (sessionNotification SessionNotification)
+service SessionNotificationSessionNotificationService {
+    rpc OnMessage(SessionNotification) returns (google.protobuf.Empty);
+}
 
-    // Session Notification Channel
+// Publishes a OnSessionEnded to the Session Event channel. (oneOf variant) (sessionEvent OnSessionEnded)
+service SessionEventOnSessionEndedService {
+    rpc OnMessage(OnSessionEnded) returns (google.protobuf.Empty);
+}
 
-    // Publishes a message to the Session Notification channel.
-    rpc PublishToSessionNotificationChannel(SessionNotificationPublish) returns (google.protobuf.Empty);
+// Publishes a GameSessionEndedEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory GameSessionEndedEvent)
+service Mpv2SessionHistoryGameSessionEndedEventService {
+    rpc OnMessage(GameSessionEndedEvent) returns (google.protobuf.Empty);
+}
 
-    // Publishes a SessionNotificationMessage to the Session Notification channel. (oneOf variant)
-    rpc PublishSessionNotificationMessageToSessionNotificationChannel(SessionNotificationMessage) returns (google.protobuf.Empty);
+// Publishes a GameSessionInvitedEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory GameSessionInvitedEvent)
+service Mpv2SessionHistoryGameSessionInvitedEventService {
+    rpc OnMessage(GameSessionInvitedEvent) returns (google.protobuf.Empty);
+}
 
-    // Session Event Channel
+// Publishes a GameSessionJoinedEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory GameSessionJoinedEvent)
+service Mpv2SessionHistoryGameSessionJoinedEventService {
+    rpc OnMessage(GameSessionJoinedEvent) returns (google.protobuf.Empty);
+}
 
-    // Publishes a message to the Session Event channel.
-    rpc PublishToSessionEventChannel(SessionEventPublish) returns (google.protobuf.Empty);
+// Publishes a GameSessionMembersChangedEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory GameSessionMembersChangedEvent)
+service Mpv2SessionHistoryGameSessionMembersChangedEventService {
+    rpc OnMessage(GameSessionMembersChangedEvent) returns (google.protobuf.Empty);
+}
 
-    // Publishes a OnSessionEndedMessage to the Session Event channel. (oneOf variant)
-    rpc PublishOnSessionEndedMessageToSessionEventChannel(OnSessionEndedMessage) returns (google.protobuf.Empty);
+// Publishes a GameSessionKickedEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory GameSessionKickedEvent)
+service Mpv2SessionHistoryGameSessionKickedEventService {
+    rpc OnMessage(GameSessionKickedEvent) returns (google.protobuf.Empty);
+}
 
-    // Mpv2 Session History Channel
+// Publishes a GameSessionCreatedEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory GameSessionCreatedEvent)
+service Mpv2SessionHistoryGameSessionCreatedEventService {
+    rpc OnMessage(GameSessionCreatedEvent) returns (google.protobuf.Empty);
+}
 
-    // Publishes a message to the Mpv2 Session History channel.
-    rpc PublishToMpv2SessionHistoryChannel(Mpv2SessionHistoryPublish) returns (google.protobuf.Empty);
+// Publishes a GameSessionUpdatedEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory GameSessionUpdatedEvent)
+service Mpv2SessionHistoryGameSessionUpdatedEventService {
+    rpc OnMessage(GameSessionUpdatedEvent) returns (google.protobuf.Empty);
+}
 
-    // Publishes a GameSessionEndedEventMessage to the Mpv2 Session History channel. (oneOf variant)
-    rpc PublishGameSessionEndedEventMessageToMpv2SessionHistoryChannel(GameSessionEndedEventMessage) returns (google.protobuf.Empty);
+// Publishes a GameSessionRejectedEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory GameSessionRejectedEvent)
+service Mpv2SessionHistoryGameSessionRejectedEventService {
+    rpc OnMessage(GameSessionRejectedEvent) returns (google.protobuf.Empty);
+}
 
-    // Publishes a GameSessionInvitedEventMessage to the Mpv2 Session History channel. (oneOf variant)
-    rpc PublishGameSessionInvitedEventMessageToMpv2SessionHistoryChannel(GameSessionInvitedEventMessage) returns (google.protobuf.Empty);
+// Publishes a GameSessionDSStatusChangedEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory GameSessionDSStatusChangedEvent)
+service Mpv2SessionHistoryGameSessionDSStatusChangedEventService {
+    rpc OnMessage(GameSessionDSStatusChangedEvent) returns (google.protobuf.Empty);
+}
 
-    // Publishes a GameSessionJoinedEventMessage to the Mpv2 Session History channel. (oneOf variant)
-    rpc PublishGameSessionJoinedEventMessageToMpv2SessionHistoryChannel(GameSessionJoinedEventMessage) returns (google.protobuf.Empty);
+// Publishes a PartyCreatedEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory PartyCreatedEvent)
+service Mpv2SessionHistoryPartyCreatedEventService {
+    rpc OnMessage(PartyCreatedEvent) returns (google.protobuf.Empty);
+}
 
-    // Publishes a GameSessionMembersChangedEventMessage to the Mpv2 Session History channel. (oneOf variant)
-    rpc PublishGameSessionMembersChangedEventMessageToMpv2SessionHistoryChannel(GameSessionMembersChangedEventMessage) returns (google.protobuf.Empty);
+// Publishes a PartyUpdatedEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory PartyUpdatedEvent)
+service Mpv2SessionHistoryPartyUpdatedEventService {
+    rpc OnMessage(PartyUpdatedEvent) returns (google.protobuf.Empty);
+}
 
-    // Publishes a GameSessionKickedEventMessage to the Mpv2 Session History channel. (oneOf variant)
-    rpc PublishGameSessionKickedEventMessageToMpv2SessionHistoryChannel(GameSessionKickedEventMessage) returns (google.protobuf.Empty);
+// Publishes a PartyKickedEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory PartyKickedEvent)
+service Mpv2SessionHistoryPartyKickedEventService {
+    rpc OnMessage(PartyKickedEvent) returns (google.protobuf.Empty);
+}
 
-    // Publishes a GameSessionCreatedEventMessage to the Mpv2 Session History channel. (oneOf variant)
-    rpc PublishGameSessionCreatedEventMessageToMpv2SessionHistoryChannel(GameSessionCreatedEventMessage) returns (google.protobuf.Empty);
+// Publishes a PartyInvitedEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory PartyInvitedEvent)
+service Mpv2SessionHistoryPartyInvitedEventService {
+    rpc OnMessage(PartyInvitedEvent) returns (google.protobuf.Empty);
+}
 
-    // Publishes a GameSessionUpdatedEventMessage to the Mpv2 Session History channel. (oneOf variant)
-    rpc PublishGameSessionUpdatedEventMessageToMpv2SessionHistoryChannel(GameSessionUpdatedEventMessage) returns (google.protobuf.Empty);
+// Publishes a PartyRejectedEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory PartyRejectedEvent)
+service Mpv2SessionHistoryPartyRejectedEventService {
+    rpc OnMessage(PartyRejectedEvent) returns (google.protobuf.Empty);
+}
 
-    // Publishes a GameSessionRejectedEventMessage to the Mpv2 Session History channel. (oneOf variant)
-    rpc PublishGameSessionRejectedEventMessageToMpv2SessionHistoryChannel(GameSessionRejectedEventMessage) returns (google.protobuf.Empty);
+// Publishes a PartyJoinedEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory PartyJoinedEvent)
+service Mpv2SessionHistoryPartyJoinedEventService {
+    rpc OnMessage(PartyJoinedEvent) returns (google.protobuf.Empty);
+}
 
-    // Publishes a GameSessionDSStatusChangedEventMessage to the Mpv2 Session History channel. (oneOf variant)
-    rpc PublishGameSessionDSStatusChangedEventMessageToMpv2SessionHistoryChannel(GameSessionDSStatusChangedEventMessage) returns (google.protobuf.Empty);
-
-    // Publishes a PartyCreatedEventMessage to the Mpv2 Session History channel. (oneOf variant)
-    rpc PublishPartyCreatedEventMessageToMpv2SessionHistoryChannel(PartyCreatedEventMessage) returns (google.protobuf.Empty);
-
-    // Publishes a PartyUpdatedEventMessage to the Mpv2 Session History channel. (oneOf variant)
-    rpc PublishPartyUpdatedEventMessageToMpv2SessionHistoryChannel(PartyUpdatedEventMessage) returns (google.protobuf.Empty);
-
-    // Publishes a PartyKickedEventMessage to the Mpv2 Session History channel. (oneOf variant)
-    rpc PublishPartyKickedEventMessageToMpv2SessionHistoryChannel(PartyKickedEventMessage) returns (google.protobuf.Empty);
-
-    // Publishes a PartyInvitedEventMessage to the Mpv2 Session History channel. (oneOf variant)
-    rpc PublishPartyInvitedEventMessageToMpv2SessionHistoryChannel(PartyInvitedEventMessage) returns (google.protobuf.Empty);
-
-    // Publishes a PartyRejectedEventMessage to the Mpv2 Session History channel. (oneOf variant)
-    rpc PublishPartyRejectedEventMessageToMpv2SessionHistoryChannel(PartyRejectedEventMessage) returns (google.protobuf.Empty);
-
-    // Publishes a PartyJoinedEventMessage to the Mpv2 Session History channel. (oneOf variant)
-    rpc PublishPartyJoinedEventMessageToMpv2SessionHistoryChannel(PartyJoinedEventMessage) returns (google.protobuf.Empty);
-
-    // Publishes a PartyMembersChangedEventMessage to the Mpv2 Session History channel. (oneOf variant)
-    rpc PublishPartyMembersChangedEventMessageToMpv2SessionHistoryChannel(PartyMembersChangedEventMessage) returns (google.protobuf.Empty);
+// Publishes a PartyMembersChangedEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory PartyMembersChangedEvent)
+service Mpv2SessionHistoryPartyMembersChangedEventService {
+    rpc OnMessage(PartyMembersChangedEvent) returns (google.protobuf.Empty);
 }

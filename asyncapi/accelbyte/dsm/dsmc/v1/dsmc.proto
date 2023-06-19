@@ -128,7 +128,7 @@ message AnonymousSchema2 {
 }
 
 // path: #/components/messages/allocationComplete/payload
-message AllocationCompleteMessage {
+message AllocationComplete {
     AnonymousSchema2 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -161,7 +161,7 @@ message AnonymousSchema3 {
 }
 
 // path: #/components/messages/dsClaimed/payload
-message DsClaimedMessage {
+message DsClaimed {
     AnonymousSchema3 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -191,7 +191,7 @@ message AnonymousSchema4 {
 }
 
 // path: #/components/messages/dsCount/payload
-message DsCountMessage {
+message DsCount {
     AnonymousSchema4 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -223,7 +223,7 @@ message AnonymousSchema5 {
 }
 
 // path: #/components/messages/dsStatusChanged/payload
-message DsStatusChangedMessage {
+message DsStatusChanged {
     AnonymousSchema5 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -254,7 +254,7 @@ message AnonymousSchema6 {
 }
 
 // path: #/components/messages/sessionEnded/payload
-message SessionEndedMessage {
+message SessionEnded {
     AnonymousSchema6 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -283,28 +283,28 @@ message SessionEndedMessage {
 // --- #/components/messages/{message_name} ---
 
 // path: #/components/messages/allocationComplete
-message AllocationComplete {
-    AllocationCompleteMessage payload = 1;
+message AllocationCompleteMessage {
+    AllocationComplete payload = 1;
 }
 
 // path: #/components/messages/dsClaimed
-message DsClaimed {
-    DsClaimedMessage payload = 1;
+message DsClaimedMessage {
+    DsClaimed payload = 1;
 }
 
 // path: #/components/messages/dsCount
-message DsCount {
-    DsCountMessage payload = 1;
+message DsCountMessage {
+    DsCount payload = 1;
 }
 
 // path: #/components/messages/dsStatusChanged
-message DsStatusChanged {
-    DsStatusChangedMessage payload = 1;
+message DsStatusChangedMessage {
+    DsStatusChanged payload = 1;
 }
 
 // path: #/components/messages/sessionEnded
-message SessionEnded {
-    SessionEndedMessage payload = 1;
+message SessionEndedMessage {
+    SessionEnded payload = 1;
 }
 
 
@@ -324,24 +324,28 @@ message DsmcontrollerPublish {
 
 // --- service ---
 
-service AsyncAPIForJusticeDedicatedServerManagerControllerService {
-    // Dsmcontroller Channel
 
-    // Publishes a message to the Dsmcontroller channel.
-    rpc PublishToDsmcontrollerChannel(DsmcontrollerPublish) returns (google.protobuf.Empty);
+// Publishes a AllocationComplete to the Dsmcontroller channel. (oneOf variant) (dsmcontroller AllocationComplete)
+service DsmcontrollerAllocationCompleteService {
+    rpc OnMessage(AllocationComplete) returns (google.protobuf.Empty);
+}
 
-    // Publishes a AllocationCompleteMessage to the Dsmcontroller channel. (oneOf variant)
-    rpc PublishAllocationCompleteMessageToDsmcontrollerChannel(AllocationCompleteMessage) returns (google.protobuf.Empty);
+// Publishes a DsClaimed to the Dsmcontroller channel. (oneOf variant) (dsmcontroller DsClaimed)
+service DsmcontrollerDsClaimedService {
+    rpc OnMessage(DsClaimed) returns (google.protobuf.Empty);
+}
 
-    // Publishes a DsClaimedMessage to the Dsmcontroller channel. (oneOf variant)
-    rpc PublishDsClaimedMessageToDsmcontrollerChannel(DsClaimedMessage) returns (google.protobuf.Empty);
+// Publishes a DsCount to the Dsmcontroller channel. (oneOf variant) (dsmcontroller DsCount)
+service DsmcontrollerDsCountService {
+    rpc OnMessage(DsCount) returns (google.protobuf.Empty);
+}
 
-    // Publishes a DsCountMessage to the Dsmcontroller channel. (oneOf variant)
-    rpc PublishDsCountMessageToDsmcontrollerChannel(DsCountMessage) returns (google.protobuf.Empty);
+// Publishes a DsStatusChanged to the Dsmcontroller channel. (oneOf variant) (dsmcontroller DsStatusChanged)
+service DsmcontrollerDsStatusChangedService {
+    rpc OnMessage(DsStatusChanged) returns (google.protobuf.Empty);
+}
 
-    // Publishes a DsStatusChangedMessage to the Dsmcontroller channel. (oneOf variant)
-    rpc PublishDsStatusChangedMessageToDsmcontrollerChannel(DsStatusChangedMessage) returns (google.protobuf.Empty);
-
-    // Publishes a SessionEndedMessage to the Dsmcontroller channel. (oneOf variant)
-    rpc PublishSessionEndedMessageToDsmcontrollerChannel(SessionEndedMessage) returns (google.protobuf.Empty);
+// Publishes a SessionEnded to the Dsmcontroller channel. (oneOf variant) (dsmcontroller SessionEnded)
+service DsmcontrollerSessionEndedService {
+    rpc OnMessage(SessionEnded) returns (google.protobuf.Empty);
 }

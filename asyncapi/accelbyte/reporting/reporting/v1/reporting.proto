@@ -50,7 +50,7 @@ message AnonymousSchema1 {
 }
 
 // path: #/components/messages/hideContent/payload
-message HideContentMessage {
+message HideContent {
     AnonymousSchema1 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -70,8 +70,8 @@ message HideContentMessage {
 // --- #/components/messages/{message_name} ---
 
 // path: #/components/messages/hideContent
-message HideContent {
-    HideContentMessage payload = 1;
+message HideContentMessage {
+    HideContent payload = 1;
 }
 
 
@@ -87,12 +87,8 @@ message AutoModerationPublish {
 
 // --- service ---
 
-service ReportingServiceEvents {
-    // Auto Moderation Channel
 
-    // Publishes a message to the Auto Moderation channel.
-    rpc PublishToAutoModerationChannel(AutoModerationPublish) returns (google.protobuf.Empty);
-
-    // Publishes a HideContentMessage to the Auto Moderation channel. (oneOf variant)
-    rpc PublishHideContentMessageToAutoModerationChannel(HideContentMessage) returns (google.protobuf.Empty);
+// Publishes a HideContent to the Auto Moderation channel. (oneOf variant) (autoModeration HideContent)
+service AutoModerationHideContentService {
+    rpc OnMessage(HideContent) returns (google.protobuf.Empty);
 }

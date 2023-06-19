@@ -121,7 +121,7 @@ message AnonymousSchema1 {
 }
 
 // path: #/components/messages/ugcContentUpdated/payload
-message UgcContentUpdatedMessage {
+message UgcContentUpdated {
     AnonymousSchema1 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -143,7 +143,7 @@ message AnonymousSchema2 {
 }
 
 // path: #/components/messages/ugcContentDeleted/payload
-message UgcContentDeletedMessage {
+message UgcContentDeleted {
     AnonymousSchema2 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -165,7 +165,7 @@ message AnonymousSchema3 {
 }
 
 // path: #/components/messages/ugcContentHide/payload
-message UgcContentHideMessage {
+message UgcContentHide {
     AnonymousSchema3 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -187,7 +187,7 @@ message AnonymousSchema4 {
 }
 
 // path: #/components/messages/ugcContentUnHide/payload
-message UgcContentUnHideMessage {
+message UgcContentUnHide {
     AnonymousSchema4 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -209,7 +209,7 @@ message AnonymousSchema5 {
 }
 
 // path: #/components/messages/ugcContentCreated/payload
-message UgcContentCreatedMessage {
+message UgcContentCreated {
     AnonymousSchema5 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -231,7 +231,7 @@ message AnonymousSchema6 {
 }
 
 // path: #/components/messages/ugcContentLiked/payload
-message UgcContentLikedMessage {
+message UgcContentLiked {
     AnonymousSchema6 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -253,7 +253,7 @@ message AnonymousSchema7 {
 }
 
 // path: #/components/messages/ugcContentUnLiked/payload
-message UgcContentUnLikedMessage {
+message UgcContentUnLiked {
     AnonymousSchema7 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -275,7 +275,7 @@ message AnonymousSchema8 {
 }
 
 // path: #/components/messages/ugcChannelCreated/payload
-message UgcChannelCreatedMessage {
+message UgcChannelCreated {
     AnonymousSchema8 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -297,7 +297,7 @@ message AnonymousSchema9 {
 }
 
 // path: #/components/messages/ugcChannelUpdated/payload
-message UgcChannelUpdatedMessage {
+message UgcChannelUpdated {
     AnonymousSchema9 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -319,7 +319,7 @@ message AnonymousSchema10 {
 }
 
 // path: #/components/messages/ugcChannelDeleted/payload
-message UgcChannelDeletedMessage {
+message UgcChannelDeleted {
     AnonymousSchema10 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -341,7 +341,7 @@ message AnonymousSchema11 {
 }
 
 // path: #/components/messages/ugcCreatorCreated/payload
-message UgcCreatorCreatedMessage {
+message UgcCreatorCreated {
     AnonymousSchema11 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -363,7 +363,7 @@ message AnonymousSchema12 {
 }
 
 // path: #/components/messages/ugcCreatorFollowed/payload
-message UgcCreatorFollowedMessage {
+message UgcCreatorFollowed {
     AnonymousSchema12 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -385,7 +385,7 @@ message AnonymousSchema13 {
 }
 
 // path: #/components/messages/ugcCreatorUnFollowed/payload
-message UgcCreatorUnFollowedMessage {
+message UgcCreatorUnFollowed {
     AnonymousSchema13 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -407,7 +407,7 @@ message AnonymousSchema14 {
 }
 
 // path: #/components/messages/ugcCreatorDeleted/payload
-message UgcCreatorDeletedMessage {
+message UgcCreatorDeleted {
     AnonymousSchema14 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -429,7 +429,7 @@ message AnonymousSchema15 {
 }
 
 // path: #/components/messages/ugcCreatorBanned/payload
-message UgcCreatorBannedMessage {
+message UgcCreatorBanned {
     AnonymousSchema15 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -451,7 +451,7 @@ message AnonymousSchema16 {
 }
 
 // path: #/components/messages/ugcCreatorUnBanned/payload
-message UgcCreatorUnBannedMessage {
+message UgcCreatorUnBanned {
     AnonymousSchema16 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -473,7 +473,7 @@ message AnonymousSchema17 {
 }
 
 // path: #/components/messages/ugcContentGroupCreated/payload
-message UgcContentGroupCreatedMessage {
+message UgcContentGroupCreated {
     AnonymousSchema17 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -495,7 +495,7 @@ message AnonymousSchema18 {
 }
 
 // path: #/components/messages/ugcContentGroupUpdated/payload
-message UgcContentGroupUpdatedMessage {
+message UgcContentGroupUpdated {
     AnonymousSchema18 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -517,7 +517,7 @@ message AnonymousSchema19 {
 }
 
 // path: #/components/messages/ugcContentGroupDeleted/payload
-message UgcContentGroupDeletedMessage {
+message UgcContentGroupDeleted {
     AnonymousSchema19 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -537,98 +537,98 @@ message UgcContentGroupDeletedMessage {
 // --- #/components/messages/{message_name} ---
 
 // path: #/components/messages/ugcContentUpdated
-message UgcContentUpdated {
-    UgcContentUpdatedMessage payload = 1;
+message UgcContentUpdatedMessage {
+    UgcContentUpdated payload = 1;
 }
 
 // path: #/components/messages/ugcContentDeleted
-message UgcContentDeleted {
-    UgcContentDeletedMessage payload = 1;
+message UgcContentDeletedMessage {
+    UgcContentDeleted payload = 1;
 }
 
 // path: #/components/messages/ugcContentHide
-message UgcContentHide {
-    UgcContentHideMessage payload = 1;
+message UgcContentHideMessage {
+    UgcContentHide payload = 1;
 }
 
 // path: #/components/messages/ugcContentUnHide
-message UgcContentUnHide {
-    UgcContentUnHideMessage payload = 1;
+message UgcContentUnHideMessage {
+    UgcContentUnHide payload = 1;
 }
 
 // path: #/components/messages/ugcContentCreated
-message UgcContentCreated {
-    UgcContentCreatedMessage payload = 1;
+message UgcContentCreatedMessage {
+    UgcContentCreated payload = 1;
 }
 
 // path: #/components/messages/ugcContentLiked
-message UgcContentLiked {
-    UgcContentLikedMessage payload = 1;
+message UgcContentLikedMessage {
+    UgcContentLiked payload = 1;
 }
 
 // path: #/components/messages/ugcContentUnLiked
-message UgcContentUnLiked {
-    UgcContentUnLikedMessage payload = 1;
+message UgcContentUnLikedMessage {
+    UgcContentUnLiked payload = 1;
 }
 
 // path: #/components/messages/ugcChannelCreated
-message UgcChannelCreated {
-    UgcChannelCreatedMessage payload = 1;
+message UgcChannelCreatedMessage {
+    UgcChannelCreated payload = 1;
 }
 
 // path: #/components/messages/ugcChannelUpdated
-message UgcChannelUpdated {
-    UgcChannelUpdatedMessage payload = 1;
+message UgcChannelUpdatedMessage {
+    UgcChannelUpdated payload = 1;
 }
 
 // path: #/components/messages/ugcChannelDeleted
-message UgcChannelDeleted {
-    UgcChannelDeletedMessage payload = 1;
+message UgcChannelDeletedMessage {
+    UgcChannelDeleted payload = 1;
 }
 
 // path: #/components/messages/ugcCreatorCreated
-message UgcCreatorCreated {
-    UgcCreatorCreatedMessage payload = 1;
+message UgcCreatorCreatedMessage {
+    UgcCreatorCreated payload = 1;
 }
 
 // path: #/components/messages/ugcCreatorFollowed
-message UgcCreatorFollowed {
-    UgcCreatorFollowedMessage payload = 1;
+message UgcCreatorFollowedMessage {
+    UgcCreatorFollowed payload = 1;
 }
 
 // path: #/components/messages/ugcCreatorUnFollowed
-message UgcCreatorUnFollowed {
-    UgcCreatorUnFollowedMessage payload = 1;
+message UgcCreatorUnFollowedMessage {
+    UgcCreatorUnFollowed payload = 1;
 }
 
 // path: #/components/messages/ugcCreatorDeleted
-message UgcCreatorDeleted {
-    UgcCreatorDeletedMessage payload = 1;
+message UgcCreatorDeletedMessage {
+    UgcCreatorDeleted payload = 1;
 }
 
 // path: #/components/messages/ugcCreatorBanned
-message UgcCreatorBanned {
-    UgcCreatorBannedMessage payload = 1;
+message UgcCreatorBannedMessage {
+    UgcCreatorBanned payload = 1;
 }
 
 // path: #/components/messages/ugcCreatorUnBanned
-message UgcCreatorUnBanned {
-    UgcCreatorUnBannedMessage payload = 1;
+message UgcCreatorUnBannedMessage {
+    UgcCreatorUnBanned payload = 1;
 }
 
 // path: #/components/messages/ugcContentGroupCreated
-message UgcContentGroupCreated {
-    UgcContentGroupCreatedMessage payload = 1;
+message UgcContentGroupCreatedMessage {
+    UgcContentGroupCreated payload = 1;
 }
 
 // path: #/components/messages/ugcContentGroupUpdated
-message UgcContentGroupUpdated {
-    UgcContentGroupUpdatedMessage payload = 1;
+message UgcContentGroupUpdatedMessage {
+    UgcContentGroupUpdated payload = 1;
 }
 
 // path: #/components/messages/ugcContentGroupDeleted
-message UgcContentGroupDeleted {
-    UgcContentGroupDeletedMessage payload = 1;
+message UgcContentGroupDeletedMessage {
+    UgcContentGroupDeleted payload = 1;
 }
 
 
@@ -680,81 +680,98 @@ message UgcContentGroupPublish {
 
 // --- service ---
 
-service UGCServiceEvents {
-    // Ugc Content Channel
 
-    // Publishes a message to the Ugc Content channel.
-    rpc PublishToUgcContentChannel(UgcContentPublish) returns (google.protobuf.Empty);
+// Publishes a UgcContentUpdated to the Ugc Content channel. (oneOf variant) (ugcContent UgcContentUpdated)
+service UgcContentUgcContentUpdatedService {
+    rpc OnMessage(UgcContentUpdated) returns (google.protobuf.Empty);
+}
 
-    // Publishes a UgcContentUpdatedMessage to the Ugc Content channel. (oneOf variant)
-    rpc PublishUgcContentUpdatedMessageToUgcContentChannel(UgcContentUpdatedMessage) returns (google.protobuf.Empty);
+// Publishes a UgcContentDeleted to the Ugc Content channel. (oneOf variant) (ugcContent UgcContentDeleted)
+service UgcContentUgcContentDeletedService {
+    rpc OnMessage(UgcContentDeleted) returns (google.protobuf.Empty);
+}
 
-    // Publishes a UgcContentDeletedMessage to the Ugc Content channel. (oneOf variant)
-    rpc PublishUgcContentDeletedMessageToUgcContentChannel(UgcContentDeletedMessage) returns (google.protobuf.Empty);
+// Publishes a UgcContentHide to the Ugc Content channel. (oneOf variant) (ugcContent UgcContentHide)
+service UgcContentUgcContentHideService {
+    rpc OnMessage(UgcContentHide) returns (google.protobuf.Empty);
+}
 
-    // Publishes a UgcContentHideMessage to the Ugc Content channel. (oneOf variant)
-    rpc PublishUgcContentHideMessageToUgcContentChannel(UgcContentHideMessage) returns (google.protobuf.Empty);
+// Publishes a UgcContentUnHide to the Ugc Content channel. (oneOf variant) (ugcContent UgcContentUnHide)
+service UgcContentUgcContentUnHideService {
+    rpc OnMessage(UgcContentUnHide) returns (google.protobuf.Empty);
+}
 
-    // Publishes a UgcContentUnHideMessage to the Ugc Content channel. (oneOf variant)
-    rpc PublishUgcContentUnHideMessageToUgcContentChannel(UgcContentUnHideMessage) returns (google.protobuf.Empty);
+// Publishes a UgcContentCreated to the Ugc Content channel. (oneOf variant) (ugcContent UgcContentCreated)
+service UgcContentUgcContentCreatedService {
+    rpc OnMessage(UgcContentCreated) returns (google.protobuf.Empty);
+}
 
-    // Publishes a UgcContentCreatedMessage to the Ugc Content channel. (oneOf variant)
-    rpc PublishUgcContentCreatedMessageToUgcContentChannel(UgcContentCreatedMessage) returns (google.protobuf.Empty);
+// Publishes a UgcContentLiked to the Ugc Content channel. (oneOf variant) (ugcContent UgcContentLiked)
+service UgcContentUgcContentLikedService {
+    rpc OnMessage(UgcContentLiked) returns (google.protobuf.Empty);
+}
 
-    // Publishes a UgcContentLikedMessage to the Ugc Content channel. (oneOf variant)
-    rpc PublishUgcContentLikedMessageToUgcContentChannel(UgcContentLikedMessage) returns (google.protobuf.Empty);
+// Publishes a UgcContentUnLiked to the Ugc Content channel. (oneOf variant) (ugcContent UgcContentUnLiked)
+service UgcContentUgcContentUnLikedService {
+    rpc OnMessage(UgcContentUnLiked) returns (google.protobuf.Empty);
+}
 
-    // Publishes a UgcContentUnLikedMessage to the Ugc Content channel. (oneOf variant)
-    rpc PublishUgcContentUnLikedMessageToUgcContentChannel(UgcContentUnLikedMessage) returns (google.protobuf.Empty);
+// Publishes a UgcChannelCreated to the Ugc Channel channel. (oneOf variant) (ugcChannel UgcChannelCreated)
+service UgcChannelUgcChannelCreatedService {
+    rpc OnMessage(UgcChannelCreated) returns (google.protobuf.Empty);
+}
 
-    // Ugc Channel Channel
+// Publishes a UgcChannelUpdated to the Ugc Channel channel. (oneOf variant) (ugcChannel UgcChannelUpdated)
+service UgcChannelUgcChannelUpdatedService {
+    rpc OnMessage(UgcChannelUpdated) returns (google.protobuf.Empty);
+}
 
-    // Publishes a message to the Ugc Channel channel.
-    rpc PublishToUgcChannelChannel(UgcChannelPublish) returns (google.protobuf.Empty);
+// Publishes a UgcChannelDeleted to the Ugc Channel channel. (oneOf variant) (ugcChannel UgcChannelDeleted)
+service UgcChannelUgcChannelDeletedService {
+    rpc OnMessage(UgcChannelDeleted) returns (google.protobuf.Empty);
+}
 
-    // Publishes a UgcChannelCreatedMessage to the Ugc Channel channel. (oneOf variant)
-    rpc PublishUgcChannelCreatedMessageToUgcChannelChannel(UgcChannelCreatedMessage) returns (google.protobuf.Empty);
+// Publishes a UgcCreatorCreated to the Ugc Creator channel. (oneOf variant) (ugcCreator UgcCreatorCreated)
+service UgcCreatorUgcCreatorCreatedService {
+    rpc OnMessage(UgcCreatorCreated) returns (google.protobuf.Empty);
+}
 
-    // Publishes a UgcChannelUpdatedMessage to the Ugc Channel channel. (oneOf variant)
-    rpc PublishUgcChannelUpdatedMessageToUgcChannelChannel(UgcChannelUpdatedMessage) returns (google.protobuf.Empty);
+// Publishes a UgcCreatorFollowed to the Ugc Creator channel. (oneOf variant) (ugcCreator UgcCreatorFollowed)
+service UgcCreatorUgcCreatorFollowedService {
+    rpc OnMessage(UgcCreatorFollowed) returns (google.protobuf.Empty);
+}
 
-    // Publishes a UgcChannelDeletedMessage to the Ugc Channel channel. (oneOf variant)
-    rpc PublishUgcChannelDeletedMessageToUgcChannelChannel(UgcChannelDeletedMessage) returns (google.protobuf.Empty);
+// Publishes a UgcCreatorUnFollowed to the Ugc Creator channel. (oneOf variant) (ugcCreator UgcCreatorUnFollowed)
+service UgcCreatorUgcCreatorUnFollowedService {
+    rpc OnMessage(UgcCreatorUnFollowed) returns (google.protobuf.Empty);
+}
 
-    // Ugc Creator Channel
+// Publishes a UgcCreatorDeleted to the Ugc Creator channel. (oneOf variant) (ugcCreator UgcCreatorDeleted)
+service UgcCreatorUgcCreatorDeletedService {
+    rpc OnMessage(UgcCreatorDeleted) returns (google.protobuf.Empty);
+}
 
-    // Publishes a message to the Ugc Creator channel.
-    rpc PublishToUgcCreatorChannel(UgcCreatorPublish) returns (google.protobuf.Empty);
+// Publishes a UgcCreatorBanned to the Ugc Creator channel. (oneOf variant) (ugcCreator UgcCreatorBanned)
+service UgcCreatorUgcCreatorBannedService {
+    rpc OnMessage(UgcCreatorBanned) returns (google.protobuf.Empty);
+}
 
-    // Publishes a UgcCreatorCreatedMessage to the Ugc Creator channel. (oneOf variant)
-    rpc PublishUgcCreatorCreatedMessageToUgcCreatorChannel(UgcCreatorCreatedMessage) returns (google.protobuf.Empty);
+// Publishes a UgcCreatorUnBanned to the Ugc Creator channel. (oneOf variant) (ugcCreator UgcCreatorUnBanned)
+service UgcCreatorUgcCreatorUnBannedService {
+    rpc OnMessage(UgcCreatorUnBanned) returns (google.protobuf.Empty);
+}
 
-    // Publishes a UgcCreatorFollowedMessage to the Ugc Creator channel. (oneOf variant)
-    rpc PublishUgcCreatorFollowedMessageToUgcCreatorChannel(UgcCreatorFollowedMessage) returns (google.protobuf.Empty);
+// Publishes a UgcContentGroupCreated to the Ugc Content Group channel. (oneOf variant) (ugcContentGroup UgcContentGroupCreated)
+service UgcContentGroupUgcContentGroupCreatedService {
+    rpc OnMessage(UgcContentGroupCreated) returns (google.protobuf.Empty);
+}
 
-    // Publishes a UgcCreatorUnFollowedMessage to the Ugc Creator channel. (oneOf variant)
-    rpc PublishUgcCreatorUnFollowedMessageToUgcCreatorChannel(UgcCreatorUnFollowedMessage) returns (google.protobuf.Empty);
+// Publishes a UgcContentGroupUpdated to the Ugc Content Group channel. (oneOf variant) (ugcContentGroup UgcContentGroupUpdated)
+service UgcContentGroupUgcContentGroupUpdatedService {
+    rpc OnMessage(UgcContentGroupUpdated) returns (google.protobuf.Empty);
+}
 
-    // Publishes a UgcCreatorDeletedMessage to the Ugc Creator channel. (oneOf variant)
-    rpc PublishUgcCreatorDeletedMessageToUgcCreatorChannel(UgcCreatorDeletedMessage) returns (google.protobuf.Empty);
-
-    // Publishes a UgcCreatorBannedMessage to the Ugc Creator channel. (oneOf variant)
-    rpc PublishUgcCreatorBannedMessageToUgcCreatorChannel(UgcCreatorBannedMessage) returns (google.protobuf.Empty);
-
-    // Publishes a UgcCreatorUnBannedMessage to the Ugc Creator channel. (oneOf variant)
-    rpc PublishUgcCreatorUnBannedMessageToUgcCreatorChannel(UgcCreatorUnBannedMessage) returns (google.protobuf.Empty);
-
-    // Ugc Content Group Channel
-
-    // Publishes a message to the Ugc Content Group channel.
-    rpc PublishToUgcContentGroupChannel(UgcContentGroupPublish) returns (google.protobuf.Empty);
-
-    // Publishes a UgcContentGroupCreatedMessage to the Ugc Content Group channel. (oneOf variant)
-    rpc PublishUgcContentGroupCreatedMessageToUgcContentGroupChannel(UgcContentGroupCreatedMessage) returns (google.protobuf.Empty);
-
-    // Publishes a UgcContentGroupUpdatedMessage to the Ugc Content Group channel. (oneOf variant)
-    rpc PublishUgcContentGroupUpdatedMessageToUgcContentGroupChannel(UgcContentGroupUpdatedMessage) returns (google.protobuf.Empty);
-
-    // Publishes a UgcContentGroupDeletedMessage to the Ugc Content Group channel. (oneOf variant)
-    rpc PublishUgcContentGroupDeletedMessageToUgcContentGroupChannel(UgcContentGroupDeletedMessage) returns (google.protobuf.Empty);
+// Publishes a UgcContentGroupDeleted to the Ugc Content Group channel. (oneOf variant) (ugcContentGroup UgcContentGroupDeleted)
+service UgcContentGroupUgcContentGroupDeletedService {
+    rpc OnMessage(UgcContentGroupDeleted) returns (google.protobuf.Empty);
 }

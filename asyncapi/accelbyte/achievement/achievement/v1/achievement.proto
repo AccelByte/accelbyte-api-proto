@@ -70,7 +70,7 @@ message AnonymousSchema1 {
 }
 
 // path: #/components/messages/userAchievementUnlocked/payload
-message UserAchievementUnlockedMessage {
+message UserAchievementUnlocked {
     AnonymousSchema1 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -91,7 +91,7 @@ message AnonymousSchema2 {
 }
 
 // path: #/components/messages/globalAchievementUnlocked/payload
-message GlobalAchievementUnlockedMessage {
+message GlobalAchievementUnlocked {
     AnonymousSchema2 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -112,7 +112,7 @@ message AnonymousSchema3 {
 }
 
 // path: #/components/messages/achievementRewardClaimed/payload
-message AchievementRewardClaimedMessage {
+message AchievementRewardClaimed {
     AnonymousSchema3 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -131,18 +131,18 @@ message AchievementRewardClaimedMessage {
 // --- #/components/messages/{message_name} ---
 
 // path: #/components/messages/userAchievementUnlocked
-message UserAchievementUnlocked {
-    UserAchievementUnlockedMessage payload = 1;
+message UserAchievementUnlockedMessage {
+    UserAchievementUnlocked payload = 1;
 }
 
 // path: #/components/messages/globalAchievementUnlocked
-message GlobalAchievementUnlocked {
-    GlobalAchievementUnlockedMessage payload = 1;
+message GlobalAchievementUnlockedMessage {
+    GlobalAchievementUnlocked payload = 1;
 }
 
 // path: #/components/messages/achievementRewardClaimed
-message AchievementRewardClaimed {
-    AchievementRewardClaimedMessage payload = 1;
+message AchievementRewardClaimedMessage {
+    AchievementRewardClaimed payload = 1;
 }
 
 
@@ -160,18 +160,18 @@ message AchievementPublish {
 
 // --- service ---
 
-service AchievementServiceEvents {
-    // Achievement Channel
 
-    // Publishes a message to the Achievement channel.
-    rpc PublishToAchievementChannel(AchievementPublish) returns (google.protobuf.Empty);
+// Publishes a UserAchievementUnlocked to the Achievement channel. (oneOf variant) (achievement UserAchievementUnlocked)
+service AchievementUserAchievementUnlockedService {
+    rpc OnMessage(UserAchievementUnlocked) returns (google.protobuf.Empty);
+}
 
-    // Publishes a UserAchievementUnlockedMessage to the Achievement channel. (oneOf variant)
-    rpc PublishUserAchievementUnlockedMessageToAchievementChannel(UserAchievementUnlockedMessage) returns (google.protobuf.Empty);
+// Publishes a GlobalAchievementUnlocked to the Achievement channel. (oneOf variant) (achievement GlobalAchievementUnlocked)
+service AchievementGlobalAchievementUnlockedService {
+    rpc OnMessage(GlobalAchievementUnlocked) returns (google.protobuf.Empty);
+}
 
-    // Publishes a GlobalAchievementUnlockedMessage to the Achievement channel. (oneOf variant)
-    rpc PublishGlobalAchievementUnlockedMessageToAchievementChannel(GlobalAchievementUnlockedMessage) returns (google.protobuf.Empty);
-
-    // Publishes a AchievementRewardClaimedMessage to the Achievement channel. (oneOf variant)
-    rpc PublishAchievementRewardClaimedMessageToAchievementChannel(AchievementRewardClaimedMessage) returns (google.protobuf.Empty);
+// Publishes a AchievementRewardClaimed to the Achievement channel. (oneOf variant) (achievement AchievementRewardClaimed)
+service AchievementAchievementRewardClaimedService {
+    rpc OnMessage(AchievementRewardClaimed) returns (google.protobuf.Empty);
 }

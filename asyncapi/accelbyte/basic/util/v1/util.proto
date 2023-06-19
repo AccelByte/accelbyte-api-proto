@@ -63,7 +63,7 @@ message AnonymousSchema1 {
 }
 
 // path: #/components/messages/userContentUrlCreated/payload
-message UserContentUrlCreatedMessage {
+message UserContentUrlCreated {
     AnonymousSchema1 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -86,7 +86,7 @@ message AnonymousSchema2 {
 }
 
 // path: #/components/messages/countryGroupCreated/payload
-message CountryGroupCreatedMessage {
+message CountryGroupCreated {
     AnonymousSchema2 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -109,7 +109,7 @@ message AnonymousSchema3 {
 }
 
 // path: #/components/messages/countryGroupUpdated/payload
-message CountryGroupUpdatedMessage {
+message CountryGroupUpdated {
     AnonymousSchema3 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -129,18 +129,18 @@ message CountryGroupUpdatedMessage {
 // --- #/components/messages/{message_name} ---
 
 // path: #/components/messages/userContentUrlCreated
-message UserContentUrlCreated {
-    UserContentUrlCreatedMessage payload = 1;
+message UserContentUrlCreatedMessage {
+    UserContentUrlCreated payload = 1;
 }
 
 // path: #/components/messages/countryGroupCreated
-message CountryGroupCreated {
-    CountryGroupCreatedMessage payload = 1;
+message CountryGroupCreatedMessage {
+    CountryGroupCreated payload = 1;
 }
 
 // path: #/components/messages/countryGroupUpdated
-message CountryGroupUpdated {
-    CountryGroupUpdatedMessage payload = 1;
+message CountryGroupUpdatedMessage {
+    CountryGroupUpdated payload = 1;
 }
 
 
@@ -164,23 +164,18 @@ message CountryGroupPublish {
 
 // --- service ---
 
-service BasicServiceUtilEvents {
-    // User Content Channel
 
-    // Publishes a message to the User Content channel.
-    rpc PublishToUserContentChannel(UserContentPublish) returns (google.protobuf.Empty);
+// Publishes a UserContentUrlCreated to the User Content channel. (oneOf variant) (userContent UserContentUrlCreated)
+service UserContentUserContentUrlCreatedService {
+    rpc OnMessage(UserContentUrlCreated) returns (google.protobuf.Empty);
+}
 
-    // Publishes a UserContentUrlCreatedMessage to the User Content channel. (oneOf variant)
-    rpc PublishUserContentUrlCreatedMessageToUserContentChannel(UserContentUrlCreatedMessage) returns (google.protobuf.Empty);
+// Publishes a CountryGroupCreated to the Country Group channel. (oneOf variant) (countryGroup CountryGroupCreated)
+service CountryGroupCountryGroupCreatedService {
+    rpc OnMessage(CountryGroupCreated) returns (google.protobuf.Empty);
+}
 
-    // Country Group Channel
-
-    // Publishes a message to the Country Group channel.
-    rpc PublishToCountryGroupChannel(CountryGroupPublish) returns (google.protobuf.Empty);
-
-    // Publishes a CountryGroupCreatedMessage to the Country Group channel. (oneOf variant)
-    rpc PublishCountryGroupCreatedMessageToCountryGroupChannel(CountryGroupCreatedMessage) returns (google.protobuf.Empty);
-
-    // Publishes a CountryGroupUpdatedMessage to the Country Group channel. (oneOf variant)
-    rpc PublishCountryGroupUpdatedMessageToCountryGroupChannel(CountryGroupUpdatedMessage) returns (google.protobuf.Empty);
+// Publishes a CountryGroupUpdated to the Country Group channel. (oneOf variant) (countryGroup CountryGroupUpdated)
+service CountryGroupCountryGroupUpdatedService {
+    rpc OnMessage(CountryGroupUpdated) returns (google.protobuf.Empty);
 }
