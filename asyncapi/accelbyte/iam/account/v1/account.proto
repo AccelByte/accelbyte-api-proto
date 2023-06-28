@@ -1,0 +1,1542 @@
+// Copyright (c) 2023 AccelByte Inc. All Rights Reserved.
+// This is licensed software from AccelByte Inc, for limitations
+// and restrictions contact your company contract manager.
+
+// source: IAM/AsyncAPI/account.yaml (0.1.0)
+
+syntax = "proto3";
+
+package accelbyte.iam.account.v1;
+// Version v1.0.0
+
+// --- imports ---
+
+import "google/protobuf/empty.proto";
+
+
+// --- options ---
+
+option csharp_namespace = "AccelByte.IAM.Account";
+option go_package = "accelbyte.net/iam/account";
+option java_multiple_files = true;
+option java_package = "net.accelbyte.iam.account";
+
+// --- schema objects ---
+
+// path: #/components/schemas/event
+message Event {
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+}
+
+// path: #/components/schemas/permissions
+message Permissions {
+    string resoure = 1;
+    string action = 2;
+    int64 schedAction = 3;
+    string schedCron = 4;
+    repeated string schedRange = 5;
+}
+
+// path: #/components/schemas/userAuthentication
+message UserAuthentication {
+    string platformId = 1;
+    bool refresh = 2;
+}
+
+// path: #/components/schemas/userAccount
+message UserAccount {
+    string userId = 1;
+    string emailAddress = 2;
+    string country = 3;
+    string namespace = 4;
+}
+
+// path: #/components/schemas/userGameAccount
+message UserGameAccount {
+    string userId = 1;
+    string emailAddress = 2;
+    string gameNamespace = 3;
+    string country = 4;
+}
+
+// path: #/components/schemas/userAccountStatus
+message UserAccountStatus {
+    bool deletionStatus = 1;
+    bool enabled = 2;
+    bool verified = 3;
+}
+
+// path: #/components/schemas/userAccountBan/properties/ban/items
+message AnonymousSchema1 {
+    string banId = 1;
+    string name = 2;
+    string reason = 3;
+    string comment = 4;
+    bool enabled = 5;
+}
+
+// path: #/components/schemas/userAccountBan
+message UserAccountBan {
+    repeated AnonymousSchema1 ban = 1;
+}
+
+// path: #/components/schemas/userInformation
+message UserInformation {
+    string displayName = 1;
+    string username = 2;
+    string country = 3;
+    string language = 4;
+    string dateOfBirth = 5;
+}
+
+// path: #/components/schemas/role
+message Role {
+    string roleId = 1;
+    string name = 2;
+}
+
+// path: #/components/schemas/countryAgeRestriction
+message CountryAgeRestriction {
+    string country = 1;
+    int64 restrictedAge = 2;
+}
+
+// path: #/components/schemas/thirdParty
+message ThirdParty {
+    string userId = 1;
+    string thirdPartyUserId = 2;
+    string platformId = 3;
+    string namespace = 4;
+    string displayName = 5;
+    string country = 6;
+}
+
+// path: #/components/schemas/platform
+message Platform {
+    string gameNamespace = 1;
+    string gameUserId = 2;
+    string country = 3;
+}
+
+// path: #/components/schemas/userFeatureBan
+message UserFeatureBan {
+    string userId = 1;
+    string namespace = 2;
+    string ban = 3;
+    string endDate = 4;
+    string reason = 5;
+    bool enable = 6;
+}
+
+// path: #/components/schemas/deletionGDPR
+message DeletionGDPR {
+    string userId = 1;
+    string namespace = 2;
+    int64 eventId = 3;
+    int64 code = 4;
+    string message = 5;
+}
+
+// path: #/components/schemas/userAccountThirdParty
+message UserAccountThirdParty {
+    string platformId = 1;
+    string platformUserId = 2;
+}
+
+// path: #/components/schemas/userAccountLink
+message UserAccountLink {
+    string namespace = 1;
+    string userId = 2;
+    string emailAddress = 3;
+}
+
+// path: #/components/schemas/userAccountUnlink
+message UserAccountUnlink {
+    string userId = 1;
+    string emailAddress = 2;
+    string targetNamespace = 3;
+    string targetUserId = 4;
+}
+
+// path: #/components/schemas/userAccountUpgrade
+message UserAccountUpgrade {
+    string userId = 1;
+    string emailAddress = 2;
+    string publisherUserId = 3;
+    string namespace = 4;
+}
+
+// path: #/components/messages/userAccountCreated/payload/properties/payload
+message AnonymousSchema2 {
+    UserAccount userAccount = 1;
+    UserAccountStatus userAccountStatus = 2;
+    string namespace = 3;
+    string userId = 4;
+}
+
+// path: #/components/messages/userAccountCreated/payload
+message UserAccountCreated {
+    AnonymousSchema2 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/userAccountDeleted/payload/properties/payload
+message AnonymousSchema3 {
+    UserAccount userAccount = 1;
+    UserAccountStatus userAccountStatus = 2;
+    string namespace = 3;
+    string userId = 4;
+}
+
+// path: #/components/messages/userAccountDeleted/payload
+message UserAccountDeleted {
+    AnonymousSchema3 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/userAccountEnabled/payload/properties/payload
+message AnonymousSchema4 {
+    UserAccount userAccount = 1;
+    UserAccountStatus userAccountStatus = 2;
+    string namespace = 3;
+    string userId = 4;
+}
+
+// path: #/components/messages/userAccountEnabled/payload
+message UserAccountEnabled {
+    AnonymousSchema4 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/userAccountDisabled/payload/properties/payload
+message AnonymousSchema5 {
+    UserAccount userAccount = 1;
+    UserAccountStatus userAccountStatus = 2;
+    string namespace = 3;
+    string userId = 4;
+}
+
+// path: #/components/messages/userAccountDisabled/payload
+message UserAccountDisabled {
+    AnonymousSchema5 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/userAccountEmailUpdated/payload/properties/payload
+message AnonymousSchema6 {
+    UserAccount userAccount = 1;
+    UserAccountStatus userAccountStatus = 2;
+    string namespace = 3;
+    string userId = 4;
+}
+
+// path: #/components/messages/userAccountEmailUpdated/payload
+message UserAccountEmailUpdated {
+    AnonymousSchema6 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/userAccountPasswordUpdated/payload/properties/payload
+message AnonymousSchema7 {
+    UserAccount userAccount = 1;
+    UserAccountStatus userAccountStatus = 2;
+    string namespace = 3;
+    string userId = 4;
+}
+
+// path: #/components/messages/userAccountPasswordUpdated/payload
+message UserAccountPasswordUpdated {
+    AnonymousSchema7 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/userAccountBanned/payload/properties/payload
+message AnonymousSchema8 {
+    UserAccount userAccount = 1;
+    UserAccountBan userAccountBan = 2;
+}
+
+// path: #/components/messages/userAccountBanned/payload
+message UserAccountBanned {
+    AnonymousSchema8 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/userAccountUnbanned/payload/properties/payload
+message AnonymousSchema9 {
+    UserAccount userAccount = 1;
+    UserAccountBan userAccountBan = 2;
+}
+
+// path: #/components/messages/userAccountUnbanned/payload
+message UserAccountUnbanned {
+    AnonymousSchema9 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/userAccountVerified/payload/properties/payload
+message AnonymousSchema10 {
+    UserAccount userAccount = 1;
+    UserAccountStatus userAccountStatus = 2;
+    string namespace = 3;
+    string userId = 4;
+}
+
+// path: #/components/messages/userAccountVerified/payload
+message UserAccountVerified {
+    AnonymousSchema10 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/userAccountLinked/payload/properties/payload
+message AnonymousSchema11 {
+    UserAccountLink userAccount = 1;
+    UserAccountThirdParty userAccountThirdParty = 2;
+}
+
+// path: #/components/messages/userAccountLinked/payload
+message UserAccountLinked {
+    AnonymousSchema11 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/userAccountUnlinked/payload/properties/payload
+message AnonymousSchema12 {
+    UserAccountUnlink userAccount = 1;
+    UserAccountThirdParty userAccountThirdParty = 2;
+}
+
+// path: #/components/messages/userAccountUnlinked/payload
+message UserAccountUnlinked {
+    AnonymousSchema12 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/userAccountUpgraded/payload/properties/payload
+message AnonymousSchema13 {
+    UserAccountUpgrade userAccount = 1;
+}
+
+// path: #/components/messages/userAccountUpgraded/payload
+message UserAccountUpgraded {
+    AnonymousSchema13 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/gameUserAccountCreated/payload/properties/payload
+message AnonymousSchema14 {
+    UserGameAccount userAccount = 1;
+    UserAccountStatus userAccountStatus = 2;
+    string namespace = 3;
+    string userId = 4;
+}
+
+// path: #/components/messages/gameUserAccountCreated/payload
+message GameUserAccountCreated {
+    AnonymousSchema14 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/gameUserCreated/payload/properties/payload
+message AnonymousSchema15 {
+    Platform platform = 1;
+}
+
+// path: #/components/messages/gameUserCreated/payload
+message GameUserCreated {
+    AnonymousSchema15 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/thirdPartyAccountCreated/payload/properties/payload
+message AnonymousSchema16 {
+    ThirdParty thirdParty = 1;
+    string namespace = 2;
+    string userId = 3;
+}
+
+// path: #/components/messages/thirdPartyAccountCreated/payload
+message ThirdPartyAccountCreated {
+    AnonymousSchema16 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/userLoggedIn/payload/properties/payload
+message AnonymousSchema17 {
+    UserAccount userAccount = 1;
+    UserAuthentication userAuthentication = 2;
+}
+
+// path: #/components/messages/userLoggedIn/payload
+message UserLoggedIn {
+    AnonymousSchema17 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/userLoggedOut/payload/properties/payload
+message AnonymousSchema18 {
+    UserAccount userAccount = 1;
+    UserAuthentication userAuthentication = 2;
+}
+
+// path: #/components/messages/userLoggedOut/payload
+message UserLoggedOut {
+    AnonymousSchema18 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/userThirdPartyLoggedIn/payload/properties/payload
+message AnonymousSchema19 {
+    UserAccount userAccount = 1;
+    UserAuthentication userAuthentication = 2;
+}
+
+// path: #/components/messages/userThirdPartyLoggedIn/payload
+message UserThirdPartyLoggedIn {
+    AnonymousSchema19 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/userInformationCreated/payload/properties/payload
+message AnonymousSchema20 {
+    UserAccount userAccount = 1;
+    UserInformation userInformation = 2;
+}
+
+// path: #/components/messages/userInformationCreated/payload
+message UserInformationCreated {
+    AnonymousSchema20 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/userInformationDisplayNameUpdated/payload/properties/payload
+message AnonymousSchema21 {
+    UserAccount userAccount = 1;
+    UserInformation userInformation = 2;
+}
+
+// path: #/components/messages/userInformationDisplayNameUpdated/payload
+message UserInformationDisplayNameUpdated {
+    AnonymousSchema21 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/userInformationCountryUpdated/payload/properties/payload
+message AnonymousSchema22 {
+    UserAccount userAccount = 1;
+    UserInformation userInformation = 2;
+}
+
+// path: #/components/messages/userInformationCountryUpdated/payload
+message UserInformationCountryUpdated {
+    AnonymousSchema22 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/userInformationLanguageUpdated/payload/properties/payload
+message AnonymousSchema23 {
+    UserAccount userAccount = 1;
+    UserInformation userInformation = 2;
+}
+
+// path: #/components/messages/userInformationLanguageUpdated/payload
+message UserInformationLanguageUpdated {
+    AnonymousSchema23 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/userInformationDateOfBirthUpdated/payload/properties/payload
+message AnonymousSchema24 {
+    UserAccount userAccount = 1;
+    UserInformation userInformation = 2;
+}
+
+// path: #/components/messages/userInformationDateOfBirthUpdated/payload
+message UserInformationDateOfBirthUpdated {
+    AnonymousSchema24 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/userPermissionsCreated/payload/properties/payload
+message AnonymousSchema25 {
+    UserAccount userAccount = 1;
+    repeated Permissions permissions = 2;
+}
+
+// path: #/components/messages/userPermissionsCreated/payload
+message UserPermissionsCreated {
+    AnonymousSchema25 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/userPermissionsDeleted/payload/properties/payload
+message AnonymousSchema26 {
+    UserAccount userAccount = 1;
+    repeated Permissions permissions = 2;
+}
+
+// path: #/components/messages/userPermissionsDeleted/payload
+message UserPermissionsDeleted {
+    AnonymousSchema26 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/userRolesCreated/payload/properties/payload
+message AnonymousSchema27 {
+    UserAccount userAccount = 1;
+    repeated Role roles = 2;
+}
+
+// path: #/components/messages/userRolesCreated/payload
+message UserRolesCreated {
+    AnonymousSchema27 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/userRolesDeleted/payload/properties/payload
+message AnonymousSchema28 {
+    UserAccount userAccount = 1;
+    repeated string roles = 2;
+}
+
+// path: #/components/messages/userRolesDeleted/payload
+message UserRolesDeleted {
+    AnonymousSchema28 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/countryAgeRestrictionCreated/payload/properties/payload
+message AnonymousSchema29 {
+    CountryAgeRestriction countryAgeRestriction = 1;
+}
+
+// path: #/components/messages/countryAgeRestrictionCreated/payload
+message CountryAgeRestrictionCreated {
+    AnonymousSchema29 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/countryAgeRestrictionUpdated/payload/properties/payload
+message AnonymousSchema30 {
+    CountryAgeRestriction countryAgeRestriction = 1;
+}
+
+// path: #/components/messages/countryAgeRestrictionUpdated/payload
+message CountryAgeRestrictionUpdated {
+    AnonymousSchema30 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/chatAllBanned/payload/properties/payload
+message AnonymousSchema31 {
+    UserFeatureBan userFeatureBan = 1;
+}
+
+// path: #/components/messages/chatAllBanned/payload
+message ChatAllBanned {
+    AnonymousSchema31 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/chatSendBanned/payload/properties/payload
+message AnonymousSchema32 {
+    UserFeatureBan userFeatureBan = 1;
+}
+
+// path: #/components/messages/chatSendBanned/payload
+message ChatSendBanned {
+    AnonymousSchema32 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/leaderboardBanned/payload/properties/payload
+message AnonymousSchema33 {
+    UserFeatureBan userFeatureBan = 1;
+}
+
+// path: #/components/messages/leaderboardBanned/payload
+message LeaderboardBanned {
+    AnonymousSchema33 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/statisticsBanned/payload/properties/payload
+message AnonymousSchema34 {
+    UserFeatureBan userFeatureBan = 1;
+}
+
+// path: #/components/messages/statisticsBanned/payload
+message StatisticsBanned {
+    AnonymousSchema34 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/orderAndPaymentBanned/payload/properties/payload
+message AnonymousSchema35 {
+    UserFeatureBan userFeatureBan = 1;
+}
+
+// path: #/components/messages/orderAndPaymentBanned/payload
+message OrderAndPaymentBanned {
+    AnonymousSchema35 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/matchmakingBanned/payload/properties/payload
+message AnonymousSchema36 {
+    UserFeatureBan userFeatureBan = 1;
+}
+
+// path: #/components/messages/matchmakingBanned/payload
+message MatchmakingBanned {
+    AnonymousSchema36 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/ugcCreateUpdateBanned/payload/properties/payload
+message AnonymousSchema37 {
+    UserFeatureBan userFeatureBan = 1;
+}
+
+// path: #/components/messages/ugcCreateUpdateBanned/payload
+message UgcCreateUpdateBanned {
+    AnonymousSchema37 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/userDisconnectRequested/payload/properties/payload
+message AnonymousSchema38 {
+    string userId = 1;
+}
+
+// path: #/components/messages/userDisconnectRequested/payload
+message UserDisconnectRequested {
+    AnonymousSchema38 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/gdprRequestDataDeletionResponse/payload/properties/payload
+message AnonymousSchema39 {
+    DeletionGDPR deletionGDPR = 1;
+}
+
+// path: #/components/messages/gdprRequestDataDeletionResponse/payload
+message GdprRequestDataDeletionResponse {
+    AnonymousSchema39 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+
+// --- #/components/messages/{message_name} ---
+
+// path: #/components/messages/userAccountCreated
+message UserAccountCreatedMessage {
+    UserAccountCreated payload = 1;
+}
+
+// path: #/components/messages/userAccountDeleted
+message UserAccountDeletedMessage {
+    UserAccountDeleted payload = 1;
+}
+
+// path: #/components/messages/userAccountEnabled
+message UserAccountEnabledMessage {
+    UserAccountEnabled payload = 1;
+}
+
+// path: #/components/messages/userAccountDisabled
+message UserAccountDisabledMessage {
+    UserAccountDisabled payload = 1;
+}
+
+// path: #/components/messages/userAccountEmailUpdated
+message UserAccountEmailUpdatedMessage {
+    UserAccountEmailUpdated payload = 1;
+}
+
+// path: #/components/messages/userAccountPasswordUpdated
+message UserAccountPasswordUpdatedMessage {
+    UserAccountPasswordUpdated payload = 1;
+}
+
+// path: #/components/messages/userAccountBanned
+message UserAccountBannedMessage {
+    UserAccountBanned payload = 1;
+}
+
+// path: #/components/messages/userAccountUnbanned
+message UserAccountUnbannedMessage {
+    UserAccountUnbanned payload = 1;
+}
+
+// path: #/components/messages/userAccountVerified
+message UserAccountVerifiedMessage {
+    UserAccountVerified payload = 1;
+}
+
+// path: #/components/messages/userAccountLinked
+message UserAccountLinkedMessage {
+    UserAccountLinked payload = 1;
+}
+
+// path: #/components/messages/userAccountUnlinked
+message UserAccountUnlinkedMessage {
+    UserAccountUnlinked payload = 1;
+}
+
+// path: #/components/messages/userAccountUpgraded
+message UserAccountUpgradedMessage {
+    UserAccountUpgraded payload = 1;
+}
+
+// path: #/components/messages/gameUserAccountCreated
+message GameUserAccountCreatedMessage {
+    GameUserAccountCreated payload = 1;
+}
+
+// path: #/components/messages/gameUserCreated
+message GameUserCreatedMessage {
+    GameUserCreated payload = 1;
+}
+
+// path: #/components/messages/thirdPartyAccountCreated
+message ThirdPartyAccountCreatedMessage {
+    ThirdPartyAccountCreated payload = 1;
+}
+
+// path: #/components/messages/userLoggedIn
+message UserLoggedInMessage {
+    UserLoggedIn payload = 1;
+}
+
+// path: #/components/messages/userLoggedOut
+message UserLoggedOutMessage {
+    UserLoggedOut payload = 1;
+}
+
+// path: #/components/messages/userThirdPartyLoggedIn
+message UserThirdPartyLoggedInMessage {
+    UserThirdPartyLoggedIn payload = 1;
+}
+
+// path: #/components/messages/userInformationCreated
+message UserInformationCreatedMessage {
+    UserInformationCreated payload = 1;
+}
+
+// path: #/components/messages/userInformationDisplayNameUpdated
+message UserInformationDisplayNameUpdatedMessage {
+    UserInformationDisplayNameUpdated payload = 1;
+}
+
+// path: #/components/messages/userInformationCountryUpdated
+message UserInformationCountryUpdatedMessage {
+    UserInformationCountryUpdated payload = 1;
+}
+
+// path: #/components/messages/userInformationLanguageUpdated
+message UserInformationLanguageUpdatedMessage {
+    UserInformationLanguageUpdated payload = 1;
+}
+
+// path: #/components/messages/userInformationDateOfBirthUpdated
+message UserInformationDateOfBirthUpdatedMessage {
+    UserInformationDateOfBirthUpdated payload = 1;
+}
+
+// path: #/components/messages/userPermissionsCreated
+message UserPermissionsCreatedMessage {
+    UserPermissionsCreated payload = 1;
+}
+
+// path: #/components/messages/userPermissionsDeleted
+message UserPermissionsDeletedMessage {
+    UserPermissionsDeleted payload = 1;
+}
+
+// path: #/components/messages/userRolesCreated
+message UserRolesCreatedMessage {
+    UserRolesCreated payload = 1;
+}
+
+// path: #/components/messages/userRolesDeleted
+message UserRolesDeletedMessage {
+    UserRolesDeleted payload = 1;
+}
+
+// path: #/components/messages/countryAgeRestrictionCreated
+message CountryAgeRestrictionCreatedMessage {
+    CountryAgeRestrictionCreated payload = 1;
+}
+
+// path: #/components/messages/countryAgeRestrictionUpdated
+message CountryAgeRestrictionUpdatedMessage {
+    CountryAgeRestrictionUpdated payload = 1;
+}
+
+// path: #/components/messages/chatAllBanned
+message ChatAllBannedMessage {
+    ChatAllBanned payload = 1;
+}
+
+// path: #/components/messages/chatSendBanned
+message ChatSendBannedMessage {
+    ChatSendBanned payload = 1;
+}
+
+// path: #/components/messages/leaderboardBanned
+message LeaderboardBannedMessage {
+    LeaderboardBanned payload = 1;
+}
+
+// path: #/components/messages/statisticsBanned
+message StatisticsBannedMessage {
+    StatisticsBanned payload = 1;
+}
+
+// path: #/components/messages/orderAndPaymentBanned
+message OrderAndPaymentBannedMessage {
+    OrderAndPaymentBanned payload = 1;
+}
+
+// path: #/components/messages/matchmakingBanned
+message MatchmakingBannedMessage {
+    MatchmakingBanned payload = 1;
+}
+
+// path: #/components/messages/ugcCreateUpdateBanned
+message UgcCreateUpdateBannedMessage {
+    UgcCreateUpdateBanned payload = 1;
+}
+
+// path: #/components/messages/userDisconnectRequested
+message UserDisconnectRequestedMessage {
+    UserDisconnectRequested payload = 1;
+}
+
+// path: #/components/messages/gdprRequestDataDeletionResponse
+message GdprRequestDataDeletionResponseMessage {
+    GdprRequestDataDeletionResponse payload = 1;
+}
+
+
+// --- #/channels/{channel_name}/{operation_type}/message ---
+
+// path: #/channels/userAccount/publish/message
+message UserAccountPublish {
+    oneof payload {
+        UserAccountCreated variant0 = 1;
+        UserAccountDeleted variant1 = 2;
+        UserAccountEnabled variant2 = 3;
+        UserAccountDisabled variant3 = 4;
+        UserAccountEmailUpdated variant4 = 5;
+        UserAccountPasswordUpdated variant5 = 6;
+        UserAccountBanned variant6 = 7;
+        UserAccountUnbanned variant7 = 8;
+        UserAccountVerified variant8 = 9;
+        UserAccountLinked variant9 = 10;
+        UserAccountUnlinked variant10 = 11;
+        UserAccountUpgraded variant11 = 12;
+        GameUserAccountCreated variant12 = 13;
+        ThirdPartyAccountCreated variant13 = 14;
+    }
+}
+
+// path: #/channels/userAuthentication/publish/message
+message UserAuthenticationPublish {
+    oneof payload {
+        UserLoggedIn variant0 = 1;
+        UserLoggedOut variant1 = 2;
+        UserThirdPartyLoggedIn variant2 = 3;
+    }
+}
+
+// path: #/channels/userInformation/publish/message
+message UserInformationPublish {
+    oneof payload {
+        UserInformationCreated variant0 = 1;
+        UserInformationDisplayNameUpdated variant1 = 2;
+        UserInformationCountryUpdated variant2 = 3;
+        UserInformationLanguageUpdated variant3 = 4;
+        UserInformationDateOfBirthUpdated variant4 = 5;
+    }
+}
+
+// path: #/channels/userPermissions/publish/message
+message UserPermissionsPublish {
+    oneof payload {
+        UserPermissionsCreated variant0 = 1;
+        UserPermissionsDeleted variant1 = 2;
+    }
+}
+
+// path: #/channels/userRoles/publish/message
+message UserRolesPublish {
+    oneof payload {
+        UserRolesCreated variant0 = 1;
+        UserRolesDeleted variant1 = 2;
+    }
+}
+
+// path: #/channels/countryAgeRestriction/publish/message
+message CountryAgeRestrictionPublish {
+    oneof payload {
+        CountryAgeRestrictionCreated variant0 = 1;
+        CountryAgeRestrictionUpdated variant1 = 2;
+    }
+}
+
+// path: #/channels/userTranslations/publish/message
+message UserTranslationsPublish {
+    oneof payload {
+        GameUserCreated variant0 = 1;
+    }
+}
+
+// path: #/channels/userFeatureBan/publish/message
+message UserFeatureBanPublish {
+    oneof payload {
+        ChatAllBanned variant0 = 1;
+        ChatSendBanned variant1 = 2;
+        LeaderboardBanned variant2 = 3;
+        StatisticsBanned variant3 = 4;
+        OrderAndPaymentBanned variant4 = 5;
+        MatchmakingBanned variant5 = 6;
+        UgcCreateUpdateBanned variant6 = 7;
+    }
+}
+
+// path: #/channels/lobby/publish/message
+message LobbyPublish {
+    oneof payload {
+        UserDisconnectRequested variant0 = 1;
+    }
+}
+
+// path: #/channels/deletion_account_gdpr/publish/message
+message DeletionAccountGdprPublish {
+    oneof payload {
+        GdprRequestDataDeletionResponse variant0 = 1;
+    }
+}
+
+
+// --- service ---
+
+
+// Publishes a UserAccountCreated to the User Account channel. (oneOf variant) (userAccount UserAccountCreated)
+service UserAccountUserAccountCreatedService {
+    rpc OnMessage(UserAccountCreated) returns (google.protobuf.Empty);
+}
+
+// Publishes a UserAccountDeleted to the User Account channel. (oneOf variant) (userAccount UserAccountDeleted)
+service UserAccountUserAccountDeletedService {
+    rpc OnMessage(UserAccountDeleted) returns (google.protobuf.Empty);
+}
+
+// Publishes a UserAccountEnabled to the User Account channel. (oneOf variant) (userAccount UserAccountEnabled)
+service UserAccountUserAccountEnabledService {
+    rpc OnMessage(UserAccountEnabled) returns (google.protobuf.Empty);
+}
+
+// Publishes a UserAccountDisabled to the User Account channel. (oneOf variant) (userAccount UserAccountDisabled)
+service UserAccountUserAccountDisabledService {
+    rpc OnMessage(UserAccountDisabled) returns (google.protobuf.Empty);
+}
+
+// Publishes a UserAccountEmailUpdated to the User Account channel. (oneOf variant) (userAccount UserAccountEmailUpdated)
+service UserAccountUserAccountEmailUpdatedService {
+    rpc OnMessage(UserAccountEmailUpdated) returns (google.protobuf.Empty);
+}
+
+// Publishes a UserAccountPasswordUpdated to the User Account channel. (oneOf variant) (userAccount UserAccountPasswordUpdated)
+service UserAccountUserAccountPasswordUpdatedService {
+    rpc OnMessage(UserAccountPasswordUpdated) returns (google.protobuf.Empty);
+}
+
+// Publishes a UserAccountBanned to the User Account channel. (oneOf variant) (userAccount UserAccountBanned)
+service UserAccountUserAccountBannedService {
+    rpc OnMessage(UserAccountBanned) returns (google.protobuf.Empty);
+}
+
+// Publishes a UserAccountUnbanned to the User Account channel. (oneOf variant) (userAccount UserAccountUnbanned)
+service UserAccountUserAccountUnbannedService {
+    rpc OnMessage(UserAccountUnbanned) returns (google.protobuf.Empty);
+}
+
+// Publishes a UserAccountVerified to the User Account channel. (oneOf variant) (userAccount UserAccountVerified)
+service UserAccountUserAccountVerifiedService {
+    rpc OnMessage(UserAccountVerified) returns (google.protobuf.Empty);
+}
+
+// Publishes a UserAccountLinked to the User Account channel. (oneOf variant) (userAccount UserAccountLinked)
+service UserAccountUserAccountLinkedService {
+    rpc OnMessage(UserAccountLinked) returns (google.protobuf.Empty);
+}
+
+// Publishes a UserAccountUnlinked to the User Account channel. (oneOf variant) (userAccount UserAccountUnlinked)
+service UserAccountUserAccountUnlinkedService {
+    rpc OnMessage(UserAccountUnlinked) returns (google.protobuf.Empty);
+}
+
+// Publishes a UserAccountUpgraded to the User Account channel. (oneOf variant) (userAccount UserAccountUpgraded)
+service UserAccountUserAccountUpgradedService {
+    rpc OnMessage(UserAccountUpgraded) returns (google.protobuf.Empty);
+}
+
+// Publishes a GameUserAccountCreated to the User Account channel. (oneOf variant) (userAccount GameUserAccountCreated)
+service UserAccountGameUserAccountCreatedService {
+    rpc OnMessage(GameUserAccountCreated) returns (google.protobuf.Empty);
+}
+
+// Publishes a ThirdPartyAccountCreated to the User Account channel. (oneOf variant) (userAccount ThirdPartyAccountCreated)
+service UserAccountThirdPartyAccountCreatedService {
+    rpc OnMessage(ThirdPartyAccountCreated) returns (google.protobuf.Empty);
+}
+
+// Publishes a UserLoggedIn to the User Authentication channel. (oneOf variant) (userAuthentication UserLoggedIn)
+service UserAuthenticationUserLoggedInService {
+    rpc OnMessage(UserLoggedIn) returns (google.protobuf.Empty);
+}
+
+// Publishes a UserLoggedOut to the User Authentication channel. (oneOf variant) (userAuthentication UserLoggedOut)
+service UserAuthenticationUserLoggedOutService {
+    rpc OnMessage(UserLoggedOut) returns (google.protobuf.Empty);
+}
+
+// Publishes a UserThirdPartyLoggedIn to the User Authentication channel. (oneOf variant) (userAuthentication UserThirdPartyLoggedIn)
+service UserAuthenticationUserThirdPartyLoggedInService {
+    rpc OnMessage(UserThirdPartyLoggedIn) returns (google.protobuf.Empty);
+}
+
+// Publishes a UserInformationCreated to the User Information channel. (oneOf variant) (userInformation UserInformationCreated)
+service UserInformationUserInformationCreatedService {
+    rpc OnMessage(UserInformationCreated) returns (google.protobuf.Empty);
+}
+
+// Publishes a UserInformationDisplayNameUpdated to the User Information channel. (oneOf variant) (userInformation UserInformationDisplayNameUpdated)
+service UserInformationUserInformationDisplayNameUpdatedService {
+    rpc OnMessage(UserInformationDisplayNameUpdated) returns (google.protobuf.Empty);
+}
+
+// Publishes a UserInformationCountryUpdated to the User Information channel. (oneOf variant) (userInformation UserInformationCountryUpdated)
+service UserInformationUserInformationCountryUpdatedService {
+    rpc OnMessage(UserInformationCountryUpdated) returns (google.protobuf.Empty);
+}
+
+// Publishes a UserInformationLanguageUpdated to the User Information channel. (oneOf variant) (userInformation UserInformationLanguageUpdated)
+service UserInformationUserInformationLanguageUpdatedService {
+    rpc OnMessage(UserInformationLanguageUpdated) returns (google.protobuf.Empty);
+}
+
+// Publishes a UserInformationDateOfBirthUpdated to the User Information channel. (oneOf variant) (userInformation UserInformationDateOfBirthUpdated)
+service UserInformationUserInformationDateOfBirthUpdatedService {
+    rpc OnMessage(UserInformationDateOfBirthUpdated) returns (google.protobuf.Empty);
+}
+
+// Publishes a UserPermissionsCreated to the User Permissions channel. (oneOf variant) (userPermissions UserPermissionsCreated)
+service UserPermissionsUserPermissionsCreatedService {
+    rpc OnMessage(UserPermissionsCreated) returns (google.protobuf.Empty);
+}
+
+// Publishes a UserPermissionsDeleted to the User Permissions channel. (oneOf variant) (userPermissions UserPermissionsDeleted)
+service UserPermissionsUserPermissionsDeletedService {
+    rpc OnMessage(UserPermissionsDeleted) returns (google.protobuf.Empty);
+}
+
+// Publishes a UserRolesCreated to the User Roles channel. (oneOf variant) (userRoles UserRolesCreated)
+service UserRolesUserRolesCreatedService {
+    rpc OnMessage(UserRolesCreated) returns (google.protobuf.Empty);
+}
+
+// Publishes a UserRolesDeleted to the User Roles channel. (oneOf variant) (userRoles UserRolesDeleted)
+service UserRolesUserRolesDeletedService {
+    rpc OnMessage(UserRolesDeleted) returns (google.protobuf.Empty);
+}
+
+// Publishes a CountryAgeRestrictionCreated to the Country Age Restriction channel. (oneOf variant) (countryAgeRestriction CountryAgeRestrictionCreated)
+service CountryAgeRestrictionCountryAgeRestrictionCreatedService {
+    rpc OnMessage(CountryAgeRestrictionCreated) returns (google.protobuf.Empty);
+}
+
+// Publishes a CountryAgeRestrictionUpdated to the Country Age Restriction channel. (oneOf variant) (countryAgeRestriction CountryAgeRestrictionUpdated)
+service CountryAgeRestrictionCountryAgeRestrictionUpdatedService {
+    rpc OnMessage(CountryAgeRestrictionUpdated) returns (google.protobuf.Empty);
+}
+
+// Publishes a GameUserCreated to the User Translations channel. (oneOf variant) (userTranslations GameUserCreated)
+service UserTranslationsGameUserCreatedService {
+    rpc OnMessage(GameUserCreated) returns (google.protobuf.Empty);
+}
+
+// Publishes a ChatAllBanned to the User Feature Ban channel. (oneOf variant) (userFeatureBan ChatAllBanned)
+service UserFeatureBanChatAllBannedService {
+    rpc OnMessage(ChatAllBanned) returns (google.protobuf.Empty);
+}
+
+// Publishes a ChatSendBanned to the User Feature Ban channel. (oneOf variant) (userFeatureBan ChatSendBanned)
+service UserFeatureBanChatSendBannedService {
+    rpc OnMessage(ChatSendBanned) returns (google.protobuf.Empty);
+}
+
+// Publishes a LeaderboardBanned to the User Feature Ban channel. (oneOf variant) (userFeatureBan LeaderboardBanned)
+service UserFeatureBanLeaderboardBannedService {
+    rpc OnMessage(LeaderboardBanned) returns (google.protobuf.Empty);
+}
+
+// Publishes a StatisticsBanned to the User Feature Ban channel. (oneOf variant) (userFeatureBan StatisticsBanned)
+service UserFeatureBanStatisticsBannedService {
+    rpc OnMessage(StatisticsBanned) returns (google.protobuf.Empty);
+}
+
+// Publishes a OrderAndPaymentBanned to the User Feature Ban channel. (oneOf variant) (userFeatureBan OrderAndPaymentBanned)
+service UserFeatureBanOrderAndPaymentBannedService {
+    rpc OnMessage(OrderAndPaymentBanned) returns (google.protobuf.Empty);
+}
+
+// Publishes a MatchmakingBanned to the User Feature Ban channel. (oneOf variant) (userFeatureBan MatchmakingBanned)
+service UserFeatureBanMatchmakingBannedService {
+    rpc OnMessage(MatchmakingBanned) returns (google.protobuf.Empty);
+}
+
+// Publishes a UgcCreateUpdateBanned to the User Feature Ban channel. (oneOf variant) (userFeatureBan UgcCreateUpdateBanned)
+service UserFeatureBanUgcCreateUpdateBannedService {
+    rpc OnMessage(UgcCreateUpdateBanned) returns (google.protobuf.Empty);
+}
+
+// Publishes a UserDisconnectRequested to the Lobby channel. (oneOf variant) (lobby UserDisconnectRequested)
+service LobbyUserDisconnectRequestedService {
+    rpc OnMessage(UserDisconnectRequested) returns (google.protobuf.Empty);
+}
+
+// Publishes a GdprRequestDataDeletionResponse to the Deletion Account Gdpr channel. (oneOf variant) (deletion_account_gdpr GdprRequestDataDeletionResponse)
+service DeletionAccountGdprGdprRequestDataDeletionResponseService {
+    rpc OnMessage(GdprRequestDataDeletionResponse) returns (google.protobuf.Empty);
+}

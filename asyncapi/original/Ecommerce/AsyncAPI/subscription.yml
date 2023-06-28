@@ -1,7 +1,7 @@
 asyncapi: '2.0.0'
 id: 'urn:net:accelbyte:platform:subscription'
 info:
-  title: AsyncAPI for justice reward service
+  title: AsyncAPI for justice subscription service
   version: 0.1.0
 channels:
   subscription:

@@ -99,12 +99,25 @@ message Fulfillment {
     string userId = 1;
     string orderNo = 2;
     string code = 3;
-    repeated FulfillmentItem fulfillItems = 4;
-    repeated string grantedItemIds = 5;
-    repeated EntitlementSummary entitlementSummaries = 6;
-    repeated CreditSummary creditSummaries = 7;
-    string status = 8;
-    FulfillmentError fulfillmentError = 9;
+    enum SourceEnum {
+        SOURCEENUM_PURCHASE = 0;
+        SOURCEENUM_IAP = 1;
+        SOURCEENUM_PROMOTION = 2;
+        SOURCEENUM_ACHIEVEMENT = 3;
+        SOURCEENUM_REFERRAL_BONUS = 4;
+        SOURCEENUM_REDEEM_CODE = 5;
+        SOURCEENUM_REWARD = 6;
+        SOURCEENUM_GIFT = 7;
+        SOURCEENUM_DLC = 8;
+        SOURCEENUM_OTHER = 9;
+    }
+    SourceEnum source = 4;
+    repeated FulfillmentItem fulfillItems = 5;
+    repeated string grantedItemIds = 6;
+    repeated EntitlementSummary entitlementSummaries = 7;
+    repeated CreditSummary creditSummaries = 8;
+    string status = 9;
+    FulfillmentError fulfillmentError = 10;
 }
 
 // path: #/components/messages/fulfillmentCompleted/payload/properties/payload

@@ -170,6 +170,19 @@ components:
         code:
           type: string
           description: redeemed code
+        source:
+          type: string
+          enum:
+          - PURCHASE
+          - IAP
+          - PROMOTION
+          - ACHIEVEMENT
+          - REFERRAL_BONUS
+          - REDEEM_CODE
+          - REWARD
+          - GIFT
+          - DLC
+          - OTHER
         fulfillItems:
           type: array
           description: items should do fulfillment

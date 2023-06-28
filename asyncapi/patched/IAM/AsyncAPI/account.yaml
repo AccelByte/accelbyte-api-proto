@@ -830,7 +830,7 @@ components:
               roles:
                 type: array
                 items:
-                  roles: string
+                  type: string
     countryAgeRestrictionCreated:
       name: countryAgeRestrictionCreated
       payload:
