@@ -1,0 +1,118 @@
+// Copyright (c) 2023 AccelByte Inc. All Rights Reserved.
+// This is licensed software from AccelByte Inc, for limitations
+// and restrictions contact your company contract manager.
+
+// source: Lobby/AsyncAPI/presence.yaml (0.1.0)
+
+syntax = "proto3";
+
+package accelbyte.lobby.presence.v1;
+// Version v1.0.0
+
+// --- imports ---
+
+import "google/protobuf/empty.proto";
+
+
+// --- options ---
+
+option csharp_namespace = "AccelByte.Lobby.Presence";
+option go_package = "accelbyte.net/lobby/presence";
+option java_multiple_files = true;
+option java_package = "net.accelbyte.lobby.presence";
+
+// --- schema objects ---
+
+// path: #/components/schemas/event
+message Event {
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/schemas/statusPayload
+message StatusPayload {
+    string userId = 1;
+    int64 availability = 2;
+    string activity = 3;
+}
+
+// path: #/components/messages/userSetStatus/payload
+message UserSetStatus {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/friendStatusUpdated/payload
+message FriendStatusUpdated {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+
+// --- #/components/messages/{message_name} ---
+
+// path: #/components/messages/userSetStatus
+message UserSetStatusMessage {
+    UserSetStatus payload = 1;
+}
+
+// path: #/components/messages/friendStatusUpdated
+message FriendStatusUpdatedMessage {
+    FriendStatusUpdated payload = 1;
+}
+
+
+// --- #/channels/{channel_name}/{operation_type}/message ---
+
+// path: #/channels/presence/publish/message
+message PresencePublish {
+    oneof payload {
+        UserSetStatus variant0 = 1;
+        FriendStatusUpdated variant1 = 2;
+    }
+}
+
+
+// --- service ---
+
+
+// Publishes a UserSetStatus to the Presence channel. (oneOf variant) (presence UserSetStatus)
+service PresenceUserSetStatusService {
+    rpc OnMessage(UserSetStatus) returns (google.protobuf.Empty);
+}
+
+// Publishes a FriendStatusUpdated to the Presence channel. (oneOf variant) (presence FriendStatusUpdated)
+service PresenceFriendStatusUpdatedService {
+    rpc OnMessage(FriendStatusUpdated) returns (google.protobuf.Empty);
+}

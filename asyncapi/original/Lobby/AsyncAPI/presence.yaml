@@ -55,27 +55,21 @@ components:
     userSetStatus:
       name: userSetStatus
       payload:
-        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               presence:
-                type: object
-                allOf:
-                  - $ref: '#/components/schemas/statusPayload'
+                $ref: '#/components/schemas/statusPayload'
 
     friendStatusUpdated:
       name: friendStatusUpdated
       payload:
-        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               presence:
-                type: object
-                allOf:
-                  - $ref: '#/components/schemas/statusPayload'
+                $ref: '#/components/schemas/statusPayload'

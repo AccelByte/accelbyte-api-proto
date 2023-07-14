@@ -1,0 +1,422 @@
+// Copyright (c) 2023 AccelByte Inc. All Rights Reserved.
+// This is licensed software from AccelByte Inc, for limitations
+// and restrictions contact your company contract manager.
+
+// source: Lobby/AsyncAPI/party.yaml (0.1.0)
+
+syntax = "proto3";
+
+package accelbyte.lobby.party.v1;
+// Version v1.0.0
+
+// --- imports ---
+
+import "google/protobuf/empty.proto";
+
+
+// --- options ---
+
+option csharp_namespace = "AccelByte.Lobby.Party";
+option go_package = "accelbyte.net/lobby/party";
+option java_multiple_files = true;
+option java_package = "net.accelbyte.lobby.party";
+
+// --- schema objects ---
+
+// path: #/components/schemas/event
+message Event {
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/schemas/partyCode
+message PartyCode {
+    string partyId = 1;
+    string partyCode = 2;
+}
+
+// path: #/components/schemas/partyPayload
+message PartyPayload {
+    string partyId = 1;
+    string leaderId = 2;
+}
+
+// path: #/components/schemas/invitePayload
+message InvitePayload {
+    string inviterId = 1;
+    repeated string inviteesId = 2;
+    string invitationToken = 3;
+}
+
+// path: #/components/schemas/platformPayload
+message PlatformPayload {
+    string platform = 1;
+    string platformUserId = 2;
+}
+
+// path: #/components/messages/partyCreated/payload
+message PartyCreated {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/partyUserInvited/payload
+message PartyUserInvited {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/partyUserJoined/payload
+message PartyUserJoined {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/partyUserLeft/payload
+message PartyUserLeft {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/partyUserKicked/payload
+message PartyUserKicked {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/partyUserReject/payload
+message PartyUserReject {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/partyUserNewLeader/payload
+message PartyUserNewLeader {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/partyDeleteCode/payload
+message PartyDeleteCode {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/partyJoinViaCode/payload
+message PartyJoinViaCode {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/partyChatSent/payload
+message PartyChatSent {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/partyGenerateCode/payload
+message PartyGenerateCode {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/partyGetCode/payload
+message PartyGetCode {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+
+// --- #/components/messages/{message_name} ---
+
+// path: #/components/messages/partyCreated
+message PartyCreatedMessage {
+    PartyCreated payload = 1;
+}
+
+// path: #/components/messages/partyUserInvited
+message PartyUserInvitedMessage {
+    PartyUserInvited payload = 1;
+}
+
+// path: #/components/messages/partyUserJoined
+message PartyUserJoinedMessage {
+    PartyUserJoined payload = 1;
+}
+
+// path: #/components/messages/partyUserLeft
+message PartyUserLeftMessage {
+    PartyUserLeft payload = 1;
+}
+
+// path: #/components/messages/partyUserKicked
+message PartyUserKickedMessage {
+    PartyUserKicked payload = 1;
+}
+
+// path: #/components/messages/partyUserReject
+message PartyUserRejectMessage {
+    PartyUserReject payload = 1;
+}
+
+// path: #/components/messages/partyUserNewLeader
+message PartyUserNewLeaderMessage {
+    PartyUserNewLeader payload = 1;
+}
+
+// path: #/components/messages/partyDeleteCode
+message PartyDeleteCodeMessage {
+    PartyDeleteCode payload = 1;
+}
+
+// path: #/components/messages/partyJoinViaCode
+message PartyJoinViaCodeMessage {
+    PartyJoinViaCode payload = 1;
+}
+
+// path: #/components/messages/partyChatSent
+message PartyChatSentMessage {
+    PartyChatSent payload = 1;
+}
+
+// path: #/components/messages/partyGenerateCode
+message PartyGenerateCodeMessage {
+    PartyGenerateCode payload = 1;
+}
+
+// path: #/components/messages/partyGetCode
+message PartyGetCodeMessage {
+    PartyGetCode payload = 1;
+}
+
+
+// --- #/channels/{channel_name}/{operation_type}/message ---
+
+// path: #/channels/party/publish/message
+message PartyPublish {
+    oneof payload {
+        PartyCreated variant0 = 1;
+        PartyUserInvited variant1 = 2;
+        PartyUserJoined variant2 = 3;
+        PartyUserLeft variant3 = 4;
+        PartyUserKicked variant4 = 5;
+        PartyUserReject variant5 = 6;
+        PartyUserNewLeader variant6 = 7;
+        PartyDeleteCode variant7 = 8;
+        PartyJoinViaCode variant8 = 9;
+        PartyGenerateCode variant9 = 10;
+        PartyGetCode variant10 = 11;
+    }
+}
+
+// path: #/channels/partyChat/publish/message
+message PartyChatPublish {
+    oneof payload {
+        PartyChatSent variant0 = 1;
+    }
+}
+
+
+// --- service ---
+
+
+// Publishes a PartyCreated to the Party channel. (oneOf variant) (party PartyCreated)
+service PartyPartyCreatedService {
+    rpc OnMessage(PartyCreated) returns (google.protobuf.Empty);
+}
+
+// Publishes a PartyUserInvited to the Party channel. (oneOf variant) (party PartyUserInvited)
+service PartyPartyUserInvitedService {
+    rpc OnMessage(PartyUserInvited) returns (google.protobuf.Empty);
+}
+
+// Publishes a PartyUserJoined to the Party channel. (oneOf variant) (party PartyUserJoined)
+service PartyPartyUserJoinedService {
+    rpc OnMessage(PartyUserJoined) returns (google.protobuf.Empty);
+}
+
+// Publishes a PartyUserLeft to the Party channel. (oneOf variant) (party PartyUserLeft)
+service PartyPartyUserLeftService {
+    rpc OnMessage(PartyUserLeft) returns (google.protobuf.Empty);
+}
+
+// Publishes a PartyUserKicked to the Party channel. (oneOf variant) (party PartyUserKicked)
+service PartyPartyUserKickedService {
+    rpc OnMessage(PartyUserKicked) returns (google.protobuf.Empty);
+}
+
+// Publishes a PartyUserReject to the Party channel. (oneOf variant) (party PartyUserReject)
+service PartyPartyUserRejectService {
+    rpc OnMessage(PartyUserReject) returns (google.protobuf.Empty);
+}
+
+// Publishes a PartyUserNewLeader to the Party channel. (oneOf variant) (party PartyUserNewLeader)
+service PartyPartyUserNewLeaderService {
+    rpc OnMessage(PartyUserNewLeader) returns (google.protobuf.Empty);
+}
+
+// Publishes a PartyDeleteCode to the Party channel. (oneOf variant) (party PartyDeleteCode)
+service PartyPartyDeleteCodeService {
+    rpc OnMessage(PartyDeleteCode) returns (google.protobuf.Empty);
+}
+
+// Publishes a PartyJoinViaCode to the Party channel. (oneOf variant) (party PartyJoinViaCode)
+service PartyPartyJoinViaCodeService {
+    rpc OnMessage(PartyJoinViaCode) returns (google.protobuf.Empty);
+}
+
+// Publishes a PartyGenerateCode to the Party channel. (oneOf variant) (party PartyGenerateCode)
+service PartyPartyGenerateCodeService {
+    rpc OnMessage(PartyGenerateCode) returns (google.protobuf.Empty);
+}
+
+// Publishes a PartyGetCode to the Party channel. (oneOf variant) (party PartyGetCode)
+service PartyPartyGetCodeService {
+    rpc OnMessage(PartyGetCode) returns (google.protobuf.Empty);
+}
+
+// Publishes a PartyChatSent to the Party Chat channel. (oneOf variant) (partyChat PartyChatSent)
+service PartyChatPartyChatSentService {
+    rpc OnMessage(PartyChatSent) returns (google.protobuf.Empty);
+}

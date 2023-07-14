@@ -1,0 +1,243 @@
+// Copyright (c) 2023 AccelByte Inc. All Rights Reserved.
+// This is licensed software from AccelByte Inc, for limitations
+// and restrictions contact your company contract manager.
+
+// source: Lobby/AsyncAPI/lobby.yaml (0.1.0)
+
+syntax = "proto3";
+
+package accelbyte.lobby.lobby.v1;
+// Version v1.0.0
+
+// --- imports ---
+
+import "google/protobuf/empty.proto";
+
+
+// --- options ---
+
+option csharp_namespace = "AccelByte.Lobby.Lobby";
+option go_package = "accelbyte.net/lobby/lobby";
+option java_multiple_files = true;
+option java_package = "net.accelbyte.lobby.lobby";
+
+// --- schema objects ---
+
+// path: #/components/schemas/event
+message Event {
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/schemas/userDisconnectedPayload
+message UserDisconnectedPayload {
+    string reason = 1;
+    int64 code = 2;
+    string platform = 3;
+    string lobbySessionId = 4;
+}
+
+// path: #/components/messages/userConnected/payload
+message UserConnected {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/userDisconnected/payload
+message UserDisconnected {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/userChatRateLimited/payload
+message UserChatRateLimited {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/userRateLimited/payload
+message UserRateLimited {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/matchmakingTicketsPublished/payload
+message MatchmakingTicketsPublished {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/totalUsersOnlinePublished/payload
+message TotalUsersOnlinePublished {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+
+// --- #/components/messages/{message_name} ---
+
+// path: #/components/messages/userConnected
+message UserConnectedMessage {
+    UserConnected payload = 1;
+}
+
+// path: #/components/messages/userDisconnected
+message UserDisconnectedMessage {
+    UserDisconnected payload = 1;
+}
+
+// path: #/components/messages/userChatRateLimited
+message UserChatRateLimitedMessage {
+    UserChatRateLimited payload = 1;
+}
+
+// path: #/components/messages/userRateLimited
+message UserRateLimitedMessage {
+    UserRateLimited payload = 1;
+}
+
+// path: #/components/messages/matchmakingTicketsPublished
+message MatchmakingTicketsPublishedMessage {
+    MatchmakingTicketsPublished payload = 1;
+}
+
+// path: #/components/messages/totalUsersOnlinePublished
+message TotalUsersOnlinePublishedMessage {
+    TotalUsersOnlinePublished payload = 1;
+}
+
+
+// --- #/channels/{channel_name}/{operation_type}/message ---
+
+// path: #/channels/lobby/publish/message
+message LobbyPublish {
+    oneof payload {
+        UserConnected variant0 = 1;
+        UserDisconnected variant1 = 2;
+        UserChatRateLimited variant2 = 3;
+        UserRateLimited variant3 = 4;
+    }
+}
+
+// path: #/channels/lobbyMatchmakingTickets/publish/message
+message LobbyMatchmakingTicketsPublish {
+    oneof payload {
+        MatchmakingTicketsPublished variant0 = 1;
+    }
+}
+
+// path: #/channels/lobbyTotalUsersOnline/publish/message
+message LobbyTotalUsersOnlinePublish {
+    oneof payload {
+        TotalUsersOnlinePublished variant0 = 1;
+    }
+}
+
+
+// --- service ---
+
+
+// Publishes a UserConnected to the Lobby channel. (oneOf variant) (lobby UserConnected)
+service LobbyUserConnectedService {
+    rpc OnMessage(UserConnected) returns (google.protobuf.Empty);
+}
+
+// Publishes a UserDisconnected to the Lobby channel. (oneOf variant) (lobby UserDisconnected)
+service LobbyUserDisconnectedService {
+    rpc OnMessage(UserDisconnected) returns (google.protobuf.Empty);
+}
+
+// Publishes a UserChatRateLimited to the Lobby channel. (oneOf variant) (lobby UserChatRateLimited)
+service LobbyUserChatRateLimitedService {
+    rpc OnMessage(UserChatRateLimited) returns (google.protobuf.Empty);
+}
+
+// Publishes a UserRateLimited to the Lobby channel. (oneOf variant) (lobby UserRateLimited)
+service LobbyUserRateLimitedService {
+    rpc OnMessage(UserRateLimited) returns (google.protobuf.Empty);
+}
+
+// Publishes a MatchmakingTicketsPublished to the Lobby Matchmaking Tickets channel. (oneOf variant) (lobbyMatchmakingTickets MatchmakingTicketsPublished)
+service LobbyMatchmakingTicketsMatchmakingTicketsPublishedService {
+    rpc OnMessage(MatchmakingTicketsPublished) returns (google.protobuf.Empty);
+}
+
+// Publishes a TotalUsersOnlinePublished to the Lobby Total Users Online channel. (oneOf variant) (lobbyTotalUsersOnline TotalUsersOnlinePublished)
+service LobbyTotalUsersOnlineTotalUsersOnlinePublishedService {
+    rpc OnMessage(TotalUsersOnlinePublished) returns (google.protobuf.Empty);
+}

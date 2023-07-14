@@ -72,7 +72,6 @@ components:
     userConnected:
       name: userConnected
       payload:
-        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
@@ -87,7 +86,6 @@ components:
     userDisconnected:
       name: userDisconnected
       payload:
-        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
@@ -116,7 +114,6 @@ components:
     matchmakingTicketsPublished:
       name: matchmakingTicketsPublished
       payload:
-        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
@@ -130,7 +127,6 @@ components:
     totalUsersOnlinePublished:
       name: totalUsersOnlinePublished
       payload:
-        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:

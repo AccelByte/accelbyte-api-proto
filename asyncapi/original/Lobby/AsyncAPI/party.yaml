@@ -98,14 +98,12 @@ components:
     partyCreated:
       name: partyCreated
       payload:
-        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               party:
-                type: object
                 allOf:
                   - $ref: '#/components/schemas/partyPayload'
                   - $ref: '#/components/schemas/invitePayload'
@@ -121,14 +119,12 @@ components:
     partyUserInvited:
       name: partyUserInvited
       payload:
-        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               party:
-                type: object
                 allOf:
                   - $ref: '#/components/schemas/partyPayload'
                   - $ref: '#/components/schemas/invitePayload'
@@ -140,14 +136,12 @@ components:
     partyUserJoined:
       name: partyUserJoined
       payload:
-        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               party:
-                type: object
                 allOf:
                   - $ref: '#/components/schemas/partyPayload'
                   - $ref: '#/components/schemas/invitePayload'
@@ -156,14 +150,12 @@ components:
     partyUserLeft:
       name: partyUserLeft
       payload:
-        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               party:
-                type: object
                 allOf:
                   - $ref: '#/components/schemas/partyPayload'
                   - $ref: '#/components/schemas/invitePayload'
@@ -174,14 +166,12 @@ components:
     partyUserKicked:
       name: partyUserKicked
       payload:
-        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               party:
-                type: object
                 allOf:
                   - $ref: '#/components/schemas/partyPayload'
                   - $ref: '#/components/schemas/invitePayload'
@@ -192,14 +182,12 @@ components:
     partyUserReject:
       name: partyUserReject
       payload:
-        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               party:
-                type: object
                 allOf:
                   - $ref: '#/components/schemas/partyPayload'
                   - $ref: '#/components/schemas/invitePayload'
@@ -207,21 +195,18 @@ components:
     partyUserNewLeader:
       name: partyUserNewLeader
       payload:
-        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               party:
-                type: object
                 allOf:
                   - $ref: '#/components/schemas/partyPayload'
 
     partyDeleteCode:
       name: partyDeleteCode
       payload:
-        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
@@ -234,12 +219,10 @@ components:
     partyJoinViaCode:
       name: partyJoinViaCode
       payload:
-        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           party:
-            type: object
             allOf:
               - $ref: '#/components/schemas/platformPayload'
             properties:
@@ -249,7 +232,6 @@ components:
     partyChatSent:
       name: partyChatSent
       payload:
-        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
@@ -268,27 +250,21 @@ components:
     partyGenerateCode:
       name: partyGenerateCode
       payload:
-        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               party:
-                type: object
-                allOf:
-                  - $ref: '#/components/schemas/partyCode'
+                $ref: '#/components/schemas/partyCode'
 
     partyGetCode:
       name: partyGetCode
       payload:
-        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               party:
-                type: object
-                allOf:
-                  - $ref: '#/components/schemas/partyCode'
+                $ref: '#/components/schemas/partyCode'

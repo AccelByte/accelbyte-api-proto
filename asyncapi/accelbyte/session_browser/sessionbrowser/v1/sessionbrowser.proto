@@ -1,0 +1,88 @@
+// Copyright (c) 2023 AccelByte Inc. All Rights Reserved.
+// This is licensed software from AccelByte Inc, for limitations
+// and restrictions contact your company contract manager.
+
+// source: SessionBrowser/AsyncAPI/sessionbrowser.yaml (0.1.0)
+
+syntax = "proto3";
+
+package accelbyte.session_browser.sessionbrowser.v1;
+// Version v1.0.0
+
+// --- imports ---
+
+import "google/protobuf/empty.proto";
+
+
+// --- options ---
+
+option csharp_namespace = "AccelByte.SessionBrowser.Sessionbrowser";
+option go_package = "accelbyte.net/sessionBrowser/sessionbrowser";
+option java_multiple_files = true;
+option java_package = "net.accelbyte.sessionBrowser.sessionbrowser";
+
+// --- schema objects ---
+
+// path: #/components/schemas/event
+message Event {
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+}
+
+// path: #/components/schemas/gamePayload
+message GamePayload {
+    int64 matchmaking = 1;
+    int64 customGame = 2;
+    int64 p2p = 3;
+}
+
+// path: #/components/messages/gameSessionMetricUpdated/payload
+message GameSessionMetricUpdated {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+}
+
+
+// --- #/components/messages/{message_name} ---
+
+// path: #/components/messages/gameSessionMetricUpdated
+message GameSessionMetricUpdatedMessage {
+    GameSessionMetricUpdated payload = 1;
+}
+
+
+// --- #/channels/{channel_name}/{operation_type}/message ---
+
+// path: #/channels/sessionBrowser/publish/message
+message SessionBrowserPublish {
+    oneof payload {
+        GameSessionMetricUpdated variant0 = 1;
+    }
+}
+
+
+// --- service ---
+
+
+// Publishes a GameSessionMetricUpdated to the Session Browser channel. (oneOf variant) (sessionBrowser GameSessionMetricUpdated)
+service SessionBrowserGameSessionMetricUpdatedService {
+    rpc OnMessage(GameSessionMetricUpdated) returns (google.protobuf.Empty);
+}

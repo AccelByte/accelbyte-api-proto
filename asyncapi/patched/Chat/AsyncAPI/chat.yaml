@@ -86,55 +86,43 @@ components:
     personalChatSent:
       name: personalChatSent
       payload:
-        type: object
         allOf:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               personalChatSent:
-                type: object
-                allOf:
-                - $ref: '#/components/schemas/chatPayload'
+                $ref: '#/components/schemas/chatPayload'
     userConnected:
       name: userConnected
       payload:
-        type: object
         allOf:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               userConnected:
-                type: object
-                allOf:
-                - $ref: '#/components/schemas/userPayloadConnected'
+                $ref: '#/components/schemas/userPayloadConnected'
     userDisconnected:
       name: userDisconnected
       payload:
-        type: object
         allOf:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               userDisconnected:
-                type: object
-                allOf:
-                - $ref: '#/components/schemas/userPayloadDisconnected'
+                $ref: '#/components/schemas/userPayloadDisconnected'
     userChatRateLimited:
       name: userChatRateLimited
       payload:
-        type: object
         allOf:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               userChatRateLimited:
-                type: object
-                allOf:
-                - $ref: '#/components/schemas/userChatRateLimited'
+                $ref: '#/components/schemas/userChatRateLimited'
 x-source: Chat/AsyncAPI/chat.yaml
 x-proto-package: accelbyte.chat.chat.v1
 x-proto-package-version: v1.0.0

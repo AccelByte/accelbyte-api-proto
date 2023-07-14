@@ -1,0 +1,475 @@
+// Copyright (c) 2023 AccelByte Inc. All Rights Reserved.
+// This is licensed software from AccelByte Inc, for limitations
+// and restrictions contact your company contract manager.
+
+// source: Lobby/AsyncAPI/notification.yaml (0.1.0)
+
+syntax = "proto3";
+
+package accelbyte.lobby.notification.v1;
+// Version v1.0.0
+
+// --- imports ---
+
+import "google/protobuf/empty.proto";
+
+
+// --- options ---
+
+option csharp_namespace = "AccelByte.Lobby.Notification";
+option go_package = "accelbyte.net/lobby/notification";
+option java_multiple_files = true;
+option java_package = "net.accelbyte.lobby.notification";
+
+// --- schema objects ---
+
+// path: #/components/schemas/event
+message Event {
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/schemas/notificationPayload
+message NotificationPayload {
+    string senderId = 1;
+    string namespace = 2;
+    string topic = 3;
+    string message = 4;
+}
+
+// path: #/components/schemas/localizedTemplatePayload
+message LocalizedTemplatePayload {
+    string namespace = 1;
+    string templateSlug = 2;
+    string templateLanguage = 3;
+}
+
+// path: #/components/schemas/topicsPayload
+message TopicsPayload {
+    string namespace = 1;
+    string description = 2;
+    string topic = 3;
+}
+
+// path: #/components/messages/freeformNotificationSent/payload
+message FreeformNotificationSent {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/freeformNotificationSentToUser/payload
+message FreeformNotificationSentToUser {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/freeformNotificationSentToParty/payload
+message FreeformNotificationSentToParty {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/templatedNotificationCreated/payload
+message TemplatedNotificationCreated {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/templatedNotificationLocalizationDeleted/payload
+message TemplatedNotificationLocalizationDeleted {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/templatedNotificationLocalizationPublished/payload
+message TemplatedNotificationLocalizationPublished {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/templatedNotificationLocalizationUpdated/payload
+message TemplatedNotificationLocalizationUpdated {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/templatedNotificationDeleted/payload
+message TemplatedNotificationDeleted {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/templatedNotificationSent/payload
+message TemplatedNotificationSent {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/templatedNotificationSentToUser/payload
+message TemplatedNotificationSentToUser {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/topicCreated/payload
+message TopicCreated {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/topicDeleted/payload
+message TopicDeleted {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/topicModified/payload
+message TopicModified {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/templatedNotificationSentToParty/payload
+message TemplatedNotificationSentToParty {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+
+// --- #/components/messages/{message_name} ---
+
+// path: #/components/messages/freeformNotificationSent
+message FreeformNotificationSentMessage {
+    FreeformNotificationSent payload = 1;
+}
+
+// path: #/components/messages/freeformNotificationSentToUser
+message FreeformNotificationSentToUserMessage {
+    FreeformNotificationSentToUser payload = 1;
+}
+
+// path: #/components/messages/freeformNotificationSentToParty
+message FreeformNotificationSentToPartyMessage {
+    FreeformNotificationSentToParty payload = 1;
+}
+
+// path: #/components/messages/templatedNotificationCreated
+message TemplatedNotificationCreatedMessage {
+    TemplatedNotificationCreated payload = 1;
+}
+
+// path: #/components/messages/templatedNotificationLocalizationDeleted
+message TemplatedNotificationLocalizationDeletedMessage {
+    TemplatedNotificationLocalizationDeleted payload = 1;
+}
+
+// path: #/components/messages/templatedNotificationLocalizationPublished
+message TemplatedNotificationLocalizationPublishedMessage {
+    TemplatedNotificationLocalizationPublished payload = 1;
+}
+
+// path: #/components/messages/templatedNotificationLocalizationUpdated
+message TemplatedNotificationLocalizationUpdatedMessage {
+    TemplatedNotificationLocalizationUpdated payload = 1;
+}
+
+// path: #/components/messages/templatedNotificationDeleted
+message TemplatedNotificationDeletedMessage {
+    TemplatedNotificationDeleted payload = 1;
+}
+
+// path: #/components/messages/templatedNotificationSent
+message TemplatedNotificationSentMessage {
+    TemplatedNotificationSent payload = 1;
+}
+
+// path: #/components/messages/templatedNotificationSentToUser
+message TemplatedNotificationSentToUserMessage {
+    TemplatedNotificationSentToUser payload = 1;
+}
+
+// path: #/components/messages/topicCreated
+message TopicCreatedMessage {
+    TopicCreated payload = 1;
+}
+
+// path: #/components/messages/topicDeleted
+message TopicDeletedMessage {
+    TopicDeleted payload = 1;
+}
+
+// path: #/components/messages/topicModified
+message TopicModifiedMessage {
+    TopicModified payload = 1;
+}
+
+// path: #/components/messages/templatedNotificationSentToParty
+message TemplatedNotificationSentToPartyMessage {
+    TemplatedNotificationSentToParty payload = 1;
+}
+
+
+// --- #/channels/{channel_name}/{operation_type}/message ---
+
+// path: #/channels/notifications/publish/message
+message NotificationsPublish {
+    oneof payload {
+        FreeformNotificationSent variant0 = 1;
+        FreeformNotificationSentToUser variant1 = 2;
+        TemplatedNotificationCreated variant2 = 3;
+        TemplatedNotificationSent variant3 = 4;
+        TemplatedNotificationSentToUser variant4 = 5;
+        TemplatedNotificationDeleted variant5 = 6;
+        TemplatedNotificationLocalizationUpdated variant6 = 7;
+        TemplatedNotificationLocalizationDeleted variant7 = 8;
+        TemplatedNotificationLocalizationPublished variant8 = 9;
+        FreeformNotificationSentToParty variant9 = 10;
+        TemplatedNotificationSentToParty variant10 = 11;
+    }
+}
+
+// path: #/channels/topics/publish/message
+message TopicsPublish {
+    oneof payload {
+        TopicCreated variant0 = 1;
+        TopicDeleted variant1 = 2;
+        TopicModified variant2 = 3;
+    }
+}
+
+
+// --- service ---
+
+
+// Publishes a FreeformNotificationSent to the Notifications channel. (oneOf variant) (notifications FreeformNotificationSent)
+service NotificationsFreeformNotificationSentService {
+    rpc OnMessage(FreeformNotificationSent) returns (google.protobuf.Empty);
+}
+
+// Publishes a FreeformNotificationSentToUser to the Notifications channel. (oneOf variant) (notifications FreeformNotificationSentToUser)
+service NotificationsFreeformNotificationSentToUserService {
+    rpc OnMessage(FreeformNotificationSentToUser) returns (google.protobuf.Empty);
+}
+
+// Publishes a TemplatedNotificationCreated to the Notifications channel. (oneOf variant) (notifications TemplatedNotificationCreated)
+service NotificationsTemplatedNotificationCreatedService {
+    rpc OnMessage(TemplatedNotificationCreated) returns (google.protobuf.Empty);
+}
+
+// Publishes a TemplatedNotificationSent to the Notifications channel. (oneOf variant) (notifications TemplatedNotificationSent)
+service NotificationsTemplatedNotificationSentService {
+    rpc OnMessage(TemplatedNotificationSent) returns (google.protobuf.Empty);
+}
+
+// Publishes a TemplatedNotificationSentToUser to the Notifications channel. (oneOf variant) (notifications TemplatedNotificationSentToUser)
+service NotificationsTemplatedNotificationSentToUserService {
+    rpc OnMessage(TemplatedNotificationSentToUser) returns (google.protobuf.Empty);
+}
+
+// Publishes a TemplatedNotificationDeleted to the Notifications channel. (oneOf variant) (notifications TemplatedNotificationDeleted)
+service NotificationsTemplatedNotificationDeletedService {
+    rpc OnMessage(TemplatedNotificationDeleted) returns (google.protobuf.Empty);
+}
+
+// Publishes a TemplatedNotificationLocalizationUpdated to the Notifications channel. (oneOf variant) (notifications TemplatedNotificationLocalizationUpdated)
+service NotificationsTemplatedNotificationLocalizationUpdatedService {
+    rpc OnMessage(TemplatedNotificationLocalizationUpdated) returns (google.protobuf.Empty);
+}
+
+// Publishes a TemplatedNotificationLocalizationDeleted to the Notifications channel. (oneOf variant) (notifications TemplatedNotificationLocalizationDeleted)
+service NotificationsTemplatedNotificationLocalizationDeletedService {
+    rpc OnMessage(TemplatedNotificationLocalizationDeleted) returns (google.protobuf.Empty);
+}
+
+// Publishes a TemplatedNotificationLocalizationPublished to the Notifications channel. (oneOf variant) (notifications TemplatedNotificationLocalizationPublished)
+service NotificationsTemplatedNotificationLocalizationPublishedService {
+    rpc OnMessage(TemplatedNotificationLocalizationPublished) returns (google.protobuf.Empty);
+}
+
+// Publishes a FreeformNotificationSentToParty to the Notifications channel. (oneOf variant) (notifications FreeformNotificationSentToParty)
+service NotificationsFreeformNotificationSentToPartyService {
+    rpc OnMessage(FreeformNotificationSentToParty) returns (google.protobuf.Empty);
+}
+
+// Publishes a TemplatedNotificationSentToParty to the Notifications channel. (oneOf variant) (notifications TemplatedNotificationSentToParty)
+service NotificationsTemplatedNotificationSentToPartyService {
+    rpc OnMessage(TemplatedNotificationSentToParty) returns (google.protobuf.Empty);
+}
+
+// Publishes a TopicCreated to the Topics channel. (oneOf variant) (topics TopicCreated)
+service TopicsTopicCreatedService {
+    rpc OnMessage(TopicCreated) returns (google.protobuf.Empty);
+}
+
+// Publishes a TopicDeleted to the Topics channel. (oneOf variant) (topics TopicDeleted)
+service TopicsTopicDeletedService {
+    rpc OnMessage(TopicDeleted) returns (google.protobuf.Empty);
+}
+
+// Publishes a TopicModified to the Topics channel. (oneOf variant) (topics TopicModified)
+service TopicsTopicModifiedService {
+    rpc OnMessage(TopicModified) returns (google.protobuf.Empty);
+}

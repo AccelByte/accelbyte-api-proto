@@ -62,29 +62,23 @@ components:
     personalChatSent:
       name: personalChatSent
       payload:
-        type: object
         allOf:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               chat:
-                type: object
-                allOf:
-                - $ref: '#/components/schemas/chatPayload'
+                $ref: '#/components/schemas/chatPayload'
     partyChatSent:
       name: partyChatSent
       payload:
-        type: object
         allOf:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               chat:
-                type: object
-                allOf:
-                - $ref: '#/components/schemas/chatPayload'
+                $ref: '#/components/schemas/chatPayload'
 x-source: Lobby/AsyncAPI/chat.yaml
 x-proto-package: accelbyte.lobby.chat.v1
 x-proto-package-version: v1.0.0

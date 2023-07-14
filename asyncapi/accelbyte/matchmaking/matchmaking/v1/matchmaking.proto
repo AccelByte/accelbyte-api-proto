@@ -1,0 +1,628 @@
+// Copyright (c) 2023 AccelByte Inc. All Rights Reserved.
+// This is licensed software from AccelByte Inc, for limitations
+// and restrictions contact your company contract manager.
+
+// source: Matchmaking/AsyncAPI/matchmaking.yaml (0.1.0)
+
+syntax = "proto3";
+
+package accelbyte.matchmaking.matchmaking.v1;
+// Version v1.0.0
+
+// --- imports ---
+
+import "google/protobuf/empty.proto";
+
+
+// --- options ---
+
+option csharp_namespace = "AccelByte.Matchmaking.Matchmaking";
+option go_package = "accelbyte.net/matchmaking/matchmaking";
+option java_multiple_files = true;
+option java_package = "net.accelbyte.matchmaking.matchmaking";
+
+// --- schema objects ---
+
+// path: #/components/schemas/event
+message Event {
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string sessionId = 9;
+    string spanContext = 10;
+}
+
+// path: #/components/schemas/alliance/properties/combination/properties/alliances/items/items
+message AnonymousSchema1 {
+    string name = 1;
+    int64 min = 2;
+    int64 max = 3;
+}
+
+// path: #/components/schemas/alliance/properties/combination
+message AnonymousSchema2 {
+    bool roleFlexingEnable = 1;
+    int64 roleFlexingSecond = 2;
+    int64 roleFlexingPlayer = 3;
+    bool hasCombination = 4;
+    repeated repeated AnonymousSchema1 alliances = 5;
+}
+
+// path: #/components/schemas/alliance
+message Alliance {
+    int64 minNumber = 1;
+    int64 maxNumber = 2;
+    int64 playerMinNumber = 3;
+    int64 playerMaxNumber = 4;
+    AnonymousSchema2 combination = 5;
+}
+
+// path: #/components/schemas/matching_rule
+message MatchingRule {
+    string attribute = 1;
+    string criteria = 2;
+    float reference = 3;
+}
+
+// path: #/components/schemas/ruleset/properties/flexing_rule/items
+message AnonymousSchema3 {
+    int64 duration = 1;
+    MatchingRule matchingRule = 2;
+}
+
+// path: #/components/schemas/ruleset/properties/alliance_flexing_rule/items
+message AnonymousSchema4 {
+    int64 duration = 1;
+    Alliance allianceRule = 2;
+}
+
+// path: #/components/schemas/ruleset/properties/match_options/items/properties/options
+message AnonymousSchema5 {
+    string name = 1;
+    string type = 2;
+}
+
+// path: #/components/schemas/ruleset/properties/match_options/items
+message AnonymousSchema6 {
+    AnonymousSchema5 options = 1;
+}
+
+// path: #/components/schemas/ruleset
+message Ruleset {
+    Alliance alliance = 1;
+    repeated MatchingRule matchingRule = 2;
+    repeated AnonymousSchema3 flexingRule = 3;
+    repeated AnonymousSchema4 allianceFlexingRule = 4;
+    repeated AnonymousSchema6 matchOptions = 5;
+    bool rebalanceEnable = 6;
+}
+
+// path: #/components/schemas/matchingParty/properties/party_attributes
+message AnonymousSchema7 {
+}
+
+// path: #/components/schemas/matchingParty
+message MatchingParty {
+    string ticketId = 1;
+    string partyId = 2;
+    repeated PartyMember partyMembers = 3;
+    AnonymousSchema7 partyAttributes = 4;
+    int64 ticketCreatedAt = 5;
+    int64 firstTicketCreatedAt = 6;
+}
+
+// path: #/components/schemas/matchmaking
+message Matchmaking {
+    string status = 1;
+    string matchId = 2;
+    string channel = 3;
+    string namespace = 4;
+    string gameMode = 5;
+    repeated MatchingParty matchingParties = 6;
+}
+
+// path: #/components/schemas/lobbyMatchmakingRequest
+message LobbyMatchmakingRequest {
+    string priority = 1;
+    string createdAt = 2;
+    string channel = 3;
+    string partyId = 4;
+    string ticketId = 5;
+    repeated PartyMemberV1 partyMembers = 6;
+    string timestamp = 7;
+    string event = 8;
+}
+
+// path: #/components/schemas/lobbyMatchmaking
+message LobbyMatchmaking {
+    string status = 1;
+    string matchId = 2;
+    string channel = 3;
+    string namespace = 4;
+    string gameMode = 5;
+    repeated PartyMemberV1 matchingParties = 6;
+}
+
+// path: #/components/schemas/MatchmakingRequest/properties/party_attributes
+message AnonymousSchema8 {
+}
+
+// path: #/components/schemas/MatchmakingRequest/properties/additional_criteria
+message AnonymousSchema9 {
+}
+
+// path: #/components/schemas/MatchmakingRequest/properties/latency_map
+message AnonymousSchema10 {
+}
+
+// path: #/components/schemas/MatchmakingRequest/properties/sorted_latency/items
+message AnonymousSchema11 {
+    string region = 1;
+    int64 latency = 2;
+}
+
+// path: #/components/schemas/MatchmakingRequest
+message MatchmakingRequest {
+    int64 priority = 1;
+    int64 createdAt = 2;
+    string channel = 3;
+    string namespace = 4;
+    string ticketId = 5;
+    string partyId = 6;
+    string partyLeaderId = 7;
+    AnonymousSchema8 partyAttributes = 8;
+    repeated PartyMember partyMembers = 9;
+    AnonymousSchema9 additionalCriteria = 10;
+    AnonymousSchema10 latencyMap = 11;
+    repeated AnonymousSchema11 sortedLatency = 12;
+    int64 firstTicketCreatedAt = 13;
+}
+
+// path: #/components/schemas/matchmakingResult/properties/matching_allies/items
+message AnonymousSchema12 {
+    repeated MatchingParty matchingParties = 1;
+    int64 playerCount = 2;
+}
+
+// path: #/components/schemas/matchmakingResult
+message MatchmakingResult {
+    string status = 1;
+    string event = 2;
+    string partyId = 3;
+    string ticketId = 4;
+    string matchId = 5;
+    string channel = 6;
+    string namespace = 7;
+    string gameMode = 8;
+    string serverName = 9;
+    string clientVersion = 10;
+    string region = 11;
+    bool joinable = 12;
+    repeated AnonymousSchema12 matchingAllies = 13;
+    string deployment = 14;
+    string updatedAt = 15;
+    int64 queueAt = 16;
+    string partyAttributes = 17;
+    int64 errorCode = 18;
+    string errorMessage = 19;
+    string timestamp = 20;
+}
+
+// path: #/components/schemas/partyMemberV1/properties/extraAttributes
+message AnonymousSchema13 {
+}
+
+// path: #/components/schemas/partyMemberV1
+message PartyMemberV1 {
+    string userId = 1;
+    AnonymousSchema13 extraAttributes = 2;
+}
+
+// path: #/components/schemas/partyMember/properties/extra_attributes
+message AnonymousSchema14 {
+}
+
+// path: #/components/schemas/partyMember
+message PartyMember {
+    string userId = 1;
+    AnonymousSchema14 extraAttributes = 2;
+}
+
+// path: #/components/schemas/successTickets
+message SuccessTickets {
+    string partyId = 1;
+    repeated string memberIds = 2;
+    int64 ticketCreatedAt = 3;
+}
+
+// path: #/components/schemas/failedTickets
+message FailedTickets {
+    string partyId = 1;
+    repeated string succeedMemberIds = 2;
+    repeated string failedMemberIds = 3;
+    int64 ticketCreatedAt = 4;
+}
+
+// path: #/components/messages/matchmakingChannelCreated/payload
+message MatchmakingChannelCreated {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string sessionId = 9;
+    string spanContext = 10;
+}
+
+// path: #/components/messages/matchmakingChannelDeleted/payload
+message MatchmakingChannelDeleted {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string sessionId = 9;
+    string spanContext = 10;
+}
+
+// path: #/components/messages/matchmakingChannelUpdated/payload
+message MatchmakingChannelUpdated {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string sessionId = 9;
+    string spanContext = 10;
+}
+
+// path: #/components/messages/matchmakingRequested/payload
+message MatchmakingRequested {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string sessionId = 9;
+    string spanContext = 10;
+}
+
+// path: #/components/messages/matchmakingCanceled/payload
+message MatchmakingCanceled {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string sessionId = 9;
+    string spanContext = 10;
+}
+
+// path: #/components/messages/matchmakingTimeout/payload
+message MatchmakingTimeout {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string sessionId = 9;
+    string spanContext = 10;
+}
+
+// path: #/components/messages/matchmakingRejected/payload
+message MatchmakingRejected {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string sessionId = 9;
+    string spanContext = 10;
+}
+
+// path: #/components/messages/matchmakingStarted/payload
+message MatchmakingStarted {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string sessionId = 9;
+    string spanContext = 10;
+}
+
+// path: #/components/messages/matchmakingSessionStatusChanged/payload
+message MatchmakingSessionStatusChanged {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string sessionId = 9;
+    string spanContext = 10;
+}
+
+// path: #/components/messages/matchmakingTicketStatusChanged/payload
+message MatchmakingTicketStatusChanged {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string sessionId = 9;
+    string spanContext = 10;
+}
+
+// path: #/components/messages/matchmakingTotalPlayersInQueue/payload
+message MatchmakingTotalPlayersInQueue {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string sessionId = 9;
+    string spanContext = 10;
+}
+
+// path: #/components/messages/readyConsentFailed/payload
+message ReadyConsentFailed {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string sessionId = 9;
+    string spanContext = 10;
+}
+
+// path: #/components/messages/readyConsentSuccess/payload
+message ReadyConsentSuccess {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string sessionId = 9;
+    string spanContext = 10;
+}
+
+
+// --- #/components/messages/{message_name} ---
+
+// path: #/components/messages/matchmakingChannelCreated
+message MatchmakingChannelCreatedMessage {
+    MatchmakingChannelCreated payload = 1;
+}
+
+// path: #/components/messages/matchmakingChannelDeleted
+message MatchmakingChannelDeletedMessage {
+    MatchmakingChannelDeleted payload = 1;
+}
+
+// path: #/components/messages/matchmakingChannelUpdated
+message MatchmakingChannelUpdatedMessage {
+    MatchmakingChannelUpdated payload = 1;
+}
+
+// path: #/components/messages/matchmakingRequested
+message MatchmakingRequestedMessage {
+    MatchmakingRequested payload = 1;
+}
+
+// path: #/components/messages/matchmakingCanceled
+message MatchmakingCanceledMessage {
+    MatchmakingCanceled payload = 1;
+}
+
+// path: #/components/messages/matchmakingTimeout
+message MatchmakingTimeoutMessage {
+    MatchmakingTimeout payload = 1;
+}
+
+// path: #/components/messages/matchmakingRejected
+message MatchmakingRejectedMessage {
+    MatchmakingRejected payload = 1;
+}
+
+// path: #/components/messages/matchmakingStarted
+message MatchmakingStartedMessage {
+    MatchmakingStarted payload = 1;
+}
+
+// path: #/components/messages/matchmakingSessionStatusChanged
+message MatchmakingSessionStatusChangedMessage {
+    MatchmakingSessionStatusChanged payload = 1;
+}
+
+// path: #/components/messages/matchmakingTicketStatusChanged
+message MatchmakingTicketStatusChangedMessage {
+    MatchmakingTicketStatusChanged payload = 1;
+}
+
+// path: #/components/messages/matchmakingTotalPlayersInQueue
+message MatchmakingTotalPlayersInQueueMessage {
+    MatchmakingTotalPlayersInQueue payload = 1;
+}
+
+// path: #/components/messages/readyConsentFailed
+message ReadyConsentFailedMessage {
+    ReadyConsentFailed payload = 1;
+}
+
+// path: #/components/messages/readyConsentSuccess
+message ReadyConsentSuccessMessage {
+    ReadyConsentSuccess payload = 1;
+}
+
+
+// --- #/channels/{channel_name}/{operation_type}/message ---
+
+// path: #/channels/matchmaking/publish/message
+message MatchmakingPublish {
+    oneof payload {
+        MatchmakingRequested variant0 = 1;
+        MatchmakingCanceled variant1 = 2;
+        MatchmakingStarted variant2 = 3;
+        MatchmakingTimeout variant3 = 4;
+        MatchmakingRejected variant4 = 5;
+        MatchmakingChannelCreated variant5 = 6;
+        MatchmakingChannelDeleted variant6 = 7;
+        MatchmakingChannelUpdated variant7 = 8;
+        MatchmakingSessionStatusChanged variant8 = 9;
+        MatchmakingTicketStatusChanged variant9 = 10;
+    }
+}
+
+// path: #/channels/matchmakingTotalPlayersInQueue/publish/message
+message MatchmakingTotalPlayersInQueuePublish {
+    oneof payload {
+        MatchmakingTotalPlayersInQueue variant0 = 1;
+    }
+}
+
+// path: #/channels/readyConsent/publish/message
+message ReadyConsentPublish {
+    oneof payload {
+        ReadyConsentSuccess variant0 = 1;
+        ReadyConsentFailed variant1 = 2;
+    }
+}
+
+
+// --- service ---
+
+
+// Publishes a MatchmakingRequested to the Matchmaking channel. (oneOf variant) (matchmaking MatchmakingRequested)
+service MatchmakingMatchmakingRequestedService {
+    rpc OnMessage(MatchmakingRequested) returns (google.protobuf.Empty);
+}
+
+// Publishes a MatchmakingCanceled to the Matchmaking channel. (oneOf variant) (matchmaking MatchmakingCanceled)
+service MatchmakingMatchmakingCanceledService {
+    rpc OnMessage(MatchmakingCanceled) returns (google.protobuf.Empty);
+}
+
+// Publishes a MatchmakingStarted to the Matchmaking channel. (oneOf variant) (matchmaking MatchmakingStarted)
+service MatchmakingMatchmakingStartedService {
+    rpc OnMessage(MatchmakingStarted) returns (google.protobuf.Empty);
+}
+
+// Publishes a MatchmakingTimeout to the Matchmaking channel. (oneOf variant) (matchmaking MatchmakingTimeout)
+service MatchmakingMatchmakingTimeoutService {
+    rpc OnMessage(MatchmakingTimeout) returns (google.protobuf.Empty);
+}
+
+// Publishes a MatchmakingRejected to the Matchmaking channel. (oneOf variant) (matchmaking MatchmakingRejected)
+service MatchmakingMatchmakingRejectedService {
+    rpc OnMessage(MatchmakingRejected) returns (google.protobuf.Empty);
+}
+
+// Publishes a MatchmakingChannelCreated to the Matchmaking channel. (oneOf variant) (matchmaking MatchmakingChannelCreated)
+service MatchmakingMatchmakingChannelCreatedService {
+    rpc OnMessage(MatchmakingChannelCreated) returns (google.protobuf.Empty);
+}
+
+// Publishes a MatchmakingChannelDeleted to the Matchmaking channel. (oneOf variant) (matchmaking MatchmakingChannelDeleted)
+service MatchmakingMatchmakingChannelDeletedService {
+    rpc OnMessage(MatchmakingChannelDeleted) returns (google.protobuf.Empty);
+}
+
+// Publishes a MatchmakingChannelUpdated to the Matchmaking channel. (oneOf variant) (matchmaking MatchmakingChannelUpdated)
+service MatchmakingMatchmakingChannelUpdatedService {
+    rpc OnMessage(MatchmakingChannelUpdated) returns (google.protobuf.Empty);
+}
+
+// Publishes a MatchmakingSessionStatusChanged to the Matchmaking channel. (oneOf variant) (matchmaking MatchmakingSessionStatusChanged)
+service MatchmakingMatchmakingSessionStatusChangedService {
+    rpc OnMessage(MatchmakingSessionStatusChanged) returns (google.protobuf.Empty);
+}
+
+// Publishes a MatchmakingTicketStatusChanged to the Matchmaking channel. (oneOf variant) (matchmaking MatchmakingTicketStatusChanged)
+service MatchmakingMatchmakingTicketStatusChangedService {
+    rpc OnMessage(MatchmakingTicketStatusChanged) returns (google.protobuf.Empty);
+}
+
+// Publishes a MatchmakingTotalPlayersInQueue to the Matchmaking Total Players In Queue channel. (oneOf variant) (matchmakingTotalPlayersInQueue MatchmakingTotalPlayersInQueue)
+service MatchmakingTotalPlayersInQueueMatchmakingTotalPlayersInQueueService {
+    rpc OnMessage(MatchmakingTotalPlayersInQueue) returns (google.protobuf.Empty);
+}
+
+// Publishes a ReadyConsentSuccess to the Ready Consent channel. (oneOf variant) (readyConsent ReadyConsentSuccess)
+service ReadyConsentReadyConsentSuccessService {
+    rpc OnMessage(ReadyConsentSuccess) returns (google.protobuf.Empty);
+}
+
+// Publishes a ReadyConsentFailed to the Ready Consent channel. (oneOf variant) (readyConsent ReadyConsentFailed)
+service ReadyConsentReadyConsentFailedService {
+    rpc OnMessage(ReadyConsentFailed) returns (google.protobuf.Empty);
+}

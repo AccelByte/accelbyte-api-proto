@@ -1,0 +1,125 @@
+// Copyright (c) 2023 AccelByte Inc. All Rights Reserved.
+// This is licensed software from AccelByte Inc, for limitations
+// and restrictions contact your company contract manager.
+
+// source: Lobby/AsyncAPI/chat.yaml (0.1.0)
+
+syntax = "proto3";
+
+package accelbyte.lobby.chat.v1;
+// Version v1.0.0
+
+// --- imports ---
+
+import "google/protobuf/empty.proto";
+
+
+// --- options ---
+
+option csharp_namespace = "AccelByte.Lobby.Chat";
+option go_package = "accelbyte.net/lobby/chat";
+option java_multiple_files = true;
+option java_package = "net.accelbyte.lobby.chat";
+
+// --- schema objects ---
+
+// path: #/components/schemas/event
+message Event {
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/schemas/chatPayload
+message ChatPayload {
+    string messageId = 1;
+    string senderId = 2;
+    string targetId = 3;
+    string payload = 4;
+}
+
+// path: #/components/messages/personalChatSent/payload
+message PersonalChatSent {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/partyChatSent/payload
+message PartyChatSent {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+
+// --- #/components/messages/{message_name} ---
+
+// path: #/components/messages/personalChatSent
+message PersonalChatSentMessage {
+    PersonalChatSent payload = 1;
+}
+
+// path: #/components/messages/partyChatSent
+message PartyChatSentMessage {
+    PartyChatSent payload = 1;
+}
+
+
+// --- #/channels/{channel_name}/{operation_type}/message ---
+
+// path: #/channels/personalChat/publish/message
+message PersonalChatPublish {
+    oneof payload {
+        PersonalChatSent variant0 = 1;
+    }
+}
+
+// path: #/channels/partyChat/publish/message
+message PartyChatPublish {
+    oneof payload {
+        PartyChatSent variant0 = 1;
+    }
+}
+
+
+// --- service ---
+
+
+// Publishes a PersonalChatSent to the Personal Chat channel. (oneOf variant) (personalChat PersonalChatSent)
+service PersonalChatPersonalChatSentService {
+    rpc OnMessage(PersonalChatSent) returns (google.protobuf.Empty);
+}
+
+// Publishes a PartyChatSent to the Party Chat channel. (oneOf variant) (partyChat PartyChatSent)
+service PartyChatPartyChatSentService {
+    rpc OnMessage(PartyChatSent) returns (google.protobuf.Empty);
+}

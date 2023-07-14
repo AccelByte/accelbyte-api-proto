@@ -1,0 +1,198 @@
+// Copyright (c) 2023 AccelByte Inc. All Rights Reserved.
+// This is licensed software from AccelByte Inc, for limitations
+// and restrictions contact your company contract manager.
+
+// source: Chat/AsyncAPI/chat.yaml (0.1.0)
+
+syntax = "proto3";
+
+package accelbyte.chat.chat.v1;
+// Version v1.0.0
+
+// --- imports ---
+
+import "google/protobuf/empty.proto";
+
+
+// --- options ---
+
+option csharp_namespace = "AccelByte.Chat.Chat";
+option go_package = "accelbyte.net/chat/chat";
+option java_multiple_files = true;
+option java_package = "net.accelbyte.chat.chat";
+
+// --- schema objects ---
+
+// path: #/components/schemas/event
+message Event {
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/schemas/chatPayload
+message ChatPayload {
+    string messageId = 1;
+    string senderId = 2;
+    string targetId = 3;
+    string payload = 4;
+    string targetType = 5;
+    repeated string targetMembers = 6;
+}
+
+// path: #/components/schemas/userPayloadConnected
+message UserPayloadConnected {
+}
+
+// path: #/components/schemas/userPayloadDisconnected
+message UserPayloadDisconnected {
+    string reason = 1;
+    int64 code = 2;
+    bool forced = 3;
+}
+
+// path: #/components/schemas/userChatRateLimited
+message UserChatRateLimited {
+}
+
+// path: #/components/messages/personalChatSent/payload
+message PersonalChatSent {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/userConnected/payload
+message UserConnected {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/userDisconnected/payload
+message UserDisconnected {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/userChatRateLimited/payload
+message UserChatRateLimited {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+
+// --- #/components/messages/{message_name} ---
+
+// path: #/components/messages/personalChatSent
+message PersonalChatSentMessage {
+    PersonalChatSent payload = 1;
+}
+
+// path: #/components/messages/userConnected
+message UserConnectedMessage {
+    UserConnected payload = 1;
+}
+
+// path: #/components/messages/userDisconnected
+message UserDisconnectedMessage {
+    UserDisconnected payload = 1;
+}
+
+// path: #/components/messages/userChatRateLimited
+message UserChatRateLimitedMessage {
+    UserChatRateLimited payload = 1;
+}
+
+
+// --- #/channels/{channel_name}/{operation_type}/message ---
+
+// path: #/channels/personalChat/publish/message
+message PersonalChatPublish {
+    oneof payload {
+        PersonalChatSent variant0 = 1;
+    }
+}
+
+// path: #/channels/chat/publish/message
+message ChatPublish {
+    oneof payload {
+        UserConnected variant0 = 1;
+        UserDisconnected variant1 = 2;
+        UserChatRateLimited variant2 = 3;
+    }
+}
+
+
+// --- service ---
+
+
+// Publishes a PersonalChatSent to the Personal Chat channel. (oneOf variant) (personalChat PersonalChatSent)
+service PersonalChatPersonalChatSentService {
+    rpc OnMessage(PersonalChatSent) returns (google.protobuf.Empty);
+}
+
+// Publishes a UserConnected to the Chat channel. (oneOf variant) (chat UserConnected)
+service ChatUserConnectedService {
+    rpc OnMessage(UserConnected) returns (google.protobuf.Empty);
+}
+
+// Publishes a UserDisconnected to the Chat channel. (oneOf variant) (chat UserDisconnected)
+service ChatUserDisconnectedService {
+    rpc OnMessage(UserDisconnected) returns (google.protobuf.Empty);
+}
+
+// Publishes a UserChatRateLimited to the Chat channel. (oneOf variant) (chat UserChatRateLimited)
+service ChatUserChatRateLimitedService {
+    rpc OnMessage(UserChatRateLimited) returns (google.protobuf.Empty);
+}

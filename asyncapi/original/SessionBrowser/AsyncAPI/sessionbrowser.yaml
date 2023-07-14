@@ -51,14 +51,11 @@ components:
     gameSessionMetricUpdated:
       name: gameSessionMetricUpdated
       payload:
-        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               gameSessionCount:
-                type: object
-                allOf:
-                  - $ref: '#/components/schemas/gamePayload'
+                $ref: '#/components/schemas/gamePayload'
 

@@ -1,0 +1,235 @@
+// Copyright (c) 2023 AccelByte Inc. All Rights Reserved.
+// This is licensed software from AccelByte Inc, for limitations
+// and restrictions contact your company contract manager.
+
+// source: Lobby/AsyncAPI/friends.yaml (0.1.0)
+
+syntax = "proto3";
+
+package accelbyte.lobby.friends.v1;
+// Version v1.0.0
+
+// --- imports ---
+
+import "google/protobuf/empty.proto";
+
+
+// --- options ---
+
+option csharp_namespace = "AccelByte.Lobby.Friends";
+option go_package = "accelbyte.net/lobby/friends";
+option java_multiple_files = true;
+option java_package = "net.accelbyte.lobby.friends";
+
+// --- schema objects ---
+
+// path: #/components/schemas/event
+message Event {
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/schemas/friendRequestsPayload
+message FriendRequestsPayload {
+    string userId = 1;
+    string friendId = 2;
+}
+
+// path: #/components/messages/friendRequestSent/payload
+message FriendRequestSent {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/friendRequestCancelled/payload
+message FriendRequestCancelled {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/friendRequestAccepted/payload
+message FriendRequestAccepted {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/friendRequestRejected/payload
+message FriendRequestRejected {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/friendRemoved/payload
+message FriendRemoved {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/friendAddedBulk/payload
+message FriendAddedBulk {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+
+// --- #/components/messages/{message_name} ---
+
+// path: #/components/messages/friendRequestSent
+message FriendRequestSentMessage {
+    FriendRequestSent payload = 1;
+}
+
+// path: #/components/messages/friendRequestCancelled
+message FriendRequestCancelledMessage {
+    FriendRequestCancelled payload = 1;
+}
+
+// path: #/components/messages/friendRequestAccepted
+message FriendRequestAcceptedMessage {
+    FriendRequestAccepted payload = 1;
+}
+
+// path: #/components/messages/friendRequestRejected
+message FriendRequestRejectedMessage {
+    FriendRequestRejected payload = 1;
+}
+
+// path: #/components/messages/friendRemoved
+message FriendRemovedMessage {
+    FriendRemoved payload = 1;
+}
+
+// path: #/components/messages/friendAddedBulk
+message FriendAddedBulkMessage {
+    FriendAddedBulk payload = 1;
+}
+
+
+// --- #/channels/{channel_name}/{operation_type}/message ---
+
+// path: #/channels/friendRequests/publish/message
+message FriendRequestsPublish {
+    oneof payload {
+        FriendRequestSent variant0 = 1;
+        FriendRequestCancelled variant1 = 2;
+        FriendRemoved variant2 = 3;
+        FriendAddedBulk variant3 = 4;
+    }
+}
+
+// path: #/channels/incomingFriendRequests/publish/message
+message IncomingFriendRequestsPublish {
+    oneof payload {
+        FriendRequestAccepted variant0 = 1;
+        FriendRequestRejected variant1 = 2;
+    }
+}
+
+
+// --- service ---
+
+
+// Publishes a FriendRequestSent to the Friend Requests channel. (oneOf variant) (friendRequests FriendRequestSent)
+service FriendRequestsFriendRequestSentService {
+    rpc OnMessage(FriendRequestSent) returns (google.protobuf.Empty);
+}
+
+// Publishes a FriendRequestCancelled to the Friend Requests channel. (oneOf variant) (friendRequests FriendRequestCancelled)
+service FriendRequestsFriendRequestCancelledService {
+    rpc OnMessage(FriendRequestCancelled) returns (google.protobuf.Empty);
+}
+
+// Publishes a FriendRemoved to the Friend Requests channel. (oneOf variant) (friendRequests FriendRemoved)
+service FriendRequestsFriendRemovedService {
+    rpc OnMessage(FriendRemoved) returns (google.protobuf.Empty);
+}
+
+// Publishes a FriendAddedBulk to the Friend Requests channel. (oneOf variant) (friendRequests FriendAddedBulk)
+service FriendRequestsFriendAddedBulkService {
+    rpc OnMessage(FriendAddedBulk) returns (google.protobuf.Empty);
+}
+
+// Publishes a FriendRequestAccepted to the Incoming Friend Requests channel. (oneOf variant) (incomingFriendRequests FriendRequestAccepted)
+service IncomingFriendRequestsFriendRequestAcceptedService {
+    rpc OnMessage(FriendRequestAccepted) returns (google.protobuf.Empty);
+}
+
+// Publishes a FriendRequestRejected to the Incoming Friend Requests channel. (oneOf variant) (incomingFriendRequests FriendRequestRejected)
+service IncomingFriendRequestsFriendRequestRejectedService {
+    rpc OnMessage(FriendRequestRejected) returns (google.protobuf.Empty);
+}

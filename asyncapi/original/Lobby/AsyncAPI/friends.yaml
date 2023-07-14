@@ -64,83 +64,65 @@ components:
     friendRequestSent:
       name: friendRequestSent
       payload:
-        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               relation:
-                type: object
-                allOf:
-                  - $ref: '#/components/schemas/friendRequestsPayload'
+                $ref: '#/components/schemas/friendRequestsPayload'
 
     friendRequestCancelled:
       name: friendRequestCancelled
       payload:
-        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               relation:
-                type: object
-                allOf:
-                  - $ref: '#/components/schemas/friendRequestsPayload'
+                $ref: '#/components/schemas/friendRequestsPayload'
 
     friendRequestAccepted:
       name: friendRequestAccepted
       payload:
-        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               relation:
-                type: object
-                allOf:
-                  - $ref: '#/components/schemas/friendRequestsPayload'
+                $ref: '#/components/schemas/friendRequestsPayload'
 
     friendRequestRejected:
       name: friendRequestRejected
       payload:
-        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               relation:
-                type: object
-                allOf:
-                  - $ref: '#/components/schemas/friendRequestsPayload'
+                $ref: '#/components/schemas/friendRequestsPayload'
 
     friendRemoved:
       name: friendRemoved
       payload:
-        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               relation:
-                type: object
-                allOf:
-                  - $ref: '#/components/schemas/friendRequestsPayload'
+                $ref: '#/components/schemas/friendRequestsPayload'
 
     friendAddedBulk:
       name: friendAddedBulk
       payload:
-        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               relation:
-                type: object
-                allOf:
-                  - $ref: '#/components/schemas/friendRequestsPayload'
+                $ref: '#/components/schemas/friendRequestsPayload'

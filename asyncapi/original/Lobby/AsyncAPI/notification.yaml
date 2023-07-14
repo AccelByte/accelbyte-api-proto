@@ -94,30 +94,25 @@ components:
     freeformNotificationSent:
       name: freeformNotificationSent
       payload:
-        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               notification:
-                type: object
-                allOf:
-                  - $ref: '#/components/schemas/notificationPayload'
+                $ref: '#/components/schemas/notificationPayload'
 
     freeformNotificationSentToUser:
       name: freeformNotificationSentToUser
       payload:
-        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               notification:
-                type: object
                 allOf:
-                  - $ref: '#/components/schemas/notificationPayload'
+                 - $ref: '#/components/schemas/notificationPayload'
                 properties:
                   targetUserId:
                     type: string
@@ -125,14 +120,12 @@ components:
     freeformNotificationSentToParty:
       name: freeformNotificationSentToParty
       payload:
-        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               notification:
-                type: object
                 allOf:
                   - $ref: '#/components/schemas/notificationPayload'
                 properties:
@@ -142,14 +135,12 @@ components:
     templatedNotificationCreated:
       name: templatedNotificationCreated
       payload:
-        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               notification:
-                type: object
                 allOf:
                   - $ref: '#/components/schemas/localizedTemplatePayload'
                 properties:
@@ -159,42 +150,34 @@ components:
     templatedNotificationLocalizationDeleted:
       name: templatedNotificationLocalizationDeleted
       payload:
-        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               notification:
-                type: object
-                allOf:
-                  - $ref: '#/components/schemas/localizedTemplatePayload'
+                $ref: '#/components/schemas/localizedTemplatePayload'
 
     templatedNotificationLocalizationPublished:
       name: templatedNotificationLocalizationPublished
       payload:
-        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               notification:
-                type: object
-                allOf:
-                  - $ref: '#/components/schemas/localizedTemplatePayload'
+                $ref: '#/components/schemas/localizedTemplatePayload'
 
     templatedNotificationLocalizationUpdated:
       name: templatedNotificationLocalizationUpdated
       payload:
-        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               notification:
-                type: object
                 allOf:
                   - $ref: '#/components/schemas/localizedTemplatePayload'
                 properties:
@@ -204,7 +187,6 @@ components:
     templatedNotificationDeleted:
       name: templatedNotificationDeleted
       payload:
-        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
@@ -221,14 +203,12 @@ components:
     templatedNotificationSent:
       name: templatedNotificationSent
       payload:
-        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               notification:
-                type: object
                 allOf:
                   - $ref: '#/components/schemas/localizedTemplatePayload'
                 properties:
@@ -240,14 +220,12 @@ components:
     templatedNotificationSentToUser:
       name: templatedNotificationSentToUser
       payload:
-        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               notification:
-                type: object
                 allOf:
                   - $ref: '#/components/schemas/localizedTemplatePayload'
                 properties:
@@ -259,56 +237,45 @@ components:
     topicCreated:
       name: topicCreated
       payload:
-        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               topic:
-                type: object
-                allOf:
-                  - $ref: '#/components/schemas/topicsPayload'
+                $ref: '#/components/schemas/topicsPayload'
 
     topicDeleted:
       name: topicDeleted
       payload:
-        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               topic:
-                type: object
-                allOf:
-                  - $ref: '#/components/schemas/topicsPayload'
+                $ref: '#/components/schemas/topicsPayload'
 
     topicModified:
       name: topicModified
       payload:
-        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               topic:
-                type: object
-                allOf:
-                  - $ref: '#/components/schemas/topicsPayload'
+                $ref: '#/components/schemas/topicsPayload'
 
     templatedNotificationSentToParty:
       name: templatedNotificationSentToParty
       payload:
-        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               notification:
-                type: object
                 allOf:
                   - $ref: '#/components/schemas/localizedTemplatePayload'
                 properties:

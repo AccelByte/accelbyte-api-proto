@@ -385,16 +385,13 @@ components:
     matchmakingChannelCreated:
       name: matchmakingChannelCreated
       payload:
-        type: object
         allOf:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               ruleset:
-                type: object
-                allOf:
-                - $ref: '#/components/schemas/ruleset'
+                $ref: '#/components/schemas/ruleset'
               description:
                 type: string
               gameMode:
@@ -404,16 +401,13 @@ components:
     matchmakingChannelDeleted:
       name: matchmakingChannelDeleted
       payload:
-        type: object
         allOf:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               ruleset:
-                type: object
-                allOf:
-                - $ref: '#/components/schemas/ruleset'
+                $ref: '#/components/schemas/ruleset'
               description:
                 type: string
               gameMode:
@@ -423,16 +417,13 @@ components:
     matchmakingChannelUpdated:
       name: matchmakingChannelUpdated
       payload:
-        type: object
         allOf:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               ruleset:
-                type: object
-                allOf:
-                - $ref: '#/components/schemas/ruleset'
+                $ref: '#/components/schemas/ruleset'
               description:
                 type: string
               gameMode:
@@ -442,29 +433,23 @@ components:
     matchmakingRequested:
       name: matchmakingRequested
       payload:
-        type: object
         allOf:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               matchmakingRequest:
-                type: object
-                allOf:
-                - $ref: '#/components/schemas/lobbyMatchmakingRequest'
+                $ref: '#/components/schemas/lobbyMatchmakingRequest'
     matchmakingCanceled:
       name: matchmakingCanceled
       payload:
-        type: object
         allOf:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               matchmaking:
-                type: object
-                allOf:
-                - $ref: '#/components/schemas/lobbyMatchmaking'
+                $ref: '#/components/schemas/lobbyMatchmaking'
                 errorCode:
                   type: string
                 errorMessage:
@@ -472,16 +457,13 @@ components:
     matchmakingTimeout:
       name: matchmakingTimeout
       payload:
-        type: object
         allOf:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               matchmaking:
-                type: object
-                allOf:
-                - $ref: '#/components/schemas/lobbyMatchmaking'
+                $ref: '#/components/schemas/lobbyMatchmaking'
                 errorCode:
                   type: string
                 errorMessage:
@@ -489,16 +471,13 @@ components:
     matchmakingRejected:
       name: matchmakingRejected
       payload:
-        type: object
         allOf:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               matchmaking:
-                type: object
-                allOf:
-                - $ref: '#/components/schemas/lobbyMatchmaking'
+                $ref: '#/components/schemas/lobbyMatchmaking'
                 errorCode:
                   type: string
                 errorMessage:
@@ -506,46 +485,36 @@ components:
     matchmakingStarted:
       name: matchmakingStarted
       payload:
-        type: object
         allOf:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               matchmaking:
-                type: object
-                allOf:
-                - $ref: '#/components/schemas/matchmaking'
+                $ref: '#/components/schemas/matchmaking'
     matchmakingSessionStatusChanged:
       name: matchmakingSessionStatusChanged
       payload:
-        type: object
         allOf:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               session:
-                type: object
-                allOf:
-                - $ref: '#/components/schemas/matchmakingResult'
+                $ref: '#/components/schemas/matchmakingResult'
     matchmakingTicketStatusChanged:
       name: matchmakingTicketStatusChanged
       payload:
-        type: object
         allOf:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               ticket:
-                type: object
-                allOf:
-                - $ref: '#/components/schemas/MatchmakingRequest'
+                $ref: '#/components/schemas/MatchmakingRequest'
     matchmakingTotalPlayersInQueue:
       name: matchmakingTotalPlayersInQueue
       payload:
-        type: object
         allOf:
         - $ref: '#/components/schemas/event'
         properties:
@@ -557,33 +526,25 @@ components:
     readyConsentFailed:
       name: readyConsentFailed
       payload:
-        type: object
         allOf:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               successTickets:
-                type: object
-                allOf:
-                - $ref: '#/components/schemas/successTickets'
+                $ref: '#/components/schemas/successTickets'
               failedTickets:
-                type: object
-                allOf:
-                - $ref: '#/components/schemas/failedTickets'
+                $ref: '#/components/schemas/failedTickets'
     readyConsentSuccess:
       name: readyConsentSuccess
       payload:
-        type: object
         allOf:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
             properties:
               successTickets:
-                type: object
-                allOf:
-                - $ref: '#/components/schemas/successTickets'
+                $ref: '#/components/schemas/successTickets'
 x-source: Matchmaking/AsyncAPI/matchmaking.yaml
 x-proto-package: accelbyte.matchmaking.matchmaking.v1
 x-proto-package-version: v1.0.0
