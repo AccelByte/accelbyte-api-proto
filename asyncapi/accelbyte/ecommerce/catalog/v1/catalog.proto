@@ -1,0 +1,979 @@
+// Copyright (c) 2023 AccelByte Inc. All Rights Reserved.
+// This is licensed software from AccelByte Inc, for limitations
+// and restrictions contact your company contract manager.
+
+// source: Ecommerce/AsyncAPI/catalog.yml (0.0.1)
+
+syntax = "proto3";
+
+package accelbyte.ecommerce.catalog.v1;
+// Version v1.0.0
+
+// --- imports ---
+
+import "google/protobuf/empty.proto";
+
+
+// --- options ---
+
+option csharp_namespace = "AccelByte.Ecommerce.Catalog";
+option go_package = "accelbyte.net/ecommerce/catalog";
+option java_multiple_files = true;
+option java_package = "net.accelbyte.ecommerce.catalog";
+
+// --- schema objects ---
+
+// path: #/components/schemas/event
+message Event {
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+}
+
+// path: #/components/schemas/store
+message Store {
+    string storeId = 1;
+    string namespace = 2;
+    string title = 3;
+    string description = 4;
+    bool published = 5;
+    repeated string supportedLanguages = 6;
+    repeated string supportedRegions = 7;
+    string defaultRegion = 8;
+    string defaultLanguage = 9;
+    string publishedTime = 10;
+    string createdAt = 11;
+    string updatedAt = 12;
+}
+
+// path: #/components/schemas/category/properties/localizationDisplayNames
+message AnonymousSchema1 {
+}
+
+// path: #/components/schemas/category
+message Category {
+    string namespace = 1;
+    string parentCategoryPath = 2;
+    string categoryPath = 3;
+    bool isRoot = 4;
+    AnonymousSchema1 localizationDisplayNames = 5;
+    string createdAt = 6;
+    string updatedAt = 7;
+}
+
+// path: #/components/schemas/image
+message Image {
+    string as = 1;
+    string caption = 2;
+    int32 height = 3;
+    int32 width = 4;
+    string imageUrl = 5;
+    string smallImageUrl = 6;
+}
+
+// path: #/components/schemas/localization/properties/localExt/additionalProperties
+message AnonymousSchema2 {
+}
+
+// path: #/components/schemas/localization/properties/localExt
+message AnonymousSchema3 {
+}
+
+// path: #/components/schemas/localization
+message Localization {
+    string title = 1;
+    string description = 2;
+    string longDescription = 3;
+    AnonymousSchema3 localExt = 4;
+}
+
+// path: #/components/schemas/regionDataItem
+message RegionDataItem {
+    int32 price = 1;
+    int32 discountPercentage = 2;
+    int32 discountAmount = 3;
+    int32 discountedPrice = 4;
+    string currencyCode = 5;
+    string currencyType = 6;
+    string currencyNamespace = 7;
+    string purchaseAt = 8;
+    string expireAt = 9;
+    string discountPurchaseAt = 10;
+    string discountExpireAt = 11;
+}
+
+// path: #/components/schemas/item/properties/localizations
+message AnonymousSchema4 {
+}
+
+// path: #/components/schemas/item/properties/regionData
+message AnonymousSchema5 {
+}
+
+// path: #/components/schemas/item/properties/itemQty
+message AnonymousSchema6 {
+}
+
+// path: #/components/schemas/item/properties/ext/additionalProperties
+message AnonymousSchema7 {
+}
+
+// path: #/components/schemas/item/properties/ext
+message AnonymousSchema8 {
+}
+
+// path: #/components/schemas/item/properties/purchaseCondition
+message AnonymousSchema9 {
+}
+
+// path: #/components/schemas/item/properties/optionBoxConfig
+message AnonymousSchema10 {
+}
+
+// path: #/components/schemas/item
+message Item {
+    string itemId = 1;
+    string appId = 2;
+    string appType = 3;
+    string baseAppId = 4;
+    string baseAppItemId = 5;
+    string namespace = 6;
+    string sku = 7;
+    string name = 8;
+    string entitlementType = 9;
+    int32 useCount = 10;
+    bool stackable = 11;
+    string categoryPath = 12;
+    repeated Image images = 13;
+    string thumbnailUrl = 14;
+    AnonymousSchema4 localizations = 15;
+    string status = 16;
+    bool listable = 17;
+    bool purchasable = 18;
+    bool sectionExclusive = 19;
+    string itemType = 20;
+    string targetNamespace = 21;
+    string targetCurrencyCode = 22;
+    string targetItemId = 23;
+    AnonymousSchema5 regionData = 24;
+    repeated string itemIds = 25;
+    AnonymousSchema6 itemQty = 26;
+    repeated string tags = 27;
+    repeated string features = 28;
+    int32 maxCountPerUser = 29;
+    int32 maxCount = 30;
+    string clazz = 31;
+    AnonymousSchema8 ext = 32;
+    string boothName = 33;
+    string ticketBoothId = 34;
+    int32 displayOrder = 35;
+    string createdAt = 36;
+    string updatedAt = 37;
+    AnonymousSchema9 purchaseCondition = 38;
+    AnonymousSchema10 optionBoxConfig = 39;
+}
+
+// path: #/components/schemas/slide
+message Slide {
+    enum TypeEnum {
+        TYPEENUM_IMAGE = 0;
+        TYPEENUM_VIDEO = 1;
+    }
+    TypeEnum type = 1;
+    enum VideoSourceEnum {
+        VIDEOSOURCEENUM_GENERIC = 0;
+        VIDEOSOURCEENUM_YOUTUBE = 1;
+        VIDEOSOURCEENUM_VIMEO = 2;
+    }
+    VideoSourceEnum videoSource = 2;
+    string url = 3;
+    string alt = 4;
+    string thumbnailUrl = 5;
+    string previewUrl = 6;
+}
+
+// path: #/components/schemas/requirement
+message Requirement {
+    string label = 1;
+    string osVersion = 2;
+    string processor = 3;
+    string ram = 4;
+    string graphics = 5;
+    string directXVersion = 6;
+    string diskSpace = 7;
+    string soundCard = 8;
+    string additionals = 9;
+}
+
+// path: #/components/schemas/appLocalization
+message AppLocalization {
+    string slogan = 1;
+    string announcement = 2;
+}
+
+// path: #/components/schemas/purchaseCondition
+message PurchaseCondition {
+    ConditionGroups conditionGroups = 1;
+}
+
+// path: #/components/schemas/conditionGroups
+message ConditionGroups {
+    repeated Predicate predicates = 1;
+    string operator = 2;
+}
+
+// path: #/components/schemas/predicate/properties/values/items
+message AnonymousSchema11 {
+}
+
+// path: #/components/schemas/predicate
+message Predicate {
+    string name = 1;
+    enum PredicateTypeEnum {
+        PREDICATETYPEENUM_ENTITLEMENT_PREDICATE = 0;
+        PREDICATETYPEENUM_SEASON_PASS_PREDICATE = 1;
+        PREDICATETYPEENUM_SEASON_TIER_PREDICATE = 2;
+    }
+    PredicateTypeEnum predicateType = 2;
+    enum ComparisonEnum {
+        COMPARISONENUM_IS = 0;
+        COMPARISONENUM_IS_NOT = 1;
+        COMPARISONENUM_IS_GREATER_THAN = 2;
+        COMPARISONENUM_IS_GRATER_THAN_OR_EQUAL = 3;
+        COMPARISONENUM_IS_LESS_THAN = 4;
+        COMPARISONENUM_IS_LESS_THAN_OR_EQUAL = 5;
+        COMPARISONENUM_INCLUDES = 6;
+        COMPARISONENUM_EXCLUDES = 7;
+    }
+    ComparisonEnum comparison = 3;
+    int64 anyOf = 4;
+    repeated AnonymousSchema11 values = 5;
+    string value = 6;
+}
+
+// path: #/components/schemas/optionBoxConfig
+message OptionBoxConfig {
+    repeated OptionBoxItem boxItems = 1;
+}
+
+// path: #/components/schemas/optionBoxItem
+message OptionBoxItem {
+    string itemId = 1;
+    string itemSku = 2;
+    int64 count = 3;
+}
+
+// path: #/components/schemas/storePublish
+message StorePublish {
+    string namespace = 1;
+    string storeId = 2;
+    bool incremental = 3;
+    repeated CatalogChange catalogChanges = 4;
+}
+
+// path: #/components/schemas/catalogChange
+message CatalogChange {
+    string storeId = 1;
+    string changeId = 2;
+    string itemType = 3;
+    string itemId = 4;
+    string sku = 5;
+    string viewId = 6;
+    string sectionId = 7;
+    string categoryPath = 8;
+    string action = 9;
+}
+
+// path: #/components/schemas/app/properties/platformRequirements
+message AnonymousSchema12 {
+}
+
+// path: #/components/schemas/app/properties/localizations
+message AnonymousSchema13 {
+}
+
+// path: #/components/schemas/app
+message App {
+    string itemId = 1;
+    string namespace = 2;
+    repeated Slide carousel = 3;
+    string developer = 4;
+    string publisher = 5;
+    string websiteUrl = 6;
+    string forumUrl = 7;
+    repeated string platforms = 8;
+    AnonymousSchema12 platformRequirements = 9;
+    AnonymousSchema13 localizations = 10;
+    enum PrimaryGenreEnum {
+        PRIMARYGENREENUM_ACTION = 0;
+        PRIMARYGENREENUM_ADVENTURE = 1;
+        PRIMARYGENREENUM_CASUAL = 2;
+        PRIMARYGENREENUM_FREE_TO_PLAY = 3;
+        PRIMARYGENREENUM_INDIE = 4;
+        PRIMARYGENREENUM_MASSIVELY_MULTIPLAYER = 5;
+        PRIMARYGENREENUM_RACING = 6;
+        PRIMARYGENREENUM_RPG = 7;
+        PRIMARYGENREENUM_SIMULATION = 8;
+        PRIMARYGENREENUM_SPORTS = 9;
+        PRIMARYGENREENUM_STRATEGY = 10;
+    }
+    PrimaryGenreEnum primaryGenre = 11;
+    repeated string genres = 12;
+    repeated string players = 13;
+    string releaseDate = 14;
+}
+
+// path: #/components/schemas/itemStatusChange
+message ItemStatusChange {
+    string itemId = 1;
+    string itemName = 2;
+    enum StatusEnum {
+        STATUSENUM_ACTIVE = 0;
+        STATUSENUM_INACTIVE = 1;
+    }
+    StatusEnum status = 3;
+    enum PreviousStatusEnum {
+        PREVIOUSSTATUSENUM_ACTIVE = 0;
+        PREVIOUSSTATUSENUM_INACTIVE = 1;
+    }
+    PreviousStatusEnum previousStatus = 4;
+}
+
+// path: #/components/schemas/storeClone
+message StoreClone {
+    string targetStoreId = 1;
+    bool published = 2;
+}
+
+// path: #/components/messages/storeCreated/payload/properties/payload
+message AnonymousSchema14 {
+    Store store = 1;
+}
+
+// path: #/components/messages/storeCreated/payload
+message StoreCreated {
+    AnonymousSchema14 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/storeUpdated/payload/properties/payload
+message AnonymousSchema15 {
+    Store store = 1;
+    Store oldStore = 2;
+}
+
+// path: #/components/messages/storeUpdated/payload
+message StoreUpdated {
+    AnonymousSchema15 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/storeDeleted/payload/properties/payload
+message AnonymousSchema16 {
+    Store store = 1;
+}
+
+// path: #/components/messages/storeDeleted/payload
+message StoreDeleted {
+    AnonymousSchema16 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/storeExported/payload/properties/payload
+message AnonymousSchema17 {
+    string storeId = 1;
+}
+
+// path: #/components/messages/storeExported/payload
+message StoreExported {
+    AnonymousSchema17 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/storeImported/payload/properties/payload
+message AnonymousSchema18 {
+    string storeId = 1;
+}
+
+// path: #/components/messages/storeImported/payload
+message StoreImported {
+    AnonymousSchema18 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/storeCloned/payload/properties/payload
+message AnonymousSchema19 {
+    string storeId = 1;
+    StoreClone storeClone = 2;
+}
+
+// path: #/components/messages/storeCloned/payload
+message StoreCloned {
+    AnonymousSchema19 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/storeRollbacked/payload/properties/payload
+message AnonymousSchema20 {
+    string storeId = 1;
+}
+
+// path: #/components/messages/storeRollbacked/payload
+message StoreRollbacked {
+    AnonymousSchema20 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/storePublished/payload/properties/payload
+message AnonymousSchema21 {
+    string storeId = 1;
+    StorePublish storePublishSchema = 2;
+}
+
+// path: #/components/messages/storePublished/payload
+message StorePublished {
+    AnonymousSchema21 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/categoryCreated/payload/properties/payload
+message AnonymousSchema22 {
+    string storeId = 1;
+    Category category = 2;
+}
+
+// path: #/components/messages/categoryCreated/payload
+message CategoryCreated {
+    AnonymousSchema22 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/categoryUpdated/payload/properties/payload
+message AnonymousSchema23 {
+    string storeId = 1;
+    Category category = 2;
+    Category oldCategory = 3;
+}
+
+// path: #/components/messages/categoryUpdated/payload
+message CategoryUpdated {
+    AnonymousSchema23 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/categoryDeleted/payload/properties/payload
+message AnonymousSchema24 {
+    string storeId = 1;
+    Category category = 2;
+}
+
+// path: #/components/messages/categoryDeleted/payload
+message CategoryDeleted {
+    AnonymousSchema24 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/itemCreated/payload/properties/payload
+message AnonymousSchema25 {
+    string storeId = 1;
+    Item item = 2;
+}
+
+// path: #/components/messages/itemCreated/payload
+message ItemCreated {
+    AnonymousSchema25 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/itemUpdated/payload/properties/payload
+message AnonymousSchema26 {
+    string storeId = 1;
+    Item item = 2;
+    Item oldItem = 3;
+}
+
+// path: #/components/messages/itemUpdated/payload
+message ItemUpdated {
+    AnonymousSchema26 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/itemDeleted/payload/properties/payload
+message AnonymousSchema27 {
+    string storeId = 1;
+    Item item = 2;
+}
+
+// path: #/components/messages/itemDeleted/payload
+message ItemDeleted {
+    AnonymousSchema27 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/inGameItemSynced/payload/properties/payload
+message AnonymousSchema28 {
+    string storeId = 1;
+    Item item = 2;
+}
+
+// path: #/components/messages/inGameItemSynced/payload
+message InGameItemSynced {
+    AnonymousSchema28 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/itemDisabled/payload/properties/payload
+message AnonymousSchema29 {
+    string storeId = 1;
+    ItemStatusChange itemStatusChange = 2;
+}
+
+// path: #/components/messages/itemDisabled/payload
+message ItemDisabled {
+    AnonymousSchema29 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/itemEnabled/payload/properties/payload
+message AnonymousSchema30 {
+    string storeId = 1;
+    ItemStatusChange itemStatusChange = 2;
+}
+
+// path: #/components/messages/itemEnabled/payload
+message ItemEnabled {
+    AnonymousSchema30 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/appUpdated/payload/properties/payload
+message AnonymousSchema31 {
+    string storeId = 1;
+    App app = 2;
+    App oldApp = 3;
+}
+
+// path: #/components/messages/appUpdated/payload
+message AppUpdated {
+    AnonymousSchema31 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+
+// --- #/components/messages/{message_name} ---
+
+// path: #/components/messages/storeCreated
+message StoreCreatedMessage {
+    StoreCreated payload = 1;
+}
+
+// path: #/components/messages/storeUpdated
+message StoreUpdatedMessage {
+    StoreUpdated payload = 1;
+}
+
+// path: #/components/messages/storeDeleted
+message StoreDeletedMessage {
+    StoreDeleted payload = 1;
+}
+
+// path: #/components/messages/storeExported
+message StoreExportedMessage {
+    StoreExported payload = 1;
+}
+
+// path: #/components/messages/storeImported
+message StoreImportedMessage {
+    StoreImported payload = 1;
+}
+
+// path: #/components/messages/storeCloned
+message StoreClonedMessage {
+    StoreCloned payload = 1;
+}
+
+// path: #/components/messages/storeRollbacked
+message StoreRollbackedMessage {
+    StoreRollbacked payload = 1;
+}
+
+// path: #/components/messages/storePublished
+message StorePublishedMessage {
+    StorePublished payload = 1;
+}
+
+// path: #/components/messages/categoryCreated
+message CategoryCreatedMessage {
+    CategoryCreated payload = 1;
+}
+
+// path: #/components/messages/categoryUpdated
+message CategoryUpdatedMessage {
+    CategoryUpdated payload = 1;
+}
+
+// path: #/components/messages/categoryDeleted
+message CategoryDeletedMessage {
+    CategoryDeleted payload = 1;
+}
+
+// path: #/components/messages/itemCreated
+message ItemCreatedMessage {
+    ItemCreated payload = 1;
+}
+
+// path: #/components/messages/itemUpdated
+message ItemUpdatedMessage {
+    ItemUpdated payload = 1;
+}
+
+// path: #/components/messages/itemDeleted
+message ItemDeletedMessage {
+    ItemDeleted payload = 1;
+}
+
+// path: #/components/messages/inGameItemSynced
+message InGameItemSyncedMessage {
+    InGameItemSynced payload = 1;
+}
+
+// path: #/components/messages/itemDisabled
+message ItemDisabledMessage {
+    ItemDisabled payload = 1;
+}
+
+// path: #/components/messages/itemEnabled
+message ItemEnabledMessage {
+    ItemEnabled payload = 1;
+}
+
+// path: #/components/messages/appUpdated
+message AppUpdatedMessage {
+    AppUpdated payload = 1;
+}
+
+
+// --- #/channels/{channel_name}/{operation_type}/message ---
+
+// path: #/channels/catalogManagement/publish/message
+message CatalogManagementPublish {
+    oneof payload {
+        StoreCreated variant0 = 1;
+        StoreUpdated variant1 = 2;
+        StoreDeleted variant2 = 3;
+        StoreCloned variant3 = 4;
+        StoreRollbacked variant4 = 5;
+        StoreExported variant5 = 6;
+        StoreImported variant6 = 7;
+        StorePublished variant7 = 8;
+        CategoryCreated variant8 = 9;
+        CategoryUpdated variant9 = 10;
+        CategoryDeleted variant10 = 11;
+        ItemCreated variant11 = 12;
+        ItemUpdated variant12 = 13;
+        ItemDeleted variant13 = 14;
+        InGameItemSynced variant14 = 15;
+        ItemDisabled variant15 = 16;
+        ItemEnabled variant16 = 17;
+        AppUpdated variant17 = 18;
+    }
+}
+
+
+// --- service ---
+
+
+// Publishes a StoreCreated to the Catalog Management channel. (oneOf variant) (catalogManagement StoreCreated)
+service CatalogManagementStoreCreatedService {
+    rpc OnMessage(StoreCreated) returns (google.protobuf.Empty);
+}
+
+// Publishes a StoreUpdated to the Catalog Management channel. (oneOf variant) (catalogManagement StoreUpdated)
+service CatalogManagementStoreUpdatedService {
+    rpc OnMessage(StoreUpdated) returns (google.protobuf.Empty);
+}
+
+// Publishes a StoreDeleted to the Catalog Management channel. (oneOf variant) (catalogManagement StoreDeleted)
+service CatalogManagementStoreDeletedService {
+    rpc OnMessage(StoreDeleted) returns (google.protobuf.Empty);
+}
+
+// Publishes a StoreCloned to the Catalog Management channel. (oneOf variant) (catalogManagement StoreCloned)
+service CatalogManagementStoreClonedService {
+    rpc OnMessage(StoreCloned) returns (google.protobuf.Empty);
+}
+
+// Publishes a StoreRollbacked to the Catalog Management channel. (oneOf variant) (catalogManagement StoreRollbacked)
+service CatalogManagementStoreRollbackedService {
+    rpc OnMessage(StoreRollbacked) returns (google.protobuf.Empty);
+}
+
+// Publishes a StoreExported to the Catalog Management channel. (oneOf variant) (catalogManagement StoreExported)
+service CatalogManagementStoreExportedService {
+    rpc OnMessage(StoreExported) returns (google.protobuf.Empty);
+}
+
+// Publishes a StoreImported to the Catalog Management channel. (oneOf variant) (catalogManagement StoreImported)
+service CatalogManagementStoreImportedService {
+    rpc OnMessage(StoreImported) returns (google.protobuf.Empty);
+}
+
+// Publishes a StorePublished to the Catalog Management channel. (oneOf variant) (catalogManagement StorePublished)
+service CatalogManagementStorePublishedService {
+    rpc OnMessage(StorePublished) returns (google.protobuf.Empty);
+}
+
+// Publishes a CategoryCreated to the Catalog Management channel. (oneOf variant) (catalogManagement CategoryCreated)
+service CatalogManagementCategoryCreatedService {
+    rpc OnMessage(CategoryCreated) returns (google.protobuf.Empty);
+}
+
+// Publishes a CategoryUpdated to the Catalog Management channel. (oneOf variant) (catalogManagement CategoryUpdated)
+service CatalogManagementCategoryUpdatedService {
+    rpc OnMessage(CategoryUpdated) returns (google.protobuf.Empty);
+}
+
+// Publishes a CategoryDeleted to the Catalog Management channel. (oneOf variant) (catalogManagement CategoryDeleted)
+service CatalogManagementCategoryDeletedService {
+    rpc OnMessage(CategoryDeleted) returns (google.protobuf.Empty);
+}
+
+// Publishes a ItemCreated to the Catalog Management channel. (oneOf variant) (catalogManagement ItemCreated)
+service CatalogManagementItemCreatedService {
+    rpc OnMessage(ItemCreated) returns (google.protobuf.Empty);
+}
+
+// Publishes a ItemUpdated to the Catalog Management channel. (oneOf variant) (catalogManagement ItemUpdated)
+service CatalogManagementItemUpdatedService {
+    rpc OnMessage(ItemUpdated) returns (google.protobuf.Empty);
+}
+
+// Publishes a ItemDeleted to the Catalog Management channel. (oneOf variant) (catalogManagement ItemDeleted)
+service CatalogManagementItemDeletedService {
+    rpc OnMessage(ItemDeleted) returns (google.protobuf.Empty);
+}
+
+// Publishes a InGameItemSynced to the Catalog Management channel. (oneOf variant) (catalogManagement InGameItemSynced)
+service CatalogManagementInGameItemSyncedService {
+    rpc OnMessage(InGameItemSynced) returns (google.protobuf.Empty);
+}
+
+// Publishes a ItemDisabled to the Catalog Management channel. (oneOf variant) (catalogManagement ItemDisabled)
+service CatalogManagementItemDisabledService {
+    rpc OnMessage(ItemDisabled) returns (google.protobuf.Empty);
+}
+
+// Publishes a ItemEnabled to the Catalog Management channel. (oneOf variant) (catalogManagement ItemEnabled)
+service CatalogManagementItemEnabledService {
+    rpc OnMessage(ItemEnabled) returns (google.protobuf.Empty);
+}
+
+// Publishes a AppUpdated to the Catalog Management channel. (oneOf variant) (catalogManagement AppUpdated)
+service CatalogManagementAppUpdatedService {
+    rpc OnMessage(AppUpdated) returns (google.protobuf.Empty);
+}
