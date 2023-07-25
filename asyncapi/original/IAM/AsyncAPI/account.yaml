@@ -210,6 +210,12 @@ components:
               banId:
                 type: string
                 description: ban id
+              targetNamespace:
+                type: string
+                description: target namespace
+              targetUserId:
+                type: string
+                description: target user id
               name:
                 type: string
                 description: ban type

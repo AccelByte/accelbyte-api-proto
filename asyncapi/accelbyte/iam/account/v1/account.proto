@@ -78,10 +78,12 @@ message UserAccountStatus {
 // path: #/components/schemas/userAccountBan/properties/ban/items
 message AnonymousSchema1 {
     string banId = 1;
-    string name = 2;
-    string reason = 3;
-    string comment = 4;
-    bool enabled = 5;
+    string targetNamespace = 2;
+    string targetUserId = 3;
+    string name = 4;
+    string reason = 5;
+    string comment = 6;
+    bool enabled = 7;
 }
 
 // path: #/components/schemas/userAccountBan
