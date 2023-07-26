@@ -1,0 +1,116 @@
+// Copyright (c) 2023 AccelByte Inc. All Rights Reserved.
+// This is licensed software from AccelByte Inc, for limitations
+// and restrictions contact your company contract manager.
+
+syntax = "proto3";
+
+package accelbyte.cloudsave.validator;
+// Version v1.0.0
+
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "AccelByte.Cloudsave.Validator";
+option go_package = "accelbyte.net/cloudsave/validator";
+option java_multiple_files = true;
+option java_package = "net.accelbyte.cloudsave.validator";
+
+service CloudsaveValidatorService {
+  // game record
+  rpc BeforeWriteGameRecord(GameRecord) returns (GameRecordValidationResult);
+  rpc AfterReadGameRecord(GameRecord) returns (GameRecordValidationResult);
+  rpc AfterBulkReadGameRecord(BulkGameRecord) returns (BulkGameRecordValidationResult);
+
+  // player record
+  rpc BeforeWritePlayerRecord(PlayerRecord) returns (PlayerRecordValidationResult);
+  rpc AfterReadPlayerRecord(PlayerRecord) returns (PlayerRecordValidationResult);
+  rpc AfterBulkReadPlayerRecord(BulkPlayerRecord) returns (BulkPlayerRecordValidationResult);
+
+  // admin game record
+  rpc BeforeWriteAdminGameRecord(AdminGameRecord) returns (GameRecordValidationResult);
+
+  // admin player record
+  rpc BeforeWriteAdminPlayerRecord(AdminPlayerRecord) returns (PlayerRecordValidationResult);
+}
+
+message GameRecord {
+  string key = 1;
+  string namespace = 2;
+  bytes payload = 3;
+  string setBy = 4;
+  google.protobuf.Timestamp createdAt = 5;
+  optional google.protobuf.Timestamp updatedAt = 6;
+}
+
+message BulkGameRecord {
+  repeated GameRecord gameRecords = 1;
+}
+
+message PlayerRecord {
+  string key = 1;
+  string namespace = 2;
+  bytes payload = 3;
+  string setBy = 4;
+  google.protobuf.Timestamp createdAt = 5;
+  string userId = 6;
+  bool isPublic = 7;
+  optional google.protobuf.Timestamp updatedAt = 8;
+}
+
+message BulkPlayerRecord {
+  repeated PlayerRecord playerRecords = 1;
+}
+
+message AdminGameRecord {
+  string key = 1;
+  string namespace = 2;
+  // payload is map of string object
+  bytes payload = 3;
+  google.protobuf.Timestamp createdAt = 4;
+  optional google.protobuf.Timestamp updatedAt = 5;
+}
+
+message BulkAdminGameRecord {
+  repeated AdminGameRecord adminGameRecords = 1;
+}
+
+message AdminPlayerRecord {
+  string key = 1;
+  string namespace = 2;
+  // payload is map of string object
+  bytes payload = 3;
+  google.protobuf.Timestamp createdAt = 4;
+  string userId = 5;
+  optional google.protobuf.Timestamp updatedAt = 6;
+}
+
+message BulkAdminPlayerRecord {
+  repeated AdminPlayerRecord adminPlayerRecords = 1;
+}
+
+
+message GameRecordValidationResult {
+  bool isSuccess = 1;
+  string key = 2;
+  optional Error error = 3;
+}
+
+message BulkGameRecordValidationResult {
+  repeated GameRecordValidationResult validationResults = 1;
+}
+
+message PlayerRecordValidationResult {
+  bool isSuccess = 1;
+  string key = 2;
+  string userId = 3;
+  optional Error error = 4;
+}
+
+message BulkPlayerRecordValidationResult {
+  repeated PlayerRecordValidationResult validationResults = 1;
+}
+
+
+message Error {
+  int32 errorCode = 1;
+  string errorMessage = 2;
+}
