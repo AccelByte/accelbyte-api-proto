@@ -12,7 +12,7 @@ bitbucketNamespace = "accelbyte"
 bitbucketCredentialsHttps = "bitbucket-build-extend-https"
 bitbucketCredentialsSsh = "bitbucket-build-extend-ssh"
 
-repoName = "justice-api-proto"
+repoName = "accelbyte-api-proto"
 repoPath = null
 repoBranchName = null
 repoCommitHash = null
@@ -27,7 +27,7 @@ codegenRepoName = "justice-codegen-modular-sdk"
 codegenRepoPath = null
 codegenRepoCommitHash = null
 
-toolsRepoName = "justice-api-proto-tools"
+toolsRepoName = "accelbyte-api-proto-tools"
 toolsRepoPath = null
 toolsRepoCommitHash = null
 
