@@ -20,62 +20,41 @@ components:
     event:
       type: object
       properties:
-        clientId:
-          type: string
-          description: client id
-        client_ids:
-          type: array
-          items:
-            type: string
-        event_id:
-          type: integer
-          description: event id
-        event_level:
-          type: integer
-          description: event level
-        event_type:
-          type: integer
-          description: event type
         id:
           type: string
-          description: event id
+        version:
+          type: integer
         name:
           type: string
-          description: event name
         namespace:
           type: string
-          description: event namespace
-        privacy:
-          type: boolean
-        service:
+        parentNamespace:
           type: string
-        sessionId:
-          type: string
-          description: session id
-        spanContext:
-          type: string
-          description: span context
         target_namespace:
           type: string
-          description: target namespace
-        target_user_ids:
-          type: array
-          items:
-            type: string
         timestamp:
           type: string
           format: date-time
         topic:
           type: string
+        service:
+          type: string
+        sessionId:
+          type: string
         traceId:
           type: string
-          description: trace id
         userId:
           type: string
-          description: the user id
-        version:
-          type: integer
+        clientId:
+          type: string
 
+    # This object capture Nomad (job) allocation state
+    # More information regarding Nomad allocations can be found here https://developer.hashicorp.com/nomad/docs/concepts/scheduling/scheduling
+    # PENDING - Nomad job hasn't get any allocation
+    # RUNNING - Nomad job running
+    # COMPLETE - Nomad job completed
+    # FAILED - Nomad job failed
+    # LOST - Orphan nomad job, PID can't be found
     allocationEvent:
       type: object
       properties:
@@ -87,6 +66,7 @@ components:
         description:
           type: string
 
+    # This object capture last DS state
     statusHistory:
       type: object
       properties:
@@ -104,6 +84,7 @@ components:
             - 'FAILED'
           description: assigned server status
 
+    # This object represent DS state
     server:
       type: object
       properties:
@@ -188,6 +169,7 @@ components:
           items:
             $ref: '#/components/schemas/statusHistory'
 
+    # This object represent game session state
     session:
       type: object
       properties:
@@ -262,6 +244,14 @@ components:
             additionalProperties:
               $ref: '#/components/schemas/dsNumEachRegionEachNamespace'
 
+    # Each time Dedicated Server status changed, this event will be triggered
+    # server object status properties will be changed each time there are changes in dedicated server
+    # CREATING - DS created
+    # READY - DS spawned and able to be claimed
+    # BUSY -  DS currently being in use
+    # REMOVING - DS shutting down
+    # UNREACHABLE - DS lost connection with Nomad Server
+    # FAILED - DS crashing
     dsStatusChanged:
       name: dsStatusChanged
       payload:
