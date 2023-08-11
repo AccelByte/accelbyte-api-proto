@@ -63,6 +63,48 @@ message PlatformPayload {
     string platformUserId = 2;
 }
 
+// path: #/components/schemas/errorCode
+message ErrorCode {
+    int64 errorcode = 1;
+}
+
+// path: #/components/schemas/partyUserJoinedPayload
+message PartyUserJoinedPayload {
+
+    // allOf(#/components/schemas/partyPayload)
+    string partyId = 1;
+    string leaderId = 2;
+
+    // allOf(#/components/schemas/invitePayload)
+    string inviterId = 3;
+    repeated string inviteesId = 4;
+    string invitationToken = 5;
+
+    // allOf(#/components/schemas/platformPayload)
+    string platform = 6;
+    string platformUserId = 7;
+}
+
+// path: #/components/schemas/partyUserJoinFailedPayload
+message PartyUserJoinFailedPayload {
+
+    // allOf(#/components/schemas/partyPayload)
+    string partyId = 1;
+    string leaderId = 2;
+
+    // allOf(#/components/schemas/invitePayload)
+    string inviterId = 3;
+    repeated string inviteesId = 4;
+    string invitationToken = 5;
+
+    // allOf(#/components/schemas/platformPayload)
+    string platform = 6;
+    string platformUserId = 7;
+
+    // allOf(#/components/schemas/errorCode)
+    int64 errorcode = 8;
+}
+
 // path: #/components/messages/partyCreated/payload
 message PartyCreated {
 
@@ -99,6 +141,23 @@ message PartyUserInvited {
 
 // path: #/components/messages/partyUserJoined/payload
 message PartyUserJoined {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/partyUserJoinFailed/payload
+message PartyUserJoinFailed {
 
     // allOf(#/components/schemas/event)
     string id = 1;
@@ -285,6 +344,11 @@ message PartyUserJoinedMessage {
     PartyUserJoined payload = 1;
 }
 
+// path: #/components/messages/partyUserJoinFailed
+message PartyUserJoinFailedMessage {
+    PartyUserJoinFailed payload = 1;
+}
+
 // path: #/components/messages/partyUserLeft
 message PartyUserLeftMessage {
     PartyUserLeft payload = 1;
@@ -339,14 +403,15 @@ message PartyPublish {
         PartyCreated variant0 = 1;
         PartyUserInvited variant1 = 2;
         PartyUserJoined variant2 = 3;
-        PartyUserLeft variant3 = 4;
-        PartyUserKicked variant4 = 5;
-        PartyUserReject variant5 = 6;
-        PartyUserNewLeader variant6 = 7;
-        PartyDeleteCode variant7 = 8;
-        PartyJoinViaCode variant8 = 9;
-        PartyGenerateCode variant9 = 10;
-        PartyGetCode variant10 = 11;
+        PartyUserJoinFailed variant3 = 4;
+        PartyUserLeft variant4 = 5;
+        PartyUserKicked variant5 = 6;
+        PartyUserReject variant6 = 7;
+        PartyUserNewLeader variant7 = 8;
+        PartyDeleteCode variant8 = 9;
+        PartyJoinViaCode variant9 = 10;
+        PartyGenerateCode variant10 = 11;
+        PartyGetCode variant11 = 12;
     }
 }
 
@@ -374,6 +439,11 @@ service PartyPartyUserInvitedService {
 // Publishes a PartyUserJoined to the Party channel. (oneOf variant) (party PartyUserJoined)
 service PartyPartyUserJoinedService {
     rpc OnMessage(PartyUserJoined) returns (google.protobuf.Empty);
+}
+
+// Publishes a PartyUserJoinFailed to the Party channel. (oneOf variant) (party PartyUserJoinFailed)
+service PartyPartyUserJoinFailedService {
+    rpc OnMessage(PartyUserJoinFailed) returns (google.protobuf.Empty);
 }
 
 // Publishes a PartyUserLeft to the Party channel. (oneOf variant) (party PartyUserLeft)

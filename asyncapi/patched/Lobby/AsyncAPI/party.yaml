@@ -11,6 +11,7 @@ channels:
         - $ref: '#/components/messages/partyCreated'
         - $ref: '#/components/messages/partyUserInvited'
         - $ref: '#/components/messages/partyUserJoined'
+        - $ref: '#/components/messages/partyUserJoinFailed'
         - $ref: '#/components/messages/partyUserLeft'
         - $ref: '#/components/messages/partyUserKicked'
         - $ref: '#/components/messages/partyUserReject'
@@ -85,6 +86,22 @@ components:
           type: string
         platformUserId:
           type: string
+    errorCode:
+      type: object
+      properties:
+        errorcode:
+          type: integer
+    partyUserJoinedPayload:
+      allOf:
+      - $ref: '#/components/schemas/partyPayload'
+      - $ref: '#/components/schemas/invitePayload'
+      - $ref: '#/components/schemas/platformPayload'
+    partyUserJoinFailedPayload:
+      allOf:
+      - $ref: '#/components/schemas/partyPayload'
+      - $ref: '#/components/schemas/invitePayload'
+      - $ref: '#/components/schemas/platformPayload'
+      - $ref: '#/components/schemas/errorCode'
   messages:
     partyCreated:
       name: partyCreated
@@ -131,10 +148,17 @@ components:
           payload:
             properties:
               party:
-                allOf:
-                - $ref: '#/components/schemas/partyPayload'
-                - $ref: '#/components/schemas/invitePayload'
-                - $ref: '#/components/schemas/platformPayload'
+                $ref: '#/components/schemas/partyUserJoinedPayload'
+    partyUserJoinFailed:
+      name: partyUserJoinFailed
+      payload:
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            properties:
+              party:
+                $ref: '#/components/schemas/partyUserJoinFailedPayload'
     partyUserLeft:
       name: partyUserLeft
       payload:
