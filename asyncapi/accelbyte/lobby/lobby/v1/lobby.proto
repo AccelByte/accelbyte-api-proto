@@ -80,40 +80,6 @@ message UserDisconnected {
     string spanContext = 11;
 }
 
-// path: #/components/messages/userChatRateLimited/payload
-message UserChatRateLimited {
-
-    // allOf(#/components/schemas/event)
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
-    string spanContext = 11;
-}
-
-// path: #/components/messages/userRateLimited/payload
-message UserRateLimited {
-
-    // allOf(#/components/schemas/event)
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
-    string spanContext = 11;
-}
-
 // path: #/components/messages/matchmakingTicketsPublished/payload
 message MatchmakingTicketsPublished {
 
@@ -163,12 +129,12 @@ message UserDisconnectedMessage {
 
 // path: #/components/messages/userChatRateLimited
 message UserChatRateLimitedMessage {
-    UserChatRateLimited payload = 1;
+    Event payload = 1;
 }
 
 // path: #/components/messages/userRateLimited
 message UserRateLimitedMessage {
-    UserRateLimited payload = 1;
+    Event payload = 1;
 }
 
 // path: #/components/messages/matchmakingTicketsPublished
@@ -194,20 +160,6 @@ message LobbyPublish {
     }
 }
 
-// path: #/channels/lobbyMatchmakingTickets/publish/message
-message LobbyMatchmakingTicketsPublish {
-    oneof payload {
-        MatchmakingTicketsPublished variant0 = 1;
-    }
-}
-
-// path: #/channels/lobbyTotalUsersOnline/publish/message
-message LobbyTotalUsersOnlinePublish {
-    oneof payload {
-        TotalUsersOnlinePublished variant0 = 1;
-    }
-}
-
 
 // --- service ---
 
@@ -222,22 +174,22 @@ service LobbyUserDisconnectedService {
     rpc OnMessage(UserDisconnected) returns (google.protobuf.Empty);
 }
 
-// Publishes a UserChatRateLimited to the Lobby channel. (oneOf variant) (lobby UserChatRateLimited)
+// Publishes a Event to the Lobby channel. (oneOf variant) (lobby UserChatRateLimited)
 service LobbyUserChatRateLimitedService {
-    rpc OnMessage(UserChatRateLimited) returns (google.protobuf.Empty);
+    rpc OnMessage(Event) returns (google.protobuf.Empty);
 }
 
-// Publishes a UserRateLimited to the Lobby channel. (oneOf variant) (lobby UserRateLimited)
+// Publishes a Event to the Lobby channel. (oneOf variant) (lobby UserRateLimited)
 service LobbyUserRateLimitedService {
-    rpc OnMessage(UserRateLimited) returns (google.protobuf.Empty);
+    rpc OnMessage(Event) returns (google.protobuf.Empty);
 }
 
-// Publishes a MatchmakingTicketsPublished to the Lobby Matchmaking Tickets channel. (oneOf variant) (lobbyMatchmakingTickets MatchmakingTicketsPublished)
+// Publishes a message to the Lobby Matchmaking Tickets channel. (lobbyMatchmakingTickets MatchmakingTicketsPublished)
 service LobbyMatchmakingTicketsMatchmakingTicketsPublishedService {
     rpc OnMessage(MatchmakingTicketsPublished) returns (google.protobuf.Empty);
 }
 
-// Publishes a TotalUsersOnlinePublished to the Lobby Total Users Online channel. (oneOf variant) (lobbyTotalUsersOnline TotalUsersOnlinePublished)
+// Publishes a message to the Lobby Total Users Online channel. (lobbyTotalUsersOnline TotalUsersOnlinePublished)
 service LobbyTotalUsersOnlineTotalUsersOnlinePublishedService {
     rpc OnMessage(TotalUsersOnlinePublished) returns (google.protobuf.Empty);
 }

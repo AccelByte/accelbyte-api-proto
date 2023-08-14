@@ -7,13 +7,11 @@ channels:
   personalChat:
     publish:
       message:
-        oneOf:
-          - $ref: '#/components/messages/personalChatSent'
+        $ref: '#/components/messages/personalChatSent'
   partyChat:
     publish:
       message:
-        oneOf:
-          - $ref: '#/components/messages/partyChatSent'
+        $ref: '#/components/messages/partyChatSent'
 
 components:
   schemas:

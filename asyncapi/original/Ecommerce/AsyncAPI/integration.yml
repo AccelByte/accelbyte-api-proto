@@ -31,8 +31,7 @@ channels:
   iapProcessing:
     publish:
       message:
-        oneOf:
-          - $ref: '#/components/messages/iapProcessed'
+        $ref: '#/components/messages/iapProcessed'
 
 components:
   schemas:
@@ -129,145 +128,109 @@ components:
       name: appleIAPConfigDeleted
       description: message is sent when apple IAP config is deleted
       payload:
-        type: object
-        allOf:
-          - $ref: '#/components/schemas/event'
+        $ref: '#/components/schemas/event'
 
     appleIAPConfigUpdated:
       name: appleIAPConfigUpdated
       description: message is sent when apple IAP config is updated
       payload:
-        type: object
-        allOf:
-          - $ref: '#/components/schemas/event'
+        $ref: '#/components/schemas/event'
 
     googleIAPConfigDeleted:
       name: googleIAPConfigDeleted
       description: message is sent when google IAP config is deleted
       payload:
-        type: object
-        allOf:
-          - $ref: '#/components/schemas/event'
+        $ref: '#/components/schemas/event'
 
     googleIAPConfigUpdated:
       name: googleIAPConfigUpdated
       description: message is sent when google IAP config is updated
       payload:
-        type: object
-        allOf:
-          - $ref: '#/components/schemas/event'
+        $ref: '#/components/schemas/event'
 
     googleP12FileUpdated:
       name: googleP12FileUpdated
       description: message is sent when google IAP certificate is updated
       payload:
-        type: object
-        allOf:
-          - $ref: '#/components/schemas/event'
+        $ref: '#/components/schemas/event'
 
     playStationIAPConfigDeleted:
       name: playStationIAPConfigDeleted
       description: message is sent when psn IAP config is deleted
       payload:
-        type: object
-        allOf:
-          - $ref: '#/components/schemas/event'
+        $ref: '#/components/schemas/event'
 
     playStationIAPConfigUpdated:
       name: playStationIAPConfigUpdated
       description: message is sent when psn IAP config is updated
       payload:
-        type: object
-        allOf:
-          - $ref: '#/components/schemas/event'
+        $ref: '#/components/schemas/event'
 
     steamIAPConfigUpdated:
       name: steamIAPConfigUpdated
       description: message is sent when steam IAP config is updated
       payload:
-        type: object
-        allOf:
-          - $ref: '#/components/schemas/event'
+        $ref: '#/components/schemas/event'
 
     steamIAPConfigDeleted:
       name: steamIAPConfigDeleted
       description: message is sent when steam IAP config is deleted
       payload:
-        type: object
-        allOf:
-          - $ref: '#/components/schemas/event'
+        $ref: '#/components/schemas/event'
 
     xblIAPConfigDeleted:
       name: xblIAPConfigDeleted
       description: message is sent when xbox IAP config is deleted
       payload:
-        type: object
-        allOf:
-          - $ref: '#/components/schemas/event'
+        $ref: '#/components/schemas/event'
 
     xblIAPConfigUpdated:
       name: xblIAPConfigUpdated
       description: message is sent when xbox IAP config is updated
       payload:
-        type: object
-        allOf:
-          - $ref: '#/components/schemas/event'
+        $ref: '#/components/schemas/event'
 
     xblBPCertFileUpdated:
       name: xblBPCertFileUpdated
       description: message is sent when xbox IAP business partner cer is updated
       payload:
-        type: object
-        allOf:
-          - $ref: '#/components/schemas/event'
+        $ref: '#/components/schemas/event'
 
     stadiaIAPJsonFileUpdated:
       name: stadiaIAPJsonFileUpdated
       description: this is deprecated
       payload:
-        type: object
-        allOf:
-          - $ref: '#/components/schemas/event'
+        $ref: '#/components/schemas/event'
 
     stadiaIAPConfigDeleted:
       name: stadiaIAPConfigDeleted
       description: this is deprecated
       payload:
-        type: object
-        allOf:
-          - $ref: '#/components/schemas/event'
+        $ref: '#/components/schemas/event'
 
     epicGamesIAPConfigDeleted:
       name: epicGamesIAPConfigDeleted
       description: message is sent when epic IAP config is deleted
       payload:
-        type: object
-        allOf:
-          - $ref: '#/components/schemas/event'
+        $ref: '#/components/schemas/event'
 
     epicGamesIAPConfigUpdated:
       name: epicGamesIAPConfigUpdated
       description: message is sent when epic IAP config is updated
       payload:
-        type: object
-        allOf:
-          - $ref: '#/components/schemas/event'
+        $ref: '#/components/schemas/event'
 
     twitchIAPConfigUpdated:
       name: twitchIAPConfigUpdated
       description: message is sent when twitch IAP config is updated
       payload:
-        type: object
-        allOf:
-          - $ref: '#/components/schemas/event'
+        $ref: '#/components/schemas/event'
 
     twitchIAPConfigDeleted:
       name: twitchIAPConfigDeleted
       description: message is sent when twitch IAP config is deleted
       payload:
-        type: object
-        allOf:
-          - $ref: '#/components/schemas/event'
+        $ref: '#/components/schemas/event'
 
     iapProcessed:
       name: iapProcessed

@@ -96,30 +96,16 @@ message PartyChatSentMessage {
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
-// path: #/channels/personalChat/publish/message
-message PersonalChatPublish {
-    oneof payload {
-        PersonalChatSent variant0 = 1;
-    }
-}
-
-// path: #/channels/partyChat/publish/message
-message PartyChatPublish {
-    oneof payload {
-        PartyChatSent variant0 = 1;
-    }
-}
-
 
 // --- service ---
 
 
-// Publishes a PersonalChatSent to the Personal Chat channel. (oneOf variant) (personalChat PersonalChatSent)
+// Publishes a message to the Personal Chat channel. (personalChat PersonalChatSent)
 service PersonalChatPersonalChatSentService {
     rpc OnMessage(PersonalChatSent) returns (google.protobuf.Empty);
 }
 
-// Publishes a PartyChatSent to the Party Chat channel. (oneOf variant) (partyChat PartyChatSent)
+// Publishes a message to the Party Chat channel. (partyChat PartyChatSent)
 service PartyChatPartyChatSentService {
     rpc OnMessage(PartyChatSent) returns (google.protobuf.Empty);
 }

@@ -153,18 +153,11 @@ message FulfillmentCompletedMessage {
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
-// path: #/channels/fulfillment/publish/message
-message FulfillmentPublish {
-    oneof payload {
-        FulfillmentCompleted variant0 = 1;
-    }
-}
-
 
 // --- service ---
 
 
-// Publishes a FulfillmentCompleted to the Fulfillment channel. (oneOf variant) (fulfillment FulfillmentCompleted)
+// Publishes a message to the Fulfillment channel. (fulfillment FulfillmentCompleted)
 service FulfillmentFulfillmentCompletedService {
     rpc OnMessage(FulfillmentCompleted) returns (google.protobuf.Empty);
 }

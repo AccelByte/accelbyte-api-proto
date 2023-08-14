@@ -19,14 +19,12 @@ channels:
   entitlementConsumption:
     publish:
       message:
-        oneOf:
-          - $ref: '#/components/messages/entitlementConsumed'
+        $ref: '#/components/messages/entitlementConsumed'
 
   entitlementSale:
     publish:
       message:
-        oneOf:
-          - $ref: '#/components/messages/entitlementSellback'
+        $ref: '#/components/messages/entitlementSellback'
 
 components:
   schemas:

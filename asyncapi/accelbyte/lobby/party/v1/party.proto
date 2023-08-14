@@ -415,13 +415,6 @@ message PartyPublish {
     }
 }
 
-// path: #/channels/partyChat/publish/message
-message PartyChatPublish {
-    oneof payload {
-        PartyChatSent variant0 = 1;
-    }
-}
-
 
 // --- service ---
 
@@ -486,7 +479,7 @@ service PartyPartyGetCodeService {
     rpc OnMessage(PartyGetCode) returns (google.protobuf.Empty);
 }
 
-// Publishes a PartyChatSent to the Party Chat channel. (oneOf variant) (partyChat PartyChatSent)
+// Publishes a message to the Party Chat channel. (partyChat PartyChatSent)
 service PartyChatPartyChatSentService {
     rpc OnMessage(PartyChatSent) returns (google.protobuf.Empty);
 }

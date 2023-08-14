@@ -157,13 +157,6 @@ message UserChatRateLimitedMessage {
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
-// path: #/channels/personalChat/publish/message
-message PersonalChatPublish {
-    oneof payload {
-        PersonalChatSent variant0 = 1;
-    }
-}
-
 // path: #/channels/chat/publish/message
 message ChatPublish {
     oneof payload {
@@ -177,7 +170,7 @@ message ChatPublish {
 // --- service ---
 
 
-// Publishes a PersonalChatSent to the Personal Chat channel. (oneOf variant) (personalChat PersonalChatSent)
+// Publishes a message to the Personal Chat channel. (personalChat PersonalChatSent)
 service PersonalChatPersonalChatSentService {
     rpc OnMessage(PersonalChatSent) returns (google.protobuf.Empty);
 }

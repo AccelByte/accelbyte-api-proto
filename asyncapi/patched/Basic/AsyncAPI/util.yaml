@@ -7,8 +7,7 @@ channels:
   userContent:
     publish:
       message:
-        oneOf:
-        - $ref: '#/components/messages/userContentUrlCreated'
+        $ref: '#/components/messages/userContentUrlCreated'
   countryGroup:
     publish:
       message:

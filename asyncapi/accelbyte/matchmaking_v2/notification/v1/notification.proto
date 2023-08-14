@@ -43,19 +43,9 @@ message NotificationPayload {
     string message = 4;
 }
 
-// path: #/components/messages/freeformUserNotification/payload/properties/payload
-message AnonymousSchema1 {
-
-    // allOf(#/components/schemas/notificationPayload)
-    repeated string userIds = 1;
-    string namespace = 2;
-    string topicName = 3;
-    string message = 4;
-}
-
 // path: #/components/messages/freeformUserNotification/payload
 message FreeformUserNotification {
-    AnonymousSchema1 payload = 1;
+    NotificationPayload payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -79,18 +69,11 @@ message FreeformUserNotificationMessage {
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
-// path: #/channels/freeformUserNotificationRequest/publish/message
-message FreeformUserNotificationRequestPublish {
-    oneof payload {
-        FreeformUserNotification variant0 = 1;
-    }
-}
-
 
 // --- service ---
 
 
-// Publishes a FreeformUserNotification to the Freeform User Notification Request channel. (oneOf variant) (freeformUserNotificationRequest FreeformUserNotification)
+// Publishes a message to the Freeform User Notification Request channel. (freeformUserNotificationRequest FreeformUserNotification)
 service FreeformUserNotificationRequestFreeformUserNotificationService {
     rpc OnMessage(FreeformUserNotification) returns (google.protobuf.Empty);
 }

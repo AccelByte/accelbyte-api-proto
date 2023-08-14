@@ -146,13 +146,6 @@ message CountryGroupUpdatedMessage {
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
-// path: #/channels/userContent/publish/message
-message UserContentPublish {
-    oneof payload {
-        UserContentUrlCreated variant0 = 1;
-    }
-}
-
 // path: #/channels/countryGroup/publish/message
 message CountryGroupPublish {
     oneof payload {
@@ -165,7 +158,7 @@ message CountryGroupPublish {
 // --- service ---
 
 
-// Publishes a UserContentUrlCreated to the User Content channel. (oneOf variant) (userContent UserContentUrlCreated)
+// Publishes a message to the User Content channel. (userContent UserContentUrlCreated)
 service UserContentUserContentUrlCreatedService {
     rpc OnMessage(UserContentUrlCreated) returns (google.protobuf.Empty);
 }

@@ -7,8 +7,7 @@ channels:
   sessionBrowser:
     publish:
       message:
-        oneOf:
-        - $ref: '#/components/messages/gameSessionMetricUpdated'
+        $ref: '#/components/messages/gameSessionMetricUpdated'
 components:
   schemas:
     event:

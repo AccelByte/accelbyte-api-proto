@@ -135,30 +135,9 @@ message StatCycleItem {
     double updateValue = 8;
 }
 
-// path: #/components/messages/statCreated/payload/properties/payload
-message AnonymousSchema4 {
-
-    // allOf(#/components/schemas/stat)
-    string namespace = 1;
-    string statCode = 2;
-    string status = 3;
-    string name = 4;
-    string description = 5;
-    double maximum = 6;
-    double minimum = 7;
-    int64 defaultValue = 8;
-    bool incrementOnly = 9;
-    bool setAsGlobal = 10;
-    string setBy = 11;
-    AnonymousSchema1 tags = 12;
-    string createdAt = 13;
-    string updatedAt = 14;
-    bool ignoreAdditionalDataOnValueRejected = 15;
-}
-
 // path: #/components/messages/statCreated/payload
 message StatCreated {
-    AnonymousSchema4 payload = 1;
+    Stat payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -170,32 +149,11 @@ message StatCreated {
     string clientId = 8;
     string userId = 9;
     string sessionId = 10;
-}
-
-// path: #/components/messages/statDeleted/payload/properties/payload
-message AnonymousSchema5 {
-
-    // allOf(#/components/schemas/stat)
-    string namespace = 1;
-    string statCode = 2;
-    string status = 3;
-    string name = 4;
-    string description = 5;
-    double maximum = 6;
-    double minimum = 7;
-    int64 defaultValue = 8;
-    bool incrementOnly = 9;
-    bool setAsGlobal = 10;
-    string setBy = 11;
-    AnonymousSchema1 tags = 12;
-    string createdAt = 13;
-    string updatedAt = 14;
-    bool ignoreAdditionalDataOnValueRejected = 15;
 }
 
 // path: #/components/messages/statDeleted/payload
 message StatDeleted {
-    AnonymousSchema5 payload = 1;
+    Stat payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -207,32 +165,11 @@ message StatDeleted {
     string clientId = 8;
     string userId = 9;
     string sessionId = 10;
-}
-
-// path: #/components/messages/statUpdated/payload/properties/payload
-message AnonymousSchema6 {
-
-    // allOf(#/components/schemas/stat)
-    string namespace = 1;
-    string statCode = 2;
-    string status = 3;
-    string name = 4;
-    string description = 5;
-    double maximum = 6;
-    double minimum = 7;
-    int64 defaultValue = 8;
-    bool incrementOnly = 9;
-    bool setAsGlobal = 10;
-    string setBy = 11;
-    AnonymousSchema1 tags = 12;
-    string createdAt = 13;
-    string updatedAt = 14;
-    bool ignoreAdditionalDataOnValueRejected = 15;
 }
 
 // path: #/components/messages/statUpdated/payload
 message StatUpdated {
-    AnonymousSchema6 payload = 1;
+    Stat payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -244,22 +181,11 @@ message StatUpdated {
     string clientId = 8;
     string userId = 9;
     string sessionId = 10;
-}
-
-// path: #/components/messages/statImported/payload/properties/payload
-message AnonymousSchema7 {
-
-    // allOf(#/components/schemas/statImport)
-    string namespace = 1;
-    repeated string replacedStatCodes = 2;
-    repeated string ignoredStatCodes = 3;
-    repeated string newStatCodes = 4;
-    repeated string failedStatCodes = 5;
 }
 
 // path: #/components/messages/statImported/payload
 message StatImported {
-    AnonymousSchema7 payload = 1;
+    StatImport payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -271,19 +197,11 @@ message StatImported {
     string clientId = 8;
     string userId = 9;
     string sessionId = 10;
-}
-
-// path: #/components/messages/statExported/payload/properties/payload
-message AnonymousSchema8 {
-
-    // allOf(#/components/schemas/statExport)
-    string namespace = 1;
-    repeated string statCodes = 2;
 }
 
 // path: #/components/messages/statExported/payload
 message StatExported {
-    AnonymousSchema8 payload = 1;
+    StatExport payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -295,27 +213,11 @@ message StatExported {
     string clientId = 8;
     string userId = 9;
     string sessionId = 10;
-}
-
-// path: #/components/messages/statItemCreated/payload/properties/payload
-message AnonymousSchema9 {
-
-    // allOf(#/components/schemas/statItem)
-    string namespace = 1;
-    string statCode = 2;
-    string userId = 3;
-    double latestValue = 4;
-    double inc = 5;
-    AnonymousSchema3 additionalData = 6;
-    bool ignoreAdditionalDataOnValueRejected = 7;
-    double defaultValue = 8;
-    double requestValue = 9;
-    string updateStrategy = 10;
 }
 
 // path: #/components/messages/statItemCreated/payload
 message StatItemCreated {
-    AnonymousSchema9 payload = 1;
+    StatItem payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -327,27 +229,11 @@ message StatItemCreated {
     string clientId = 8;
     string userId = 9;
     string sessionId = 10;
-}
-
-// path: #/components/messages/statItemUpdated/payload/properties/payload
-message AnonymousSchema10 {
-
-    // allOf(#/components/schemas/statItem)
-    string namespace = 1;
-    string statCode = 2;
-    string userId = 3;
-    double latestValue = 4;
-    double inc = 5;
-    AnonymousSchema3 additionalData = 6;
-    bool ignoreAdditionalDataOnValueRejected = 7;
-    double defaultValue = 8;
-    double requestValue = 9;
-    string updateStrategy = 10;
 }
 
 // path: #/components/messages/statItemUpdated/payload
 message StatItemUpdated {
-    AnonymousSchema10 payload = 1;
+    StatItem payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -359,27 +245,11 @@ message StatItemUpdated {
     string clientId = 8;
     string userId = 9;
     string sessionId = 10;
-}
-
-// path: #/components/messages/statItemDeleted/payload/properties/payload
-message AnonymousSchema11 {
-
-    // allOf(#/components/schemas/statItem)
-    string namespace = 1;
-    string statCode = 2;
-    string userId = 3;
-    double latestValue = 4;
-    double inc = 5;
-    AnonymousSchema3 additionalData = 6;
-    bool ignoreAdditionalDataOnValueRejected = 7;
-    double defaultValue = 8;
-    double requestValue = 9;
-    string updateStrategy = 10;
 }
 
 // path: #/components/messages/statItemDeleted/payload
 message StatItemDeleted {
-    AnonymousSchema11 payload = 1;
+    StatItem payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -391,21 +261,11 @@ message StatItemDeleted {
     string clientId = 8;
     string userId = 9;
     string sessionId = 10;
-}
-
-// path: #/components/messages/globalStatItemUpdated/payload/properties/payload
-message AnonymousSchema12 {
-
-    // allOf(#/components/schemas/globalStatItem)
-    string namespace = 1;
-    string statCode = 2;
-    double latestValue = 3;
-    double inc = 4;
 }
 
 // path: #/components/messages/globalStatItemUpdated/payload
 message GlobalStatItemUpdated {
-    AnonymousSchema12 payload = 1;
+    GlobalStatItem payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -417,32 +277,11 @@ message GlobalStatItemUpdated {
     string clientId = 8;
     string userId = 9;
     string sessionId = 10;
-}
-
-// path: #/components/messages/statCycleCreated/payload/properties/payload
-message AnonymousSchema13 {
-
-    // allOf(#/components/schemas/statCycle)
-    string id = 1;
-    string namespace = 2;
-    string cycleType = 3;
-    string resetTime = 4;
-    int64 resetDay = 5;
-    int64 resetDate = 6;
-    int64 resetMonth = 7;
-    int64 seasonPeriod = 8;
-    int64 currentVersion = 9;
-    string status = 10;
-    string nextReset = 11;
-    string start = 12;
-    string end = 13;
-    string createdAt = 14;
-    string updatedAt = 15;
 }
 
 // path: #/components/messages/statCycleCreated/payload
 message StatCycleCreated {
-    AnonymousSchema13 payload = 1;
+    StatCycle payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -454,32 +293,11 @@ message StatCycleCreated {
     string clientId = 8;
     string userId = 9;
     string sessionId = 10;
-}
-
-// path: #/components/messages/statCycleUpdated/payload/properties/payload
-message AnonymousSchema14 {
-
-    // allOf(#/components/schemas/statCycle)
-    string id = 1;
-    string namespace = 2;
-    string cycleType = 3;
-    string resetTime = 4;
-    int64 resetDay = 5;
-    int64 resetDate = 6;
-    int64 resetMonth = 7;
-    int64 seasonPeriod = 8;
-    int64 currentVersion = 9;
-    string status = 10;
-    string nextReset = 11;
-    string start = 12;
-    string end = 13;
-    string createdAt = 14;
-    string updatedAt = 15;
 }
 
 // path: #/components/messages/statCycleUpdated/payload
 message StatCycleUpdated {
-    AnonymousSchema14 payload = 1;
+    StatCycle payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -491,32 +309,11 @@ message StatCycleUpdated {
     string clientId = 8;
     string userId = 9;
     string sessionId = 10;
-}
-
-// path: #/components/messages/statCycleDeleted/payload/properties/payload
-message AnonymousSchema15 {
-
-    // allOf(#/components/schemas/statCycle)
-    string id = 1;
-    string namespace = 2;
-    string cycleType = 3;
-    string resetTime = 4;
-    int64 resetDay = 5;
-    int64 resetDate = 6;
-    int64 resetMonth = 7;
-    int64 seasonPeriod = 8;
-    int64 currentVersion = 9;
-    string status = 10;
-    string nextReset = 11;
-    string start = 12;
-    string end = 13;
-    string createdAt = 14;
-    string updatedAt = 15;
 }
 
 // path: #/components/messages/statCycleDeleted/payload
 message StatCycleDeleted {
-    AnonymousSchema15 payload = 1;
+    StatCycle payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -528,32 +325,11 @@ message StatCycleDeleted {
     string clientId = 8;
     string userId = 9;
     string sessionId = 10;
-}
-
-// path: #/components/messages/statCycleReset/payload/properties/payload
-message AnonymousSchema16 {
-
-    // allOf(#/components/schemas/statCycle)
-    string id = 1;
-    string namespace = 2;
-    string cycleType = 3;
-    string resetTime = 4;
-    int64 resetDay = 5;
-    int64 resetDate = 6;
-    int64 resetMonth = 7;
-    int64 seasonPeriod = 8;
-    int64 currentVersion = 9;
-    string status = 10;
-    string nextReset = 11;
-    string start = 12;
-    string end = 13;
-    string createdAt = 14;
-    string updatedAt = 15;
 }
 
 // path: #/components/messages/statCycleReset/payload
 message StatCycleReset {
-    AnonymousSchema16 payload = 1;
+    StatCycle payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -565,25 +341,11 @@ message StatCycleReset {
     string clientId = 8;
     string userId = 9;
     string sessionId = 10;
-}
-
-// path: #/components/messages/statItemCycleCreated/payload/properties/payload
-message AnonymousSchema17 {
-
-    // allOf(#/components/schemas/statCycleItem)
-    string namespace = 1;
-    string cycleId = 2;
-    string statCode = 3;
-    string userId = 4;
-    string updateStrategy = 5;
-    int64 cycleVersion = 6;
-    double latestValue = 7;
-    double updateValue = 8;
 }
 
 // path: #/components/messages/statItemCycleCreated/payload
 message StatItemCycleCreated {
-    AnonymousSchema17 payload = 1;
+    StatCycleItem payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -597,23 +359,9 @@ message StatItemCycleCreated {
     string sessionId = 10;
 }
 
-// path: #/components/messages/statItemCycleUpdated/payload/properties/payload
-message AnonymousSchema18 {
-
-    // allOf(#/components/schemas/statCycleItem)
-    string namespace = 1;
-    string cycleId = 2;
-    string statCode = 3;
-    string userId = 4;
-    string updateStrategy = 5;
-    int64 cycleVersion = 6;
-    double latestValue = 7;
-    double updateValue = 8;
-}
-
 // path: #/components/messages/statItemCycleUpdated/payload
 message StatItemCycleUpdated {
-    AnonymousSchema18 payload = 1;
+    StatCycleItem payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;

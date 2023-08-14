@@ -22,8 +22,7 @@ channels:
   matchmakingTotalPlayersInQueue:
     publish:
       message:
-        oneOf:
-          - $ref: '#/components/messages/matchmakingTotalPlayersInQueue'
+        $ref: '#/components/messages/matchmakingTotalPlayersInQueue'
 
   readyConsent:
     publish:

@@ -7,18 +7,15 @@ channels:
   session:
     publish:
       message:
-        oneOf:
-        - $ref: '#/components/messages/onPartyCreated'
+        $ref: '#/components/messages/onPartyCreated'
   sessionNotification:
     publish:
       message:
-        oneOf:
-        - $ref: '#/components/messages/sessionNotification'
+        $ref: '#/components/messages/sessionNotification'
   sessionEvent:
     publish:
       message:
-        oneOf:
-        - $ref: '#/components/messages/OnSessionEnded'
+        $ref: '#/components/messages/OnSessionEnded'
   mpv2SessionHistory:
     publish:
       message:
@@ -82,9 +79,7 @@ components:
     onPartyCreated:
       name: onPartyCreated
       payload:
-        type: object
-        allOf:
-        - $ref: '#/components/schemas/event'
+        $ref: '#/components/schemas/event'
     sessionNotification:
       name: sessionNotification
       payload:
@@ -93,9 +88,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            allOf:
-            - $ref: '#/components/schemas/notificationPayload'
+            $ref: '#/components/schemas/notificationPayload'
     OnSessionEnded:
       name: OnSessionEnded
       payload:
@@ -104,9 +97,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            allOf:
-            - $ref: '#/components/schemas/notificationPayload'
+            $ref: '#/components/schemas/notificationPayload'
     GameSessionEndedEvent:
       name: GameSessionEndedEvent
       payload:
@@ -115,9 +106,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            allOf:
-            - $ref: '#/components/schemas/notificationPayload'
+            $ref: '#/components/schemas/notificationPayload'
     GameSessionInvitedEvent:
       name: GameSessionInvitedEvent
       payload:
@@ -126,9 +115,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            allOf:
-            - $ref: '#/components/schemas/notificationPayload'
+            $ref: '#/components/schemas/notificationPayload'
     GameSessionJoinedEvent:
       name: GameSessionInvitedEvent
       payload:
@@ -137,9 +124,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            allOf:
-            - $ref: '#/components/schemas/notificationPayload'
+            $ref: '#/components/schemas/notificationPayload'
     GameSessionMembersChangedEvent:
       name: GameSessionMembersChangedEvent
       payload:
@@ -148,9 +133,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            allOf:
-            - $ref: '#/components/schemas/notificationPayload'
+            $ref: '#/components/schemas/notificationPayload'
     GameSessionKickedEvent:
       name: GameSessionKickedEvent
       payload:
@@ -159,9 +142,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            allOf:
-            - $ref: '#/components/schemas/notificationPayload'
+            $ref: '#/components/schemas/notificationPayload'
     GameSessionCreatedEvent:
       name: GameSessionCreatedEvent
       payload:
@@ -170,9 +151,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            allOf:
-            - $ref: '#/components/schemas/notificationPayload'
+            $ref: '#/components/schemas/notificationPayload'
     GameSessionUpdatedEvent:
       name: GameSessionUpdatedEvent
       payload:
@@ -181,9 +160,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            allOf:
-            - $ref: '#/components/schemas/notificationPayload'
+            $ref: '#/components/schemas/notificationPayload'
     GameSessionRejectedEvent:
       name: GameSessionRejectedEvent
       payload:
@@ -192,9 +169,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            allOf:
-            - $ref: '#/components/schemas/notificationPayload'
+            $ref: '#/components/schemas/notificationPayload'
     GameSessionDSStatusChangedEvent:
       name: GameSessionDSStatusChangedEvent
       payload:
@@ -203,9 +178,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            allOf:
-            - $ref: '#/components/schemas/notificationPayload'
+            $ref: '#/components/schemas/notificationPayload'
     PartyCreatedEvent:
       name: PartyCreatedEvent
       payload:
@@ -214,9 +187,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            allOf:
-            - $ref: '#/components/schemas/notificationPayload'
+            $ref: '#/components/schemas/notificationPayload'
     PartyUpdatedEvent:
       name: PartyUpdatedEvent
       payload:
@@ -225,9 +196,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            allOf:
-            - $ref: '#/components/schemas/notificationPayload'
+            $ref: '#/components/schemas/notificationPayload'
     PartyKickedEvent:
       name: PartyKickedEvent
       payload:
@@ -236,9 +205,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            allOf:
-            - $ref: '#/components/schemas/notificationPayload'
+            $ref: '#/components/schemas/notificationPayload'
     PartyInvitedEvent:
       name: PartyInvitedEvent
       payload:
@@ -247,9 +214,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            allOf:
-            - $ref: '#/components/schemas/notificationPayload'
+            $ref: '#/components/schemas/notificationPayload'
     PartyRejectedEvent:
       name: PartyRejectedEvent
       payload:
@@ -258,9 +223,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            allOf:
-            - $ref: '#/components/schemas/notificationPayload'
+            $ref: '#/components/schemas/notificationPayload'
     PartyJoinedEvent:
       name: PartyJoinedEvent
       payload:
@@ -269,9 +232,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            allOf:
-            - $ref: '#/components/schemas/notificationPayload'
+            $ref: '#/components/schemas/notificationPayload'
     PartyMembersChangedEvent:
       name: PartyMembersChangedEvent
       payload:
@@ -280,9 +241,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            allOf:
-            - $ref: '#/components/schemas/notificationPayload'
+            $ref: '#/components/schemas/notificationPayload'
 x-source: Session/AsyncAPI/session.yaml
 x-proto-package: accelbyte.session.session.v1
 x-proto-package-version: v1.0.0

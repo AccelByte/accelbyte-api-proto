@@ -7,8 +7,7 @@ channels:
   freeformUserNotificationRequest:
     publish:
       message:
-        oneOf:
-        - $ref: '#/components/messages/freeformUserNotification'
+        $ref: '#/components/messages/freeformUserNotification'
 components:
   schemas:
     event:
@@ -53,9 +52,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            allOf:
-            - $ref: '#/components/schemas/notificationPayload'
+            $ref: '#/components/schemas/notificationPayload'
 x-source: MatchmakingV2/AsyncAPI/notification.yaml
 x-proto-package: accelbyte.matchmaking_v2.notification.v1
 x-proto-package-version: v1.0.0

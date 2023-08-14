@@ -77,18 +77,11 @@ message HideContentMessage {
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
-// path: #/channels/autoModeration/publish/message
-message AutoModerationPublish {
-    oneof payload {
-        HideContent variant0 = 1;
-    }
-}
-
 
 // --- service ---
 
 
-// Publishes a HideContent to the Auto Moderation channel. (oneOf variant) (autoModeration HideContent)
+// Publishes a message to the Auto Moderation channel. (autoModeration HideContent)
 service AutoModerationHideContentService {
     rpc OnMessage(HideContent) returns (google.protobuf.Empty);
 }

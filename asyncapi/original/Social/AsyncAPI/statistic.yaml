@@ -252,9 +252,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            allOf:
-            - $ref: '#/components/schemas/stat'
+            $ref: '#/components/schemas/stat'
 
     statDeleted:
       name: statDeleted
@@ -264,9 +262,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            allOf:
-            - $ref: '#/components/schemas/stat'
+            $ref: '#/components/schemas/stat'
 
     statUpdated:
       name: statUpdated
@@ -276,9 +272,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            allOf:
-            - $ref: '#/components/schemas/stat'
+            $ref: '#/components/schemas/stat'
 
     statImported:
       name: statImported
@@ -288,9 +282,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            allOf:
-            - $ref: '#/components/schemas/statImport'
+            $ref: '#/components/schemas/statImport'
 
     statExported:
       name: statExported
@@ -300,9 +292,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            allOf:
-            - $ref: '#/components/schemas/statExport'
+            $ref: '#/components/schemas/statExport'
 
     statItemCreated:
       name: statItemCreated
@@ -312,9 +302,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            allOf:
-            - $ref: '#/components/schemas/statItem'
+            $ref: '#/components/schemas/statItem'
 
     statItemUpdated:
       name: statItemUpdated
@@ -324,9 +312,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            allOf:
-            - $ref: '#/components/schemas/statItem'
+            $ref: '#/components/schemas/statItem'
 
     statItemDeleted:
       name: statItemDeleted
@@ -336,9 +322,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            allOf:
-            - $ref: '#/components/schemas/statItem'
+            $ref: '#/components/schemas/statItem'
 
     globalStatItemUpdated:
       name: globalStatItemUpdated
@@ -348,9 +332,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            allOf:
-            - $ref: '#/components/schemas/globalStatItem'
+            $ref: '#/components/schemas/globalStatItem'
     
     statCycleCreated:
       name: statCycleCreated
@@ -360,9 +342,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            allOf:
-            - $ref: '#/components/schemas/statCycle'
+            $ref: '#/components/schemas/statCycle'
     
     statCycleUpdated:
       name: statCycleUpdated
@@ -372,9 +352,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            allOf:
-            - $ref: '#/components/schemas/statCycle'
+            $ref: '#/components/schemas/statCycle'
     
     statCycleDeleted:
       name: statCycleDeleted
@@ -384,9 +362,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            allOf:
-            - $ref: '#/components/schemas/statCycle'
+            $ref: '#/components/schemas/statCycle'
 
     statCycleReset:
       name: statCycleReset
@@ -396,9 +372,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            allOf:
-            - $ref: '#/components/schemas/statCycle'
+            $ref: '#/components/schemas/statCycle'
 
     statItemCycleCreated:
       name: statItemCycleCreated
@@ -408,9 +382,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            allOf:
-            - $ref: '#/components/schemas/statCycleItem'
+            $ref: '#/components/schemas/statCycleItem'
     
     statItemCycleUpdated:
       name: statItemCycleUpdated
@@ -420,6 +392,4 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            allOf:
-            - $ref: '#/components/schemas/statCycleItem'
+            $ref: '#/components/schemas/statCycleItem'

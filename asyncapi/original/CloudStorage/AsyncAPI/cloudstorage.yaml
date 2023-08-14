@@ -101,9 +101,7 @@ components:
         userId:
           type: string
         slotInfo:
-          type: object
-          allOf:
-            - $ref: '#/components/schemas/singleSlot'
+          $ref: '#/components/schemas/singleSlot'
 
     singleSlot:
       type: object

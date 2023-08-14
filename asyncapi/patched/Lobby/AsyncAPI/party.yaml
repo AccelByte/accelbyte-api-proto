@@ -23,8 +23,7 @@ channels:
   partyChat:
     publish:
       message:
-        oneOf:
-        - $ref: '#/components/messages/partyChatSent'
+        $ref: '#/components/messages/partyChatSent'
 components:
   schemas:
     event:
@@ -210,8 +209,7 @@ components:
           payload:
             properties:
               party:
-                allOf:
-                - $ref: '#/components/schemas/partyPayload'
+                $ref: '#/components/schemas/partyPayload'
     partyDeleteCode:
       name: partyDeleteCode
       payload:

@@ -43,8 +43,7 @@ channels:
   paymentAccount:
     publish:
       message:
-        oneOf:
-          - $ref: '#/components/messages/paymentAccountDeleted'
+        $ref: '#/components/messages/paymentAccountDeleted'
 
 components:
   schemas:

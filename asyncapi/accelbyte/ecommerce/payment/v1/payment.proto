@@ -860,13 +860,6 @@ message PaymentOrderProcessingPublish {
     }
 }
 
-// path: #/channels/paymentAccount/publish/message
-message PaymentAccountPublish {
-    oneof payload {
-        PaymentAccountDeleted variant0 = 1;
-    }
-}
-
 
 // --- service ---
 
@@ -996,7 +989,7 @@ service PaymentOrderProcessingPaymentOrderRefundRequestedService {
     rpc OnMessage(PaymentOrderRefundRequested) returns (google.protobuf.Empty);
 }
 
-// Publishes a PaymentAccountDeleted to the Payment Account channel. (oneOf variant) (paymentAccount PaymentAccountDeleted)
+// Publishes a message to the Payment Account channel. (paymentAccount PaymentAccountDeleted)
 service PaymentAccountPaymentAccountDeletedService {
     rpc OnMessage(PaymentAccountDeleted) returns (google.protobuf.Empty);
 }

@@ -391,20 +391,6 @@ message EntitlementManagementPublish {
     }
 }
 
-// path: #/channels/entitlementConsumption/publish/message
-message EntitlementConsumptionPublish {
-    oneof payload {
-        EntitlementConsumed variant0 = 1;
-    }
-}
-
-// path: #/channels/entitlementSale/publish/message
-message EntitlementSalePublish {
-    oneof payload {
-        EntitlementSellback variant0 = 1;
-    }
-}
-
 
 // --- service ---
 
@@ -439,12 +425,12 @@ service EntitlementManagementEntitlementUseCountRevokedService {
     rpc OnMessage(EntitlementUseCountRevoked) returns (google.protobuf.Empty);
 }
 
-// Publishes a EntitlementConsumed to the Entitlement Consumption channel. (oneOf variant) (entitlementConsumption EntitlementConsumed)
+// Publishes a message to the Entitlement Consumption channel. (entitlementConsumption EntitlementConsumed)
 service EntitlementConsumptionEntitlementConsumedService {
     rpc OnMessage(EntitlementConsumed) returns (google.protobuf.Empty);
 }
 
-// Publishes a EntitlementSellback to the Entitlement Sale channel. (oneOf variant) (entitlementSale EntitlementSellback)
+// Publishes a message to the Entitlement Sale channel. (entitlementSale EntitlementSellback)
 service EntitlementSaleEntitlementSellbackService {
     rpc OnMessage(EntitlementSellback) returns (google.protobuf.Empty);
 }

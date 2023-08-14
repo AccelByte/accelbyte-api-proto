@@ -59,8 +59,7 @@ channels:
   userTranslations:
     publish:
       message:
-        oneOf:
-        - $ref: '#/components/messages/gameUserCreated'
+        $ref: '#/components/messages/gameUserCreated'
   userFeatureBan:
     publish:
       message:
@@ -75,13 +74,11 @@ channels:
   lobby:
     publish:
       message:
-        oneOf:
-        - $ref: '#/components/messages/userDisconnectRequested'
+        $ref: '#/components/messages/userDisconnectRequested'
   deletion_account_gdpr:
     publish:
       message:
-        oneOf:
-        - $ref: '#/components/messages/gdprRequestDataDeletionResponse'
+        $ref: '#/components/messages/gdprRequestDataDeletionResponse'
 components:
   schemas:
     event:

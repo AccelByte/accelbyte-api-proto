@@ -71,18 +71,11 @@ message UserMarketingPreferenceUpdatedMessage {
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
-// path: #/channels/userMarketingInformation/publish/message
-message UserMarketingInformationPublish {
-    oneof payload {
-        UserMarketingPreferenceUpdated variant0 = 1;
-    }
-}
-
 
 // --- service ---
 
 
-// Publishes a UserMarketingPreferenceUpdated to the User Marketing Information channel. (oneOf variant) (userMarketingInformation UserMarketingPreferenceUpdated)
+// Publishes a message to the User Marketing Information channel. (userMarketingInformation UserMarketingPreferenceUpdated)
 service UserMarketingInformationUserMarketingPreferenceUpdatedService {
     rpc OnMessage(UserMarketingPreferenceUpdated) returns (google.protobuf.Empty);
 }

@@ -44,20 +44,6 @@ message NamespaceSlotConfig {
     string namespace = 3;
 }
 
-// path: #/components/schemas/slots/properties/slotInfo
-message AnonymousSchema1 {
-
-    // allOf(#/components/schemas/singleSlot)
-    string description = 1;
-    File file = 2;
-    string filename = 3;
-    AnonymousSchema2 inputStream = 4;
-    bool open = 5;
-    bool readable = 6;
-    Uri uri = 7;
-    Url url = 8;
-}
-
 // path: #/components/schemas/slots
 message Slots {
     string checksum = 1;
@@ -74,11 +60,11 @@ message Slots {
     string storedName = 12;
     repeated string tags = 13;
     string userId = 14;
-    AnonymousSchema1 slotInfo = 15;
+    SingleSlot slotInfo = 15;
 }
 
 // path: #/components/schemas/singleSlot/properties/inputStream
-message AnonymousSchema2 {
+message AnonymousSchema1 {
 }
 
 // path: #/components/schemas/singleSlot
@@ -86,7 +72,7 @@ message SingleSlot {
     string description = 1;
     File file = 2;
     string filename = 3;
-    AnonymousSchema2 inputStream = 4;
+    AnonymousSchema1 inputStream = 4;
     bool open = 5;
     bool readable = 6;
     Uri uri = 7;
@@ -94,23 +80,23 @@ message SingleSlot {
 }
 
 // path: #/components/schemas/file/properties/absoluteFile
-message AnonymousSchema3 {
+message AnonymousSchema2 {
 }
 
 // path: #/components/schemas/file/properties/canonicalFile
-message AnonymousSchema4 {
+message AnonymousSchema3 {
 }
 
 // path: #/components/schemas/file/properties/parentFile
-message AnonymousSchema5 {
+message AnonymousSchema4 {
 }
 
 // path: #/components/schemas/file
 message File {
     bool absolute = 1;
-    AnonymousSchema3 absoluteFile = 2;
+    AnonymousSchema2 absoluteFile = 2;
     string absolutePath = 3;
-    AnonymousSchema4 canonicalFile = 4;
+    AnonymousSchema3 canonicalFile = 4;
     string canonicalPath = 5;
     bool directory = 6;
     bool file = 7;
@@ -118,7 +104,7 @@ message File {
     bool hidden = 9;
     string name = 10;
     string parent = 11;
-    AnonymousSchema5 parentFile = 12;
+    AnonymousSchema4 parentFile = 12;
     string path = 13;
     int64 totalSpace = 14;
     int64 usableSpace = 15;
@@ -146,13 +132,13 @@ message Uri {
 }
 
 // path: #/components/schemas/url/properties/content
-message AnonymousSchema6 {
+message AnonymousSchema5 {
 }
 
 // path: #/components/schemas/url
 message Url {
     string authority = 1;
-    AnonymousSchema6 content = 2;
+    AnonymousSchema5 content = 2;
     int64 defaultPort = 3;
     string file = 4;
     string host = 5;
@@ -173,13 +159,13 @@ message SlotConfig {
 }
 
 // path: #/components/messages/namespaceSlotConfigCreated/payload/properties/payload
-message AnonymousSchema7 {
+message AnonymousSchema6 {
     NamespaceSlotConfig namespaceSlotConfig = 1;
 }
 
 // path: #/components/messages/namespaceSlotConfigCreated/payload
 message NamespaceSlotConfigCreated {
-    AnonymousSchema7 payload = 1;
+    AnonymousSchema6 payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -195,13 +181,13 @@ message NamespaceSlotConfigCreated {
 }
 
 // path: #/components/messages/namespaceSlotConfigDeleted/payload/properties/payload
-message AnonymousSchema8 {
+message AnonymousSchema7 {
     NamespaceSlotConfig namespaceSlotConfig = 1;
 }
 
 // path: #/components/messages/namespaceSlotConfigDeleted/payload
 message NamespaceSlotConfigDeleted {
-    AnonymousSchema8 payload = 1;
+    AnonymousSchema7 payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -217,13 +203,13 @@ message NamespaceSlotConfigDeleted {
 }
 
 // path: #/components/messages/namespaceSlotConfigUpdated/payload/properties/payload
-message AnonymousSchema9 {
+message AnonymousSchema8 {
     NamespaceSlotConfig namespaceSlotConfig = 1;
 }
 
 // path: #/components/messages/namespaceSlotConfigUpdated/payload
 message NamespaceSlotConfigUpdated {
-    AnonymousSchema9 payload = 1;
+    AnonymousSchema8 payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -239,13 +225,13 @@ message NamespaceSlotConfigUpdated {
 }
 
 // path: #/components/messages/slotCreated/payload/properties/payload
-message AnonymousSchema10 {
+message AnonymousSchema9 {
     Slots slot = 1;
 }
 
 // path: #/components/messages/slotCreated/payload
 message SlotCreated {
-    AnonymousSchema10 payload = 1;
+    AnonymousSchema9 payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -261,13 +247,13 @@ message SlotCreated {
 }
 
 // path: #/components/messages/slotDeleted/payload/properties/payload
-message AnonymousSchema11 {
+message AnonymousSchema10 {
     Slots slot = 1;
 }
 
 // path: #/components/messages/slotDeleted/payload
 message SlotDeleted {
-    AnonymousSchema11 payload = 1;
+    AnonymousSchema10 payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -283,13 +269,13 @@ message SlotDeleted {
 }
 
 // path: #/components/messages/slotUpdated/payload/properties/payload
-message AnonymousSchema12 {
+message AnonymousSchema11 {
     Slots slot = 1;
 }
 
 // path: #/components/messages/slotUpdated/payload
 message SlotUpdated {
-    AnonymousSchema12 payload = 1;
+    AnonymousSchema11 payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -305,13 +291,13 @@ message SlotUpdated {
 }
 
 // path: #/components/messages/slotConfigCreated/payload/properties/payload
-message AnonymousSchema13 {
+message AnonymousSchema12 {
     SlotConfig slotConfig = 1;
 }
 
 // path: #/components/messages/slotConfigCreated/payload
 message SlotConfigCreated {
-    AnonymousSchema13 payload = 1;
+    AnonymousSchema12 payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -327,13 +313,13 @@ message SlotConfigCreated {
 }
 
 // path: #/components/messages/slotConfigDeleted/payload/properties/payload
-message AnonymousSchema14 {
+message AnonymousSchema13 {
     SlotConfig slotConfig = 1;
 }
 
 // path: #/components/messages/slotConfigDeleted/payload
 message SlotConfigDeleted {
-    AnonymousSchema14 payload = 1;
+    AnonymousSchema13 payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -349,13 +335,13 @@ message SlotConfigDeleted {
 }
 
 // path: #/components/messages/slotConfigUpdated/payload/properties/payload
-message AnonymousSchema15 {
+message AnonymousSchema14 {
     SlotConfig slotConfig = 1;
 }
 
 // path: #/components/messages/slotConfigUpdated/payload
 message SlotConfigUpdated {
-    AnonymousSchema15 payload = 1;
+    AnonymousSchema14 payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;

@@ -71,18 +71,11 @@ message GameSessionMetricUpdatedMessage {
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
-// path: #/channels/sessionBrowser/publish/message
-message SessionBrowserPublish {
-    oneof payload {
-        GameSessionMetricUpdated variant0 = 1;
-    }
-}
-
 
 // --- service ---
 
 
-// Publishes a GameSessionMetricUpdated to the Session Browser channel. (oneOf variant) (sessionBrowser GameSessionMetricUpdated)
+// Publishes a message to the Session Browser channel. (sessionBrowser GameSessionMetricUpdated)
 service SessionBrowserGameSessionMetricUpdatedService {
     rpc OnMessage(GameSessionMetricUpdated) returns (google.protobuf.Empty);
 }

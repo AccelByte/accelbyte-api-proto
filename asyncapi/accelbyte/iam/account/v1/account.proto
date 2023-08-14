@@ -1315,13 +1315,6 @@ message CountryAgeRestrictionPublish {
     }
 }
 
-// path: #/channels/userTranslations/publish/message
-message UserTranslationsPublish {
-    oneof payload {
-        GameUserCreated variant0 = 1;
-    }
-}
-
 // path: #/channels/userFeatureBan/publish/message
 message UserFeatureBanPublish {
     oneof payload {
@@ -1332,20 +1325,6 @@ message UserFeatureBanPublish {
         OrderAndPaymentBanned variant4 = 5;
         MatchmakingBanned variant5 = 6;
         UgcCreateUpdateBanned variant6 = 7;
-    }
-}
-
-// path: #/channels/lobby/publish/message
-message LobbyPublish {
-    oneof payload {
-        UserDisconnectRequested variant0 = 1;
-    }
-}
-
-// path: #/channels/deletion_account_gdpr/publish/message
-message DeletionAccountGdprPublish {
-    oneof payload {
-        GdprRequestDataDeletionResponse variant0 = 1;
     }
 }
 
@@ -1493,7 +1472,7 @@ service CountryAgeRestrictionCountryAgeRestrictionUpdatedService {
     rpc OnMessage(CountryAgeRestrictionUpdated) returns (google.protobuf.Empty);
 }
 
-// Publishes a GameUserCreated to the User Translations channel. (oneOf variant) (userTranslations GameUserCreated)
+// Publishes a message to the User Translations channel. (userTranslations GameUserCreated)
 service UserTranslationsGameUserCreatedService {
     rpc OnMessage(GameUserCreated) returns (google.protobuf.Empty);
 }
@@ -1533,12 +1512,12 @@ service UserFeatureBanUgcCreateUpdateBannedService {
     rpc OnMessage(UgcCreateUpdateBanned) returns (google.protobuf.Empty);
 }
 
-// Publishes a UserDisconnectRequested to the Lobby channel. (oneOf variant) (lobby UserDisconnectRequested)
+// Publishes a message to the Lobby channel. (lobby UserDisconnectRequested)
 service LobbyUserDisconnectRequestedService {
     rpc OnMessage(UserDisconnectRequested) returns (google.protobuf.Empty);
 }
 
-// Publishes a GdprRequestDataDeletionResponse to the Deletion Account Gdpr channel. (oneOf variant) (deletion_account_gdpr GdprRequestDataDeletionResponse)
+// Publishes a message to the Deletion Account Gdpr channel. (deletion_account_gdpr GdprRequestDataDeletionResponse)
 service DeletionAccountGdprGdprRequestDataDeletionResponseService {
     rpc OnMessage(GdprRequestDataDeletionResponse) returns (google.protobuf.Empty);
 }

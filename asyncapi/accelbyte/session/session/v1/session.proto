@@ -45,35 +45,9 @@ message NotificationPayload {
     string message = 4;
 }
 
-// path: #/components/messages/onPartyCreated/payload
-message OnPartyCreated {
-
-    // allOf(#/components/schemas/event)
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string userId = 7;
-    string traceId = 8;
-    string sessionId = 9;
-    string spanContext = 10;
-}
-
-// path: #/components/messages/sessionNotification/payload/properties/payload
-message AnonymousSchema1 {
-
-    // allOf(#/components/schemas/notificationPayload)
-    repeated string userIds = 1;
-    string namespace = 2;
-    string topicName = 3;
-    string message = 4;
-}
-
 // path: #/components/messages/sessionNotification/payload
 message SessionNotification {
-    AnonymousSchema1 payload = 1;
+    NotificationPayload payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -86,21 +60,11 @@ message SessionNotification {
     string traceId = 9;
     string sessionId = 10;
     string spanContext = 11;
-}
-
-// path: #/components/messages/OnSessionEnded/payload/properties/payload
-message AnonymousSchema2 {
-
-    // allOf(#/components/schemas/notificationPayload)
-    repeated string userIds = 1;
-    string namespace = 2;
-    string topicName = 3;
-    string message = 4;
 }
 
 // path: #/components/messages/OnSessionEnded/payload
 message OnSessionEnded {
-    AnonymousSchema2 payload = 1;
+    NotificationPayload payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -113,21 +77,11 @@ message OnSessionEnded {
     string traceId = 9;
     string sessionId = 10;
     string spanContext = 11;
-}
-
-// path: #/components/messages/GameSessionEndedEvent/payload/properties/payload
-message AnonymousSchema3 {
-
-    // allOf(#/components/schemas/notificationPayload)
-    repeated string userIds = 1;
-    string namespace = 2;
-    string topicName = 3;
-    string message = 4;
 }
 
 // path: #/components/messages/GameSessionEndedEvent/payload
 message GameSessionEndedEvent {
-    AnonymousSchema3 payload = 1;
+    NotificationPayload payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -140,21 +94,11 @@ message GameSessionEndedEvent {
     string traceId = 9;
     string sessionId = 10;
     string spanContext = 11;
-}
-
-// path: #/components/messages/GameSessionInvitedEvent/payload/properties/payload
-message AnonymousSchema4 {
-
-    // allOf(#/components/schemas/notificationPayload)
-    repeated string userIds = 1;
-    string namespace = 2;
-    string topicName = 3;
-    string message = 4;
 }
 
 // path: #/components/messages/GameSessionInvitedEvent/payload
 message GameSessionInvitedEvent {
-    AnonymousSchema4 payload = 1;
+    NotificationPayload payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -167,21 +111,11 @@ message GameSessionInvitedEvent {
     string traceId = 9;
     string sessionId = 10;
     string spanContext = 11;
-}
-
-// path: #/components/messages/GameSessionJoinedEvent/payload/properties/payload
-message AnonymousSchema5 {
-
-    // allOf(#/components/schemas/notificationPayload)
-    repeated string userIds = 1;
-    string namespace = 2;
-    string topicName = 3;
-    string message = 4;
 }
 
 // path: #/components/messages/GameSessionJoinedEvent/payload
 message GameSessionJoinedEvent {
-    AnonymousSchema5 payload = 1;
+    NotificationPayload payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -194,21 +128,11 @@ message GameSessionJoinedEvent {
     string traceId = 9;
     string sessionId = 10;
     string spanContext = 11;
-}
-
-// path: #/components/messages/GameSessionMembersChangedEvent/payload/properties/payload
-message AnonymousSchema6 {
-
-    // allOf(#/components/schemas/notificationPayload)
-    repeated string userIds = 1;
-    string namespace = 2;
-    string topicName = 3;
-    string message = 4;
 }
 
 // path: #/components/messages/GameSessionMembersChangedEvent/payload
 message GameSessionMembersChangedEvent {
-    AnonymousSchema6 payload = 1;
+    NotificationPayload payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -221,21 +145,11 @@ message GameSessionMembersChangedEvent {
     string traceId = 9;
     string sessionId = 10;
     string spanContext = 11;
-}
-
-// path: #/components/messages/GameSessionKickedEvent/payload/properties/payload
-message AnonymousSchema7 {
-
-    // allOf(#/components/schemas/notificationPayload)
-    repeated string userIds = 1;
-    string namespace = 2;
-    string topicName = 3;
-    string message = 4;
 }
 
 // path: #/components/messages/GameSessionKickedEvent/payload
 message GameSessionKickedEvent {
-    AnonymousSchema7 payload = 1;
+    NotificationPayload payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -248,21 +162,11 @@ message GameSessionKickedEvent {
     string traceId = 9;
     string sessionId = 10;
     string spanContext = 11;
-}
-
-// path: #/components/messages/GameSessionCreatedEvent/payload/properties/payload
-message AnonymousSchema8 {
-
-    // allOf(#/components/schemas/notificationPayload)
-    repeated string userIds = 1;
-    string namespace = 2;
-    string topicName = 3;
-    string message = 4;
 }
 
 // path: #/components/messages/GameSessionCreatedEvent/payload
 message GameSessionCreatedEvent {
-    AnonymousSchema8 payload = 1;
+    NotificationPayload payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -275,21 +179,11 @@ message GameSessionCreatedEvent {
     string traceId = 9;
     string sessionId = 10;
     string spanContext = 11;
-}
-
-// path: #/components/messages/GameSessionUpdatedEvent/payload/properties/payload
-message AnonymousSchema9 {
-
-    // allOf(#/components/schemas/notificationPayload)
-    repeated string userIds = 1;
-    string namespace = 2;
-    string topicName = 3;
-    string message = 4;
 }
 
 // path: #/components/messages/GameSessionUpdatedEvent/payload
 message GameSessionUpdatedEvent {
-    AnonymousSchema9 payload = 1;
+    NotificationPayload payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -302,21 +196,11 @@ message GameSessionUpdatedEvent {
     string traceId = 9;
     string sessionId = 10;
     string spanContext = 11;
-}
-
-// path: #/components/messages/GameSessionRejectedEvent/payload/properties/payload
-message AnonymousSchema10 {
-
-    // allOf(#/components/schemas/notificationPayload)
-    repeated string userIds = 1;
-    string namespace = 2;
-    string topicName = 3;
-    string message = 4;
 }
 
 // path: #/components/messages/GameSessionRejectedEvent/payload
 message GameSessionRejectedEvent {
-    AnonymousSchema10 payload = 1;
+    NotificationPayload payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -329,21 +213,11 @@ message GameSessionRejectedEvent {
     string traceId = 9;
     string sessionId = 10;
     string spanContext = 11;
-}
-
-// path: #/components/messages/GameSessionDSStatusChangedEvent/payload/properties/payload
-message AnonymousSchema11 {
-
-    // allOf(#/components/schemas/notificationPayload)
-    repeated string userIds = 1;
-    string namespace = 2;
-    string topicName = 3;
-    string message = 4;
 }
 
 // path: #/components/messages/GameSessionDSStatusChangedEvent/payload
 message GameSessionDSStatusChangedEvent {
-    AnonymousSchema11 payload = 1;
+    NotificationPayload payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -356,21 +230,11 @@ message GameSessionDSStatusChangedEvent {
     string traceId = 9;
     string sessionId = 10;
     string spanContext = 11;
-}
-
-// path: #/components/messages/PartyCreatedEvent/payload/properties/payload
-message AnonymousSchema12 {
-
-    // allOf(#/components/schemas/notificationPayload)
-    repeated string userIds = 1;
-    string namespace = 2;
-    string topicName = 3;
-    string message = 4;
 }
 
 // path: #/components/messages/PartyCreatedEvent/payload
 message PartyCreatedEvent {
-    AnonymousSchema12 payload = 1;
+    NotificationPayload payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -383,21 +247,11 @@ message PartyCreatedEvent {
     string traceId = 9;
     string sessionId = 10;
     string spanContext = 11;
-}
-
-// path: #/components/messages/PartyUpdatedEvent/payload/properties/payload
-message AnonymousSchema13 {
-
-    // allOf(#/components/schemas/notificationPayload)
-    repeated string userIds = 1;
-    string namespace = 2;
-    string topicName = 3;
-    string message = 4;
 }
 
 // path: #/components/messages/PartyUpdatedEvent/payload
 message PartyUpdatedEvent {
-    AnonymousSchema13 payload = 1;
+    NotificationPayload payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -410,21 +264,11 @@ message PartyUpdatedEvent {
     string traceId = 9;
     string sessionId = 10;
     string spanContext = 11;
-}
-
-// path: #/components/messages/PartyKickedEvent/payload/properties/payload
-message AnonymousSchema14 {
-
-    // allOf(#/components/schemas/notificationPayload)
-    repeated string userIds = 1;
-    string namespace = 2;
-    string topicName = 3;
-    string message = 4;
 }
 
 // path: #/components/messages/PartyKickedEvent/payload
 message PartyKickedEvent {
-    AnonymousSchema14 payload = 1;
+    NotificationPayload payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -437,21 +281,11 @@ message PartyKickedEvent {
     string traceId = 9;
     string sessionId = 10;
     string spanContext = 11;
-}
-
-// path: #/components/messages/PartyInvitedEvent/payload/properties/payload
-message AnonymousSchema15 {
-
-    // allOf(#/components/schemas/notificationPayload)
-    repeated string userIds = 1;
-    string namespace = 2;
-    string topicName = 3;
-    string message = 4;
 }
 
 // path: #/components/messages/PartyInvitedEvent/payload
 message PartyInvitedEvent {
-    AnonymousSchema15 payload = 1;
+    NotificationPayload payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -464,21 +298,11 @@ message PartyInvitedEvent {
     string traceId = 9;
     string sessionId = 10;
     string spanContext = 11;
-}
-
-// path: #/components/messages/PartyRejectedEvent/payload/properties/payload
-message AnonymousSchema16 {
-
-    // allOf(#/components/schemas/notificationPayload)
-    repeated string userIds = 1;
-    string namespace = 2;
-    string topicName = 3;
-    string message = 4;
 }
 
 // path: #/components/messages/PartyRejectedEvent/payload
 message PartyRejectedEvent {
-    AnonymousSchema16 payload = 1;
+    NotificationPayload payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -491,21 +315,11 @@ message PartyRejectedEvent {
     string traceId = 9;
     string sessionId = 10;
     string spanContext = 11;
-}
-
-// path: #/components/messages/PartyJoinedEvent/payload/properties/payload
-message AnonymousSchema17 {
-
-    // allOf(#/components/schemas/notificationPayload)
-    repeated string userIds = 1;
-    string namespace = 2;
-    string topicName = 3;
-    string message = 4;
 }
 
 // path: #/components/messages/PartyJoinedEvent/payload
 message PartyJoinedEvent {
-    AnonymousSchema17 payload = 1;
+    NotificationPayload payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -520,19 +334,9 @@ message PartyJoinedEvent {
     string spanContext = 11;
 }
 
-// path: #/components/messages/PartyMembersChangedEvent/payload/properties/payload
-message AnonymousSchema18 {
-
-    // allOf(#/components/schemas/notificationPayload)
-    repeated string userIds = 1;
-    string namespace = 2;
-    string topicName = 3;
-    string message = 4;
-}
-
 // path: #/components/messages/PartyMembersChangedEvent/payload
 message PartyMembersChangedEvent {
-    AnonymousSchema18 payload = 1;
+    NotificationPayload payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -552,7 +356,7 @@ message PartyMembersChangedEvent {
 
 // path: #/components/messages/onPartyCreated
 message OnPartyCreatedMessage {
-    OnPartyCreated payload = 1;
+    Event payload = 1;
 }
 
 // path: #/components/messages/sessionNotification
@@ -648,27 +452,6 @@ message PartyMembersChangedEventMessage {
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
-// path: #/channels/session/publish/message
-message SessionPublish {
-    oneof payload {
-        OnPartyCreated variant0 = 1;
-    }
-}
-
-// path: #/channels/sessionNotification/publish/message
-message SessionNotificationPublish {
-    oneof payload {
-        SessionNotification variant0 = 1;
-    }
-}
-
-// path: #/channels/sessionEvent/publish/message
-message SessionEventPublish {
-    oneof payload {
-        OnSessionEnded variant0 = 1;
-    }
-}
-
 // path: #/channels/mpv2SessionHistory/publish/message
 message Mpv2SessionHistoryPublish {
     oneof payload {
@@ -695,17 +478,17 @@ message Mpv2SessionHistoryPublish {
 // --- service ---
 
 
-// Publishes a OnPartyCreated to the Session channel. (oneOf variant) (session OnPartyCreated)
+// Publishes a message to the Session channel. (session OnPartyCreated)
 service SessionOnPartyCreatedService {
     rpc OnMessage(OnPartyCreated) returns (google.protobuf.Empty);
 }
 
-// Publishes a SessionNotification to the Session Notification channel. (oneOf variant) (sessionNotification SessionNotification)
+// Publishes a message to the Session Notification channel. (sessionNotification SessionNotification)
 service SessionNotificationSessionNotificationService {
     rpc OnMessage(SessionNotification) returns (google.protobuf.Empty);
 }
 
-// Publishes a OnSessionEnded to the Session Event channel. (oneOf variant) (sessionEvent OnSessionEnded)
+// Publishes a message to the Session Event channel. (sessionEvent OnSessionEnded)
 service SessionEventOnSessionEndedService {
     rpc OnMessage(OnSessionEnded) returns (google.protobuf.Empty);
 }

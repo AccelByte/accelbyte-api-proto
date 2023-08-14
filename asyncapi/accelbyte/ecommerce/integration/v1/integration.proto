@@ -68,294 +68,6 @@ message Iap {
     string fulfilledTime = 13;
 }
 
-// path: #/components/messages/appleIAPConfigDeleted/payload
-message AppleIAPConfigDeleted {
-
-    // allOf(#/components/schemas/event)
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
-}
-
-// path: #/components/messages/appleIAPConfigUpdated/payload
-message AppleIAPConfigUpdated {
-
-    // allOf(#/components/schemas/event)
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
-}
-
-// path: #/components/messages/googleIAPConfigDeleted/payload
-message GoogleIAPConfigDeleted {
-
-    // allOf(#/components/schemas/event)
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
-}
-
-// path: #/components/messages/googleIAPConfigUpdated/payload
-message GoogleIAPConfigUpdated {
-
-    // allOf(#/components/schemas/event)
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
-}
-
-// path: #/components/messages/googleP12FileUpdated/payload
-message GoogleP12FileUpdated {
-
-    // allOf(#/components/schemas/event)
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
-}
-
-// path: #/components/messages/playStationIAPConfigDeleted/payload
-message PlayStationIAPConfigDeleted {
-
-    // allOf(#/components/schemas/event)
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
-}
-
-// path: #/components/messages/playStationIAPConfigUpdated/payload
-message PlayStationIAPConfigUpdated {
-
-    // allOf(#/components/schemas/event)
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
-}
-
-// path: #/components/messages/steamIAPConfigUpdated/payload
-message SteamIAPConfigUpdated {
-
-    // allOf(#/components/schemas/event)
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
-}
-
-// path: #/components/messages/steamIAPConfigDeleted/payload
-message SteamIAPConfigDeleted {
-
-    // allOf(#/components/schemas/event)
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
-}
-
-// path: #/components/messages/xblIAPConfigDeleted/payload
-message XblIAPConfigDeleted {
-
-    // allOf(#/components/schemas/event)
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
-}
-
-// path: #/components/messages/xblIAPConfigUpdated/payload
-message XblIAPConfigUpdated {
-
-    // allOf(#/components/schemas/event)
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
-}
-
-// path: #/components/messages/xblBPCertFileUpdated/payload
-message XblBPCertFileUpdated {
-
-    // allOf(#/components/schemas/event)
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
-}
-
-// path: #/components/messages/stadiaIAPJsonFileUpdated/payload
-message StadiaIAPJsonFileUpdated {
-
-    // allOf(#/components/schemas/event)
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
-}
-
-// path: #/components/messages/stadiaIAPConfigDeleted/payload
-message StadiaIAPConfigDeleted {
-
-    // allOf(#/components/schemas/event)
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
-}
-
-// path: #/components/messages/epicGamesIAPConfigDeleted/payload
-message EpicGamesIAPConfigDeleted {
-
-    // allOf(#/components/schemas/event)
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
-}
-
-// path: #/components/messages/epicGamesIAPConfigUpdated/payload
-message EpicGamesIAPConfigUpdated {
-
-    // allOf(#/components/schemas/event)
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
-}
-
-// path: #/components/messages/twitchIAPConfigUpdated/payload
-message TwitchIAPConfigUpdated {
-
-    // allOf(#/components/schemas/event)
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
-}
-
-// path: #/components/messages/twitchIAPConfigDeleted/payload
-message TwitchIAPConfigDeleted {
-
-    // allOf(#/components/schemas/event)
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
-}
-
 // path: #/components/messages/iapProcessed/payload/properties/payload
 message AnonymousSchema1 {
     Iap iap = 1;
@@ -383,92 +95,92 @@ message IapProcessed {
 
 // path: #/components/messages/appleIAPConfigDeleted
 message AppleIAPConfigDeletedMessage {
-    AppleIAPConfigDeleted payload = 1;
+    Event payload = 1;
 }
 
 // path: #/components/messages/appleIAPConfigUpdated
 message AppleIAPConfigUpdatedMessage {
-    AppleIAPConfigUpdated payload = 1;
+    Event payload = 1;
 }
 
 // path: #/components/messages/googleIAPConfigDeleted
 message GoogleIAPConfigDeletedMessage {
-    GoogleIAPConfigDeleted payload = 1;
+    Event payload = 1;
 }
 
 // path: #/components/messages/googleIAPConfigUpdated
 message GoogleIAPConfigUpdatedMessage {
-    GoogleIAPConfigUpdated payload = 1;
+    Event payload = 1;
 }
 
 // path: #/components/messages/googleP12FileUpdated
 message GoogleP12FileUpdatedMessage {
-    GoogleP12FileUpdated payload = 1;
+    Event payload = 1;
 }
 
 // path: #/components/messages/playStationIAPConfigDeleted
 message PlayStationIAPConfigDeletedMessage {
-    PlayStationIAPConfigDeleted payload = 1;
+    Event payload = 1;
 }
 
 // path: #/components/messages/playStationIAPConfigUpdated
 message PlayStationIAPConfigUpdatedMessage {
-    PlayStationIAPConfigUpdated payload = 1;
+    Event payload = 1;
 }
 
 // path: #/components/messages/steamIAPConfigUpdated
 message SteamIAPConfigUpdatedMessage {
-    SteamIAPConfigUpdated payload = 1;
+    Event payload = 1;
 }
 
 // path: #/components/messages/steamIAPConfigDeleted
 message SteamIAPConfigDeletedMessage {
-    SteamIAPConfigDeleted payload = 1;
+    Event payload = 1;
 }
 
 // path: #/components/messages/xblIAPConfigDeleted
 message XblIAPConfigDeletedMessage {
-    XblIAPConfigDeleted payload = 1;
+    Event payload = 1;
 }
 
 // path: #/components/messages/xblIAPConfigUpdated
 message XblIAPConfigUpdatedMessage {
-    XblIAPConfigUpdated payload = 1;
+    Event payload = 1;
 }
 
 // path: #/components/messages/xblBPCertFileUpdated
 message XblBPCertFileUpdatedMessage {
-    XblBPCertFileUpdated payload = 1;
+    Event payload = 1;
 }
 
 // path: #/components/messages/stadiaIAPJsonFileUpdated
 message StadiaIAPJsonFileUpdatedMessage {
-    StadiaIAPJsonFileUpdated payload = 1;
+    Event payload = 1;
 }
 
 // path: #/components/messages/stadiaIAPConfigDeleted
 message StadiaIAPConfigDeletedMessage {
-    StadiaIAPConfigDeleted payload = 1;
+    Event payload = 1;
 }
 
 // path: #/components/messages/epicGamesIAPConfigDeleted
 message EpicGamesIAPConfigDeletedMessage {
-    EpicGamesIAPConfigDeleted payload = 1;
+    Event payload = 1;
 }
 
 // path: #/components/messages/epicGamesIAPConfigUpdated
 message EpicGamesIAPConfigUpdatedMessage {
-    EpicGamesIAPConfigUpdated payload = 1;
+    Event payload = 1;
 }
 
 // path: #/components/messages/twitchIAPConfigUpdated
 message TwitchIAPConfigUpdatedMessage {
-    TwitchIAPConfigUpdated payload = 1;
+    Event payload = 1;
 }
 
 // path: #/components/messages/twitchIAPConfigDeleted
 message TwitchIAPConfigDeletedMessage {
-    TwitchIAPConfigDeleted payload = 1;
+    Event payload = 1;
 }
 
 // path: #/components/messages/iapProcessed
@@ -503,108 +215,101 @@ message IapConfigManagementPublish {
     }
 }
 
-// path: #/channels/iapProcessing/publish/message
-message IapProcessingPublish {
-    oneof payload {
-        IapProcessed variant0 = 1;
-    }
-}
-
 
 // --- service ---
 
 
-// Publishes a AppleIAPConfigDeleted to the Iap Config Management channel. (oneOf variant) (iapConfigManagement AppleIAPConfigDeleted)
+// Publishes a Event to the Iap Config Management channel. (oneOf variant) (iapConfigManagement AppleIAPConfigDeleted)
 service IapConfigManagementAppleIAPConfigDeletedService {
-    rpc OnMessage(AppleIAPConfigDeleted) returns (google.protobuf.Empty);
+    rpc OnMessage(Event) returns (google.protobuf.Empty);
 }
 
-// Publishes a AppleIAPConfigUpdated to the Iap Config Management channel. (oneOf variant) (iapConfigManagement AppleIAPConfigUpdated)
+// Publishes a Event to the Iap Config Management channel. (oneOf variant) (iapConfigManagement AppleIAPConfigUpdated)
 service IapConfigManagementAppleIAPConfigUpdatedService {
-    rpc OnMessage(AppleIAPConfigUpdated) returns (google.protobuf.Empty);
+    rpc OnMessage(Event) returns (google.protobuf.Empty);
 }
 
-// Publishes a GoogleIAPConfigDeleted to the Iap Config Management channel. (oneOf variant) (iapConfigManagement GoogleIAPConfigDeleted)
+// Publishes a Event to the Iap Config Management channel. (oneOf variant) (iapConfigManagement GoogleIAPConfigDeleted)
 service IapConfigManagementGoogleIAPConfigDeletedService {
-    rpc OnMessage(GoogleIAPConfigDeleted) returns (google.protobuf.Empty);
+    rpc OnMessage(Event) returns (google.protobuf.Empty);
 }
 
-// Publishes a GoogleIAPConfigUpdated to the Iap Config Management channel. (oneOf variant) (iapConfigManagement GoogleIAPConfigUpdated)
+// Publishes a Event to the Iap Config Management channel. (oneOf variant) (iapConfigManagement GoogleIAPConfigUpdated)
 service IapConfigManagementGoogleIAPConfigUpdatedService {
-    rpc OnMessage(GoogleIAPConfigUpdated) returns (google.protobuf.Empty);
+    rpc OnMessage(Event) returns (google.protobuf.Empty);
 }
 
-// Publishes a GoogleP12FileUpdated to the Iap Config Management channel. (oneOf variant) (iapConfigManagement GoogleP12FileUpdated)
+// Publishes a Event to the Iap Config Management channel. (oneOf variant) (iapConfigManagement GoogleP12FileUpdated)
 service IapConfigManagementGoogleP12FileUpdatedService {
-    rpc OnMessage(GoogleP12FileUpdated) returns (google.protobuf.Empty);
+    rpc OnMessage(Event) returns (google.protobuf.Empty);
 }
 
-// Publishes a PlayStationIAPConfigDeleted to the Iap Config Management channel. (oneOf variant) (iapConfigManagement PlayStationIAPConfigDeleted)
+// Publishes a Event to the Iap Config Management channel. (oneOf variant) (iapConfigManagement PlayStationIAPConfigDeleted)
 service IapConfigManagementPlayStationIAPConfigDeletedService {
-    rpc OnMessage(PlayStationIAPConfigDeleted) returns (google.protobuf.Empty);
+    rpc OnMessage(Event) returns (google.protobuf.Empty);
 }
 
-// Publishes a PlayStationIAPConfigUpdated to the Iap Config Management channel. (oneOf variant) (iapConfigManagement PlayStationIAPConfigUpdated)
+// Publishes a Event to the Iap Config Management channel. (oneOf variant) (iapConfigManagement PlayStationIAPConfigUpdated)
 service IapConfigManagementPlayStationIAPConfigUpdatedService {
-    rpc OnMessage(PlayStationIAPConfigUpdated) returns (google.protobuf.Empty);
+    rpc OnMessage(Event) returns (google.protobuf.Empty);
 }
 
-// Publishes a SteamIAPConfigUpdated to the Iap Config Management channel. (oneOf variant) (iapConfigManagement SteamIAPConfigUpdated)
+// Publishes a Event to the Iap Config Management channel. (oneOf variant) (iapConfigManagement SteamIAPConfigUpdated)
 service IapConfigManagementSteamIAPConfigUpdatedService {
-    rpc OnMessage(SteamIAPConfigUpdated) returns (google.protobuf.Empty);
+    rpc OnMessage(Event) returns (google.protobuf.Empty);
 }
 
-// Publishes a SteamIAPConfigDeleted to the Iap Config Management channel. (oneOf variant) (iapConfigManagement SteamIAPConfigDeleted)
+// Publishes a Event to the Iap Config Management channel. (oneOf variant) (iapConfigManagement SteamIAPConfigDeleted)
 service IapConfigManagementSteamIAPConfigDeletedService {
-    rpc OnMessage(SteamIAPConfigDeleted) returns (google.protobuf.Empty);
+    rpc OnMessage(Event) returns (google.protobuf.Empty);
 }
 
-// Publishes a XblIAPConfigDeleted to the Iap Config Management channel. (oneOf variant) (iapConfigManagement XblIAPConfigDeleted)
+// Publishes a Event to the Iap Config Management channel. (oneOf variant) (iapConfigManagement XblIAPConfigDeleted)
 service IapConfigManagementXblIAPConfigDeletedService {
-    rpc OnMessage(XblIAPConfigDeleted) returns (google.protobuf.Empty);
+    rpc OnMessage(Event) returns (google.protobuf.Empty);
 }
 
-// Publishes a XblIAPConfigUpdated to the Iap Config Management channel. (oneOf variant) (iapConfigManagement XblIAPConfigUpdated)
+// Publishes a Event to the Iap Config Management channel. (oneOf variant) (iapConfigManagement XblIAPConfigUpdated)
 service IapConfigManagementXblIAPConfigUpdatedService {
-    rpc OnMessage(XblIAPConfigUpdated) returns (google.protobuf.Empty);
+    rpc OnMessage(Event) returns (google.protobuf.Empty);
 }
 
-// Publishes a XblBPCertFileUpdated to the Iap Config Management channel. (oneOf variant) (iapConfigManagement XblBPCertFileUpdated)
+// Publishes a Event to the Iap Config Management channel. (oneOf variant) (iapConfigManagement XblBPCertFileUpdated)
 service IapConfigManagementXblBPCertFileUpdatedService {
-    rpc OnMessage(XblBPCertFileUpdated) returns (google.protobuf.Empty);
+    rpc OnMessage(Event) returns (google.protobuf.Empty);
 }
 
-// Publishes a StadiaIAPJsonFileUpdated to the Iap Config Management channel. (oneOf variant) (iapConfigManagement StadiaIAPJsonFileUpdated)
+// Publishes a Event to the Iap Config Management channel. (oneOf variant) (iapConfigManagement StadiaIAPJsonFileUpdated)
 service IapConfigManagementStadiaIAPJsonFileUpdatedService {
-    rpc OnMessage(StadiaIAPJsonFileUpdated) returns (google.protobuf.Empty);
+    rpc OnMessage(Event) returns (google.protobuf.Empty);
 }
 
-// Publishes a StadiaIAPConfigDeleted to the Iap Config Management channel. (oneOf variant) (iapConfigManagement StadiaIAPConfigDeleted)
+// Publishes a Event to the Iap Config Management channel. (oneOf variant) (iapConfigManagement StadiaIAPConfigDeleted)
 service IapConfigManagementStadiaIAPConfigDeletedService {
-    rpc OnMessage(StadiaIAPConfigDeleted) returns (google.protobuf.Empty);
+    rpc OnMessage(Event) returns (google.protobuf.Empty);
 }
 
-// Publishes a EpicGamesIAPConfigDeleted to the Iap Config Management channel. (oneOf variant) (iapConfigManagement EpicGamesIAPConfigDeleted)
+// Publishes a Event to the Iap Config Management channel. (oneOf variant) (iapConfigManagement EpicGamesIAPConfigDeleted)
 service IapConfigManagementEpicGamesIAPConfigDeletedService {
-    rpc OnMessage(EpicGamesIAPConfigDeleted) returns (google.protobuf.Empty);
+    rpc OnMessage(Event) returns (google.protobuf.Empty);
 }
 
-// Publishes a EpicGamesIAPConfigUpdated to the Iap Config Management channel. (oneOf variant) (iapConfigManagement EpicGamesIAPConfigUpdated)
+// Publishes a Event to the Iap Config Management channel. (oneOf variant) (iapConfigManagement EpicGamesIAPConfigUpdated)
 service IapConfigManagementEpicGamesIAPConfigUpdatedService {
-    rpc OnMessage(EpicGamesIAPConfigUpdated) returns (google.protobuf.Empty);
+    rpc OnMessage(Event) returns (google.protobuf.Empty);
 }
 
-// Publishes a TwitchIAPConfigUpdated to the Iap Config Management channel. (oneOf variant) (iapConfigManagement TwitchIAPConfigUpdated)
+// Publishes a Event to the Iap Config Management channel. (oneOf variant) (iapConfigManagement TwitchIAPConfigUpdated)
 service IapConfigManagementTwitchIAPConfigUpdatedService {
-    rpc OnMessage(TwitchIAPConfigUpdated) returns (google.protobuf.Empty);
+    rpc OnMessage(Event) returns (google.protobuf.Empty);
 }
 
-// Publishes a TwitchIAPConfigDeleted to the Iap Config Management channel. (oneOf variant) (iapConfigManagement TwitchIAPConfigDeleted)
+// Publishes a Event to the Iap Config Management channel. (oneOf variant) (iapConfigManagement TwitchIAPConfigDeleted)
 service IapConfigManagementTwitchIAPConfigDeletedService {
-    rpc OnMessage(TwitchIAPConfigDeleted) returns (google.protobuf.Empty);
+    rpc OnMessage(Event) returns (google.protobuf.Empty);
 }
 
-// Publishes a IapProcessed to the Iap Processing channel. (oneOf variant) (iapProcessing IapProcessed)
+// Publishes a message to the Iap Processing channel. (iapProcessing IapProcessed)
 service IapProcessingIapProcessedService {
     rpc OnMessage(IapProcessed) returns (google.protobuf.Empty);
 }

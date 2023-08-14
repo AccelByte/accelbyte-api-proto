@@ -7,8 +7,7 @@ channels:
   oauthRequest:
     publish:
       message:
-        oneOf:
-        - $ref: '#/components/messages/oauthRequestAuthorized'
+        $ref: '#/components/messages/oauthRequestAuthorized'
 
   oauthToken:
     publish:
@@ -20,14 +19,12 @@ channels:
   oauthThirdPartyRequest:
     publish:
       message:
-        oneOf:
-        - $ref: '#/components/messages/oauthThirdPartyRequestAuthorized'
+        $ref: '#/components/messages/oauthThirdPartyRequestAuthorized'
 
   oauthThirdPartyToken:
     publish:
       message:
-        oneOf:
-        - $ref: '#/components/messages/oauthThirdPartyTokenGenerated'
+        $ref: '#/components/messages/oauthThirdPartyTokenGenerated'
 
 
 components:

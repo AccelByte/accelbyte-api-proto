@@ -485,20 +485,6 @@ message KeyGroupManagementPublish {
     }
 }
 
-// path: #/channels/codeRedemption/publish/message
-message CodeRedemptionPublish {
-    oneof payload {
-        CodeRedeemed variant0 = 1;
-    }
-}
-
-// path: #/channels/ticketSale/publish/message
-message TicketSalePublish {
-    oneof payload {
-        TicketAcquired variant0 = 1;
-    }
-}
-
 
 // --- service ---
 
@@ -553,12 +539,12 @@ service KeyGroupManagementKeyUploadedService {
     rpc OnMessage(KeyUploaded) returns (google.protobuf.Empty);
 }
 
-// Publishes a CodeRedeemed to the Code Redemption channel. (oneOf variant) (codeRedemption CodeRedeemed)
+// Publishes a message to the Code Redemption channel. (codeRedemption CodeRedeemed)
 service CodeRedemptionCodeRedeemedService {
     rpc OnMessage(CodeRedeemed) returns (google.protobuf.Empty);
 }
 
-// Publishes a TicketAcquired to the Ticket Sale channel. (oneOf variant) (ticketSale TicketAcquired)
+// Publishes a message to the Ticket Sale channel. (ticketSale TicketAcquired)
 service TicketSaleTicketAcquiredService {
     rpc OnMessage(TicketAcquired) returns (google.protobuf.Empty);
 }

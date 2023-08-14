@@ -28,14 +28,12 @@ channels:
   codeRedemption:
     publish:
       message:
-        oneOf:
-          - $ref: '#/components/messages/codeRedeemed'
+        $ref: '#/components/messages/codeRedeemed'
 
   ticketSale:
     publish:
       message:
-        oneOf:
-          - $ref: '#/components/messages/ticketAcquired'
+        $ref: '#/components/messages/ticketAcquired'
 
 components:
   schemas:

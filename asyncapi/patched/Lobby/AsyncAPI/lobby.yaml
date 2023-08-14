@@ -15,13 +15,11 @@ channels:
   lobbyMatchmakingTickets:
     publish:
       message:
-        oneOf:
-        - $ref: '#/components/messages/matchmakingTicketsPublished'
+        $ref: '#/components/messages/matchmakingTicketsPublished'
   lobbyTotalUsersOnline:
     publish:
       message:
-        oneOf:
-        - $ref: '#/components/messages/totalUsersOnlinePublished'
+        $ref: '#/components/messages/totalUsersOnlinePublished'
 components:
   schemas:
     event:
@@ -85,21 +83,15 @@ components:
           payload:
             properties:
               userDisconnected:
-                type: object
-                allOf:
-                - $ref: '#/components/schemas/userDisconnectedPayload'
+                $ref: '#/components/schemas/userDisconnectedPayload'
     userChatRateLimited:
       name: userChatRateLimited
       payload:
-        type: object
-        allOf:
-        - $ref: '#/components/schemas/event'
+        $ref: '#/components/schemas/event'
     userRateLimited:
       name: userRateLimited
       payload:
-        type: object
-        allOf:
-        - $ref: '#/components/schemas/event'
+        $ref: '#/components/schemas/event'
     matchmakingTicketsPublished:
       name: matchmakingTicketsPublished
       payload:

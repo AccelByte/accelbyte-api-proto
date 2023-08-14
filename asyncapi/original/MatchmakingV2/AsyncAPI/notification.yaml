@@ -7,8 +7,7 @@ channels:
   freeformUserNotificationRequest:
     publish:
       message:
-        oneOf:
-          - $ref: '#/components/messages/freeformUserNotification'
+        $ref: '#/components/messages/freeformUserNotification'
 
 components:
   schemas:
@@ -57,6 +56,4 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            allOf:
-              - $ref: '#/components/schemas/notificationPayload'
+            $ref: '#/components/schemas/notificationPayload'

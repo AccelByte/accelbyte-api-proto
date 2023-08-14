@@ -7,8 +7,7 @@ channels:
   autoModeration:
     publish:
       message:
-        oneOf:
-        - $ref: '#/components/messages/hideContent'
+        $ref: '#/components/messages/hideContent'
 
 
 components:
