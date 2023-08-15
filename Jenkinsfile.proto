@@ -68,7 +68,6 @@ pipeline {
                 }
             }
         }
-
         stage("Run") {
             steps {
                 dir("${toolsRepoPath}/cicd") {
@@ -76,7 +75,24 @@ pipeline {
                 }
             }
         }
-
+        stage('Lint') {
+            agent {
+                label "justice-codegen-sdk"
+            }
+            steps {
+                sh "make lint"
+            }
+        }
+        stage('Check Proto Governance') {
+            agent {
+                label "justice-codegen-sdk"
+            }
+            steps {
+                script {
+                sh 'make governance'
+                }
+            }
+        }
         stage("Update") {
             steps {
                 script {
