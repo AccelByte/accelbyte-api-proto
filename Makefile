@@ -13,6 +13,24 @@ breaking:
 	docker run -t --rm --volume $$(pwd):/workspace --workdir /workspace bufbuild/buf breaking \
     	--against ".git#branch=$(COMPARE_AGAINST_BRANCH)"
 
+check_package_name:
+	@test -n "$(FILE_PATH)" || (echo "FILE_PATH is not set" ; exit 1)
+	@grep -zoqP 'package accelbyte(\.[^.\n]+)(\.[^.\n]+)?(\.[^.\n]+)(\.v[0-9]+)?;' $(FILE_PATH); \
+		if [ $$? -ne 0 ]; then \
+		  echo "[FAIL] $(FILE_PATH)"; \
+		  echo -e "\tthe proto file should have package with the following pattern:"; \
+		  echo -e "\t..."; \
+		  echo -e "\tpackage accelbyte.<service_name>[.subproject].<feature>[.version];"; \
+		  echo -e "\t..."; \
+		  exit 1; \
+		else \
+		  echo "[OK] $(FILE_PATH)"; \
+		fi
+
+check_package_name_all:
+	@echo "Checking package name on all .proto file"
+	@find -type f -iname '*.proto' -not -name 'Jenkinsfile.proto' | xargs -I '{}' make -s check_package_name FILE_PATH='{}'
+
 check_version_comment:
 	@test -n "$(FILE_PATH)" || (echo "FILE_PATH is not set" ; exit 1)
 	@grep -zoqP 'package .*;(\r\n|\r|\n)// Version v\d+.\d+.\d+' $(FILE_PATH); \
@@ -20,7 +38,7 @@ check_version_comment:
 		  echo "[FAIL] $(FILE_PATH)"; \
 		  echo -e "\tthe proto file should have version comment with the following pattern:"; \
 		  echo -e "\t..."; \
-		  echo -e "\tpackage your.proto.package.name;"; \
+		  echo -e "\tpackage accelbyte.service.feature;"; \
   		  echo -e "\t// Version v1.0.0"; \
 		  echo -e "\t..."; \
 		  exit 1; \
