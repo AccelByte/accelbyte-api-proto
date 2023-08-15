@@ -26,32 +26,6 @@ def hasBreakingChangesSymbol(commitMessages) {
   return false
 }
 
-def checkPackageNamePattern(packageName) {
-    if (packageName =~ "package accelbyte(\\.[^.\\n]+)(\\.[^.\\n]+)?(\\.[^.\\n]+)(\\.v[0-9]+)?;") {
-        return true
-    }
-    return false
-}
-
-def checkProtoFilesPackageName() {
-    fileList = sh(returnStdout: true, script: "find proto -name '*.proto'")
-    fileList = fileList.split("\n")
-
-    if (fileList.size() <= 0) {
-        return true
-    }
-
-    for (int i = 0; i < fileList.size(); i++) {
-        fileName = fileList[i]
-        packageLine = sh(returnStdout: true, script: "grep ^package '" + fileName + "'").replaceAll("\\n", "")
-        isComply = checkPackageNamePattern(packageLine)
-        println "Comply: [" + isComply + "] " + packageLine + " - [" + fileName + "]"
-        if (!isComply) {
-            error "FAIL: '" + packageLine + "' doesn't comply with convention, please follow the convention for package naming"
-        }
-    }
-}
-
 pipeline {
   agent none
   stages {
@@ -78,7 +52,6 @@ pipeline {
             label "justice-codegen-sdk"
         }
         steps {
-            checkProtoFilesPackageName()
             sh "make lint"
         }
     }
@@ -108,7 +81,7 @@ pipeline {
       }
       steps {
         script {
-          sh 'make check_version_comment_all'
+          sh 'make governance'
         }
       }
     }

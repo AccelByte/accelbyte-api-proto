@@ -13,7 +13,9 @@ breaking:
 	docker run -t --rm --volume $$(pwd):/workspace --workdir /workspace bufbuild/buf breaking \
     	--against ".git#branch=$(COMPARE_AGAINST_BRANCH)"
 
-check_package_name:
+governance: check_governance_package_name_all check_governance_version_comment_all
+
+check_governance_package_name:
 	@test -n "$(FILE_PATH)" || (echo "FILE_PATH is not set" ; exit 1)
 	@grep -zoqP 'package accelbyte(\.[^.\n]+)(\.[^.\n]+)?(\.[^.\n]+)(\.v[0-9]+)?;' $(FILE_PATH); \
 		if [ $$? -ne 0 ]; then \
@@ -27,11 +29,11 @@ check_package_name:
 		  echo "[OK] $(FILE_PATH)"; \
 		fi
 
-check_package_name_all:
+check_governance_package_name_all:
 	@echo "Checking package name on all .proto file"
-	@find -type f -iname '*.proto' -not -name 'Jenkinsfile.proto' | xargs -I '{}' make -s check_package_name FILE_PATH='{}'
+	@find -type f -iname '*.proto' -not -name 'Jenkinsfile.proto' | xargs -I '{}' make -s check_governance_package_name FILE_PATH='{}'
 
-check_version_comment:
+check_governance_version_comment:
 	@test -n "$(FILE_PATH)" || (echo "FILE_PATH is not set" ; exit 1)
 	@grep -zoqP 'package .*;(\r\n|\r|\n)// Version v\d+.\d+.\d+' $(FILE_PATH); \
 		if [ $$? -ne 0 ]; then \
@@ -46,6 +48,6 @@ check_version_comment:
 		  echo "[OK] $(FILE_PATH)"; \
 		fi
 
-check_version_comment_all:
+check_governance_version_comment_all:
 	@echo "Checking version comment on all .proto file"
-	@find -type f -iname '*.proto' -not -name 'Jenkinsfile.proto' | xargs -I '{}' make -s check_version_comment FILE_PATH='{}'
+	@find -type f -iname '*.proto' -not -name 'Jenkinsfile.proto' | xargs -I '{}' make -s check_governance_version_comment FILE_PATH='{}'
