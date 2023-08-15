@@ -9,13 +9,13 @@ COMPARE_AGAINST_BRANCH=origin/master
 lint:
 	docker run -t --rm --volume $$(pwd):/workspace --workdir /workspace bufbuild/buf lint
 	@echo "Checking version comment on all .proto file"
-	@make -s version_comment_check_all
+	@make -s check_version_comment_all
 
 breaking:
 	docker run -t --rm --volume $$(pwd):/workspace --workdir /workspace bufbuild/buf breaking \
     	--against ".git#branch=$(COMPARE_AGAINST_BRANCH)"
 
-version_comment_check:
+check_version_comment:
 	@test -n "$(FILE_PATH)" || (echo "FILE_PATH is not set" ; exit 1)
 	@grep -zoqP 'package .*;(\r\n|\r|\n)// Version v\d+.\d+.\d+' $(FILE_PATH); \
 		if [ $$? -ne 0 ]; then \
@@ -30,7 +30,5 @@ version_comment_check:
 		  echo "[OK] $(FILE_PATH)"; \
 		fi
 
-version_comment_check_all:
-	@find -type f -iname '*.proto' -not -name 'Jenkinsfile.proto' | xargs -I '{}' make -s version_comment_check FILE_PATH='{}'
-
-#grep -zoP 'package .*;(\r\n|\r|\n)// Version v\d+.\d+.\d+' filterService.proto
+check_version_comment_all:
+	@find -type f -iname '*.proto' -not -name 'Jenkinsfile.proto' | xargs -I '{}' make -s check_version_comment FILE_PATH='{}'
