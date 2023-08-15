@@ -8,8 +8,6 @@ COMPARE_AGAINST_BRANCH=origin/master
 
 lint:
 	docker run -t --rm --volume $$(pwd):/workspace --workdir /workspace bufbuild/buf lint
-	@echo "Checking version comment on all .proto file"
-	@make -s check_version_comment_all
 
 breaking:
 	docker run -t --rm --volume $$(pwd):/workspace --workdir /workspace bufbuild/buf breaking \
@@ -31,4 +29,5 @@ check_version_comment:
 		fi
 
 check_version_comment_all:
+	@echo "Checking version comment on all .proto file"
 	@find -type f -iname '*.proto' -not -name 'Jenkinsfile.proto' | xargs -I '{}' make -s check_version_comment FILE_PATH='{}'

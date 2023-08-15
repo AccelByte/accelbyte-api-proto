@@ -102,6 +102,16 @@ pipeline {
         }
       }
     }
+    stage('Check Proto Governance') {
+      agent {
+        label "justice-codegen-sdk"
+      }
+      steps {
+        script {
+          sh 'make check_version_comment_all'
+        }
+      }
+    }
   }
   post {
     success {
