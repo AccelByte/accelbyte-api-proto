@@ -210,7 +210,7 @@ components:
               ugcContentDelete:
                 $ref: '#/components/schemas/ugcContentDelete'
     ugcContentHide:
-      name: ugcContentHide
+      name: ugcContentHidePayload
       payload:
         type: object
         allOf:
@@ -294,7 +294,7 @@ components:
               ugcChannel:
                 $ref: '#/components/schemas/ugcChannel'
     ugcChannelDeleted:
-      name: ugcChannelDeleted
+      name: ugcChannelDeletedPayload
       payload:
         type: object
         allOf:

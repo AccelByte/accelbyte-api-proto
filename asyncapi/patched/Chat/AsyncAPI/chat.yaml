@@ -113,7 +113,7 @@ components:
               userDisconnected:
                 $ref: '#/components/schemas/userPayloadDisconnected'
     userChatRateLimited:
-      name: userChatRateLimited
+      name: userChatRateLimitedPayload
       payload:
         allOf:
         - $ref: '#/components/schemas/event'

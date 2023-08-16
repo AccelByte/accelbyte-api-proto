@@ -112,7 +112,7 @@ message AnonymousSchema3 {
 }
 
 // path: #/components/messages/achievementRewardClaimed/payload
-message AchievementRewardClaimed {
+message AchievementRewardClaimedPayload {
     AnonymousSchema3 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -142,7 +142,7 @@ message GlobalAchievementUnlockedMessage {
 
 // path: #/components/messages/achievementRewardClaimed
 message AchievementRewardClaimedMessage {
-    AchievementRewardClaimed payload = 1;
+    AchievementRewardClaimedPayload payload = 1;
 }
 
 
@@ -171,7 +171,7 @@ service AchievementGlobalAchievementUnlockedService {
     rpc OnMessage(GlobalAchievementUnlocked) returns (google.protobuf.Empty);
 }
 
-// Publishes a AchievementRewardClaimed to the Achievement channel. (oneOf variant) (achievement AchievementRewardClaimed)
+// Publishes a AchievementRewardClaimedPayload to the Achievement channel. (oneOf variant) (achievement AchievementRewardClaimed)
 service AchievementAchievementRewardClaimedService {
-    rpc OnMessage(AchievementRewardClaimed) returns (google.protobuf.Empty);
+    rpc OnMessage(AchievementRewardClaimedPayload) returns (google.protobuf.Empty);
 }

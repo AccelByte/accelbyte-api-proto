@@ -157,7 +157,7 @@ message AnonymousSchema4 {
 }
 
 // path: #/components/messages/clientPermissionsCreated/payload
-message ClientPermissionsCreated {
+message ClientPermissionCreated {
     AnonymousSchema4 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -180,7 +180,7 @@ message AnonymousSchema5 {
 }
 
 // path: #/components/messages/clientPermissionsDeleted/payload
-message ClientPermissionsDeleted {
+message ClientPermissionDeleted {
     AnonymousSchema5 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -203,7 +203,7 @@ message AnonymousSchema6 {
 }
 
 // path: #/components/messages/clientPermissionsUpdated/payload
-message ClientPermissionsUpdated {
+message ClientPermissionUpdated {
     AnonymousSchema6 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -308,17 +308,17 @@ message ClientUpdatedMessage {
 
 // path: #/components/messages/clientPermissionsCreated
 message ClientPermissionsCreatedMessage {
-    ClientPermissionsCreated payload = 1;
+    ClientPermissionCreated payload = 1;
 }
 
 // path: #/components/messages/clientPermissionsDeleted
 message ClientPermissionsDeletedMessage {
-    ClientPermissionsDeleted payload = 1;
+    ClientPermissionDeleted payload = 1;
 }
 
 // path: #/components/messages/clientPermissionsUpdated
 message ClientPermissionsUpdatedMessage {
-    ClientPermissionsUpdated payload = 1;
+    ClientPermissionUpdated payload = 1;
 }
 
 // path: #/components/messages/clientThirdPartyCreated
@@ -400,17 +400,17 @@ service ClientThirdPartyClientThirdPartyUpdatedService {
     rpc OnMessage(ClientThirdPartyUpdated) returns (google.protobuf.Empty);
 }
 
-// Publishes a ClientPermissionsCreated to the Client Permissions channel. (oneOf variant) (clientPermissions ClientPermissionsCreated)
+// Publishes a ClientPermissionCreated to the Client Permissions channel. (oneOf variant) (clientPermissions ClientPermissionsCreated)
 service ClientPermissionsClientPermissionsCreatedService {
-    rpc OnMessage(ClientPermissionsCreated) returns (google.protobuf.Empty);
+    rpc OnMessage(ClientPermissionCreated) returns (google.protobuf.Empty);
 }
 
-// Publishes a ClientPermissionsDeleted to the Client Permissions channel. (oneOf variant) (clientPermissions ClientPermissionsDeleted)
+// Publishes a ClientPermissionDeleted to the Client Permissions channel. (oneOf variant) (clientPermissions ClientPermissionsDeleted)
 service ClientPermissionsClientPermissionsDeletedService {
-    rpc OnMessage(ClientPermissionsDeleted) returns (google.protobuf.Empty);
+    rpc OnMessage(ClientPermissionDeleted) returns (google.protobuf.Empty);
 }
 
-// Publishes a ClientPermissionsUpdated to the Client Permissions channel. (oneOf variant) (clientPermissions ClientPermissionsUpdated)
+// Publishes a ClientPermissionUpdated to the Client Permissions channel. (oneOf variant) (clientPermissions ClientPermissionsUpdated)
 service ClientPermissionsClientPermissionsUpdatedService {
-    rpc OnMessage(ClientPermissionsUpdated) returns (google.protobuf.Empty);
+    rpc OnMessage(ClientPermissionUpdated) returns (google.protobuf.Empty);
 }

@@ -165,7 +165,7 @@ message AnonymousSchema3 {
 }
 
 // path: #/components/messages/ugcContentHide/payload
-message UgcContentHide {
+message UgcContentHidePayload {
     AnonymousSchema3 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -319,7 +319,7 @@ message AnonymousSchema10 {
 }
 
 // path: #/components/messages/ugcChannelDeleted/payload
-message UgcChannelDeleted {
+message UgcChannelDeletedPayload {
     AnonymousSchema10 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -548,7 +548,7 @@ message UgcContentDeletedMessage {
 
 // path: #/components/messages/ugcContentHide
 message UgcContentHideMessage {
-    UgcContentHide payload = 1;
+    UgcContentHidePayload payload = 1;
 }
 
 // path: #/components/messages/ugcContentUnHide
@@ -583,7 +583,7 @@ message UgcChannelUpdatedMessage {
 
 // path: #/components/messages/ugcChannelDeleted
 message UgcChannelDeletedMessage {
-    UgcChannelDeleted payload = 1;
+    UgcChannelDeletedPayload payload = 1;
 }
 
 // path: #/components/messages/ugcCreatorCreated
@@ -691,9 +691,9 @@ service UgcContentUgcContentDeletedService {
     rpc OnMessage(UgcContentDeleted) returns (google.protobuf.Empty);
 }
 
-// Publishes a UgcContentHide to the Ugc Content channel. (oneOf variant) (ugcContent UgcContentHide)
+// Publishes a UgcContentHidePayload to the Ugc Content channel. (oneOf variant) (ugcContent UgcContentHide)
 service UgcContentUgcContentHideService {
-    rpc OnMessage(UgcContentHide) returns (google.protobuf.Empty);
+    rpc OnMessage(UgcContentHidePayload) returns (google.protobuf.Empty);
 }
 
 // Publishes a UgcContentUnHide to the Ugc Content channel. (oneOf variant) (ugcContent UgcContentUnHide)
@@ -726,9 +726,9 @@ service UgcChannelUgcChannelUpdatedService {
     rpc OnMessage(UgcChannelUpdated) returns (google.protobuf.Empty);
 }
 
-// Publishes a UgcChannelDeleted to the Ugc Channel channel. (oneOf variant) (ugcChannel UgcChannelDeleted)
+// Publishes a UgcChannelDeletedPayload to the Ugc Channel channel. (oneOf variant) (ugcChannel UgcChannelDeleted)
 service UgcChannelUgcChannelDeletedService {
-    rpc OnMessage(UgcChannelDeleted) returns (google.protobuf.Empty);
+    rpc OnMessage(UgcChannelDeletedPayload) returns (google.protobuf.Empty);
 }
 
 // Publishes a UgcCreatorCreated to the Ugc Creator channel. (oneOf variant) (ugcCreator UgcCreatorCreated)

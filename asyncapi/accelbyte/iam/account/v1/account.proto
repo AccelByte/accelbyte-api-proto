@@ -728,7 +728,7 @@ message AnonymousSchema25 {
 }
 
 // path: #/components/messages/userPermissionsCreated/payload
-message UserPermissionsCreated {
+message UserPermissionCreated {
     AnonymousSchema25 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -751,7 +751,7 @@ message AnonymousSchema26 {
 }
 
 // path: #/components/messages/userPermissionsDeleted/payload
-message UserPermissionsDeleted {
+message UserPermissionDeleted {
     AnonymousSchema26 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -774,7 +774,7 @@ message AnonymousSchema27 {
 }
 
 // path: #/components/messages/userRolesCreated/payload
-message UserRolesCreated {
+message UserRoleCreated {
     AnonymousSchema27 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -797,7 +797,7 @@ message AnonymousSchema28 {
 }
 
 // path: #/components/messages/userRolesDeleted/payload
-message UserRolesDeleted {
+message UserRoleDeleted {
     AnonymousSchema28 payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -1175,22 +1175,22 @@ message UserInformationDateOfBirthUpdatedMessage {
 
 // path: #/components/messages/userPermissionsCreated
 message UserPermissionsCreatedMessage {
-    UserPermissionsCreated payload = 1;
+    UserPermissionCreated payload = 1;
 }
 
 // path: #/components/messages/userPermissionsDeleted
 message UserPermissionsDeletedMessage {
-    UserPermissionsDeleted payload = 1;
+    UserPermissionDeleted payload = 1;
 }
 
 // path: #/components/messages/userRolesCreated
 message UserRolesCreatedMessage {
-    UserRolesCreated payload = 1;
+    UserRoleCreated payload = 1;
 }
 
 // path: #/components/messages/userRolesDeleted
 message UserRolesDeletedMessage {
-    UserRolesDeleted payload = 1;
+    UserRoleDeleted payload = 1;
 }
 
 // path: #/components/messages/countryAgeRestrictionCreated
@@ -1442,24 +1442,24 @@ service UserInformationUserInformationDateOfBirthUpdatedService {
     rpc OnMessage(UserInformationDateOfBirthUpdated) returns (google.protobuf.Empty);
 }
 
-// Publishes a UserPermissionsCreated to the User Permissions channel. (oneOf variant) (userPermissions UserPermissionsCreated)
+// Publishes a UserPermissionCreated to the User Permissions channel. (oneOf variant) (userPermissions UserPermissionsCreated)
 service UserPermissionsUserPermissionsCreatedService {
-    rpc OnMessage(UserPermissionsCreated) returns (google.protobuf.Empty);
+    rpc OnMessage(UserPermissionCreated) returns (google.protobuf.Empty);
 }
 
-// Publishes a UserPermissionsDeleted to the User Permissions channel. (oneOf variant) (userPermissions UserPermissionsDeleted)
+// Publishes a UserPermissionDeleted to the User Permissions channel. (oneOf variant) (userPermissions UserPermissionsDeleted)
 service UserPermissionsUserPermissionsDeletedService {
-    rpc OnMessage(UserPermissionsDeleted) returns (google.protobuf.Empty);
+    rpc OnMessage(UserPermissionDeleted) returns (google.protobuf.Empty);
 }
 
-// Publishes a UserRolesCreated to the User Roles channel. (oneOf variant) (userRoles UserRolesCreated)
+// Publishes a UserRoleCreated to the User Roles channel. (oneOf variant) (userRoles UserRolesCreated)
 service UserRolesUserRolesCreatedService {
-    rpc OnMessage(UserRolesCreated) returns (google.protobuf.Empty);
+    rpc OnMessage(UserRoleCreated) returns (google.protobuf.Empty);
 }
 
-// Publishes a UserRolesDeleted to the User Roles channel. (oneOf variant) (userRoles UserRolesDeleted)
+// Publishes a UserRoleDeleted to the User Roles channel. (oneOf variant) (userRoles UserRolesDeleted)
 service UserRolesUserRolesDeletedService {
-    rpc OnMessage(UserRolesDeleted) returns (google.protobuf.Empty);
+    rpc OnMessage(UserRoleDeleted) returns (google.protobuf.Empty);
 }
 
 // Publishes a CountryAgeRestrictionCreated to the Country Age Restriction channel. (oneOf variant) (countryAgeRestriction CountryAgeRestrictionCreated)

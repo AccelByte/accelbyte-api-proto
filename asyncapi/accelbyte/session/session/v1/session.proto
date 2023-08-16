@@ -114,7 +114,7 @@ message GameSessionInvitedEvent {
 }
 
 // path: #/components/messages/GameSessionJoinedEvent/payload
-message GameSessionJoinedEvent {
+message GameSessionInvitedEvent {
     NotificationPayload payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -381,7 +381,7 @@ message GameSessionInvitedEventMessage {
 
 // path: #/components/messages/GameSessionJoinedEvent
 message GameSessionJoinedEventMessage {
-    GameSessionJoinedEvent payload = 1;
+    GameSessionInvitedEvent payload = 1;
 }
 
 // path: #/components/messages/GameSessionMembersChangedEvent
@@ -503,9 +503,9 @@ service Mpv2SessionHistoryGameSessionInvitedEventService {
     rpc OnMessage(GameSessionInvitedEvent) returns (google.protobuf.Empty);
 }
 
-// Publishes a GameSessionJoinedEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory GameSessionJoinedEvent)
+// Publishes a GameSessionInvitedEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory GameSessionJoinedEvent)
 service Mpv2SessionHistoryGameSessionJoinedEventService {
-    rpc OnMessage(GameSessionJoinedEvent) returns (google.protobuf.Empty);
+    rpc OnMessage(GameSessionInvitedEvent) returns (google.protobuf.Empty);
 }
 
 // Publishes a GameSessionMembersChangedEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory GameSessionMembersChangedEvent)
