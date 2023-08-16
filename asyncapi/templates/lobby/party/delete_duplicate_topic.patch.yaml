@@ -1,4 +1,0 @@
----
-- # remove duplicate channel.topic since it already exists in lobby.chat
-  op: 'remove'
-  path: '/channels/partyChat'
