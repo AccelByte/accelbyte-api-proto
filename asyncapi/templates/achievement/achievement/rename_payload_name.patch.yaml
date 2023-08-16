@@ -1,0 +1,7 @@
+---
+- op: 'test'
+  path: '/components/messages/achievementRewardClaimed/name'
+  value: 'achievementRewardClaimed'
+- op: 'replace'
+  path: '/components/messages/achievementRewardClaimed/name'
+  value: 'achievementRewardClaimedPayload'

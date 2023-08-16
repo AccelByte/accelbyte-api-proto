@@ -1,0 +1,13 @@
+---
+- op: 'test'
+  path: '/components/messages/ugcContentHide/name'
+  value: 'ugcContentHide'
+- op: 'replace'
+  path: '/components/messages/ugcContentHide/name'
+  value: 'ugcContentHidePayload'
+- op: 'test'
+  path: '/components/messages/ugcChannelDeleted/name'
+  value: 'ugcChannelDeleted'
+- op: 'replace'
+  path: '/components/messages/ugcChannelDeleted/name'
+  value: 'ugcChannelDeletedPayload'
