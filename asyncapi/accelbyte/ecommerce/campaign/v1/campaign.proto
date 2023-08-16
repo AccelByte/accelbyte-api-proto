@@ -40,29 +40,22 @@ message Event {
 // path: #/components/schemas/campaign
 message Campaign {
     string id = 1;
-    enum TypeEnum {
-        TYPEENUM_REDEMPTION = 0;
-    }
-    TypeEnum type = 2;
+    // Allowed values: REDEMPTION
+    string type = 2;
     string namespace = 3;
     string name = 4;
     string description = 5;
     repeated string tags = 6;
-    enum StatusEnum {
-        STATUSENUM_ACTIVE = 0;
-        STATUSENUM_INACTIVE = 1;
-    }
-    StatusEnum status = 7;
+    // Allowed values: ACTIVE, INACTIVE
+    string status = 7;
     string redeemStart = 8;
     string redeemEnd = 9;
     int32 maxRedeemCountPerCode = 10;
     int32 maxRedeemCountPerCodePerUser = 11;
     int32 maxRedeemCountPerCampaignPerUser = 12;
     int32 maxSaleCount = 13;
-    enum RedeemTypeEnum {
-        REDEEMTYPEENUM_ITEM = 0;
-    }
-    RedeemTypeEnum redeemType = 14;
+    // Allowed values: ITEM
+    string redeemType = 14;
     repeated RedeemableItem items = 15;
     string boothName = 16;
     string createdAt = 17;
@@ -114,11 +107,8 @@ message KeyGroup {
     string name = 3;
     string description = 4;
     repeated string tags = 5;
-    enum StatusEnum {
-        STATUSENUM_ACTIVE = 0;
-        STATUSENUM_INACTIVE = 1;
-    }
-    StatusEnum status = 6;
+    // Allowed values: ACTIVE, INACTIVE
+    string status = 6;
     string boothName = 7;
     string createdAt = 8;
     string updatedAt = 9;

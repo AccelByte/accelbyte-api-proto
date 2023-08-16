@@ -44,27 +44,15 @@ message Iap {
     string userId = 3;
     string productId = 4;
     string transactionId = 5;
-    enum StatusEnum {
-        STATUSENUM_VERIFIED = 0;
-        STATUSENUM_FULFILLED = 1;
-        STATUSENUM_FAILED = 2;
-    }
-    StatusEnum status = 6;
+    // Allowed values: VERIFIED, FULFILLED, FAILED
+    string status = 6;
     string statusReason = 7;
     string region = 8;
     string language = 9;
     int64 quantity = 10;
     bool sandbox = 11;
-    enum TypeEnum {
-        TYPEENUM_APPLE = 0;
-        TYPEENUM_GOOGLE = 1;
-        TYPEENUM_PLAYSTATION = 2;
-        TYPEENUM_STEAM = 3;
-        TYPEENUM_XBOX = 4;
-        TYPEENUM_EPICGAMES = 5;
-        TYPEENUM_TWITCH = 6;
-    }
-    TypeEnum type = 12;
+    // Allowed values: APPLE, GOOGLE, PLAYSTATION, STEAM, XBOX, EPICGAMES, TWITCH
+    string type = 12;
     string fulfilledTime = 13;
 }
 

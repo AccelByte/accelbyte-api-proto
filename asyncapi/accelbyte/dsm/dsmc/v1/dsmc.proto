@@ -50,15 +50,8 @@ message AllocationEvent {
 // path: #/components/schemas/statusHistory
 message StatusHistory {
     string timeStamp = 1;
-    enum StatusEnum {
-        STATUSENUM_CREATING = 0;
-        STATUSENUM_READY = 1;
-        STATUSENUM_BUSY = 2;
-        STATUSENUM_REMOVING = 3;
-        STATUSENUM_UNREACHABLE = 4;
-        STATUSENUM_FAILED = 5;
-    }
-    StatusEnum status = 2;
+    // Allowed values: CREATING, READY, BUSY, REMOVING, UNREACHABLE, FAILED
+    string status = 2;
 }
 
 // path: #/components/schemas/server/properties/ports
@@ -90,15 +83,8 @@ message Server {
     string provider = 21;
     string region = 22;
     string sessionId = 23;
-    enum StatusEnum {
-        STATUSENUM_CREATING = 0;
-        STATUSENUM_READY = 1;
-        STATUSENUM_BUSY = 2;
-        STATUSENUM_REMOVING = 3;
-        STATUSENUM_UNREACHABLE = 4;
-        STATUSENUM_FAILED = 5;
-    }
-    StatusEnum status = 24;
+    // Allowed values: CREATING, READY, BUSY, REMOVING, UNREACHABLE, FAILED
+    string status = 24;
     repeated StatusHistory statusHistory = 25;
 }
 

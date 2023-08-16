@@ -182,17 +182,10 @@ message Item {
 
 // path: #/components/schemas/slide
 message Slide {
-    enum TypeEnum {
-        TYPEENUM_IMAGE = 0;
-        TYPEENUM_VIDEO = 1;
-    }
-    TypeEnum type = 1;
-    enum VideoSourceEnum {
-        VIDEOSOURCEENUM_GENERIC = 0;
-        VIDEOSOURCEENUM_YOUTUBE = 1;
-        VIDEOSOURCEENUM_VIMEO = 2;
-    }
-    VideoSourceEnum videoSource = 2;
+    // Allowed values: image, video
+    string type = 1;
+    // Allowed values: generic, youtube, vimeo
+    string videoSource = 2;
     string url = 3;
     string alt = 4;
     string thumbnailUrl = 5;
@@ -236,23 +229,10 @@ message AnonymousSchema11 {
 // path: #/components/schemas/predicate
 message Predicate {
     string name = 1;
-    enum PredicateTypeEnum {
-        PREDICATETYPEENUM_ENTITLEMENT_PREDICATE = 0;
-        PREDICATETYPEENUM_SEASON_PASS_PREDICATE = 1;
-        PREDICATETYPEENUM_SEASON_TIER_PREDICATE = 2;
-    }
-    PredicateTypeEnum predicateType = 2;
-    enum ComparisonEnum {
-        COMPARISONENUM_IS = 0;
-        COMPARISONENUM_IS_NOT = 1;
-        COMPARISONENUM_IS_GREATER_THAN = 2;
-        COMPARISONENUM_IS_GRATER_THAN_OR_EQUAL = 3;
-        COMPARISONENUM_IS_LESS_THAN = 4;
-        COMPARISONENUM_IS_LESS_THAN_OR_EQUAL = 5;
-        COMPARISONENUM_INCLUDES = 6;
-        COMPARISONENUM_EXCLUDES = 7;
-    }
-    ComparisonEnum comparison = 3;
+    // Allowed values: EntitlementPredicate, SeasonPassPredicate, SeasonTierPredicate
+    string predicateType = 2;
+    // Allowed values: is, isNot, isGreaterThan, isGraterThanOrEqual, isLessThan, isLessThanOrEqual, includes, excludes
+    string comparison = 3;
     int64 anyOf = 4;
     repeated AnonymousSchema11 values = 5;
     string value = 6;
@@ -311,20 +291,8 @@ message App {
     repeated string platforms = 8;
     AnonymousSchema12 platformRequirements = 9;
     AnonymousSchema13 localizations = 10;
-    enum PrimaryGenreEnum {
-        PRIMARYGENREENUM_ACTION = 0;
-        PRIMARYGENREENUM_ADVENTURE = 1;
-        PRIMARYGENREENUM_CASUAL = 2;
-        PRIMARYGENREENUM_FREE_TO_PLAY = 3;
-        PRIMARYGENREENUM_INDIE = 4;
-        PRIMARYGENREENUM_MASSIVELY_MULTIPLAYER = 5;
-        PRIMARYGENREENUM_RACING = 6;
-        PRIMARYGENREENUM_RPG = 7;
-        PRIMARYGENREENUM_SIMULATION = 8;
-        PRIMARYGENREENUM_SPORTS = 9;
-        PRIMARYGENREENUM_STRATEGY = 10;
-    }
-    PrimaryGenreEnum primaryGenre = 11;
+    // Allowed values: Action, Adventure, Casual, FreeToPlay, Indie, MassivelyMultiplayer, Racing, RPG, Simulation, Sports, Strategy
+    string primaryGenre = 11;
     repeated string genres = 12;
     repeated string players = 13;
     string releaseDate = 14;
@@ -334,16 +302,10 @@ message App {
 message ItemStatusChange {
     string itemId = 1;
     string itemName = 2;
-    enum StatusEnum {
-        STATUSENUM_ACTIVE = 0;
-        STATUSENUM_INACTIVE = 1;
-    }
-    StatusEnum status = 3;
-    enum PreviousStatusEnum {
-        PREVIOUSSTATUSENUM_ACTIVE = 0;
-        PREVIOUSSTATUSENUM_INACTIVE = 1;
-    }
-    PreviousStatusEnum previousStatus = 4;
+    // Allowed values: ACTIVE, INACTIVE
+    string status = 3;
+    // Allowed values: ACTIVE, INACTIVE
+    string previousStatus = 4;
 }
 
 // path: #/components/schemas/storeClone

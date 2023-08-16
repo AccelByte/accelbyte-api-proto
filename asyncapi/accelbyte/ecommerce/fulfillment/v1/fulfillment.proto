@@ -49,21 +49,10 @@ message EntitlementSummary {
     string id = 1;
     string namespace = 2;
     string userId = 3;
-    enum ClazzEnum {
-        CLAZZENUM_APP = 0;
-        CLAZZENUM_ENTITLEMENT = 1;
-        CLAZZENUM_CODE = 2;
-        CLAZZENUM_SUBSCRIPTION = 3;
-        CLAZZENUM_MEDIA = 4;
-        CLAZZENUM_OPTIONBOX = 5;
-        CLAZZENUM_LOOTBOX = 6;
-    }
-    ClazzEnum clazz = 4;
-    enum TypeEnum {
-        TYPEENUM_DURABLE = 0;
-        TYPEENUM_CONSUMABLE = 1;
-    }
-    TypeEnum type = 5;
+    // Allowed values: APP, ENTITLEMENT, CODE, SUBSCRIPTION, MEDIA, OPTIONBOX, LOOTBOX
+    string clazz = 4;
+    // Allowed values: DURABLE, CONSUMABLE
+    string type = 5;
     bool stackable = 6;
     int32 stackedUseCount = 7;
     string storeId = 8;
@@ -99,19 +88,8 @@ message Fulfillment {
     string userId = 1;
     string orderNo = 2;
     string code = 3;
-    enum SourceEnum {
-        SOURCEENUM_PURCHASE = 0;
-        SOURCEENUM_IAP = 1;
-        SOURCEENUM_PROMOTION = 2;
-        SOURCEENUM_ACHIEVEMENT = 3;
-        SOURCEENUM_REFERRAL_BONUS = 4;
-        SOURCEENUM_REDEEM_CODE = 5;
-        SOURCEENUM_REWARD = 6;
-        SOURCEENUM_GIFT = 7;
-        SOURCEENUM_DLC = 8;
-        SOURCEENUM_OTHER = 9;
-    }
-    SourceEnum source = 4;
+    // Allowed values: PURCHASE, IAP, PROMOTION, ACHIEVEMENT, REFERRAL_BONUS, REDEEM_CODE, REWARD, GIFT, DLC, OTHER
+    string source = 4;
     repeated FulfillmentItem fulfillItems = 5;
     repeated string grantedItemIds = 6;
     repeated EntitlementSummary entitlementSummaries = 7;

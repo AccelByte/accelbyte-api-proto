@@ -55,34 +55,19 @@ message PaymentProviderConfig {
 message PaymentAccount {
     string namespace = 1;
     string userId = 2;
-    enum TypeEnum {
-        TYPEENUM_CARD = 0;
-        TYPEENUM_PAYPAL = 1;
-    }
-    TypeEnum type = 3;
+    // Allowed values: card, paypal
+    string type = 3;
     string id = 4;
-    enum PaymentProviderEnum {
-        PAYMENTPROVIDERENUM_WALLET = 0;
-        PAYMENTPROVIDERENUM_XSOLLA = 1;
-        PAYMENTPROVIDERENUM_ADYEN = 2;
-        PAYMENTPROVIDERENUM_STRIPE = 3;
-        PAYMENTPROVIDERENUM_CHECKOUT = 4;
-        PAYMENTPROVIDERENUM_ALIPAY = 5;
-        PAYMENTPROVIDERENUM_WXPAY = 6;
-        PAYMENTPROVIDERENUM_PAYPAL = 7;
-    }
-    PaymentProviderEnum paymentProvider = 5;
+    // Allowed values: WALLET, XSOLLA, ADYEN, STRIPE, CHECKOUT, ALIPAY, WXPAY, PAYPAL
+    string paymentProvider = 5;
 }
 
 // path: #/components/schemas/currencySummary
 message CurrencySummary {
     string currencyCode = 1;
     string currencySymbol = 2;
-    enum CurrencyTypeEnum {
-        CURRENCYTYPEENUM_REAL = 0;
-        CURRENCYTYPEENUM_VIRTUAL = 1;
-    }
-    CurrencyTypeEnum currencyType = 3;
+    // Allowed values: REAL, VIRTUAL
+    string currencyType = 3;
     string namespace = 4;
     int32 decimals = 5;
 }

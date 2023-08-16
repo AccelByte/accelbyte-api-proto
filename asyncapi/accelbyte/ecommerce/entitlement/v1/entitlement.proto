@@ -115,11 +115,8 @@ message CreditSummary {
 message EntitlementSale {
     string entitlementId = 1;
     string entitlementName = 2;
-    enum EntitlementTypeEnum {
-        ENTITLEMENTTYPEENUM_DURABLE = 0;
-        ENTITLEMENTTYPEENUM_CONSUMABLE = 1;
-    }
-    EntitlementTypeEnum entitlementType = 3;
+    // Allowed values: DURABLE, CONSUMABLE
+    string entitlementType = 3;
     string clazz = 4;
     string userId = 5;
     int64 useCount = 6;
@@ -138,22 +135,10 @@ message EntitlementStatusChange {
     string entitlementId = 1;
     string entitlementName = 2;
     string userId = 3;
-    enum StatusEnum {
-        STATUSENUM_ACTIVE = 0;
-        STATUSENUM_INACTIVE = 1;
-        STATUSENUM_CONSUMED = 2;
-        STATUSENUM_REVOKED = 3;
-        STATUSENUM_SOLD = 4;
-    }
-    StatusEnum status = 4;
-    enum PreviousStatusEnum {
-        PREVIOUSSTATUSENUM_ACTIVE = 0;
-        PREVIOUSSTATUSENUM_INACTIVE = 1;
-        PREVIOUSSTATUSENUM_CONSUMED = 2;
-        PREVIOUSSTATUSENUM_REVOKED = 3;
-        PREVIOUSSTATUSENUM_SOLD = 4;
-    }
-    PreviousStatusEnum previousStatus = 5;
+    // Allowed values: ACTIVE, INACTIVE, CONSUMED, REVOKED, SOLD
+    string status = 4;
+    // Allowed values: ACTIVE, INACTIVE, CONSUMED, REVOKED, SOLD
+    string previousStatus = 5;
 }
 
 // path: #/components/messages/entitlementGranted/payload/properties/payload

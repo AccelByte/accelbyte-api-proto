@@ -49,21 +49,10 @@ message Subscription {
     int64 price = 8;
     int64 trialPrice = 9;
     Recurring recurring = 10;
-    enum StatusEnum {
-        STATUSENUM_INIT = 0;
-        STATUSENUM_ACTIVE = 1;
-        STATUSENUM_CANCELLED = 2;
-        STATUSENUM_EXPIRED = 3;
-    }
-    StatusEnum status = 11;
-    enum ChargeStatusEnum {
-        CHARGESTATUSENUM_NEVER = 0;
-        CHARGESTATUSENUM_SETUP = 1;
-        CHARGESTATUSENUM_RECURRING_CHARGING = 2;
-        CHARGESTATUSENUM_CHARGED = 3;
-        CHARGESTATUSENUM_CHARGE_FAILED = 4;
-    }
-    ChargeStatusEnum chargeStatus = 12;
+    // Allowed values: INIT, ACTIVE, CANCELLED, EXPIRED
+    string status = 11;
+    // Allowed values: NEVER, SETUP, RECURRING_CHARGING, CHARGED, CHARGE_FAILED
+    string chargeStatus = 12;
     string nextBillingDate = 13;
     string currentPeriodStart = 14;
     string currentPeriodEnd = 15;
@@ -76,11 +65,8 @@ message Subscription {
     bool inFixedCycleTrial = 22;
     bool firstSubscribe = 23;
     bool paid = 24;
-    enum SubscribedByEnum {
-        SUBSCRIBEDBYENUM_USER = 0;
-        SUBSCRIBEDBYENUM_PLATFORM = 1;
-    }
-    SubscribedByEnum subscribedBy = 25;
+    // Allowed values: USER, PLATFORM
+    string subscribedBy = 25;
     string subscribedAt = 26;
     string unsubscribedAt = 27;
     string unsubscribeReason = 28;
@@ -94,13 +80,8 @@ message Subscription {
 
 // path: #/components/schemas/recurring
 message Recurring {
-    enum CycleEnum {
-        CYCLEENUM_WEEKLY = 0;
-        CYCLEENUM_MONTHLY = 1;
-        CYCLEENUM_QUARTERLY = 2;
-        CYCLEENUM_YEARLY = 3;
-    }
-    CycleEnum cycle = 1;
+    // Allowed values: WEEKLY, MONTHLY, QUARTERLY, YEARLY
+    string cycle = 1;
     int32 fixedFreeDays = 2;
     int32 fixedTrialCycles = 3;
     int32 graceDays = 4;
@@ -110,11 +91,8 @@ message Recurring {
 message CurrencySummary {
     string currencyCode = 1;
     string currencySymbol = 2;
-    enum CurrencyTypeEnum {
-        CURRENCYTYPEENUM_REAL = 0;
-        CURRENCYTYPEENUM_VIRTUAL = 1;
-    }
-    CurrencyTypeEnum currencyType = 3;
+    // Allowed values: REAL, VIRTUAL
+    string currencyType = 3;
     string namespace = 4;
     int32 decimals = 5;
 }
