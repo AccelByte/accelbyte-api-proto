@@ -112,8 +112,8 @@ message AgreementUpdatedMessage {
 // path: #/channels/agreement/publish/message
 message AgreementPublish {
     oneof payload {
-        AgreementCreated variant0 = 1;
-        AgreementUpdated variant1 = 2;
+        AgreementCreatedMessage variant0 = 1;
+        AgreementUpdatedMessage variant1 = 2;
     }
 }
 

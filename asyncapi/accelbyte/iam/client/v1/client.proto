@@ -342,27 +342,27 @@ message ClientThirdPartyUpdatedMessage {
 // path: #/channels/client/publish/message
 message ClientPublish {
     oneof payload {
-        ClientCreated variant0 = 1;
-        ClientDeleted variant1 = 2;
-        ClientUpdated variant2 = 3;
+        ClientCreatedMessage variant0 = 1;
+        ClientDeletedMessage variant1 = 2;
+        ClientUpdatedMessage variant2 = 3;
     }
 }
 
 // path: #/channels/clientThirdParty/publish/message
 message ClientThirdPartyPublish {
     oneof payload {
-        ClientThirdPartyCreated variant0 = 1;
-        ClientThirdPartyDeleted variant1 = 2;
-        ClientThirdPartyUpdated variant2 = 3;
+        ClientThirdPartyCreatedMessage variant0 = 1;
+        ClientThirdPartyDeletedMessage variant1 = 2;
+        ClientThirdPartyUpdatedMessage variant2 = 3;
     }
 }
 
 // path: #/channels/clientPermissions/publish/message
 message ClientPermissionsPublish {
     oneof payload {
-        ClientPermissionsCreated variant0 = 1;
-        ClientPermissionsDeleted variant1 = 2;
-        ClientPermissionsUpdated variant2 = 3;
+        ClientPermissionsCreatedMessage variant0 = 1;
+        ClientPermissionsDeletedMessage variant1 = 2;
+        ClientPermissionsUpdatedMessage variant2 = 3;
     }
 }
 

@@ -114,7 +114,7 @@ message GameSessionInvitedEvent {
 }
 
 // path: #/components/messages/GameSessionJoinedEvent/payload
-message GameSessionInvitedEvent {
+message GameSessionJoinedEvent {
     NotificationPayload payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -381,7 +381,7 @@ message GameSessionInvitedEventMessage {
 
 // path: #/components/messages/GameSessionJoinedEvent
 message GameSessionJoinedEventMessage {
-    GameSessionInvitedEvent payload = 1;
+    GameSessionJoinedEvent payload = 1;
 }
 
 // path: #/components/messages/GameSessionMembersChangedEvent
@@ -455,22 +455,22 @@ message PartyMembersChangedEventMessage {
 // path: #/channels/mpv2SessionHistory/publish/message
 message Mpv2SessionHistoryPublish {
     oneof payload {
-        GameSessionEndedEvent variant0 = 1;
-        GameSessionInvitedEvent variant1 = 2;
-        GameSessionJoinedEvent variant2 = 3;
-        GameSessionMembersChangedEvent variant3 = 4;
-        GameSessionKickedEvent variant4 = 5;
-        GameSessionCreatedEvent variant5 = 6;
-        GameSessionUpdatedEvent variant6 = 7;
-        GameSessionRejectedEvent variant7 = 8;
-        GameSessionDSStatusChangedEvent variant8 = 9;
-        PartyCreatedEvent variant9 = 10;
-        PartyUpdatedEvent variant10 = 11;
-        PartyKickedEvent variant11 = 12;
-        PartyInvitedEvent variant12 = 13;
-        PartyRejectedEvent variant13 = 14;
-        PartyJoinedEvent variant14 = 15;
-        PartyMembersChangedEvent variant15 = 16;
+        GameSessionEndedEventMessage variant0 = 1;
+        GameSessionInvitedEventMessage variant1 = 2;
+        GameSessionJoinedEventMessage variant2 = 3;
+        GameSessionMembersChangedEventMessage variant3 = 4;
+        GameSessionKickedEventMessage variant4 = 5;
+        GameSessionCreatedEventMessage variant5 = 6;
+        GameSessionUpdatedEventMessage variant6 = 7;
+        GameSessionRejectedEventMessage variant7 = 8;
+        GameSessionDSStatusChangedEventMessage variant8 = 9;
+        PartyCreatedEventMessage variant9 = 10;
+        PartyUpdatedEventMessage variant10 = 11;
+        PartyKickedEventMessage variant11 = 12;
+        PartyInvitedEventMessage variant12 = 13;
+        PartyRejectedEventMessage variant13 = 14;
+        PartyJoinedEventMessage variant14 = 15;
+        PartyMembersChangedEventMessage variant15 = 16;
     }
 }
 
@@ -478,9 +478,9 @@ message Mpv2SessionHistoryPublish {
 // --- service ---
 
 
-// Publishes a message to the Session channel. (session OnPartyCreated)
-service SessionOnPartyCreatedService {
-    rpc OnMessage(OnPartyCreated) returns (google.protobuf.Empty);
+// Publishes a message to the Session channel. (session Event)
+service SessionEventService {
+    rpc OnMessage(Event) returns (google.protobuf.Empty);
 }
 
 // Publishes a message to the Session Notification channel. (sessionNotification SessionNotification)
@@ -503,9 +503,9 @@ service Mpv2SessionHistoryGameSessionInvitedEventService {
     rpc OnMessage(GameSessionInvitedEvent) returns (google.protobuf.Empty);
 }
 
-// Publishes a GameSessionInvitedEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory GameSessionJoinedEvent)
+// Publishes a GameSessionJoinedEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory GameSessionJoinedEvent)
 service Mpv2SessionHistoryGameSessionJoinedEventService {
-    rpc OnMessage(GameSessionInvitedEvent) returns (google.protobuf.Empty);
+    rpc OnMessage(GameSessionJoinedEvent) returns (google.protobuf.Empty);
 }
 
 // Publishes a GameSessionMembersChangedEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory GameSessionMembersChangedEvent)

@@ -367,12 +367,12 @@ message EntitlementSellbackMessage {
 // path: #/channels/entitlementManagement/publish/message
 message EntitlementManagementPublish {
     oneof payload {
-        EntitlementGranted variant0 = 1;
-        EntitlementUpdated variant1 = 2;
-        EntitlementRevoked variant2 = 3;
-        EntitlementDisabled variant3 = 4;
-        EntitlementEnabled variant4 = 5;
-        EntitlementUseCountRevoked variant5 = 6;
+        EntitlementGrantedMessage variant0 = 1;
+        EntitlementUpdatedMessage variant1 = 2;
+        EntitlementRevokedMessage variant2 = 3;
+        EntitlementDisabledMessage variant3 = 4;
+        EntitlementEnabledMessage variant4 = 5;
+        EntitlementUseCountRevokedMessage variant5 = 6;
     }
 }
 

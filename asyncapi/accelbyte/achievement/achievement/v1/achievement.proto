@@ -151,9 +151,9 @@ message AchievementRewardClaimedMessage {
 // path: #/channels/achievement/publish/message
 message AchievementPublish {
     oneof payload {
-        UserAchievementUnlocked variant0 = 1;
-        GlobalAchievementUnlocked variant1 = 2;
-        AchievementRewardClaimed variant2 = 3;
+        UserAchievementUnlockedMessage variant0 = 1;
+        GlobalAchievementUnlockedMessage variant1 = 2;
+        AchievementRewardClaimedMessage variant2 = 3;
     }
 }
 

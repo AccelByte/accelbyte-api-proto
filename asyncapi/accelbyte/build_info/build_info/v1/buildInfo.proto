@@ -646,62 +646,62 @@ message VersionHistoryUpdatedMessage {
 // path: #/channels/block/publish/message
 message BlockPublish {
     oneof payload {
-        BlockCreated variant0 = 1;
-        BlockUpdated variant1 = 2;
-        BlockMissingBytesCommitted variant2 = 3;
-        BlockUploadCommitted variant3 = 4;
+        BlockCreatedMessage variant0 = 1;
+        BlockUpdatedMessage variant1 = 2;
+        BlockMissingBytesCommittedMessage variant2 = 3;
+        BlockUploadCommittedMessage variant3 = 4;
     }
 }
 
 // path: #/channels/build/publish/message
 message BuildPublish {
     oneof payload {
-        BuildCreated variant0 = 1;
-        BuildUpdated variant1 = 2;
-        BuildCurrentStatusSet variant2 = 3;
-        BuildDeleted variant3 = 4;
+        BuildCreatedMessage variant0 = 1;
+        BuildUpdatedMessage variant1 = 2;
+        BuildCurrentStatusSetMessage variant2 = 3;
+        BuildDeletedMessage variant3 = 4;
     }
 }
 
 // path: #/channels/diffStatus/publish/message
 message DiffStatusPublish {
     oneof payload {
-        DiffStatusCreated variant0 = 1;
-        DiffStatusUpdated variant1 = 2;
-        DiffStatusCommitted variant2 = 3;
+        DiffStatusCreatedMessage variant0 = 1;
+        DiffStatusUpdatedMessage variant1 = 2;
+        DiffStatusCommittedMessage variant2 = 3;
     }
 }
 
 // path: #/channels/diffTrigger/publish/message
 message DiffTriggerPublish {
     oneof payload {
-        DiffTriggerCreated variant0 = 1;
-        DiffTriggerUpdated variant1 = 2;
-        DiffTriggerToggled variant2 = 3;
+        DiffTriggerCreatedMessage variant0 = 1;
+        DiffTriggerUpdatedMessage variant1 = 2;
+        DiffTriggerToggledMessage variant2 = 3;
     }
 }
 
 // path: #/channels/drmActivation/publish/message
 message DrmActivationPublish {
     oneof payload {
-        DrmActivationCreated variant0 = 1;
-        DrmActivationUpdated variant1 = 2;
+        DrmActivationCreatedMessage variant0 = 1;
+        DrmActivationUpdatedMessage variant1 = 2;
     }
 }
 
 // path: #/channels/releaseNote/publish/message
 message ReleaseNotePublish {
     oneof payload {
-        ReleaseNoteCreated variant0 = 1;
-        ReleaseNoteUpdated variant1 = 2;
+        ReleaseNoteCreatedMessage variant0 = 1;
+        ReleaseNoteUpdatedMessage variant1 = 2;
     }
 }
 
 // path: #/channels/versionHistory/publish/message
 message VersionHistoryPublish {
     oneof payload {
-        VersionHistoryCreated variant0 = 1;
-        VersionHistoryUpdated variant1 = 2;
+        VersionHistoryCreatedMessage variant0 = 1;
+        VersionHistoryUpdatedMessage variant1 = 2;
     }
 }
 

@@ -145,9 +145,9 @@ message SessionUpdatedMessage {
 // path: #/channels/session/publish/message
 message SessionPublish {
     oneof payload {
-        SessionCreated variant0 = 1;
-        SessionDeleted variant1 = 2;
-        SessionUpdated variant2 = 3;
+        SessionCreatedMessage variant0 = 1;
+        SessionDeletedMessage variant1 = 2;
+        SessionUpdatedMessage variant2 = 3;
     }
 }
 

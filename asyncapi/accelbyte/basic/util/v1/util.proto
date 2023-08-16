@@ -149,8 +149,8 @@ message CountryGroupUpdatedMessage {
 // path: #/channels/countryGroup/publish/message
 message CountryGroupPublish {
     oneof payload {
-        CountryGroupCreated variant0 = 1;
-        CountryGroupUpdated variant1 = 2;
+        CountryGroupCreatedMessage variant0 = 1;
+        CountryGroupUpdatedMessage variant1 = 2;
     }
 }
 

@@ -165,11 +165,11 @@ message NamespaceDisplayNameUpdatedMessage {
 // path: #/channels/namespace/publish/message
 message NamespacePublish {
     oneof payload {
-        NamespaceCreated variant0 = 1;
-        NamespaceDeleted variant1 = 2;
-        NamespaceEnabled variant2 = 3;
-        NamespaceDisabled variant3 = 4;
-        NamespaceDisplayNameUpdated variant4 = 5;
+        NamespaceCreatedMessage variant0 = 1;
+        NamespaceDeletedMessage variant1 = 2;
+        NamespaceEnabledMessage variant2 = 3;
+        NamespaceDisabledMessage variant3 = 4;
+        NamespaceDisplayNameUpdatedMessage variant4 = 5;
     }
 }
 

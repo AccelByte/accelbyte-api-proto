@@ -377,26 +377,26 @@ message TemplatedNotificationSentToPartyMessage {
 // path: #/channels/notifications/publish/message
 message NotificationsPublish {
     oneof payload {
-        FreeformNotificationSent variant0 = 1;
-        FreeformNotificationSentToUser variant1 = 2;
-        TemplatedNotificationCreated variant2 = 3;
-        TemplatedNotificationSent variant3 = 4;
-        TemplatedNotificationSentToUser variant4 = 5;
-        TemplatedNotificationDeleted variant5 = 6;
-        TemplatedNotificationLocalizationUpdated variant6 = 7;
-        TemplatedNotificationLocalizationDeleted variant7 = 8;
-        TemplatedNotificationLocalizationPublished variant8 = 9;
-        FreeformNotificationSentToParty variant9 = 10;
-        TemplatedNotificationSentToParty variant10 = 11;
+        FreeformNotificationSentMessage variant0 = 1;
+        FreeformNotificationSentToUserMessage variant1 = 2;
+        TemplatedNotificationCreatedMessage variant2 = 3;
+        TemplatedNotificationSentMessage variant3 = 4;
+        TemplatedNotificationSentToUserMessage variant4 = 5;
+        TemplatedNotificationDeletedMessage variant5 = 6;
+        TemplatedNotificationLocalizationUpdatedMessage variant6 = 7;
+        TemplatedNotificationLocalizationDeletedMessage variant7 = 8;
+        TemplatedNotificationLocalizationPublishedMessage variant8 = 9;
+        FreeformNotificationSentToPartyMessage variant9 = 10;
+        TemplatedNotificationSentToPartyMessage variant10 = 11;
     }
 }
 
 // path: #/channels/topics/publish/message
 message TopicsPublish {
     oneof payload {
-        TopicCreated variant0 = 1;
-        TopicDeleted variant1 = 2;
-        TopicModified variant2 = 3;
+        TopicCreatedMessage variant0 = 1;
+        TopicDeletedMessage variant1 = 2;
+        TopicModifiedMessage variant2 = 3;
     }
 }
 

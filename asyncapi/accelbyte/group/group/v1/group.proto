@@ -288,92 +288,92 @@ message GroupMemberInvitationMemberCanceledMessage {
 // --- service ---
 
 
-// Publishes a message to the Group Member Group Member Invited channel. (groupMember.groupMemberInvited GroupMemberInvited)
-service GroupMemberGroupMemberInvitedGroupMemberInvitedService {
-    rpc OnMessage(GroupMemberInvited) returns (google.protobuf.Empty);
+// Publishes a message to the Group Member Group Member Invited channel. (groupMember.groupMemberInvited GroupMemberInvitedPayload)
+service GroupMemberGroupMemberInvitedGroupMemberInvitedPayloadService {
+    rpc OnMessage(GroupMemberInvitedPayload) returns (google.protobuf.Empty);
 }
 
-// Publishes a message to the Group Member Group Member Join Requested channel. (groupMember.groupMemberJoinRequested GroupMemberJoinRequested)
-service GroupMemberGroupMemberJoinRequestedGroupMemberJoinRequestedService {
-    rpc OnMessage(GroupMemberJoinRequested) returns (google.protobuf.Empty);
+// Publishes a message to the Group Member Group Member Join Requested channel. (groupMember.groupMemberJoinRequested GroupMemberJoinRequestedPayload)
+service GroupMemberGroupMemberJoinRequestedGroupMemberJoinRequestedPayloadService {
+    rpc OnMessage(GroupMemberJoinRequestedPayload) returns (google.protobuf.Empty);
 }
 
-// Publishes a message to the Group Member Group Member Join Accepted channel. (groupMember.groupMemberJoinAccepted GroupMemberJoinAccepted)
-service GroupMemberGroupMemberJoinAcceptedGroupMemberJoinAcceptedService {
-    rpc OnMessage(GroupMemberJoinAccepted) returns (google.protobuf.Empty);
+// Publishes a message to the Group Member Group Member Join Accepted channel. (groupMember.groupMemberJoinAccepted GroupMemberJoinAcceptedPayload)
+service GroupMemberGroupMemberJoinAcceptedGroupMemberJoinAcceptedPayloadService {
+    rpc OnMessage(GroupMemberJoinAcceptedPayload) returns (google.protobuf.Empty);
 }
 
-// Publishes a message to the Group Member Group Member Join Rejected channel. (groupMember.groupMemberJoinRejected GroupMemberJoinRejected)
-service GroupMemberGroupMemberJoinRejectedGroupMemberJoinRejectedService {
-    rpc OnMessage(GroupMemberJoinRejected) returns (google.protobuf.Empty);
+// Publishes a message to the Group Member Group Member Join Rejected channel. (groupMember.groupMemberJoinRejected GroupMemberJoinRejectedPayload)
+service GroupMemberGroupMemberJoinRejectedGroupMemberJoinRejectedPayloadService {
+    rpc OnMessage(GroupMemberJoinRejectedPayload) returns (google.protobuf.Empty);
 }
 
-// Publishes a message to the Group Group Created channel. (group.groupCreated GroupCreated)
-service GroupGroupCreatedGroupCreatedService {
-    rpc OnMessage(GroupCreated) returns (google.protobuf.Empty);
+// Publishes a message to the Group Group Created channel. (group.groupCreated GroupCreatedPayload)
+service GroupGroupCreatedGroupCreatedPayloadService {
+    rpc OnMessage(GroupCreatedPayload) returns (google.protobuf.Empty);
 }
 
-// Publishes a message to the Group Group Updated channel. (group.groupUpdated GroupUpdated)
-service GroupGroupUpdatedGroupUpdatedService {
-    rpc OnMessage(GroupUpdated) returns (google.protobuf.Empty);
+// Publishes a message to the Group Group Updated channel. (group.groupUpdated GroupUpdatedPayload)
+service GroupGroupUpdatedGroupUpdatedPayloadService {
+    rpc OnMessage(GroupUpdatedPayload) returns (google.protobuf.Empty);
 }
 
-// Publishes a message to the Group Group Custom Rules Updated channel. (group.groupCustomRulesUpdated GroupCustomRulesUpdated)
-service GroupGroupCustomRulesUpdatedGroupCustomRulesUpdatedService {
-    rpc OnMessage(GroupCustomRulesUpdated) returns (google.protobuf.Empty);
+// Publishes a message to the Group Group Custom Rules Updated channel. (group.groupCustomRulesUpdated GroupCustomRulesUpdatedPayload)
+service GroupGroupCustomRulesUpdatedGroupCustomRulesUpdatedPayloadService {
+    rpc OnMessage(GroupCustomRulesUpdatedPayload) returns (google.protobuf.Empty);
 }
 
-// Publishes a message to the Group Group Deleted channel. (group.groupDeleted GroupDeleted)
-service GroupGroupDeletedGroupDeletedService {
-    rpc OnMessage(GroupDeleted) returns (google.protobuf.Empty);
+// Publishes a message to the Group Group Deleted channel. (group.groupDeleted GroupDeletedPayload)
+service GroupGroupDeletedGroupDeletedPayloadService {
+    rpc OnMessage(GroupDeletedPayload) returns (google.protobuf.Empty);
 }
 
-// Publishes a message to the Group Group Predefined Rules Updated channel. (group.groupPredefinedRulesUpdated GroupPredefinedRulesUpdated)
-service GroupGroupPredefinedRulesUpdatedGroupPredefinedRulesUpdatedService {
-    rpc OnMessage(GroupPredefinedRulesUpdated) returns (google.protobuf.Empty);
+// Publishes a message to the Group Group Predefined Rules Updated channel. (group.groupPredefinedRulesUpdated GroupPredefinedRulesUpdatedPayload)
+service GroupGroupPredefinedRulesUpdatedGroupPredefinedRulesUpdatedPayloadService {
+    rpc OnMessage(GroupPredefinedRulesUpdatedPayload) returns (google.protobuf.Empty);
 }
 
-// Publishes a message to the Group Group Predefined Rules Deleted channel. (group.groupPredefinedRulesDeleted GroupPredefinedRulesDeleted)
-service GroupGroupPredefinedRulesDeletedGroupPredefinedRulesDeletedService {
-    rpc OnMessage(GroupPredefinedRulesDeleted) returns (google.protobuf.Empty);
+// Publishes a message to the Group Group Predefined Rules Deleted channel. (group.groupPredefinedRulesDeleted GroupPredefinedRulesDeletedPayload)
+service GroupGroupPredefinedRulesDeletedGroupPredefinedRulesDeletedPayloadService {
+    rpc OnMessage(GroupPredefinedRulesDeletedPayload) returns (google.protobuf.Empty);
 }
 
-// Publishes a message to the Group Roles Group Role Assigned channel. (groupRoles.groupRoleAssigned GroupRoleAssigned)
-service GroupRolesGroupRoleAssignedGroupRoleAssignedService {
-    rpc OnMessage(GroupRoleAssigned) returns (google.protobuf.Empty);
+// Publishes a message to the Group Roles Group Role Assigned channel. (groupRoles.groupRoleAssigned GroupRoleAssignedPayload)
+service GroupRolesGroupRoleAssignedGroupRoleAssignedPayloadService {
+    rpc OnMessage(GroupRoleAssignedPayload) returns (google.protobuf.Empty);
 }
 
-// Publishes a message to the Group Roles Group Role Removed channel. (groupRoles.groupRoleRemoved GroupRoleRemoved)
-service GroupRolesGroupRoleRemovedGroupRoleRemovedService {
-    rpc OnMessage(GroupRoleRemoved) returns (google.protobuf.Empty);
+// Publishes a message to the Group Roles Group Role Removed channel. (groupRoles.groupRoleRemoved GroupRoleRemovedPayload)
+service GroupRolesGroupRoleRemovedGroupRoleRemovedPayloadService {
+    rpc OnMessage(GroupRoleRemovedPayload) returns (google.protobuf.Empty);
 }
 
-// Publishes a message to the Group Member Group Member Invitation Accepted channel. (groupMember.groupMemberInvitationAccepted GroupMemberInvitationAccepted)
-service GroupMemberGroupMemberInvitationAcceptedGroupMemberInvitationAcceptedService {
-    rpc OnMessage(GroupMemberInvitationAccepted) returns (google.protobuf.Empty);
+// Publishes a message to the Group Member Group Member Invitation Accepted channel. (groupMember.groupMemberInvitationAccepted GroupMemberInvitationAcceptedPayload)
+service GroupMemberGroupMemberInvitationAcceptedGroupMemberInvitationAcceptedPayloadService {
+    rpc OnMessage(GroupMemberInvitationAcceptedPayload) returns (google.protobuf.Empty);
 }
 
-// Publishes a message to the Group Member Group Member Invitation Rejected channel. (groupMember.groupMemberInvitationRejected GroupMemberInvitationRejected)
-service GroupMemberGroupMemberInvitationRejectedGroupMemberInvitationRejectedService {
-    rpc OnMessage(GroupMemberInvitationRejected) returns (google.protobuf.Empty);
+// Publishes a message to the Group Member Group Member Invitation Rejected channel. (groupMember.groupMemberInvitationRejected GroupMemberInvitationRejectedPayload)
+service GroupMemberGroupMemberInvitationRejectedGroupMemberInvitationRejectedPayloadService {
+    rpc OnMessage(GroupMemberInvitationRejectedPayload) returns (google.protobuf.Empty);
 }
 
-// Publishes a message to the Group Member Group Member Left channel. (groupMember.groupMemberLeft GroupMemberLeft)
-service GroupMemberGroupMemberLeftGroupMemberLeftService {
-    rpc OnMessage(GroupMemberLeft) returns (google.protobuf.Empty);
+// Publishes a message to the Group Member Group Member Left channel. (groupMember.groupMemberLeft GroupMemberLeftPayload)
+service GroupMemberGroupMemberLeftGroupMemberLeftPayloadService {
+    rpc OnMessage(GroupMemberLeftPayload) returns (google.protobuf.Empty);
 }
 
-// Publishes a message to the Group Member Group Member Join Request Canceled channel. (groupMember.groupMemberJoinRequestCanceled GroupMemberJoinRequestCanceled)
-service GroupMemberGroupMemberJoinRequestCanceledGroupMemberJoinRequestCanceledService {
-    rpc OnMessage(GroupMemberJoinRequestCanceled) returns (google.protobuf.Empty);
+// Publishes a message to the Group Member Group Member Join Request Canceled channel. (groupMember.groupMemberJoinRequestCanceled GroupMemberJoinRequestCanceledPayload)
+service GroupMemberGroupMemberJoinRequestCanceledGroupMemberJoinRequestCanceledPayloadService {
+    rpc OnMessage(GroupMemberJoinRequestCanceledPayload) returns (google.protobuf.Empty);
 }
 
-// Publishes a message to the Group Member Group Member Kicked channel. (groupMember.groupMemberKicked GroupMemberKicked)
-service GroupMemberGroupMemberKickedGroupMemberKickedService {
-    rpc OnMessage(GroupMemberKicked) returns (google.protobuf.Empty);
+// Publishes a message to the Group Member Group Member Kicked channel. (groupMember.groupMemberKicked GroupMemberKickedPayload)
+service GroupMemberGroupMemberKickedGroupMemberKickedPayloadService {
+    rpc OnMessage(GroupMemberKickedPayload) returns (google.protobuf.Empty);
 }
 
-// Publishes a message to the Group Member Group Member Invitation Member Canceled channel. (groupMember.groupMemberInvitationMemberCanceled GroupMemberInvitationMemberCanceled)
-service GroupMemberGroupMemberInvitationMemberCanceledGroupMemberInvitationMemberCanceledService {
-    rpc OnMessage(GroupMemberInvitationMemberCanceled) returns (google.protobuf.Empty);
+// Publishes a message to the Group Member Group Member Invitation Member Canceled channel. (groupMember.groupMemberInvitationMemberCanceled GroupMemberInvitationMemberCanceledPayload)
+service GroupMemberGroupMemberInvitationMemberCanceledGroupMemberInvitationMemberCanceledPayloadService {
+    rpc OnMessage(GroupMemberInvitationMemberCanceledPayload) returns (google.protobuf.Empty);
 }

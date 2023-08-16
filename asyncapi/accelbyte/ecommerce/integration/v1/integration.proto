@@ -182,24 +182,24 @@ message IapProcessedMessage {
 // path: #/channels/iapConfigManagement/publish/message
 message IapConfigManagementPublish {
     oneof payload {
-        AppleIAPConfigDeleted variant0 = 1;
-        AppleIAPConfigUpdated variant1 = 2;
-        GoogleIAPConfigDeleted variant2 = 3;
-        GoogleIAPConfigUpdated variant3 = 4;
-        GoogleP12FileUpdated variant4 = 5;
-        PlayStationIAPConfigDeleted variant5 = 6;
-        PlayStationIAPConfigUpdated variant6 = 7;
-        SteamIAPConfigUpdated variant7 = 8;
-        SteamIAPConfigDeleted variant8 = 9;
-        XblIAPConfigDeleted variant9 = 10;
-        XblIAPConfigUpdated variant10 = 11;
-        XblBPCertFileUpdated variant11 = 12;
-        StadiaIAPJsonFileUpdated variant12 = 13;
-        StadiaIAPConfigDeleted variant13 = 14;
-        EpicGamesIAPConfigDeleted variant14 = 15;
-        EpicGamesIAPConfigUpdated variant15 = 16;
-        TwitchIAPConfigUpdated variant16 = 17;
-        TwitchIAPConfigDeleted variant17 = 18;
+        AppleIAPConfigDeletedMessage variant0 = 1;
+        AppleIAPConfigUpdatedMessage variant1 = 2;
+        GoogleIAPConfigDeletedMessage variant2 = 3;
+        GoogleIAPConfigUpdatedMessage variant3 = 4;
+        GoogleP12FileUpdatedMessage variant4 = 5;
+        PlayStationIAPConfigDeletedMessage variant5 = 6;
+        PlayStationIAPConfigUpdatedMessage variant6 = 7;
+        SteamIAPConfigUpdatedMessage variant7 = 8;
+        SteamIAPConfigDeletedMessage variant8 = 9;
+        XblIAPConfigDeletedMessage variant9 = 10;
+        XblIAPConfigUpdatedMessage variant10 = 11;
+        XblBPCertFileUpdatedMessage variant11 = 12;
+        StadiaIAPJsonFileUpdatedMessage variant12 = 13;
+        StadiaIAPConfigDeletedMessage variant13 = 14;
+        EpicGamesIAPConfigDeletedMessage variant14 = 15;
+        EpicGamesIAPConfigUpdatedMessage variant15 = 16;
+        TwitchIAPConfigUpdatedMessage variant16 = 17;
+        TwitchIAPConfigDeletedMessage variant17 = 18;
     }
 }
 

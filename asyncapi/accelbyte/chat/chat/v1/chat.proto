@@ -160,9 +160,9 @@ message UserChatRateLimitedMessage {
 // path: #/channels/chat/publish/message
 message ChatPublish {
     oneof payload {
-        UserConnected variant0 = 1;
-        UserDisconnected variant1 = 2;
-        UserChatRateLimited variant2 = 3;
+        UserConnectedMessage variant0 = 1;
+        UserDisconnectedMessage variant1 = 2;
+        UserChatRateLimitedMessage variant2 = 3;
     }
 }
 

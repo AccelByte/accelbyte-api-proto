@@ -145,9 +145,9 @@ message CurrencyDeletedMessage {
 // path: #/channels/currencyManagement/publish/message
 message CurrencyManagementPublish {
     oneof payload {
-        CurrencyCreated variant0 = 1;
-        CurrencyUpdated variant1 = 2;
-        CurrencyDeleted variant2 = 3;
+        CurrencyCreatedMessage variant0 = 1;
+        CurrencyUpdatedMessage variant1 = 2;
+        CurrencyDeletedMessage variant2 = 3;
     }
 }
 

@@ -263,11 +263,11 @@ message SessionEndedMessage {
 // path: #/channels/dsmcontroller/publish/message
 message DsmcontrollerPublish {
     oneof payload {
-        AllocationComplete variant0 = 1;
-        DsClaimed variant1 = 2;
-        DsCount variant2 = 3;
-        DsStatusChanged variant3 = 4;
-        SessionEnded variant4 = 5;
+        AllocationCompleteMessage variant0 = 1;
+        DsClaimedMessage variant1 = 2;
+        DsCountMessage variant2 = 3;
+        DsStatusChangedMessage variant3 = 4;
+        SessionEndedMessage variant4 = 5;
     }
 }
 

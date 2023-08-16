@@ -171,10 +171,10 @@ message RewardImportedMessage {
 // path: #/channels/rewardManagement/publish/message
 message RewardManagementPublish {
     oneof payload {
-        RewardCreated variant0 = 1;
-        RewardUpdated variant1 = 2;
-        RewardDeleted variant2 = 3;
-        RewardImported variant3 = 4;
+        RewardCreatedMessage variant0 = 1;
+        RewardUpdatedMessage variant1 = 2;
+        RewardDeletedMessage variant2 = 3;
+        RewardImportedMessage variant3 = 4;
     }
 }
 

@@ -185,18 +185,18 @@ message FriendAddedBulkMessage {
 // path: #/channels/friendRequests/publish/message
 message FriendRequestsPublish {
     oneof payload {
-        FriendRequestSent variant0 = 1;
-        FriendRequestCancelled variant1 = 2;
-        FriendRemoved variant2 = 3;
-        FriendAddedBulk variant3 = 4;
+        FriendRequestSentMessage variant0 = 1;
+        FriendRequestCancelledMessage variant1 = 2;
+        FriendRemovedMessage variant2 = 3;
+        FriendAddedBulkMessage variant3 = 4;
     }
 }
 
 // path: #/channels/incomingFriendRequests/publish/message
 message IncomingFriendRequestsPublish {
     oneof payload {
-        FriendRequestAccepted variant0 = 1;
-        FriendRequestRejected variant1 = 2;
+        FriendRequestAcceptedMessage variant0 = 1;
+        FriendRequestRejectedMessage variant1 = 2;
     }
 }
 

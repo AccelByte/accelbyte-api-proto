@@ -371,15 +371,15 @@ message BillingAccountChangedMessage {
 // path: #/channels/subscription/publish/message
 message SubscriptionPublish {
     oneof payload {
-        Subscribed variant0 = 1;
-        Cancelled variant1 = 2;
-        ImmediateCancelled variant2 = 3;
-        Resubscribed variant3 = 4;
-        DaysGranted variant4 = 5;
-        Charged variant5 = 6;
-        ChargeFailed variant6 = 7;
-        Expired variant7 = 8;
-        BillingAccountChanged variant8 = 9;
+        SubscribedMessage variant0 = 1;
+        CancelledMessage variant1 = 2;
+        ImmediateCancelledMessage variant2 = 3;
+        ResubscribedMessage variant3 = 4;
+        DaysGrantedMessage variant4 = 5;
+        ChargedMessage variant5 = 6;
+        ChargeFailedMessage variant6 = 7;
+        ExpiredMessage variant7 = 8;
+        BillingAccountChangedMessage variant8 = 9;
     }
 }
 

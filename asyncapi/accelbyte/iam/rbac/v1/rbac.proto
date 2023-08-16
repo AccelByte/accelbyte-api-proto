@@ -354,34 +354,34 @@ message RoleMemberDeletedMessage {
 // path: #/channels/role/publish/message
 message RolePublish {
     oneof payload {
-        RoleCreated variant0 = 1;
-        RoleDeleted variant1 = 2;
-        RoleUpdated variant2 = 3;
+        RoleCreatedMessage variant0 = 1;
+        RoleDeletedMessage variant1 = 2;
+        RoleUpdatedMessage variant2 = 3;
     }
 }
 
 // path: #/channels/rolePermissions/publish/message
 message RolePermissionsPublish {
     oneof payload {
-        RolePermissionCreated variant0 = 1;
-        RolePermissionDeleted variant1 = 2;
-        RolePermissionUpdated variant2 = 3;
+        RolePermissionCreatedMessage variant0 = 1;
+        RolePermissionDeletedMessage variant1 = 2;
+        RolePermissionUpdatedMessage variant2 = 3;
     }
 }
 
 // path: #/channels/roleManager/publish/message
 message RoleManagerPublish {
     oneof payload {
-        RoleManagerCreated variant0 = 1;
-        RoleManagerDeleted variant1 = 2;
+        RoleManagerCreatedMessage variant0 = 1;
+        RoleManagerDeletedMessage variant1 = 2;
     }
 }
 
 // path: #/channels/roleMember/publish/message
 message RoleMemberPublish {
     oneof payload {
-        RoleMemberCreated variant0 = 1;
-        RoleMemberDeleted variant1 = 2;
+        RoleMemberCreatedMessage variant0 = 1;
+        RoleMemberDeletedMessage variant1 = 2;
     }
 }
 

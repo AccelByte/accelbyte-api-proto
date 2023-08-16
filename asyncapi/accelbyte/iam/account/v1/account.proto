@@ -1254,77 +1254,77 @@ message GdprRequestDataDeletionResponseMessage {
 // path: #/channels/userAccount/publish/message
 message UserAccountPublish {
     oneof payload {
-        UserAccountCreated variant0 = 1;
-        UserAccountDeleted variant1 = 2;
-        UserAccountEnabled variant2 = 3;
-        UserAccountDisabled variant3 = 4;
-        UserAccountEmailUpdated variant4 = 5;
-        UserAccountPasswordUpdated variant5 = 6;
-        UserAccountBanned variant6 = 7;
-        UserAccountUnbanned variant7 = 8;
-        UserAccountVerified variant8 = 9;
-        UserAccountLinked variant9 = 10;
-        UserAccountUnlinked variant10 = 11;
-        UserAccountUpgraded variant11 = 12;
-        GameUserAccountCreated variant12 = 13;
-        ThirdPartyAccountCreated variant13 = 14;
+        UserAccountCreatedMessage variant0 = 1;
+        UserAccountDeletedMessage variant1 = 2;
+        UserAccountEnabledMessage variant2 = 3;
+        UserAccountDisabledMessage variant3 = 4;
+        UserAccountEmailUpdatedMessage variant4 = 5;
+        UserAccountPasswordUpdatedMessage variant5 = 6;
+        UserAccountBannedMessage variant6 = 7;
+        UserAccountUnbannedMessage variant7 = 8;
+        UserAccountVerifiedMessage variant8 = 9;
+        UserAccountLinkedMessage variant9 = 10;
+        UserAccountUnlinkedMessage variant10 = 11;
+        UserAccountUpgradedMessage variant11 = 12;
+        GameUserAccountCreatedMessage variant12 = 13;
+        ThirdPartyAccountCreatedMessage variant13 = 14;
     }
 }
 
 // path: #/channels/userAuthentication/publish/message
 message UserAuthenticationPublish {
     oneof payload {
-        UserLoggedIn variant0 = 1;
-        UserLoggedOut variant1 = 2;
-        UserThirdPartyLoggedIn variant2 = 3;
+        UserLoggedInMessage variant0 = 1;
+        UserLoggedOutMessage variant1 = 2;
+        UserThirdPartyLoggedInMessage variant2 = 3;
     }
 }
 
 // path: #/channels/userInformation/publish/message
 message UserInformationPublish {
     oneof payload {
-        UserInformationCreated variant0 = 1;
-        UserInformationDisplayNameUpdated variant1 = 2;
-        UserInformationCountryUpdated variant2 = 3;
-        UserInformationLanguageUpdated variant3 = 4;
-        UserInformationDateOfBirthUpdated variant4 = 5;
+        UserInformationCreatedMessage variant0 = 1;
+        UserInformationDisplayNameUpdatedMessage variant1 = 2;
+        UserInformationCountryUpdatedMessage variant2 = 3;
+        UserInformationLanguageUpdatedMessage variant3 = 4;
+        UserInformationDateOfBirthUpdatedMessage variant4 = 5;
     }
 }
 
 // path: #/channels/userPermissions/publish/message
 message UserPermissionsPublish {
     oneof payload {
-        UserPermissionsCreated variant0 = 1;
-        UserPermissionsDeleted variant1 = 2;
+        UserPermissionsCreatedMessage variant0 = 1;
+        UserPermissionsDeletedMessage variant1 = 2;
     }
 }
 
 // path: #/channels/userRoles/publish/message
 message UserRolesPublish {
     oneof payload {
-        UserRolesCreated variant0 = 1;
-        UserRolesDeleted variant1 = 2;
+        UserRolesCreatedMessage variant0 = 1;
+        UserRolesDeletedMessage variant1 = 2;
     }
 }
 
 // path: #/channels/countryAgeRestriction/publish/message
 message CountryAgeRestrictionPublish {
     oneof payload {
-        CountryAgeRestrictionCreated variant0 = 1;
-        CountryAgeRestrictionUpdated variant1 = 2;
+        CountryAgeRestrictionCreatedMessage variant0 = 1;
+        CountryAgeRestrictionUpdatedMessage variant1 = 2;
     }
 }
 
 // path: #/channels/userFeatureBan/publish/message
 message UserFeatureBanPublish {
     oneof payload {
-        ChatAllBanned variant0 = 1;
-        ChatSendBanned variant1 = 2;
-        LeaderboardBanned variant2 = 3;
-        StatisticsBanned variant3 = 4;
-        OrderAndPaymentBanned variant4 = 5;
-        MatchmakingBanned variant5 = 6;
-        UgcCreateUpdateBanned variant6 = 7;
+        ChatAllBannedMessage variant0 = 1;
+        ChatSendBannedMessage variant1 = 2;
+        LeaderboardBannedMessage variant2 = 3;
+        StatisticsBannedMessage variant3 = 4;
+        OrderAndPaymentBannedMessage variant4 = 5;
+        MatchmakingBannedMessage variant5 = 6;
+        UgcCreateUpdateBannedMessage variant6 = 7;
     }
 }
 

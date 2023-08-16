@@ -181,10 +181,10 @@ message UserSeasonRewardRewardedMessage {
 // path: #/channels/userSeason/publish/message
 message UserSeasonPublish {
     oneof payload {
-        UserSeasonPassChanged variant0 = 1;
-        UserSeasonTierUp variant1 = 2;
-        UserSeasonTierCleared variant2 = 3;
-        UserSeasonRewardRewarded variant3 = 4;
+        UserSeasonPassChangedMessage variant0 = 1;
+        UserSeasonTierUpMessage variant1 = 2;
+        UserSeasonTierClearedMessage variant2 = 3;
+        UserSeasonRewardRewardedMessage variant3 = 4;
     }
 }
 

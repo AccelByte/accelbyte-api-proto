@@ -825,24 +825,24 @@ message AppUpdatedMessage {
 // path: #/channels/catalogManagement/publish/message
 message CatalogManagementPublish {
     oneof payload {
-        StoreCreated variant0 = 1;
-        StoreUpdated variant1 = 2;
-        StoreDeleted variant2 = 3;
-        StoreCloned variant3 = 4;
-        StoreRollbacked variant4 = 5;
-        StoreExported variant5 = 6;
-        StoreImported variant6 = 7;
-        StorePublished variant7 = 8;
-        CategoryCreated variant8 = 9;
-        CategoryUpdated variant9 = 10;
-        CategoryDeleted variant10 = 11;
-        ItemCreated variant11 = 12;
-        ItemUpdated variant12 = 13;
-        ItemDeleted variant13 = 14;
-        InGameItemSynced variant14 = 15;
-        ItemDisabled variant15 = 16;
-        ItemEnabled variant16 = 17;
-        AppUpdated variant17 = 18;
+        StoreCreatedMessage variant0 = 1;
+        StoreUpdatedMessage variant1 = 2;
+        StoreDeletedMessage variant2 = 3;
+        StoreClonedMessage variant3 = 4;
+        StoreRollbackedMessage variant4 = 5;
+        StoreExportedMessage variant5 = 6;
+        StoreImportedMessage variant6 = 7;
+        StorePublishedMessage variant7 = 8;
+        CategoryCreatedMessage variant8 = 9;
+        CategoryUpdatedMessage variant9 = 10;
+        CategoryDeletedMessage variant10 = 11;
+        ItemCreatedMessage variant11 = 12;
+        ItemUpdatedMessage variant12 = 13;
+        ItemDeletedMessage variant13 = 14;
+        InGameItemSyncedMessage variant14 = 15;
+        ItemDisabledMessage variant15 = 16;
+        ItemEnabledMessage variant16 = 17;
+        AppUpdatedMessage variant17 = 18;
     }
 }
 

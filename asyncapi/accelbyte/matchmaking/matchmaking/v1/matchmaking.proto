@@ -37,20 +37,12 @@ message Event {
     string spanContext = 10;
 }
 
-// path: #/components/schemas/alliance/properties/combination/properties/alliances/items/items
-message AnonymousSchema1 {
-    string name = 1;
-    int64 min = 2;
-    int64 max = 3;
-}
-
 // path: #/components/schemas/alliance/properties/combination
-message AnonymousSchema2 {
+message AnonymousSchema1 {
     bool roleFlexingEnable = 1;
     int64 roleFlexingSecond = 2;
     int64 roleFlexingPlayer = 3;
     bool hasCombination = 4;
-    repeated repeated AnonymousSchema1 alliances = 5;
 }
 
 // path: #/components/schemas/alliance
@@ -59,7 +51,7 @@ message Alliance {
     int64 maxNumber = 2;
     int64 playerMinNumber = 3;
     int64 playerMaxNumber = 4;
-    AnonymousSchema2 combination = 5;
+    AnonymousSchema1 combination = 5;
 }
 
 // path: #/components/schemas/matching_rule
@@ -70,40 +62,40 @@ message MatchingRule {
 }
 
 // path: #/components/schemas/ruleset/properties/flexing_rule/items
-message AnonymousSchema3 {
+message AnonymousSchema2 {
     int64 duration = 1;
     MatchingRule matchingRule = 2;
 }
 
 // path: #/components/schemas/ruleset/properties/alliance_flexing_rule/items
-message AnonymousSchema4 {
+message AnonymousSchema3 {
     int64 duration = 1;
     Alliance allianceRule = 2;
 }
 
 // path: #/components/schemas/ruleset/properties/match_options/items/properties/options
-message AnonymousSchema5 {
+message AnonymousSchema4 {
     string name = 1;
     string type = 2;
 }
 
 // path: #/components/schemas/ruleset/properties/match_options/items
-message AnonymousSchema6 {
-    AnonymousSchema5 options = 1;
+message AnonymousSchema5 {
+    AnonymousSchema4 options = 1;
 }
 
 // path: #/components/schemas/ruleset
 message Ruleset {
     Alliance alliance = 1;
     repeated MatchingRule matchingRule = 2;
-    repeated AnonymousSchema3 flexingRule = 3;
-    repeated AnonymousSchema4 allianceFlexingRule = 4;
-    repeated AnonymousSchema6 matchOptions = 5;
+    repeated AnonymousSchema2 flexingRule = 3;
+    repeated AnonymousSchema3 allianceFlexingRule = 4;
+    repeated AnonymousSchema5 matchOptions = 5;
     bool rebalanceEnable = 6;
 }
 
 // path: #/components/schemas/matchingParty/properties/party_attributes
-message AnonymousSchema7 {
+message AnonymousSchema6 {
 }
 
 // path: #/components/schemas/matchingParty
@@ -111,7 +103,7 @@ message MatchingParty {
     string ticketId = 1;
     string partyId = 2;
     repeated PartyMember partyMembers = 3;
-    AnonymousSchema7 partyAttributes = 4;
+    AnonymousSchema6 partyAttributes = 4;
     int64 ticketCreatedAt = 5;
     int64 firstTicketCreatedAt = 6;
 }
@@ -149,19 +141,19 @@ message LobbyMatchmaking {
 }
 
 // path: #/components/schemas/MatchmakingRequest/properties/party_attributes
-message AnonymousSchema8 {
+message AnonymousSchema7 {
 }
 
 // path: #/components/schemas/MatchmakingRequest/properties/additional_criteria
-message AnonymousSchema9 {
+message AnonymousSchema8 {
 }
 
 // path: #/components/schemas/MatchmakingRequest/properties/latency_map
-message AnonymousSchema10 {
+message AnonymousSchema9 {
 }
 
 // path: #/components/schemas/MatchmakingRequest/properties/sorted_latency/items
-message AnonymousSchema11 {
+message AnonymousSchema10 {
     string region = 1;
     int64 latency = 2;
 }
@@ -175,16 +167,16 @@ message MatchmakingRequest {
     string ticketId = 5;
     string partyId = 6;
     string partyLeaderId = 7;
-    AnonymousSchema8 partyAttributes = 8;
+    AnonymousSchema7 partyAttributes = 8;
     repeated PartyMember partyMembers = 9;
-    AnonymousSchema9 additionalCriteria = 10;
-    AnonymousSchema10 latencyMap = 11;
-    repeated AnonymousSchema11 sortedLatency = 12;
+    AnonymousSchema8 additionalCriteria = 10;
+    AnonymousSchema9 latencyMap = 11;
+    repeated AnonymousSchema10 sortedLatency = 12;
     int64 firstTicketCreatedAt = 13;
 }
 
 // path: #/components/schemas/matchmakingResult/properties/matching_allies/items
-message AnonymousSchema12 {
+message AnonymousSchema11 {
     repeated MatchingParty matchingParties = 1;
     int64 playerCount = 2;
 }
@@ -203,7 +195,7 @@ message MatchmakingResult {
     string clientVersion = 10;
     string region = 11;
     bool joinable = 12;
-    repeated AnonymousSchema12 matchingAllies = 13;
+    repeated AnonymousSchema11 matchingAllies = 13;
     string deployment = 14;
     string updatedAt = 15;
     int64 queueAt = 16;
@@ -214,23 +206,23 @@ message MatchmakingResult {
 }
 
 // path: #/components/schemas/partyMemberV1/properties/extraAttributes
-message AnonymousSchema13 {
+message AnonymousSchema12 {
 }
 
 // path: #/components/schemas/partyMemberV1
 message PartyMemberV1 {
     string userId = 1;
-    AnonymousSchema13 extraAttributes = 2;
+    AnonymousSchema12 extraAttributes = 2;
 }
 
 // path: #/components/schemas/partyMember/properties/extra_attributes
-message AnonymousSchema14 {
+message AnonymousSchema13 {
 }
 
 // path: #/components/schemas/partyMember
 message PartyMember {
     string userId = 1;
-    AnonymousSchema14 extraAttributes = 2;
+    AnonymousSchema13 extraAttributes = 2;
 }
 
 // path: #/components/schemas/successTickets
@@ -530,24 +522,24 @@ message ReadyConsentSuccessMessage {
 // path: #/channels/matchmaking/publish/message
 message MatchmakingPublish {
     oneof payload {
-        MatchmakingRequested variant0 = 1;
-        MatchmakingCanceled variant1 = 2;
-        MatchmakingStarted variant2 = 3;
-        MatchmakingTimeout variant3 = 4;
-        MatchmakingRejected variant4 = 5;
-        MatchmakingChannelCreated variant5 = 6;
-        MatchmakingChannelDeleted variant6 = 7;
-        MatchmakingChannelUpdated variant7 = 8;
-        MatchmakingSessionStatusChanged variant8 = 9;
-        MatchmakingTicketStatusChanged variant9 = 10;
+        MatchmakingRequestedMessage variant0 = 1;
+        MatchmakingCanceledMessage variant1 = 2;
+        MatchmakingStartedMessage variant2 = 3;
+        MatchmakingTimeoutMessage variant3 = 4;
+        MatchmakingRejectedMessage variant4 = 5;
+        MatchmakingChannelCreatedMessage variant5 = 6;
+        MatchmakingChannelDeletedMessage variant6 = 7;
+        MatchmakingChannelUpdatedMessage variant7 = 8;
+        MatchmakingSessionStatusChangedMessage variant8 = 9;
+        MatchmakingTicketStatusChangedMessage variant9 = 10;
     }
 }
 
 // path: #/channels/readyConsent/publish/message
 message ReadyConsentPublish {
     oneof payload {
-        ReadyConsentSuccess variant0 = 1;
-        ReadyConsentFailed variant1 = 2;
+        ReadyConsentSuccessMessage variant0 = 1;
+        ReadyConsentFailedMessage variant1 = 2;
     }
 }
 

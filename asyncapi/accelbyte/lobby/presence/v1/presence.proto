@@ -98,8 +98,8 @@ message FriendStatusUpdatedMessage {
 // path: #/channels/presence/publish/message
 message PresencePublish {
     oneof payload {
-        UserSetStatus variant0 = 1;
-        FriendStatusUpdated variant1 = 2;
+        UserSetStatusMessage variant0 = 1;
+        FriendStatusUpdatedMessage variant1 = 2;
     }
 }
 

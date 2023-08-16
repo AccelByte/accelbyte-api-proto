@@ -811,37 +811,37 @@ message CheckoutConfigUpdatedMessage {
 // path: #/channels/paymentConfig/publish/message
 message PaymentConfigPublish {
     oneof payload {
-        PaymentProviderConfigCreated variant0 = 1;
-        PaymentProviderConfigUpdated variant1 = 2;
-        PaymentProviderConfigDeleted variant2 = 3;
-        PaymentTaxConfigUpdated variant3 = 4;
-        AdyenConfigUpdated variant4 = 5;
-        StripeConfigUpdated variant5 = 6;
-        XsollaConfigUpdated variant6 = 7;
-        XsollaUIConfigUpdated variant7 = 8;
-        PayPalConfigUpdated variant8 = 9;
-        AliPayConfigUpdated variant9 = 10;
-        WxPayConfigUpdated variant10 = 11;
-        WxPayCertUploaded variant11 = 12;
-        CheckoutConfigUpdated variant12 = 13;
+        PaymentProviderConfigCreatedMessage variant0 = 1;
+        PaymentProviderConfigUpdatedMessage variant1 = 2;
+        PaymentProviderConfigDeletedMessage variant2 = 3;
+        PaymentTaxConfigUpdatedMessage variant3 = 4;
+        AdyenConfigUpdatedMessage variant4 = 5;
+        StripeConfigUpdatedMessage variant5 = 6;
+        XsollaConfigUpdatedMessage variant6 = 7;
+        XsollaUIConfigUpdatedMessage variant7 = 8;
+        PayPalConfigUpdatedMessage variant8 = 9;
+        AliPayConfigUpdatedMessage variant9 = 10;
+        WxPayConfigUpdatedMessage variant10 = 11;
+        WxPayCertUploadedMessage variant11 = 12;
+        CheckoutConfigUpdatedMessage variant12 = 13;
     }
 }
 
 // path: #/channels/paymentOrderProcessing/publish/message
 message PaymentOrderProcessingPublish {
     oneof payload {
-        PaymentOrderCreated variant0 = 1;
-        PaymentOrderCharged variant1 = 2;
-        PaymentOrderChargeFailed variant2 = 3;
-        PaymentOrderRefunded variant3 = 4;
-        PaymentOrderRefundFailed variant4 = 5;
-        PaymentOrderAuthorised variant5 = 6;
-        PaymentOrderAuthorisedFailed variant6 = 7;
-        PaymentOrderNotificationOfChargeback variant7 = 8;
-        PaymentOrderRequestForInformation variant8 = 9;
-        PaymentOrderChargeback variant9 = 10;
-        PaymentOrderChargebackReversed variant10 = 11;
-        PaymentOrderRefundRequested variant11 = 12;
+        PaymentOrderCreatedMessage variant0 = 1;
+        PaymentOrderChargedMessage variant1 = 2;
+        PaymentOrderChargeFailedMessage variant2 = 3;
+        PaymentOrderRefundedMessage variant3 = 4;
+        PaymentOrderRefundFailedMessage variant4 = 5;
+        PaymentOrderAuthorisedMessage variant5 = 6;
+        PaymentOrderAuthorisedFailedMessage variant6 = 7;
+        PaymentOrderNotificationOfChargebackMessage variant7 = 8;
+        PaymentOrderRequestForInformationMessage variant8 = 9;
+        PaymentOrderChargebackMessage variant9 = 10;
+        PaymentOrderChargebackReversedMessage variant10 = 11;
+        PaymentOrderRefundRequestedMessage variant11 = 12;
     }
 }
 

@@ -459,39 +459,39 @@ message StatItemCycleUpdatedMessage {
 // path: #/channels/statManagement/publish/message
 message StatManagementPublish {
     oneof payload {
-        StatCreated variant0 = 1;
-        StatDeleted variant1 = 2;
-        StatUpdated variant2 = 3;
-        StatImported variant3 = 4;
-        StatExported variant4 = 5;
+        StatCreatedMessage variant0 = 1;
+        StatDeletedMessage variant1 = 2;
+        StatUpdatedMessage variant2 = 3;
+        StatImportedMessage variant3 = 4;
+        StatExportedMessage variant4 = 5;
     }
 }
 
 // path: #/channels/statistic/publish/message
 message StatisticPublish {
     oneof payload {
-        StatItemCreated variant0 = 1;
-        StatItemUpdated variant1 = 2;
-        StatItemDeleted variant2 = 3;
-        GlobalStatItemUpdated variant3 = 4;
+        StatItemCreatedMessage variant0 = 1;
+        StatItemUpdatedMessage variant1 = 2;
+        StatItemDeletedMessage variant2 = 3;
+        GlobalStatItemUpdatedMessage variant3 = 4;
     }
 }
 
 // path: #/channels/statCycleManagement/publish/message
 message StatCycleManagementPublish {
     oneof payload {
-        StatCycleCreated variant0 = 1;
-        StatCycleUpdated variant1 = 2;
-        StatCycleReset variant2 = 3;
-        StatCycleDeleted variant3 = 4;
+        StatCycleCreatedMessage variant0 = 1;
+        StatCycleUpdatedMessage variant1 = 2;
+        StatCycleResetMessage variant2 = 3;
+        StatCycleDeletedMessage variant3 = 4;
     }
 }
 
 // path: #/channels/statisticCycle/publish/message
 message StatisticCyclePublish {
     oneof payload {
-        StatItemCycleCreated variant0 = 1;
-        StatItemCycleUpdated variant1 = 2;
+        StatItemCycleCreatedMessage variant0 = 1;
+        StatItemCycleUpdatedMessage variant1 = 2;
     }
 }
 

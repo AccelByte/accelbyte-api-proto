@@ -195,8 +195,8 @@ message OauthThirdPartyTokenGeneratedMessage {
 // path: #/channels/oauthToken/publish/message
 message OauthTokenPublish {
     oneof payload {
-        OauthTokenGenerated variant0 = 1;
-        OauthTokenRevoked variant1 = 2;
+        OauthTokenGeneratedMessage variant0 = 1;
+        OauthTokenRevokedMessage variant1 = 2;
     }
 }
 

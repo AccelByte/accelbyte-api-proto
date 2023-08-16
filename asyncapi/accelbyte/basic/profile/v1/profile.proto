@@ -196,11 +196,11 @@ message UserProfileUpdatedMessage {
 // path: #/channels/userProfile/publish/message
 message UserProfilePublish {
     oneof payload {
-        UserProfileCreated variant0 = 1;
-        UserProfileDeleted variant1 = 2;
-        UserProfileEnabled variant2 = 3;
-        UserProfileDisabled variant3 = 4;
-        UserProfileUpdated variant4 = 5;
+        UserProfileCreatedMessage variant0 = 1;
+        UserProfileDeletedMessage variant1 = 2;
+        UserProfileEnabledMessage variant2 = 3;
+        UserProfileDisabledMessage variant3 = 4;
+        UserProfileUpdatedMessage variant4 = 5;
     }
 }
 

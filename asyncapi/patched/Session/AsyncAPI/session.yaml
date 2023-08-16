@@ -117,7 +117,7 @@ components:
           payload:
             $ref: '#/components/schemas/notificationPayload'
     GameSessionJoinedEvent:
-      name: GameSessionInvitedEvent
+      name: GameSessionJoinedEvent
       payload:
         type: object
         allOf:

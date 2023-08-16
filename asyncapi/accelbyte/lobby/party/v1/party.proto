@@ -400,18 +400,18 @@ message PartyGetCodeMessage {
 // path: #/channels/party/publish/message
 message PartyPublish {
     oneof payload {
-        PartyCreated variant0 = 1;
-        PartyUserInvited variant1 = 2;
-        PartyUserJoined variant2 = 3;
-        PartyUserJoinFailed variant3 = 4;
-        PartyUserLeft variant4 = 5;
-        PartyUserKicked variant5 = 6;
-        PartyUserReject variant6 = 7;
-        PartyUserNewLeader variant7 = 8;
-        PartyDeleteCode variant8 = 9;
-        PartyJoinViaCode variant9 = 10;
-        PartyGenerateCode variant10 = 11;
-        PartyGetCode variant11 = 12;
+        PartyCreatedMessage variant0 = 1;
+        PartyUserInvitedMessage variant1 = 2;
+        PartyUserJoinedMessage variant2 = 3;
+        PartyUserJoinFailedMessage variant3 = 4;
+        PartyUserLeftMessage variant4 = 5;
+        PartyUserKickedMessage variant5 = 6;
+        PartyUserRejectMessage variant6 = 7;
+        PartyUserNewLeaderMessage variant7 = 8;
+        PartyDeleteCodeMessage variant8 = 9;
+        PartyJoinViaCodeMessage variant9 = 10;
+        PartyGenerateCodeMessage variant10 = 11;
+        PartyGetCodeMessage variant11 = 12;
     }
 }
 

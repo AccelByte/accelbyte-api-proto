@@ -410,27 +410,27 @@ message SlotConfigUpdatedMessage {
 // path: #/channels/namespaceSlotConfig/publish/message
 message NamespaceSlotConfigPublish {
     oneof payload {
-        NamespaceSlotConfigCreated variant0 = 1;
-        NamespaceSlotConfigDeleted variant1 = 2;
-        NamespaceSlotConfigUpdated variant2 = 3;
+        NamespaceSlotConfigCreatedMessage variant0 = 1;
+        NamespaceSlotConfigDeletedMessage variant1 = 2;
+        NamespaceSlotConfigUpdatedMessage variant2 = 3;
     }
 }
 
 // path: #/channels/slot/publish/message
 message SlotPublish {
     oneof payload {
-        SlotCreated variant0 = 1;
-        SlotDeleted variant1 = 2;
-        SlotUpdated variant2 = 3;
+        SlotCreatedMessage variant0 = 1;
+        SlotDeletedMessage variant1 = 2;
+        SlotUpdatedMessage variant2 = 3;
     }
 }
 
 // path: #/channels/slotConfig/publish/message
 message SlotConfigPublish {
     oneof payload {
-        SlotConfigCreated variant0 = 1;
-        SlotConfigDeleted variant1 = 2;
-        SlotConfigUpdated variant2 = 3;
+        SlotConfigCreatedMessage variant0 = 1;
+        SlotConfigDeletedMessage variant1 = 2;
+        SlotConfigUpdatedMessage variant2 = 3;
     }
 }
 

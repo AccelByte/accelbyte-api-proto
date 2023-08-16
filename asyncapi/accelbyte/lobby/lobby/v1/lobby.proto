@@ -153,10 +153,10 @@ message TotalUsersOnlinePublishedMessage {
 // path: #/channels/lobby/publish/message
 message LobbyPublish {
     oneof payload {
-        UserConnected variant0 = 1;
-        UserDisconnected variant1 = 2;
-        UserChatRateLimited variant2 = 3;
-        UserRateLimited variant3 = 4;
+        UserConnectedMessage variant0 = 1;
+        UserDisconnectedMessage variant1 = 2;
+        UserChatRateLimitedMessage variant2 = 3;
+        UserRateLimitedMessage variant3 = 4;
     }
 }
 

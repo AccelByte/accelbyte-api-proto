@@ -77,19 +77,6 @@ components:
               type: integer
             has_combination:
               type: boolean
-            alliances:
-              type: array
-              items:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                    min:
-                      type: integer
-                    max:
-                      type: integer
     matching_rule:
       type: object
       properties:

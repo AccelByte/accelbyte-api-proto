@@ -229,12 +229,12 @@ message WalledExpiredMessage {
 // path: #/channels/walletProcessing/publish/message
 message WalletProcessingPublish {
     oneof payload {
-        WalletDisabled variant0 = 1;
-        WalletEnabled variant1 = 2;
-        WalletCredited variant2 = 3;
-        WalletDebited variant3 = 4;
-        WalledPaid variant4 = 5;
-        WalledExpired variant5 = 6;
+        WalletDisabledMessage variant0 = 1;
+        WalletEnabledMessage variant1 = 2;
+        WalletCreditedMessage variant2 = 3;
+        WalletDebitedMessage variant3 = 4;
+        WalledPaidMessage variant4 = 5;
+        WalledExpiredMessage variant5 = 6;
     }
 }
 

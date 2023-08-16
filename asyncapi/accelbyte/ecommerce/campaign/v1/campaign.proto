@@ -456,22 +456,22 @@ message KeyUploadedMessage {
 // path: #/channels/campaignManagement/publish/message
 message CampaignManagementPublish {
     oneof payload {
-        CampaignCreated variant0 = 1;
-        CampaignUpdated variant1 = 2;
-        CodeCreated variant2 = 3;
-        CodeDisabled variant3 = 4;
-        CodeEnabled variant4 = 5;
-        CodeBulkDisabled variant5 = 6;
-        CodeBulkEnabled variant6 = 7;
+        CampaignCreatedMessage variant0 = 1;
+        CampaignUpdatedMessage variant1 = 2;
+        CodeCreatedMessage variant2 = 3;
+        CodeDisabledMessage variant3 = 4;
+        CodeEnabledMessage variant4 = 5;
+        CodeBulkDisabledMessage variant5 = 6;
+        CodeBulkEnabledMessage variant6 = 7;
     }
 }
 
 // path: #/channels/keyGroupManagement/publish/message
 message KeyGroupManagementPublish {
     oneof payload {
-        KeyGroupCreated variant0 = 1;
-        KeyGroupUpdated variant1 = 2;
-        KeyUploaded variant2 = 3;
+        KeyGroupCreatedMessage variant0 = 1;
+        KeyGroupUpdatedMessage variant1 = 2;
+        KeyUploadedMessage variant2 = 3;
     }
 }
 

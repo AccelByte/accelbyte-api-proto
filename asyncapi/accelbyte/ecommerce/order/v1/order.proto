@@ -401,18 +401,18 @@ message OrderExpiredMessage {
 // path: #/channels/orderProcessing/publish/message
 message OrderProcessingPublish {
     oneof payload {
-        OrderCreated variant0 = 1;
-        OrderCancelled variant1 = 2;
-        OrderFulfilled variant2 = 3;
-        OrderFulfillFailed variant3 = 4;
-        OrderCharged variant4 = 5;
-        OrderRefunded variant5 = 6;
-        OrderRefundRequested variant6 = 7;
-        OrderRefundFailed variant7 = 8;
-        OrderChargeback variant8 = 9;
-        OrderChargebackReversed variant9 = 10;
-        OrderExpired variant10 = 11;
-        OrderStatusUpdated variant11 = 12;
+        OrderCreatedMessage variant0 = 1;
+        OrderCancelledMessage variant1 = 2;
+        OrderFulfilledMessage variant2 = 3;
+        OrderFulfillFailedMessage variant3 = 4;
+        OrderChargedMessage variant4 = 5;
+        OrderRefundedMessage variant5 = 6;
+        OrderRefundRequestedMessage variant6 = 7;
+        OrderRefundFailedMessage variant7 = 8;
+        OrderChargebackMessage variant8 = 9;
+        OrderChargebackReversedMessage variant9 = 10;
+        OrderExpiredMessage variant10 = 11;
+        OrderStatusUpdatedMessage variant11 = 12;
     }
 }
 
