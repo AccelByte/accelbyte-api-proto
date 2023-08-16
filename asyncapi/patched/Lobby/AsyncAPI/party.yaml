@@ -20,6 +20,10 @@ channels:
         - $ref: '#/components/messages/partyJoinViaCode'
         - $ref: '#/components/messages/partyGenerateCode'
         - $ref: '#/components/messages/partyGetCode'
+  partyChat:
+    publish:
+      message:
+        $ref: '#/components/messages/partyChatSent'
 components:
   schemas:
     event:

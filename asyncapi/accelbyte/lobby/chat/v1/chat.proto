@@ -98,14 +98,3 @@ message PartyChatSentMessage {
 
 
 // --- service ---
-
-
-// Publishes a message to the Personal Chat channel. (personalChat PersonalChatSent)
-service PersonalChatPersonalChatSentService {
-    rpc OnMessage(PersonalChatSent) returns (google.protobuf.Empty);
-}
-
-// Publishes a message to the Party Chat channel. (partyChat PartyChatSent)
-service PartyChatPartyChatSentService {
-    rpc OnMessage(PartyChatSent) returns (google.protobuf.Empty);
-}
