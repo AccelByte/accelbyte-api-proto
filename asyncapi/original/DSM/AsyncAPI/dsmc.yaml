@@ -121,6 +121,8 @@ components:
           description: server IP address
         is_override_game_version:
           type: boolean
+        is_core_dump_enabled:
+          type: boolean
         job_id:
           type: string
           description: job id
@@ -164,6 +166,9 @@ components:
             - 'UNREACHABLE'
             - 'FAILED'
           description: server status
+        artifact_path:
+          type: string
+          description: artifact path. Not empty if provided by the image config.
         status_history:
           type: array
           items:
