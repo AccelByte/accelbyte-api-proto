@@ -255,6 +255,12 @@ components:
             $ref: '#/components/schemas/partyMemberV1'
             partyId:
               type: string
+        ticketId:
+          type: string
+        ticketIds:
+          type: array
+          items:
+            type: string
 
     MatchmakingRequest:
       type: object

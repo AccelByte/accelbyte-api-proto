@@ -138,6 +138,8 @@ message LobbyMatchmaking {
     string namespace = 4;
     string gameMode = 5;
     repeated PartyMemberV1 matchingParties = 6;
+    string ticketId = 7;
+    repeated string ticketIds = 8;
 }
 
 // path: #/components/schemas/MatchmakingRequest/properties/party_attributes
