@@ -29,6 +29,8 @@ channels:
         - $ref: '#/components/messages/userLoggedIn'
         - $ref: '#/components/messages/userLoggedOut'
         - $ref: '#/components/messages/userThirdPartyLoggedIn'
+        - $ref: '#/components/messages/userLoginFailed'
+        - $ref: '#/components/messages/userThirdPartyLoginFailed'
   userInformation:
     publish:
       message:
@@ -138,6 +140,25 @@ components:
         refresh:
           type: boolean
           description: a flag indicates this is a refresh token grant or not
+    userAuthenticationFailed:
+      type: object
+      properties:
+        category:
+          type: string
+          description: login failed category
+        clientName:
+          type: string
+          description: login OAuth client's name
+        country:
+          type: string
+          description: login failed user country
+        detail:
+          type: string
+          description: login failed error detail
+        platform:
+          type: string
+          description: login platform, third platform(eg:steam, psn) or justice if
+            it is not a headless login
     userAccount:
       type: object
       properties:
@@ -147,6 +168,9 @@ components:
         emailAddress:
           type: string
           description: email address
+        userName:
+          type: string
+          description: user name
         country:
           type: string
           description: country
@@ -691,6 +715,36 @@ components:
                 $ref: '#/components/schemas/userAccount'
               userAuthentication:
                 $ref: '#/components/schemas/userAuthentication'
+    userLoginFailed:
+      name: userLoginFailed
+      description: message is sent when user login failed
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userAccount:
+                $ref: '#/components/schemas/userAccount'
+              userAuthenticationFailed:
+                $ref: '#/components/schemas/userAuthenticationFailed'
+    userThirdPartyLoginFailed:
+      name: userThirdPartyLoginFailed
+      description: message is sent when user login platform failed
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userAccount:
+                $ref: '#/components/schemas/userAccount'
+              userAuthenticationFailed:
+                $ref: '#/components/schemas/userAuthenticationFailed'
     userInformationCreated:
       name: userInformationCreated
       description: message is sent when user account is created
