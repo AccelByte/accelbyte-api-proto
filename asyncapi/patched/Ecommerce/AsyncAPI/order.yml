@@ -76,6 +76,30 @@ components:
           type: integer
           format: int32
           description: decimals
+    orderBundleItemInfo:
+      type: object
+      properties:
+        price:
+          type: integer
+          description: current available price per item
+        discountedPrice:
+          type: integer
+          description: current available discounted price per item
+        itemName:
+          type: string
+          description: item name
+        itemId:
+          type: string
+          description: item id
+        itemSku:
+          type: string
+          description: item sku
+        quantity:
+          type: integer
+          description: quantity
+        purchased:
+          type: boolean
+          description: whether this item has been purchased in this order
     order:
       type: object
       properties:
@@ -131,6 +155,12 @@ components:
         previousStatus:
           type: string
           description: Order status before action
+        orderBundleItemInfos:
+          type: array
+          description: flexible bundle item price details for order, included ownership
+            info
+          itemInfoList:
+            $ref: '#/components/schemas/orderBundleItemInfo'
   messages:
     orderCreated:
       name: orderCreated

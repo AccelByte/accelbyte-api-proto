@@ -178,6 +178,7 @@ message Item {
     string updatedAt = 37;
     AnonymousSchema9 purchaseCondition = 38;
     AnonymousSchema10 optionBoxConfig = 39;
+    bool flexible = 40;
 }
 
 // path: #/components/schemas/slide

@@ -382,6 +382,9 @@ components:
           description: option box configurations
           optionBoxConfig:
             $ref: '#/components/schemas/optionBoxConfig'
+        flexible:
+          type: boolean
+          description: whether flexible pricing applied, only applied if itemType is BUNDLE
 
     slide:
       type: object
