@@ -162,7 +162,7 @@ components:
         orderBundleItemInfos:
           type: array
           description: flexible bundle item price details for order, included ownership info
-          itemInfoList:
+          items:
             $ref: '#/components/schemas/orderBundleItemInfo'
 
   messages:

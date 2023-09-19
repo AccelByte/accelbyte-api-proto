@@ -1,0 +1,493 @@
+// Copyright (c) 2023 AccelByte Inc. All Rights Reserved.
+// This is licensed software from AccelByte Inc, for limitations
+// and restrictions contact your company contract manager.
+
+// source: Ecommerce/AsyncAPI/order.yml (0.0.1)
+
+syntax = "proto3";
+
+package accelbyte.ecommerce.order.v1;
+// Version v1.0.0
+
+// --- imports ---
+
+import "google/protobuf/empty.proto";
+
+
+// --- options ---
+
+option csharp_namespace = "AccelByte.Ecommerce.Order";
+option go_package = "accelbyte.net/ecommerce/order";
+option java_multiple_files = true;
+option java_package = "net.accelbyte.ecommerce.order";
+
+// --- schema objects ---
+
+// path: #/components/schemas/event
+message Event {
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+}
+
+// path: #/components/schemas/currencySummary
+message CurrencySummary {
+    string currencyCode = 1;
+    string currencySymbol = 2;
+    // Allowed values: REAL, VIRTUAL
+    string currencyType = 3;
+    string namespace = 4;
+    int32 decimals = 5;
+}
+
+// path: #/components/schemas/orderBundleItemInfo
+message OrderBundleItemInfo {
+    int64 price = 1;
+    int64 discountedPrice = 2;
+    string itemName = 3;
+    string itemId = 4;
+    string itemSku = 5;
+    int64 quantity = 6;
+    bool purchased = 7;
+}
+
+// path: #/components/schemas/order
+message Order {
+    string orderNo = 1;
+    string paymentOrderNo = 2;
+    string namespace = 3;
+    string userId = 4;
+    string itemId = 5;
+    string itemName = 6;
+    bool sandbox = 7;
+    int32 quantity = 8;
+    int32 price = 9;
+    int32 discountedPrice = 10;
+    string paymentProvider = 11;
+    CurrencySummary currency = 12;
+    string region = 13;
+    string language = 14;
+    string status = 15;
+    string statusReason = 16;
+    string previousStatus = 17;
+    repeated OrderBundleItemInfo orderBundleItemInfos = 18;
+}
+
+// path: #/components/messages/orderCreated/payload/properties/payload
+message AnonymousSchema1 {
+    Order order = 1;
+}
+
+// path: #/components/messages/orderCreated/payload
+message OrderCreated {
+    AnonymousSchema1 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/orderCancelled/payload/properties/payload
+message AnonymousSchema2 {
+    Order order = 1;
+}
+
+// path: #/components/messages/orderCancelled/payload
+message OrderCancelled {
+    AnonymousSchema2 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/orderRefundRequested/payload/properties/payload
+message AnonymousSchema3 {
+    Order order = 1;
+}
+
+// path: #/components/messages/orderRefundRequested/payload
+message OrderRefundRequested {
+    AnonymousSchema3 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/orderStatusUpdated/payload/properties/payload
+message AnonymousSchema4 {
+    Order order = 1;
+}
+
+// path: #/components/messages/orderStatusUpdated/payload
+message OrderStatusUpdated {
+    AnonymousSchema4 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/orderFulfilled/payload/properties/payload
+message AnonymousSchema5 {
+    Order order = 1;
+}
+
+// path: #/components/messages/orderFulfilled/payload
+message OrderFulfilled {
+    AnonymousSchema5 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/orderFulfillFailed/payload/properties/payload
+message AnonymousSchema6 {
+    Order order = 1;
+}
+
+// path: #/components/messages/orderFulfillFailed/payload
+message OrderFulfillFailed {
+    AnonymousSchema6 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/orderCharged/payload/properties/payload
+message AnonymousSchema7 {
+    Order order = 1;
+}
+
+// path: #/components/messages/orderCharged/payload
+message OrderCharged {
+    AnonymousSchema7 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/orderRefunded/payload/properties/payload
+message AnonymousSchema8 {
+    Order order = 1;
+}
+
+// path: #/components/messages/orderRefunded/payload
+message OrderRefunded {
+    AnonymousSchema8 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/orderRefundFailed/payload/properties/payload
+message AnonymousSchema9 {
+    Order order = 1;
+}
+
+// path: #/components/messages/orderRefundFailed/payload
+message OrderRefundFailed {
+    AnonymousSchema9 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/orderChargeback/payload/properties/payload
+message AnonymousSchema10 {
+    Order order = 1;
+}
+
+// path: #/components/messages/orderChargeback/payload
+message OrderChargeback {
+    AnonymousSchema10 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/orderChargebackReversed/payload/properties/payload
+message AnonymousSchema11 {
+    Order order = 1;
+}
+
+// path: #/components/messages/orderChargebackReversed/payload
+message OrderChargebackReversed {
+    AnonymousSchema11 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/orderExpired/payload/properties/payload
+message AnonymousSchema12 {
+    Order order = 1;
+}
+
+// path: #/components/messages/orderExpired/payload
+message OrderExpired {
+    AnonymousSchema12 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+
+// --- #/components/messages/{message_name} ---
+
+// path: #/components/messages/orderCreated
+message OrderCreatedMessage {
+    OrderCreated payload = 1;
+}
+
+// path: #/components/messages/orderCancelled
+message OrderCancelledMessage {
+    OrderCancelled payload = 1;
+}
+
+// path: #/components/messages/orderRefundRequested
+message OrderRefundRequestedMessage {
+    OrderRefundRequested payload = 1;
+}
+
+// path: #/components/messages/orderStatusUpdated
+message OrderStatusUpdatedMessage {
+    OrderStatusUpdated payload = 1;
+}
+
+// path: #/components/messages/orderFulfilled
+message OrderFulfilledMessage {
+    OrderFulfilled payload = 1;
+}
+
+// path: #/components/messages/orderFulfillFailed
+message OrderFulfillFailedMessage {
+    OrderFulfillFailed payload = 1;
+}
+
+// path: #/components/messages/orderCharged
+message OrderChargedMessage {
+    OrderCharged payload = 1;
+}
+
+// path: #/components/messages/orderRefunded
+message OrderRefundedMessage {
+    OrderRefunded payload = 1;
+}
+
+// path: #/components/messages/orderRefundFailed
+message OrderRefundFailedMessage {
+    OrderRefundFailed payload = 1;
+}
+
+// path: #/components/messages/orderChargeback
+message OrderChargebackMessage {
+    OrderChargeback payload = 1;
+}
+
+// path: #/components/messages/orderChargebackReversed
+message OrderChargebackReversedMessage {
+    OrderChargebackReversed payload = 1;
+}
+
+// path: #/components/messages/orderExpired
+message OrderExpiredMessage {
+    OrderExpired payload = 1;
+}
+
+
+// --- #/channels/{channel_name}/{operation_type}/message ---
+
+// path: #/channels/orderProcessing/publish/message
+message OrderProcessingPublish {
+    oneof payload {
+        OrderCreatedMessage variant0 = 1;
+        OrderCancelledMessage variant1 = 2;
+        OrderFulfilledMessage variant2 = 3;
+        OrderFulfillFailedMessage variant3 = 4;
+        OrderChargedMessage variant4 = 5;
+        OrderRefundedMessage variant5 = 6;
+        OrderRefundRequestedMessage variant6 = 7;
+        OrderRefundFailedMessage variant7 = 8;
+        OrderChargebackMessage variant8 = 9;
+        OrderChargebackReversedMessage variant9 = 10;
+        OrderExpiredMessage variant10 = 11;
+        OrderStatusUpdatedMessage variant11 = 12;
+    }
+}
+
+
+// --- service ---
+
+
+// Publishes a OrderCreated to the Order Processing channel. (oneOf variant) (orderProcessing OrderCreated)
+service OrderProcessingOrderCreatedService {
+    rpc OnMessage(OrderCreated) returns (google.protobuf.Empty);
+}
+
+// Publishes a OrderCancelled to the Order Processing channel. (oneOf variant) (orderProcessing OrderCancelled)
+service OrderProcessingOrderCancelledService {
+    rpc OnMessage(OrderCancelled) returns (google.protobuf.Empty);
+}
+
+// Publishes a OrderFulfilled to the Order Processing channel. (oneOf variant) (orderProcessing OrderFulfilled)
+service OrderProcessingOrderFulfilledService {
+    rpc OnMessage(OrderFulfilled) returns (google.protobuf.Empty);
+}
+
+// Publishes a OrderFulfillFailed to the Order Processing channel. (oneOf variant) (orderProcessing OrderFulfillFailed)
+service OrderProcessingOrderFulfillFailedService {
+    rpc OnMessage(OrderFulfillFailed) returns (google.protobuf.Empty);
+}
+
+// Publishes a OrderCharged to the Order Processing channel. (oneOf variant) (orderProcessing OrderCharged)
+service OrderProcessingOrderChargedService {
+    rpc OnMessage(OrderCharged) returns (google.protobuf.Empty);
+}
+
+// Publishes a OrderRefunded to the Order Processing channel. (oneOf variant) (orderProcessing OrderRefunded)
+service OrderProcessingOrderRefundedService {
+    rpc OnMessage(OrderRefunded) returns (google.protobuf.Empty);
+}
+
+// Publishes a OrderRefundRequested to the Order Processing channel. (oneOf variant) (orderProcessing OrderRefundRequested)
+service OrderProcessingOrderRefundRequestedService {
+    rpc OnMessage(OrderRefundRequested) returns (google.protobuf.Empty);
+}
+
+// Publishes a OrderRefundFailed to the Order Processing channel. (oneOf variant) (orderProcessing OrderRefundFailed)
+service OrderProcessingOrderRefundFailedService {
+    rpc OnMessage(OrderRefundFailed) returns (google.protobuf.Empty);
+}
+
+// Publishes a OrderChargeback to the Order Processing channel. (oneOf variant) (orderProcessing OrderChargeback)
+service OrderProcessingOrderChargebackService {
+    rpc OnMessage(OrderChargeback) returns (google.protobuf.Empty);
+}
+
+// Publishes a OrderChargebackReversed to the Order Processing channel. (oneOf variant) (orderProcessing OrderChargebackReversed)
+service OrderProcessingOrderChargebackReversedService {
+    rpc OnMessage(OrderChargebackReversed) returns (google.protobuf.Empty);
+}
+
+// Publishes a OrderExpired to the Order Processing channel. (oneOf variant) (orderProcessing OrderExpired)
+service OrderProcessingOrderExpiredService {
+    rpc OnMessage(OrderExpired) returns (google.protobuf.Empty);
+}
+
+// Publishes a OrderStatusUpdated to the Order Processing channel. (oneOf variant) (orderProcessing OrderStatusUpdated)
+service OrderProcessingOrderStatusUpdatedService {
+    rpc OnMessage(OrderStatusUpdated) returns (google.protobuf.Empty);
+}

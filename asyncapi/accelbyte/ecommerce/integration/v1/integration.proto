@@ -23,6 +23,23 @@ option java_package = "net.accelbyte.ecommerce.integration";
 
 // --- schema objects ---
 
+// path: #/components/schemas/dlc
+message Dlc {
+    string dlcId = 1;
+    string namespace = 2;
+    string obtainedAt = 3;
+    // Allowed values: EPICGAMES, OCULUS, PSN, STEAM, XBOX
+    string platform = 4;
+    string revokedAt = 5;
+    repeated string sources = 6;
+    // Allowed values: FULFILLED, REVOKED, REVOKE_FAILED
+    string status = 7;
+    string thirdPartyId = 8;
+    string transactionId = 9;
+    string userId = 10;
+    int64 version = 11;
+}
+
 // path: #/components/schemas/event
 message Event {
     string id = 1;
@@ -64,6 +81,28 @@ message AnonymousSchema1 {
 // path: #/components/messages/iapProcessed/payload
 message IapProcessed {
     AnonymousSchema1 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/dlcSynced/payload/properties/payload
+message AnonymousSchema2 {
+    Dlc dlc = 1;
+}
+
+// path: #/components/messages/dlcSynced/payload
+message DlcSynced {
+    AnonymousSchema2 payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -176,6 +215,11 @@ message IapProcessedMessage {
     IapProcessed payload = 1;
 }
 
+// path: #/components/messages/dlcSynced
+message DlcSyncedMessage {
+    DlcSynced payload = 1;
+}
+
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
@@ -206,6 +250,11 @@ message IapConfigManagementPublish {
 
 // --- service ---
 
+
+// Publishes a message to the Dlc Sync channel. (dlcSync DlcSynced)
+service DlcSyncDlcSyncedService {
+    rpc OnMessage(DlcSynced) returns (google.protobuf.Empty);
+}
 
 // Publishes a Event to the Iap Config Management channel. (oneOf variant) (iapConfigManagement AppleIAPConfigDeleted)
 service IapConfigManagementAppleIAPConfigDeletedService {

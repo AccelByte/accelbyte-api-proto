@@ -5,6 +5,10 @@ info:
   version: 0.0.1
 defaultContentType: application/json
 channels:
+  dlcSync:
+    publish:
+      message:
+        $ref: '#/components/messages/dlcSynced'
   iapConfigManagement:
     publish:
       message:
@@ -33,6 +37,59 @@ channels:
         $ref: '#/components/messages/iapProcessed'
 components:
   schemas:
+    dlc:
+      type: object
+      properties:
+        dlcId:
+          type: string
+          description: accelbyte dlc id
+        namespace:
+          type: string
+          description: namespace
+        obtainedAt:
+          type: string
+          format: date-time
+          description: time when the dlc is obtained
+        platform:
+          type: string
+          enum:
+          - EPICGAMES
+          - OCULUS
+          - PSN
+          - STEAM
+          - XBOX
+          description: dlc platform
+        revokedAt:
+          type: string
+          format: date-time
+          description: time when the dlc is revoked
+        sources:
+          type: array
+          items:
+            type: string
+          description: service labels for PSN
+        status:
+          type: string
+          enum:
+          - FULFILLED
+          - REVOKED
+          - REVOKE_FAILED
+          description: dlc status
+        thirdPartyId:
+          type: string
+          description: third party (see 'platform') product id
+        transactionId:
+          type: string
+          description: accelbyte transaction id
+        userId:
+          type: string
+          description: accelbyte user id
+        version:
+          type: integer
+          enum:
+          - 0
+          - 1
+          description: dlc version
     event:
       type: object
       properties:
@@ -223,6 +280,19 @@ components:
             properties:
               iap:
                 $ref: '#/components/schemas/iap'
+    dlcSynced:
+      name: dlcSynced
+      description: message is sent when a user's dlc is fulfilled or revoked
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              dlc:
+                $ref: '#/components/schemas/dlc'
 x-source: Ecommerce/AsyncAPI/integration.yml
 x-proto-package: accelbyte.ecommerce.integration.v1
 x-proto-package-version: v1.0.0
