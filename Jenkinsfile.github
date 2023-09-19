@@ -19,12 +19,40 @@ pipeline {
       }
     }
     stage('Push') {
+      when {
+        expression { 
+          return params.ACTION == 'PUSH'
+        }
+      }
       steps {
         script {
           sh "git checkout master"
           sshagent(credentials: [githubSsh])
           {
             sh "git push ${githubUrl} HEAD:main"
+          }
+        }
+      }
+    }
+    stage('Release') {
+      when {
+        expression { 
+          return params.ACTION == 'PUSH+RELEASE'
+        }
+      }
+      steps {
+        script {
+          sh "git checkout ${params.RELEASE_BRANCH}"
+          sshagent(credentials: [githubSsh])
+          {
+            if (params.RELEASE_BRANCH == "master") {
+              sh "git push ${githubUrl} HEAD:main"
+            }
+            else {
+              sh "git push ${githubUrl} HEAD:${params.RELEASE_BRANCH}"
+            }
+            sh "git push ${githubUrl} ${params.RELEASE_TAG}"
+            
           }
         }
       }
@@ -36,7 +64,8 @@ pipeline {
         message = """
             :no_entry: <${env.BUILD_URL}|${env.JOB_NAME}-${env.BUILD_NUMBER}> *failed*
             
-            |*Action*: Nightly github sync
+            |*Action*
+            |${params.ACTION}
             
             |""".stripMargin()
         slackSend(channel: "#activity-extend-engineering", color: '#FF0000', message: message)
