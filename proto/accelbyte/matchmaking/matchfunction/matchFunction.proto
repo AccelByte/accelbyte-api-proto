@@ -21,6 +21,7 @@ service MatchFunction {
   rpc EnrichTicket(EnrichTicketRequest) returns (EnrichTicketResponse);
   rpc MakeMatches(stream MakeMatchesRequest) returns (stream MatchResponse);
   rpc BackfillMatches(stream BackfillMakeMatchesRequest) returns (stream BackfillResponse);
+  rpc GetBestMatchRegion(GetBestMatchRegionRequest) returns (RegionResponse);
 }
 
 // GetStatCodes
@@ -157,4 +158,13 @@ message BackfillTicket {
   google.protobuf.Timestamp   CreatedAt = 3;
   PartialMatch partial_match = 4;
   string match_session_id = 5;
+}
+
+// GetBestMatchRegion
+message GetBestMatchRegionRequest {
+  repeated Ticket tickets = 1;
+}
+
+message RegionResponse {
+  repeated string region = 1;
 }
