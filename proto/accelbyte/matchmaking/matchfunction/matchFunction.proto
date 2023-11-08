@@ -90,6 +90,13 @@ message Match {
   bool backfill = 5;
   string server_name = 6;
   string client_version = 7;
+  ServerPool server_pool = 8;
+}
+
+message ServerPool {
+  string server_provider = 1;
+  string deployment = 2;
+  repeated string claim_keys = 3;
 }
 
 message Ticket {
