@@ -54,13 +54,13 @@ components:
         lastName:
           type: string
           description: last name
-        avatarSmallUrl:
+        avatarUrlSmall:
           type: string
           description: avatar small url
         avatarUrl:
           type: string
           description: avatar url
-        avatarLargeUrl:
+        avatarUrlLarge:
           type: string
           description: avatar large url
         language:
@@ -90,10 +90,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userProfile:
-                $ref: '#/components/schemas/userProfile'
+            $ref: '#/components/schemas/userProfile'
 
     userProfileDeleted:
       name: userProfileDeleted
@@ -104,10 +101,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userProfile:
-                $ref: '#/components/schemas/userProfile'
+            $ref: '#/components/schemas/userProfile'
 
     userProfileEnabled:
       name: userProfileEnabled
@@ -118,10 +112,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userProfile:
-                $ref: '#/components/schemas/userProfile'
+            $ref: '#/components/schemas/userProfile'
 
     userProfileDisabled:
       name: userProfileDisabled
@@ -132,10 +123,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userProfile:
-                $ref: '#/components/schemas/userProfile'
+            $ref: '#/components/schemas/userProfile'
 
     userProfileUpdated:
       name: userProfileUpdated
@@ -146,7 +134,4 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userProfile:
-                $ref: '#/components/schemas/userProfile'
+            $ref: '#/components/schemas/userProfile'

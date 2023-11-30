@@ -42,9 +42,9 @@ message UserProfile {
     string userId = 1;
     string firstName = 2;
     string lastName = 3;
-    string avatarSmallUrl = 4;
+    string avatarUrlSmall = 4;
     string avatarUrl = 5;
-    string avatarLargeUrl = 6;
+    string avatarUrlLarge = 6;
     string language = 7;
     string timeZone = 8;
     string dateOfBirth = 9;
@@ -52,14 +52,9 @@ message UserProfile {
     string zipCode = 11;
 }
 
-// path: #/components/messages/userProfileCreated/payload/properties/payload
-message AnonymousSchema1 {
-    UserProfile userProfile = 1;
-}
-
 // path: #/components/messages/userProfileCreated/payload
 message UserProfileCreated {
-    AnonymousSchema1 payload = 1;
+    UserProfile payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -72,16 +67,11 @@ message UserProfileCreated {
     string userId = 9;
     string traceId = 10;
     string sessionId = 11;
-}
-
-// path: #/components/messages/userProfileDeleted/payload/properties/payload
-message AnonymousSchema2 {
-    UserProfile userProfile = 1;
 }
 
 // path: #/components/messages/userProfileDeleted/payload
 message UserProfileDeleted {
-    AnonymousSchema2 payload = 1;
+    UserProfile payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -94,16 +84,11 @@ message UserProfileDeleted {
     string userId = 9;
     string traceId = 10;
     string sessionId = 11;
-}
-
-// path: #/components/messages/userProfileEnabled/payload/properties/payload
-message AnonymousSchema3 {
-    UserProfile userProfile = 1;
 }
 
 // path: #/components/messages/userProfileEnabled/payload
 message UserProfileEnabled {
-    AnonymousSchema3 payload = 1;
+    UserProfile payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -116,16 +101,11 @@ message UserProfileEnabled {
     string userId = 9;
     string traceId = 10;
     string sessionId = 11;
-}
-
-// path: #/components/messages/userProfileDisabled/payload/properties/payload
-message AnonymousSchema4 {
-    UserProfile userProfile = 1;
 }
 
 // path: #/components/messages/userProfileDisabled/payload
 message UserProfileDisabled {
-    AnonymousSchema4 payload = 1;
+    UserProfile payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -140,14 +120,9 @@ message UserProfileDisabled {
     string sessionId = 11;
 }
 
-// path: #/components/messages/userProfileUpdated/payload/properties/payload
-message AnonymousSchema5 {
-    UserProfile userProfile = 1;
-}
-
 // path: #/components/messages/userProfileUpdated/payload
 message UserProfileUpdated {
-    AnonymousSchema5 payload = 1;
+    UserProfile payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;

@@ -51,13 +51,13 @@ components:
         lastName:
           type: string
           description: last name
-        avatarSmallUrl:
+        avatarUrlSmall:
           type: string
           description: avatar small url
         avatarUrl:
           type: string
           description: avatar url
-        avatarLargeUrl:
+        avatarUrlLarge:
           type: string
           description: avatar large url
         language:
@@ -86,10 +86,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userProfile:
-                $ref: '#/components/schemas/userProfile'
+            $ref: '#/components/schemas/userProfile'
     userProfileDeleted:
       name: userProfileDeleted
       description: message is sent when user profile is deleted
@@ -99,10 +96,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userProfile:
-                $ref: '#/components/schemas/userProfile'
+            $ref: '#/components/schemas/userProfile'
     userProfileEnabled:
       name: userProfileEnabled
       description: message is sent when user profile is enabled
@@ -112,10 +106,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userProfile:
-                $ref: '#/components/schemas/userProfile'
+            $ref: '#/components/schemas/userProfile'
     userProfileDisabled:
       name: userProfileDisabled
       description: message is sent when user profile is disabled
@@ -125,10 +116,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userProfile:
-                $ref: '#/components/schemas/userProfile'
+            $ref: '#/components/schemas/userProfile'
     userProfileUpdated:
       name: userProfileUpdated
       description: message is sent when user profile is updated
@@ -138,10 +126,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userProfile:
-                $ref: '#/components/schemas/userProfile'
+            $ref: '#/components/schemas/userProfile'
 x-source: Basic/AsyncAPI/profile.yaml
 x-proto-package: accelbyte.basic.profile.v1
 x-proto-package-version: v1.0.0
