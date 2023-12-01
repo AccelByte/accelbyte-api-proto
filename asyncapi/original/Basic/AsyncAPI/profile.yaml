@@ -72,7 +72,7 @@ components:
         dateOfBirth:
           type: string
           format: date
-          description: user birghday
+          description: date of birth
         status:
           type: boolean
           description: status
