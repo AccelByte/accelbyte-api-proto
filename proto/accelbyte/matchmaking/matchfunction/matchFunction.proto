@@ -138,6 +138,7 @@ message BackfillMakeMatchesRequest {
   oneof request_type {
     MakeMatchesParameters parameters = 1;
     BackfillTicket backfill_ticket = 2;
+    Ticket ticket = 3;
   }
 }
 
