@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package accelbyte.platform.revocation.v1;
-// Version v1.0.0
+// Version v1.1.0
 
 option csharp_namespace = "AccelByte.Platform.Revocation.V1";
 option go_package = "accelbyte.net/platform/revocation_v1";
