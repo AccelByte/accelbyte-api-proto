@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package accelbyte.platform.revocation.v1;
-// Version v1.0.0
+// Version v1.1.0
 
 option csharp_namespace = "AccelByte.Platform.Revocation.V1";
 option go_package = "accelbyte.net/platform/revocation_v1";
@@ -50,6 +50,7 @@ message RevokeItemObject {
   string itemType        = 3;
   int32  useCount        = 4;
   string entitlementType = 5;
+  string origin          = 6; // Playstation, Xbox, Steam, Epic, IOS, GooglePlay, Twitch, Nintendo, System, Other
 }
 
 message RevokeEntitlementObject {
