@@ -22,6 +22,7 @@ channels:
         - $ref: '#/components/messages/userAccountUpgraded'
         - $ref: '#/components/messages/gameUserAccountCreated'
         - $ref: '#/components/messages/thirdPartyAccountCreated'
+        - $ref: '#/components/messages/userAccountTypeChanged'
   userAuthentication:
     publish:
       message:
@@ -40,6 +41,7 @@ channels:
         - $ref: '#/components/messages/userInformationCountryUpdated'
         - $ref: '#/components/messages/userInformationLanguageUpdated'
         - $ref: '#/components/messages/userInformationDateOfBirthUpdated'
+        - $ref: '#/components/messages/userInformationUsernameUpdated'
   userPermissions:
     publish:
       message:
@@ -177,6 +179,28 @@ components:
         namespace:
           type: string
           description: namespace
+    userTestAccount:
+      type: object
+      properties:
+        userId:
+          type: string
+          description: user id
+        emailAddress:
+          type: string
+          description: email address
+        userName:
+          type: string
+          description: user name
+        country:
+          type: string
+          description: country
+        namespace:
+          type: string
+          description: namespace
+        testAccount:
+          type: boolean
+          description: a flag to indicates the user is a test account. this field
+            will be omitted if its a real account
     userGameAccount:
       type: object
       properties:
@@ -192,6 +216,10 @@ components:
         country:
           type: string
           description: user country
+        testAccount:
+          type: boolean
+          description: a flag to indicates the user is a test account. this field
+            will be omitted if its a real account
     userAccountStatus:
       type: object
       properties:
@@ -305,6 +333,10 @@ components:
         country:
           type: string
           description: country
+        testAccount:
+          type: boolean
+          description: a flag to indicates the user is a test account. this field
+            will be omitted if its a real account
     userFeatureBan:
       type: object
       properties:
@@ -366,6 +398,10 @@ components:
         emailAddress:
           type: string
           description: email address
+        testAccount:
+          type: boolean
+          description: a flag to indicates the user is a test account. this field
+            will be omitted if its a real account
     userAccountUnlink:
       type: object
       properties:
@@ -381,6 +417,10 @@ components:
         targetUserId:
           type: string
           description: target user id in target namespace
+        testAccount:
+          type: boolean
+          description: a flag to indicates the user is a test account. this field
+            will be omitted if its a real account
     userAccountUpgrade:
       type: object
       properties:
@@ -396,6 +436,23 @@ components:
         namespace:
           type: string
           description: namespace
+        testAccount:
+          type: boolean
+          description: a flag to indicates the user is a test account. this field
+            will be omitted if its a real account
+    userAccountTypeChange:
+      type: object
+      properties:
+        userId:
+          type: string
+          description: user id
+        namespace:
+          type: string
+          description: namespace
+        testAccount:
+          type: boolean
+          description: a flag to indicates the user is a test account. this field
+            will be omitted if its a real account
   messages:
     userAccountCreated:
       name: userAccountCreated
@@ -409,7 +466,7 @@ components:
             type: object
             properties:
               userAccount:
-                $ref: '#/components/schemas/userAccount'
+                $ref: '#/components/schemas/userTestAccount'
               userAccountStatus:
                 $ref: '#/components/schemas/userAccountStatus'
               namespace:
@@ -430,7 +487,7 @@ components:
             type: object
             properties:
               userAccount:
-                $ref: '#/components/schemas/userAccount'
+                $ref: '#/components/schemas/userTestAccount'
               userAccountStatus:
                 $ref: '#/components/schemas/userAccountStatus'
               namespace:
@@ -494,7 +551,7 @@ components:
             type: object
             properties:
               userAccount:
-                $ref: '#/components/schemas/userAccount'
+                $ref: '#/components/schemas/userTestAccount'
               userAccountStatus:
                 $ref: '#/components/schemas/userAccountStatus'
               namespace:
@@ -515,7 +572,7 @@ components:
             type: object
             properties:
               userAccount:
-                $ref: '#/components/schemas/userAccount'
+                $ref: '#/components/schemas/userTestAccount'
               userAccountStatus:
                 $ref: '#/components/schemas/userAccountStatus'
               namespace:
@@ -536,7 +593,7 @@ components:
             type: object
             properties:
               userAccount:
-                $ref: '#/components/schemas/userAccount'
+                $ref: '#/components/schemas/userTestAccount'
               userAccountBan:
                 $ref: '#/components/schemas/userAccountBan'
     userAccountUnbanned:
@@ -551,7 +608,7 @@ components:
             type: object
             properties:
               userAccount:
-                $ref: '#/components/schemas/userAccount'
+                $ref: '#/components/schemas/userTestAccount'
               userAccountBan:
                 $ref: '#/components/schemas/userAccountBan'
     userAccountVerified:
@@ -670,6 +727,19 @@ components:
               userId:
                 type: string
                 description: publisher user id
+    userAccountTypeChanged:
+      name: userAccountTypeChanged
+      description: message is sent when user's account type is changed
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userAccount:
+                $ref: '#/components/schemas/userAccountTypeChange'
     userLoggedIn:
       name: userLoggedIn
       description: message is sent when user login
@@ -757,7 +827,7 @@ components:
             type: object
             properties:
               userAccount:
-                $ref: '#/components/schemas/userAccount'
+                $ref: '#/components/schemas/userTestAccount'
               userInformation:
                 $ref: '#/components/schemas/userInformation'
     userInformationDisplayNameUpdated:
@@ -772,7 +842,7 @@ components:
             type: object
             properties:
               userAccount:
-                $ref: '#/components/schemas/userAccount'
+                $ref: '#/components/schemas/userTestAccount'
               userInformation:
                 $ref: '#/components/schemas/userInformation'
     userInformationCountryUpdated:
@@ -787,7 +857,7 @@ components:
             type: object
             properties:
               userAccount:
-                $ref: '#/components/schemas/userAccount'
+                $ref: '#/components/schemas/userTestAccount'
               userInformation:
                 $ref: '#/components/schemas/userInformation'
     userInformationLanguageUpdated:
@@ -802,7 +872,22 @@ components:
             type: object
             properties:
               userAccount:
-                $ref: '#/components/schemas/userAccount'
+                $ref: '#/components/schemas/userTestAccount'
+              userInformation:
+                $ref: '#/components/schemas/userInformation'
+    userInformationUsernameUpdated:
+      name: userInformationUsernameUpdated
+      description: message is sent when user's username is changed
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              userAccount:
+                $ref: '#/components/schemas/userTestAccount'
               userInformation:
                 $ref: '#/components/schemas/userInformation'
     userInformationDateOfBirthUpdated:
@@ -817,7 +902,7 @@ components:
             type: object
             properties:
               userAccount:
-                $ref: '#/components/schemas/userAccount'
+                $ref: '#/components/schemas/userTestAccount'
               userInformation:
                 $ref: '#/components/schemas/userInformation'
     userPermissionsCreated:
@@ -832,7 +917,7 @@ components:
             type: object
             properties:
               userAccount:
-                $ref: '#/components/schemas/userAccount'
+                $ref: '#/components/schemas/userTestAccount'
               permissions:
                 type: array
                 items:
@@ -849,7 +934,7 @@ components:
             type: object
             properties:
               userAccount:
-                $ref: '#/components/schemas/userAccount'
+                $ref: '#/components/schemas/userTestAccount'
               permissions:
                 type: array
                 items:
@@ -866,7 +951,7 @@ components:
             type: object
             properties:
               userAccount:
-                $ref: '#/components/schemas/userAccount'
+                $ref: '#/components/schemas/userTestAccount'
               roles:
                 type: array
                 items:
@@ -883,7 +968,7 @@ components:
             type: object
             properties:
               userAccount:
-                $ref: '#/components/schemas/userAccount'
+                $ref: '#/components/schemas/userTestAccount'
               roles:
                 type: array
                 items:
