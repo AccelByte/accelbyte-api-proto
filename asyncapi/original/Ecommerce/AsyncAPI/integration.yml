@@ -181,6 +181,11 @@ components:
           type: string
           format: date-time
           description: time when fulfillment is completed
+        price:
+          type: number
+          format: double
+        currency:
+          type: string
 
   messages:
     appleIAPConfigDeleted:

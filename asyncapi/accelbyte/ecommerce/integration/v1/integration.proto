@@ -71,6 +71,8 @@ message Iap {
     // Allowed values: APPLE, GOOGLE, PLAYSTATION, STEAM, XBOX, EPICGAMES, TWITCH
     string type = 12;
     string fulfilledTime = 13;
+    double price = 14;
+    string currency = 15;
 }
 
 // path: #/components/messages/iapProcessed/payload/properties/payload
