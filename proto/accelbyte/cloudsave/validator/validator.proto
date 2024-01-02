@@ -5,7 +5,7 @@
 syntax = "proto3";
 
 package accelbyte.cloudsave.validator;
-// Version v1.0.0
+// Version v1.1.0
 
 import "google/protobuf/timestamp.proto";
 
@@ -30,6 +30,16 @@ service CloudsaveValidatorService {
 
   // admin player record
   rpc BeforeWriteAdminPlayerRecord(AdminPlayerRecord) returns (PlayerRecordValidationResult);
+
+  // game binary record
+  rpc BeforeWriteGameBinaryRecord(GameBinaryRecord) returns (GameRecordValidationResult);
+  rpc AfterReadGameBinaryRecord(GameBinaryRecord) returns (GameRecordValidationResult);
+  rpc AfterBulkReadGameBinaryRecord(BulkGameBinaryRecord) returns (BulkGameRecordValidationResult);
+
+  // player binary record
+  rpc BeforeWritePlayerBinaryRecord(PlayerBinaryRecord) returns (PlayerRecordValidationResult);
+  rpc AfterReadPlayerBinaryRecord(PlayerBinaryRecord) returns (PlayerRecordValidationResult);
+  rpc AfterBulkReadPlayerBinaryRecord(BulkPlayerBinaryRecord) returns (BulkPlayerRecordValidationResult);
 }
 
 message GameRecord {
@@ -87,6 +97,42 @@ message BulkAdminPlayerRecord {
   repeated AdminPlayerRecord adminPlayerRecords = 1;
 }
 
+message BinaryInfo {
+  // url is an URL to get the binary record
+  string url = 1;
+  int32 version = 2;
+  string contentType = 3;
+  google.protobuf.Timestamp createdAt = 4;
+  optional google.protobuf.Timestamp updatedAt = 5;
+}
+
+message GameBinaryRecord {
+  string key = 1;
+  string namespace = 2;
+  optional BinaryInfo binaryInfo = 3;
+  string setBy = 4;
+  google.protobuf.Timestamp createdAt = 5;
+  optional google.protobuf.Timestamp updatedAt = 6;
+}
+
+message BulkGameBinaryRecord {
+  repeated GameBinaryRecord gameBinaryRecords = 1;
+}
+
+message PlayerBinaryRecord {
+  string key = 1;
+  string namespace = 2;
+  BinaryInfo binaryInfo = 3;
+  string setBy = 4;
+  google.protobuf.Timestamp createdAt = 5;
+  string userId = 6;
+  bool isPublic = 7;
+  optional google.protobuf.Timestamp updatedAt = 8;
+}
+
+message BulkPlayerBinaryRecord {
+  repeated PlayerBinaryRecord playerBinaryRecords = 1;
+}
 
 message GameRecordValidationResult {
   bool isSuccess = 1;
