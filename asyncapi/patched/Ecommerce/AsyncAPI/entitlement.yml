@@ -122,6 +122,10 @@ components:
           type: string
           format: date-time
           description: entitlement updated at
+        origin:
+          type: string
+        collectionId:
+          type: string
     stackableEntitlement:
       type: object
       properties:
@@ -195,6 +199,12 @@ components:
           type: integer
           format: int32
           description: the stacked use count in the entitlement
+        origin:
+          type: string
+          description: entitlement origin
+        collectionId:
+          type: string
+          description: entitlement collection id
     entitlementConsumption:
       type: object
       properties:

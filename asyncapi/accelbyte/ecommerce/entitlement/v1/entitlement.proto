@@ -58,6 +58,8 @@ message Entitlement {
     string grantedAt = 17;
     string createdAt = 18;
     string updatedAt = 19;
+    string origin = 20;
+    string collectionId = 21;
 }
 
 // path: #/components/schemas/stackableEntitlement
@@ -83,6 +85,8 @@ message StackableEntitlement {
     string updatedAt = 19;
     bool stackable = 20;
     int32 stackedUseCount = 21;
+    string origin = 22;
+    string collectionId = 23;
 }
 
 // path: #/components/schemas/entitlementConsumption
