@@ -5,7 +5,7 @@
 syntax = "proto3";
 
 package accelbyte.cloudsave.validator;
-// Version v1.1.0
+// Version v1.2.0
 
 import "google/protobuf/timestamp.proto";
 
@@ -64,6 +64,7 @@ message PlayerRecord {
   string userId = 6;
   bool isPublic = 7;
   optional google.protobuf.Timestamp updatedAt = 8;
+  optional string requesterUserId = 9;
 }
 
 message BulkPlayerRecord {
@@ -128,6 +129,7 @@ message PlayerBinaryRecord {
   string userId = 6;
   bool isPublic = 7;
   optional google.protobuf.Timestamp updatedAt = 8;
+  optional string requesterUserId = 9;
 }
 
 message BulkPlayerBinaryRecord {
