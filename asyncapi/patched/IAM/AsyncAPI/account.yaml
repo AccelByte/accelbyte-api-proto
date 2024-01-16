@@ -201,6 +201,18 @@ components:
           type: boolean
           description: a flag to indicates the user is a test account. this field
             will be omitted if its a real account
+        gameData:
+          type: array
+          items:
+            type: object
+            properties:
+              gameUserId:
+                type: string
+                description: justice game user id in game namespace
+              gameNamespace:
+                type: string
+                description: game namespace
+          description: justice game user ids in game namespace
     userGameAccount:
       type: object
       properties:
