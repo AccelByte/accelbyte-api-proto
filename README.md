@@ -6,6 +6,8 @@
 
 Proto (gRPC) files for AccelByte Extend Override.
 
+* [Cloudsave Validator](proto/accelbyte/cloudsave/)
+
 * [Matchmaking Function](proto/accelbyte/matchmaking/)
 
 * [Lootbox Roll Function](proto/accelbyte/platform/entitlement/)
