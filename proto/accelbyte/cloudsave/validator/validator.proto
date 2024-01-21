@@ -5,7 +5,7 @@
 syntax = "proto3";
 
 package accelbyte.cloudsave.validator;
-// Version v1.2.0
+// Version v1.3.0
 
 import "google/protobuf/timestamp.proto";
 
@@ -42,6 +42,11 @@ service CloudsaveValidatorService {
   rpc AfterBulkReadPlayerBinaryRecord(BulkPlayerBinaryRecord) returns (BulkPlayerRecordValidationResult);
 }
 
+message TTLConfig {
+  google.protobuf.Timestamp expiresAt = 1;
+  string action = 2;
+}
+
 message GameRecord {
   string key = 1;
   string namespace = 2;
@@ -49,6 +54,7 @@ message GameRecord {
   string setBy = 4;
   google.protobuf.Timestamp createdAt = 5;
   optional google.protobuf.Timestamp updatedAt = 6;
+  optional TTLConfig ttlConfig = 7;
 }
 
 message BulkGameRecord {
@@ -114,6 +120,7 @@ message GameBinaryRecord {
   string setBy = 4;
   google.protobuf.Timestamp createdAt = 5;
   optional google.protobuf.Timestamp updatedAt = 6;
+  optional TTLConfig ttlConfig = 7;
 }
 
 message BulkGameBinaryRecord {
@@ -156,7 +163,6 @@ message PlayerRecordValidationResult {
 message BulkPlayerRecordValidationResult {
   repeated PlayerRecordValidationResult validationResults = 1;
 }
-
 
 message Error {
   int32 errorCode = 1;
