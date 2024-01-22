@@ -29,9 +29,12 @@ channels:
         - $ref: '#/components/messages/GameSessionUpdatedEvent'
         - $ref: '#/components/messages/GameSessionRejectedEvent'
         - $ref: '#/components/messages/GameSessionDSStatusChangedEvent'
+        - $ref: '#/components/messages/GameSessionCodeChangedEvent'
+        - $ref: '#/components/messages/GameSessionCodeRevokedEvent'
         - $ref: '#/components/messages/PartyCreatedEvent'
         - $ref: '#/components/messages/PartyUpdatedEvent'
         - $ref: '#/components/messages/PartyKickedEvent'
+        - $ref: '#/components/messages/PartyLeaveEvent'
         - $ref: '#/components/messages/PartyInvitedEvent'
         - $ref: '#/components/messages/PartyRejectedEvent'
         - $ref: '#/components/messages/PartyJoinedEvent'
@@ -179,6 +182,24 @@ components:
         properties:
           payload:
             $ref: '#/components/schemas/notificationPayload'
+    GameSessionCodeChangedEvent:
+      name: GameSessionCodeChangedEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    GameSessionCodeRevokedEvent:
+      name: GameSessionCodeRevokedEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
     PartyCreatedEvent:
       name: PartyCreatedEvent
       payload:
@@ -190,6 +211,15 @@ components:
             $ref: '#/components/schemas/notificationPayload'
     PartyUpdatedEvent:
       name: PartyUpdatedEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    PartyLeaveEvent:
+      name: PartyLeaveEvent
       payload:
         type: object
         allOf:

@@ -232,6 +232,40 @@ message GameSessionDSStatusChangedEvent {
     string spanContext = 11;
 }
 
+// path: #/components/messages/GameSessionCodeChangedEvent/payload
+message GameSessionCodeChangedEvent {
+    NotificationPayload payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/GameSessionCodeRevokedEvent/payload
+message GameSessionCodeRevokedEvent {
+    NotificationPayload payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
 // path: #/components/messages/PartyCreatedEvent/payload
 message PartyCreatedEvent {
     NotificationPayload payload = 1;
@@ -251,6 +285,23 @@ message PartyCreatedEvent {
 
 // path: #/components/messages/PartyUpdatedEvent/payload
 message PartyUpdatedEvent {
+    NotificationPayload payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/PartyLeaveEvent/payload
+message PartyLeaveEvent {
     NotificationPayload payload = 1;
 
     // allOf(#/components/schemas/event)
@@ -414,6 +465,16 @@ message GameSessionDSStatusChangedEventMessage {
     GameSessionDSStatusChangedEvent payload = 1;
 }
 
+// path: #/components/messages/GameSessionCodeChangedEvent
+message GameSessionCodeChangedEventMessage {
+    GameSessionCodeChangedEvent payload = 1;
+}
+
+// path: #/components/messages/GameSessionCodeRevokedEvent
+message GameSessionCodeRevokedEventMessage {
+    GameSessionCodeRevokedEvent payload = 1;
+}
+
 // path: #/components/messages/PartyCreatedEvent
 message PartyCreatedEventMessage {
     PartyCreatedEvent payload = 1;
@@ -422,6 +483,11 @@ message PartyCreatedEventMessage {
 // path: #/components/messages/PartyUpdatedEvent
 message PartyUpdatedEventMessage {
     PartyUpdatedEvent payload = 1;
+}
+
+// path: #/components/messages/PartyLeaveEvent
+message PartyLeaveEventMessage {
+    PartyLeaveEvent payload = 1;
 }
 
 // path: #/components/messages/PartyKickedEvent
@@ -464,13 +530,16 @@ message Mpv2SessionHistoryPublish {
         GameSessionUpdatedEventMessage variant6 = 7;
         GameSessionRejectedEventMessage variant7 = 8;
         GameSessionDSStatusChangedEventMessage variant8 = 9;
-        PartyCreatedEventMessage variant9 = 10;
-        PartyUpdatedEventMessage variant10 = 11;
-        PartyKickedEventMessage variant11 = 12;
-        PartyInvitedEventMessage variant12 = 13;
-        PartyRejectedEventMessage variant13 = 14;
-        PartyJoinedEventMessage variant14 = 15;
-        PartyMembersChangedEventMessage variant15 = 16;
+        GameSessionCodeChangedEventMessage variant9 = 10;
+        GameSessionCodeRevokedEventMessage variant10 = 11;
+        PartyCreatedEventMessage variant11 = 12;
+        PartyUpdatedEventMessage variant12 = 13;
+        PartyKickedEventMessage variant13 = 14;
+        PartyLeaveEventMessage variant14 = 15;
+        PartyInvitedEventMessage variant15 = 16;
+        PartyRejectedEventMessage variant16 = 17;
+        PartyJoinedEventMessage variant17 = 18;
+        PartyMembersChangedEventMessage variant18 = 19;
     }
 }
 
@@ -538,6 +607,16 @@ service Mpv2SessionHistoryGameSessionDSStatusChangedEventService {
     rpc OnMessage(GameSessionDSStatusChangedEvent) returns (google.protobuf.Empty);
 }
 
+// Publishes a GameSessionCodeChangedEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory GameSessionCodeChangedEvent)
+service Mpv2SessionHistoryGameSessionCodeChangedEventService {
+    rpc OnMessage(GameSessionCodeChangedEvent) returns (google.protobuf.Empty);
+}
+
+// Publishes a GameSessionCodeRevokedEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory GameSessionCodeRevokedEvent)
+service Mpv2SessionHistoryGameSessionCodeRevokedEventService {
+    rpc OnMessage(GameSessionCodeRevokedEvent) returns (google.protobuf.Empty);
+}
+
 // Publishes a PartyCreatedEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory PartyCreatedEvent)
 service Mpv2SessionHistoryPartyCreatedEventService {
     rpc OnMessage(PartyCreatedEvent) returns (google.protobuf.Empty);
@@ -551,6 +630,11 @@ service Mpv2SessionHistoryPartyUpdatedEventService {
 // Publishes a PartyKickedEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory PartyKickedEvent)
 service Mpv2SessionHistoryPartyKickedEventService {
     rpc OnMessage(PartyKickedEvent) returns (google.protobuf.Empty);
+}
+
+// Publishes a PartyLeaveEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory PartyLeaveEvent)
+service Mpv2SessionHistoryPartyLeaveEventService {
+    rpc OnMessage(PartyLeaveEvent) returns (google.protobuf.Empty);
 }
 
 // Publishes a PartyInvitedEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory PartyInvitedEvent)

@@ -8,6 +8,24 @@ channels:
     publish:
       message:
         $ref: '#/components/messages/freeformUserNotification'
+  
+  mpv2SessionHistory:
+    publish:
+      message:
+        oneOf:
+          - $ref: '#/components/messages/MatchmakingEvent'
+          - $ref: '#/components/messages/MatchmakingStartedEvent'
+          - $ref: '#/components/messages/MatchmakingTicketExpiredEvent'
+          - $ref: '#/components/messages/MatchmakingTicketCanceledEvent'
+          - $ref: '#/components/messages/MatchmakingTicketRejectedEvent'
+          - $ref: '#/components/messages/MatchmakingTicketFoundEvent'
+          - $ref: '#/components/messages/MatchFoundEvent'
+          - $ref: '#/components/messages/BackfillFoundEvent'
+          - $ref: '#/components/messages/BackfillProposalSentEvent'
+          - $ref: '#/components/messages/BackfillProposalAcceptedEvent'
+          - $ref: '#/components/messages/BackfillProposalRejectedEvent'
+          - $ref: '#/components/messages/BackfillProposalExpiredEvent'
+          - $ref: '#/components/messages/BackfillTicketExpiredEvent'
 
 components:
   schemas:
@@ -57,3 +75,134 @@ components:
         properties:
           payload:
             $ref: '#/components/schemas/notificationPayload'
+
+    MatchmakingEvent:
+      name: MatchmakingEvent
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+
+    MatchmakingStartedEvent:
+      name: MatchmakingStartedEvent
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+
+    MatchmakingTicketExpiredEvent:
+      name: MatchmakingTicketExpiredEvent
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+
+    MatchmakingTicketCanceledEvent:
+      name: MatchmakingTicketCanceledEvent
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+
+    MatchmakingTicketRejectedEvent:
+      name: MatchmakingTicketRejectedEvent
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+
+    MatchmakingTicketFoundEvent:
+      name: MatchmakingTicketFoundEvent
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+
+    MatchFoundEvent:
+      name: MatchFoundEvent
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+
+    BackfillFoundEvent:
+      name: BackfillFoundEvent
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+
+    BackfillProposalSentEvent:
+      name: BackfillProposalSentEvent
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+
+    BackfillProposalAcceptedEvent:
+      name: BackfillProposalAcceptedEvent
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+
+    BackfillProposalRejectedEvent:
+      name: BackfillProposalRejectedEvent
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+
+    BackfillProposalExpiredEvent:
+      name: BackfillProposalExpiredEvent
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+
+    BackfillTicketExpiredEvent:
+      name: BackfillTicketExpiredEvent
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+
