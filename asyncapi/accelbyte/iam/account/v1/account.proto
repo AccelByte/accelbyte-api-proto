@@ -126,6 +126,7 @@ message UserInformation {
     string country = 3;
     string language = 4;
     string dateOfBirth = 5;
+    string uniqueDisplayName = 6;
 }
 
 // path: #/components/schemas/role

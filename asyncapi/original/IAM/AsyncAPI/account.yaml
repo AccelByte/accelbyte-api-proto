@@ -308,6 +308,9 @@ components:
         dateOfBirth:
           type: string
           description: birthday
+        uniqueDisplayName:
+          type: string
+          description: unique display name, this will have value only when unique display name is enabled
 
     role:
       type: object
