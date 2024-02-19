@@ -337,6 +337,9 @@ components:
         country:
           type: string
           description: country
+        emailAddress:
+          type: string
+          description: third party platform email address
     platform:
       type: object
       properties:

@@ -149,6 +149,7 @@ message ThirdParty {
     string namespace = 4;
     string displayName = 5;
     string country = 6;
+    string emailAddress = 7;
 }
 
 // path: #/components/schemas/platform
