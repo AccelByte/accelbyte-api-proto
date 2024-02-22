@@ -1,12 +1,12 @@
 githubOwner = 'AccelByte'
 githubRepo = 'accelbyte-api-proto'
-githubSsh = 'dhanarab-sdkbuild-ssh'
+githubSsh = 'accelbyte-sdk-sdkbuild-ssh'
 
 githubUrl = "git@github.com:${githubOwner}/${githubRepo}.git"
 
 pipeline {
   agent {
-    label "master"
+    label "justice-codegen-sdk"
   }
   stages {
     stage('Prepare') {
