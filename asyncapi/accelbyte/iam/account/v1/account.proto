@@ -191,6 +191,8 @@ message UserAccountLink {
     string userId = 2;
     string emailAddress = 3;
     bool testAccount = 4;
+    string publisherNamespace = 5;
+    string publisherUserId = 6;
 }
 
 // path: #/components/schemas/userAccountUnlink

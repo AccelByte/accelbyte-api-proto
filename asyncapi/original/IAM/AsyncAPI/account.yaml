@@ -441,6 +441,12 @@ components:
         testAccount:
           type: boolean
           description: a flag to indicates the user is a test account. this field will be omitted if its a real account
+        publisherNamespace:
+          type: string
+          description: publisher namespace
+        publisherUserId:
+          type: string
+          description: publisher user id
 
     userAccountUnlink:
       type: object
