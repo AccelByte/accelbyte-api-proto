@@ -49,7 +49,7 @@ pipeline {
     }
     stage('Lint') {
         agent {
-            label "justice-codegen-sdk"
+            label "extend-builder-ci"
         }
         steps {
             sh "make lint"
@@ -57,7 +57,7 @@ pipeline {
     }
     stage('Check Proto Breaking Changes') {
       agent {
-        label "justice-codegen-sdk"
+        label "extend-builder-ci"
       }
       steps {
         script {
@@ -77,7 +77,7 @@ pipeline {
     }
     stage('Check Proto Governance') {
       agent {
-        label "justice-codegen-sdk"
+        label "extend-builder-ci"
       }
       steps {
         script {
