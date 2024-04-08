@@ -1,0 +1,135 @@
+asyncapi: '2.0.0'
+id: 'http://justice-cloudsave-service'
+info:
+  title: Cloudsave Service Events
+  version: 0.1.0
+defaultContentType: application/json
+channels:
+  adminGameRecord:
+    publish:
+      message:
+        oneOf:
+          - $ref: '#/components/messages/adminGameRecordCreated'
+          - $ref: '#/components/messages/adminGameRecordUpdated'
+          - $ref: '#/components/messages/adminGameRecordDeleted'
+  gameRecord:
+    publish:
+      message:
+        oneOf:
+          - $ref: '#/components/messages/gameRecordCreated'
+          - $ref: '#/components/messages/gameRecordUpdated'
+          - $ref: '#/components/messages/gameRecordDeleted'
+
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+        version:
+          type: integer
+        name:
+          type: string
+        namespace:
+          type: string
+        parentNamespace:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        clientId:
+          type: string
+        userId:
+          type: string
+        traceId:
+          type: string
+        sessionId:
+          type: string
+
+    recordPayload:
+      type: object
+      properties:
+        key:
+          type: string
+          description: record key
+        namespace:
+          type: string
+          description: namespace of the record
+
+  messages:
+    adminGameRecordCreated:
+      name: adminGameRecordCreated
+      description: message is sent when the new admin game record created
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/recordPayload'
+
+    adminGameRecordUpdated:
+      name: adminGameRecordUpdated
+      description: message is sent when the admin game record updated
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/recordPayload'
+
+    adminGameRecordDeleted:
+      name: adminGameRecordDeleted
+      description: message is sent when the admin game record deleted
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/recordPayload'
+
+    gameRecordCreated:
+      name: gameRecordCreated
+      description: message is sent when the new game record created
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            allOf:
+              - $ref: '#/components/schemas/recordPayload'
+            properties:
+              setBy:
+                type: string
+
+    gameRecordUpdated:
+      name: gameRecordUpdated
+      description: message is sent when the game record updated
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            allOf:
+              - $ref: '#/components/schemas/recordPayload'
+            properties:
+              setBy:
+                type: string
+
+    gameRecordDeleted:
+      name: gameRecordDeleted
+      description: message is sent when the game record deleted
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/recordPayload'
