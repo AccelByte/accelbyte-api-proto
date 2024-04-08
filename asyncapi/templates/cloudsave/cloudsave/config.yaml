@@ -1,0 +1,3 @@
+---
+source: Cloudsave/AsyncAPI/cloudsave.yaml
+destination: accelbyte/cloudsave/cloudsave/v1/cloudsave.proto
