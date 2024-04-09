@@ -58,6 +58,49 @@ message OrderBundleItemInfo {
     bool purchased = 7;
 }
 
+// path: #/components/schemas/discountItem
+message DiscountItem {
+    string itemId = 1;
+    string itemName = 2;
+}
+
+// path: #/components/schemas/discountCategory
+message DiscountCategory {
+    string categoryPath = 1;
+    bool includeSubCategories = 2;
+}
+
+// path: #/components/schemas/discountConfig
+message DiscountConfig {
+    string currencyNamespace = 1;
+    string currencyCode = 2;
+    // Allowed values: AMOUNT, PERCENTAGE
+    string discountType = 3;
+    int64 discountPercentage = 4;
+    int64 discountAmount = 5;
+    bool stackable = 6;
+    // Allowed values: NONE, ITEMS_AND_CATEGORIES
+    string restrictType = 7;
+    repeated DiscountItem items = 8;
+    repeated DiscountCategory categories = 9;
+}
+
+// path: #/components/schemas/discountCodeInfo
+message DiscountCodeInfo {
+    string code = 1;
+    string campaignId = 2;
+    string campaignName = 3;
+    int64 amount = 4;
+    DiscountConfig discountConfig = 5;
+}
+
+// path: #/components/schemas/deductionDetail
+message DeductionDetail {
+    // Allowed values: DISCOUNT_CODE
+    string deductionType = 1;
+    DiscountCodeInfo discountCodeInfo = 2;
+}
+
 // path: #/components/schemas/order
 message Order {
     string orderNo = 1;
@@ -78,6 +121,8 @@ message Order {
     string statusReason = 16;
     string previousStatus = 17;
     repeated OrderBundleItemInfo orderBundleItemInfos = 18;
+    int32 deduction = 19;
+    repeated DeductionDetail deductionDetails = 20;
 }
 
 // path: #/components/messages/orderCreated/payload/properties/payload

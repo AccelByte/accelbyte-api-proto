@@ -104,6 +104,81 @@ components:
           type: boolean
           description: whether this item has been purchased in this order
 
+    discountItem:
+        type: object
+        properties:
+            itemId:
+                type: string
+            itemName:
+                type: string
+    
+    discountCategory:
+        type: object
+        properties:
+            categoryPath:
+                type: string
+            includeSubCategories:
+                type: boolean
+
+    discountConfig:
+        type: object
+        properties: 
+            currencyNamespace:
+                type: string
+            currencyCode:
+                type: string
+            discountType: 
+                type: string
+                enum:
+                    - AMOUNT
+                    - PERCENTAGE
+            discountPercentage:
+                type: integer
+            discountAmount:
+                type: integer
+            stackable:
+                type: boolean
+            restrictType:
+                type: string
+                enum:
+                    - NONE
+                    - ITEMS_AND_CATEGORIES
+            items:
+                type: array
+                items:
+                    $ref: '#/components/schemas/discountItem'
+            categories:
+                type: array
+                items:
+                    $ref: '#/components/schemas/discountCategory'
+
+
+    discountCodeInfo:
+        type: object
+        properties: 
+            code:
+                type: string
+            campaignId:
+                type: string
+            campaignName:
+                type: string
+            amount:
+                type: integer
+            discountConfig:
+                $ref: '#/components/schemas/discountConfig'
+
+    deductionDetail:
+        type: object
+        properties:
+            deductionType:
+                type: string
+                description: deduction type
+                enum:
+                    - DISCOUNT_CODE
+            discountCodeInfo:
+                description: discount code info
+                $ref: '#/components/schemas/discountCodeInfo'
+
     order:
       type: object
       properties:
@@ -164,6 +239,16 @@ components:
           description: flexible bundle item price details for order, included ownership info
           items:
             $ref: '#/components/schemas/orderBundleItemInfo'
+        deduction:
+          type: integer
+          format: int32
+          description: Total of deduction
+        deductionDetails:
+          type: array
+          description: Deduction details, include every discount code actual deducted value
+          items:
+            $ref: '#/components/schemas/deductionDetail'
+        
 
   messages:
     orderCreated:
