@@ -162,10 +162,28 @@ components:
                 type: string
             campaignName:
                 type: string
-            amount:
+            deduction:
                 type: integer
             discountConfig:
                 $ref: '#/components/schemas/discountConfig'
+
+    discountCodeDeductionDetail:
+        type: object
+        properties:
+          totalDeduction:
+            type: integer
+          totalPercentageDeduction:
+            type: integer
+          totalAmountDeduction:
+            type: integer
+          discountPercentageCodes:
+            type: array
+            items:
+              $ref: '#/components/schemas/discountCodeInfo'
+          discountAmountCodes:
+            type: array
+            items:
+              $ref: '#/components/schemas/discountCodeInfo'
 
     deductionDetail:
         type: object
@@ -175,9 +193,9 @@ components:
                 description: deduction type
                 enum:
                     - DISCOUNT_CODE
-            discountCodeInfo:
+            discountCodeDeductionDetail:
                 description: discount code info
-                $ref: '#/components/schemas/discountCodeInfo'
+                $ref: '#/components/schemas/discountCodeDeductionDetail'
 
     order:
       type: object

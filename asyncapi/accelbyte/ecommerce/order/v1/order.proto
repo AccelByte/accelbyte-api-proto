@@ -90,15 +90,24 @@ message DiscountCodeInfo {
     string code = 1;
     string campaignId = 2;
     string campaignName = 3;
-    int64 amount = 4;
+    int64 deduction = 4;
     DiscountConfig discountConfig = 5;
+}
+
+// path: #/components/schemas/discountCodeDeductionDetail
+message DiscountCodeDeductionDetail {
+    int64 totalDeduction = 1;
+    int64 totalPercentageDeduction = 2;
+    int64 totalAmountDeduction = 3;
+    repeated DiscountCodeInfo discountPercentageCodes = 4;
+    repeated DiscountCodeInfo discountAmountCodes = 5;
 }
 
 // path: #/components/schemas/deductionDetail
 message DeductionDetail {
     // Allowed values: DISCOUNT_CODE
     string deductionType = 1;
-    DiscountCodeInfo discountCodeInfo = 2;
+    DiscountCodeDeductionDetail discountCodeDeductionDetail = 2;
 }
 
 // path: #/components/schemas/order
