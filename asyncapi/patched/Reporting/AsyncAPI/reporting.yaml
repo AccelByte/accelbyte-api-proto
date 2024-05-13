@@ -8,6 +8,10 @@ channels:
     publish:
       message:
         $ref: '#/components/messages/hideContent'
+  report:
+    publish:
+      message:
+        $ref: '#/components/messages/report'
 components:
   schemas:
     event:
@@ -43,6 +47,37 @@ components:
           type: string
         contentId:
           type: string
+    reportContent:
+      type: object
+      properties:
+        Category:
+          type: string
+        Comment:
+          type: string
+        CreatedAt:
+          type: string
+          format: date-time
+        ExtensionCategory:
+          type: string
+        ID:
+          type: string
+        Namespace:
+          type: string
+        ObjectID:
+          type: string
+        ObjectType:
+          type: string
+        Reason:
+          type: string
+        ReporterID:
+          type: string
+        TicketID:
+          type: string
+        UpdatedAt:
+          type: string
+          format: date-time
+        UserID:
+          type: string
   messages:
     hideContent:
       name: hideContent
@@ -56,6 +91,18 @@ components:
             properties:
               autoHideContent:
                 $ref: '#/components/schemas/autoHideContent'
+    report:
+      name: report
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              reportContent:
+                $ref: '#/components/schemas/reportContent'
 x-source: Reporting/AsyncAPI/reporting.yaml
 x-proto-package: accelbyte.reporting.reporting.v1
 x-proto-package-version: v1.0.0

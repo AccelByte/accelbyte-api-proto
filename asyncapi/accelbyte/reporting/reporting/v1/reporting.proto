@@ -44,6 +44,23 @@ message AutoHideContent {
     string contentId = 3;
 }
 
+// path: #/components/schemas/reportContent
+message ReportContent {
+    string category = 1;
+    string comment = 2;
+    string createdAt = 3;
+    string extensionCategory = 4;
+    string id = 5;
+    string namespace = 6;
+    string objectID = 7;
+    string objectType = 8;
+    string reason = 9;
+    string reporterID = 10;
+    string ticketID = 11;
+    string updatedAt = 12;
+    string userID = 13;
+}
+
 // path: #/components/messages/hideContent/payload/properties/payload
 message AnonymousSchema1 {
     AutoHideContent autoHideContent = 1;
@@ -66,12 +83,39 @@ message HideContent {
     string sessionId = 11;
 }
 
+// path: #/components/messages/report/payload/properties/payload
+message AnonymousSchema2 {
+    ReportContent reportContent = 1;
+}
+
+// path: #/components/messages/report/payload
+message Report {
+    AnonymousSchema2 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
 
 // --- #/components/messages/{message_name} ---
 
 // path: #/components/messages/hideContent
 message HideContentMessage {
     HideContent payload = 1;
+}
+
+// path: #/components/messages/report
+message ReportMessage {
+    Report payload = 1;
 }
 
 
@@ -84,4 +128,9 @@ message HideContentMessage {
 // Publishes a message to the Auto Moderation channel. (autoModeration HideContent)
 service AutoModerationHideContentService {
     rpc OnMessage(HideContent) returns (google.protobuf.Empty);
+}
+
+// Publishes a message to the Report channel. (report Report)
+service ReportReportService {
+    rpc OnMessage(Report) returns (google.protobuf.Empty);
 }
