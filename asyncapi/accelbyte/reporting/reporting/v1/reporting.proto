@@ -83,14 +83,36 @@ message HideContent {
     string sessionId = 11;
 }
 
-// path: #/components/messages/report/payload/properties/payload
+// path: #/components/messages/userReport/payload/properties/payload
 message AnonymousSchema2 {
     ReportContent reportContent = 1;
 }
 
-// path: #/components/messages/report/payload
-message Report {
+// path: #/components/messages/userReport/payload
+message UserReport {
     AnonymousSchema2 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/adminReport/payload/properties/payload
+message AnonymousSchema3 {
+    ReportContent reportContent = 1;
+}
+
+// path: #/components/messages/adminReport/payload
+message AdminReport {
+    AnonymousSchema3 payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -113,13 +135,26 @@ message HideContentMessage {
     HideContent payload = 1;
 }
 
-// path: #/components/messages/report
-message ReportMessage {
-    Report payload = 1;
+// path: #/components/messages/userReport
+message UserReportMessage {
+    UserReport payload = 1;
+}
+
+// path: #/components/messages/adminReport
+message AdminReportMessage {
+    AdminReport payload = 1;
 }
 
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
+
+// path: #/channels/report/publish/message
+message ReportPublish {
+    oneof payload {
+        UserReportMessage variant0 = 1;
+        AdminReportMessage variant1 = 2;
+    }
+}
 
 
 // --- service ---
@@ -130,7 +165,12 @@ service AutoModerationHideContentService {
     rpc OnMessage(HideContent) returns (google.protobuf.Empty);
 }
 
-// Publishes a message to the Report channel. (report Report)
-service ReportReportService {
-    rpc OnMessage(Report) returns (google.protobuf.Empty);
+// Publishes a UserReport to the Report channel. (oneOf variant) (report UserReport)
+service ReportUserReportService {
+    rpc OnMessage(UserReport) returns (google.protobuf.Empty);
+}
+
+// Publishes a AdminReport to the Report channel. (oneOf variant) (report AdminReport)
+service ReportAdminReportService {
+    rpc OnMessage(AdminReport) returns (google.protobuf.Empty);
 }

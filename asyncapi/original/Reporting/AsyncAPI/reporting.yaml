@@ -12,7 +12,9 @@ channels:
   report:
     publish:
       message:
-        $ref: '#/components/messages/report'
+        oneOf:
+        - $ref: '#/components/messages/userReport'
+        - $ref: '#/components/messages/adminReport'
 
 
 components:
@@ -98,8 +100,21 @@ components:
               autoHideContent:
                 $ref: '#/components/schemas/autoHideContent'
 
-    report:
-      name: report
+    userReport:
+      name: userReport
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              reportContent:
+                $ref: '#/components/schemas/reportContent'
+
+    adminReport:
+      name: adminReport
       payload:
         type: object
         allOf:
