@@ -7,10 +7,10 @@ SHELL := /bin/bash
 COMPARE_AGAINST_BRANCH=origin/master
 
 lint:
-	docker run -t --rm --volume $$(pwd):/workspace --workdir /workspace bufbuild/buf lint
+	docker run -t --rm --volume $$(pwd):/workspace --workdir /workspace bufbuild/buf:1.31.0 lint
 
 breaking:
-	docker run -t --rm --volume $$(pwd):/workspace --workdir /workspace bufbuild/buf breaking \
+	docker run -t --rm --volume $$(pwd):/workspace --workdir /workspace bufbuild/buf:1.31.0 breaking \
     	--against ".git#branch=$(COMPARE_AGAINST_BRANCH)"
 
 governance: check_governance_package_name_all check_governance_version_comment_all
