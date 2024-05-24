@@ -83,14 +83,9 @@ message HideContent {
     string sessionId = 11;
 }
 
-// path: #/components/messages/userReport/payload/properties/payload
-message AnonymousSchema2 {
-    ReportContent reportContent = 1;
-}
-
 // path: #/components/messages/userReport/payload
 message UserReport {
-    AnonymousSchema2 payload = 1;
+    ReportContent payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -105,14 +100,9 @@ message UserReport {
     string sessionId = 11;
 }
 
-// path: #/components/messages/adminReport/payload/properties/payload
-message AnonymousSchema3 {
-    ReportContent reportContent = 1;
-}
-
 // path: #/components/messages/adminReport/payload
 message AdminReport {
-    AnonymousSchema3 payload = 1;
+    ReportContent payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;

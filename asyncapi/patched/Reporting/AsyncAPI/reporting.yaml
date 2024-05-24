@@ -102,9 +102,7 @@ components:
         properties:
           payload:
             type: object
-            properties:
-              reportContent:
-                $ref: '#/components/schemas/reportContent'
+            $ref: '#/components/schemas/reportContent'
     adminReport:
       name: adminReport
       payload:
@@ -114,9 +112,7 @@ components:
         properties:
           payload:
             type: object
-            properties:
-              reportContent:
-                $ref: '#/components/schemas/reportContent'
+            $ref: '#/components/schemas/reportContent'
 x-source: Reporting/AsyncAPI/reporting.yaml
 x-proto-package: accelbyte.reporting.reporting.v1
 x-proto-package-version: v1.0.0

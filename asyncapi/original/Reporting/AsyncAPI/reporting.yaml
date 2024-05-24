@@ -109,9 +109,7 @@ components:
         properties:
           payload:
             type: object
-            properties:
-              reportContent:
-                $ref: '#/components/schemas/reportContent'
+            $ref: '#/components/schemas/reportContent'
 
     adminReport:
       name: adminReport
@@ -122,6 +120,4 @@ components:
         properties:
           payload:
             type: object
-            properties:
-              reportContent:
-                $ref: '#/components/schemas/reportContent'
+            $ref: '#/components/schemas/reportContent'
