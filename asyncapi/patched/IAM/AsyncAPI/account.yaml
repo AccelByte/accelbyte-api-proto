@@ -179,6 +179,9 @@ components:
         namespace:
           type: string
           description: namespace
+        platformId:
+          type: string
+          description: platform id
     userTestAccount:
       type: object
       properties:

@@ -68,6 +68,7 @@ message UserAccount {
     string userName = 3;
     string country = 4;
     string namespace = 5;
+    string platformId = 6;
 }
 
 // path: #/components/schemas/userTestAccount/properties/gameData/items

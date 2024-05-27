@@ -214,6 +214,10 @@ components:
           description: fulfillment status
         fulfillmentError:
           $ref: '#/components/schemas/fulfillmentError'
+        metadata:
+            type: object
+            additionalProperties:
+                type: object
 
   messages:
     fulfillmentCompleted:
