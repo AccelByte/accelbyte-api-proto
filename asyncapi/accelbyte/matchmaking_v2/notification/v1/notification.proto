@@ -11,6 +11,7 @@ package accelbyte.matchmaking_v2.notification.v1;
 
 // --- imports ---
 
+import "google/protobuf/any.proto";
 import "google/protobuf/empty.proto";
 
 

@@ -11,6 +11,7 @@ package accelbyte.iam.account.v1;
 
 // --- imports ---
 
+import "google/protobuf/any.proto";
 import "google/protobuf/empty.proto";
 
 
