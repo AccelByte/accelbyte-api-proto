@@ -216,8 +216,7 @@ components:
           $ref: '#/components/schemas/fulfillmentError'
         metadata:
             type: object
-            additionalProperties:
-                type: object
+            additionalProperties: true
 
   messages:
     fulfillmentCompleted:

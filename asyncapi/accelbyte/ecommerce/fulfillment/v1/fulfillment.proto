@@ -13,7 +13,7 @@ package accelbyte.ecommerce.fulfillment.v1;
 
 import "google/protobuf/any.proto";
 import "google/protobuf/empty.proto";
-
+import "google/protobuf/struct.proto";
 
 // --- options ---
 
@@ -84,14 +84,6 @@ message FulfillmentItem {
     string itemType = 7;
 }
 
-// path: #/components/schemas/fulfillment/properties/metadata/additionalProperties
-message AnonymousSchema1 {
-}
-
-// path: #/components/schemas/fulfillment/properties/metadata
-message AnonymousSchema2 {
-}
-
 // path: #/components/schemas/fulfillment
 message Fulfillment {
     string userId = 1;
@@ -105,17 +97,17 @@ message Fulfillment {
     repeated CreditSummary creditSummaries = 8;
     string status = 9;
     FulfillmentError fulfillmentError = 10;
-    AnonymousSchema2 metadata = 11;
+    google.protobuf.Struct metadata = 11;
 }
 
 // path: #/components/messages/fulfillmentCompleted/payload/properties/payload
-message AnonymousSchema3 {
+message AnonymousSchema1 {
     Fulfillment fulfillment = 1;
 }
 
 // path: #/components/messages/fulfillmentCompleted/payload
 message FulfillmentCompleted {
-    AnonymousSchema3 payload = 1;
+    AnonymousSchema1 payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
