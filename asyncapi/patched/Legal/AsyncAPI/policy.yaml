@@ -99,7 +99,7 @@ components:
           description: a flag indicates whether this base policy is mandatory
         namespace:
           type: string
-          description: namesapce of the base policy
+          description: namespace of the base policy
         tags:
           type: array
           items:

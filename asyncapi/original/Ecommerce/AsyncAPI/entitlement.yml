@@ -377,7 +377,7 @@ components:
 
     entitlementConsumed:
       name: entitlementConsumed
-      description: message is sent when user enetitlement is consumed
+      description: message is sent when user entitlement is consumed
       payload:
         type: object
         allOf:
