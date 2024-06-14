@@ -14,6 +14,7 @@ service ProfanityFilterService {
 
 message ExtendProfanityValidationRequest {
   string value = 1; // the value needs to be validated
+  string userId = 2; // user id
 }
 
 message ExtendProfanityValidationResponse {
