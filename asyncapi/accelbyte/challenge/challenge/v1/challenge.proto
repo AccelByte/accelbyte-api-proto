@@ -1,0 +1,95 @@
+// Copyright (c) 2024 AccelByte Inc. All Rights Reserved.
+// This is licensed software from AccelByte Inc, for limitations
+// and restrictions contact your company contract manager.
+
+// source: Challenge/AsyncAPI/challenge.yaml (1.0.0)
+
+syntax = "proto3";
+
+package accelbyte.challenge.challenge.v1;
+// Version v1.0.0
+
+// --- imports ---
+
+import "google/protobuf/any.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/struct.proto";
+
+// --- options ---
+
+option csharp_namespace = "AccelByte.Challenge.Challenge";
+option go_package = "accelbyte.net/challenge/challenge";
+option java_multiple_files = true;
+option java_package = "net.accelbyte.challenge.challenge";
+
+// --- schema objects ---
+
+// path: #/components/schemas/event
+message Event {
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/schemas/goalCompletedPayload
+message GoalCompletedPayload {
+    string namespace = 1;
+    string challengeCode = 2;
+    string goalCode = 3;
+    string completedAt = 4;
+    string userId = 5;
+    string scheduleId = 6;
+    string scheduleStart = 7;
+    string scheduleEnd = 8;
+}
+
+// path: #/components/messages/goalCompleted/payload/properties/payload
+message AnonymousSchema1 {
+    GoalCompletedPayload goalCompletedPayload = 1;
+}
+
+// path: #/components/messages/goalCompleted/payload
+message GoalCompleted {
+    AnonymousSchema1 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+    string spanContext = 12;
+}
+
+
+// --- #/components/messages/{message_name} ---
+
+// path: #/components/messages/goalCompleted
+message GoalCompletedMessage {
+    GoalCompleted payload = 1;
+}
+
+
+// --- #/channels/{channel_name}/{operation_type}/message ---
+
+
+// --- service ---
+
+
+// Publishes a message to the Goal Completed channel. (goalCompleted GoalCompleted)
+service GoalCompletedGoalCompletedService {
+    rpc OnMessage(GoalCompleted) returns (google.protobuf.Empty);
+}
