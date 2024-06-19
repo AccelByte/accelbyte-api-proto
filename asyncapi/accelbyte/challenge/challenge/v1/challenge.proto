@@ -51,14 +51,9 @@ message GoalCompletedPayload {
     string scheduleEnd = 8;
 }
 
-// path: #/components/messages/goalCompleted/payload/properties/payload
-message AnonymousSchema1 {
-    GoalCompletedPayload goalCompletedPayload = 1;
-}
-
 // path: #/components/messages/goalCompleted/payload
 message GoalCompleted {
-    AnonymousSchema1 payload = 1;
+    GoalCompletedPayload payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;

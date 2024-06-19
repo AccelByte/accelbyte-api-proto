@@ -20,9 +20,7 @@ components:
         properties:
           payload:
             type: object
-            properties:
-              goalCompletedPayload:
-                $ref: '#/components/schemas/goalCompletedPayload'
+            $ref: '#/components/schemas/goalCompletedPayload'
   schemas:
     event:
       type: object
@@ -54,6 +52,7 @@ components:
     goalCompletedPayload:
       type: object
       required:
+      - namespace
       - challengeCode
       - goalCode
       - completedAt
