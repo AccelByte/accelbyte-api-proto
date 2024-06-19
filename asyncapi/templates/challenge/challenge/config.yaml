@@ -1,0 +1,3 @@
+---
+source: Challenge/AsyncAPI/challenge.yaml
+destination: accelbyte/challenge/challenge/v1/challenge.proto
