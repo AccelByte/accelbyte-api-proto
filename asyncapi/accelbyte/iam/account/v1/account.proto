@@ -51,6 +51,7 @@ message Permissions {
 message UserAuthentication {
     string platformId = 1;
     bool refresh = 2;
+    string platformUserId = 3;
 }
 
 // path: #/components/schemas/userAuthenticationFailed

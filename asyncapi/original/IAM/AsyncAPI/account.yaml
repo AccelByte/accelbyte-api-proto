@@ -154,6 +154,9 @@ components:
           refresh:
             type: boolean
             description: a flag indicates this is a refresh token grant or not
+          platformUserId:
+            type: string
+            description: third party platform account id
 
     userAuthenticationFailed:
       type: object
