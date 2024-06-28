@@ -3,6 +3,7 @@ syntax = "proto3";
 package accelbyte.profanityfilter.registered.v1;
 // Version v1.0.0
 
+option csharp_namespace = "AccelByte.ProfanityFilter.Registered.V1";
 option go_package = "accelbyte.net/profanityfilter/registered_v1";
 option java_multiple_files = true;
 option java_package = "net.accelbyte.profanityfilter.registered.v1";
