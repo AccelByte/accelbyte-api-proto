@@ -35,7 +35,7 @@ slackActivityChannel = "#activity-extend-engineering"
 
 pipeline {
     agent {
-        label "justice-codegen-sdk"
+        label "extend-builder-batch"
     }
     stages {
         stage("Prepare") {
@@ -76,17 +76,11 @@ pipeline {
             }
         }
         stage('Lint') {
-            agent {
-                label "justice-codegen-sdk"
-            }
             steps {
                 sh "make lint"
             }
         }
         stage('Check Proto Governance') {
-            agent {
-                label "justice-codegen-sdk"
-            }
             steps {
                 script {
                 sh 'make governance'

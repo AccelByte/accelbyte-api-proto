@@ -27,12 +27,11 @@ def hasBreakingChangesSymbol(commitMessages) {
 }
 
 pipeline {
-  agent none
+  agent {
+    label "extend-builder-ci"
+  }
   stages {
     stage('Prepare') {
-      agent {
-        label "master"
-      }
       steps {
         script {
           if (env.BITBUCKET_PAYLOAD) {
@@ -48,17 +47,11 @@ pipeline {
       }
     }
     stage('Lint') {
-        agent {
-            label "extend-builder-ci"
-        }
         steps {
             sh "make lint"
         }
     }
     stage('Check Proto Breaking Changes') {
-      agent {
-        label "extend-builder-ci"
-      }
       steps {
         script {
           commitMessages = getCommitMessageInRange(
@@ -76,9 +69,6 @@ pipeline {
       }
     }
     stage('Check Proto Governance') {
-      agent {
-        label "extend-builder-ci"
-      }
       steps {
         script {
           sh 'make governance'
