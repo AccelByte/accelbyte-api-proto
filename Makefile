@@ -31,7 +31,8 @@ check_governance_package_name:
 
 check_governance_package_name_all:
 	@echo "Checking package name on all .proto file"
-	@find -type f -iname '*.proto' -not -name 'Jenkinsfile.proto' | xargs -I '{}' make -s check_governance_package_name FILE_PATH='{}'
+	@find asyncapi -type f -iname '*.proto' | xargs -I '{}' make -s check_governance_package_name FILE_PATH='{}'
+	@find proto -type f -iname '*.proto' | xargs -I '{}' make -s check_governance_package_name FILE_PATH='{}'
 
 check_governance_version_comment:
 	@test -n "$(FILE_PATH)" || (echo "FILE_PATH is not set" ; exit 1)
@@ -50,4 +51,5 @@ check_governance_version_comment:
 
 check_governance_version_comment_all:
 	@echo "Checking version comment on all .proto file"
-	@find -type f -iname '*.proto' -not -name 'Jenkinsfile.proto' | xargs -I '{}' make -s check_governance_version_comment FILE_PATH='{}'
+	@find asyncapi -type f -iname '*.proto' | xargs -I '{}' make -s check_governance_version_comment FILE_PATH='{}'
+	@find proto -type f -iname '*.proto' | xargs -I '{}' make -s check_governance_version_comment FILE_PATH='{}'
