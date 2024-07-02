@@ -47,9 +47,31 @@ pipeline {
       }
     }
     stage('Lint') {
-        steps {
-            sh "make lint"
+      stages {
+        stage('Lint Commits') {
+          when {
+            expression {
+              return env.BITBUCKET_PULL_REQUEST_LATEST_COMMIT_FROM_TARGET_BRANCH
+            }
+          }
+          agent {
+            docker {
+              image 'commitlint/commitlint:19.3.1'
+              args '--entrypoint='
+              reuseNode true
+            }
+          }
+          steps {
+            sh "git config --add safe.directory '*'"
+            sh "commitlint --color false --verbose --from ${env.BITBUCKET_PULL_REQUEST_LATEST_COMMIT_FROM_TARGET_BRANCH}"
+          }
         }
+        stage('Lint Proto') {
+          steps {
+            sh "make lint"
+          }
+        }
+      }
     }
     stage('Check Proto Breaking Changes') {
       steps {
