@@ -84,7 +84,7 @@ components:
         balance:
           type: integer
           format: int64
-          description: the balance after change
+          description: the balance after change. this field have been deprecated, please don't use
         amount:
           type: integer
           format: int64
