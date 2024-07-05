@@ -51,8 +51,7 @@ message AllocationEvent {
 // path: #/components/schemas/statusHistory
 message StatusHistory {
     string timeStamp = 1;
-    // Allowed values: CREATING, READY, BUSY, REMOVING, UNREACHABLE, FAILED
-    string status = 2;
+    string status = 2; // Allowed values: CREATING, READY, BUSY, REMOVING, UNREACHABLE, FAILED
 }
 
 // path: #/components/schemas/server/properties/ports
@@ -84,8 +83,7 @@ message Server {
     string provider = 21;
     string region = 22;
     string sessionId = 23;
-    // Allowed values: CREATING, READY, BUSY, REMOVING, UNREACHABLE, FAILED
-    string status = 24;
+    string status = 24; // Allowed values: CREATING, READY, BUSY, REMOVING, UNREACHABLE, FAILED
     repeated StatusHistory statusHistory = 25;
     bool isCoreDumpEnabled = 26;
     string artifactPath = 27;

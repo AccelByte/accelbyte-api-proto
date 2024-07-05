@@ -56,19 +56,16 @@ message PaymentProviderConfig {
 message PaymentAccount {
     string namespace = 1;
     string userId = 2;
-    // Allowed values: card, paypal
-    string type = 3;
+    string type = 3; // Allowed values: card, paypal
     string id = 4;
-    // Allowed values: WALLET, XSOLLA, ADYEN, STRIPE, CHECKOUT, ALIPAY, WXPAY, PAYPAL
-    string paymentProvider = 5;
+    string paymentProvider = 5; // Allowed values: WALLET, XSOLLA, ADYEN, STRIPE, CHECKOUT, ALIPAY, WXPAY, PAYPAL
 }
 
 // path: #/components/schemas/currencySummary
 message CurrencySummary {
     string currencyCode = 1;
     string currencySymbol = 2;
-    // Allowed values: REAL, VIRTUAL
-    string currencyType = 3;
+    string currencyType = 3; // Allowed values: REAL, VIRTUAL
     string namespace = 4;
     int32 decimals = 5;
 }

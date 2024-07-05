@@ -62,11 +62,11 @@ message Policy {
     string createdAt = 4;
     string updatedAt = 5;
     bool shouldNotifyOnUpdate = 6;
-    string countryGroupCode = 7;
+    string countryGroupCode = 7 [deprecated = true];
     bool isMandatory = 8;
-    bool isDefaultOpted = 9;
-    string basePolicyId = 10;
-    string readableId = 11;
+    bool isDefaultOpted = 9 [deprecated = true];
+    string basePolicyId = 10 [deprecated = true];
+    string readableId = 11 [deprecated = true];
     string description = 12;
     bool isDefaultSelection = 13;
 }
@@ -81,8 +81,8 @@ message VersionedPolicy {
     string createdAt = 6;
     string updatedAt = 7;
     string publishedDate = 8;
-    bool isCrucial = 9;
-    bool isCommitted = 10;
+    bool isCrucial = 9 [deprecated = true];
+    bool isCommitted = 10 [deprecated = true];
     bool isInEffect = 11;
 }
 
@@ -96,11 +96,11 @@ message LocalizedPolicy {
     string attachmentLocation = 6;
     string attachmentChecksum = 7;
     string attachmentVersionIdentifier = 8;
-    string status = 9;
+    string status = 9 [deprecated = true];
     string createdAt = 10;
     string updatedAt = 11;
-    string publishedDate = 12;
-    bool isDefaultSelection = 13;
+    string publishedDate = 12 [deprecated = true];
+    bool isDefaultSelection = 13 [deprecated = true];
 }
 
 // path: #/components/messages/basePolicyCreated/payload/properties/payload

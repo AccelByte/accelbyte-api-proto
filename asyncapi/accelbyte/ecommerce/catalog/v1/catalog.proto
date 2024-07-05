@@ -184,10 +184,8 @@ message Item {
 
 // path: #/components/schemas/slide
 message Slide {
-    // Allowed values: image, video
-    string type = 1;
-    // Allowed values: generic, youtube, vimeo
-    string videoSource = 2;
+    string type = 1; // Allowed values: image, video
+    string videoSource = 2; // Allowed values: generic, youtube, vimeo
     string url = 3;
     string alt = 4;
     string thumbnailUrl = 5;
@@ -227,10 +225,8 @@ message ConditionGroups {
 // path: #/components/schemas/predicate
 message Predicate {
     string name = 1;
-    // Allowed values: EntitlementPredicate, SeasonPassPredicate, SeasonTierPredicate
-    string predicateType = 2;
-    // Allowed values: is, isNot, isGreaterThan, isGraterThanOrEqual, isLessThan, isLessThanOrEqual, includes, excludes
-    string comparison = 3;
+    string predicateType = 2; // Allowed values: EntitlementPredicate, SeasonPassPredicate, SeasonTierPredicate
+    string comparison = 3; // Allowed values: is, isNot, isGreaterThan, isGraterThanOrEqual, isLessThan, isLessThanOrEqual, includes, excludes
     int64 anyOf = 4;
     repeated google.protobuf.Struct values = 5;
     string value = 6;
@@ -289,8 +285,7 @@ message App {
     repeated string platforms = 8;
     AnonymousSchema11 platformRequirements = 9;
     AnonymousSchema12 localizations = 10;
-    // Allowed values: Action, Adventure, Casual, FreeToPlay, Indie, MassivelyMultiplayer, Racing, RPG, Simulation, Sports, Strategy
-    string primaryGenre = 11;
+    string primaryGenre = 11; // Allowed values: Action, Adventure, Casual, FreeToPlay, Indie, MassivelyMultiplayer, Racing, RPG, Simulation, Sports, Strategy
     repeated string genres = 12;
     repeated string players = 13;
     string releaseDate = 14;
@@ -300,10 +295,8 @@ message App {
 message ItemStatusChange {
     string itemId = 1;
     string itemName = 2;
-    // Allowed values: ACTIVE, INACTIVE
-    string status = 3;
-    // Allowed values: ACTIVE, INACTIVE
-    string previousStatus = 4;
+    string status = 3; // Allowed values: ACTIVE, INACTIVE
+    string previousStatus = 4; // Allowed values: ACTIVE, INACTIVE
 }
 
 // path: #/components/schemas/storeClone

@@ -42,9 +42,9 @@ message Event {
 message Permissions {
     string resoure = 1;
     string action = 2;
-    int64 schedAction = 3;
-    string schedCron = 4;
-    repeated string schedRange = 5;
+    int64 schedAction = 3 [deprecated = true];
+    string schedCron = 4 [deprecated = true];
+    repeated string schedRange = 5 [deprecated = true];
 }
 
 // path: #/components/schemas/role

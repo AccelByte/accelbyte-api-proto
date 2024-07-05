@@ -42,8 +42,7 @@ message Event {
 message CurrencySummary {
     string currencyCode = 1;
     string currencySymbol = 2;
-    // Allowed values: REAL, VIRTUAL
-    string currencyType = 3;
+    string currencyType = 3; // Allowed values: REAL, VIRTUAL
     string namespace = 4;
     int32 decimals = 5;
 }
@@ -75,13 +74,11 @@ message DiscountCategory {
 message DiscountConfig {
     string currencyNamespace = 1;
     string currencyCode = 2;
-    // Allowed values: AMOUNT, PERCENTAGE
-    string discountType = 3;
+    string discountType = 3; // Allowed values: AMOUNT, PERCENTAGE
     int64 discountPercentage = 4;
     int64 discountAmount = 5;
     bool stackable = 6;
-    // Allowed values: NONE, ITEMS_AND_CATEGORIES
-    string restrictType = 7;
+    string restrictType = 7; // Allowed values: NONE, ITEMS_AND_CATEGORIES
     repeated DiscountItem items = 8;
     repeated DiscountCategory categories = 9;
 }
@@ -106,8 +103,7 @@ message DiscountCodeDeductionDetail {
 
 // path: #/components/schemas/deductionDetail
 message DeductionDetail {
-    // Allowed values: DISCOUNT_CODE
-    string deductionType = 1;
+    string deductionType = 1; // Allowed values: DISCOUNT_CODE
     DiscountCodeDeductionDetail discountCodeDeductionDetail = 2;
 }
 

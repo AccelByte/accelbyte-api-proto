@@ -50,10 +50,8 @@ message Subscription {
     int64 price = 8;
     int64 trialPrice = 9;
     Recurring recurring = 10;
-    // Allowed values: INIT, ACTIVE, CANCELLED, EXPIRED
-    string status = 11;
-    // Allowed values: NEVER, SETUP, RECURRING_CHARGING, CHARGED, CHARGE_FAILED
-    string chargeStatus = 12;
+    string status = 11; // Allowed values: INIT, ACTIVE, CANCELLED, EXPIRED
+    string chargeStatus = 12; // Allowed values: NEVER, SETUP, RECURRING_CHARGING, CHARGED, CHARGE_FAILED
     string nextBillingDate = 13;
     string currentPeriodStart = 14;
     string currentPeriodEnd = 15;
@@ -66,8 +64,7 @@ message Subscription {
     bool inFixedCycleTrial = 22;
     bool firstSubscribe = 23;
     bool paid = 24;
-    // Allowed values: USER, PLATFORM
-    string subscribedBy = 25;
+    string subscribedBy = 25; // Allowed values: USER, PLATFORM
     string subscribedAt = 26;
     string unsubscribedAt = 27;
     string unsubscribeReason = 28;
@@ -81,8 +78,7 @@ message Subscription {
 
 // path: #/components/schemas/recurring
 message Recurring {
-    // Allowed values: WEEKLY, MONTHLY, QUARTERLY, YEARLY
-    string cycle = 1;
+    string cycle = 1; // Allowed values: WEEKLY, MONTHLY, QUARTERLY, YEARLY
     int32 fixedFreeDays = 2;
     int32 fixedTrialCycles = 3;
     int32 graceDays = 4;
@@ -92,8 +88,7 @@ message Recurring {
 message CurrencySummary {
     string currencyCode = 1;
     string currencySymbol = 2;
-    // Allowed values: REAL, VIRTUAL
-    string currencyType = 3;
+    string currencyType = 3; // Allowed values: REAL, VIRTUAL
     string namespace = 4;
     int32 decimals = 5;
 }

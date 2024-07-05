@@ -41,22 +41,19 @@ message Event {
 // path: #/components/schemas/campaign
 message Campaign {
     string id = 1;
-    // Allowed values: REDEMPTION
-    string type = 2;
+    string type = 2; // Allowed values: REDEMPTION
     string namespace = 3;
     string name = 4;
     string description = 5;
     repeated string tags = 6;
-    // Allowed values: ACTIVE, INACTIVE
-    string status = 7;
+    string status = 7; // Allowed values: ACTIVE, INACTIVE
     string redeemStart = 8;
     string redeemEnd = 9;
     int32 maxRedeemCountPerCode = 10;
     int32 maxRedeemCountPerCodePerUser = 11;
     int32 maxRedeemCountPerCampaignPerUser = 12;
     int32 maxSaleCount = 13;
-    // Allowed values: ITEM
-    string redeemType = 14;
+    string redeemType = 14; // Allowed values: ITEM
     repeated RedeemableItem items = 15;
     string boothName = 16;
     string createdAt = 17;
@@ -108,8 +105,7 @@ message KeyGroup {
     string name = 3;
     string description = 4;
     repeated string tags = 5;
-    // Allowed values: ACTIVE, INACTIVE
-    string status = 6;
+    string status = 6; // Allowed values: ACTIVE, INACTIVE
     string boothName = 7;
     string createdAt = 8;
     string updatedAt = 9;

@@ -120,8 +120,7 @@ message CreditSummary {
 message EntitlementSale {
     string entitlementId = 1;
     string entitlementName = 2;
-    // Allowed values: DURABLE, CONSUMABLE
-    string entitlementType = 3;
+    string entitlementType = 3; // Allowed values: DURABLE, CONSUMABLE
     string clazz = 4;
     string userId = 5;
     int64 useCount = 6;
@@ -140,10 +139,8 @@ message EntitlementStatusChange {
     string entitlementId = 1;
     string entitlementName = 2;
     string userId = 3;
-    // Allowed values: ACTIVE, INACTIVE, CONSUMED, REVOKED, SOLD
-    string status = 4;
-    // Allowed values: ACTIVE, INACTIVE, CONSUMED, REVOKED, SOLD
-    string previousStatus = 5;
+    string status = 4; // Allowed values: ACTIVE, INACTIVE, CONSUMED, REVOKED, SOLD
+    string previousStatus = 5; // Allowed values: ACTIVE, INACTIVE, CONSUMED, REVOKED, SOLD
 }
 
 // path: #/components/messages/entitlementGranted/payload/properties/payload

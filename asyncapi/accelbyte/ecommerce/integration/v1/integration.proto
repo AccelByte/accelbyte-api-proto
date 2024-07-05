@@ -29,12 +29,10 @@ message Dlc {
     string dlcId = 1;
     string namespace = 2;
     string obtainedAt = 3;
-    // Allowed values: EPICGAMES, OCULUS, PSN, STEAM, XBOX
-    string platform = 4;
+    string platform = 4; // Allowed values: EPICGAMES, OCULUS, PSN, STEAM, XBOX
     string revokedAt = 5;
     repeated string sources = 6;
-    // Allowed values: FULFILLED, REVOKED, REVOKE_FAILED
-    string status = 7;
+    string status = 7; // Allowed values: FULFILLED, REVOKED, REVOKE_FAILED
     string thirdPartyId = 8;
     string transactionId = 9;
     string userId = 10;
@@ -62,15 +60,13 @@ message Iap {
     string userId = 3;
     string productId = 4;
     string transactionId = 5;
-    // Allowed values: VERIFIED, FULFILLED, FAILED
-    string status = 6;
+    string status = 6; // Allowed values: VERIFIED, FULFILLED, FAILED
     string statusReason = 7;
     string region = 8;
     string language = 9;
     int64 quantity = 10;
     bool sandbox = 11;
-    // Allowed values: APPLE, GOOGLE, PLAYSTATION, STEAM, XBOX, EPICGAMES, TWITCH
-    string type = 12;
+    string type = 12; // Allowed values: APPLE, GOOGLE, PLAYSTATION, STEAM, XBOX, EPICGAMES, TWITCH
     string fulfilledTime = 13;
     double price = 14;
     string currency = 15;
