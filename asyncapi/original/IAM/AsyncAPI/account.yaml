@@ -431,6 +431,18 @@ components:
           type: string
           description: third party platform user id
 
+    userAccountThirdPartyLink:
+      type: object
+      properties:
+        platformId:
+          type: string
+          description: third party platform id
+        platformUserId:
+          type: string
+          description: third party platform user id
+        platformDisplayName:
+          type: string
+          description: third party platform user display name
 
     userAccountLink:
       type: object
@@ -706,7 +718,7 @@ components:
               userAccount:
                 $ref: '#/components/schemas/userAccountLink'
               userAccountThirdParty:
-                $ref: '#/components/schemas/userAccountThirdParty'
+                $ref: '#/components/schemas/userAccountThirdPartyLink'
 
     userAccountUnlinked:
       name: userAccountUnlinked

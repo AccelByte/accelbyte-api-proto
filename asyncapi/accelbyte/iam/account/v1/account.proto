@@ -188,6 +188,13 @@ message UserAccountThirdParty {
     string platformUserId = 2;
 }
 
+// path: #/components/schemas/userAccountThirdPartyLink
+message UserAccountThirdPartyLink {
+    string platformId = 1;
+    string platformUserId = 2;
+    string platformDisplayName = 3;
+}
+
 // path: #/components/schemas/userAccountLink
 message UserAccountLink {
     string namespace = 1;
@@ -447,7 +454,7 @@ message UserAccountVerified {
 // path: #/components/messages/userAccountLinked/payload/properties/payload
 message AnonymousSchema12 {
     UserAccountLink userAccount = 1;
-    UserAccountThirdParty userAccountThirdParty = 2;
+    UserAccountThirdPartyLink userAccountThirdParty = 2;
 }
 
 // path: #/components/messages/userAccountLinked/payload
