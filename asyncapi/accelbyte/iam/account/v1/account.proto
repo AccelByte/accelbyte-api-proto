@@ -186,6 +186,7 @@ message DeletionGDPR {
 message UserAccountThirdParty {
     string platformId = 1;
     string platformUserId = 2;
+    string platform = 3;
 }
 
 // path: #/components/schemas/userAccountThirdPartyLink
@@ -212,6 +213,8 @@ message UserAccountUnlink {
     string targetNamespace = 3;
     string targetUserId = 4;
     bool testAccount = 5;
+    string namespace = 6;
+    repeated UserAccount linkedAccounts = 7;
 }
 
 // path: #/components/schemas/userAccountUpgrade

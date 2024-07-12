@@ -430,6 +430,9 @@ components:
         platformUserId:
           type: string
           description: third party platform user id
+        platform:
+          type: string
+          description: third party platform, it can be the platform id or the account group name
 
     userAccountThirdPartyLink:
       type: object
@@ -484,6 +487,14 @@ components:
         testAccount:
           type: boolean
           description: a flag to indicates the user is a test account. this field will be omitted if its a real account
+        namespace:
+          type: string
+          description: publisher namespace
+        linkedAccounts:
+          type: array
+          description: game accounts in the game namespaces where the account link happened
+          items:
+            $ref: '#/components/schemas/userAccount'
 
     userAccountUpgrade:
       type: object
