@@ -70,9 +70,13 @@ pipeline {
         }
         stage("Run") {
             steps {
+                sh "rm -rf asyncapi.old"
+                sh "cp -r asyncapi asyncapi.old"
                 dir("${toolsRepoPath}/cicd") {
                     sh "make dbuild drun_1rpc1s CODEGEN_SDK_PATH=${codegenRepoPath} SPEC_PATH=${specRepoPath}"
                 }
+                sh "cp asyncapi.old/buf.yaml asyncapi/buf.yaml"     // Restore asyncapi/buf.yaml
+                sh "rm -rf asyncapi.old"
             }
         }
         stage('Lint') {
