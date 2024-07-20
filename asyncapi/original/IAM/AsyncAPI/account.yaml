@@ -157,6 +157,12 @@ components:
           platformUserId:
             type: string
             description: third party platform account id
+          simultaneousPlatformId:
+            type: string
+            description: third party simultaneous platform id like pspc
+          simultaneousPlatformUserId:
+            type: string
+            description: third party simultaneous platform account id
 
     userAuthenticationFailed:
       type: object

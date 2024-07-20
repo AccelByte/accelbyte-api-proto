@@ -52,6 +52,8 @@ message UserAuthentication {
     string platformId = 1;
     bool refresh = 2;
     string platformUserId = 3;
+    string simultaneousPlatformId = 4;
+    string simultaneousPlatformUserId = 5;
 }
 
 // path: #/components/schemas/userAuthenticationFailed
