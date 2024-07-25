@@ -48,15 +48,23 @@ message WalletStatusChange {
 
 // path: #/components/schemas/walletBalanceChange
 message WalletBalanceChange {
-    string walletId = 1;
+    string walletId = 1 [deprecated = true];
     string namespace = 2;
     string userId = 3;
     string currencyCode = 4;
-    int64 balance = 5;
+    int64 balance = 5 [deprecated = true];
     int64 amount = 6;
-    string source = 7;
+    string source = 7; // Allowed values: PURCHASE, IAP, PROMOTION, ACHIEVEMENT, REFERRAL_BONUS, REDEEM_CODE, REWARD, GIFT, REFUND, DLC, OTHER, SELL_BACK, TRADE, CONSUME_ENTITLEMENT, IAP_CHARGEBACK_REVERSED
     string reason = 8;
-    string origin = 9;
+    string origin = 9; // Allowed values: Playstation, Xbox, Steam, Epic, IOS, GooglePlay, Twitch, Nintendo, Oculus, System, Other
+    repeated WalletBalanceChangeDetail details = 10;
+}
+
+// path: #/components/schemas/walletBalanceChangeDetail
+message WalletBalanceChangeDetail {
+    string origin = 1; // Allowed values: Playstation, Xbox, Steam, Epic, IOS, GooglePlay, Twitch, Nintendo, Oculus, System, Other
+    int64 balance = 2;
+    int64 amount = 3;
 }
 
 // path: #/components/messages/walletDisabled/payload/properties/payload

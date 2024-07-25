@@ -60,6 +60,8 @@ components:
           type: string
         lobbySessionId:
           type: string
+        isReconnecting:
+          type: boolean
   messages:
     userConnected:
       name: userConnected
@@ -74,6 +76,29 @@ components:
                 properties:
                   lobbySessionId:
                     type: string
+                  lobbyLoginType:
+                    type: string
+                    description: '* **NewRegister** Fresh connect, no active connection.
+
+                      * **MultipleSessionLogin** An active connection exists, a new
+                      connection with different token, old connection will be closed.
+
+                      * **FastReconnect** An active connection exists, a new connection
+                      with same token and same lobbySessionId, old connection will
+                      be closed.
+
+                      * **WrongSessionID** An active connection exists, a new connection
+                      with same token and different lobbySessionId, new connection
+                      is rejected, event is **not** published.
+
+                      '
+                  reconnectFrom:
+                    type: integer
+                    description: '* **5000** Fresh connect, this wasn''t a reconnect.
+
+                      * **5001** The user is still connected.
+
+                      '
     userDisconnected:
       name: userDisconnected
       payload:

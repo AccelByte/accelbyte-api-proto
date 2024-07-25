@@ -71,7 +71,8 @@ components:
       properties:
         walletId:
           type: string
-          description: wallet id
+          description: wallet id, this field have been deprecated.
+          deprecated: true
         namespace:
           type: string
           description: namespace
@@ -84,20 +85,83 @@ components:
         balance:
           type: integer
           format: int64
-          description: the balance after change. this field have been deprecated, please don't use
+          description: the balance after change. this field have been deprecated.
+          deprecated: true
         amount:
           type: integer
           format: int64
           description: change amount, positive for both credit & debit
         source:
           type: string
-          description: credit source
+          enum:
+            - PURCHASE
+            - IAP
+            - PROMOTION
+            - ACHIEVEMENT
+            - REFERRAL_BONUS
+            - REDEEM_CODE
+            - REWARD
+            - GIFT
+            - REFUND
+            - DLC
+            - OTHER
+            - SELL_BACK
+            - TRADE
+            - CONSUME_ENTITLEMENT
+            - IAP_CHARGEBACK_REVERSED
+          description: The credit source only has value if the event is walletCredited.
         reason:
           type: string
           description: reason
         origin:
           type: string
-          description: origin
+          enum:
+            - Playstation
+            - Xbox
+            - Steam
+            - Epic
+            - IOS
+            - GooglePlay
+            - Twitch
+            - Nintendo
+            - Oculus
+            - System
+            - Other
+          description: The credit origin only has value if the event is walletCredited.
+        details:
+          type: array
+          description: Details of specific wallet balance changes
+          items:
+            $ref: '#/components/schemas/walletBalanceChangeDetail'
+
+    walletBalanceChangeDetail:
+      type: object
+      properties:
+        origin:
+          type: string
+          enum:
+            - Playstation
+            - Xbox
+            - Steam
+            - Epic
+            - IOS
+            - GooglePlay
+            - Twitch
+            - Nintendo
+            - Oculus
+            - System
+            - Other
+          description: wallet origin
+        balance:
+          type: integer
+          format: int64
+          description: the balance after change.
+        amount:
+          type: integer
+          format: int64
+          description: change amount, positive for both credit & debit
+        
+        
 
   messages:
     walletDisabled:
