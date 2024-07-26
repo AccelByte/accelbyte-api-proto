@@ -62,6 +62,8 @@ components:
           type: string
         isReconnecting:
           type: boolean
+        connectionId:
+          type: string
   messages:
     userConnected:
       name: userConnected
@@ -99,6 +101,8 @@ components:
                       * **5001** The user is still connected.
 
                       '
+                  connectionId:
+                    type: string
     userDisconnected:
       name: userDisconnected
       payload:

@@ -66,6 +66,8 @@ components:
           type: string
         isReconnecting:
           type: boolean
+        connectionId:
+          type: string
 
 
   messages:
@@ -94,6 +96,8 @@ components:
                     description: |
                       * **5000** Fresh connect, this wasn't a reconnect.
                       * **5001** The user is still connected.
+                  connectionId:
+                    type: string
 
     userDisconnected:
       name: userDisconnected

@@ -46,6 +46,7 @@ message UserDisconnectedPayload {
     string platform = 3;
     string lobbySessionId = 4;
     bool isReconnecting = 5;
+    string connectionId = 6;
 }
 
 // path: #/components/messages/userConnected/payload
