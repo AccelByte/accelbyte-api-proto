@@ -146,6 +146,7 @@ message EntitlementStatusChange {
 // path: #/components/messages/entitlementGranted/payload/properties/payload
 message AnonymousSchema1 {
     repeated StackableEntitlement grants = 1;
+    google.protobuf.Struct metadata = 2;
 }
 
 // path: #/components/messages/entitlementGranted/payload
@@ -191,6 +192,7 @@ message EntitlementUpdated {
 // path: #/components/messages/entitlementConsumed/payload/properties/payload
 message AnonymousSchema3 {
     EntitlementConsumption entitlementConsumption = 1;
+    google.protobuf.Struct metadata = 2;
 }
 
 // path: #/components/messages/entitlementConsumed/payload
@@ -235,6 +237,7 @@ message EntitlementUseCountRevoked {
 // path: #/components/messages/entitlementRevoked/payload/properties/payload
 message AnonymousSchema5 {
     EntitlementRevocation entitlementRevocation = 1;
+    google.protobuf.Struct metadata = 2;
 }
 
 // path: #/components/messages/entitlementRevoked/payload

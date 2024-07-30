@@ -358,6 +358,9 @@ components:
                 type: array
                 items:
                   $ref: '#/components/schemas/stackableEntitlement'
+              metadata:
+                type: object
+                additionalProperties: true
 
     entitlementUpdated:
       name: entitlementUpdated
@@ -388,6 +391,9 @@ components:
             properties:
               entitlementConsumption:
                 $ref: '#/components/schemas/entitlementConsumption'
+              metadata:
+                type: object
+                additionalProperties: true
 
     entitlementUseCountRevoked:
       name: entitlementUseCountRevoked
@@ -416,6 +422,9 @@ components:
             properties:
               entitlementRevocation:
                 $ref: '#/components/schemas/entitlementRevocation'
+              metadata:
+                type: object
+                additionalProperties: true
 
     entitlementDisabled:
       name: entitlementDisabled

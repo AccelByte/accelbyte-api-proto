@@ -346,6 +346,9 @@ components:
                 type: array
                 items:
                   $ref: '#/components/schemas/stackableEntitlement'
+              metadata:
+                type: object
+                additionalProperties: true
     entitlementUpdated:
       name: entitlementUpdated
       description: message is sent when entitlement is updated
@@ -374,6 +377,9 @@ components:
             properties:
               entitlementConsumption:
                 $ref: '#/components/schemas/entitlementConsumption'
+              metadata:
+                type: object
+                additionalProperties: true
     entitlementUseCountRevoked:
       name: entitlementUseCountRevoked
       description: message is sent when entitlement use count is revoked, only for
@@ -401,6 +407,9 @@ components:
             properties:
               entitlementRevocation:
                 $ref: '#/components/schemas/entitlementRevocation'
+              metadata:
+                type: object
+                additionalProperties: true
     entitlementDisabled:
       name: entitlementDisabled
       description: message is sent when entitlement is disabled
