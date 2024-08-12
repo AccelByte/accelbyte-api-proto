@@ -235,6 +235,19 @@ components:
             properties:
               walletBalanceChange:
                 $ref: '#/components/schemas/walletBalanceChange'
+    walletTransactionCancelled:
+      name: walletTransactionCancelled
+      description: message is sent when cancel wallet transaction
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              walletBalanceChange:
+                $ref: '#/components/schemas/walletBalanceChange'
 x-source: Ecommerce/AsyncAPI/wallet.yml
 x-proto-package: accelbyte.ecommerce.wallet.v1
 x-proto-package-version: v1.0.0

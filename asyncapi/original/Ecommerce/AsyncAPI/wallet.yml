@@ -247,3 +247,17 @@ components:
             properties:
               walletBalanceChange:
                 $ref: '#/components/schemas/walletBalanceChange'
+
+    walletTransactionCancelled:
+      name: walletTransactionCancelled
+      description: message is sent when cancel wallet transaction
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              walletBalanceChange:
+                $ref: '#/components/schemas/walletBalanceChange'

@@ -199,6 +199,28 @@ message WalledExpired {
     string sessionId = 11;
 }
 
+// path: #/components/messages/walletTransactionCancelled/payload/properties/payload
+message AnonymousSchema7 {
+    WalletBalanceChange walletBalanceChange = 1;
+}
+
+// path: #/components/messages/walletTransactionCancelled/payload
+message WalletTransactionCancelled {
+    AnonymousSchema7 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
 
 // --- #/components/messages/{message_name} ---
 
@@ -230,6 +252,11 @@ message WalledPaidMessage {
 // path: #/components/messages/walledExpired
 message WalledExpiredMessage {
     WalledExpired payload = 1;
+}
+
+// path: #/components/messages/walletTransactionCancelled
+message WalletTransactionCancelledMessage {
+    WalletTransactionCancelled payload = 1;
 }
 
 
