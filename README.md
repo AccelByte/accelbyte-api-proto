@@ -16,8 +16,10 @@ Proto (gRPC) files for AccelByte Extend Override.
 
 * [Entitlement Revocation](proto/accelbyte/platform/revocation/)
 
+* [Challenge Validator](proto/accelbyte/challenge/)
+
 ### Event Handler
 
 Proto (gRPC) files for AccelByte Extend Event Handler.
 
-* [All Events](asyncapi/accelbyte/) 
+* [All Events](asyncapi/accelbyte/)

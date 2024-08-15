@@ -1,0 +1,71 @@
+// Copyright (c) 2024 AccelByte Inc. All Rights Reserved.
+// This is licensed software from AccelByte Inc, for limitations
+// and restrictions contact your company contract manager.
+
+syntax="proto3";
+
+package accelbyte.challenge.assignmentFunction;
+// Version v1.0.0
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "accelbyte.net/challenge/assignmentFunction";
+option csharp_namespace = "AccelByte.Challenge.AssignmentFunction";
+option java_multiple_files = true;
+option java_package = "net.accelbyte.challenge.assignmentFunction";
+
+service AssignmentFunction {
+    rpc Assign(AssignmentRequest) returns (AssignmentResponse) {}
+}
+
+message AssignmentRequest {
+    string namespace = 1;
+    string userId = 2;
+    repeated Goal goals = 3;
+}
+
+message AssignmentResponse {
+    string namespace = 1;
+    string userId = 2;
+    repeated Goal assignedGoals = 3;
+}
+
+message Goal {
+    string code = 1;
+    string challengeCode = 2;
+    string name = 3;
+    bool isActive = 4;
+    repeated Tag tags = 5;
+    repeated Requirement requirements = 6;
+    repeated Reward rewards = 7;
+    google.protobuf.Timestamp createdAt = 8;
+    google.protobuf.Timestamp updatedAt = 9;
+}
+
+message Requirement {
+    string operator = 1;
+    repeated Predicate predicates = 2;
+}
+
+message Predicate {
+    string parameterName = 1;
+    string parameterType = 2;
+    string matcher = 3;
+    float targetValue = 4;
+    optional string statCycleId = 5;
+}
+
+message Reward {
+    string type = 1;
+    string itemId = 2;
+    string itemName = 3;
+    float quantity = 4;
+}
+
+message Goals {
+    repeated Goal goals = 1;
+}
+
+message Tag {
+    string name = 1;
+}
