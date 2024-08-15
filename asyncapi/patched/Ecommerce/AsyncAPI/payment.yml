@@ -22,6 +22,7 @@ channels:
         - $ref: '#/components/messages/wxPayConfigUpdated'
         - $ref: '#/components/messages/wxPayCertUploaded'
         - $ref: '#/components/messages/checkoutConfigUpdated'
+        - $ref: '#/components/messages/neonPayConfigUpdated'
   paymentOrderProcessing:
     publish:
       message:
@@ -83,7 +84,7 @@ components:
           description: payment merchant config id
         sandbox:
           type: boolean
-          description: sanbox or not
+          description: sandbox or not
     paymentProviderConfig:
       type: object
       properties:
@@ -129,6 +130,7 @@ components:
           - ALIPAY
           - WXPAY
           - PAYPAL
+          - NEONPAY
     currencySummary:
       type: object
       properties:
@@ -222,7 +224,7 @@ components:
   messages:
     paymentProviderConfigCreated:
       name: paymentProviderConfigCreated
-      description: message is sent when payment provider config is created
+      description: The event is triggered by creating payment provider configuration.
       payload:
         type: object
         allOf:
@@ -235,7 +237,7 @@ components:
                 $ref: '#/components/schemas/paymentProviderConfig'
     paymentProviderConfigUpdated:
       name: paymentProviderConfigUpdated
-      description: message is sent when payment provider config is updated
+      description: The event is triggered by updating payment provider configuration.
       payload:
         type: object
         allOf:
@@ -248,7 +250,7 @@ components:
                 $ref: '#/components/schemas/paymentProviderConfig'
     paymentProviderConfigDeleted:
       name: paymentProviderConfigDeleted
-      description: message is sent when payment provider config is deleted
+      description: The event is triggered by deleting payment provider configuration.
       payload:
         type: object
         allOf:
@@ -261,7 +263,7 @@ components:
                 $ref: '#/components/schemas/paymentProviderConfig'
     paymentTaxConfigUpdated:
       name: paymentTaxConfigUpdated
-      description: message is sent when payment tax config is updated
+      description: The event is triggered by updating payment tax configuration.
       payload:
         type: object
         allOf:
@@ -274,7 +276,7 @@ components:
                 $ref: '#/components/schemas/paymentTaxConfig'
     xsollaConfigUpdated:
       name: xsollaConfigUpdated
-      description: message is sent when xsolla config is updated
+      description: The event is triggered by updating Xsolla configuration.
       payload:
         type: object
         allOf:
@@ -287,7 +289,7 @@ components:
                 $ref: '#/components/schemas/paymentMerchantConfig'
     xsollaUIConfigUpdated:
       name: xsollaUIConfigUpdated
-      description: message is sent when xsolla UI config is updated
+      description: The event is triggered by updating Xsolla UI configuration.
       payload:
         type: object
         allOf:
@@ -300,7 +302,7 @@ components:
                 $ref: '#/components/schemas/paymentMerchantConfig'
     aliPayConfigUpdated:
       name: aliPayConfigUpdated
-      description: message is sent when ali pay config is updated
+      description: The event is triggered by updating Alipay configuration.
       payload:
         type: object
         allOf:
@@ -313,7 +315,7 @@ components:
                 $ref: '#/components/schemas/paymentMerchantConfig'
     wxPayConfigUpdated:
       name: wxPayConfigUpdated
-      description: message is sent when wx pay config is updated
+      description: The event is triggered by updating WxPay configuration.
       payload:
         type: object
         allOf:
@@ -326,7 +328,7 @@ components:
                 $ref: '#/components/schemas/paymentMerchantConfig'
     wxPayCertUploaded:
       name: wxPayCertUploaded
-      description: message is sent when wx pay cert config is updated
+      description: The event is triggered by updating WxPay Pay certificate configuration.
       payload:
         type: object
         allOf:
@@ -339,7 +341,7 @@ components:
                 $ref: '#/components/schemas/paymentMerchantConfig'
     adyenConfigUpdated:
       name: adyenConfigUpdated
-      description: message is sent when adyen config is updated
+      description: The event is triggered by updating Adyen configuration.
       payload:
         type: object
         allOf:
@@ -352,7 +354,7 @@ components:
                 $ref: '#/components/schemas/paymentMerchantConfig'
     stripeConfigUpdated:
       name: stripeConfigUpdated
-      description: message is sent when stripe config is updated
+      description: The event is triggered by updating Stripe configuration.
       payload:
         type: object
         allOf:
@@ -365,7 +367,7 @@ components:
                 $ref: '#/components/schemas/paymentMerchantConfig'
     payPalConfigUpdated:
       name: payPalConfigUpdated
-      description: message is sent when paypal config is updated
+      description: The event is triggered by updating PayPal configuration.
       payload:
         type: object
         allOf:
@@ -378,7 +380,8 @@ components:
                 $ref: '#/components/schemas/paymentMerchantConfig'
     paymentOrderCreated:
       name: paymentOrderCreated
-      description: payment order status will be INIT
+      description: The event is triggered by creating payment order. Payment order
+        status will be INIT.
       tags:
       - name: WALLET
       - name: XSOLLA
@@ -398,7 +401,8 @@ components:
                 $ref: '#/components/schemas/paymentOrder'
     paymentOrderCharged:
       name: paymentOrderCharged
-      description: payment order status will be CHARGED
+      description: The event is triggered when payment order was paid/charged. Payment
+        order status will be CHARGED.
       tags:
       - name: WALLET
       - name: XSOLLA
@@ -418,7 +422,8 @@ components:
                 $ref: '#/components/schemas/paymentOrder'
     paymentOrderChargeFailed:
       name: paymentOrderChargeFailed
-      description: payment order status will be CHARGE_FAILED
+      description: The event is triggered when payment process was failed. Payment
+        order status will be CHARGE_FAILED.
       tags:
       - name: ADYEN
       - name: WXPAY
@@ -435,7 +440,8 @@ components:
                 $ref: '#/components/schemas/paymentOrder'
     paymentOrderRefunded:
       name: paymentOrderRefunded
-      description: payment order status will be REFUNDED
+      description: The event is triggered when payment was refunded. Payment order
+        status will be REFUNDED.
       tags:
       - name: WALLET
       - name: XSOLLA
@@ -455,7 +461,8 @@ components:
                 $ref: '#/components/schemas/paymentOrder'
     paymentOrderRefundFailed:
       name: paymentOrderRefundFailed
-      description: payment order status will be REFUND_FAILED
+      description: The event is triggered when payment refund process was failed.
+        Payment order status will be REFUND_FAILED.
       tags:
       - name: ADYEN
       - name: WXPAY
@@ -471,8 +478,8 @@ components:
                 $ref: '#/components/schemas/paymentOrder'
     paymentOrderAuthorised:
       name: paymentOrderAuthorised
-      description: payment order status will be AUTHORISED(it only occurs when adyen
-        isAuthoriseAsCapture false)
+      description: The event is triggered when Adyen isAuthoriseAsCapture set to false
+        and payment order was authorised. Payment order status will be AUTHORISED.
       tags:
       - name: ADYEN
       payload:
@@ -487,8 +494,8 @@ components:
                 $ref: '#/components/schemas/paymentOrder'
     paymentOrderAuthorisedFailed:
       name: paymentOrderAuthorisedFailed
-      description: payment order status will be AUTHORISE_FAILED(it only occurs when
-        adyen isAuthoriseAsCapture false)
+      description: The event is triggered when Adyen isAuthoriseAsCapture set to false
+        and payment order failed to authorise. Payment order status will be AUTHORISE_FAILED.
       tags:
       - name: ADYEN
       payload:
@@ -503,7 +510,8 @@ components:
                 $ref: '#/components/schemas/paymentOrder'
     paymentOrderNotificationOfChargeback:
       name: paymentOrderNotificationOfChargeback
-      description: payment order status will be NOTIFICATION_OF_CHARGEBACK
+      description: The event is triggered when notifying user of chargeback. Payment
+        order status will be NOTIFICATION_OF_CHARGEBACK.
       tags:
       - name: ADYEN
       payload:
@@ -518,7 +526,8 @@ components:
                 $ref: '#/components/schemas/paymentOrder'
     paymentOrderRequestForInformation:
       name: paymentOrderRequestForInformation
-      description: payment order status will be REQUEST_FOR_INFORMATION
+      description: The event is triggered when requesting for payment order information
+        notification. Payment order status will be REQUEST_FOR_INFORMATION
       tags:
       - name: ADYEN
       payload:
@@ -533,7 +542,8 @@ components:
                 $ref: '#/components/schemas/paymentOrder'
     paymentOrderChargeback:
       name: paymentOrderChargeback
-      description: payment order status will be CHARGEBACK
+      description: The event is triggered when payment chargeback process was successfull.
+        Payment order status will be CHARGEBACK.
       tags:
       - name: XSOLLA
       - name: ADYEN
@@ -550,7 +560,8 @@ components:
                 $ref: '#/components/schemas/paymentOrder'
     paymentOrderChargebackReversed:
       name: paymentOrderChargebackReversed
-      description: payment order status will be CHARGEBACK_REVERSED
+      description: The event is triggered when reverse chargeback process was successfull.
+        Payment order status will be CHARGEBACK_REVERSED.
       tags:
       - name: ADYEN
       payload:
@@ -565,8 +576,8 @@ components:
                 $ref: '#/components/schemas/paymentOrder'
     paymentOrderRefundRequested:
       name: paymentOrderRefundRequested
-      description: payment order status will be REFUNDING/REFUNDED/REFUND_FAILED after
-        refund requested
+      description: The event is triggered when user is requesting for refund. Payment
+        order status will be REFUNDING/REFUNDED/REFUND_FAILED..
       tags:
       - name: WALLET
       - name: XSOLLA
@@ -586,7 +597,7 @@ components:
                 $ref: '#/components/schemas/paymentOrder'
     paymentAccountDeleted:
       name: paymentAccountDeleted
-      description: payment account deleted
+      description: The event is triggered by deleting payment account.
       tags:
       - name: XSOLLA
       - name: ADYEN
@@ -602,7 +613,20 @@ components:
                 $ref: '#/components/schemas/paymentAccount'
     checkoutConfigUpdated:
       name: checkoutConfigUpdated
-      description: update checkout configuration
+      description: The event is triggered by updating checkout configuration.
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            properties:
+              paymentMerchantConfig:
+                $ref: '#/components/schemas/paymentMerchantConfig'
+    neonPayConfigUpdated:
+      name: neonPayConfigUpdated
+      description: The event is triggered by updating the Neon Pay Configuration
       payload:
         type: object
         allOf:

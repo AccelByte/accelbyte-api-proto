@@ -271,6 +271,7 @@ message WalletProcessingPublish {
         WalletDebitedMessage variant3 = 4;
         WalledPaidMessage variant4 = 5;
         WalledExpiredMessage variant5 = 6;
+        WalletTransactionCancelledMessage variant6 = 7;
     }
 }
 
@@ -306,4 +307,9 @@ service WalletProcessingWalledPaidService {
 // Publishes a WalledExpired to the Wallet Processing channel. (oneOf variant) (walletProcessing WalledExpired)
 service WalletProcessingWalledExpiredService {
     rpc OnMessage(WalledExpired) returns (google.protobuf.Empty);
+}
+
+// Publishes a WalletTransactionCancelled to the Wallet Processing channel. (oneOf variant) (walletProcessing WalletTransactionCancelled)
+service WalletProcessingWalletTransactionCancelledService {
+    rpc OnMessage(WalletTransactionCancelled) returns (google.protobuf.Empty);
 }

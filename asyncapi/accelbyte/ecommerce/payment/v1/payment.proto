@@ -58,7 +58,7 @@ message PaymentAccount {
     string userId = 2;
     string type = 3; // Allowed values: card, paypal
     string id = 4;
-    string paymentProvider = 5; // Allowed values: WALLET, XSOLLA, ADYEN, STRIPE, CHECKOUT, ALIPAY, WXPAY, PAYPAL
+    string paymentProvider = 5; // Allowed values: WALLET, XSOLLA, ADYEN, STRIPE, CHECKOUT, ALIPAY, WXPAY, PAYPAL, NEONPAY
 }
 
 // path: #/components/schemas/currencySummary
@@ -670,6 +670,28 @@ message CheckoutConfigUpdated {
     string sessionId = 11;
 }
 
+// path: #/components/messages/neonPayConfigUpdated/payload/properties/payload
+message AnonymousSchema27 {
+    PaymentMerchantConfig paymentMerchantConfig = 1;
+}
+
+// path: #/components/messages/neonPayConfigUpdated/payload
+message NeonPayConfigUpdated {
+    AnonymousSchema27 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
 
 // --- #/components/messages/{message_name} ---
 
@@ -803,6 +825,11 @@ message CheckoutConfigUpdatedMessage {
     CheckoutConfigUpdated payload = 1;
 }
 
+// path: #/components/messages/neonPayConfigUpdated
+message NeonPayConfigUpdatedMessage {
+    NeonPayConfigUpdated payload = 1;
+}
+
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
@@ -822,6 +849,7 @@ message PaymentConfigPublish {
         WxPayConfigUpdatedMessage variant10 = 11;
         WxPayCertUploadedMessage variant11 = 12;
         CheckoutConfigUpdatedMessage variant12 = 13;
+        NeonPayConfigUpdatedMessage variant13 = 14;
     }
 }
 
@@ -910,6 +938,11 @@ service PaymentConfigWxPayCertUploadedService {
 // Publishes a CheckoutConfigUpdated to the Payment Config channel. (oneOf variant) (paymentConfig CheckoutConfigUpdated)
 service PaymentConfigCheckoutConfigUpdatedService {
     rpc OnMessage(CheckoutConfigUpdated) returns (google.protobuf.Empty);
+}
+
+// Publishes a NeonPayConfigUpdated to the Payment Config channel. (oneOf variant) (paymentConfig NeonPayConfigUpdated)
+service PaymentConfigNeonPayConfigUpdatedService {
+    rpc OnMessage(NeonPayConfigUpdated) returns (google.protobuf.Empty);
 }
 
 // Publishes a PaymentOrderCreated to the Payment Order Processing channel. (oneOf variant) (paymentOrderProcessing PaymentOrderCreated)

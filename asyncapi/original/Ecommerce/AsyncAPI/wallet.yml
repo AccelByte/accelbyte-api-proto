@@ -15,6 +15,7 @@ channels:
           - $ref: '#/components/messages/walletDebited'
           - $ref: '#/components/messages/walledPaid'
           - $ref: '#/components/messages/walledExpired'
+          - $ref: '#/components/messages/walletTransactionCancelled'
 
 components:
   schemas:
