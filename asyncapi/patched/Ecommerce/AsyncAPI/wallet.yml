@@ -69,7 +69,7 @@ components:
       properties:
         walletId:
           type: string
-          description: wallet id, this field have been deprecated.
+          description: wallet id, this field has been deprecated.
           deprecated: true
         namespace:
           type: string
@@ -83,7 +83,7 @@ components:
         balance:
           type: integer
           format: int64
-          description: the balance after change. this field have been deprecated.
+          description: the balance after change. this field has been deprecated.
           deprecated: true
         amount:
           type: integer
@@ -238,7 +238,7 @@ components:
                 $ref: '#/components/schemas/walletBalanceChange'
     walletTransactionCancelled:
       name: walletTransactionCancelled
-      description: message is sent when cancel wallet transaction
+      description: message is sent when cancelling wallet transaction
       payload:
         type: object
         allOf:

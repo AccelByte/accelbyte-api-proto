@@ -344,7 +344,7 @@ components:
 
     wxPayCertUploaded:
       name: wxPayCertUploaded
-      description: The event is triggered by updating WxPay Pay certificate configuration.
+      description: The event is triggered by updating WxPay certificate configuration.
       payload:
         type: object
         allOf:
@@ -442,7 +442,7 @@ components:
 
     paymentOrderChargeFailed:
       name: paymentOrderChargeFailed
-      description: The event is triggered when payment process was failed. Payment order status will be CHARGE_FAILED.
+      description: The event is triggered when payment process has failed. Payment order status will be CHARGE_FAILED.
       tags:
         - name: ADYEN
         - name: WXPAY
@@ -499,7 +499,7 @@ components:
 
     paymentOrderAuthorised:
       name: paymentOrderAuthorised
-      description: The event is triggered when Adyen isAuthoriseAsCapture set to false and payment order was authorised. Payment order status will be AUTHORISED.
+      description: The event is triggered when Adyen isAuthoriseAsCapture was set to false and payment order was authorised. Payment order status will be AUTHORISED.
       tags:
         - name: ADYEN
       payload:
@@ -515,7 +515,7 @@ components:
 
     paymentOrderAuthorisedFailed:
       name: paymentOrderAuthorisedFailed
-      description: The event is triggered when Adyen isAuthoriseAsCapture set to false and payment order failed to authorise. Payment order status will be AUTHORISE_FAILED.
+      description: The event is triggered when Adyen isAuthoriseAsCapture was set to false and payment order failed to authorise. Payment order status will be AUTHORISE_FAILED.
       tags:
         - name: ADYEN
       payload:
@@ -597,7 +597,7 @@ components:
 
     paymentOrderRefundRequested:
       name: paymentOrderRefundRequested
-      description: The event is triggered when user is requesting for refund. Payment order status will be REFUNDING/REFUNDED/REFUND_FAILED..
+      description: The event is triggered when user is requesting for refund. Payment order status will be REFUNDING/REFUNDED/REFUND_FAILED.
       tags:
         - name: WALLET
         - name: XSOLLA
@@ -649,7 +649,7 @@ components:
 
     neonPayConfigUpdated:
       name: neonPayConfigUpdated
-      description: The event is triggered by updating the Neon Pay Configuration
+      description: The event is triggered by updating the Neon Pay Configuration.
       payload:
         type: object
         allOf:
