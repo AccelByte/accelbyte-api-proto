@@ -66,6 +66,9 @@ components:
         platformId:
           type: string
           description: third party platform id
+        displayName:
+          type: string
+          description: display name
   messages:
     oauthRequestAuthorized:
       name: oauthRequestAuthorized

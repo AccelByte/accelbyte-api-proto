@@ -48,6 +48,7 @@ message Oauth {
 // path: #/components/schemas/oauthThirdParty
 message OauthThirdParty {
     string platformId = 1;
+    string displayName = 2;
 }
 
 // path: #/components/messages/oauthRequestAuthorized/payload/properties/payload
