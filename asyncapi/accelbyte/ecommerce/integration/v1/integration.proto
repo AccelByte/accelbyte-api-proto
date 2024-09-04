@@ -72,6 +72,16 @@ message Iap {
     string currency = 15;
 }
 
+// path: #/components/schemas/notification
+message Notification {
+    string namespace = 1;
+    string userId = 2;
+    string notificationPlatform = 3; // Allowed values: GOOGLE, APPLE
+    google.protobuf.Struct notificationPayload = 4;
+    string status = 5; // Allowed values: PROCESSED, ERROR, WARN, IGNORED
+    string notificationType = 6; // Allowed values: DID_CHANGE_RENEWAL_PREF, EXPIRED, GRACE_PERIOD_EXPIRED, RENEWAL_EXTENDED, DID_RENEW, SUBSCRIBED, REVOKE, REFUND, REFUND_REVERSED, OFFER_REDEEMED, DID_CHANGE_RENEWAL_STATUS, DID_FAIL_TO_RENEW, PRICE_INCREASE, REFUND_DECLINED, CONSUMPTION_REQUEST, RENEWAL_EXTENSION, EXTERNAL_PURCHASE_TOKEN, ONE_TIME_CHARGE, TEST, Subscription, OneTimePurchase, VoidPurchase, Test, UNKNOWN
+}
+
 // path: #/components/messages/iapProcessed/payload/properties/payload
 message AnonymousSchema1 {
     Iap iap = 1;
@@ -102,6 +112,28 @@ message AnonymousSchema2 {
 // path: #/components/messages/dlcSynced/payload
 message DlcSynced {
     AnonymousSchema2 payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/notificationProcessed/payload/properties/payload
+message AnonymousSchema3 {
+    Notification notification = 1;
+}
+
+// path: #/components/messages/notificationProcessed/payload
+message NotificationProcessed {
+    AnonymousSchema3 payload = 1;
 
     // allOf(#/components/schemas/event)
     string id = 2;
@@ -217,6 +249,11 @@ message IapProcessedMessage {
 // path: #/components/messages/dlcSynced
 message DlcSyncedMessage {
     DlcSynced payload = 1;
+}
+
+// path: #/components/messages/notificationProcessed
+message NotificationProcessedMessage {
+    NotificationProcessed payload = 1;
 }
 
 
@@ -343,6 +380,11 @@ service IapConfigManagementTwitchIAPConfigUpdatedService {
 // Publishes a Event to the Iap Config Management channel. (oneOf variant) (iapConfigManagement TwitchIAPConfigDeleted)
 service IapConfigManagementTwitchIAPConfigDeletedService {
     rpc OnMessage(Event) returns (google.protobuf.Empty);
+}
+
+// Publishes a message to the Iap Notification channel. (iapNotification NotificationProcessed)
+service IapNotificationNotificationProcessedService {
+    rpc OnMessage(NotificationProcessed) returns (google.protobuf.Empty);
 }
 
 // Publishes a message to the Iap Processing channel. (iapProcessing IapProcessed)
