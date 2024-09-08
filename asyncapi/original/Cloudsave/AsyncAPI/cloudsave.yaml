@@ -19,6 +19,20 @@ channels:
           - $ref: '#/components/messages/gameRecordCreated'
           - $ref: '#/components/messages/gameRecordUpdated'
           - $ref: '#/components/messages/gameRecordDeleted'
+  adminPlayerRecord:
+    publish:
+      message:
+        oneOf:
+          - $ref: '#/components/messages/adminPlayerRecordCreated'
+          - $ref: '#/components/messages/adminPlayerRecordUpdated'
+          - $ref: '#/components/messages/adminPlayerRecordDeleted'
+  playerRecord:
+    publish:
+      message:
+        oneOf:
+          - $ref: '#/components/messages/playerRecordCreated'
+          - $ref: '#/components/messages/playerRecordUpdated'
+          - $ref: '#/components/messages/playerRecordDeleted'
 
 components:
   schemas:
@@ -56,6 +70,54 @@ components:
         namespace:
           type: string
           description: namespace of the record
+    adminPlayerRecordPayload:
+      type: object
+      properties:
+        key:
+          type: string
+          description: record key
+        namespace:
+          type: string
+          description: namespace of the record
+        userId:
+          type: string
+          description: record user id
+        actorUserId:
+          type: string
+          description: requester user id
+    playerRecordPayload:
+      type: object
+      properties:
+        key:
+          type: string
+          description: record key
+        namespace:
+          type: string
+          description: namespace of the record
+        userId:
+          type: string
+          description: record user id
+        actorUserId:
+          type: string
+          description: requester user id
+        isPublic:
+          type: boolean
+          description: type of the player record
+    playerRecordDeletedPayload:
+      type: object
+      properties:
+        key:
+          type: string
+          description: record key
+        namespace:
+          type: string
+          description: namespace of the record
+        userId:
+          type: string
+          description: record user id
+        actorUserId:
+          type: string
+          description: requester user id
 
   messages:
     adminGameRecordCreated:
@@ -133,3 +195,64 @@ components:
         properties:
           payload:
             $ref: '#/components/schemas/recordPayload'
+
+    adminPlayerRecordCreated:
+      name: adminPlayerRecordCreated
+      description: message is sent when the admin player record created
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/adminPlayerRecordPayload'
+    adminPlayerRecordUpdated:
+      name: adminPlayerRecordUpdated
+      description: message is sent when the admin player record updated
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/adminPlayerRecordPayload'
+    adminPlayerRecordDeleted:
+      name: adminPlayerRecordDeleted
+      description: message is sent when the admin player record deleted
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/adminPlayerRecordPayload'
+    playerRecordCreated:
+      name: playerRecordCreated
+      description: message is sent when the player record created
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/playerRecordPayload'
+    playerRecordUpdated:
+      name: playerRecordUpdated
+      description: message is sent when the player record updated
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/playerRecordPayload'
+    playerRecordDeleted:
+      name: playerRecordDeleted
+      description: message is sent when the player record deleted.
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/playerRecordDeletedPayload'

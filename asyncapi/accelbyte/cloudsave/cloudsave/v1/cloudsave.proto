@@ -44,6 +44,31 @@ message RecordPayload {
     string namespace = 2;
 }
 
+// path: #/components/schemas/adminPlayerRecordPayload
+message AdminPlayerRecordPayload {
+    string key = 1;
+    string namespace = 2;
+    string userId = 3;
+    string actorUserId = 4;
+}
+
+// path: #/components/schemas/playerRecordPayload
+message PlayerRecordPayload {
+    string key = 1;
+    string namespace = 2;
+    string userId = 3;
+    string actorUserId = 4;
+    bool isPublic = 5;
+}
+
+// path: #/components/schemas/playerRecordDeletedPayload
+message PlayerRecordDeletedPayload {
+    string key = 1;
+    string namespace = 2;
+    string userId = 3;
+    string actorUserId = 4;
+}
+
 // path: #/components/messages/adminGameRecordCreated/payload
 message AdminGameRecordCreated {
     RecordPayload payload = 1;
@@ -164,6 +189,108 @@ message GameRecordDeleted {
     string sessionId = 11;
 }
 
+// path: #/components/messages/adminPlayerRecordCreated/payload
+message AdminPlayerRecordCreated {
+    AdminPlayerRecordPayload payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/adminPlayerRecordUpdated/payload
+message AdminPlayerRecordUpdated {
+    AdminPlayerRecordPayload payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/adminPlayerRecordDeleted/payload
+message AdminPlayerRecordDeleted {
+    AdminPlayerRecordPayload payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/playerRecordCreated/payload
+message PlayerRecordCreated {
+    PlayerRecordPayload payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/playerRecordUpdated/payload
+message PlayerRecordUpdated {
+    PlayerRecordPayload payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
+// path: #/components/messages/playerRecordDeleted/payload
+message PlayerRecordDeleted {
+    PlayerRecordDeletedPayload payload = 1;
+
+    // allOf(#/components/schemas/event)
+    string id = 2;
+    int64 version = 3;
+    string name = 4;
+    string namespace = 5;
+    string parentNamespace = 6;
+    string timestamp = 7;
+    string clientId = 8;
+    string userId = 9;
+    string traceId = 10;
+    string sessionId = 11;
+}
+
 
 // --- #/components/messages/{message_name} ---
 
@@ -197,6 +324,36 @@ message GameRecordDeletedMessage {
     GameRecordDeleted payload = 1;
 }
 
+// path: #/components/messages/adminPlayerRecordCreated
+message AdminPlayerRecordCreatedMessage {
+    AdminPlayerRecordCreated payload = 1;
+}
+
+// path: #/components/messages/adminPlayerRecordUpdated
+message AdminPlayerRecordUpdatedMessage {
+    AdminPlayerRecordUpdated payload = 1;
+}
+
+// path: #/components/messages/adminPlayerRecordDeleted
+message AdminPlayerRecordDeletedMessage {
+    AdminPlayerRecordDeleted payload = 1;
+}
+
+// path: #/components/messages/playerRecordCreated
+message PlayerRecordCreatedMessage {
+    PlayerRecordCreated payload = 1;
+}
+
+// path: #/components/messages/playerRecordUpdated
+message PlayerRecordUpdatedMessage {
+    PlayerRecordUpdated payload = 1;
+}
+
+// path: #/components/messages/playerRecordDeleted
+message PlayerRecordDeletedMessage {
+    PlayerRecordDeleted payload = 1;
+}
+
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
@@ -215,6 +372,24 @@ message GameRecordPublish {
         GameRecordCreatedMessage variant0 = 1;
         GameRecordUpdatedMessage variant1 = 2;
         GameRecordDeletedMessage variant2 = 3;
+    }
+}
+
+// path: #/channels/adminPlayerRecord/publish/message
+message AdminPlayerRecordPublish {
+    oneof payload {
+        AdminPlayerRecordCreatedMessage variant0 = 1;
+        AdminPlayerRecordUpdatedMessage variant1 = 2;
+        AdminPlayerRecordDeletedMessage variant2 = 3;
+    }
+}
+
+// path: #/channels/playerRecord/publish/message
+message PlayerRecordPublish {
+    oneof payload {
+        PlayerRecordCreatedMessage variant0 = 1;
+        PlayerRecordUpdatedMessage variant1 = 2;
+        PlayerRecordDeletedMessage variant2 = 3;
     }
 }
 
@@ -250,4 +425,34 @@ service GameRecordGameRecordUpdatedService {
 // Publishes a GameRecordDeleted to the Game Record channel. (oneOf variant) (gameRecord GameRecordDeleted)
 service GameRecordGameRecordDeletedService {
     rpc OnMessage(GameRecordDeleted) returns (google.protobuf.Empty);
+}
+
+// Publishes a AdminPlayerRecordCreated to the Admin Player Record channel. (oneOf variant) (adminPlayerRecord AdminPlayerRecordCreated)
+service AdminPlayerRecordAdminPlayerRecordCreatedService {
+    rpc OnMessage(AdminPlayerRecordCreated) returns (google.protobuf.Empty);
+}
+
+// Publishes a AdminPlayerRecordUpdated to the Admin Player Record channel. (oneOf variant) (adminPlayerRecord AdminPlayerRecordUpdated)
+service AdminPlayerRecordAdminPlayerRecordUpdatedService {
+    rpc OnMessage(AdminPlayerRecordUpdated) returns (google.protobuf.Empty);
+}
+
+// Publishes a AdminPlayerRecordDeleted to the Admin Player Record channel. (oneOf variant) (adminPlayerRecord AdminPlayerRecordDeleted)
+service AdminPlayerRecordAdminPlayerRecordDeletedService {
+    rpc OnMessage(AdminPlayerRecordDeleted) returns (google.protobuf.Empty);
+}
+
+// Publishes a PlayerRecordCreated to the Player Record channel. (oneOf variant) (playerRecord PlayerRecordCreated)
+service PlayerRecordPlayerRecordCreatedService {
+    rpc OnMessage(PlayerRecordCreated) returns (google.protobuf.Empty);
+}
+
+// Publishes a PlayerRecordUpdated to the Player Record channel. (oneOf variant) (playerRecord PlayerRecordUpdated)
+service PlayerRecordPlayerRecordUpdatedService {
+    rpc OnMessage(PlayerRecordUpdated) returns (google.protobuf.Empty);
+}
+
+// Publishes a PlayerRecordDeleted to the Player Record channel. (oneOf variant) (playerRecord PlayerRecordDeleted)
+service PlayerRecordPlayerRecordDeletedService {
+    rpc OnMessage(PlayerRecordDeleted) returns (google.protobuf.Empty);
 }
