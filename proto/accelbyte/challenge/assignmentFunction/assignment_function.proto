@@ -5,7 +5,6 @@
 syntax="proto3";
 
 package accelbyte.challenge.assignmentFunction;
-// Version v1.0.0
 
 import "google/protobuf/timestamp.proto";
 
@@ -48,11 +47,12 @@ message Requirement {
 }
 
 message Predicate {
-    string parameterName = 1;
-    string parameterType = 2;
-    string matcher = 3;
-    float targetValue = 4;
-    optional string statCycleId = 5;
+    string id = 1;
+    string parameterName = 2;
+    string parameterType = 3;
+    string matcher = 4;
+    float targetValue = 5;
+    optional string statCycleId = 6;
 }
 
 message Reward {
