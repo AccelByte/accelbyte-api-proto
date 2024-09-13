@@ -5,6 +5,8 @@
 syntax="proto3";
 
 package accelbyte.challenge.assignmentFunction;
+// Version v1.1.0
+
 
 import "google/protobuf/timestamp.proto";
 
