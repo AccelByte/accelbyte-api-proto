@@ -389,7 +389,7 @@ components:
 
     notificationProcessed:
       name: notificationProcessed
-      description: The message is sent when AGS processes a valid Google or Apple IAP notification, such as when a subscription is renewed or refunded. For more googel/apple notification details, please refer to the following links https://developer.android.google.cn/google/play/billing/rtdn-reference#sub-example & https://developer.apple.com/documentation/appstoreservernotifications/app_store_server_notifications_v2
+      description: The message is sent when AGS processes a valid Google or Apple IAP notification, such as when a subscription is renewed or refunded. For more Google/Apple notification details, please refer to the following links https://developer.android.google.cn/google/play/billing/rtdn-reference#sub-example & https://developer.apple.com/documentation/appstoreservernotifications/app_store_server_notifications_v2
       payload:
         type: object
         allOf:
