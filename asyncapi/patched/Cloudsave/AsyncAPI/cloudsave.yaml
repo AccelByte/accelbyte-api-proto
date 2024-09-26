@@ -119,7 +119,7 @@ components:
   messages:
     adminGameRecordCreated:
       name: adminGameRecordCreated
-      description: message is sent when the new admin game record created
+      description: message is sent when the new Admin Game Record is created
       payload:
         type: object
         allOf:
@@ -129,7 +129,7 @@ components:
             $ref: '#/components/schemas/recordPayload'
     adminGameRecordUpdated:
       name: adminGameRecordUpdated
-      description: message is sent when the admin game record updated
+      description: message is sent when the Admin Game Record is updated
       payload:
         type: object
         allOf:
@@ -139,7 +139,7 @@ components:
             $ref: '#/components/schemas/recordPayload'
     adminGameRecordDeleted:
       name: adminGameRecordDeleted
-      description: message is sent when the admin game record deleted
+      description: message is sent when the Admin Game Record is deleted
       payload:
         type: object
         allOf:
@@ -149,7 +149,7 @@ components:
             $ref: '#/components/schemas/recordPayload'
     gameRecordCreated:
       name: gameRecordCreated
-      description: message is sent when the new game record created
+      description: message is sent when the new Game Record is created
       payload:
         type: object
         allOf:
@@ -164,7 +164,7 @@ components:
                 type: string
     gameRecordUpdated:
       name: gameRecordUpdated
-      description: message is sent when the game record updated
+      description: message is sent when the Game Record is updated
       payload:
         type: object
         allOf:
@@ -179,7 +179,7 @@ components:
                 type: string
     gameRecordDeleted:
       name: gameRecordDeleted
-      description: message is sent when the game record deleted
+      description: message is sent when the Game Record is deleted
       payload:
         type: object
         allOf:
@@ -189,7 +189,7 @@ components:
             $ref: '#/components/schemas/recordPayload'
     adminPlayerRecordCreated:
       name: adminPlayerRecordCreated
-      description: message is sent when the admin player record created
+      description: message is sent when the Admin Player Record is created
       payload:
         type: object
         allOf:
@@ -199,7 +199,7 @@ components:
             $ref: '#/components/schemas/adminPlayerRecordPayload'
     adminPlayerRecordUpdated:
       name: adminPlayerRecordUpdated
-      description: message is sent when the admin player record updated
+      description: message is sent when the Admin Player Record is updated
       payload:
         type: object
         allOf:
@@ -209,7 +209,7 @@ components:
             $ref: '#/components/schemas/adminPlayerRecordPayload'
     adminPlayerRecordDeleted:
       name: adminPlayerRecordDeleted
-      description: message is sent when the admin player record deleted
+      description: message is sent when the Admin Player Record is deleted
       payload:
         type: object
         allOf:
@@ -219,7 +219,7 @@ components:
             $ref: '#/components/schemas/adminPlayerRecordPayload'
     playerRecordCreated:
       name: playerRecordCreated
-      description: message is sent when the player record created
+      description: message is sent when the Player Record is created
       payload:
         type: object
         allOf:
@@ -229,7 +229,7 @@ components:
             $ref: '#/components/schemas/playerRecordPayload'
     playerRecordUpdated:
       name: playerRecordUpdated
-      description: message is sent when the player record updated
+      description: message is sent when the Player Record is updated
       payload:
         type: object
         allOf:
@@ -239,7 +239,7 @@ components:
             $ref: '#/components/schemas/playerRecordPayload'
     playerRecordDeleted:
       name: playerRecordDeleted
-      description: message is sent when the player record deleted.
+      description: message is sent when the Player Record is deleted.
       payload:
         type: object
         allOf:
