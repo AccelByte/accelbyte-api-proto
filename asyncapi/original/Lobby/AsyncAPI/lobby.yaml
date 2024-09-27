@@ -12,6 +12,8 @@ channels:
           - $ref: '#/components/messages/userDisconnected'
           - $ref: '#/components/messages/userChatRateLimited'
           - $ref: '#/components/messages/userRateLimited'
+          - $ref: '#/components/messages/userBlockAdded'
+          - $ref: '#/components/messages/userBlockRemoved'
 
   lobbyMatchmakingTickets:
     publish:
@@ -150,3 +152,35 @@ components:
                 type: integer
               totalUsersOnlinePlaystation:
                 type: integer
+
+    userBlockAdded:
+      name: userBlockAdded
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            properties:
+              blocked:
+                type: object
+                property:
+                  blockedByUserId:
+                    type: string
+                  blockedUserId:
+                    type: string
+
+    userBlockRemoved:
+      name: userBlockRemoved
+      payload:
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            properties:
+              blocked:
+                type: object
+                property:
+                  blockedByUserId:
+                    type: string
+                  blockedUserId:
+                    type: string

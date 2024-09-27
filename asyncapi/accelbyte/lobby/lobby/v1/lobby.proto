@@ -117,6 +117,40 @@ message TotalUsersOnlinePublished {
     string spanContext = 11;
 }
 
+// path: #/components/messages/userBlockAdded/payload
+message UserBlockAdded {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
+// path: #/components/messages/userBlockRemoved/payload
+message UserBlockRemoved {
+
+    // allOf(#/components/schemas/event)
+    string id = 1;
+    int64 version = 2;
+    string name = 3;
+    string namespace = 4;
+    string parentNamespace = 5;
+    string timestamp = 6;
+    string clientId = 7;
+    string userId = 8;
+    string traceId = 9;
+    string sessionId = 10;
+    string spanContext = 11;
+}
+
 
 // --- #/components/messages/{message_name} ---
 
@@ -150,6 +184,16 @@ message TotalUsersOnlinePublishedMessage {
     TotalUsersOnlinePublished payload = 1;
 }
 
+// path: #/components/messages/userBlockAdded
+message UserBlockAddedMessage {
+    UserBlockAdded payload = 1;
+}
+
+// path: #/components/messages/userBlockRemoved
+message UserBlockRemovedMessage {
+    UserBlockRemoved payload = 1;
+}
+
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
@@ -160,6 +204,8 @@ message LobbyPublish {
         UserDisconnectedMessage variant1 = 2;
         UserChatRateLimitedMessage variant2 = 3;
         UserRateLimitedMessage variant3 = 4;
+        UserBlockAddedMessage variant4 = 5;
+        UserBlockRemovedMessage variant5 = 6;
     }
 }
 
@@ -185,6 +231,16 @@ service LobbyUserChatRateLimitedService {
 // Publishes a Event to the Lobby channel. (oneOf variant) (lobby UserRateLimited)
 service LobbyUserRateLimitedService {
     rpc OnMessage(Event) returns (google.protobuf.Empty);
+}
+
+// Publishes a UserBlockAdded to the Lobby channel. (oneOf variant) (lobby UserBlockAdded)
+service LobbyUserBlockAddedService {
+    rpc OnMessage(UserBlockAdded) returns (google.protobuf.Empty);
+}
+
+// Publishes a UserBlockRemoved to the Lobby channel. (oneOf variant) (lobby UserBlockRemoved)
+service LobbyUserBlockRemovedService {
+    rpc OnMessage(UserBlockRemoved) returns (google.protobuf.Empty);
 }
 
 // Publishes a message to the Lobby Matchmaking Tickets channel. (lobbyMatchmakingTickets MatchmakingTicketsPublished)
