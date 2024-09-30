@@ -55,6 +55,26 @@ components:
         spanContext:
           type: string
 
+    userBlock:
+      type: object
+      properties:
+        blockedByUserId:
+          type: string
+        blockedUserId:
+          type: string
+
+    userBlockAddedPayload:
+      type: object
+      properties:
+        blocked:
+          $ref: '#/components/schemas/userBlock'
+
+    userBlockRemovedPayload:
+      type: object
+      properties:
+        blocked:
+          $ref: '#/components/schemas/userBlock'
+
     userDisconnectedPayload:
       type: object
       properties:
@@ -156,31 +176,19 @@ components:
     userBlockAdded:
       name: userBlockAdded
       payload:
+        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            properties:
-              blocked:
-                type: object
-                property:
-                  blockedByUserId:
-                    type: string
-                  blockedUserId:
-                    type: string
+            $ref: '#/components/schemas/userBlockAddedPayload'
 
     userBlockRemoved:
       name: userBlockRemoved
       payload:
+        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            properties:
-              blocked:
-                type: object
-                property:
-                  blockedByUserId:
-                    type: string
-                  blockedUserId:
-                    type: string
+            $ref: '#/components/schemas/userBlockRemovedPayload'
