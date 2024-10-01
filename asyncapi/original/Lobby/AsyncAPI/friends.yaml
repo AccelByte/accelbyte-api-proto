@@ -60,69 +60,99 @@ components:
           type: string
           format: uuid
 
+    friendRequestSentPayload:
+      type: object
+      properties:
+        relation:
+          $ref: '#/components/schemas/friendRequestsPayload'
+
+    friendRequestCancelledPayload:
+      type: object
+      properties:
+        relation:
+          $ref: '#/components/schemas/friendRequestsPayload'
+
+    friendRequestAcceptedPayload:
+      type: object
+      properties:
+        relation:
+          $ref: '#/components/schemas/friendRequestsPayload'
+
+    friendRequestRejectedPayload:
+      type: object
+      properties:
+        relation:
+          $ref: '#/components/schemas/friendRequestsPayload'
+
+    friendRemovedPayload:
+      type: object
+      properties:
+        relation:
+          $ref: '#/components/schemas/friendRequestsPayload'
+
+    friendAddedBulkPayload:
+      type: object
+      properties:
+        relation:
+          $ref: '#/components/schemas/friendRequestsPayload'
+
   messages:
     friendRequestSent:
       name: friendRequestSent
       payload:
+        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            properties:
-              relation:
-                $ref: '#/components/schemas/friendRequestsPayload'
+            $ref: '#/components/schemas/friendRequestSentPayload'
 
     friendRequestCancelled:
       name: friendRequestCancelled
       payload:
+        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            properties:
-              relation:
-                $ref: '#/components/schemas/friendRequestsPayload'
+            $ref: '#/components/schemas/friendRequestCancelledPayload'
 
     friendRequestAccepted:
       name: friendRequestAccepted
       payload:
+        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            properties:
-              relation:
-                $ref: '#/components/schemas/friendRequestsPayload'
+            $ref: '#/components/schemas/friendRequestAcceptedPayload'
 
     friendRequestRejected:
       name: friendRequestRejected
       payload:
+        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            properties:
-              relation:
-                $ref: '#/components/schemas/friendRequestsPayload'
+            $ref: '#/components/schemas/friendRequestRejectedPayload'
 
     friendRemoved:
       name: friendRemoved
       payload:
+        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            properties:
-              relation:
-                $ref: '#/components/schemas/friendRequestsPayload'
+            $ref: '#/components/schemas/friendRemovedPayload'
 
     friendAddedBulk:
       name: friendAddedBulk
       payload:
+        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            properties:
-              relation:
-                $ref: '#/components/schemas/friendRequestsPayload'
+            $ref: '#/components/schemas/friendAddedBulkPayload'
