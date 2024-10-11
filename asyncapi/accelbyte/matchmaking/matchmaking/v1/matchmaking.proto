@@ -26,73 +26,73 @@ option java_package = "net.accelbyte.matchmaking.matchmaking";
 
 // path: #/components/schemas/event
 message Event {
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string sessionId = 9;
-    string spanContext = 10;
+    string id = 1 [json_name = "id"];
+    int64 version = 2 [json_name = "version"];
+    string name = 3 [json_name = "name"];
+    string namespace = 4 [json_name = "namespace"];
+    string parent_namespace = 5 [json_name = "parentNamespace"];
+    string timestamp = 6 [json_name = "timestamp"];
+    string client_id = 7 [json_name = "clientId"];
+    string user_id = 8 [json_name = "userId"];
+    string session_id = 9 [json_name = "sessionId"];
+    string span_context = 10 [json_name = "spanContext"];
 }
 
 // path: #/components/schemas/alliance/properties/combination
 message AnonymousSchema1 {
-    bool roleFlexingEnable = 1;
-    int64 roleFlexingSecond = 2;
-    int64 roleFlexingPlayer = 3;
-    bool hasCombination = 4;
+    bool role_flexing_enable = 1 [json_name = "role_flexing_enable"];
+    int64 role_flexing_second = 2 [json_name = "role_flexing_second"];
+    int64 role_flexing_player = 3 [json_name = "role_flexing_player"];
+    bool has_combination = 4 [json_name = "has_combination"];
 }
 
 // path: #/components/schemas/alliance
 message Alliance {
-    int64 minNumber = 1;
-    int64 maxNumber = 2;
-    int64 playerMinNumber = 3;
-    int64 playerMaxNumber = 4;
-    AnonymousSchema1 combination = 5;
+    int64 min_number = 1 [json_name = "min_number"];
+    int64 max_number = 2 [json_name = "max_number"];
+    int64 player_min_number = 3 [json_name = "player_min_number"];
+    int64 player_max_number = 4 [json_name = "player_max_number"];
+    AnonymousSchema1 combination = 5 [json_name = "combination"];
 }
 
 // path: #/components/schemas/matching_rule
 message MatchingRule {
-    string attribute = 1;
-    string criteria = 2;
-    float reference = 3;
+    string attribute = 1 [json_name = "attribute"];
+    string criteria = 2 [json_name = "criteria"];
+    float reference = 3 [json_name = "reference"];
 }
 
 // path: #/components/schemas/ruleset/properties/flexing_rule/items
 message AnonymousSchema2 {
-    int64 duration = 1;
-    MatchingRule matchingRule = 2;
+    int64 duration = 1 [json_name = "duration"];
+    MatchingRule matching_rule = 2 [json_name = "matching_rule"];
 }
 
 // path: #/components/schemas/ruleset/properties/alliance_flexing_rule/items
 message AnonymousSchema3 {
-    int64 duration = 1;
-    Alliance allianceRule = 2;
+    int64 duration = 1 [json_name = "duration"];
+    Alliance alliance_rule = 2 [json_name = "AllianceRule"];
 }
 
 // path: #/components/schemas/ruleset/properties/match_options/items/properties/options
 message AnonymousSchema4 {
-    string name = 1;
-    string type = 2;
+    string name = 1 [json_name = "name"];
+    string type = 2 [json_name = "type"];
 }
 
 // path: #/components/schemas/ruleset/properties/match_options/items
 message AnonymousSchema5 {
-    AnonymousSchema4 options = 1;
+    AnonymousSchema4 options = 1 [json_name = "options"];
 }
 
 // path: #/components/schemas/ruleset
 message Ruleset {
-    Alliance alliance = 1;
-    repeated MatchingRule matchingRule = 2;
-    repeated AnonymousSchema2 flexingRule = 3;
-    repeated AnonymousSchema3 allianceFlexingRule = 4;
-    repeated AnonymousSchema5 matchOptions = 5;
-    bool rebalanceEnable = 6;
+    Alliance alliance = 1 [json_name = "alliance"];
+    repeated MatchingRule matching_rule = 2 [json_name = "matching_rule"];
+    repeated AnonymousSchema2 flexing_rule = 3 [json_name = "flexing_rule"];
+    repeated AnonymousSchema3 alliance_flexing_rule = 4 [json_name = "alliance_flexing_rule"];
+    repeated AnonymousSchema5 match_options = 5 [json_name = "match_options"];
+    bool rebalance_enable = 6 [json_name = "rebalance_enable"];
 }
 
 // path: #/components/schemas/matchingParty/properties/party_attributes
@@ -101,46 +101,46 @@ message AnonymousSchema6 {
 
 // path: #/components/schemas/matchingParty
 message MatchingParty {
-    string ticketId = 1;
-    string partyId = 2;
-    repeated PartyMember partyMembers = 3;
-    AnonymousSchema6 partyAttributes = 4;
-    int64 ticketCreatedAt = 5;
-    int64 firstTicketCreatedAt = 6;
+    string ticket_id = 1 [json_name = "ticket_id"];
+    string party_id = 2 [json_name = "party_id"];
+    repeated PartyMember party_members = 3 [json_name = "party_members"];
+    AnonymousSchema6 party_attributes = 4 [json_name = "party_attributes"];
+    int64 ticket_created_at = 5 [json_name = "ticket_created_at"];
+    int64 first_ticket_created_at = 6 [json_name = "first_ticket_created_at"];
 }
 
 // path: #/components/schemas/matchmaking
 message Matchmaking {
-    string status = 1;
-    string matchId = 2;
-    string channel = 3;
-    string namespace = 4;
-    string gameMode = 5;
-    repeated MatchingParty matchingParties = 6;
+    string status = 1 [json_name = "status"];
+    string match_id = 2 [json_name = "matchId"];
+    string channel = 3 [json_name = "channel"];
+    string namespace = 4 [json_name = "namespace"];
+    string game_mode = 5 [json_name = "gameMode"];
+    repeated MatchingParty matching_parties = 6 [json_name = "matchingParties"];
 }
 
 // path: #/components/schemas/lobbyMatchmakingRequest
 message LobbyMatchmakingRequest {
-    string priority = 1;
-    string createdAt = 2;
-    string channel = 3;
-    string partyId = 4;
-    string ticketId = 5;
-    repeated PartyMemberV1 partyMembers = 6;
-    string timestamp = 7;
-    string event = 8;
+    string priority = 1 [json_name = "priority"];
+    string created_at = 2 [json_name = "createdAt"];
+    string channel = 3 [json_name = "channel"];
+    string party_id = 4 [json_name = "partyId"];
+    string ticket_id = 5 [json_name = "ticketId"];
+    repeated PartyMemberV1 party_members = 6 [json_name = "partyMembers"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string event = 8 [json_name = "event"];
 }
 
 // path: #/components/schemas/lobbyMatchmaking
 message LobbyMatchmaking {
-    string status = 1;
-    string matchId = 2;
-    string channel = 3;
-    string namespace = 4;
-    string gameMode = 5;
-    repeated PartyMemberV1 matchingParties = 6;
-    string ticketId = 7;
-    repeated string ticketIds = 8;
+    string status = 1 [json_name = "status"];
+    string match_id = 2 [json_name = "matchId"];
+    string channel = 3 [json_name = "channel"];
+    string namespace = 4 [json_name = "namespace"];
+    string game_mode = 5 [json_name = "gameMode"];
+    repeated PartyMemberV1 matching_parties = 6 [json_name = "matchingParties"];
+    string ticket_id = 7 [json_name = "ticketId"];
+    repeated string ticket_ids = 8 [json_name = "ticketIds"];
 }
 
 // path: #/components/schemas/MatchmakingRequest/properties/party_attributes
@@ -157,55 +157,55 @@ message AnonymousSchema9 {
 
 // path: #/components/schemas/MatchmakingRequest/properties/sorted_latency/items
 message AnonymousSchema10 {
-    string region = 1;
-    int64 latency = 2;
+    string region = 1 [json_name = "region"];
+    int64 latency = 2 [json_name = "latency"];
 }
 
 // path: #/components/schemas/MatchmakingRequest
 message MatchmakingRequest {
-    int64 priority = 1;
-    int64 createdAt = 2;
-    string channel = 3;
-    string namespace = 4;
-    string ticketId = 5;
-    string partyId = 6;
-    string partyLeaderId = 7;
-    AnonymousSchema7 partyAttributes = 8;
-    repeated PartyMember partyMembers = 9;
-    AnonymousSchema8 additionalCriteria = 10;
-    AnonymousSchema9 latencyMap = 11;
-    repeated AnonymousSchema10 sortedLatency = 12;
-    int64 firstTicketCreatedAt = 13;
+    int64 priority = 1 [json_name = "priority"];
+    int64 created_at = 2 [json_name = "created_at"];
+    string channel = 3 [json_name = "channel"];
+    string namespace = 4 [json_name = "namespace"];
+    string ticket_id = 5 [json_name = "ticket_id"];
+    string party_id = 6 [json_name = "party_id"];
+    string party_leader_id = 7 [json_name = "party_leader_id"];
+    AnonymousSchema7 party_attributes = 8 [json_name = "party_attributes"];
+    repeated PartyMember party_members = 9 [json_name = "party_members"];
+    AnonymousSchema8 additional_criteria = 10 [json_name = "additional_criteria"];
+    AnonymousSchema9 latency_map = 11 [json_name = "latency_map"];
+    repeated AnonymousSchema10 sorted_latency = 12 [json_name = "sorted_latency"];
+    int64 first_ticket_created_at = 13 [json_name = "first_ticket_created_at"];
 }
 
 // path: #/components/schemas/matchmakingResult/properties/matching_allies/items
 message AnonymousSchema11 {
-    repeated MatchingParty matchingParties = 1;
-    int64 playerCount = 2;
+    repeated MatchingParty matching_parties = 1 [json_name = "matching_parties"];
+    int64 player_count = 2 [json_name = "playerCount"];
 }
 
 // path: #/components/schemas/matchmakingResult
 message MatchmakingResult {
-    string status = 1;
-    string event = 2;
-    string partyId = 3;
-    string ticketId = 4;
-    string matchId = 5;
-    string channel = 6;
-    string namespace = 7;
-    string gameMode = 8;
-    string serverName = 9;
-    string clientVersion = 10;
-    string region = 11;
-    bool joinable = 12;
-    repeated AnonymousSchema11 matchingAllies = 13;
-    string deployment = 14;
-    string updatedAt = 15;
-    int64 queueAt = 16;
-    string partyAttributes = 17;
-    int64 errorCode = 18;
-    string errorMessage = 19;
-    string timestamp = 20;
+    string status = 1 [json_name = "status"];
+    string event = 2 [json_name = "event"];
+    string party_id = 3 [json_name = "party_id"];
+    string ticket_id = 4 [json_name = "ticket_id"];
+    string match_id = 5 [json_name = "match_id"];
+    string channel = 6 [json_name = "channel"];
+    string namespace = 7 [json_name = "namespace"];
+    string game_mode = 8 [json_name = "game_mode"];
+    string server_name = 9 [json_name = "server_name"];
+    string client_version = 10 [json_name = "client_version"];
+    string region = 11 [json_name = "region"];
+    bool joinable = 12 [json_name = "joinable"];
+    repeated AnonymousSchema11 matching_allies = 13 [json_name = "matching_allies"];
+    string deployment = 14 [json_name = "deployment"];
+    string updated_at = 15 [json_name = "updatedAt"];
+    int64 queue_at = 16 [json_name = "queueAt"];
+    string party_attributes = 17 [json_name = "partyAttributes"];
+    int64 error_code = 18 [json_name = "errorCode"];
+    string error_message = 19 [json_name = "errorMessage"];
+    string timestamp = 20 [json_name = "timestamp"];
 }
 
 // path: #/components/schemas/partyMemberV1/properties/extraAttributes
@@ -214,8 +214,8 @@ message AnonymousSchema12 {
 
 // path: #/components/schemas/partyMemberV1
 message PartyMemberV1 {
-    string userId = 1;
-    AnonymousSchema12 extraAttributes = 2;
+    string user_id = 1 [json_name = "userId"];
+    AnonymousSchema12 extra_attributes = 2 [json_name = "extraAttributes"];
 }
 
 // path: #/components/schemas/partyMember/properties/extra_attributes
@@ -224,231 +224,231 @@ message AnonymousSchema13 {
 
 // path: #/components/schemas/partyMember
 message PartyMember {
-    string userId = 1;
-    AnonymousSchema13 extraAttributes = 2;
+    string user_id = 1 [json_name = "user_id"];
+    AnonymousSchema13 extra_attributes = 2 [json_name = "extra_attributes"];
 }
 
 // path: #/components/schemas/successTickets
 message SuccessTickets {
-    string partyId = 1;
-    repeated string memberIds = 2;
-    int64 ticketCreatedAt = 3;
+    string party_id = 1 [json_name = "partyId"];
+    repeated string member_ids = 2 [json_name = "memberIds"];
+    int64 ticket_created_at = 3 [json_name = "ticketCreatedAt"];
 }
 
 // path: #/components/schemas/failedTickets
 message FailedTickets {
-    string partyId = 1;
-    repeated string succeedMemberIds = 2;
-    repeated string failedMemberIds = 3;
-    int64 ticketCreatedAt = 4;
+    string party_id = 1 [json_name = "partyId"];
+    repeated string succeed_member_ids = 2 [json_name = "succeedMemberIds"];
+    repeated string failed_member_ids = 3 [json_name = "failedMemberIds"];
+    int64 ticket_created_at = 4 [json_name = "ticketCreatedAt"];
 }
 
 // path: #/components/messages/matchmakingChannelCreated/payload
 message MatchmakingChannelCreated {
 
     // allOf(#/components/schemas/event)
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string sessionId = 9;
-    string spanContext = 10;
+    string id = 1 [json_name = "id"];
+    int64 version = 2 [json_name = "version"];
+    string name = 3 [json_name = "name"];
+    string namespace = 4 [json_name = "namespace"];
+    string parent_namespace = 5 [json_name = "parentNamespace"];
+    string timestamp = 6 [json_name = "timestamp"];
+    string client_id = 7 [json_name = "clientId"];
+    string user_id = 8 [json_name = "userId"];
+    string session_id = 9 [json_name = "sessionId"];
+    string span_context = 10 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/matchmakingChannelDeleted/payload
 message MatchmakingChannelDeleted {
 
     // allOf(#/components/schemas/event)
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string sessionId = 9;
-    string spanContext = 10;
+    string id = 1 [json_name = "id"];
+    int64 version = 2 [json_name = "version"];
+    string name = 3 [json_name = "name"];
+    string namespace = 4 [json_name = "namespace"];
+    string parent_namespace = 5 [json_name = "parentNamespace"];
+    string timestamp = 6 [json_name = "timestamp"];
+    string client_id = 7 [json_name = "clientId"];
+    string user_id = 8 [json_name = "userId"];
+    string session_id = 9 [json_name = "sessionId"];
+    string span_context = 10 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/matchmakingChannelUpdated/payload
 message MatchmakingChannelUpdated {
 
     // allOf(#/components/schemas/event)
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string sessionId = 9;
-    string spanContext = 10;
+    string id = 1 [json_name = "id"];
+    int64 version = 2 [json_name = "version"];
+    string name = 3 [json_name = "name"];
+    string namespace = 4 [json_name = "namespace"];
+    string parent_namespace = 5 [json_name = "parentNamespace"];
+    string timestamp = 6 [json_name = "timestamp"];
+    string client_id = 7 [json_name = "clientId"];
+    string user_id = 8 [json_name = "userId"];
+    string session_id = 9 [json_name = "sessionId"];
+    string span_context = 10 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/matchmakingRequested/payload
 message MatchmakingRequested {
 
     // allOf(#/components/schemas/event)
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string sessionId = 9;
-    string spanContext = 10;
+    string id = 1 [json_name = "id"];
+    int64 version = 2 [json_name = "version"];
+    string name = 3 [json_name = "name"];
+    string namespace = 4 [json_name = "namespace"];
+    string parent_namespace = 5 [json_name = "parentNamespace"];
+    string timestamp = 6 [json_name = "timestamp"];
+    string client_id = 7 [json_name = "clientId"];
+    string user_id = 8 [json_name = "userId"];
+    string session_id = 9 [json_name = "sessionId"];
+    string span_context = 10 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/matchmakingCanceled/payload
 message MatchmakingCanceled {
 
     // allOf(#/components/schemas/event)
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string sessionId = 9;
-    string spanContext = 10;
+    string id = 1 [json_name = "id"];
+    int64 version = 2 [json_name = "version"];
+    string name = 3 [json_name = "name"];
+    string namespace = 4 [json_name = "namespace"];
+    string parent_namespace = 5 [json_name = "parentNamespace"];
+    string timestamp = 6 [json_name = "timestamp"];
+    string client_id = 7 [json_name = "clientId"];
+    string user_id = 8 [json_name = "userId"];
+    string session_id = 9 [json_name = "sessionId"];
+    string span_context = 10 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/matchmakingTimeout/payload
 message MatchmakingTimeout {
 
     // allOf(#/components/schemas/event)
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string sessionId = 9;
-    string spanContext = 10;
+    string id = 1 [json_name = "id"];
+    int64 version = 2 [json_name = "version"];
+    string name = 3 [json_name = "name"];
+    string namespace = 4 [json_name = "namespace"];
+    string parent_namespace = 5 [json_name = "parentNamespace"];
+    string timestamp = 6 [json_name = "timestamp"];
+    string client_id = 7 [json_name = "clientId"];
+    string user_id = 8 [json_name = "userId"];
+    string session_id = 9 [json_name = "sessionId"];
+    string span_context = 10 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/matchmakingRejected/payload
 message MatchmakingRejected {
 
     // allOf(#/components/schemas/event)
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string sessionId = 9;
-    string spanContext = 10;
+    string id = 1 [json_name = "id"];
+    int64 version = 2 [json_name = "version"];
+    string name = 3 [json_name = "name"];
+    string namespace = 4 [json_name = "namespace"];
+    string parent_namespace = 5 [json_name = "parentNamespace"];
+    string timestamp = 6 [json_name = "timestamp"];
+    string client_id = 7 [json_name = "clientId"];
+    string user_id = 8 [json_name = "userId"];
+    string session_id = 9 [json_name = "sessionId"];
+    string span_context = 10 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/matchmakingStarted/payload
 message MatchmakingStarted {
 
     // allOf(#/components/schemas/event)
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string sessionId = 9;
-    string spanContext = 10;
+    string id = 1 [json_name = "id"];
+    int64 version = 2 [json_name = "version"];
+    string name = 3 [json_name = "name"];
+    string namespace = 4 [json_name = "namespace"];
+    string parent_namespace = 5 [json_name = "parentNamespace"];
+    string timestamp = 6 [json_name = "timestamp"];
+    string client_id = 7 [json_name = "clientId"];
+    string user_id = 8 [json_name = "userId"];
+    string session_id = 9 [json_name = "sessionId"];
+    string span_context = 10 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/matchmakingSessionStatusChanged/payload
 message MatchmakingSessionStatusChanged {
 
     // allOf(#/components/schemas/event)
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string sessionId = 9;
-    string spanContext = 10;
+    string id = 1 [json_name = "id"];
+    int64 version = 2 [json_name = "version"];
+    string name = 3 [json_name = "name"];
+    string namespace = 4 [json_name = "namespace"];
+    string parent_namespace = 5 [json_name = "parentNamespace"];
+    string timestamp = 6 [json_name = "timestamp"];
+    string client_id = 7 [json_name = "clientId"];
+    string user_id = 8 [json_name = "userId"];
+    string session_id = 9 [json_name = "sessionId"];
+    string span_context = 10 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/matchmakingTicketStatusChanged/payload
 message MatchmakingTicketStatusChanged {
 
     // allOf(#/components/schemas/event)
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string sessionId = 9;
-    string spanContext = 10;
+    string id = 1 [json_name = "id"];
+    int64 version = 2 [json_name = "version"];
+    string name = 3 [json_name = "name"];
+    string namespace = 4 [json_name = "namespace"];
+    string parent_namespace = 5 [json_name = "parentNamespace"];
+    string timestamp = 6 [json_name = "timestamp"];
+    string client_id = 7 [json_name = "clientId"];
+    string user_id = 8 [json_name = "userId"];
+    string session_id = 9 [json_name = "sessionId"];
+    string span_context = 10 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/matchmakingTotalPlayersInQueue/payload
 message MatchmakingTotalPlayersInQueue {
 
     // allOf(#/components/schemas/event)
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string sessionId = 9;
-    string spanContext = 10;
+    string id = 1 [json_name = "id"];
+    int64 version = 2 [json_name = "version"];
+    string name = 3 [json_name = "name"];
+    string namespace = 4 [json_name = "namespace"];
+    string parent_namespace = 5 [json_name = "parentNamespace"];
+    string timestamp = 6 [json_name = "timestamp"];
+    string client_id = 7 [json_name = "clientId"];
+    string user_id = 8 [json_name = "userId"];
+    string session_id = 9 [json_name = "sessionId"];
+    string span_context = 10 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/readyConsentFailed/payload
 message ReadyConsentFailed {
 
     // allOf(#/components/schemas/event)
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string sessionId = 9;
-    string spanContext = 10;
+    string id = 1 [json_name = "id"];
+    int64 version = 2 [json_name = "version"];
+    string name = 3 [json_name = "name"];
+    string namespace = 4 [json_name = "namespace"];
+    string parent_namespace = 5 [json_name = "parentNamespace"];
+    string timestamp = 6 [json_name = "timestamp"];
+    string client_id = 7 [json_name = "clientId"];
+    string user_id = 8 [json_name = "userId"];
+    string session_id = 9 [json_name = "sessionId"];
+    string span_context = 10 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/readyConsentSuccess/payload
 message ReadyConsentSuccess {
 
     // allOf(#/components/schemas/event)
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string sessionId = 9;
-    string spanContext = 10;
+    string id = 1 [json_name = "id"];
+    int64 version = 2 [json_name = "version"];
+    string name = 3 [json_name = "name"];
+    string namespace = 4 [json_name = "namespace"];
+    string parent_namespace = 5 [json_name = "parentNamespace"];
+    string timestamp = 6 [json_name = "timestamp"];
+    string client_id = 7 [json_name = "clientId"];
+    string user_id = 8 [json_name = "userId"];
+    string session_id = 9 [json_name = "sessionId"];
+    string span_context = 10 [json_name = "spanContext"];
 }
 
 

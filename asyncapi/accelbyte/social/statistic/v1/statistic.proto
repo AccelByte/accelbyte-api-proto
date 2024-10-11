@@ -26,15 +26,15 @@ option java_package = "net.accelbyte.social.statistic";
 
 // path: #/components/schemas/event
 message Event {
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string sessionId = 9;
+    string id = 1 [json_name = "id"];
+    int64 version = 2 [json_name = "version"];
+    string name = 3 [json_name = "name"];
+    string namespace = 4 [json_name = "namespace"];
+    string parent_namespace = 5 [json_name = "parentNamespace"];
+    string timestamp = 6 [json_name = "timestamp"];
+    string client_id = 7 [json_name = "clientId"];
+    string user_id = 8 [json_name = "userId"];
+    string session_id = 9 [json_name = "sessionId"];
 }
 
 // path: #/components/schemas/stat/properties/tags
@@ -43,36 +43,36 @@ message AnonymousSchema1 {
 
 // path: #/components/schemas/stat
 message Stat {
-    string namespace = 1;
-    string statCode = 2;
-    string status = 3;
-    string name = 4;
-    string description = 5;
-    double maximum = 6;
-    double minimum = 7;
-    int64 defaultValue = 8;
-    bool incrementOnly = 9;
-    bool setAsGlobal = 10;
-    string setBy = 11;
-    AnonymousSchema1 tags = 12;
-    string createdAt = 13;
-    string updatedAt = 14;
-    bool ignoreAdditionalDataOnValueRejected = 15;
+    string namespace = 1 [json_name = "namespace"];
+    string stat_code = 2 [json_name = "statCode"];
+    string status = 3 [json_name = "status"];
+    string name = 4 [json_name = "name"];
+    string description = 5 [json_name = "description"];
+    double maximum = 6 [json_name = "maximum"];
+    double minimum = 7 [json_name = "minimum"];
+    int64 default_value = 8 [json_name = "defaultValue"];
+    bool increment_only = 9 [json_name = "incrementOnly"];
+    bool set_as_global = 10 [json_name = "setAsGlobal"];
+    string set_by = 11 [json_name = "setBy"];
+    AnonymousSchema1 tags = 12 [json_name = "tags"];
+    string created_at = 13 [json_name = "createdAt"];
+    string updated_at = 14 [json_name = "updatedAt"];
+    bool ignore_additional_data_on_value_rejected = 15 [json_name = "ignoreAdditionalDataOnValueRejected"];
 }
 
 // path: #/components/schemas/statExport
 message StatExport {
-    string namespace = 1;
-    repeated string statCodes = 2;
+    string namespace = 1 [json_name = "namespace"];
+    repeated string stat_codes = 2 [json_name = "statCodes"];
 }
 
 // path: #/components/schemas/statImport
 message StatImport {
-    string namespace = 1;
-    repeated string replacedStatCodes = 2;
-    repeated string ignoredStatCodes = 3;
-    repeated string newStatCodes = 4;
-    repeated string failedStatCodes = 5;
+    string namespace = 1 [json_name = "namespace"];
+    repeated string replaced_stat_codes = 2 [json_name = "replacedStatCodes"];
+    repeated string ignored_stat_codes = 3 [json_name = "ignoredStatCodes"];
+    repeated string new_stat_codes = 4 [json_name = "newStatCodes"];
+    repeated string failed_stat_codes = 5 [json_name = "failedStatCodes"];
 }
 
 // path: #/components/schemas/statItem/properties/additionalData/additionalProperties
@@ -85,295 +85,295 @@ message AnonymousSchema3 {
 
 // path: #/components/schemas/statItem
 message StatItem {
-    string namespace = 1;
-    string statCode = 2;
-    string userId = 3;
-    double latestValue = 4;
-    double inc = 5;
-    AnonymousSchema3 additionalData = 6;
-    bool ignoreAdditionalDataOnValueRejected = 7;
-    double defaultValue = 8;
-    double requestValue = 9;
-    string updateStrategy = 10;
+    string namespace = 1 [json_name = "namespace"];
+    string stat_code = 2 [json_name = "statCode"];
+    string user_id = 3 [json_name = "userId"];
+    double latest_value = 4 [json_name = "latestValue"];
+    double inc = 5 [json_name = "inc"];
+    AnonymousSchema3 additional_data = 6 [json_name = "additionalData"];
+    bool ignore_additional_data_on_value_rejected = 7 [json_name = "ignoreAdditionalDataOnValueRejected"];
+    double default_value = 8 [json_name = "defaultValue"];
+    double request_value = 9 [json_name = "requestValue"];
+    string update_strategy = 10 [json_name = "updateStrategy"];
 }
 
 // path: #/components/schemas/globalStatItem
 message GlobalStatItem {
-    string namespace = 1;
-    string statCode = 2;
-    double latestValue = 3;
-    double inc = 4;
+    string namespace = 1 [json_name = "namespace"];
+    string stat_code = 2 [json_name = "statCode"];
+    double latest_value = 3 [json_name = "latestValue"];
+    double inc = 4 [json_name = "inc"];
 }
 
 // path: #/components/schemas/statCycle
 message StatCycle {
-    string id = 1;
-    string namespace = 2;
-    string cycleType = 3;
-    string resetTime = 4;
-    int64 resetDay = 5;
-    int64 resetDate = 6;
-    int64 resetMonth = 7;
-    int64 seasonPeriod = 8;
-    int64 currentVersion = 9;
-    string status = 10;
-    string nextReset = 11;
-    string start = 12;
-    string end = 13;
-    string createdAt = 14;
-    string updatedAt = 15;
+    string id = 1 [json_name = "id"];
+    string namespace = 2 [json_name = "namespace"];
+    string cycle_type = 3 [json_name = "cycleType"];
+    string reset_time = 4 [json_name = "resetTime"];
+    int64 reset_day = 5 [json_name = "resetDay"];
+    int64 reset_date = 6 [json_name = "resetDate"];
+    int64 reset_month = 7 [json_name = "resetMonth"];
+    int64 season_period = 8 [json_name = "seasonPeriod"];
+    int64 current_version = 9 [json_name = "currentVersion"];
+    string status = 10 [json_name = "status"];
+    string next_reset = 11 [json_name = "nextReset"];
+    string start = 12 [json_name = "start"];
+    string end = 13 [json_name = "end"];
+    string created_at = 14 [json_name = "createdAt"];
+    string updated_at = 15 [json_name = "updatedAt"];
 }
 
 // path: #/components/schemas/statCycleItem
 message StatCycleItem {
-    string namespace = 1;
-    string cycleId = 2;
-    string statCode = 3;
-    string userId = 4;
-    string updateStrategy = 5;
-    int64 cycleVersion = 6;
-    double latestValue = 7;
-    double updateValue = 8;
+    string namespace = 1 [json_name = "namespace"];
+    string cycle_id = 2 [json_name = "cycleId"];
+    string stat_code = 3 [json_name = "statCode"];
+    string user_id = 4 [json_name = "userId"];
+    string update_strategy = 5 [json_name = "updateStrategy"];
+    int64 cycle_version = 6 [json_name = "cycleVersion"];
+    double latest_value = 7 [json_name = "latestValue"];
+    double update_value = 8 [json_name = "updateValue"];
 }
 
 // path: #/components/messages/statCreated/payload
 message StatCreated {
-    Stat payload = 1;
+    Stat payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string sessionId = 10;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string session_id = 10 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/statDeleted/payload
 message StatDeleted {
-    Stat payload = 1;
+    Stat payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string sessionId = 10;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string session_id = 10 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/statUpdated/payload
 message StatUpdated {
-    Stat payload = 1;
+    Stat payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string sessionId = 10;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string session_id = 10 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/statImported/payload
 message StatImported {
-    StatImport payload = 1;
+    StatImport payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string sessionId = 10;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string session_id = 10 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/statExported/payload
 message StatExported {
-    StatExport payload = 1;
+    StatExport payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string sessionId = 10;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string session_id = 10 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/statItemCreated/payload
 message StatItemCreated {
-    StatItem payload = 1;
+    StatItem payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string sessionId = 10;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string session_id = 10 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/statItemUpdated/payload
 message StatItemUpdated {
-    StatItem payload = 1;
+    StatItem payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string sessionId = 10;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string session_id = 10 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/statItemDeleted/payload
 message StatItemDeleted {
-    StatItem payload = 1;
+    StatItem payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string sessionId = 10;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string session_id = 10 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/globalStatItemUpdated/payload
 message GlobalStatItemUpdated {
-    GlobalStatItem payload = 1;
+    GlobalStatItem payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string sessionId = 10;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string session_id = 10 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/statCycleCreated/payload
 message StatCycleCreated {
-    StatCycle payload = 1;
+    StatCycle payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string sessionId = 10;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string session_id = 10 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/statCycleUpdated/payload
 message StatCycleUpdated {
-    StatCycle payload = 1;
+    StatCycle payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string sessionId = 10;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string session_id = 10 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/statCycleDeleted/payload
 message StatCycleDeleted {
-    StatCycle payload = 1;
+    StatCycle payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string sessionId = 10;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string session_id = 10 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/statCycleReset/payload
 message StatCycleReset {
-    StatCycle payload = 1;
+    StatCycle payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string sessionId = 10;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string session_id = 10 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/statItemCycleCreated/payload
 message StatItemCycleCreated {
-    StatCycleItem payload = 1;
+    StatCycleItem payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string sessionId = 10;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string session_id = 10 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/statItemCycleUpdated/payload
 message StatItemCycleUpdated {
-    StatCycleItem payload = 1;
+    StatCycleItem payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string sessionId = 10;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string session_id = 10 [json_name = "sessionId"];
 }
 
 

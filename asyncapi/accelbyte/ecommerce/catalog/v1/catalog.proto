@@ -26,32 +26,32 @@ option java_package = "net.accelbyte.ecommerce.catalog";
 
 // path: #/components/schemas/event
 message Event {
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
+    string id = 1 [json_name = "id"];
+    int64 version = 2 [json_name = "version"];
+    string name = 3 [json_name = "name"];
+    string namespace = 4 [json_name = "namespace"];
+    string parent_namespace = 5 [json_name = "parentNamespace"];
+    string timestamp = 6 [json_name = "timestamp"];
+    string client_id = 7 [json_name = "clientId"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
 }
 
 // path: #/components/schemas/store
 message Store {
-    string storeId = 1;
-    string namespace = 2;
-    string title = 3;
-    string description = 4;
-    bool published = 5;
-    repeated string supportedLanguages = 6;
-    repeated string supportedRegions = 7;
-    string defaultRegion = 8;
-    string defaultLanguage = 9;
-    string publishedTime = 10;
-    string createdAt = 11;
-    string updatedAt = 12;
+    string store_id = 1 [json_name = "storeId"];
+    string namespace = 2 [json_name = "namespace"];
+    string title = 3 [json_name = "title"];
+    string description = 4 [json_name = "description"];
+    bool published = 5 [json_name = "published"];
+    repeated string supported_languages = 6 [json_name = "supportedLanguages"];
+    repeated string supported_regions = 7 [json_name = "supportedRegions"];
+    string default_region = 8 [json_name = "defaultRegion"];
+    string default_language = 9 [json_name = "defaultLanguage"];
+    string published_time = 10 [json_name = "publishedTime"];
+    string created_at = 11 [json_name = "createdAt"];
+    string updated_at = 12 [json_name = "updatedAt"];
 }
 
 // path: #/components/schemas/category/properties/localizationDisplayNames
@@ -60,23 +60,23 @@ message AnonymousSchema1 {
 
 // path: #/components/schemas/category
 message Category {
-    string namespace = 1;
-    string parentCategoryPath = 2;
-    string categoryPath = 3;
-    bool isRoot = 4;
-    AnonymousSchema1 localizationDisplayNames = 5;
-    string createdAt = 6;
-    string updatedAt = 7;
+    string namespace = 1 [json_name = "namespace"];
+    string parent_category_path = 2 [json_name = "parentCategoryPath"];
+    string category_path = 3 [json_name = "categoryPath"];
+    bool is_root = 4 [json_name = "isRoot"];
+    AnonymousSchema1 localization_display_names = 5 [json_name = "localizationDisplayNames"];
+    string created_at = 6 [json_name = "createdAt"];
+    string updated_at = 7 [json_name = "updatedAt"];
 }
 
 // path: #/components/schemas/image
 message Image {
-    string as = 1;
-    string caption = 2;
-    int32 height = 3;
-    int32 width = 4;
-    string imageUrl = 5;
-    string smallImageUrl = 6;
+    string as = 1 [json_name = "as"];
+    string caption = 2 [json_name = "caption"];
+    int32 height = 3 [json_name = "height"];
+    int32 width = 4 [json_name = "width"];
+    string image_url = 5 [json_name = "imageUrl"];
+    string small_image_url = 6 [json_name = "smallImageUrl"];
 }
 
 // path: #/components/schemas/localization/properties/localExt/additionalProperties
@@ -89,25 +89,25 @@ message AnonymousSchema3 {
 
 // path: #/components/schemas/localization
 message Localization {
-    string title = 1;
-    string description = 2;
-    string longDescription = 3;
-    AnonymousSchema3 localExt = 4;
+    string title = 1 [json_name = "title"];
+    string description = 2 [json_name = "description"];
+    string long_description = 3 [json_name = "longDescription"];
+    AnonymousSchema3 local_ext = 4 [json_name = "localExt"];
 }
 
 // path: #/components/schemas/regionDataItem
 message RegionDataItem {
-    int32 price = 1;
-    int32 discountPercentage = 2;
-    int32 discountAmount = 3;
-    int32 discountedPrice = 4;
-    string currencyCode = 5;
-    string currencyType = 6;
-    string currencyNamespace = 7;
-    string purchaseAt = 8;
-    string expireAt = 9;
-    string discountPurchaseAt = 10;
-    string discountExpireAt = 11;
+    int32 price = 1 [json_name = "price"];
+    int32 discount_percentage = 2 [json_name = "discountPercentage"];
+    int32 discount_amount = 3 [json_name = "discountAmount"];
+    int32 discounted_price = 4 [json_name = "discountedPrice"];
+    string currency_code = 5 [json_name = "currencyCode"];
+    string currency_type = 6 [json_name = "currencyType"];
+    string currency_namespace = 7 [json_name = "currencyNamespace"];
+    string purchase_at = 8 [json_name = "purchaseAt"];
+    string expire_at = 9 [json_name = "expireAt"];
+    string discount_purchase_at = 10 [json_name = "discountPurchaseAt"];
+    string discount_expire_at = 11 [json_name = "discountExpireAt"];
 }
 
 // path: #/components/schemas/item/properties/localizations
@@ -140,129 +140,129 @@ message AnonymousSchema10 {
 
 // path: #/components/schemas/item
 message Item {
-    string itemId = 1;
-    string appId = 2;
-    string appType = 3;
-    string baseAppId = 4;
-    string baseAppItemId = 5;
-    string namespace = 6;
-    string sku = 7;
-    string name = 8;
-    string entitlementType = 9;
-    int32 useCount = 10;
-    bool stackable = 11;
-    string categoryPath = 12;
-    repeated Image images = 13;
-    string thumbnailUrl = 14;
-    AnonymousSchema4 localizations = 15;
-    string status = 16;
-    bool listable = 17;
-    bool purchasable = 18;
-    bool sectionExclusive = 19;
-    string itemType = 20;
-    string targetNamespace = 21;
-    string targetCurrencyCode = 22;
-    string targetItemId = 23;
-    AnonymousSchema5 regionData = 24;
-    repeated string itemIds = 25;
-    AnonymousSchema6 itemQty = 26;
-    repeated string tags = 27;
-    repeated string features = 28;
-    int32 maxCountPerUser = 29;
-    int32 maxCount = 30;
-    string clazz = 31;
-    AnonymousSchema8 ext = 32;
-    string boothName = 33;
-    string ticketBoothId = 34;
-    int32 displayOrder = 35;
-    string createdAt = 36;
-    string updatedAt = 37;
-    AnonymousSchema9 purchaseCondition = 38;
-    AnonymousSchema10 optionBoxConfig = 39;
-    bool flexible = 40;
+    string item_id = 1 [json_name = "itemId"];
+    string app_id = 2 [json_name = "appId"];
+    string app_type = 3 [json_name = "appType"];
+    string base_app_id = 4 [json_name = "baseAppId"];
+    string base_app_item_id = 5 [json_name = "baseAppItemId"];
+    string namespace = 6 [json_name = "namespace"];
+    string sku = 7 [json_name = "sku"];
+    string name = 8 [json_name = "name"];
+    string entitlement_type = 9 [json_name = "entitlementType"];
+    int32 use_count = 10 [json_name = "useCount"];
+    bool stackable = 11 [json_name = "stackable"];
+    string category_path = 12 [json_name = "categoryPath"];
+    repeated Image images = 13 [json_name = "images"];
+    string thumbnail_url = 14 [json_name = "thumbnailUrl"];
+    AnonymousSchema4 localizations = 15 [json_name = "localizations"];
+    string status = 16 [json_name = "status"];
+    bool listable = 17 [json_name = "listable"];
+    bool purchasable = 18 [json_name = "purchasable"];
+    bool section_exclusive = 19 [json_name = "sectionExclusive"];
+    string item_type = 20 [json_name = "itemType"];
+    string target_namespace = 21 [json_name = "targetNamespace"];
+    string target_currency_code = 22 [json_name = "targetCurrencyCode"];
+    string target_item_id = 23 [json_name = "targetItemId"];
+    AnonymousSchema5 region_data = 24 [json_name = "regionData"];
+    repeated string item_ids = 25 [json_name = "itemIds"];
+    AnonymousSchema6 item_qty = 26 [json_name = "itemQty"];
+    repeated string tags = 27 [json_name = "tags"];
+    repeated string features = 28 [json_name = "features"];
+    int32 max_count_per_user = 29 [json_name = "maxCountPerUser"];
+    int32 max_count = 30 [json_name = "maxCount"];
+    string clazz = 31 [json_name = "clazz"];
+    AnonymousSchema8 ext = 32 [json_name = "ext"];
+    string booth_name = 33 [json_name = "boothName"];
+    string ticket_booth_id = 34 [json_name = "ticketBoothId"];
+    int32 display_order = 35 [json_name = "displayOrder"];
+    string created_at = 36 [json_name = "createdAt"];
+    string updated_at = 37 [json_name = "updatedAt"];
+    AnonymousSchema9 purchase_condition = 38 [json_name = "purchaseCondition"];
+    AnonymousSchema10 option_box_config = 39 [json_name = "optionBoxConfig"];
+    bool flexible = 40 [json_name = "flexible"];
 }
 
 // path: #/components/schemas/slide
 message Slide {
-    string type = 1; // Allowed values: image, video
-    string videoSource = 2; // Allowed values: generic, youtube, vimeo
-    string url = 3;
-    string alt = 4;
-    string thumbnailUrl = 5;
-    string previewUrl = 6;
+    string type = 1 [json_name = "type"]; // Allowed values: image, video
+    string video_source = 2 [json_name = "videoSource"]; // Allowed values: generic, youtube, vimeo
+    string url = 3 [json_name = "url"];
+    string alt = 4 [json_name = "alt"];
+    string thumbnail_url = 5 [json_name = "thumbnailUrl"];
+    string preview_url = 6 [json_name = "previewUrl"];
 }
 
 // path: #/components/schemas/requirement
 message Requirement {
-    string label = 1;
-    string osVersion = 2;
-    string processor = 3;
-    string ram = 4;
-    string graphics = 5;
-    string directXVersion = 6;
-    string diskSpace = 7;
-    string soundCard = 8;
-    string additionals = 9;
+    string label = 1 [json_name = "label"];
+    string os_version = 2 [json_name = "osVersion"];
+    string processor = 3 [json_name = "processor"];
+    string ram = 4 [json_name = "ram"];
+    string graphics = 5 [json_name = "graphics"];
+    string direct_x_version = 6 [json_name = "directXVersion"];
+    string disk_space = 7 [json_name = "diskSpace"];
+    string sound_card = 8 [json_name = "soundCard"];
+    string additionals = 9 [json_name = "additionals"];
 }
 
 // path: #/components/schemas/appLocalization
 message AppLocalization {
-    string slogan = 1;
-    string announcement = 2;
+    string slogan = 1 [json_name = "slogan"];
+    string announcement = 2 [json_name = "announcement"];
 }
 
 // path: #/components/schemas/purchaseCondition
 message PurchaseCondition {
-    ConditionGroups conditionGroups = 1;
+    ConditionGroups condition_groups = 1 [json_name = "conditionGroups"];
 }
 
 // path: #/components/schemas/conditionGroups
 message ConditionGroups {
-    repeated Predicate predicates = 1;
-    string operator = 2;
+    repeated Predicate predicates = 1 [json_name = "predicates"];
+    string operator = 2 [json_name = "operator"];
 }
 
 // path: #/components/schemas/predicate
 message Predicate {
-    string name = 1;
-    string predicateType = 2; // Allowed values: EntitlementPredicate, SeasonPassPredicate, SeasonTierPredicate
-    string comparison = 3; // Allowed values: is, isNot, isGreaterThan, isGraterThanOrEqual, isLessThan, isLessThanOrEqual, includes, excludes
-    int64 anyOf = 4;
-    repeated google.protobuf.Struct values = 5;
-    string value = 6;
+    string name = 1 [json_name = "name"];
+    string predicate_type = 2 [json_name = "predicateType"]; // Allowed values: EntitlementPredicate, SeasonPassPredicate, SeasonTierPredicate
+    string comparison = 3 [json_name = "comparison"]; // Allowed values: is, isNot, isGreaterThan, isGraterThanOrEqual, isLessThan, isLessThanOrEqual, includes, excludes
+    int64 any_of = 4 [json_name = "anyOf"];
+    repeated google.protobuf.Struct values = 5 [json_name = "values"];
+    string value = 6 [json_name = "value"];
 }
 
 // path: #/components/schemas/optionBoxConfig
 message OptionBoxConfig {
-    repeated OptionBoxItem boxItems = 1;
+    repeated OptionBoxItem box_items = 1 [json_name = "boxItems"];
 }
 
 // path: #/components/schemas/optionBoxItem
 message OptionBoxItem {
-    string itemId = 1;
-    string itemSku = 2;
-    int64 count = 3;
+    string item_id = 1 [json_name = "itemId"];
+    string item_sku = 2 [json_name = "itemSku"];
+    int64 count = 3 [json_name = "count"];
 }
 
 // path: #/components/schemas/storePublish
 message StorePublish {
-    string namespace = 1;
-    string storeId = 2;
-    bool incremental = 3;
-    repeated CatalogChange catalogChanges = 4;
+    string namespace = 1 [json_name = "namespace"];
+    string store_id = 2 [json_name = "storeId"];
+    bool incremental = 3 [json_name = "incremental"];
+    repeated CatalogChange catalog_changes = 4 [json_name = "catalogChanges"];
 }
 
 // path: #/components/schemas/catalogChange
 message CatalogChange {
-    string storeId = 1;
-    string changeId = 2;
-    string itemType = 3;
-    string itemId = 4;
-    string sku = 5;
-    string viewId = 6;
-    string sectionId = 7;
-    string categoryPath = 8;
-    string action = 9;
+    string store_id = 1 [json_name = "storeId"];
+    string change_id = 2 [json_name = "changeId"];
+    string item_type = 3 [json_name = "itemType"];
+    string item_id = 4 [json_name = "itemId"];
+    string sku = 5 [json_name = "sku"];
+    string view_id = 6 [json_name = "viewId"];
+    string section_id = 7 [json_name = "sectionId"];
+    string category_path = 8 [json_name = "categoryPath"];
+    string action = 9 [json_name = "action"];
 }
 
 // path: #/components/schemas/app/properties/platformRequirements
@@ -275,446 +275,446 @@ message AnonymousSchema12 {
 
 // path: #/components/schemas/app
 message App {
-    string itemId = 1;
-    string namespace = 2;
-    repeated Slide carousel = 3;
-    string developer = 4;
-    string publisher = 5;
-    string websiteUrl = 6;
-    string forumUrl = 7;
-    repeated string platforms = 8;
-    AnonymousSchema11 platformRequirements = 9;
-    AnonymousSchema12 localizations = 10;
-    string primaryGenre = 11; // Allowed values: Action, Adventure, Casual, FreeToPlay, Indie, MassivelyMultiplayer, Racing, RPG, Simulation, Sports, Strategy
-    repeated string genres = 12;
-    repeated string players = 13;
-    string releaseDate = 14;
+    string item_id = 1 [json_name = "itemId"];
+    string namespace = 2 [json_name = "namespace"];
+    repeated Slide carousel = 3 [json_name = "carousel"];
+    string developer = 4 [json_name = "developer"];
+    string publisher = 5 [json_name = "publisher"];
+    string website_url = 6 [json_name = "websiteUrl"];
+    string forum_url = 7 [json_name = "forumUrl"];
+    repeated string platforms = 8 [json_name = "platforms"];
+    AnonymousSchema11 platform_requirements = 9 [json_name = "platformRequirements"];
+    AnonymousSchema12 localizations = 10 [json_name = "localizations"];
+    string primary_genre = 11 [json_name = "primaryGenre"]; // Allowed values: Action, Adventure, Casual, FreeToPlay, Indie, MassivelyMultiplayer, Racing, RPG, Simulation, Sports, Strategy
+    repeated string genres = 12 [json_name = "genres"];
+    repeated string players = 13 [json_name = "players"];
+    string release_date = 14 [json_name = "releaseDate"];
 }
 
 // path: #/components/schemas/itemStatusChange
 message ItemStatusChange {
-    string itemId = 1;
-    string itemName = 2;
-    string status = 3; // Allowed values: ACTIVE, INACTIVE
-    string previousStatus = 4; // Allowed values: ACTIVE, INACTIVE
+    string item_id = 1 [json_name = "itemId"];
+    string item_name = 2 [json_name = "itemName"];
+    string status = 3 [json_name = "status"]; // Allowed values: ACTIVE, INACTIVE
+    string previous_status = 4 [json_name = "previousStatus"]; // Allowed values: ACTIVE, INACTIVE
 }
 
 // path: #/components/schemas/storeClone
 message StoreClone {
-    string targetStoreId = 1;
-    bool published = 2;
+    string target_store_id = 1 [json_name = "targetStoreId"];
+    bool published = 2 [json_name = "published"];
 }
 
 // path: #/components/messages/storeCreated/payload/properties/payload
 message AnonymousSchema13 {
-    Store store = 1;
+    Store store = 1 [json_name = "store"];
 }
 
 // path: #/components/messages/storeCreated/payload
 message StoreCreated {
-    AnonymousSchema13 payload = 1;
+    AnonymousSchema13 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/storeUpdated/payload/properties/payload
 message AnonymousSchema14 {
-    Store store = 1;
-    Store oldStore = 2;
+    Store store = 1 [json_name = "store"];
+    Store old_store = 2 [json_name = "oldStore"];
 }
 
 // path: #/components/messages/storeUpdated/payload
 message StoreUpdated {
-    AnonymousSchema14 payload = 1;
+    AnonymousSchema14 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/storeDeleted/payload/properties/payload
 message AnonymousSchema15 {
-    Store store = 1;
+    Store store = 1 [json_name = "store"];
 }
 
 // path: #/components/messages/storeDeleted/payload
 message StoreDeleted {
-    AnonymousSchema15 payload = 1;
+    AnonymousSchema15 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/storeExported/payload/properties/payload
 message AnonymousSchema16 {
-    string storeId = 1;
+    string store_id = 1 [json_name = "storeId"];
 }
 
 // path: #/components/messages/storeExported/payload
 message StoreExported {
-    AnonymousSchema16 payload = 1;
+    AnonymousSchema16 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/storeImported/payload/properties/payload
 message AnonymousSchema17 {
-    string storeId = 1;
+    string store_id = 1 [json_name = "storeId"];
 }
 
 // path: #/components/messages/storeImported/payload
 message StoreImported {
-    AnonymousSchema17 payload = 1;
+    AnonymousSchema17 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/storeCloned/payload/properties/payload
 message AnonymousSchema18 {
-    string storeId = 1;
-    StoreClone storeClone = 2;
+    string store_id = 1 [json_name = "storeId"];
+    StoreClone store_clone = 2 [json_name = "storeClone"];
 }
 
 // path: #/components/messages/storeCloned/payload
 message StoreCloned {
-    AnonymousSchema18 payload = 1;
+    AnonymousSchema18 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/storeRollbacked/payload/properties/payload
 message AnonymousSchema19 {
-    string storeId = 1;
+    string store_id = 1 [json_name = "storeId"];
 }
 
 // path: #/components/messages/storeRollbacked/payload
 message StoreRollbacked {
-    AnonymousSchema19 payload = 1;
+    AnonymousSchema19 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/storePublished/payload/properties/payload
 message AnonymousSchema20 {
-    string storeId = 1;
-    StorePublish storePublishSchema = 2;
+    string store_id = 1 [json_name = "storeId"];
+    StorePublish store_publish_schema = 2 [json_name = "storePublishSchema"];
 }
 
 // path: #/components/messages/storePublished/payload
 message StorePublished {
-    AnonymousSchema20 payload = 1;
+    AnonymousSchema20 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/categoryCreated/payload/properties/payload
 message AnonymousSchema21 {
-    string storeId = 1;
-    Category category = 2;
+    string store_id = 1 [json_name = "storeId"];
+    Category category = 2 [json_name = "category"];
 }
 
 // path: #/components/messages/categoryCreated/payload
 message CategoryCreated {
-    AnonymousSchema21 payload = 1;
+    AnonymousSchema21 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/categoryUpdated/payload/properties/payload
 message AnonymousSchema22 {
-    string storeId = 1;
-    Category category = 2;
-    Category oldCategory = 3;
+    string store_id = 1 [json_name = "storeId"];
+    Category category = 2 [json_name = "category"];
+    Category old_category = 3 [json_name = "oldCategory"];
 }
 
 // path: #/components/messages/categoryUpdated/payload
 message CategoryUpdated {
-    AnonymousSchema22 payload = 1;
+    AnonymousSchema22 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/categoryDeleted/payload/properties/payload
 message AnonymousSchema23 {
-    string storeId = 1;
-    Category category = 2;
+    string store_id = 1 [json_name = "storeId"];
+    Category category = 2 [json_name = "category"];
 }
 
 // path: #/components/messages/categoryDeleted/payload
 message CategoryDeleted {
-    AnonymousSchema23 payload = 1;
+    AnonymousSchema23 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/itemCreated/payload/properties/payload
 message AnonymousSchema24 {
-    string storeId = 1;
-    Item item = 2;
+    string store_id = 1 [json_name = "storeId"];
+    Item item = 2 [json_name = "item"];
 }
 
 // path: #/components/messages/itemCreated/payload
 message ItemCreated {
-    AnonymousSchema24 payload = 1;
+    AnonymousSchema24 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/itemUpdated/payload/properties/payload
 message AnonymousSchema25 {
-    string storeId = 1;
-    Item item = 2;
-    Item oldItem = 3;
+    string store_id = 1 [json_name = "storeId"];
+    Item item = 2 [json_name = "item"];
+    Item old_item = 3 [json_name = "oldItem"];
 }
 
 // path: #/components/messages/itemUpdated/payload
 message ItemUpdated {
-    AnonymousSchema25 payload = 1;
+    AnonymousSchema25 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/itemDeleted/payload/properties/payload
 message AnonymousSchema26 {
-    string storeId = 1;
-    Item item = 2;
+    string store_id = 1 [json_name = "storeId"];
+    Item item = 2 [json_name = "item"];
 }
 
 // path: #/components/messages/itemDeleted/payload
 message ItemDeleted {
-    AnonymousSchema26 payload = 1;
+    AnonymousSchema26 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/inGameItemSynced/payload/properties/payload
 message AnonymousSchema27 {
-    string storeId = 1;
-    Item item = 2;
+    string store_id = 1 [json_name = "storeId"];
+    Item item = 2 [json_name = "item"];
 }
 
 // path: #/components/messages/inGameItemSynced/payload
 message InGameItemSynced {
-    AnonymousSchema27 payload = 1;
+    AnonymousSchema27 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/itemDisabled/payload/properties/payload
 message AnonymousSchema28 {
-    string storeId = 1;
-    ItemStatusChange itemStatusChange = 2;
+    string store_id = 1 [json_name = "storeId"];
+    ItemStatusChange item_status_change = 2 [json_name = "itemStatusChange"];
 }
 
 // path: #/components/messages/itemDisabled/payload
 message ItemDisabled {
-    AnonymousSchema28 payload = 1;
+    AnonymousSchema28 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/itemEnabled/payload/properties/payload
 message AnonymousSchema29 {
-    string storeId = 1;
-    ItemStatusChange itemStatusChange = 2;
+    string store_id = 1 [json_name = "storeId"];
+    ItemStatusChange item_status_change = 2 [json_name = "itemStatusChange"];
 }
 
 // path: #/components/messages/itemEnabled/payload
 message ItemEnabled {
-    AnonymousSchema29 payload = 1;
+    AnonymousSchema29 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/appUpdated/payload/properties/payload
 message AnonymousSchema30 {
-    string storeId = 1;
-    App app = 2;
-    App oldApp = 3;
+    string store_id = 1 [json_name = "storeId"];
+    App app = 2 [json_name = "app"];
+    App old_app = 3 [json_name = "oldApp"];
 }
 
 // path: #/components/messages/appUpdated/payload
 message AppUpdated {
-    AnonymousSchema30 payload = 1;
+    AnonymousSchema30 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 

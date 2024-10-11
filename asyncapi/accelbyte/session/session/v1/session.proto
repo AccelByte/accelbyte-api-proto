@@ -26,381 +26,381 @@ option java_package = "net.accelbyte.session.session";
 
 // path: #/components/schemas/event
 message Event {
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string userId = 7;
-    string traceId = 8;
-    string sessionId = 9;
-    string spanContext = 10;
+    string id = 1 [json_name = "id"];
+    int64 version = 2 [json_name = "version"];
+    string name = 3 [json_name = "name"];
+    string namespace = 4 [json_name = "namespace"];
+    string parent_namespace = 5 [json_name = "parentNamespace"];
+    string timestamp = 6 [json_name = "timestamp"];
+    string user_id = 7 [json_name = "userId"];
+    string trace_id = 8 [json_name = "traceId"];
+    string session_id = 9 [json_name = "sessionId"];
+    string span_context = 10 [json_name = "spanContext"];
 }
 
 // path: #/components/schemas/notificationPayload
 message NotificationPayload {
-    repeated string userIds = 1;
-    string namespace = 2;
-    string topicName = 3;
-    string message = 4;
+    repeated string user_ids = 1 [json_name = "userIds"];
+    string namespace = 2 [json_name = "namespace"];
+    string topic_name = 3 [json_name = "topicName"];
+    string message = 4 [json_name = "message"];
 }
 
 // path: #/components/messages/sessionNotification/payload
 message SessionNotification {
-    NotificationPayload payload = 1;
+    NotificationPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
-    string spanContext = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
+    string span_context = 11 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/OnSessionEnded/payload
 message OnSessionEnded {
-    NotificationPayload payload = 1;
+    NotificationPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
-    string spanContext = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
+    string span_context = 11 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/GameSessionEndedEvent/payload
 message GameSessionEndedEvent {
-    NotificationPayload payload = 1;
+    NotificationPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
-    string spanContext = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
+    string span_context = 11 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/GameSessionInvitedEvent/payload
 message GameSessionInvitedEvent {
-    NotificationPayload payload = 1;
+    NotificationPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
-    string spanContext = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
+    string span_context = 11 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/GameSessionJoinedEvent/payload
 message GameSessionJoinedEvent {
-    NotificationPayload payload = 1;
+    NotificationPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
-    string spanContext = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
+    string span_context = 11 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/GameSessionMembersChangedEvent/payload
 message GameSessionMembersChangedEvent {
-    NotificationPayload payload = 1;
+    NotificationPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
-    string spanContext = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
+    string span_context = 11 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/GameSessionKickedEvent/payload
 message GameSessionKickedEvent {
-    NotificationPayload payload = 1;
+    NotificationPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
-    string spanContext = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
+    string span_context = 11 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/GameSessionCreatedEvent/payload
 message GameSessionCreatedEvent {
-    NotificationPayload payload = 1;
+    NotificationPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
-    string spanContext = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
+    string span_context = 11 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/GameSessionUpdatedEvent/payload
 message GameSessionUpdatedEvent {
-    NotificationPayload payload = 1;
+    NotificationPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
-    string spanContext = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
+    string span_context = 11 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/GameSessionRejectedEvent/payload
 message GameSessionRejectedEvent {
-    NotificationPayload payload = 1;
+    NotificationPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
-    string spanContext = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
+    string span_context = 11 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/GameSessionDSStatusChangedEvent/payload
 message GameSessionDSStatusChangedEvent {
-    NotificationPayload payload = 1;
+    NotificationPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
-    string spanContext = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
+    string span_context = 11 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/GameSessionCodeChangedEvent/payload
 message GameSessionCodeChangedEvent {
-    NotificationPayload payload = 1;
+    NotificationPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
-    string spanContext = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
+    string span_context = 11 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/GameSessionCodeRevokedEvent/payload
 message GameSessionCodeRevokedEvent {
-    NotificationPayload payload = 1;
+    NotificationPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
-    string spanContext = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
+    string span_context = 11 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/PartyCreatedEvent/payload
 message PartyCreatedEvent {
-    NotificationPayload payload = 1;
+    NotificationPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
-    string spanContext = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
+    string span_context = 11 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/PartyUpdatedEvent/payload
 message PartyUpdatedEvent {
-    NotificationPayload payload = 1;
+    NotificationPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
-    string spanContext = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
+    string span_context = 11 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/PartyLeaveEvent/payload
 message PartyLeaveEvent {
-    NotificationPayload payload = 1;
+    NotificationPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
-    string spanContext = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
+    string span_context = 11 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/PartyKickedEvent/payload
 message PartyKickedEvent {
-    NotificationPayload payload = 1;
+    NotificationPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
-    string spanContext = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
+    string span_context = 11 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/PartyInvitedEvent/payload
 message PartyInvitedEvent {
-    NotificationPayload payload = 1;
+    NotificationPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
-    string spanContext = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
+    string span_context = 11 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/PartyRejectedEvent/payload
 message PartyRejectedEvent {
-    NotificationPayload payload = 1;
+    NotificationPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
-    string spanContext = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
+    string span_context = 11 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/PartyJoinedEvent/payload
 message PartyJoinedEvent {
-    NotificationPayload payload = 1;
+    NotificationPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
-    string spanContext = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
+    string span_context = 11 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/PartyMembersChangedEvent/payload
 message PartyMembersChangedEvent {
-    NotificationPayload payload = 1;
+    NotificationPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
-    string spanContext = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
+    string span_context = 11 [json_name = "spanContext"];
 }
 
 

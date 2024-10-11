@@ -26,96 +26,96 @@ option java_package = "net.accelbyte.reporting.reporting";
 
 // path: #/components/schemas/event
 message Event {
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
+    string id = 1 [json_name = "id"];
+    int64 version = 2 [json_name = "version"];
+    string name = 3 [json_name = "name"];
+    string namespace = 4 [json_name = "namespace"];
+    string parent_namespace = 5 [json_name = "parentNamespace"];
+    string timestamp = 6 [json_name = "timestamp"];
+    string client_id = 7 [json_name = "clientId"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
 }
 
 // path: #/components/schemas/autoHideContent
 message AutoHideContent {
-    string namespace = 1;
-    string userId = 2;
-    string contentId = 3;
+    string namespace = 1 [json_name = "namespace"];
+    string user_id = 2 [json_name = "userId"];
+    string content_id = 3 [json_name = "contentId"];
 }
 
 // path: #/components/schemas/reportContent
 message ReportContent {
-    string category = 1;
-    string comment = 2;
-    string createdAt = 3;
-    string extensionCategory = 4;
-    string id = 5;
-    string namespace = 6;
-    string objectID = 7;
-    string objectType = 8;
-    string reason = 9;
-    string reporterID = 10;
-    string ticketID = 11;
-    string updatedAt = 12;
-    string userID = 13;
+    string category = 1 [json_name = "Category"];
+    string comment = 2 [json_name = "Comment"];
+    string created_at = 3 [json_name = "CreatedAt"];
+    string extension_category = 4 [json_name = "ExtensionCategory"];
+    string id = 5 [json_name = "ID"];
+    string namespace = 6 [json_name = "Namespace"];
+    string object_id = 7 [json_name = "ObjectID"];
+    string object_type = 8 [json_name = "ObjectType"];
+    string reason = 9 [json_name = "Reason"];
+    string reporter_id = 10 [json_name = "ReporterID"];
+    string ticket_id = 11 [json_name = "TicketID"];
+    string updated_at = 12 [json_name = "UpdatedAt"];
+    string user_id = 13 [json_name = "UserID"];
 }
 
 // path: #/components/messages/hideContent/payload/properties/payload
 message AnonymousSchema1 {
-    AutoHideContent autoHideContent = 1;
+    AutoHideContent auto_hide_content = 1 [json_name = "autoHideContent"];
 }
 
 // path: #/components/messages/hideContent/payload
 message HideContent {
-    AnonymousSchema1 payload = 1;
+    AnonymousSchema1 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/userReport/payload
 message UserReport {
-    ReportContent payload = 1;
+    ReportContent payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/adminReport/payload
 message AdminReport {
-    ReportContent payload = 1;
+    ReportContent payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 

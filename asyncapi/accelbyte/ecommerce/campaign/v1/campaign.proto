@@ -26,362 +26,362 @@ option java_package = "net.accelbyte.ecommerce.campaign";
 
 // path: #/components/schemas/event
 message Event {
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
+    string id = 1 [json_name = "id"];
+    int64 version = 2 [json_name = "version"];
+    string name = 3 [json_name = "name"];
+    string namespace = 4 [json_name = "namespace"];
+    string parent_namespace = 5 [json_name = "parentNamespace"];
+    string timestamp = 6 [json_name = "timestamp"];
+    string client_id = 7 [json_name = "clientId"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
 }
 
 // path: #/components/schemas/campaign
 message Campaign {
-    string id = 1;
-    string type = 2; // Allowed values: REDEMPTION
-    string namespace = 3;
-    string name = 4;
-    string description = 5;
-    repeated string tags = 6;
-    string status = 7; // Allowed values: ACTIVE, INACTIVE
-    string redeemStart = 8;
-    string redeemEnd = 9;
-    int32 maxRedeemCountPerCode = 10;
-    int32 maxRedeemCountPerCodePerUser = 11;
-    int32 maxRedeemCountPerCampaignPerUser = 12;
-    int32 maxSaleCount = 13;
-    string redeemType = 14; // Allowed values: ITEM
-    repeated RedeemableItem items = 15;
-    string boothName = 16;
-    string createdAt = 17;
-    string updatedAt = 18;
+    string id = 1 [json_name = "id"];
+    string type = 2 [json_name = "type"]; // Allowed values: REDEMPTION
+    string namespace = 3 [json_name = "namespace"];
+    string name = 4 [json_name = "name"];
+    string description = 5 [json_name = "description"];
+    repeated string tags = 6 [json_name = "tags"];
+    string status = 7 [json_name = "status"]; // Allowed values: ACTIVE, INACTIVE
+    string redeem_start = 8 [json_name = "redeemStart"];
+    string redeem_end = 9 [json_name = "redeemEnd"];
+    int32 max_redeem_count_per_code = 10 [json_name = "maxRedeemCountPerCode"];
+    int32 max_redeem_count_per_code_per_user = 11 [json_name = "maxRedeemCountPerCodePerUser"];
+    int32 max_redeem_count_per_campaign_per_user = 12 [json_name = "maxRedeemCountPerCampaignPerUser"];
+    int32 max_sale_count = 13 [json_name = "maxSaleCount"];
+    string redeem_type = 14 [json_name = "redeemType"]; // Allowed values: ITEM
+    repeated RedeemableItem items = 15 [json_name = "items"];
+    string booth_name = 16 [json_name = "boothName"];
+    string created_at = 17 [json_name = "createdAt"];
+    string updated_at = 18 [json_name = "updatedAt"];
 }
 
 // path: #/components/schemas/redeemableItem
 message RedeemableItem {
-    string itemId = 1;
-    string itemName = 2;
-    int32 quantity = 3;
-    int32 extraSubscriptionDays = 4;
+    string item_id = 1 [json_name = "itemId"];
+    string item_name = 2 [json_name = "itemName"];
+    int32 quantity = 3 [json_name = "quantity"];
+    int32 extra_subscription_days = 4 [json_name = "extraSubscriptionDays"];
 }
 
 // path: #/components/schemas/codeCreate
 message CodeCreate {
-    string campaignId = 1;
-    string campaignName = 2;
-    int64 quantity = 3;
+    string campaign_id = 1 [json_name = "campaignId"];
+    string campaign_name = 2 [json_name = "campaignName"];
+    int64 quantity = 3 [json_name = "quantity"];
 }
 
 // path: #/components/schemas/codeCondition
 message CodeCondition {
-    string campaignId = 1;
-    int64 batchNo = 2;
-    string value = 3;
+    string campaign_id = 1 [json_name = "campaignId"];
+    int64 batch_no = 2 [json_name = "batchNo"];
+    string value = 3 [json_name = "value"];
 }
 
 // path: #/components/schemas/codeRedemption
 message CodeRedemption {
-    string userId = 1;
-    string campaignId = 2;
-    string campaignName = 3;
-    string code = 4;
+    string user_id = 1 [json_name = "userId"];
+    string campaign_id = 2 [json_name = "campaignId"];
+    string campaign_name = 3 [json_name = "campaignName"];
+    string code = 4 [json_name = "code"];
 }
 
 // path: #/components/schemas/ticketAcquisition
 message TicketAcquisition {
-    string userId = 1;
-    string boothName = 2;
-    int64 count = 3;
-    string orderNo = 4;
+    string user_id = 1 [json_name = "userId"];
+    string booth_name = 2 [json_name = "boothName"];
+    int64 count = 3 [json_name = "count"];
+    string order_no = 4 [json_name = "orderNo"];
 }
 
 // path: #/components/schemas/keyGroup
 message KeyGroup {
-    string id = 1;
-    string namespace = 2;
-    string name = 3;
-    string description = 4;
-    repeated string tags = 5;
-    string status = 6; // Allowed values: ACTIVE, INACTIVE
-    string boothName = 7;
-    string createdAt = 8;
-    string updatedAt = 9;
+    string id = 1 [json_name = "id"];
+    string namespace = 2 [json_name = "namespace"];
+    string name = 3 [json_name = "name"];
+    string description = 4 [json_name = "description"];
+    repeated string tags = 5 [json_name = "tags"];
+    string status = 6 [json_name = "status"]; // Allowed values: ACTIVE, INACTIVE
+    string booth_name = 7 [json_name = "boothName"];
+    string created_at = 8 [json_name = "createdAt"];
+    string updated_at = 9 [json_name = "updatedAt"];
 }
 
 // path: #/components/schemas/keyUpload
 message KeyUpload {
-    string keyGroupId = 1;
-    string keyGroupName = 2;
-    int64 quantity = 3;
+    string key_group_id = 1 [json_name = "keyGroupId"];
+    string key_group_name = 2 [json_name = "keyGroupName"];
+    int64 quantity = 3 [json_name = "quantity"];
 }
 
 // path: #/components/messages/campaignCreated/payload/properties/payload
 message AnonymousSchema1 {
-    Campaign campaign = 1;
+    Campaign campaign = 1 [json_name = "campaign"];
 }
 
 // path: #/components/messages/campaignCreated/payload
 message CampaignCreated {
-    AnonymousSchema1 payload = 1;
+    AnonymousSchema1 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/campaignUpdated/payload/properties/payload
 message AnonymousSchema2 {
-    Campaign campaign = 1;
-    Campaign oldCampaign = 2;
+    Campaign campaign = 1 [json_name = "campaign"];
+    Campaign old_campaign = 2 [json_name = "oldCampaign"];
 }
 
 // path: #/components/messages/campaignUpdated/payload
 message CampaignUpdated {
-    AnonymousSchema2 payload = 1;
+    AnonymousSchema2 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/codeCreated/payload/properties/payload
 message AnonymousSchema3 {
-    CodeCreate codeCreate = 1;
+    CodeCreate code_create = 1 [json_name = "codeCreate"];
 }
 
 // path: #/components/messages/codeCreated/payload
 message CodeCreated {
-    AnonymousSchema3 payload = 1;
+    AnonymousSchema3 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/codeDisabled/payload/properties/payload
 message AnonymousSchema4 {
-    CodeCondition codeCondition = 1;
+    CodeCondition code_condition = 1 [json_name = "codeCondition"];
 }
 
 // path: #/components/messages/codeDisabled/payload
 message CodeDisabled {
-    AnonymousSchema4 payload = 1;
+    AnonymousSchema4 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/codeEnabled/payload/properties/payload
 message AnonymousSchema5 {
-    CodeCondition codeCondition = 1;
+    CodeCondition code_condition = 1 [json_name = "codeCondition"];
 }
 
 // path: #/components/messages/codeEnabled/payload
 message CodeEnabled {
-    AnonymousSchema5 payload = 1;
+    AnonymousSchema5 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/codeBulkDisabled/payload/properties/payload
 message AnonymousSchema6 {
-    CodeCondition codeCondition = 1;
+    CodeCondition code_condition = 1 [json_name = "codeCondition"];
 }
 
 // path: #/components/messages/codeBulkDisabled/payload
 message CodeBulkDisabled {
-    AnonymousSchema6 payload = 1;
+    AnonymousSchema6 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/codeBulkEnabled/payload/properties/payload
 message AnonymousSchema7 {
-    CodeCondition codeCondition = 1;
+    CodeCondition code_condition = 1 [json_name = "codeCondition"];
 }
 
 // path: #/components/messages/codeBulkEnabled/payload
 message CodeBulkEnabled {
-    AnonymousSchema7 payload = 1;
+    AnonymousSchema7 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/codeRedeemed/payload/properties/payload
 message AnonymousSchema8 {
-    CodeRedemption codeRedemption = 1;
+    CodeRedemption code_redemption = 1 [json_name = "codeRedemption"];
 }
 
 // path: #/components/messages/codeRedeemed/payload
 message CodeRedeemed {
-    AnonymousSchema8 payload = 1;
+    AnonymousSchema8 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/ticketAcquired/payload/properties/payload
 message AnonymousSchema9 {
-    TicketAcquisition ticketAcquisition = 1;
+    TicketAcquisition ticket_acquisition = 1 [json_name = "ticketAcquisition"];
 }
 
 // path: #/components/messages/ticketAcquired/payload
 message TicketAcquired {
-    AnonymousSchema9 payload = 1;
+    AnonymousSchema9 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/keyGroupCreated/payload/properties/payload
 message AnonymousSchema10 {
-    KeyGroup keyGroup = 1;
+    KeyGroup key_group = 1 [json_name = "keyGroup"];
 }
 
 // path: #/components/messages/keyGroupCreated/payload
 message KeyGroupCreated {
-    AnonymousSchema10 payload = 1;
+    AnonymousSchema10 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/keyGroupUpdated/payload/properties/payload
 message AnonymousSchema11 {
-    KeyGroup keyGroup = 1;
-    KeyGroup oldKeyGroup = 2;
+    KeyGroup key_group = 1 [json_name = "keyGroup"];
+    KeyGroup old_key_group = 2 [json_name = "oldKeyGroup"];
 }
 
 // path: #/components/messages/keyGroupUpdated/payload
 message KeyGroupUpdated {
-    AnonymousSchema11 payload = 1;
+    AnonymousSchema11 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/keyUploaded/payload/properties/payload
 message AnonymousSchema12 {
-    KeyUpload keyUpload = 1;
+    KeyUpload key_upload = 1 [json_name = "keyUpload"];
 }
 
 // path: #/components/messages/keyUploaded/payload
 message KeyUploaded {
-    AnonymousSchema12 payload = 1;
+    AnonymousSchema12 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 

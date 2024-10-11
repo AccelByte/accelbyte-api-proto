@@ -26,232 +26,232 @@ option java_package = "net.accelbyte.matchmakingV2.notification";
 
 // path: #/components/schemas/event
 message Event {
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string traceId = 7;
-    string spanContext = 8;
+    string id = 1 [json_name = "id"];
+    int64 version = 2 [json_name = "version"];
+    string name = 3 [json_name = "name"];
+    string namespace = 4 [json_name = "namespace"];
+    string parent_namespace = 5 [json_name = "parentNamespace"];
+    string timestamp = 6 [json_name = "timestamp"];
+    string trace_id = 7 [json_name = "traceId"];
+    string span_context = 8 [json_name = "spanContext"];
 }
 
 // path: #/components/schemas/notificationPayload
 message NotificationPayload {
-    repeated string userIds = 1;
-    string namespace = 2;
-    string topicName = 3;
-    string message = 4;
+    repeated string user_ids = 1 [json_name = "userIds"];
+    string namespace = 2 [json_name = "namespace"];
+    string topic_name = 3 [json_name = "topicName"];
+    string message = 4 [json_name = "message"];
 }
 
 // path: #/components/messages/freeformUserNotification/payload
 message FreeformUserNotification {
-    NotificationPayload payload = 1;
+    NotificationPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string traceId = 8;
-    string spanContext = 9;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string trace_id = 8 [json_name = "traceId"];
+    string span_context = 9 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/MatchmakingEvent/payload
 message MatchmakingEvent {
-    NotificationPayload payload = 1;
+    NotificationPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string traceId = 8;
-    string spanContext = 9;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string trace_id = 8 [json_name = "traceId"];
+    string span_context = 9 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/MatchmakingStartedEvent/payload
 message MatchmakingStartedEvent {
-    NotificationPayload payload = 1;
+    NotificationPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string traceId = 8;
-    string spanContext = 9;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string trace_id = 8 [json_name = "traceId"];
+    string span_context = 9 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/MatchmakingTicketExpiredEvent/payload
 message MatchmakingTicketExpiredEvent {
-    NotificationPayload payload = 1;
+    NotificationPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string traceId = 8;
-    string spanContext = 9;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string trace_id = 8 [json_name = "traceId"];
+    string span_context = 9 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/MatchmakingTicketCanceledEvent/payload
 message MatchmakingTicketCanceledEvent {
-    NotificationPayload payload = 1;
+    NotificationPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string traceId = 8;
-    string spanContext = 9;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string trace_id = 8 [json_name = "traceId"];
+    string span_context = 9 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/MatchmakingTicketRejectedEvent/payload
 message MatchmakingTicketRejectedEvent {
-    NotificationPayload payload = 1;
+    NotificationPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string traceId = 8;
-    string spanContext = 9;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string trace_id = 8 [json_name = "traceId"];
+    string span_context = 9 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/MatchmakingTicketFoundEvent/payload
 message MatchmakingTicketFoundEvent {
-    NotificationPayload payload = 1;
+    NotificationPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string traceId = 8;
-    string spanContext = 9;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string trace_id = 8 [json_name = "traceId"];
+    string span_context = 9 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/MatchFoundEvent/payload
 message MatchFoundEvent {
-    NotificationPayload payload = 1;
+    NotificationPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string traceId = 8;
-    string spanContext = 9;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string trace_id = 8 [json_name = "traceId"];
+    string span_context = 9 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/BackfillFoundEvent/payload
 message BackfillFoundEvent {
-    NotificationPayload payload = 1;
+    NotificationPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string traceId = 8;
-    string spanContext = 9;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string trace_id = 8 [json_name = "traceId"];
+    string span_context = 9 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/BackfillProposalSentEvent/payload
 message BackfillProposalSentEvent {
-    NotificationPayload payload = 1;
+    NotificationPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string traceId = 8;
-    string spanContext = 9;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string trace_id = 8 [json_name = "traceId"];
+    string span_context = 9 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/BackfillProposalAcceptedEvent/payload
 message BackfillProposalAcceptedEvent {
-    NotificationPayload payload = 1;
+    NotificationPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string traceId = 8;
-    string spanContext = 9;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string trace_id = 8 [json_name = "traceId"];
+    string span_context = 9 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/BackfillProposalRejectedEvent/payload
 message BackfillProposalRejectedEvent {
-    NotificationPayload payload = 1;
+    NotificationPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string traceId = 8;
-    string spanContext = 9;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string trace_id = 8 [json_name = "traceId"];
+    string span_context = 9 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/BackfillProposalExpiredEvent/payload
 message BackfillProposalExpiredEvent {
-    NotificationPayload payload = 1;
+    NotificationPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string traceId = 8;
-    string spanContext = 9;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string trace_id = 8 [json_name = "traceId"];
+    string span_context = 9 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/BackfillTicketExpiredEvent/payload
 message BackfillTicketExpiredEvent {
-    NotificationPayload payload = 1;
+    NotificationPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string traceId = 8;
-    string spanContext = 9;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string trace_id = 8 [json_name = "traceId"];
+    string span_context = 9 [json_name = "spanContext"];
 }
 
 

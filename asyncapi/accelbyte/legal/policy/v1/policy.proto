@@ -26,323 +26,323 @@ option java_package = "net.accelbyte.legal.policy";
 
 // path: #/components/schemas/event
 message Event {
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
+    string id = 1 [json_name = "id"];
+    int64 version = 2 [json_name = "version"];
+    string name = 3 [json_name = "name"];
+    string namespace = 4 [json_name = "namespace"];
+    string parent_namespace = 5 [json_name = "parentNamespace"];
+    string timestamp = 6 [json_name = "timestamp"];
+    string client_id = 7 [json_name = "clientId"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
 }
 
 // path: #/components/schemas/basePolicy
 message BasePolicy {
-    string id = 1;
-    string basePolicyName = 2;
-    string description = 3;
-    string typeId = 4;
-    string policyTypeName = 5;
-    repeated string affectedClientIds = 6;
-    repeated string affectedCountries = 7;
-    string createdAt = 8;
-    string updatedAt = 9;
-    bool isMandatory = 10;
-    string namespace = 11;
-    repeated string tags = 12;
+    string id = 1 [json_name = "id"];
+    string base_policy_name = 2 [json_name = "basePolicyName"];
+    string description = 3 [json_name = "description"];
+    string type_id = 4 [json_name = "typeId"];
+    string policy_type_name = 5 [json_name = "policyTypeName"];
+    repeated string affected_client_ids = 6 [json_name = "affectedClientIds"];
+    repeated string affected_countries = 7 [json_name = "affectedCountries"];
+    string created_at = 8 [json_name = "createdAt"];
+    string updated_at = 9 [json_name = "updatedAt"];
+    bool is_mandatory = 10 [json_name = "isMandatory"];
+    string namespace = 11 [json_name = "namespace"];
+    repeated string tags = 12 [json_name = "tags"];
 }
 
 // path: #/components/schemas/policy
 message Policy {
-    string id = 1;
-    string policyName = 2;
-    string countryCode = 3;
-    string createdAt = 4;
-    string updatedAt = 5;
-    bool shouldNotifyOnUpdate = 6;
-    string countryGroupCode = 7 [deprecated = true];
-    bool isMandatory = 8;
-    bool isDefaultOpted = 9 [deprecated = true];
-    string basePolicyId = 10 [deprecated = true];
-    string readableId = 11 [deprecated = true];
-    string description = 12;
-    bool isDefaultSelection = 13;
+    string id = 1 [json_name = "id"];
+    string policy_name = 2 [json_name = "policyName"];
+    string country_code = 3 [json_name = "countryCode"];
+    string created_at = 4 [json_name = "createdAt"];
+    string updated_at = 5 [json_name = "updatedAt"];
+    bool should_notify_on_update = 6 [json_name = "shouldNotifyOnUpdate"];
+    string country_group_code = 7 [json_name = "countryGroupCode", deprecated = true];
+    bool is_mandatory = 8 [json_name = "isMandatory"];
+    bool is_default_opted = 9 [json_name = "isDefaultOpted", deprecated = true];
+    string base_policy_id = 10 [json_name = "basePolicyId", deprecated = true];
+    string readable_id = 11 [json_name = "readableId", deprecated = true];
+    string description = 12 [json_name = "description"];
+    bool is_default_selection = 13 [json_name = "isDefaultSelection"];
 }
 
 // path: #/components/schemas/versionedPolicy
 message VersionedPolicy {
-    string id = 1;
-    string policyId = 2;
-    string displayVersion = 3;
-    string description = 4;
-    string status = 5;
-    string createdAt = 6;
-    string updatedAt = 7;
-    string publishedDate = 8;
-    bool isCrucial = 9 [deprecated = true];
-    bool isCommitted = 10 [deprecated = true];
-    bool isInEffect = 11;
+    string id = 1 [json_name = "id"];
+    string policy_id = 2 [json_name = "policyId"];
+    string display_version = 3 [json_name = "displayVersion"];
+    string description = 4 [json_name = "description"];
+    string status = 5 [json_name = "status"];
+    string created_at = 6 [json_name = "createdAt"];
+    string updated_at = 7 [json_name = "updatedAt"];
+    string published_date = 8 [json_name = "publishedDate"];
+    bool is_crucial = 9 [json_name = "isCrucial", deprecated = true];
+    bool is_committed = 10 [json_name = "isCommitted", deprecated = true];
+    bool is_in_effect = 11 [json_name = "isInEffect"];
 }
 
 // path: #/components/schemas/localizedPolicy
 message LocalizedPolicy {
-    string id = 1;
-    string versionedPolicyId = 2;
-    string description = 3;
-    string localeCode = 4;
-    string contentType = 5;
-    string attachmentLocation = 6;
-    string attachmentChecksum = 7;
-    string attachmentVersionIdentifier = 8;
-    string status = 9 [deprecated = true];
-    string createdAt = 10;
-    string updatedAt = 11;
-    string publishedDate = 12 [deprecated = true];
-    bool isDefaultSelection = 13 [deprecated = true];
+    string id = 1 [json_name = "id"];
+    string versioned_policy_id = 2 [json_name = "versionedPolicyId"];
+    string description = 3 [json_name = "description"];
+    string locale_code = 4 [json_name = "localeCode"];
+    string content_type = 5 [json_name = "contentType"];
+    string attachment_location = 6 [json_name = "attachmentLocation"];
+    string attachment_checksum = 7 [json_name = "attachmentChecksum"];
+    string attachment_version_identifier = 8 [json_name = "attachmentVersionIdentifier"];
+    string status = 9 [json_name = "status", deprecated = true];
+    string created_at = 10 [json_name = "createdAt"];
+    string updated_at = 11 [json_name = "updatedAt"];
+    string published_date = 12 [json_name = "publishedDate", deprecated = true];
+    bool is_default_selection = 13 [json_name = "isDefaultSelection", deprecated = true];
 }
 
 // path: #/components/messages/basePolicyCreated/payload/properties/payload
 message AnonymousSchema1 {
-    BasePolicy basePolicy = 1;
+    BasePolicy base_policy = 1 [json_name = "basePolicy"];
 }
 
 // path: #/components/messages/basePolicyCreated/payload
 message BasePolicyCreated {
-    AnonymousSchema1 payload = 1;
+    AnonymousSchema1 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/basePolicyUpdated/payload/properties/payload
 message AnonymousSchema2 {
-    BasePolicy basePolicy = 1;
+    BasePolicy base_policy = 1 [json_name = "basePolicy"];
 }
 
 // path: #/components/messages/basePolicyUpdated/payload
 message BasePolicyUpdated {
-    AnonymousSchema2 payload = 1;
+    AnonymousSchema2 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/policyCreated/payload/properties/payload
 message AnonymousSchema3 {
-    Policy policy = 1;
+    Policy policy = 1 [json_name = "policy"];
 }
 
 // path: #/components/messages/policyCreated/payload
 message PolicyCreated {
-    AnonymousSchema3 payload = 1;
+    AnonymousSchema3 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/policyUpdated/payload/properties/payload
 message AnonymousSchema4 {
-    Policy policy = 1;
+    Policy policy = 1 [json_name = "policy"];
 }
 
 // path: #/components/messages/policyUpdated/payload
 message PolicyUpdated {
-    AnonymousSchema4 payload = 1;
+    AnonymousSchema4 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/defaultPolicyUpdated/payload/properties/payload
 message AnonymousSchema5 {
-    Policy policy = 1;
+    Policy policy = 1 [json_name = "policy"];
 }
 
 // path: #/components/messages/defaultPolicyUpdated/payload
 message DefaultPolicyUpdated {
-    AnonymousSchema5 payload = 1;
+    AnonymousSchema5 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/versionedPolicyCreated/payload/properties/payload
 message AnonymousSchema6 {
-    VersionedPolicy versionedPolicy = 1;
+    VersionedPolicy versioned_policy = 1 [json_name = "versionedPolicy"];
 }
 
 // path: #/components/messages/versionedPolicyCreated/payload
 message VersionedPolicyCreated {
-    AnonymousSchema6 payload = 1;
+    AnonymousSchema6 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/versionedPolicyUpdated/payload/properties/payload
 message AnonymousSchema7 {
-    VersionedPolicy versionedPolicy = 1;
+    VersionedPolicy versioned_policy = 1 [json_name = "versionedPolicy"];
 }
 
 // path: #/components/messages/versionedPolicyUpdated/payload
 message VersionedPolicyUpdated {
-    AnonymousSchema7 payload = 1;
+    AnonymousSchema7 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/versionedPolicyPublished/payload/properties/payload
 message AnonymousSchema8 {
-    VersionedPolicy versionedPolicy = 1;
+    VersionedPolicy versioned_policy = 1 [json_name = "versionedPolicy"];
 }
 
 // path: #/components/messages/versionedPolicyPublished/payload
 message VersionedPolicyPublished {
-    AnonymousSchema8 payload = 1;
+    AnonymousSchema8 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/localizedPolicyCreated/payload/properties/payload
 message AnonymousSchema9 {
-    LocalizedPolicy localizedPolicy = 1;
+    LocalizedPolicy localized_policy = 1 [json_name = "localizedPolicy"];
 }
 
 // path: #/components/messages/localizedPolicyCreated/payload
 message LocalizedPolicyCreated {
-    AnonymousSchema9 payload = 1;
+    AnonymousSchema9 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/localizedPolicyUpdated/payload/properties/payload
 message AnonymousSchema10 {
-    LocalizedPolicy localizedPolicy = 1;
+    LocalizedPolicy localized_policy = 1 [json_name = "localizedPolicy"];
 }
 
 // path: #/components/messages/localizedPolicyUpdated/payload
 message LocalizedPolicyUpdated {
-    AnonymousSchema10 payload = 1;
+    AnonymousSchema10 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/defaultLocalizedPolicyUpdated/payload/properties/payload
 message AnonymousSchema11 {
-    LocalizedPolicy localizedPolicy = 1;
+    LocalizedPolicy localized_policy = 1 [json_name = "localizedPolicy"];
 }
 
 // path: #/components/messages/defaultLocalizedPolicyUpdated/payload
 message DefaultLocalizedPolicyUpdated {
-    AnonymousSchema11 payload = 1;
+    AnonymousSchema11 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 

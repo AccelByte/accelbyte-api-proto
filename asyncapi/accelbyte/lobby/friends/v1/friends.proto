@@ -26,161 +26,161 @@ option java_package = "net.accelbyte.lobby.friends";
 
 // path: #/components/schemas/event
 message Event {
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
-    string spanContext = 11;
+    string id = 1 [json_name = "id"];
+    int64 version = 2 [json_name = "version"];
+    string name = 3 [json_name = "name"];
+    string namespace = 4 [json_name = "namespace"];
+    string parent_namespace = 5 [json_name = "parentNamespace"];
+    string timestamp = 6 [json_name = "timestamp"];
+    string client_id = 7 [json_name = "clientId"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
+    string span_context = 11 [json_name = "spanContext"];
 }
 
 // path: #/components/schemas/friendRequestsPayload
 message FriendRequestsPayload {
-    string userId = 1;
-    string friendId = 2;
+    string user_id = 1 [json_name = "userId"];
+    string friend_id = 2 [json_name = "friendId"];
 }
 
 // path: #/components/schemas/friendRequestSentPayload
 message FriendRequestSentPayload {
-    FriendRequestsPayload relation = 1;
+    FriendRequestsPayload relation = 1 [json_name = "relation"];
 }
 
 // path: #/components/schemas/friendRequestCancelledPayload
 message FriendRequestCancelledPayload {
-    FriendRequestsPayload relation = 1;
+    FriendRequestsPayload relation = 1 [json_name = "relation"];
 }
 
 // path: #/components/schemas/friendRequestAcceptedPayload
 message FriendRequestAcceptedPayload {
-    FriendRequestsPayload relation = 1;
+    FriendRequestsPayload relation = 1 [json_name = "relation"];
 }
 
 // path: #/components/schemas/friendRequestRejectedPayload
 message FriendRequestRejectedPayload {
-    FriendRequestsPayload relation = 1;
+    FriendRequestsPayload relation = 1 [json_name = "relation"];
 }
 
 // path: #/components/schemas/friendRemovedPayload
 message FriendRemovedPayload {
-    FriendRequestsPayload relation = 1;
+    FriendRequestsPayload relation = 1 [json_name = "relation"];
 }
 
 // path: #/components/schemas/friendAddedBulkPayload
 message FriendAddedBulkPayload {
-    FriendRequestsPayload relation = 1;
+    FriendRequestsPayload relation = 1 [json_name = "relation"];
 }
 
 // path: #/components/messages/friendRequestSent/payload
 message FriendRequestSent {
-    FriendRequestSentPayload payload = 1;
+    FriendRequestSentPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
-    string spanContext = 12;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+    string span_context = 12 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/friendRequestCancelled/payload
 message FriendRequestCancelled {
-    FriendRequestCancelledPayload payload = 1;
+    FriendRequestCancelledPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
-    string spanContext = 12;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+    string span_context = 12 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/friendRequestAccepted/payload
 message FriendRequestAccepted {
-    FriendRequestAcceptedPayload payload = 1;
+    FriendRequestAcceptedPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
-    string spanContext = 12;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+    string span_context = 12 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/friendRequestRejected/payload
 message FriendRequestRejected {
-    FriendRequestRejectedPayload payload = 1;
+    FriendRequestRejectedPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
-    string spanContext = 12;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+    string span_context = 12 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/friendRemoved/payload
 message FriendRemoved {
-    FriendRemovedPayload payload = 1;
+    FriendRemovedPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
-    string spanContext = 12;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+    string span_context = 12 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/friendAddedBulk/payload
 message FriendAddedBulk {
-    FriendAddedBulkPayload payload = 1;
+    FriendAddedBulkPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
-    string spanContext = 12;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+    string span_context = 12 [json_name = "spanContext"];
 }
 
 

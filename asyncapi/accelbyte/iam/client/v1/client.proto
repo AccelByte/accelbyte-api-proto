@@ -26,267 +26,267 @@ option java_package = "net.accelbyte.iam.client";
 
 // path: #/components/schemas/event
 message Event {
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
+    string id = 1 [json_name = "id"];
+    int64 version = 2 [json_name = "version"];
+    string name = 3 [json_name = "name"];
+    string namespace = 4 [json_name = "namespace"];
+    string parent_namespace = 5 [json_name = "parentNamespace"];
+    string timestamp = 6 [json_name = "timestamp"];
+    string client_id = 7 [json_name = "clientId"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
 }
 
 // path: #/components/schemas/permissions
 message Permissions {
-    string resoure = 1;
-    string action = 2;
-    int64 schedAction = 3 [deprecated = true];
-    string schedCron = 4 [deprecated = true];
-    repeated string schedRange = 5 [deprecated = true];
+    string resoure = 1 [json_name = "resoure"];
+    string action = 2 [json_name = "action"];
+    int64 sched_action = 3 [json_name = "SchedAction", deprecated = true];
+    string sched_cron = 4 [json_name = "SchedCron", deprecated = true];
+    repeated string sched_range = 5 [json_name = "SchedRange", deprecated = true];
 }
 
 // path: #/components/schemas/client
 message Client {
-    string clientId = 1;
-    string name = 2;
-    string clientType = 3;
-    string baseUri = 4;
-    string redirectUri = 5;
-    string secret = 6;
-    repeated string audiences = 7;
-    string clientPlatform = 8;
-    bool twoFactorEnabled = 9;
-    string namespace = 10;
+    string client_id = 1 [json_name = "clientId"];
+    string name = 2 [json_name = "name"];
+    string client_type = 3 [json_name = "clientType"];
+    string base_uri = 4 [json_name = "baseUri"];
+    string redirect_uri = 5 [json_name = "redirectUri"];
+    string secret = 6 [json_name = "secret"];
+    repeated string audiences = 7 [json_name = "audiences"];
+    string client_platform = 8 [json_name = "clientPlatform"];
+    bool two_factor_enabled = 9 [json_name = "twoFactorEnabled"];
+    string namespace = 10 [json_name = "namespace"];
 }
 
 // path: #/components/schemas/clientCreateObj
 message ClientCreateObj {
-    string clientId = 1;
-    string name = 2;
-    string clientType = 3;
-    string baseUri = 4;
-    string redirectUri = 5;
-    string secret = 6;
-    repeated string audiences = 7;
-    string clientPlatform = 8;
-    bool twoFactorEnabled = 9;
-    string namespace = 10;
-    string parentNamespace = 11;
+    string client_id = 1 [json_name = "clientId"];
+    string name = 2 [json_name = "name"];
+    string client_type = 3 [json_name = "clientType"];
+    string base_uri = 4 [json_name = "baseUri"];
+    string redirect_uri = 5 [json_name = "redirectUri"];
+    string secret = 6 [json_name = "secret"];
+    repeated string audiences = 7 [json_name = "audiences"];
+    string client_platform = 8 [json_name = "clientPlatform"];
+    bool two_factor_enabled = 9 [json_name = "twoFactorEnabled"];
+    string namespace = 10 [json_name = "namespace"];
+    string parent_namespace = 11 [json_name = "parentNamespace"];
 }
 
 // path: #/components/schemas/clientThirdParty
 message ClientThirdParty {
-    string platformId = 1;
-    string appId = 2;
-    string redirectUri = 3;
-    string secret = 4;
-    bool active = 5;
+    string platform_id = 1 [json_name = "platformId"];
+    string app_id = 2 [json_name = "appId"];
+    string redirect_uri = 3 [json_name = "redirectUri"];
+    string secret = 4 [json_name = "secret"];
+    bool active = 5 [json_name = "active"];
 }
 
 // path: #/components/messages/clientCreated/payload/properties/payload
 message AnonymousSchema1 {
-    ClientCreateObj client = 1;
+    ClientCreateObj client = 1 [json_name = "client"];
 }
 
 // path: #/components/messages/clientCreated/payload
 message ClientCreated {
-    AnonymousSchema1 payload = 1;
+    AnonymousSchema1 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/clientDeleted/payload/properties/payload
 message AnonymousSchema2 {
-    Client client = 1;
+    Client client = 1 [json_name = "client"];
 }
 
 // path: #/components/messages/clientDeleted/payload
 message ClientDeleted {
-    AnonymousSchema2 payload = 1;
+    AnonymousSchema2 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/clientUpdated/payload/properties/payload
 message AnonymousSchema3 {
-    Client client = 1;
+    Client client = 1 [json_name = "client"];
 }
 
 // path: #/components/messages/clientUpdated/payload
 message ClientUpdated {
-    AnonymousSchema3 payload = 1;
+    AnonymousSchema3 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/clientPermissionsCreated/payload/properties/payload
 message AnonymousSchema4 {
-    Client client = 1;
-    repeated Permissions permissions = 2;
+    Client client = 1 [json_name = "client"];
+    repeated Permissions permissions = 2 [json_name = "permissions"];
 }
 
 // path: #/components/messages/clientPermissionsCreated/payload
 message ClientPermissionCreated {
-    AnonymousSchema4 payload = 1;
+    AnonymousSchema4 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/clientPermissionsDeleted/payload/properties/payload
 message AnonymousSchema5 {
-    Client client = 1;
-    repeated Permissions permissions = 2;
+    Client client = 1 [json_name = "client"];
+    repeated Permissions permissions = 2 [json_name = "permissions"];
 }
 
 // path: #/components/messages/clientPermissionsDeleted/payload
 message ClientPermissionDeleted {
-    AnonymousSchema5 payload = 1;
+    AnonymousSchema5 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/clientPermissionsUpdated/payload/properties/payload
 message AnonymousSchema6 {
-    Client client = 1;
-    repeated Permissions permissions = 2;
+    Client client = 1 [json_name = "client"];
+    repeated Permissions permissions = 2 [json_name = "permissions"];
 }
 
 // path: #/components/messages/clientPermissionsUpdated/payload
 message ClientPermissionUpdated {
-    AnonymousSchema6 payload = 1;
+    AnonymousSchema6 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/clientThirdPartyCreated/payload/properties/payload
 message AnonymousSchema7 {
-    Client client = 1;
-    ClientThirdParty clientThirdParty = 2;
+    Client client = 1 [json_name = "client"];
+    ClientThirdParty client_third_party = 2 [json_name = "clientThirdParty"];
 }
 
 // path: #/components/messages/clientThirdPartyCreated/payload
 message ClientThirdPartyCreated {
-    AnonymousSchema7 payload = 1;
+    AnonymousSchema7 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/clientThirdPartyDeleted/payload/properties/payload
 message AnonymousSchema8 {
-    Client client = 1;
-    ClientThirdParty clientThirdParty = 2;
+    Client client = 1 [json_name = "client"];
+    ClientThirdParty client_third_party = 2 [json_name = "clientThirdParty"];
 }
 
 // path: #/components/messages/clientThirdPartyDeleted/payload
 message ClientThirdPartyDeleted {
-    AnonymousSchema8 payload = 1;
+    AnonymousSchema8 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/clientThirdPartyUpdated/payload/properties/payload
 message AnonymousSchema9 {
-    Client client = 1;
-    ClientThirdParty clientThirdParty = 2;
+    Client client = 1 [json_name = "client"];
+    ClientThirdParty client_third_party = 2 [json_name = "clientThirdParty"];
 }
 
 // path: #/components/messages/clientThirdPartyUpdated/payload
 message ClientThirdPartyUpdated {
-    AnonymousSchema9 payload = 1;
+    AnonymousSchema9 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 

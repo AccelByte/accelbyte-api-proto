@@ -26,97 +26,97 @@ option java_package = "net.accelbyte.ecommerce.fulfillment";
 
 // path: #/components/schemas/event
 message Event {
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
+    string id = 1 [json_name = "id"];
+    int64 version = 2 [json_name = "version"];
+    string name = 3 [json_name = "name"];
+    string namespace = 4 [json_name = "namespace"];
+    string parent_namespace = 5 [json_name = "parentNamespace"];
+    string timestamp = 6 [json_name = "timestamp"];
+    string client_id = 7 [json_name = "clientId"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
 }
 
 // path: #/components/schemas/fulfillmentError
 message FulfillmentError {
-    int32 httpStatus = 1;
-    int32 code = 2;
-    string message = 3;
+    int32 http_status = 1 [json_name = "httpStatus"];
+    int32 code = 2 [json_name = "code"];
+    string message = 3 [json_name = "message"];
 }
 
 // path: #/components/schemas/entitlementSummary
 message EntitlementSummary {
-    string id = 1;
-    string namespace = 2;
-    string userId = 3;
-    string clazz = 4; // Allowed values: APP, ENTITLEMENT, CODE, SUBSCRIPTION, MEDIA, OPTIONBOX, LOOTBOX
-    string type = 5; // Allowed values: DURABLE, CONSUMABLE
-    bool stackable = 6;
-    int32 stackedUseCount = 7;
-    string storeId = 8;
-    string itemId = 9;
-    string grantedCode = 10;
-    string createdAt = 11;
-    string updatedAt = 12;
-    string startDate = 13;
-    string endDate = 14;
+    string id = 1 [json_name = "id"];
+    string namespace = 2 [json_name = "namespace"];
+    string user_id = 3 [json_name = "userId"];
+    string clazz = 4 [json_name = "clazz"]; // Allowed values: APP, ENTITLEMENT, CODE, SUBSCRIPTION, MEDIA, OPTIONBOX, LOOTBOX
+    string type = 5 [json_name = "type"]; // Allowed values: DURABLE, CONSUMABLE
+    bool stackable = 6 [json_name = "stackable"];
+    int32 stacked_use_count = 7 [json_name = "stackedUseCount"];
+    string store_id = 8 [json_name = "storeId"];
+    string item_id = 9 [json_name = "itemId"];
+    string granted_code = 10 [json_name = "grantedCode"];
+    string created_at = 11 [json_name = "createdAt"];
+    string updated_at = 12 [json_name = "updatedAt"];
+    string start_date = 13 [json_name = "startDate"];
+    string end_date = 14 [json_name = "endDate"];
 }
 
 // path: #/components/schemas/creditSummary
 message CreditSummary {
-    string walletId = 1;
-    string namespace = 2;
-    string userId = 3;
-    int64 amount = 4;
+    string wallet_id = 1 [json_name = "walletId"];
+    string namespace = 2 [json_name = "namespace"];
+    string user_id = 3 [json_name = "userId"];
+    int64 amount = 4 [json_name = "amount"];
 }
 
 // path: #/components/schemas/fulfillmentItem
 message FulfillmentItem {
-    string itemId = 1;
-    string itemName = 2;
-    int32 quantity = 3;
-    string storeId = 4;
-    string itemSku = 5;
-    int32 extraSubscriptionDays = 6;
-    string itemType = 7;
+    string item_id = 1 [json_name = "itemId"];
+    string item_name = 2 [json_name = "itemName"];
+    int32 quantity = 3 [json_name = "quantity"];
+    string store_id = 4 [json_name = "storeId"];
+    string item_sku = 5 [json_name = "itemSku"];
+    int32 extra_subscription_days = 6 [json_name = "extraSubscriptionDays"];
+    string item_type = 7 [json_name = "itemType"];
 }
 
 // path: #/components/schemas/fulfillment
 message Fulfillment {
-    string userId = 1;
-    string orderNo = 2;
-    string code = 3;
-    string source = 4; // Allowed values: PURCHASE, IAP, PROMOTION, ACHIEVEMENT, REFERRAL_BONUS, REDEEM_CODE, REWARD, GIFT, DLC, OTHER
-    repeated FulfillmentItem fulfillItems = 5;
-    repeated string grantedItemIds = 6;
-    repeated EntitlementSummary entitlementSummaries = 7;
-    repeated CreditSummary creditSummaries = 8;
-    string status = 9;
-    FulfillmentError fulfillmentError = 10;
-    google.protobuf.Struct metadata = 11;
+    string user_id = 1 [json_name = "userId"];
+    string order_no = 2 [json_name = "orderNo"];
+    string code = 3 [json_name = "code"];
+    string source = 4 [json_name = "source"]; // Allowed values: PURCHASE, IAP, PROMOTION, ACHIEVEMENT, REFERRAL_BONUS, REDEEM_CODE, REWARD, GIFT, DLC, OTHER
+    repeated FulfillmentItem fulfill_items = 5 [json_name = "fulfillItems"];
+    repeated string granted_item_ids = 6 [json_name = "grantedItemIds"];
+    repeated EntitlementSummary entitlement_summaries = 7 [json_name = "entitlementSummaries"];
+    repeated CreditSummary credit_summaries = 8 [json_name = "creditSummaries"];
+    string status = 9 [json_name = "status"];
+    FulfillmentError fulfillment_error = 10 [json_name = "fulfillmentError"];
+    google.protobuf.Struct metadata = 11 [json_name = "metadata"];
 }
 
 // path: #/components/messages/fulfillmentCompleted/payload/properties/payload
 message AnonymousSchema1 {
-    Fulfillment fulfillment = 1;
+    Fulfillment fulfillment = 1 [json_name = "fulfillment"];
 }
 
 // path: #/components/messages/fulfillmentCompleted/payload
 message FulfillmentCompleted {
-    AnonymousSchema1 payload = 1;
+    AnonymousSchema1 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 

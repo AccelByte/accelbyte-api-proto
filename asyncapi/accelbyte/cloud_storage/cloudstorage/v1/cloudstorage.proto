@@ -26,42 +26,42 @@ option java_package = "net.accelbyte.cloudStorage.cloudstorage";
 
 // path: #/components/schemas/event
 message Event {
-    string id = 1;
-    int64 version = 2;
-    string name = 3;
-    string namespace = 4;
-    string parentNamespace = 5;
-    string timestamp = 6;
-    string clientId = 7;
-    string userId = 8;
-    string traceId = 9;
-    string sessionId = 10;
+    string id = 1 [json_name = "id"];
+    int64 version = 2 [json_name = "version"];
+    string name = 3 [json_name = "name"];
+    string namespace = 4 [json_name = "namespace"];
+    string parent_namespace = 5 [json_name = "parentNamespace"];
+    string timestamp = 6 [json_name = "timestamp"];
+    string client_id = 7 [json_name = "clientId"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
 }
 
 // path: #/components/schemas/namespaceSlotConfig
 message NamespaceSlotConfig {
-    int64 maxSlotSize = 1;
-    int64 maxSlots = 2;
-    string namespace = 3;
+    int64 max_slot_size = 1 [json_name = "maxSlotSize"];
+    int64 max_slots = 2 [json_name = "maxSlots"];
+    string namespace = 3 [json_name = "namespace"];
 }
 
 // path: #/components/schemas/slots
 message Slots {
-    string checksum = 1;
-    string customAttribute = 2;
-    string dateAccessed = 3;
-    string dateCreated = 4;
-    string dateModified = 5;
-    string label = 6;
-    string mimeType = 7;
-    string namespace = 8;
-    string originalName = 9;
-    string slotId = 10;
-    string status = 11;
-    string storedName = 12;
-    repeated string tags = 13;
-    string userId = 14;
-    SingleSlot slotInfo = 15;
+    string checksum = 1 [json_name = "checksum"];
+    string custom_attribute = 2 [json_name = "customAttribute"];
+    string date_accessed = 3 [json_name = "dateAccessed"];
+    string date_created = 4 [json_name = "dateCreated"];
+    string date_modified = 5 [json_name = "date-modified"];
+    string label = 6 [json_name = "label"];
+    string mime_type = 7 [json_name = "mimeType"];
+    string namespace = 8 [json_name = "namespace"];
+    string original_name = 9 [json_name = "originalName"];
+    string slot_id = 10 [json_name = "slotId"];
+    string status = 11 [json_name = "status"];
+    string stored_name = 12 [json_name = "storedName"];
+    repeated string tags = 13 [json_name = "tags"];
+    string user_id = 14 [json_name = "userId"];
+    SingleSlot slot_info = 15 [json_name = "slotInfo"];
 }
 
 // path: #/components/schemas/singleSlot/properties/inputStream
@@ -70,14 +70,14 @@ message AnonymousSchema1 {
 
 // path: #/components/schemas/singleSlot
 message SingleSlot {
-    string description = 1;
-    File file = 2;
-    string filename = 3;
-    AnonymousSchema1 inputStream = 4;
-    bool open = 5;
-    bool readable = 6;
-    Uri uri = 7;
-    Url url = 8;
+    string description = 1 [json_name = "description"];
+    File file = 2 [json_name = "file"];
+    string filename = 3 [json_name = "filename"];
+    AnonymousSchema1 input_stream = 4 [json_name = "inputStream"];
+    bool open = 5 [json_name = "open"];
+    bool readable = 6 [json_name = "readable"];
+    Uri uri = 7 [json_name = "uri"];
+    Url url = 8 [json_name = "url"];
 }
 
 // path: #/components/schemas/file/properties/absoluteFile
@@ -94,42 +94,42 @@ message AnonymousSchema4 {
 
 // path: #/components/schemas/file
 message File {
-    bool absolute = 1;
-    AnonymousSchema2 absoluteFile = 2;
-    string absolutePath = 3;
-    AnonymousSchema3 canonicalFile = 4;
-    string canonicalPath = 5;
-    bool directory = 6;
-    bool file = 7;
-    int64 freeSpace = 8;
-    bool hidden = 9;
-    string name = 10;
-    string parent = 11;
-    AnonymousSchema4 parentFile = 12;
-    string path = 13;
-    int64 totalSpace = 14;
-    int64 usableSpace = 15;
+    bool absolute = 1 [json_name = "absolute"];
+    AnonymousSchema2 absolute_file = 2 [json_name = "absoluteFile"];
+    string absolute_path = 3 [json_name = "absolutePath"];
+    AnonymousSchema3 canonical_file = 4 [json_name = "canonicalFile"];
+    string canonical_path = 5 [json_name = "canonicalPath"];
+    bool directory = 6 [json_name = "directory"];
+    bool file = 7 [json_name = "file"];
+    int64 free_space = 8 [json_name = "freeSpace"];
+    bool hidden = 9 [json_name = "hidden"];
+    string name = 10 [json_name = "name"];
+    string parent = 11 [json_name = "parent"];
+    AnonymousSchema4 parent_file = 12 [json_name = "parentFile"];
+    string path = 13 [json_name = "path"];
+    int64 total_space = 14 [json_name = "totalSpace"];
+    int64 usable_space = 15 [json_name = "usableSpace"];
 }
 
 // path: #/components/schemas/uri
 message Uri {
-    bool absolute = 1;
-    string authority = 2;
-    string fragment = 3;
-    string host = 4;
-    bool opaque = 5;
-    string path = 6;
-    int64 port = 7;
-    string query = 8;
-    string rawAuthority = 9;
-    string rawFragment = 10;
-    string rawPath = 11;
-    string rawQuery = 12;
-    string rawSchemeSpecificPart = 13;
-    string rawUserInfo = 14;
-    string scheme = 15;
-    string schemeSpecificPart = 16;
-    string userInfo = 17;
+    bool absolute = 1 [json_name = "absolute"];
+    string authority = 2 [json_name = "authority"];
+    string fragment = 3 [json_name = "fragment"];
+    string host = 4 [json_name = "host"];
+    bool opaque = 5 [json_name = "opaque"];
+    string path = 6 [json_name = "path"];
+    int64 port = 7 [json_name = "port"];
+    string query = 8 [json_name = "query"];
+    string raw_authority = 9 [json_name = "rawAuthority"];
+    string raw_fragment = 10 [json_name = "rawFragment"];
+    string raw_path = 11 [json_name = "rawPath"];
+    string raw_query = 12 [json_name = "rawQuery"];
+    string raw_scheme_specific_part = 13 [json_name = "rawSchemeSpecificPart"];
+    string raw_user_info = 14 [json_name = "rawUserInfo"];
+    string scheme = 15 [json_name = "scheme"];
+    string scheme_specific_part = 16 [json_name = "schemeSpecificPart"];
+    string user_info = 17 [json_name = "userInfo"];
 }
 
 // path: #/components/schemas/url/properties/content
@@ -138,223 +138,223 @@ message AnonymousSchema5 {
 
 // path: #/components/schemas/url
 message Url {
-    string authority = 1;
-    AnonymousSchema5 content = 2;
-    int64 defaultPort = 3;
-    string file = 4;
-    string host = 5;
-    string path = 6;
-    int64 port = 7;
-    string protocol = 8;
-    string query = 9;
-    string ref = 10;
-    string userInfo = 11;
+    string authority = 1 [json_name = "authority"];
+    AnonymousSchema5 content = 2 [json_name = "content"];
+    int64 default_port = 3 [json_name = "defaultPort"];
+    string file = 4 [json_name = "file"];
+    string host = 5 [json_name = "host"];
+    string path = 6 [json_name = "path"];
+    int64 port = 7 [json_name = "port"];
+    string protocol = 8 [json_name = "protocol"];
+    string query = 9 [json_name = "query"];
+    string ref = 10 [json_name = "ref"];
+    string user_info = 11 [json_name = "userInfo"];
 }
 
 // path: #/components/schemas/slotConfig
 message SlotConfig {
-    int64 maxSlotSize = 1;
-    int64 maxSlots = 2;
-    string namespace = 3;
-    string userId = 4;
+    int64 max_slot_size = 1 [json_name = "maxSlotSize"];
+    int64 max_slots = 2 [json_name = "maxSlots"];
+    string namespace = 3 [json_name = "namespace"];
+    string user_id = 4 [json_name = "userId"];
 }
 
 // path: #/components/messages/namespaceSlotConfigCreated/payload/properties/payload
 message AnonymousSchema6 {
-    NamespaceSlotConfig namespaceSlotConfig = 1;
+    NamespaceSlotConfig namespace_slot_config = 1 [json_name = "namespaceSlotConfig"];
 }
 
 // path: #/components/messages/namespaceSlotConfigCreated/payload
 message NamespaceSlotConfigCreated {
-    AnonymousSchema6 payload = 1;
+    AnonymousSchema6 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/namespaceSlotConfigDeleted/payload/properties/payload
 message AnonymousSchema7 {
-    NamespaceSlotConfig namespaceSlotConfig = 1;
+    NamespaceSlotConfig namespace_slot_config = 1 [json_name = "namespaceSlotConfig"];
 }
 
 // path: #/components/messages/namespaceSlotConfigDeleted/payload
 message NamespaceSlotConfigDeleted {
-    AnonymousSchema7 payload = 1;
+    AnonymousSchema7 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/namespaceSlotConfigUpdated/payload/properties/payload
 message AnonymousSchema8 {
-    NamespaceSlotConfig namespaceSlotConfig = 1;
+    NamespaceSlotConfig namespace_slot_config = 1 [json_name = "namespaceSlotConfig"];
 }
 
 // path: #/components/messages/namespaceSlotConfigUpdated/payload
 message NamespaceSlotConfigUpdated {
-    AnonymousSchema8 payload = 1;
+    AnonymousSchema8 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/slotCreated/payload/properties/payload
 message AnonymousSchema9 {
-    Slots slot = 1;
+    Slots slot = 1 [json_name = "slot"];
 }
 
 // path: #/components/messages/slotCreated/payload
 message SlotCreated {
-    AnonymousSchema9 payload = 1;
+    AnonymousSchema9 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/slotDeleted/payload/properties/payload
 message AnonymousSchema10 {
-    Slots slot = 1;
+    Slots slot = 1 [json_name = "slot"];
 }
 
 // path: #/components/messages/slotDeleted/payload
 message SlotDeleted {
-    AnonymousSchema10 payload = 1;
+    AnonymousSchema10 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/slotUpdated/payload/properties/payload
 message AnonymousSchema11 {
-    Slots slot = 1;
+    Slots slot = 1 [json_name = "slot"];
 }
 
 // path: #/components/messages/slotUpdated/payload
 message SlotUpdated {
-    AnonymousSchema11 payload = 1;
+    AnonymousSchema11 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/slotConfigCreated/payload/properties/payload
 message AnonymousSchema12 {
-    SlotConfig slotConfig = 1;
+    SlotConfig slot_config = 1 [json_name = "slotConfig"];
 }
 
 // path: #/components/messages/slotConfigCreated/payload
 message SlotConfigCreated {
-    AnonymousSchema12 payload = 1;
+    AnonymousSchema12 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/slotConfigDeleted/payload/properties/payload
 message AnonymousSchema13 {
-    SlotConfig slotConfig = 1;
+    SlotConfig slot_config = 1 [json_name = "slotConfig"];
 }
 
 // path: #/components/messages/slotConfigDeleted/payload
 message SlotConfigDeleted {
-    AnonymousSchema13 payload = 1;
+    AnonymousSchema13 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/slotConfigUpdated/payload/properties/payload
 message AnonymousSchema14 {
-    SlotConfig slotConfig = 1;
+    SlotConfig slot_config = 1 [json_name = "slotConfig"];
 }
 
 // path: #/components/messages/slotConfigUpdated/payload
 message SlotConfigUpdated {
-    AnonymousSchema14 payload = 1;
+    AnonymousSchema14 payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 2;
-    int64 version = 3;
-    string name = 4;
-    string namespace = 5;
-    string parentNamespace = 6;
-    string timestamp = 7;
-    string clientId = 8;
-    string userId = 9;
-    string traceId = 10;
-    string sessionId = 11;
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 

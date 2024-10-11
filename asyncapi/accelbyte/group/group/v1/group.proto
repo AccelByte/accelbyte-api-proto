@@ -26,167 +26,167 @@ option java_package = "net.accelbyte.group.group";
 
 // path: #/components/schemas/groupMemberInvitedPayload
 message GroupMemberInvitedPayload {
-    string namespace = 1;
-    string groupId = 2;
-    string groupName = 3;
-    string requesterUserId = 4;
-    string invitedUserId = 5;
+    string namespace = 1 [json_name = "namespace"];
+    string group_id = 2 [json_name = "groupId"];
+    string group_name = 3 [json_name = "groupName"];
+    string requester_user_id = 4 [json_name = "requesterUserId"];
+    string invited_user_id = 5 [json_name = "invitedUserId"];
 }
 
 // path: #/components/schemas/groupMemberJoinRequestedPayload
 message GroupMemberJoinRequestedPayload {
-    string namespace = 1;
-    string groupId = 2;
-    string groupName = 3;
-    repeated string adminIds = 4;
-    string userId = 5;
+    string namespace = 1 [json_name = "namespace"];
+    string group_id = 2 [json_name = "groupId"];
+    string group_name = 3 [json_name = "groupName"];
+    repeated string admin_ids = 4 [json_name = "adminIds"];
+    string user_id = 5 [json_name = "userId"];
 }
 
 // path: #/components/schemas/groupMemberJoinAcceptedPayload
 message GroupMemberJoinAcceptedPayload {
-    string namespace = 1;
-    string groupId = 2;
-    string groupName = 3;
-    string requesterUserId = 4;
-    string acceptedUserId = 5;
+    string namespace = 1 [json_name = "namespace"];
+    string group_id = 2 [json_name = "groupId"];
+    string group_name = 3 [json_name = "groupName"];
+    string requester_user_id = 4 [json_name = "requesterUserId"];
+    string accepted_user_id = 5 [json_name = "acceptedUserId"];
 }
 
 // path: #/components/schemas/groupMemberJoinRejectedPayload
 message GroupMemberJoinRejectedPayload {
-    string namespace = 1;
-    string groupId = 2;
-    string groupName = 3;
-    string requesterUserId = 4;
-    string rejectedUserId = 5;
+    string namespace = 1 [json_name = "namespace"];
+    string group_id = 2 [json_name = "groupId"];
+    string group_name = 3 [json_name = "groupName"];
+    string requester_user_id = 4 [json_name = "requesterUserId"];
+    string rejected_user_id = 5 [json_name = "rejectedUserId"];
 }
 
 // path: #/components/schemas/groupCreatedPayload
 message GroupCreatedPayload {
-    string namespace = 1;
-    string groupId = 2;
-    string groupName = 3;
-    string groupDescription = 4;
-    string groupIcon = 5;
-    string groupRegion = 6;
-    string groupType = 7;
-    string userId = 8;
+    string namespace = 1 [json_name = "namespace"];
+    string group_id = 2 [json_name = "groupId"];
+    string group_name = 3 [json_name = "groupName"];
+    string group_description = 4 [json_name = "groupDescription"];
+    string group_icon = 5 [json_name = "groupIcon"];
+    string group_region = 6 [json_name = "groupRegion"];
+    string group_type = 7 [json_name = "groupType"];
+    string user_id = 8 [json_name = "userId"];
 }
 
 // path: #/components/schemas/groupUpdatedPayload
 message GroupUpdatedPayload {
-    string namespace = 1;
-    string groupId = 2;
-    string groupName = 3;
-    string groupDescription = 4;
-    string groupIcon = 5;
-    string groupRegion = 6;
-    string groupType = 7;
-    string userId = 8;
+    string namespace = 1 [json_name = "namespace"];
+    string group_id = 2 [json_name = "groupId"];
+    string group_name = 3 [json_name = "groupName"];
+    string group_description = 4 [json_name = "groupDescription"];
+    string group_icon = 5 [json_name = "groupIcon"];
+    string group_region = 6 [json_name = "groupRegion"];
+    string group_type = 7 [json_name = "groupType"];
+    string user_id = 8 [json_name = "userId"];
 }
 
 // path: #/components/schemas/groupCustomRulesUpdatedPayload
 message GroupCustomRulesUpdatedPayload {
-    string namespace = 1;
-    string groupId = 2;
-    string groupName = 3;
-    string groupCustomRules = 4;
-    string userId = 5;
+    string namespace = 1 [json_name = "namespace"];
+    string group_id = 2 [json_name = "groupId"];
+    string group_name = 3 [json_name = "groupName"];
+    string group_custom_rules = 4 [json_name = "groupCustomRules"];
+    string user_id = 5 [json_name = "userId"];
 }
 
 // path: #/components/schemas/groupDeletedPayload
 message GroupDeletedPayload {
-    string namespace = 1;
-    string groupId = 2;
-    string groupName = 3;
-    string userId = 4;
+    string namespace = 1 [json_name = "namespace"];
+    string group_id = 2 [json_name = "groupId"];
+    string group_name = 3 [json_name = "groupName"];
+    string user_id = 4 [json_name = "userId"];
 }
 
 // path: #/components/schemas/groupPredefinedRulesUpdatedPayload
 message GroupPredefinedRulesUpdatedPayload {
-    string namespace = 1;
-    string groupId = 2;
-    string groupName = 3;
-    string groupPredefinedRules = 4;
-    string userId = 5;
+    string namespace = 1 [json_name = "namespace"];
+    string group_id = 2 [json_name = "groupId"];
+    string group_name = 3 [json_name = "groupName"];
+    string group_predefined_rules = 4 [json_name = "groupPredefinedRules"];
+    string user_id = 5 [json_name = "userId"];
 }
 
 // path: #/components/schemas/groupPredefinedRulesDeletedPayload
 message GroupPredefinedRulesDeletedPayload {
-    string namespace = 1;
-    string groupId = 2;
-    string groupName = 3;
-    string groupPredefinedRules = 4;
-    string userId = 5;
+    string namespace = 1 [json_name = "namespace"];
+    string group_id = 2 [json_name = "groupId"];
+    string group_name = 3 [json_name = "groupName"];
+    string group_predefined_rules = 4 [json_name = "groupPredefinedRules"];
+    string user_id = 5 [json_name = "userId"];
 }
 
 // path: #/components/schemas/groupRoleAssignedPayload
 message GroupRoleAssignedPayload {
-    string namespace = 1;
-    string groupId = 2;
-    string groupName = 3;
-    string memberRoleId = 4;
-    string requesterUserId = 5;
-    string assignedUserId = 6;
+    string namespace = 1 [json_name = "namespace"];
+    string group_id = 2 [json_name = "groupId"];
+    string group_name = 3 [json_name = "groupName"];
+    string member_role_id = 4 [json_name = "memberRoleId"];
+    string requester_user_id = 5 [json_name = "requesterUserId"];
+    string assigned_user_id = 6 [json_name = "assignedUserId"];
 }
 
 // path: #/components/schemas/groupRoleRemovedPayload
 message GroupRoleRemovedPayload {
-    string namespace = 1;
-    string groupId = 2;
-    string groupName = 3;
-    string memberRoleId = 4;
-    string requesterUserId = 5;
-    string removedUserId = 6;
+    string namespace = 1 [json_name = "namespace"];
+    string group_id = 2 [json_name = "groupId"];
+    string group_name = 3 [json_name = "groupName"];
+    string member_role_id = 4 [json_name = "memberRoleId"];
+    string requester_user_id = 5 [json_name = "requesterUserId"];
+    string removed_user_id = 6 [json_name = "removedUserId"];
 }
 
 // path: #/components/schemas/groupMemberInvitationAcceptedPayload
 message GroupMemberInvitationAcceptedPayload {
-    string namespace = 1;
-    string groupId = 2;
-    string groupName = 3;
-    string userId = 4;
+    string namespace = 1 [json_name = "namespace"];
+    string group_id = 2 [json_name = "groupId"];
+    string group_name = 3 [json_name = "groupName"];
+    string user_id = 4 [json_name = "userId"];
 }
 
 // path: #/components/schemas/groupMemberInvitationRejectedPayload
 message GroupMemberInvitationRejectedPayload {
-    string namespace = 1;
-    string groupId = 2;
-    string groupName = 3;
-    string userId = 4;
+    string namespace = 1 [json_name = "namespace"];
+    string group_id = 2 [json_name = "groupId"];
+    string group_name = 3 [json_name = "groupName"];
+    string user_id = 4 [json_name = "userId"];
 }
 
 // path: #/components/schemas/groupMemberLeftPayload
 message GroupMemberLeftPayload {
-    string namespace = 1;
-    string groupId = 2;
-    string groupName = 3;
-    string userId = 4;
+    string namespace = 1 [json_name = "namespace"];
+    string group_id = 2 [json_name = "groupId"];
+    string group_name = 3 [json_name = "groupName"];
+    string user_id = 4 [json_name = "userId"];
 }
 
 // path: #/components/schemas/groupMemberJoinRequestCanceledPayload
 message GroupMemberJoinRequestCanceledPayload {
-    string namespace = 1;
-    string groupId = 2;
-    string groupName = 3;
-    string userId = 4;
+    string namespace = 1 [json_name = "namespace"];
+    string group_id = 2 [json_name = "groupId"];
+    string group_name = 3 [json_name = "groupName"];
+    string user_id = 4 [json_name = "userId"];
 }
 
 // path: #/components/schemas/groupMemberKickedPayload
 message GroupMemberKickedPayload {
-    string namespace = 1;
-    string groupId = 2;
-    string groupName = 3;
-    string requesterUserId = 4;
-    string kickedUserId = 5;
+    string namespace = 1 [json_name = "namespace"];
+    string group_id = 2 [json_name = "groupId"];
+    string group_name = 3 [json_name = "groupName"];
+    string requester_user_id = 4 [json_name = "requesterUserId"];
+    string kicked_user_id = 5 [json_name = "kickedUserId"];
 }
 
 // path: #/components/schemas/groupMemberInvitationMemberCanceledPayload
 message GroupMemberInvitationMemberCanceledPayload {
-    string namespace = 1;
-    string groupId = 2;
-    string groupName = 3;
-    string requesterUserId = 4;
-    string cancelledUserId = 5;
+    string namespace = 1 [json_name = "namespace"];
+    string group_id = 2 [json_name = "groupId"];
+    string group_name = 3 [json_name = "groupName"];
+    string requester_user_id = 4 [json_name = "requesterUserId"];
+    string cancelled_user_id = 5 [json_name = "cancelledUserId"];
 }
 
 
