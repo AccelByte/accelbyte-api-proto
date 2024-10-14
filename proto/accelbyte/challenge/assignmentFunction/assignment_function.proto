@@ -5,8 +5,7 @@
 syntax="proto3";
 
 package accelbyte.challenge.assignmentFunction;
-// Version v1.1.0
-
+// Version v1.2.0
 
 import "google/protobuf/timestamp.proto";
 
@@ -23,12 +22,38 @@ message AssignmentRequest {
     string namespace = 1;
     string userId = 2;
     repeated Goal goals = 3;
+    Challenge challenge = 4;
 }
 
 message AssignmentResponse {
     string namespace = 1;
     string userId = 2;
     repeated Goal assignedGoals = 3;
+}
+
+message Challenge{
+    string code = 1;
+    string name = 2;
+    google.protobuf.Timestamp startDate = 3;
+    google.protobuf.Timestamp endDate = 4;
+    int32 endAfter = 5;
+    int32 repeatAfter = 6;
+    ChallengeRotation rotation = 7;
+    int32 activeGoalsPerRotation = 8;
+    ResetConfig resetConfig = 9;
+}
+
+enum ChallengeRotation{
+    DAILY = 0;
+    WEEKLY = 1;
+    MONTHLY = 2;
+    NONE = 3;
+}
+
+message ResetConfig{
+    string resetTime = 1;
+    int32 resetDay = 2;
+    int32 resetDate = 3;
 }
 
 message Goal {
