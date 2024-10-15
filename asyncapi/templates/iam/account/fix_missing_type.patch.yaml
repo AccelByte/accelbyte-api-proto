@@ -1,6 +1,0 @@
----
-- op: 'remove'
-  path: '/components/messages/userRolesDeleted/payload/properties/payload/properties/roles/items/roles'
-- op: 'add'
-  path: '/components/messages/userRolesDeleted/payload/properties/payload/properties/roles/items/type'
-  value: 'string'
