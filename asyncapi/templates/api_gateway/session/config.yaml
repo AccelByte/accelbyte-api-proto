@@ -1,3 +1,0 @@
----
-source: API Gateway/AsyncAPI/session.yaml
-destination: accelbyte/api_gateway/session/v1/session.proto
