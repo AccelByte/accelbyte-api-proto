@@ -1,3 +1,0 @@
----
-source: BuildInfo/AsyncAPI/buildInfo.yaml
-destination: accelbyte/build_info/build_info/v1/buildInfo.proto
