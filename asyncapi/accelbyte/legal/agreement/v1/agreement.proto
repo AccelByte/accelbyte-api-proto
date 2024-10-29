@@ -50,14 +50,19 @@ message Agreement {
     string user_id = 8 [json_name = "userId"];
 }
 
-// path: #/components/messages/agreementCreated/payload/properties/payload
-message AnonymousSchema1 {
+// path: #/components/schemas/agreementCreatedPayloadData
+message AgreementCreatedPayloadData { // previously known as 'AnonymousSchema1'
+    Agreement agreement = 1 [json_name = "agreement"];
+}
+
+// path: #/components/schemas/agreementUpdatedPayloadData
+message AgreementUpdatedPayloadData { // previously known as 'AnonymousSchema2'
     Agreement agreement = 1 [json_name = "agreement"];
 }
 
 // path: #/components/messages/agreementCreated/payload
 message AgreementCreated {
-    AnonymousSchema1 payload = 1 [json_name = "payload"];
+    AgreementCreatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -72,14 +77,9 @@ message AgreementCreated {
     string session_id = 11 [json_name = "sessionId"];
 }
 
-// path: #/components/messages/agreementUpdated/payload/properties/payload
-message AnonymousSchema2 {
-    Agreement agreement = 1 [json_name = "agreement"];
-}
-
 // path: #/components/messages/agreementUpdated/payload
 message AgreementUpdated {
-    AnonymousSchema2 payload = 1 [json_name = "payload"];
+    AgreementUpdatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];

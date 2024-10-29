@@ -65,11 +65,7 @@ components:
           type: array
           items:
             type: string
-    userPayloadConnected:
-      userConnected: null
-      type: object
     userPayloadDisconnected:
-      userDisconnected: null
       type: object
       properties:
         reason:
@@ -79,49 +75,65 @@ components:
         forced:
           type: boolean
     userChatRateLimited:
-      userChatRateLimited: null
       type: object
+    personalChatSentPayloadData:
+      type: object
+      properties:
+        personalChatSent:
+          $ref: '#/components/schemas/chatPayload'
+    userConnectedPayloadData:
+      type: object
+      properties:
+        userConnected:
+          type: object
+          additionalProperties: true
+    userDisconnectedPayloadData:
+      type: object
+      properties:
+        userDisconnected:
+          $ref: '#/components/schemas/userPayloadDisconnected'
+    userChatRateLimitedPayloadData:
+      type: object
+      properties:
+        userDisconnected:
+          $ref: '#/components/schemas/userPayloadDisconnected'
   messages:
     personalChatSent:
       name: personalChatSent
       payload:
+        type: object
         allOf:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            properties:
-              personalChatSent:
-                $ref: '#/components/schemas/chatPayload'
+            $ref: '#/components/schemas/personalChatSentPayloadData'
     userConnected:
       name: userConnected
       payload:
+        type: object
         allOf:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            properties:
-              userConnected:
-                $ref: '#/components/schemas/userPayloadConnected'
+            $ref: '#/components/schemas/userConnectedPayloadData'
     userDisconnected:
       name: userDisconnected
       payload:
+        type: object
         allOf:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            properties:
-              userDisconnected:
-                $ref: '#/components/schemas/userPayloadDisconnected'
+            $ref: '#/components/schemas/userDisconnectedPayloadData'
     userChatRateLimited:
       name: userChatRateLimitedPayload
       payload:
+        type: object
         allOf:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            properties:
-              userChatRateLimited:
-                $ref: '#/components/schemas/userChatRateLimited'
+            $ref: '#/components/schemas/userChatRateLimitedPayloadData'
 x-source: Chat/AsyncAPI/chat.yaml
 x-proto-package: accelbyte.chat.chat.v1
 x-proto-package-version: v1.0.0

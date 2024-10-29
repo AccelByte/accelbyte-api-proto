@@ -157,6 +157,48 @@ components:
           type: integer
           format: int64
           description: change amount, positive for both credit & debit
+    walletDisabledPayloadData:
+      type: object
+      properties:
+        walletStatusChange:
+          $ref: '#/components/schemas/walletStatusChange'
+      x-uid0: AnonymousSchema1
+    walletEnabledPayloadData:
+      type: object
+      properties:
+        walletStatusChange:
+          $ref: '#/components/schemas/walletStatusChange'
+      x-uid0: AnonymousSchema2
+    walletCreditedPayloadData:
+      type: object
+      properties:
+        walletBalanceChange:
+          $ref: '#/components/schemas/walletBalanceChange'
+      x-uid: AnonymousSchema3
+    walletDebitedPayloadData:
+      type: object
+      properties:
+        walletBalanceChange:
+          $ref: '#/components/schemas/walletBalanceChange'
+      x-uid: AnonymousSchema4
+    walledPaidPayloadData:
+      type: object
+      properties:
+        walletBalanceChange:
+          $ref: '#/components/schemas/walletBalanceChange'
+      x-uid: AnonymousSchema5
+    walledExpiredPayloadData:
+      type: object
+      properties:
+        walletBalanceChange:
+          $ref: '#/components/schemas/walletBalanceChange'
+      x-uid0: AnonymousSchema6
+    walletTransactionCancelledPayloadData:
+      type: object
+      properties:
+        walletBalanceChange:
+          $ref: '#/components/schemas/walletBalanceChange'
+      x-uid0: AnonymousSchema7
   messages:
     walletDisabled:
       name: walletDisabled
@@ -167,10 +209,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              walletStatusChange:
-                $ref: '#/components/schemas/walletStatusChange'
+            $ref: '#/components/schemas/walletDisabledPayloadData'
     walletEnabled:
       name: walletEnabled
       description: message is sent when wallet is enabled
@@ -180,10 +219,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              walletStatusChange:
-                $ref: '#/components/schemas/walletStatusChange'
+            $ref: '#/components/schemas/walletEnabledPayloadData'
     walletCredited:
       name: walletCredited
       description: message is sent when credit wallet
@@ -193,10 +229,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              walletBalanceChange:
-                $ref: '#/components/schemas/walletBalanceChange'
+            $ref: '#/components/schemas/walletCreditedPayloadData'
     walletDebited:
       name: walletDebited
       description: message is sent when debit wallet
@@ -206,10 +239,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              walletBalanceChange:
-                $ref: '#/components/schemas/walletBalanceChange'
+            $ref: '#/components/schemas/walletDebitedPayloadData'
     walledPaid:
       name: walledPaid
       description: message is sent when pay with wallet
@@ -219,10 +249,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              walletBalanceChange:
-                $ref: '#/components/schemas/walletBalanceChange'
+            $ref: '#/components/schemas/walledPaidPayloadData'
     walledExpired:
       name: walledExpired
       description: message is sent when wallet balance is expired
@@ -232,10 +259,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              walletBalanceChange:
-                $ref: '#/components/schemas/walletBalanceChange'
+            $ref: '#/components/schemas/walledExpiredPayloadData'
     walletTransactionCancelled:
       name: walletTransactionCancelled
       description: message is sent when cancelling wallet transaction
@@ -245,10 +269,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              walletBalanceChange:
-                $ref: '#/components/schemas/walletBalanceChange'
+            $ref: '#/components/schemas/walletTransactionCancelledPayloadData'
 x-source: Ecommerce/AsyncAPI/wallet.yml
 x-proto-package: accelbyte.ecommerce.wallet.v1
 x-proto-package-version: v1.0.0

@@ -330,6 +330,67 @@ components:
           - CONSUMED
           - REVOKED
           - SOLD
+    entitlementGrantedPayloadData:
+      type: object
+      properties:
+        grants:
+          type: array
+          items:
+            $ref: '#/components/schemas/stackableEntitlement'
+        metadata:
+          type: object
+          additionalProperties: true
+      x-uid: AnonymousSchema1
+    entitlementUpdatedPayloadData:
+      type: object
+      properties:
+        entitlement:
+          $ref: '#/components/schemas/entitlement'
+        oldEntitlement:
+          $ref: '#/components/schemas/entitlement'
+      x-uid0: AnonymousSchema2
+    entitlementConsumedPayloadData:
+      type: object
+      properties:
+        entitlementConsumption:
+          $ref: '#/components/schemas/entitlementConsumption'
+        metadata:
+          type: object
+          additionalProperties: true
+      x-uid: AnonymousSchema3
+    entitlementUseCountRevokedPayloadData:
+      type: object
+      properties:
+        entitlementUseCountRevocation:
+          $ref: '#/components/schemas/entitlementUseCountRevocation'
+      x-uid: AnonymousSchema4
+    entitlementRevokedPayloadData:
+      type: object
+      properties:
+        entitlementRevocation:
+          $ref: '#/components/schemas/entitlementRevocation'
+        metadata:
+          type: object
+          additionalProperties: true
+      x-uid: AnonymousSchema5
+    entitlementDisabledPayloadData:
+      type: object
+      properties:
+        entitlementStatusChange:
+          $ref: '#/components/schemas/entitlementStatusChange'
+      x-uid0: AnonymousSchema6
+    entitlementEnabledPayloadData:
+      type: object
+      properties:
+        entitlementStatusChange:
+          $ref: '#/components/schemas/entitlementStatusChange'
+      x-uid0: AnonymousSchema7
+    entitlementSellbackPayloadData:
+      type: object
+      properties:
+        entitlementSale:
+          $ref: '#/components/schemas/entitlementSale'
+      x-uid0: AnonymousSchema8
   messages:
     entitlementGranted:
       name: entitlementGranted
@@ -340,15 +401,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              grants:
-                type: array
-                items:
-                  $ref: '#/components/schemas/stackableEntitlement'
-              metadata:
-                type: object
-                additionalProperties: true
+            $ref: '#/components/schemas/entitlementGrantedPayloadData'
     entitlementUpdated:
       name: entitlementUpdated
       description: message is sent when entitlement is updated
@@ -358,12 +411,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              entitlement:
-                $ref: '#/components/schemas/entitlement'
-              oldEntitlement:
-                $ref: '#/components/schemas/entitlement'
+            $ref: '#/components/schemas/entitlementUpdatedPayloadData'
     entitlementConsumed:
       name: entitlementConsumed
       description: message is sent when user entitlement is consumed
@@ -373,13 +421,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              entitlementConsumption:
-                $ref: '#/components/schemas/entitlementConsumption'
-              metadata:
-                type: object
-                additionalProperties: true
+            $ref: '#/components/schemas/entitlementConsumedPayloadData'
     entitlementUseCountRevoked:
       name: entitlementUseCountRevoked
       description: message is sent when entitlement use count is revoked, only for
@@ -390,10 +432,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              entitlementUseCountRevocation:
-                $ref: '#/components/schemas/entitlementUseCountRevocation'
+            $ref: '#/components/schemas/entitlementUseCountRevokedPayloadData'
     entitlementRevoked:
       name: entitlementRevoked
       description: message is sent when entitlement is revoked
@@ -403,13 +442,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              entitlementRevocation:
-                $ref: '#/components/schemas/entitlementRevocation'
-              metadata:
-                type: object
-                additionalProperties: true
+            $ref: '#/components/schemas/entitlementRevokedPayloadData'
     entitlementDisabled:
       name: entitlementDisabled
       description: message is sent when entitlement is disabled
@@ -419,10 +452,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              entitlementStatusChange:
-                $ref: '#/components/schemas/entitlementStatusChange'
+            $ref: '#/components/schemas/entitlementDisabledPayloadData'
     entitlementEnabled:
       name: entitlementEnabled
       description: message is sent when entitlement is enabled
@@ -432,10 +462,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              entitlementStatusChange:
-                $ref: '#/components/schemas/entitlementStatusChange'
+            $ref: '#/components/schemas/entitlementEnabledPayloadData'
     entitlementSellback:
       name: entitlementSellback
       description: message is sent when user sell entitlement
@@ -445,10 +472,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              entitlementSale:
-                $ref: '#/components/schemas/entitlementSale'
+            $ref: '#/components/schemas/entitlementSellbackPayloadData'
 x-source: Ecommerce/AsyncAPI/entitlement.yml
 x-proto-package: accelbyte.ecommerce.entitlement.v1
 x-proto-package-version: v1.0.0

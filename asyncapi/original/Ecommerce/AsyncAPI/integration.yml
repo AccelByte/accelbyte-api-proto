@@ -247,8 +247,24 @@ components:
             - VoidPurchase
             - Test
             - UNKNOWN
-          
-
+    iapProcessedPayloadData:
+      type: object
+      properties:
+        iap:
+          $ref: '#/components/schemas/iap'
+      x-uid0: AnonymousSchema1
+    dlcSyncedPayloadData:
+      type: object
+      properties:
+        dlc:
+          $ref: '#/components/schemas/dlc'
+      x-uid0: AnonymousSchema2
+    notificationProcessedPayloadData:
+      type: object
+      properties:
+        notification:
+          $ref: '#/components/schemas/notification'
+      x-uid0: AnonymousSchema3
   messages:
     appleIAPConfigDeleted:
       name: appleIAPConfigDeleted
@@ -367,11 +383,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              iap:
-                $ref: '#/components/schemas/iap'
-
+            $ref: '#/components/schemas/iapProcessedPayloadData'
     dlcSynced:
       name: dlcSynced
       description: message is sent when a user's dlc is fulfilled or revoked
@@ -381,12 +393,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              dlc:
-                $ref: '#/components/schemas/dlc'
-
-
+            $ref: '#/components/schemas/dlcSyncedPayloadData'
     notificationProcessed:
       name: notificationProcessed
       description: The message is sent when AGS processes a valid Google or Apple IAP notification, such as when a subscription is renewed or refunded. For more Google/Apple notification details, please refer to the following links https://developer.android.google.cn/google/play/billing/rtdn-reference#sub-example & https://developer.apple.com/documentation/appstoreservernotifications/app_store_server_notifications_v2
@@ -396,7 +403,4 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              notification:
-                $ref: '#/components/schemas/notification'
+            $ref: '#/components/schemas/notificationProcessedPayloadData'

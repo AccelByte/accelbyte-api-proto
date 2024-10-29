@@ -81,6 +81,36 @@ components:
           type: string
         rewardCode:
           type: string
+    userSeasonPassChangedPayloadData:
+      type: object
+      properties:
+        userSeason:
+          $ref: '#/components/schemas/userSeason'
+        grantedPasses:
+          type: array
+          items:
+            type: string
+      x-uid0: AnonymousSchema1
+    userSeasonTierUpPayloadData:
+      type: object
+      properties:
+        userSeason:
+          $ref: '#/components/schemas/userSeason'
+        grantedPasses:
+          type: integer
+      x-uid0: AnonymousSchema2
+    userSeasonTierClearedPayloadData:
+      type: object
+      properties:
+        userSeason:
+          $ref: '#/components/schemas/userSeason'
+      x-uid0: AnonymousSchema3
+    userSeasonRewardRewardedPayloadData:
+      type: object
+      properties:
+        userSeasonReward:
+          $ref: '#/components/schemas/userSeasonReward'
+      x-uid0: AnonymousSchema4
   messages:
     userSeasonPassChanged:
       name: userSeasonPassChanged
@@ -90,14 +120,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userSeason:
-                $ref: '#/components/schemas/userSeason'
-              grantedPasses:
-                type: array
-                items:
-                  type: string
+            $ref: '#/components/schemas/userSeasonPassChangedPayloadData'
     userSeasonTierUp:
       name: userSeasonTierUp
       payload:
@@ -106,12 +129,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userSeason:
-                $ref: '#/components/schemas/userSeason'
-              grantedPasses:
-                type: integer
+            $ref: '#/components/schemas/userSeasonTierUpPayloadData'
     userSeasonTierCleared:
       name: userSeasonTierCleared
       payload:
@@ -120,10 +138,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userSeason:
-                $ref: '#/components/schemas/userSeason'
+            $ref: '#/components/schemas/userSeasonTierClearedPayloadData'
     userSeasonRewardRewarded:
       name: userSeasonRewardRewarded
       payload:
@@ -132,10 +147,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userSeasonReward:
-                $ref: '#/components/schemas/userSeasonReward'
+            $ref: '#/components/schemas/userSeasonRewardRewardedPayloadData'
 x-source: SeasonPass/AsyncAPI/seasonpass.yml
 x-proto-package: accelbyte.season_pass.seasonpass.v1
 x-proto-package-version: v1.0.0

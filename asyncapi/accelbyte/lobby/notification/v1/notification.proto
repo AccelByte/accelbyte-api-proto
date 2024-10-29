@@ -61,242 +61,398 @@ message TopicsPayload {
     string topic = 3 [json_name = "topic"];
 }
 
+// path: #/components/schemas/freeformNotificationSentPayload
+message FreeformNotificationSentPayload {
+    NotificationPayload notification = 1 [json_name = "notification"];
+}
+
+// path: #/components/schemas/freeformNotificationSentToUserNotification
+message FreeformNotificationSentToUserNotification {
+    string target_user_id = 1 [json_name = "targetUserId"];
+
+    // allOf(#/components/schemas/notificationPayload)
+    string sender_id = 2 [json_name = "senderId"];
+    string namespace = 3 [json_name = "namespace"];
+    string topic = 4 [json_name = "topic"];
+    string message = 5 [json_name = "message"];
+}
+
+// path: #/components/schemas/freeformNotificationSentToUserPayload
+message FreeformNotificationSentToUserPayload {
+    FreeformNotificationSentToUserNotification notification = 1 [json_name = "notification"];
+}
+
+// path: #/components/schemas/freeformNotificationSentToPartyNotification
+message FreeformNotificationSentToPartyNotification {
+    string party_id = 1 [json_name = "partyId"];
+
+    // allOf(#/components/schemas/notificationPayload)
+    string sender_id = 2 [json_name = "senderId"];
+    string namespace = 3 [json_name = "namespace"];
+    string topic = 4 [json_name = "topic"];
+    string message = 5 [json_name = "message"];
+}
+
+// path: #/components/schemas/freeformNotificationSentToPartyPayload
+message FreeformNotificationSentToPartyPayload {
+    FreeformNotificationSentToPartyNotification notification = 1 [json_name = "notification"];
+}
+
+// path: #/components/schemas/templatedNotificationCreatedNotification
+message TemplatedNotificationCreatedNotification {
+    string template_content = 1 [json_name = "templateContent"];
+
+    // allOf(#/components/schemas/localizedTemplatePayload)
+    string namespace = 2 [json_name = "namespace"];
+    string template_slug = 3 [json_name = "templateSlug"];
+    string template_language = 4 [json_name = "templateLanguage"];
+}
+
+// path: #/components/schemas/templatedNotificationCreatedPayload
+message TemplatedNotificationCreatedPayload {
+    TemplatedNotificationCreatedNotification notification = 1 [json_name = "notification"];
+}
+
+// path: #/components/schemas/templatedNotificationLocalizationDeletedPayload
+message TemplatedNotificationLocalizationDeletedPayload {
+    LocalizedTemplatePayload notification = 1 [json_name = "notification"];
+}
+
+// path: #/components/schemas/templatedNotificationLocalizationPublishedPayload
+message TemplatedNotificationLocalizationPublishedPayload {
+    LocalizedTemplatePayload notification = 1 [json_name = "notification"];
+}
+
+// path: #/components/schemas/templatedNotificationLocalizationUpdatedNotification
+message TemplatedNotificationLocalizationUpdatedNotification {
+    string template_content = 1 [json_name = "templateContent"];
+
+    // allOf(#/components/schemas/localizedTemplatePayload)
+    string namespace = 2 [json_name = "namespace"];
+    string template_slug = 3 [json_name = "templateSlug"];
+    string template_language = 4 [json_name = "templateLanguage"];
+}
+
+// path: #/components/schemas/templatedNotificationLocalizationUpdatedPayload
+message TemplatedNotificationLocalizationUpdatedPayload {
+    TemplatedNotificationLocalizationUpdatedNotification notification = 1 [json_name = "notification"];
+}
+
+// path: #/components/schemas/templatedNotificationDeletedNotification
+message TemplatedNotificationDeletedNotification {
+    string template_slug = 1 [json_name = "templateSlug"];
+    string namespace = 2 [json_name = "namespace"];
+}
+
+// path: #/components/schemas/templatedNotificationDeletedPayload
+message TemplatedNotificationDeletedPayload {
+    TemplatedNotificationDeletedNotification notification = 1 [json_name = "notification"];
+}
+
+// path: #/components/schemas/templatedNotificationSentNotification
+message TemplatedNotificationSentNotification {
+    string topic = 1 [json_name = "topic"];
+    google.protobuf.Struct template_context = 2 [json_name = "templateContext"];
+
+    // allOf(#/components/schemas/localizedTemplatePayload)
+    string namespace = 3 [json_name = "namespace"];
+    string template_slug = 4 [json_name = "templateSlug"];
+    string template_language = 5 [json_name = "templateLanguage"];
+}
+
+// path: #/components/schemas/templatedNotificationSentPayload
+message TemplatedNotificationSentPayload {
+    TemplatedNotificationSentNotification notification = 1 [json_name = "notification"];
+}
+
+// path: #/components/schemas/templatedNotificationSentToUserNotification
+message TemplatedNotificationSentToUserNotification {
+    string topic = 1 [json_name = "topic"];
+    google.protobuf.Struct template_context = 2 [json_name = "templateContext"];
+
+    // allOf(#/components/schemas/localizedTemplatePayload)
+    string namespace = 3 [json_name = "namespace"];
+    string template_slug = 4 [json_name = "templateSlug"];
+    string template_language = 5 [json_name = "templateLanguage"];
+}
+
+// path: #/components/schemas/templatedNotificationSentToUserPayload
+message TemplatedNotificationSentToUserPayload {
+    TemplatedNotificationSentToUserNotification notification = 1 [json_name = "notification"];
+}
+
+// path: #/components/schemas/topicCreatedPayload
+message TopicCreatedPayload {
+    TopicsPayload topic = 1 [json_name = "topic"];
+}
+
+// path: #/components/schemas/topicDeletedPayload
+message TopicDeletedPayload {
+    TopicsPayload topic = 1 [json_name = "topic"];
+}
+
+// path: #/components/schemas/topicModifiedPayload
+message TopicModifiedPayload {
+    TopicsPayload topic = 1 [json_name = "topic"];
+}
+
+// path: #/components/schemas/templatedNotificationSentToPartyNotification
+message TemplatedNotificationSentToPartyNotification {
+    string topic = 1 [json_name = "topic"];
+    google.protobuf.Struct template_context = 2 [json_name = "templateContext"];
+    string party_id = 3 [json_name = "partyId"];
+
+    // allOf(#/components/schemas/localizedTemplatePayload)
+    string namespace = 4 [json_name = "namespace"];
+    string template_slug = 5 [json_name = "templateSlug"];
+    string template_language = 6 [json_name = "templateLanguage"];
+}
+
+// path: #/components/schemas/templatedNotificationSentToPartyPayload
+message TemplatedNotificationSentToPartyPayload {
+    TemplatedNotificationSentToPartyNotification notification = 1 [json_name = "notification"];
+}
+
 // path: #/components/messages/freeformNotificationSent/payload
 message FreeformNotificationSent {
+    FreeformNotificationSentPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 1 [json_name = "id"];
-    int64 version = 2 [json_name = "version"];
-    string name = 3 [json_name = "name"];
-    string namespace = 4 [json_name = "namespace"];
-    string parent_namespace = 5 [json_name = "parentNamespace"];
-    string timestamp = 6 [json_name = "timestamp"];
-    string client_id = 7 [json_name = "clientId"];
-    string user_id = 8 [json_name = "userId"];
-    string trace_id = 9 [json_name = "traceId"];
-    string session_id = 10 [json_name = "sessionId"];
-    string span_context = 11 [json_name = "spanContext"];
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+    string span_context = 12 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/freeformNotificationSentToUser/payload
 message FreeformNotificationSentToUser {
+    FreeformNotificationSentToUserPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 1 [json_name = "id"];
-    int64 version = 2 [json_name = "version"];
-    string name = 3 [json_name = "name"];
-    string namespace = 4 [json_name = "namespace"];
-    string parent_namespace = 5 [json_name = "parentNamespace"];
-    string timestamp = 6 [json_name = "timestamp"];
-    string client_id = 7 [json_name = "clientId"];
-    string user_id = 8 [json_name = "userId"];
-    string trace_id = 9 [json_name = "traceId"];
-    string session_id = 10 [json_name = "sessionId"];
-    string span_context = 11 [json_name = "spanContext"];
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+    string span_context = 12 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/freeformNotificationSentToParty/payload
 message FreeformNotificationSentToParty {
+    FreeformNotificationSentToPartyPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 1 [json_name = "id"];
-    int64 version = 2 [json_name = "version"];
-    string name = 3 [json_name = "name"];
-    string namespace = 4 [json_name = "namespace"];
-    string parent_namespace = 5 [json_name = "parentNamespace"];
-    string timestamp = 6 [json_name = "timestamp"];
-    string client_id = 7 [json_name = "clientId"];
-    string user_id = 8 [json_name = "userId"];
-    string trace_id = 9 [json_name = "traceId"];
-    string session_id = 10 [json_name = "sessionId"];
-    string span_context = 11 [json_name = "spanContext"];
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+    string span_context = 12 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/templatedNotificationCreated/payload
 message TemplatedNotificationCreated {
+    TemplatedNotificationCreatedPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 1 [json_name = "id"];
-    int64 version = 2 [json_name = "version"];
-    string name = 3 [json_name = "name"];
-    string namespace = 4 [json_name = "namespace"];
-    string parent_namespace = 5 [json_name = "parentNamespace"];
-    string timestamp = 6 [json_name = "timestamp"];
-    string client_id = 7 [json_name = "clientId"];
-    string user_id = 8 [json_name = "userId"];
-    string trace_id = 9 [json_name = "traceId"];
-    string session_id = 10 [json_name = "sessionId"];
-    string span_context = 11 [json_name = "spanContext"];
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+    string span_context = 12 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/templatedNotificationLocalizationDeleted/payload
 message TemplatedNotificationLocalizationDeleted {
+    TemplatedNotificationLocalizationDeletedPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 1 [json_name = "id"];
-    int64 version = 2 [json_name = "version"];
-    string name = 3 [json_name = "name"];
-    string namespace = 4 [json_name = "namespace"];
-    string parent_namespace = 5 [json_name = "parentNamespace"];
-    string timestamp = 6 [json_name = "timestamp"];
-    string client_id = 7 [json_name = "clientId"];
-    string user_id = 8 [json_name = "userId"];
-    string trace_id = 9 [json_name = "traceId"];
-    string session_id = 10 [json_name = "sessionId"];
-    string span_context = 11 [json_name = "spanContext"];
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+    string span_context = 12 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/templatedNotificationLocalizationPublished/payload
 message TemplatedNotificationLocalizationPublished {
+    TemplatedNotificationLocalizationPublishedPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 1 [json_name = "id"];
-    int64 version = 2 [json_name = "version"];
-    string name = 3 [json_name = "name"];
-    string namespace = 4 [json_name = "namespace"];
-    string parent_namespace = 5 [json_name = "parentNamespace"];
-    string timestamp = 6 [json_name = "timestamp"];
-    string client_id = 7 [json_name = "clientId"];
-    string user_id = 8 [json_name = "userId"];
-    string trace_id = 9 [json_name = "traceId"];
-    string session_id = 10 [json_name = "sessionId"];
-    string span_context = 11 [json_name = "spanContext"];
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+    string span_context = 12 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/templatedNotificationLocalizationUpdated/payload
 message TemplatedNotificationLocalizationUpdated {
+    TemplatedNotificationLocalizationUpdatedPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 1 [json_name = "id"];
-    int64 version = 2 [json_name = "version"];
-    string name = 3 [json_name = "name"];
-    string namespace = 4 [json_name = "namespace"];
-    string parent_namespace = 5 [json_name = "parentNamespace"];
-    string timestamp = 6 [json_name = "timestamp"];
-    string client_id = 7 [json_name = "clientId"];
-    string user_id = 8 [json_name = "userId"];
-    string trace_id = 9 [json_name = "traceId"];
-    string session_id = 10 [json_name = "sessionId"];
-    string span_context = 11 [json_name = "spanContext"];
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+    string span_context = 12 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/templatedNotificationDeleted/payload
 message TemplatedNotificationDeleted {
+    TemplatedNotificationDeletedNotification payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 1 [json_name = "id"];
-    int64 version = 2 [json_name = "version"];
-    string name = 3 [json_name = "name"];
-    string namespace = 4 [json_name = "namespace"];
-    string parent_namespace = 5 [json_name = "parentNamespace"];
-    string timestamp = 6 [json_name = "timestamp"];
-    string client_id = 7 [json_name = "clientId"];
-    string user_id = 8 [json_name = "userId"];
-    string trace_id = 9 [json_name = "traceId"];
-    string session_id = 10 [json_name = "sessionId"];
-    string span_context = 11 [json_name = "spanContext"];
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+    string span_context = 12 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/templatedNotificationSent/payload
 message TemplatedNotificationSent {
+    TemplatedNotificationSentPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 1 [json_name = "id"];
-    int64 version = 2 [json_name = "version"];
-    string name = 3 [json_name = "name"];
-    string namespace = 4 [json_name = "namespace"];
-    string parent_namespace = 5 [json_name = "parentNamespace"];
-    string timestamp = 6 [json_name = "timestamp"];
-    string client_id = 7 [json_name = "clientId"];
-    string user_id = 8 [json_name = "userId"];
-    string trace_id = 9 [json_name = "traceId"];
-    string session_id = 10 [json_name = "sessionId"];
-    string span_context = 11 [json_name = "spanContext"];
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+    string span_context = 12 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/templatedNotificationSentToUser/payload
 message TemplatedNotificationSentToUser {
+    TemplatedNotificationSentToUserPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 1 [json_name = "id"];
-    int64 version = 2 [json_name = "version"];
-    string name = 3 [json_name = "name"];
-    string namespace = 4 [json_name = "namespace"];
-    string parent_namespace = 5 [json_name = "parentNamespace"];
-    string timestamp = 6 [json_name = "timestamp"];
-    string client_id = 7 [json_name = "clientId"];
-    string user_id = 8 [json_name = "userId"];
-    string trace_id = 9 [json_name = "traceId"];
-    string session_id = 10 [json_name = "sessionId"];
-    string span_context = 11 [json_name = "spanContext"];
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+    string span_context = 12 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/topicCreated/payload
 message TopicCreated {
+    TopicCreatedPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 1 [json_name = "id"];
-    int64 version = 2 [json_name = "version"];
-    string name = 3 [json_name = "name"];
-    string namespace = 4 [json_name = "namespace"];
-    string parent_namespace = 5 [json_name = "parentNamespace"];
-    string timestamp = 6 [json_name = "timestamp"];
-    string client_id = 7 [json_name = "clientId"];
-    string user_id = 8 [json_name = "userId"];
-    string trace_id = 9 [json_name = "traceId"];
-    string session_id = 10 [json_name = "sessionId"];
-    string span_context = 11 [json_name = "spanContext"];
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+    string span_context = 12 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/topicDeleted/payload
 message TopicDeleted {
+    Event payload = 1 [json_name = "payload"];
 
-    // allOf(#/components/schemas/event)
-    string id = 1 [json_name = "id"];
-    int64 version = 2 [json_name = "version"];
-    string name = 3 [json_name = "name"];
-    string namespace = 4 [json_name = "namespace"];
-    string parent_namespace = 5 [json_name = "parentNamespace"];
-    string timestamp = 6 [json_name = "timestamp"];
-    string client_id = 7 [json_name = "clientId"];
-    string user_id = 8 [json_name = "userId"];
-    string trace_id = 9 [json_name = "traceId"];
-    string session_id = 10 [json_name = "sessionId"];
-    string span_context = 11 [json_name = "spanContext"];
+    // allOf(#/components/schemas/topicDeletedPayload)
+    TopicsPayload topic = 2 [json_name = "topic"];
 }
 
 // path: #/components/messages/topicModified/payload
 message TopicModified {
+    TopicModifiedPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 1 [json_name = "id"];
-    int64 version = 2 [json_name = "version"];
-    string name = 3 [json_name = "name"];
-    string namespace = 4 [json_name = "namespace"];
-    string parent_namespace = 5 [json_name = "parentNamespace"];
-    string timestamp = 6 [json_name = "timestamp"];
-    string client_id = 7 [json_name = "clientId"];
-    string user_id = 8 [json_name = "userId"];
-    string trace_id = 9 [json_name = "traceId"];
-    string session_id = 10 [json_name = "sessionId"];
-    string span_context = 11 [json_name = "spanContext"];
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+    string span_context = 12 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/templatedNotificationSentToParty/payload
 message TemplatedNotificationSentToParty {
+    TemplatedNotificationSentToPartyPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 1 [json_name = "id"];
-    int64 version = 2 [json_name = "version"];
-    string name = 3 [json_name = "name"];
-    string namespace = 4 [json_name = "namespace"];
-    string parent_namespace = 5 [json_name = "parentNamespace"];
-    string timestamp = 6 [json_name = "timestamp"];
-    string client_id = 7 [json_name = "clientId"];
-    string user_id = 8 [json_name = "userId"];
-    string trace_id = 9 [json_name = "traceId"];
-    string session_id = 10 [json_name = "sessionId"];
-    string span_context = 11 [json_name = "spanContext"];
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+    string span_context = 12 [json_name = "spanContext"];
 }
 
 

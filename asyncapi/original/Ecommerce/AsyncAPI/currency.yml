@@ -80,7 +80,26 @@ components:
         updatedAt:
           type: string
           format: date-time
-
+    currencyCreatedPayloadData:
+      type: object
+      properties:
+        currency:
+          $ref: '#/components/schemas/currency'
+      x-uid0: AnonymousSchema2
+    currencyUpdatedPayloadData:
+      type: object
+      properties:
+        currency:
+          $ref: '#/components/schemas/currency'
+        oldCurrency:
+          $ref: '#/components/schemas/currency'
+      x-uid0: AnonymousSchema3
+    currencyDeletedPayloadData:
+      type: object
+      properties:
+        currency:
+          $ref: '#/components/schemas/currency'
+      x-uid0: AnonymousSchema4
   messages:
     currencyCreated:
       name: currencyCreated
@@ -91,11 +110,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              currency:
-                $ref: '#/components/schemas/currency'
-
+            $ref: '#/components/schemas/currencyCreatedPayloadData'
     currencyUpdated:
       name: currencyUpdated
       description: message is sent when currency is updated
@@ -105,13 +120,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              currency:
-                $ref: '#/components/schemas/currency'
-              oldCurrency:
-                $ref: '#/components/schemas/currency'
-
+            $ref: '#/components/schemas/currencyUpdatedPayloadData'
     currencyDeleted:
       name: currencyDeleted
       description: message is sent when currency is deleted
@@ -121,7 +130,4 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              currency:
-                $ref: '#/components/schemas/currency'
+            $ref: '#/components/schemas/currencyDeletedPayloadData'

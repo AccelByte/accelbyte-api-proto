@@ -215,9 +215,14 @@ components:
         fulfillmentError:
           $ref: '#/components/schemas/fulfillmentError'
         metadata:
-            type: object
-            additionalProperties: true
-
+          type: object
+          additionalProperties: true
+    fulfillmentCompletedPayload:
+      type: object
+      properties:
+        fulfillment:
+          $ref: '#/components/schemas/fulfillment'
+      x-uid: AnonymousSchema1
   messages:
     fulfillmentCompleted:
       name: fulfillmentCompleted
@@ -228,7 +233,4 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              fulfillment:
-                $ref: '#/components/schemas/fulfillment'
+            $ref: '#/components/schemas/fulfillmentCompletedPayload'

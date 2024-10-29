@@ -197,7 +197,49 @@ components:
       type: object
       additionalProperties:
         type: integer
-
+    allocationCompletePayloadData:
+      type: object
+      properties:
+        server:
+          type: string
+          description: server name
+        allocationEvents:
+          type: array
+          items:
+            $ref: '#/components/schemas/allocationEvent'
+      x-uid0: AnonymousSchema2
+    dsClaimedPayloadData:
+      type: object
+      properties:
+        dsClaimed:
+          type: boolean
+          description: ds claimed or not
+        sessionID:
+          type: string
+          description: session ID
+        dsClaimedAt:
+          type: string
+          format: date-time
+      x-uid0: AnonymousSchema3
+    dsCountPayloadData:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/dsNumEachRegionEachNamespace'
+      x-uid0: AnonymousSchema4
+    dsStatusChangedPayloadData:
+      type: object
+      properties:
+        server:
+          $ref: '#/components/schemas/server'
+        isBuffered:
+          type: boolean
+      x-uid0: AnonymousSchema5
+    sessionEndedPayloadData:
+      type: object
+      properties:
+        session:
+          $ref: '#/components/schemas/session'
+      x-uid0: AnonymousSchema6
   messages:
     allocationComplete:
       name: allocationComplete
@@ -207,16 +249,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              server:
-                type: string
-                description: server name
-              allocationEvents:
-                type: array
-                items:
-                  $ref: '#/components/schemas/allocationEvent'
-
+            $ref: '#/components/schemas/allocationCompletePayloadData'
     dsClaimed:
       name: dsClaimed
       payload:
@@ -225,18 +258,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              dsClaimed:
-                type: boolean
-                description: ds claimed or not
-              sessionID:
-                type: string
-                description: session ID
-              dsClaimedAt:
-                type: string
-                format: date-time
-
+            $ref: '#/components/schemas/dsClaimedPayloadData'
     dsCount:
       name: dsCount
       payload:
@@ -247,8 +269,9 @@ components:
           payload:
             type: object
             additionalProperties:
-              $ref: '#/components/schemas/dsNumEachRegionEachNamespace'
-
+              type: object
+              additionalProperties:
+                type: integer
     # Each time Dedicated Server status changed, this event will be triggered
     # server object status properties will be changed each time there are changes in dedicated server
     # CREATING - DS created
@@ -265,13 +288,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              server:
-                $ref: '#/components/schemas/server'
-              isBuffered:
-                type: boolean
-
+            $ref: '#/components/schemas/dsStatusChangedPayloadData'
     sessionEnded:
       name: sessionEnded
       payload:
@@ -280,7 +297,4 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              session:
-                $ref: '#/components/schemas/session'
+            $ref: '#/components/schemas/sessionEndedPayloadData'

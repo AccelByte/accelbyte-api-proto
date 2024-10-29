@@ -68,6 +68,63 @@ components:
       properties:
         blocked:
           $ref: '#/components/schemas/userBlock'
+    userConnect:
+      type: object
+      properties:
+        userConnected:
+          $ref: '#/components/schemas/userConnectedPayload'
+    userDisconnect:
+      type: object
+      properties:
+        userDisconnected:
+          $ref: '#/components/schemas/userDisconnectedPayload'
+    matchmakingTicketsPublishedPayload:
+      type: object
+      properties:
+        totalMatchmakingRequest:
+          type: integer
+        averageMatchmakingExecutionTime:
+          type: integer
+    totalUsersOnlinePublishedPayload:
+      type: object
+      properties:
+        totalUsersOnline:
+          type: integer
+        totalUsersOnlineSteam:
+          type: integer
+        totalUsersOnlineXbox:
+          type: integer
+        totalUsersOnlinePlaystation:
+          type: integer
+    userConnectedPayload:
+      type: object
+      properties:
+        lobbySessionId:
+          type: string
+        lobbyLoginType:
+          type: string
+          description: '* **NewRegister** Fresh connect, no active connection.
+
+            * **MultipleSessionLogin** An active connection exists, a new connection
+            with different token, old connection will be closed.
+
+            * **FastReconnect** An active connection exists, a new connection with
+            same token and same lobbySessionId, old connection will be closed.
+
+            * **WrongSessionID** An active connection exists, a new connection with
+            same token and different lobbySessionId, new connection is rejected, event
+            is **not** published.
+
+            '
+        reconnectFrom:
+          type: integer
+          description: '* **5000** Fresh connect, this wasn''t a reconnect.
+
+            * **5001** The user is still connected.
+
+            '
+        connectionId:
+          type: string
     userDisconnectedPayload:
       type: object
       properties:
@@ -87,51 +144,21 @@ components:
     userConnected:
       name: userConnected
       payload:
+        type: object
         allOf:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            properties:
-              userConnected:
-                type: object
-                properties:
-                  lobbySessionId:
-                    type: string
-                  lobbyLoginType:
-                    type: string
-                    description: '* **NewRegister** Fresh connect, no active connection.
-
-                      * **MultipleSessionLogin** An active connection exists, a new
-                      connection with different token, old connection will be closed.
-
-                      * **FastReconnect** An active connection exists, a new connection
-                      with same token and same lobbySessionId, old connection will
-                      be closed.
-
-                      * **WrongSessionID** An active connection exists, a new connection
-                      with same token and different lobbySessionId, new connection
-                      is rejected, event is **not** published.
-
-                      '
-                  reconnectFrom:
-                    type: integer
-                    description: '* **5000** Fresh connect, this wasn''t a reconnect.
-
-                      * **5001** The user is still connected.
-
-                      '
-                  connectionId:
-                    type: string
+            $ref: '#/components/schemas/userConnect'
     userDisconnected:
       name: userDisconnected
       payload:
+        type: object
         allOf:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            properties:
-              userDisconnected:
-                $ref: '#/components/schemas/userDisconnectedPayload'
+            $ref: '#/components/schemas/userDisconnect'
     userChatRateLimited:
       name: userChatRateLimited
       payload:
@@ -143,31 +170,21 @@ components:
     matchmakingTicketsPublished:
       name: matchmakingTicketsPublished
       payload:
+        type: object
         allOf:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            properties:
-              totalMatchmakingRequest:
-                type: integer
-              averageMatchmakingExecutionTime:
-                type: integer
+            $ref: '#/components/schemas/matchmakingTicketsPublishedPayload'
     totalUsersOnlinePublished:
       name: totalUsersOnlinePublished
       payload:
+        type: object
         allOf:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            properties:
-              totalUsersOnline:
-                type: integer
-              totalUsersOnlineSteam:
-                type: integer
-              totalUsersOnlineXbox:
-                type: integer
-              totalUsersOnlinePlaystation:
-                type: integer
+            $ref: '#/components/schemas/totalUsersOnlinePublishedPayload'
     userBlockAdded:
       name: userBlockAdded
       payload:

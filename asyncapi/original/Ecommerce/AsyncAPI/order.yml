@@ -266,8 +266,78 @@ components:
           description: Deduction details, include every discount code actual deducted value
           items:
             $ref: '#/components/schemas/deductionDetail'
-        
-
+    orderCreatedPayloadData:
+      type: object
+      properties:
+        order:
+          $ref: '#/components/schemas/order'
+      x-uid0: AnonymousSchema1
+    orderCancelledPayloadData:
+      type: object
+      properties:
+        order:
+          $ref: '#/components/schemas/order'
+      x-uid0: AnonymousSchema2
+    orderRefundRequestedPayloadData:
+      type: object
+      properties:
+        order:
+          $ref: '#/components/schemas/order'
+      x-uid0: AnonymousSchema3
+    orderStatusUpdatedPayloadData:
+      type: object
+      properties:
+        order:
+          $ref: '#/components/schemas/order'
+      x-uid0: AnonymousSchema4
+    orderFulfilledPayloadData:
+      type: object
+      properties:
+        order:
+          $ref: '#/components/schemas/order'
+      x-uid0: AnonymousSchema5
+    orderFulfillFailedPayloadData:
+      type: object
+      properties:
+        order:
+          $ref: '#/components/schemas/order'
+      x-uid0: AnonymousSchema6
+    orderChargedPayloadData:
+      type: object
+      properties:
+        order:
+          $ref: '#/components/schemas/order'
+      x-uid0: AnonymousSchema7
+    orderRefundedPayloadData:
+      type: object
+      properties:
+        order:
+          $ref: '#/components/schemas/order'
+      x-uid0: AnonymousSchema8
+    orderRefundFailedPayloadData:
+      type: object
+      properties:
+        order:
+          $ref: '#/components/schemas/order'
+      x-uid0: AnonymousSchema9
+    orderChargebackPayloadData:
+      type: object
+      properties:
+        order:
+          $ref: '#/components/schemas/order'
+      x-uid0: AnonymousSchema10
+    orderChargebackReversedPayloadData:
+      type: object
+      properties:
+        order:
+          $ref: '#/components/schemas/order'
+      x-uid0: AnonymousSchema11
+    orderExpiredPayloadData:
+      type: object
+      properties:
+        order:
+          $ref: '#/components/schemas/order'
+      x-uid0: AnonymousSchema12
   messages:
     orderCreated:
       name: orderCreated
@@ -278,11 +348,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              order:
-                $ref: '#/components/schemas/order'
-
+            $ref: '#/components/schemas/orderCreatedPayloadData'
     orderCancelled:
       name: orderCancelled
       description: order status will be CLOSED after cancelled
@@ -292,11 +358,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              order:
-                $ref: '#/components/schemas/order'
-
+            $ref: '#/components/schemas/orderCancelledPayloadData'
     orderRefundRequested:
       name: orderRefundRequested
       description: order status will be REFUNDING/REFUNDED/REFUND_FAILED after refund requested
@@ -306,11 +368,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              order:
-                $ref: '#/components/schemas/order'
-
+            $ref: '#/components/schemas/orderRefundRequestedPayloadData'
     orderStatusUpdated:
       name: orderStatusUpdated
       description: order status will be target status after updated
@@ -320,11 +378,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              order:
-                $ref: '#/components/schemas/order'
-
+            $ref: '#/components/schemas/orderStatusUpdatedPayloadData'
     orderFulfilled:
       name: orderFulfilled
       description: order status will be FULFILLED fulfilled
@@ -334,11 +388,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              order:
-                $ref: '#/components/schemas/order'
-
+            $ref: '#/components/schemas/orderFulfilledPayloadData'
     orderFulfillFailed:
       name: orderFulfillFailed
       description: order status will be FULFILL_FAILED fulfilled
@@ -348,11 +398,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              order:
-                $ref: '#/components/schemas/order'
-
+            $ref: '#/components/schemas/orderFulfillFailedPayloadData'
     orderCharged:
       name: orderCharged
       description: order status will be CHARGED
@@ -362,11 +408,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              order:
-                $ref: '#/components/schemas/order'
-
+            $ref: '#/components/schemas/orderChargedPayloadData'
     orderRefunded:
       name: orderRefunded
       description: order status will be REFUNDED
@@ -376,11 +418,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              order:
-                $ref: '#/components/schemas/order'
-
+            $ref: '#/components/schemas/orderRefundedPayloadData'
     orderRefundFailed:
       name: orderRefundFailed
       description: order status will be REFUND_FAILED
@@ -390,11 +428,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              order:
-                $ref: '#/components/schemas/order'
-
+            $ref: '#/components/schemas/orderRefundFailedPayloadData'
     orderChargeback:
       name: orderChargeback
       description: order status will be CHARGEBACK
@@ -404,11 +438,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              order:
-                $ref: '#/components/schemas/order'
-
+            $ref: '#/components/schemas/orderChargebackPayloadData'
     orderChargebackReversed:
       name: orderChargebackReversed
       description: order status will be CHARGEBACK_REVERSED
@@ -418,11 +448,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              order:
-                $ref: '#/components/schemas/order'
-
+            $ref: '#/components/schemas/orderChargebackReversedPayloadData'
     orderExpired:
       name: orderExpired
       description: order status will be CLOSED
@@ -432,7 +458,4 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              order:
-                $ref: '#/components/schemas/order'
+            $ref: '#/components/schemas/orderExpiredPayloadData'

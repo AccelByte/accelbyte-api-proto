@@ -93,13 +93,9 @@ message CurrencySummary {
     int32 decimals = 5 [json_name = "decimals"];
 }
 
-// path: #/components/schemas/billing/properties/paymentProvider
-message AnonymousSchema1 {
-}
-
 // path: #/components/schemas/billing
 message Billing {
-    AnonymousSchema1 payment_provider = 1 [json_name = "paymentProvider"];
+    string payment_provider = 1 [json_name = "paymentProvider"]; // Allowed values: WALLET, XSOLLA, ADYEN, STRIPE, ALIPAY, WXPAY, PAYPAL
     string payment_method = 2 [json_name = "paymentMethod"];
     int64 amount = 3 [json_name = "amount"];
     int64 total_tax = 4 [json_name = "totalTax"];
@@ -111,103 +107,58 @@ message Billing {
     string ext_tx_id = 10 [json_name = "extTxId"];
 }
 
-// path: #/components/messages/subscribed/payload/properties/payload
-message AnonymousSchema2 {
+// path: #/components/schemas/subscribedPayloadData
+message SubscribedPayloadData { // previously known as 'AnonymousSchema2'
     Subscription subscription = 1 [json_name = "subscription"];
 }
 
-// path: #/components/messages/subscribed/payload
-message Subscribed {
-    AnonymousSchema2 payload = 1 [json_name = "payload"];
-
-    // allOf(#/components/schemas/event)
-    string id = 2 [json_name = "id"];
-    int64 version = 3 [json_name = "version"];
-    string name = 4 [json_name = "name"];
-    string namespace = 5 [json_name = "namespace"];
-    string parent_namespace = 6 [json_name = "parentNamespace"];
-    string timestamp = 7 [json_name = "timestamp"];
-    string client_id = 8 [json_name = "clientId"];
-    string user_id = 9 [json_name = "userId"];
-    string trace_id = 10 [json_name = "traceId"];
-    string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/cancelled/payload/properties/payload
-message AnonymousSchema3 {
+// path: #/components/schemas/cancelledPayloadData
+message CancelledPayloadData { // previously known as 'AnonymousSchema3'
     Subscription subscription = 1 [json_name = "subscription"];
 }
 
-// path: #/components/messages/cancelled/payload
-message Cancelled {
-    AnonymousSchema3 payload = 1 [json_name = "payload"];
-
-    // allOf(#/components/schemas/event)
-    string id = 2 [json_name = "id"];
-    int64 version = 3 [json_name = "version"];
-    string name = 4 [json_name = "name"];
-    string namespace = 5 [json_name = "namespace"];
-    string parent_namespace = 6 [json_name = "parentNamespace"];
-    string timestamp = 7 [json_name = "timestamp"];
-    string client_id = 8 [json_name = "clientId"];
-    string user_id = 9 [json_name = "userId"];
-    string trace_id = 10 [json_name = "traceId"];
-    string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/immediateCancelled/payload/properties/payload
-message AnonymousSchema4 {
+// path: #/components/schemas/immediateCancelledPayloadData
+message ImmediateCancelledPayloadData { // previously known as 'AnonymousSchema4'
     Subscription subscription = 1 [json_name = "subscription"];
 }
 
-// path: #/components/messages/immediateCancelled/payload
-message ImmediateCancelled {
-    AnonymousSchema4 payload = 1 [json_name = "payload"];
-
-    // allOf(#/components/schemas/event)
-    string id = 2 [json_name = "id"];
-    int64 version = 3 [json_name = "version"];
-    string name = 4 [json_name = "name"];
-    string namespace = 5 [json_name = "namespace"];
-    string parent_namespace = 6 [json_name = "parentNamespace"];
-    string timestamp = 7 [json_name = "timestamp"];
-    string client_id = 8 [json_name = "clientId"];
-    string user_id = 9 [json_name = "userId"];
-    string trace_id = 10 [json_name = "traceId"];
-    string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/resubscribed/payload/properties/payload
-message AnonymousSchema5 {
+// path: #/components/schemas/resubscribedPayloadData
+message ResubscribedPayloadData { // previously known as 'AnonymousSchema5'
     Subscription subscription = 1 [json_name = "subscription"];
 }
 
-// path: #/components/messages/resubscribed/payload
-message Resubscribed {
-    AnonymousSchema5 payload = 1 [json_name = "payload"];
-
-    // allOf(#/components/schemas/event)
-    string id = 2 [json_name = "id"];
-    int64 version = 3 [json_name = "version"];
-    string name = 4 [json_name = "name"];
-    string namespace = 5 [json_name = "namespace"];
-    string parent_namespace = 6 [json_name = "parentNamespace"];
-    string timestamp = 7 [json_name = "timestamp"];
-    string client_id = 8 [json_name = "clientId"];
-    string user_id = 9 [json_name = "userId"];
-    string trace_id = 10 [json_name = "traceId"];
-    string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/daysGranted/payload/properties/payload
-message AnonymousSchema6 {
+// path: #/components/schemas/daysGrantedPayloadData
+message DaysGrantedPayloadData { // previously known as 'AnonymousSchema6'
     Subscription subscription = 1 [json_name = "subscription"];
     int64 grant_days = 2 [json_name = "grantDays"];
 }
 
-// path: #/components/messages/daysGranted/payload
-message DaysGranted {
-    AnonymousSchema6 payload = 1 [json_name = "payload"];
+// path: #/components/schemas/chargedPayloadData
+message ChargedPayloadData { // previously known as 'AnonymousSchema7'
+    Subscription subscription = 1 [json_name = "subscription"];
+    Billing billing = 2 [json_name = "billing"];
+}
+
+// path: #/components/schemas/chargeFailedPayloadData
+message ChargeFailedPayloadData { // previously known as 'AnonymousSchema8'
+    Subscription subscription = 1 [json_name = "subscription"];
+    Billing billing = 2 [json_name = "billing"];
+}
+
+// path: #/components/schemas/expiredPayloadData
+message ExpiredPayloadData { // previously known as 'AnonymousSchema9'
+    Subscription subscription = 1 [json_name = "subscription"];
+}
+
+// path: #/components/schemas/billingAccountChangedPayloadData
+message BillingAccountChangedPayloadData { // previously known as 'AnonymousSchema10'
+    Subscription subscription = 1 [json_name = "subscription"];
+    Billing billing = 2 [json_name = "billing"];
+}
+
+// path: #/components/messages/subscribed/payload
+message Subscribed {
+    SubscribedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -222,15 +173,77 @@ message DaysGranted {
     string session_id = 11 [json_name = "sessionId"];
 }
 
-// path: #/components/messages/charged/payload/properties/payload
-message AnonymousSchema7 {
-    Subscription subscription = 1 [json_name = "subscription"];
-    Billing billing = 2 [json_name = "billing"];
+// path: #/components/messages/cancelled/payload
+message Cancelled {
+    CancelledPayloadData payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+}
+
+// path: #/components/messages/immediateCancelled/payload
+message ImmediateCancelled {
+    ImmediateCancelledPayloadData payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+}
+
+// path: #/components/messages/resubscribed/payload
+message Resubscribed {
+    ResubscribedPayloadData payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+}
+
+// path: #/components/messages/daysGranted/payload
+message DaysGranted {
+    DaysGrantedPayloadData payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 // path: #/components/messages/charged/payload
 message Charged {
-    AnonymousSchema7 payload = 1 [json_name = "payload"];
+    ChargedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -243,17 +256,11 @@ message Charged {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/chargeFailed/payload/properties/payload
-message AnonymousSchema8 {
-    Subscription subscription = 1 [json_name = "subscription"];
-    Billing billing = 2 [json_name = "billing"];
 }
 
 // path: #/components/messages/chargeFailed/payload
 message ChargeFailed {
-    AnonymousSchema8 payload = 1 [json_name = "payload"];
+    ChargeFailedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -266,16 +273,11 @@ message ChargeFailed {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/expired/payload/properties/payload
-message AnonymousSchema9 {
-    Subscription subscription = 1 [json_name = "subscription"];
 }
 
 // path: #/components/messages/expired/payload
 message Expired {
-    AnonymousSchema9 payload = 1 [json_name = "payload"];
+    ExpiredPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -290,15 +292,9 @@ message Expired {
     string session_id = 11 [json_name = "sessionId"];
 }
 
-// path: #/components/messages/billingAccountChanged/payload/properties/payload
-message AnonymousSchema10 {
-    Subscription subscription = 1 [json_name = "subscription"];
-    Billing billing = 2 [json_name = "billing"];
-}
-
 // path: #/components/messages/billingAccountChanged/payload
 message BillingAccountChanged {
-    AnonymousSchema10 payload = 1 [json_name = "payload"];
+    BillingAccountChangedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];

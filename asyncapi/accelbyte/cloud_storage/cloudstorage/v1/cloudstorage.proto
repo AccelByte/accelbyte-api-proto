@@ -64,40 +64,24 @@ message Slots {
     SingleSlot slot_info = 15 [json_name = "slotInfo"];
 }
 
-// path: #/components/schemas/singleSlot/properties/inputStream
-message AnonymousSchema1 {
-}
-
 // path: #/components/schemas/singleSlot
 message SingleSlot {
     string description = 1 [json_name = "description"];
     File file = 2 [json_name = "file"];
     string filename = 3 [json_name = "filename"];
-    AnonymousSchema1 input_stream = 4 [json_name = "inputStream"];
+    google.protobuf.Struct input_stream = 4 [json_name = "inputStream"];
     bool open = 5 [json_name = "open"];
     bool readable = 6 [json_name = "readable"];
     Uri uri = 7 [json_name = "uri"];
     Url url = 8 [json_name = "url"];
 }
 
-// path: #/components/schemas/file/properties/absoluteFile
-message AnonymousSchema2 {
-}
-
-// path: #/components/schemas/file/properties/canonicalFile
-message AnonymousSchema3 {
-}
-
-// path: #/components/schemas/file/properties/parentFile
-message AnonymousSchema4 {
-}
-
 // path: #/components/schemas/file
 message File {
     bool absolute = 1 [json_name = "absolute"];
-    AnonymousSchema2 absolute_file = 2 [json_name = "absoluteFile"];
+    google.protobuf.Struct absolute_file = 2 [json_name = "absoluteFile"];
     string absolute_path = 3 [json_name = "absolutePath"];
-    AnonymousSchema3 canonical_file = 4 [json_name = "canonicalFile"];
+    google.protobuf.Struct canonical_file = 4 [json_name = "canonicalFile"];
     string canonical_path = 5 [json_name = "canonicalPath"];
     bool directory = 6 [json_name = "directory"];
     bool file = 7 [json_name = "file"];
@@ -105,7 +89,7 @@ message File {
     bool hidden = 9 [json_name = "hidden"];
     string name = 10 [json_name = "name"];
     string parent = 11 [json_name = "parent"];
-    AnonymousSchema4 parent_file = 12 [json_name = "parentFile"];
+    google.protobuf.Struct parent_file = 12 [json_name = "parentFile"];
     string path = 13 [json_name = "path"];
     int64 total_space = 14 [json_name = "totalSpace"];
     int64 usable_space = 15 [json_name = "usableSpace"];
@@ -132,14 +116,10 @@ message Uri {
     string user_info = 17 [json_name = "userInfo"];
 }
 
-// path: #/components/schemas/url/properties/content
-message AnonymousSchema5 {
-}
-
 // path: #/components/schemas/url
 message Url {
     string authority = 1 [json_name = "authority"];
-    AnonymousSchema5 content = 2 [json_name = "content"];
+    google.protobuf.Struct content = 2 [json_name = "content"];
     int64 default_port = 3 [json_name = "defaultPort"];
     string file = 4 [json_name = "file"];
     string host = 5 [json_name = "host"];
@@ -159,14 +139,54 @@ message SlotConfig {
     string user_id = 4 [json_name = "userId"];
 }
 
-// path: #/components/messages/namespaceSlotConfigCreated/payload/properties/payload
-message AnonymousSchema6 {
+// path: #/components/schemas/namespaceSlotConfigCreatedPayloadData
+message NamespaceSlotConfigCreatedPayloadData { // previously known as 'AnonymousSchema6'
     NamespaceSlotConfig namespace_slot_config = 1 [json_name = "namespaceSlotConfig"];
+}
+
+// path: #/components/schemas/namespaceSlotConfigDeletedPayloadData
+message NamespaceSlotConfigDeletedPayloadData { // previously known as 'AnonymousSchema7'
+    NamespaceSlotConfig namespace_slot_config = 1 [json_name = "namespaceSlotConfig"];
+}
+
+// path: #/components/schemas/namespaceSlotConfigUpdatedPayloadData
+message NamespaceSlotConfigUpdatedPayloadData { // previously known as 'AnonymousSchema8'
+    NamespaceSlotConfig namespace_slot_config = 1 [json_name = "namespaceSlotConfig"];
+}
+
+// path: #/components/schemas/slotCreatedPayloadData
+message SlotCreatedPayloadData { // previously known as 'AnonymousSchema9'
+    Slots slot = 1 [json_name = "slot"];
+}
+
+// path: #/components/schemas/slotDeletedPayloadData
+message SlotDeletedPayloadData { // previously known as 'AnonymousSchema10'
+    Slots slot = 1 [json_name = "slot"];
+}
+
+// path: #/components/schemas/slotUpdatedPayloadData
+message SlotUpdatedPayloadData { // previously known as 'AnonymousSchema11'
+    Slots slot = 1 [json_name = "slot"];
+}
+
+// path: #/components/schemas/slotConfigCreatedPayloadData
+message SlotConfigCreatedPayloadData { // previously known as 'AnonymousSchema12'
+    SlotConfig slot_config = 1 [json_name = "slotConfig"];
+}
+
+// path: #/components/schemas/slotConfigDeletedPayloadData
+message SlotConfigDeletedPayloadData { // previously known as 'AnonymousSchema13'
+    SlotConfig slot_config = 1 [json_name = "slotConfig"];
+}
+
+// path: #/components/schemas/slotConfigUpdatedPayloadData
+message SlotConfigUpdatedPayloadData { // previously known as 'AnonymousSchema14'
+    SlotConfig slot_config = 1 [json_name = "slotConfig"];
 }
 
 // path: #/components/messages/namespaceSlotConfigCreated/payload
 message NamespaceSlotConfigCreated {
-    AnonymousSchema6 payload = 1 [json_name = "payload"];
+    NamespaceSlotConfigCreatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -179,16 +199,11 @@ message NamespaceSlotConfigCreated {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/namespaceSlotConfigDeleted/payload/properties/payload
-message AnonymousSchema7 {
-    NamespaceSlotConfig namespace_slot_config = 1 [json_name = "namespaceSlotConfig"];
 }
 
 // path: #/components/messages/namespaceSlotConfigDeleted/payload
 message NamespaceSlotConfigDeleted {
-    AnonymousSchema7 payload = 1 [json_name = "payload"];
+    NamespaceSlotConfigDeletedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -201,16 +216,11 @@ message NamespaceSlotConfigDeleted {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/namespaceSlotConfigUpdated/payload/properties/payload
-message AnonymousSchema8 {
-    NamespaceSlotConfig namespace_slot_config = 1 [json_name = "namespaceSlotConfig"];
 }
 
 // path: #/components/messages/namespaceSlotConfigUpdated/payload
 message NamespaceSlotConfigUpdated {
-    AnonymousSchema8 payload = 1 [json_name = "payload"];
+    NamespaceSlotConfigUpdatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -223,16 +233,11 @@ message NamespaceSlotConfigUpdated {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/slotCreated/payload/properties/payload
-message AnonymousSchema9 {
-    Slots slot = 1 [json_name = "slot"];
 }
 
 // path: #/components/messages/slotCreated/payload
 message SlotCreated {
-    AnonymousSchema9 payload = 1 [json_name = "payload"];
+    SlotCreatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -245,16 +250,11 @@ message SlotCreated {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/slotDeleted/payload/properties/payload
-message AnonymousSchema10 {
-    Slots slot = 1 [json_name = "slot"];
 }
 
 // path: #/components/messages/slotDeleted/payload
 message SlotDeleted {
-    AnonymousSchema10 payload = 1 [json_name = "payload"];
+    SlotDeletedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -267,16 +267,11 @@ message SlotDeleted {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/slotUpdated/payload/properties/payload
-message AnonymousSchema11 {
-    Slots slot = 1 [json_name = "slot"];
 }
 
 // path: #/components/messages/slotUpdated/payload
 message SlotUpdated {
-    AnonymousSchema11 payload = 1 [json_name = "payload"];
+    SlotUpdatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -289,16 +284,11 @@ message SlotUpdated {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/slotConfigCreated/payload/properties/payload
-message AnonymousSchema12 {
-    SlotConfig slot_config = 1 [json_name = "slotConfig"];
 }
 
 // path: #/components/messages/slotConfigCreated/payload
 message SlotConfigCreated {
-    AnonymousSchema12 payload = 1 [json_name = "payload"];
+    SlotConfigCreatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -311,16 +301,11 @@ message SlotConfigCreated {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/slotConfigDeleted/payload/properties/payload
-message AnonymousSchema13 {
-    SlotConfig slot_config = 1 [json_name = "slotConfig"];
 }
 
 // path: #/components/messages/slotConfigDeleted/payload
 message SlotConfigDeleted {
-    AnonymousSchema13 payload = 1 [json_name = "payload"];
+    SlotConfigDeletedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -335,14 +320,9 @@ message SlotConfigDeleted {
     string session_id = 11 [json_name = "sessionId"];
 }
 
-// path: #/components/messages/slotConfigUpdated/payload/properties/payload
-message AnonymousSchema14 {
-    SlotConfig slot_config = 1 [json_name = "slotConfig"];
-}
-
 // path: #/components/messages/slotConfigUpdated/payload
 message SlotConfigUpdated {
-    AnonymousSchema14 payload = 1 [json_name = "payload"];
+    SlotConfigUpdatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];

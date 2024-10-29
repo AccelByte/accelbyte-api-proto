@@ -263,6 +263,82 @@ components:
         quantity:
           type: integer
           description: quantity of key uploaded
+    campaignCreatedPayloadData:
+      type: object
+      properties:
+        campaign:
+          $ref: '#/components/schemas/campaign'
+      x-uid0: AnonymousSchema1
+    campaignUpdatedPayloadData:
+      type: object
+      properties:
+        campaign:
+          $ref: '#/components/schemas/campaign'
+        oldCampaign:
+          $ref: '#/components/schemas/campaign'
+      x-uid0: AnonymousSchema2
+    codeCreatedPayloadData:
+      type: object
+      properties:
+        codeCreate:
+          $ref: '#/components/schemas/codeCreate'
+      x-uid0: AnonymousSchema3
+    codeDisabledPayloadData:
+      type: object
+      properties:
+        codeCondition:
+          $ref: '#/components/schemas/codeCondition'
+      x-uid0: AnonymousSchema4
+    codeEnabledPayloadData:
+      type: object
+      properties:
+        codeCondition:
+          $ref: '#/components/schemas/codeCondition'
+      x-uid0: AnonymousSchema5
+    codeBulkDisabledPayloadData:
+      type: object
+      properties:
+        codeCondition:
+          $ref: '#/components/schemas/codeCondition'
+      x-uid0: AnonymousSchema6
+    codeBulkEnabledPayloadData:
+      type: object
+      properties:
+        codeCondition:
+          $ref: '#/components/schemas/codeCondition'
+      x-uid0: AnonymousSchema7
+    codeRedeemedPayloadData:
+      type: object
+      properties:
+        codeRedemption:
+          $ref: '#/components/schemas/codeRedemption'
+      x-uid0: AnonymousSchema8
+    ticketAcquiredPayloadData:
+      type: object
+      properties:
+        ticketAcquisition:
+          $ref: '#/components/schemas/ticketAcquisition'
+      x-uid0: AnonymousSchema9
+    keyGroupCreatedPayloadData:
+      type: object
+      properties:
+        keyGroup:
+          $ref: '#/components/schemas/keyGroup'
+      x-uid0: AnonymousSchema10
+    keyGroupUpdatedPayloadData:
+      type: object
+      properties:
+        keyGroup:
+          $ref: '#/components/schemas/keyGroup'
+        oldKeyGroup:
+          $ref: '#/components/schemas/keyGroup'
+      x-uid0: AnonymousSchema11
+    keyUploadedPayloadData:
+      type: object
+      properties:
+        keyUpload:
+          $ref: '#/components/schemas/keyUpload'
+      x-uid0: AnonymousSchema12
   messages:
     campaignCreated:
       name: campaignCreated
@@ -273,10 +349,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              campaign:
-                $ref: '#/components/schemas/campaign'
+            $ref: '#/components/schemas/campaignCreatedPayloadData'
     campaignUpdated:
       name: campaignUpdated
       description: message is sent when campaign is updated
@@ -286,12 +359,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              campaign:
-                $ref: '#/components/schemas/campaign'
-              oldCampaign:
-                $ref: '#/components/schemas/campaign'
+            $ref: '#/components/schemas/campaignUpdatedPayloadData'
     codeCreated:
       name: codeCreated
       description: message is when redeem codes are created
@@ -301,10 +369,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              codeCreate:
-                $ref: '#/components/schemas/codeCreate'
+            $ref: '#/components/schemas/codeCreatedPayloadData'
     codeDisabled:
       name: codeDisabled
       description: message is sent when code is disabled
@@ -314,10 +379,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              codeCondition:
-                $ref: '#/components/schemas/codeCondition'
+            $ref: '#/components/schemas/codeDisabledPayloadData'
     codeEnabled:
       name: codeEnabled
       description: message is sent when redeem code is enabled
@@ -327,10 +389,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              codeCondition:
-                $ref: '#/components/schemas/codeCondition'
+            $ref: '#/components/schemas/codeEnabledPayloadData'
     codeBulkDisabled:
       name: codeBulkDisabled
       description: message is sent when bulk codes are disabled
@@ -340,10 +399,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              codeCondition:
-                $ref: '#/components/schemas/codeCondition'
+            $ref: '#/components/schemas/codeBulkDisabledPayloadData'
     codeBulkEnabled:
       name: codeBulkEnabled
       description: message is sent when bulk codes are enabled
@@ -353,10 +409,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              codeCondition:
-                $ref: '#/components/schemas/codeCondition'
+            $ref: '#/components/schemas/codeBulkEnabledPayloadData'
     codeRedeemed:
       name: codeRedeemed
       description: message is sent when code is redeemed
@@ -366,10 +419,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              codeRedemption:
-                $ref: '#/components/schemas/codeRedemption'
+            $ref: '#/components/schemas/codeRedeemedPayloadData'
     ticketAcquired:
       name: ticketAcquired
       description: message is sent when ticket is acquired, for example, when user
@@ -380,10 +430,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              ticketAcquisition:
-                $ref: '#/components/schemas/ticketAcquisition'
+            $ref: '#/components/schemas/ticketAcquiredPayloadData'
     keyGroupCreated:
       name: keyGroupCreated
       description: message is sent when key group is created
@@ -393,10 +440,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              keyGroup:
-                $ref: '#/components/schemas/keyGroup'
+            $ref: '#/components/schemas/keyGroupCreatedPayloadData'
     keyGroupUpdated:
       name: keyGroupUpdated
       description: message is sent when key group is updated
@@ -406,12 +450,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              keyGroup:
-                $ref: '#/components/schemas/keyGroup'
-              oldKeyGroup:
-                $ref: '#/components/schemas/keyGroup'
+            $ref: '#/components/schemas/keyGroupUpdatedPayloadData'
     keyUploaded:
       name: keyUploaded
       description: message is sent when upload keys
@@ -421,10 +460,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              keyUpload:
-                $ref: '#/components/schemas/keyUpload'
+            $ref: '#/components/schemas/keyUploadedPayloadData'
 x-source: Ecommerce/AsyncAPI/campaign.yml
 x-proto-package: accelbyte.ecommerce.campaign.v1
 x-proto-package-version: v1.0.0

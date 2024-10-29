@@ -69,12 +69,7 @@ components:
           items:
             type: string
 
-    userPayloadConnected:
-      userConnected:
-      type: object
-
     userPayloadDisconnected:
-      userDisconnected:
       type: object
       properties:
         reason:
@@ -85,53 +80,68 @@ components:
           type: boolean
 
     userChatRateLimited:
-      userChatRateLimited:
       type: object
 
+    personalChatSentPayloadData:
+      type: object
+      properties:
+        personalChatSent:
+          $ref: '#/components/schemas/chatPayload'
+    userConnectedPayloadData:
+      type: object
+      properties:
+        userConnected:
+          type: object
+          additionalProperties: true
+    userDisconnectedPayloadData:
+      type: object
+      properties:
+        userDisconnected:
+          $ref: '#/components/schemas/userPayloadDisconnected'
+    userChatRateLimitedPayloadData:
+      type: object
+      properties:
+        userDisconnected:
+          $ref: '#/components/schemas/userPayloadDisconnected'
 
   messages:
     personalChatSent:
       name: personalChatSent
       payload:
+        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            properties:
-              personalChatSent:
-                $ref: '#/components/schemas/chatPayload'
-
+            $ref: '#/components/schemas/personalChatSentPayloadData'
 
     userConnected:
       name: userConnected
       payload:
+        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            properties:
-              userConnected:
-                $ref: '#/components/schemas/userPayloadConnected'
+            $ref: '#/components/schemas/userConnectedPayloadData'
 
     userDisconnected:
       name: userDisconnected
       payload:
+        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            properties:
-              userDisconnected:
-                $ref: '#/components/schemas/userPayloadDisconnected'
+            $ref: '#/components/schemas/userDisconnectedPayloadData'
 
     userChatRateLimited:
       name: userChatRateLimited
       payload:
+        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            properties:
-              userChatRateLimited:
-                $ref: '#/components/schemas/userChatRateLimited'
+            $ref: '#/components/schemas/userChatRateLimitedPayloadData'
 

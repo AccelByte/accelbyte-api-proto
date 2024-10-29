@@ -69,6 +69,24 @@ message PlayerRecordDeletedPayload {
     string actor_user_id = 4 [json_name = "actorUserId"];
 }
 
+// path: #/components/schemas/gameRecordCreatedPayloadData
+message GameRecordCreatedPayloadData { // previously known as 'AnonymousSchema1'
+    string set_by = 1 [json_name = "setBy"];
+
+    // allOf(#/components/schemas/recordPayload)
+    string key = 2 [json_name = "key"];
+    string namespace = 3 [json_name = "namespace"];
+}
+
+// path: #/components/schemas/gameRecordUpdatedPayloadData
+message AnonymousSchema2 {
+    string set_by = 1 [json_name = "setBy"];
+
+    // allOf(#/components/schemas/recordPayload)
+    string key = 2 [json_name = "key"];
+    string namespace = 3 [json_name = "namespace"];
+}
+
 // path: #/components/messages/adminGameRecordCreated/payload
 message AdminGameRecordCreated {
     RecordPayload payload = 1 [json_name = "payload"];
@@ -120,18 +138,9 @@ message AdminGameRecordDeleted {
     string session_id = 11 [json_name = "sessionId"];
 }
 
-// path: #/components/messages/gameRecordCreated/payload/properties/payload
-message AnonymousSchema1 {
-    string set_by = 1 [json_name = "setBy"];
-
-    // allOf(#/components/schemas/recordPayload)
-    string key = 2 [json_name = "key"];
-    string namespace = 3 [json_name = "namespace"];
-}
-
 // path: #/components/messages/gameRecordCreated/payload
 message GameRecordCreated {
-    AnonymousSchema1 payload = 1 [json_name = "payload"];
+    GameRecordCreatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -144,15 +153,6 @@ message GameRecordCreated {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/gameRecordUpdated/payload/properties/payload
-message AnonymousSchema2 {
-    string set_by = 1 [json_name = "setBy"];
-
-    // allOf(#/components/schemas/recordPayload)
-    string key = 2 [json_name = "key"];
-    string namespace = 3 [json_name = "namespace"];
 }
 
 // path: #/components/messages/gameRecordUpdated/payload

@@ -48,27 +48,35 @@ components:
           type: integer
         activity:
           type: string
+    userSetStatusPayload:
+      type: object
+      properties:
+        presence:
+          $ref: '#/components/schemas/statusPayload'
+    friendStatusUpdatedPayload:
+      type: object
+      properties:
+        presence:
+          $ref: '#/components/schemas/statusPayload'
   messages:
     userSetStatus:
       name: userSetStatus
       payload:
+        type: object
         allOf:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            properties:
-              presence:
-                $ref: '#/components/schemas/statusPayload'
+            $ref: '#/components/schemas/userSetStatusPayload'
     friendStatusUpdated:
       name: friendStatusUpdated
       payload:
+        type: object
         allOf:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            properties:
-              presence:
-                $ref: '#/components/schemas/statusPayload'
+            $ref: '#/components/schemas/friendStatusUpdatedPayload'
 x-source: Lobby/AsyncAPI/presence.yaml
 x-proto-package: accelbyte.lobby.presence.v1
 x-proto-package-version: v1.0.0

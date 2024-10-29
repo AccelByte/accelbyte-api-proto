@@ -223,7 +223,7 @@ components:
       type: object
       properties:
         paymentProvider:
-          type: object
+          type: string
           description: payment provider
           enum:
           - WALLET
@@ -261,6 +261,68 @@ components:
         extTxId:
           type: string
           description: external transaction id
+    subscribedPayloadData:
+      type: object
+      properties:
+        subscription:
+          $ref: '#/components/schemas/subscription'
+      x-uid0: AnonymousSchema2
+    cancelledPayloadData:
+      type: object
+      properties:
+        subscription:
+          $ref: '#/components/schemas/subscription'
+      x-uid0: AnonymousSchema3
+    immediateCancelledPayloadData:
+      type: object
+      properties:
+        subscription:
+          $ref: '#/components/schemas/subscription'
+      x-uid0: AnonymousSchema4
+    resubscribedPayloadData:
+      type: object
+      properties:
+        subscription:
+          $ref: '#/components/schemas/subscription'
+      x-uid0: AnonymousSchema5
+    daysGrantedPayloadData:
+      type: object
+      properties:
+        subscription:
+          $ref: '#/components/schemas/subscription'
+        grantDays:
+          type: integer
+      x-uid0: AnonymousSchema6
+    chargedPayloadData:
+      type: object
+      properties:
+        subscription:
+          $ref: '#/components/schemas/subscription'
+        billing:
+          $ref: '#/components/schemas/billing'
+      x-uid0: AnonymousSchema7
+    chargeFailedPayloadData:
+      type: object
+      properties:
+        subscription:
+          $ref: '#/components/schemas/subscription'
+        billing:
+          $ref: '#/components/schemas/billing'
+      x-uid0: AnonymousSchema8
+    expiredPayloadData:
+      type: object
+      properties:
+        subscription:
+          $ref: '#/components/schemas/subscription'
+      x-uid0: AnonymousSchema9
+    billingAccountChangedPayloadData:
+      type: object
+      properties:
+        subscription:
+          $ref: '#/components/schemas/subscription'
+        billing:
+          $ref: '#/components/schemas/billing'
+      x-uid0: AnonymousSchema10
   messages:
     subscribed:
       name: subscribed
@@ -271,10 +333,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              subscription:
-                $ref: '#/components/schemas/subscription'
+            $ref: '#/components/schemas/subscribedPayloadData'
     cancelled:
       name: cancelled
       description: message is sent when a subscription is cancelled
@@ -284,10 +343,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              subscription:
-                $ref: '#/components/schemas/subscription'
+            $ref: '#/components/schemas/cancelledPayloadData'
     immediateCancelled:
       name: immediateCancelled
       description: message is sent when a subscription is cancelled immediately
@@ -297,10 +353,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              subscription:
-                $ref: '#/components/schemas/subscription'
+            $ref: '#/components/schemas/immediateCancelledPayloadData'
     resubscribed:
       name: resubscribed
       description: message is sent when user resubscribe a subscription
@@ -310,10 +363,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              subscription:
-                $ref: '#/components/schemas/subscription'
+            $ref: '#/components/schemas/resubscribedPayloadData'
     daysGranted:
       name: daysGranted
       description: message is sent when grant days to subscription
@@ -323,12 +373,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              subscription:
-                $ref: '#/components/schemas/subscription'
-              grantDays:
-                type: integer
+            $ref: '#/components/schemas/daysGrantedPayloadData'
     charged:
       name: charged
       description: message is sent when billing is charged
@@ -338,12 +383,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              subscription:
-                $ref: '#/components/schemas/subscription'
-              billing:
-                $ref: '#/components/schemas/billing'
+            $ref: '#/components/schemas/chargedPayloadData'
     chargeFailed:
       name: chargeFailed
       description: message is sent when billing is charge failed
@@ -353,12 +393,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              subscription:
-                $ref: '#/components/schemas/subscription'
-              billing:
-                $ref: '#/components/schemas/billing'
+            $ref: '#/components/schemas/chargeFailedPayloadData'
     expired:
       name: expired
       description: message is sent when subscription is expired
@@ -368,10 +403,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              subscription:
-                $ref: '#/components/schemas/subscription'
+            $ref: '#/components/schemas/expiredPayloadData'
     billingAccountChanged:
       name: billingAccountChanged
       description: message is sent when  billing account is changed
@@ -381,12 +413,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              subscription:
-                $ref: '#/components/schemas/subscription'
-              billing:
-                $ref: '#/components/schemas/billing'
+            $ref: '#/components/schemas/billingAccountChangedPayloadData'
 x-source: Ecommerce/AsyncAPI/subscription.yml
 x-proto-package: accelbyte.ecommerce.subscription.v1
 x-proto-package-version: v1.0.0

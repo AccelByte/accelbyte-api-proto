@@ -98,14 +98,144 @@ message PaymentOrder {
     string previous_status = 18 [json_name = "previousStatus"];
 }
 
-// path: #/components/messages/paymentProviderConfigCreated/payload/properties/payload
-message AnonymousSchema1 {
+// path: #/components/schemas/paymentProviderConfigCreatedPayloadData
+message PaymentProviderConfigCreatedPayloadData { // previously known as 'AnonymousSchema1'
     PaymentProviderConfig payment_provider_config = 1 [json_name = "paymentProviderConfig"];
+}
+
+// path: #/components/schemas/paymentProviderConfigUpdatedPayloadData
+message PaymentProviderConfigUpdatedPayloadData { // previously known as 'AnonymousSchema2'
+    PaymentProviderConfig payment_provider_config = 1 [json_name = "paymentProviderConfig"];
+}
+
+// path: #/components/schemas/paymentProviderConfigDeletedPayloadData
+message PaymentProviderConfigDeletedPayloadData { // previously known as 'AnonymousSchema3'
+    PaymentProviderConfig payment_provider_config = 1 [json_name = "paymentProviderConfig"];
+}
+
+// path: #/components/schemas/paymentTaxConfigUpdatedPayloadData
+message PaymentTaxConfigUpdatedPayloadData { // previously known as 'AnonymousSchema4'
+    PaymentTaxConfig payment_tax_config = 1 [json_name = "paymentTaxConfig"];
+}
+
+// path: #/components/schemas/xsollaConfigUpdatedPayloadData
+message XsollaConfigUpdatedPayloadData { // previously known as 'AnonymousSchema5'
+    PaymentMerchantConfig payment_merchant_config = 1 [json_name = "paymentMerchantConfig"];
+}
+
+// path: #/components/schemas/xsollaUIConfigUpdatedPayloadData
+message XsollaUIConfigUpdatedPayloadData { // previously known as 'AnonymousSchema6'
+    PaymentMerchantConfig payment_merchant_config = 1 [json_name = "paymentMerchantConfig"];
+}
+
+// path: #/components/schemas/aliPayConfigUpdatedPayloadData
+message AliPayConfigUpdatedPayloadData { // previously known as 'AnonymousSchema7'
+    PaymentMerchantConfig payment_merchant_config = 1 [json_name = "paymentMerchantConfig"];
+}
+
+// path: #/components/schemas/wxPayConfigUpdatedPayloadData
+message WxPayConfigUpdatedPayloadData { // previously known as 'AnonymousSchema8'
+    PaymentMerchantConfig payment_merchant_config = 1 [json_name = "paymentMerchantConfig"];
+}
+
+// path: #/components/schemas/wxPayCertUploadedPayloadData
+message WxPayCertUploadedPayloadData { // previously known as 'AnonymousSchema9'
+    PaymentMerchantConfig payment_merchant_config = 1 [json_name = "paymentMerchantConfig"];
+}
+
+// path: #/components/schemas/adyenConfigUpdatedPayloadData
+message AdyenConfigUpdatedPayloadData { // previously known as 'AnonymousSchema10'
+    PaymentMerchantConfig payment_merchant_config = 1 [json_name = "paymentMerchantConfig"];
+}
+
+// path: #/components/schemas/stripeConfigUpdatedPayloadData
+message StripeConfigUpdatedPayloadData { // previously known as 'AnonymousSchema11'
+    PaymentMerchantConfig payment_merchant_config = 1 [json_name = "paymentMerchantConfig"];
+}
+
+// path: #/components/schemas/payPalConfigUpdatedPayloadData
+message PayPalConfigUpdatedPayloadData { // previously known as 'AnonymousSchema12'
+    PaymentMerchantConfig payment_merchant_config = 1 [json_name = "paymentMerchantConfig"];
+}
+
+// path: #/components/schemas/paymentOrderCreatedPayloadData
+message PaymentOrderCreatedPayloadData { // previously known as 'AnonymousSchema13'
+    PaymentOrder payment_order = 1 [json_name = "paymentOrder"];
+}
+
+// path: #/components/schemas/paymentOrderChargedPayloadData
+message PaymentOrderChargedPayloadData { // previously known as 'AnonymousSchema14'
+    PaymentOrder payment_order = 1 [json_name = "paymentOrder"];
+}
+
+// path: #/components/schemas/paymentOrderChargeFailedPayloadData
+message PaymentOrderChargeFailedPayloadData { // previously known as 'AnonymousSchema15'
+    PaymentOrder payment_order = 1 [json_name = "paymentOrder"];
+}
+
+// path: #/components/schemas/paymentOrderRefundedPayloadData
+message PaymentOrderRefundedPayloadData { // previously known as 'AnonymousSchema16'
+    PaymentOrder payment_order = 1 [json_name = "paymentOrder"];
+}
+
+// path: #/components/schemas/paymentOrderRefundFailedPayloadData
+message PaymentOrderRefundFailedPayloadData { // previously known as 'AnonymousSchema17'
+    PaymentOrder payment_order = 1 [json_name = "paymentOrder"];
+}
+
+// path: #/components/schemas/paymentOrderAuthorisedPayloadData
+message PaymentOrderAuthorisedPayloadData { // previously known as 'AnonymousSchema18'
+    PaymentOrder payment_order = 1 [json_name = "paymentOrder"];
+}
+
+// path: #/components/schemas/paymentOrderAuthorisedFailedPayloadData
+message PaymentOrderAuthorisedFailedPayloadData { // previously known as 'AnonymousSchema19'
+    PaymentOrder payment_order = 1 [json_name = "paymentOrder"];
+}
+
+// path: #/components/schemas/paymentOrderNotificationOfChargebackPayloadData
+message PaymentOrderNotificationOfChargebackPayloadData { // previously known as 'AnonymousSchema20'
+    PaymentOrder payment_order = 1 [json_name = "paymentOrder"];
+}
+
+// path: #/components/schemas/paymentOrderRequestForInformationPayloadData
+message PaymentOrderRequestForInformationPayloadData { // previously known as 'AnonymousSchema21'
+    PaymentOrder payment_order = 1 [json_name = "paymentOrder"];
+}
+
+// path: #/components/schemas/paymentOrderChargebackPayloadData
+message PaymentOrderChargebackPayloadData { // previously known as 'AnonymousSchema22'
+    PaymentOrder payment_order = 1 [json_name = "paymentOrder"];
+}
+
+// path: #/components/schemas/paymentOrderChargebackReversedPayloadData
+message PaymentOrderChargebackReversedPayloadData { // previously known as 'AnonymousSchema23'
+    PaymentOrder payment_order = 1 [json_name = "paymentOrder"];
+}
+
+// path: #/components/schemas/paymentOrderRefundRequestedPayloadData
+message PaymentOrderRefundRequestedPayloadData { // previously known as 'AnonymousSchema24'
+    PaymentOrder payment_order = 1 [json_name = "paymentOrder"];
+}
+
+// path: #/components/schemas/paymentAccountDeletedPayloadData
+message PaymentAccountDeletedPayloadData { // previously known as 'AnonymousSchema25'
+    PaymentAccount payment_account = 1 [json_name = "paymentAccount"];
+}
+
+// path: #/components/schemas/checkoutConfigUpdatedPayloadData
+message CheckoutConfigUpdatedPayloadData { // previously known as 'AnonymousSchema26'
+    PaymentMerchantConfig payment_merchant_config = 1 [json_name = "paymentMerchantConfig"];
+}
+
+// path: #/components/schemas/neonPayConfigUpdatedPayloadData
+message NeonPayConfigUpdatedPayloadData { // previously known as 'AnonymousSchema27'
+    PaymentMerchantConfig payment_merchant_config = 1 [json_name = "paymentMerchantConfig"];
 }
 
 // path: #/components/messages/paymentProviderConfigCreated/payload
 message PaymentProviderConfigCreated {
-    AnonymousSchema1 payload = 1 [json_name = "payload"];
+    PaymentProviderConfigCreatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -118,16 +248,11 @@ message PaymentProviderConfigCreated {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/paymentProviderConfigUpdated/payload/properties/payload
-message AnonymousSchema2 {
-    PaymentProviderConfig payment_provider_config = 1 [json_name = "paymentProviderConfig"];
 }
 
 // path: #/components/messages/paymentProviderConfigUpdated/payload
 message PaymentProviderConfigUpdated {
-    AnonymousSchema2 payload = 1 [json_name = "payload"];
+    PaymentProviderConfigUpdatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -140,16 +265,11 @@ message PaymentProviderConfigUpdated {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/paymentProviderConfigDeleted/payload/properties/payload
-message AnonymousSchema3 {
-    PaymentProviderConfig payment_provider_config = 1 [json_name = "paymentProviderConfig"];
 }
 
 // path: #/components/messages/paymentProviderConfigDeleted/payload
 message PaymentProviderConfigDeleted {
-    AnonymousSchema3 payload = 1 [json_name = "payload"];
+    PaymentProviderConfigDeletedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -162,16 +282,11 @@ message PaymentProviderConfigDeleted {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/paymentTaxConfigUpdated/payload/properties/payload
-message AnonymousSchema4 {
-    PaymentTaxConfig payment_tax_config = 1 [json_name = "paymentTaxConfig"];
 }
 
 // path: #/components/messages/paymentTaxConfigUpdated/payload
 message PaymentTaxConfigUpdated {
-    AnonymousSchema4 payload = 1 [json_name = "payload"];
+    PaymentTaxConfigUpdatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -184,16 +299,11 @@ message PaymentTaxConfigUpdated {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/xsollaConfigUpdated/payload/properties/payload
-message AnonymousSchema5 {
-    PaymentMerchantConfig payment_merchant_config = 1 [json_name = "paymentMerchantConfig"];
 }
 
 // path: #/components/messages/xsollaConfigUpdated/payload
 message XsollaConfigUpdated {
-    AnonymousSchema5 payload = 1 [json_name = "payload"];
+    XsollaConfigUpdatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -206,16 +316,11 @@ message XsollaConfigUpdated {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/xsollaUIConfigUpdated/payload/properties/payload
-message AnonymousSchema6 {
-    PaymentMerchantConfig payment_merchant_config = 1 [json_name = "paymentMerchantConfig"];
 }
 
 // path: #/components/messages/xsollaUIConfigUpdated/payload
 message XsollaUIConfigUpdated {
-    AnonymousSchema6 payload = 1 [json_name = "payload"];
+    XsollaUIConfigUpdatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -228,16 +333,11 @@ message XsollaUIConfigUpdated {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/aliPayConfigUpdated/payload/properties/payload
-message AnonymousSchema7 {
-    PaymentMerchantConfig payment_merchant_config = 1 [json_name = "paymentMerchantConfig"];
 }
 
 // path: #/components/messages/aliPayConfigUpdated/payload
 message AliPayConfigUpdated {
-    AnonymousSchema7 payload = 1 [json_name = "payload"];
+    AliPayConfigUpdatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -250,16 +350,11 @@ message AliPayConfigUpdated {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/wxPayConfigUpdated/payload/properties/payload
-message AnonymousSchema8 {
-    PaymentMerchantConfig payment_merchant_config = 1 [json_name = "paymentMerchantConfig"];
 }
 
 // path: #/components/messages/wxPayConfigUpdated/payload
 message WxPayConfigUpdated {
-    AnonymousSchema8 payload = 1 [json_name = "payload"];
+    WxPayConfigUpdatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -272,16 +367,11 @@ message WxPayConfigUpdated {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/wxPayCertUploaded/payload/properties/payload
-message AnonymousSchema9 {
-    PaymentMerchantConfig payment_merchant_config = 1 [json_name = "paymentMerchantConfig"];
 }
 
 // path: #/components/messages/wxPayCertUploaded/payload
 message WxPayCertUploaded {
-    AnonymousSchema9 payload = 1 [json_name = "payload"];
+    WxPayCertUploadedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -294,16 +384,11 @@ message WxPayCertUploaded {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/adyenConfigUpdated/payload/properties/payload
-message AnonymousSchema10 {
-    PaymentMerchantConfig payment_merchant_config = 1 [json_name = "paymentMerchantConfig"];
 }
 
 // path: #/components/messages/adyenConfigUpdated/payload
 message AdyenConfigUpdated {
-    AnonymousSchema10 payload = 1 [json_name = "payload"];
+    AdyenConfigUpdatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -316,16 +401,11 @@ message AdyenConfigUpdated {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/stripeConfigUpdated/payload/properties/payload
-message AnonymousSchema11 {
-    PaymentMerchantConfig payment_merchant_config = 1 [json_name = "paymentMerchantConfig"];
 }
 
 // path: #/components/messages/stripeConfigUpdated/payload
 message StripeConfigUpdated {
-    AnonymousSchema11 payload = 1 [json_name = "payload"];
+    StripeConfigUpdatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -338,16 +418,11 @@ message StripeConfigUpdated {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/payPalConfigUpdated/payload/properties/payload
-message AnonymousSchema12 {
-    PaymentMerchantConfig payment_merchant_config = 1 [json_name = "paymentMerchantConfig"];
 }
 
 // path: #/components/messages/payPalConfigUpdated/payload
 message PayPalConfigUpdated {
-    AnonymousSchema12 payload = 1 [json_name = "payload"];
+    PayPalConfigUpdatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -360,16 +435,11 @@ message PayPalConfigUpdated {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/paymentOrderCreated/payload/properties/payload
-message AnonymousSchema13 {
-    PaymentOrder payment_order = 1 [json_name = "paymentOrder"];
 }
 
 // path: #/components/messages/paymentOrderCreated/payload
 message PaymentOrderCreated {
-    AnonymousSchema13 payload = 1 [json_name = "payload"];
+    PaymentOrderCreatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -382,16 +452,11 @@ message PaymentOrderCreated {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/paymentOrderCharged/payload/properties/payload
-message AnonymousSchema14 {
-    PaymentOrder payment_order = 1 [json_name = "paymentOrder"];
 }
 
 // path: #/components/messages/paymentOrderCharged/payload
 message PaymentOrderCharged {
-    AnonymousSchema14 payload = 1 [json_name = "payload"];
+    PaymentOrderChargedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -404,16 +469,11 @@ message PaymentOrderCharged {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/paymentOrderChargeFailed/payload/properties/payload
-message AnonymousSchema15 {
-    PaymentOrder payment_order = 1 [json_name = "paymentOrder"];
 }
 
 // path: #/components/messages/paymentOrderChargeFailed/payload
 message PaymentOrderChargeFailed {
-    AnonymousSchema15 payload = 1 [json_name = "payload"];
+    PaymentOrderChargeFailedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -426,16 +486,11 @@ message PaymentOrderChargeFailed {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/paymentOrderRefunded/payload/properties/payload
-message AnonymousSchema16 {
-    PaymentOrder payment_order = 1 [json_name = "paymentOrder"];
 }
 
 // path: #/components/messages/paymentOrderRefunded/payload
 message PaymentOrderRefunded {
-    AnonymousSchema16 payload = 1 [json_name = "payload"];
+    PaymentOrderRefundedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -448,16 +503,11 @@ message PaymentOrderRefunded {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/paymentOrderRefundFailed/payload/properties/payload
-message AnonymousSchema17 {
-    PaymentOrder payment_order = 1 [json_name = "paymentOrder"];
 }
 
 // path: #/components/messages/paymentOrderRefundFailed/payload
 message PaymentOrderRefundFailed {
-    AnonymousSchema17 payload = 1 [json_name = "payload"];
+    PaymentOrderRefundFailedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -470,16 +520,11 @@ message PaymentOrderRefundFailed {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/paymentOrderAuthorised/payload/properties/payload
-message AnonymousSchema18 {
-    PaymentOrder payment_order = 1 [json_name = "paymentOrder"];
 }
 
 // path: #/components/messages/paymentOrderAuthorised/payload
 message PaymentOrderAuthorised {
-    AnonymousSchema18 payload = 1 [json_name = "payload"];
+    PaymentOrderAuthorisedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -492,16 +537,11 @@ message PaymentOrderAuthorised {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/paymentOrderAuthorisedFailed/payload/properties/payload
-message AnonymousSchema19 {
-    PaymentOrder payment_order = 1 [json_name = "paymentOrder"];
 }
 
 // path: #/components/messages/paymentOrderAuthorisedFailed/payload
 message PaymentOrderAuthorisedFailed {
-    AnonymousSchema19 payload = 1 [json_name = "payload"];
+    PaymentOrderAuthorisedFailedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -514,16 +554,11 @@ message PaymentOrderAuthorisedFailed {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/paymentOrderNotificationOfChargeback/payload/properties/payload
-message AnonymousSchema20 {
-    PaymentOrder payment_order = 1 [json_name = "paymentOrder"];
 }
 
 // path: #/components/messages/paymentOrderNotificationOfChargeback/payload
 message PaymentOrderNotificationOfChargeback {
-    AnonymousSchema20 payload = 1 [json_name = "payload"];
+    PaymentOrderNotificationOfChargebackPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -536,16 +571,11 @@ message PaymentOrderNotificationOfChargeback {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/paymentOrderRequestForInformation/payload/properties/payload
-message AnonymousSchema21 {
-    PaymentOrder payment_order = 1 [json_name = "paymentOrder"];
 }
 
 // path: #/components/messages/paymentOrderRequestForInformation/payload
 message PaymentOrderRequestForInformation {
-    AnonymousSchema21 payload = 1 [json_name = "payload"];
+    PaymentOrderRequestForInformationPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -558,16 +588,11 @@ message PaymentOrderRequestForInformation {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/paymentOrderChargeback/payload/properties/payload
-message AnonymousSchema22 {
-    PaymentOrder payment_order = 1 [json_name = "paymentOrder"];
 }
 
 // path: #/components/messages/paymentOrderChargeback/payload
 message PaymentOrderChargeback {
-    AnonymousSchema22 payload = 1 [json_name = "payload"];
+    PaymentOrderChargebackPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -580,16 +605,11 @@ message PaymentOrderChargeback {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/paymentOrderChargebackReversed/payload/properties/payload
-message AnonymousSchema23 {
-    PaymentOrder payment_order = 1 [json_name = "paymentOrder"];
 }
 
 // path: #/components/messages/paymentOrderChargebackReversed/payload
 message PaymentOrderChargebackReversed {
-    AnonymousSchema23 payload = 1 [json_name = "payload"];
+    PaymentOrderChargebackReversedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -602,16 +622,11 @@ message PaymentOrderChargebackReversed {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/paymentOrderRefundRequested/payload/properties/payload
-message AnonymousSchema24 {
-    PaymentOrder payment_order = 1 [json_name = "paymentOrder"];
 }
 
 // path: #/components/messages/paymentOrderRefundRequested/payload
 message PaymentOrderRefundRequested {
-    AnonymousSchema24 payload = 1 [json_name = "payload"];
+    PaymentOrderRefundRequestedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -624,16 +639,11 @@ message PaymentOrderRefundRequested {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/paymentAccountDeleted/payload/properties/payload
-message AnonymousSchema25 {
-    PaymentAccount payment_account = 1 [json_name = "paymentAccount"];
 }
 
 // path: #/components/messages/paymentAccountDeleted/payload
 message PaymentAccountDeleted {
-    AnonymousSchema25 payload = 1 [json_name = "payload"];
+    PaymentAccountDeletedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -646,16 +656,11 @@ message PaymentAccountDeleted {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/checkoutConfigUpdated/payload/properties/payload
-message AnonymousSchema26 {
-    PaymentMerchantConfig payment_merchant_config = 1 [json_name = "paymentMerchantConfig"];
 }
 
 // path: #/components/messages/checkoutConfigUpdated/payload
 message CheckoutConfigUpdated {
-    AnonymousSchema26 payload = 1 [json_name = "payload"];
+    CheckoutConfigUpdatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -670,14 +675,9 @@ message CheckoutConfigUpdated {
     string session_id = 11 [json_name = "sessionId"];
 }
 
-// path: #/components/messages/neonPayConfigUpdated/payload/properties/payload
-message AnonymousSchema27 {
-    PaymentMerchantConfig payment_merchant_config = 1 [json_name = "paymentMerchantConfig"];
-}
-
 // path: #/components/messages/neonPayConfigUpdated/payload
 message NeonPayConfigUpdated {
-    AnonymousSchema27 payload = 1 [json_name = "payload"];
+    NeonPayConfigUpdatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];

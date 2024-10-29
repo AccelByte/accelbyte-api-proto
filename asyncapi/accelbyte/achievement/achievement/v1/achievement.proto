@@ -65,14 +65,24 @@ message AchievementRewardClaimed {
     int64 claimed_at = 6 [json_name = "claimedAt"];
 }
 
-// path: #/components/messages/userAchievementUnlocked/payload/properties/payload
-message AnonymousSchema1 {
+// path: #/components/schemas/userAchievementUnlockedPayloadData
+message UserAchievementUnlockedPayloadData { // previously known as 'AnonymousSchema1'
     UserAchievement user_achievement = 1 [json_name = "userAchievement"];
+}
+
+// path: #/components/schemas/globalAchievementUnlockedPayloadData
+message GlobalAchievementUnlockedPayloadData { // previously known as 'AnonymousSchema2'
+    GlobalAchievement global_achievement = 1 [json_name = "globalAchievement"];
+}
+
+// path: #/components/schemas/achievementRewardClaimedPayloadData
+message AchievementRewardClaimedPayloadData { // previously known as 'AnonymousSchema3'
+    AchievementRewardClaimed achievement_reward_claimed = 1 [json_name = "achievementRewardClaimed"];
 }
 
 // path: #/components/messages/userAchievementUnlocked/payload
 message UserAchievementUnlocked {
-    AnonymousSchema1 payload = 1 [json_name = "payload"];
+    UserAchievementUnlockedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -84,16 +94,11 @@ message UserAchievementUnlocked {
     string user_id = 8 [json_name = "userId"];
     string trace_id = 9 [json_name = "traceId"];
     string session_id = 10 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/globalAchievementUnlocked/payload/properties/payload
-message AnonymousSchema2 {
-    GlobalAchievement global_achievement = 1 [json_name = "globalAchievement"];
 }
 
 // path: #/components/messages/globalAchievementUnlocked/payload
 message GlobalAchievementUnlocked {
-    AnonymousSchema2 payload = 1 [json_name = "payload"];
+    GlobalAchievementUnlockedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -107,14 +112,9 @@ message GlobalAchievementUnlocked {
     string session_id = 10 [json_name = "sessionId"];
 }
 
-// path: #/components/messages/achievementRewardClaimed/payload/properties/payload
-message AnonymousSchema3 {
-    AchievementRewardClaimed achievement_reward_claimed = 1 [json_name = "achievementRewardClaimed"];
-}
-
 // path: #/components/messages/achievementRewardClaimed/payload
 message AchievementRewardClaimedPayload {
-    AnonymousSchema3 payload = 1 [json_name = "payload"];
+    AchievementRewardClaimedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];

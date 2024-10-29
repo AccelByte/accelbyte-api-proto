@@ -210,6 +210,12 @@ components:
         metadata:
           type: object
           additionalProperties: true
+    fulfillmentCompletedPayload:
+      type: object
+      properties:
+        fulfillment:
+          $ref: '#/components/schemas/fulfillment'
+      x-uid: AnonymousSchema1
   messages:
     fulfillmentCompleted:
       name: fulfillmentCompleted
@@ -220,10 +226,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              fulfillment:
-                $ref: '#/components/schemas/fulfillment'
+            $ref: '#/components/schemas/fulfillmentCompletedPayload'
 x-source: Ecommerce/AsyncAPI/fulfillment.yml
 x-proto-package: accelbyte.ecommerce.fulfillment.v1
 x-proto-package-version: v1.0.0

@@ -62,14 +62,14 @@ message ReportContent {
     string user_id = 13 [json_name = "UserID"];
 }
 
-// path: #/components/messages/hideContent/payload/properties/payload
-message AnonymousSchema1 {
+// path: #/components/schemas/hideContentPayloadData
+message HideContentPayloadData { // previously known as 'AnonymousSchema1'
     AutoHideContent auto_hide_content = 1 [json_name = "autoHideContent"];
 }
 
 // path: #/components/messages/hideContent/payload
 message HideContent {
-    AnonymousSchema1 payload = 1 [json_name = "payload"];
+    HideContentPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];

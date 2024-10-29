@@ -54,10 +54,6 @@ message StatusHistory {
     string status = 2 [json_name = "status"]; // Allowed values: CREATING, READY, BUSY, REMOVING, UNREACHABLE, FAILED
 }
 
-// path: #/components/schemas/server/properties/ports
-message AnonymousSchema1 {
-}
-
 // path: #/components/schemas/server
 message Server {
     repeated AllocationEvent allocation_events = 1 [json_name = "allocation_events"];
@@ -78,7 +74,7 @@ message Server {
     string params = 16 [json_name = "params"];
     string pod_name = 17 [json_name = "pod_name"];
     int64 port = 18 [json_name = "port"];
-    AnonymousSchema1 ports = 19 [json_name = "ports"];
+    map<string, int64> ports = 19 [json_name = "ports"];
     string protocol = 20 [json_name = "protocol"];
     string provider = 21 [json_name = "provider"];
     string region = 22 [json_name = "region"];
@@ -98,96 +94,33 @@ message Session {
     Server server = 5 [json_name = "Server"];
 }
 
-// path: #/components/schemas/dsNumEachRegionEachNamespace
-message DsNumEachRegionEachNamespace {
-}
-
-// path: #/components/messages/allocationComplete/payload/properties/payload
-message AnonymousSchema2 {
+// path: #/components/schemas/allocationCompletePayloadData
+message AllocationCompletePayloadData { // previously known as 'AnonymousSchema2'
     string server = 1 [json_name = "server"];
     repeated AllocationEvent allocation_events = 2 [json_name = "allocationEvents"];
 }
 
-// path: #/components/messages/allocationComplete/payload
-message AllocationComplete {
-    AnonymousSchema2 payload = 1 [json_name = "payload"];
-
-    // allOf(#/components/schemas/event)
-    string id = 2 [json_name = "id"];
-    int64 version = 3 [json_name = "version"];
-    string name = 4 [json_name = "name"];
-    string namespace = 5 [json_name = "namespace"];
-    string parent_namespace = 6 [json_name = "parentNamespace"];
-    string target_namespace = 7 [json_name = "target_namespace"];
-    string timestamp = 8 [json_name = "timestamp"];
-    string topic = 9 [json_name = "topic"];
-    string service = 10 [json_name = "service"];
-    string session_id = 11 [json_name = "sessionId"];
-    string trace_id = 12 [json_name = "traceId"];
-    string user_id = 13 [json_name = "userId"];
-    string client_id = 14 [json_name = "clientId"];
-}
-
-// path: #/components/messages/dsClaimed/payload/properties/payload
-message AnonymousSchema3 {
+// path: #/components/schemas/dsClaimedPayloadData
+message DsClaimedPayloadData { // previously known as 'AnonymousSchema3'
     bool ds_claimed = 1 [json_name = "dsClaimed"];
     string session_id = 2 [json_name = "sessionID"];
     string ds_claimed_at = 3 [json_name = "dsClaimedAt"];
 }
 
-// path: #/components/messages/dsClaimed/payload
-message DsClaimed {
-    AnonymousSchema3 payload = 1 [json_name = "payload"];
-
-    // allOf(#/components/schemas/event)
-    string id = 2 [json_name = "id"];
-    int64 version = 3 [json_name = "version"];
-    string name = 4 [json_name = "name"];
-    string namespace = 5 [json_name = "namespace"];
-    string parent_namespace = 6 [json_name = "parentNamespace"];
-    string target_namespace = 7 [json_name = "target_namespace"];
-    string timestamp = 8 [json_name = "timestamp"];
-    string topic = 9 [json_name = "topic"];
-    string service = 10 [json_name = "service"];
-    string session_id = 11 [json_name = "sessionId"];
-    string trace_id = 12 [json_name = "traceId"];
-    string user_id = 13 [json_name = "userId"];
-    string client_id = 14 [json_name = "clientId"];
-}
-
-// path: #/components/messages/dsCount/payload/properties/payload
-message AnonymousSchema4 {
-}
-
-// path: #/components/messages/dsCount/payload
-message DsCount {
-    AnonymousSchema4 payload = 1 [json_name = "payload"];
-
-    // allOf(#/components/schemas/event)
-    string id = 2 [json_name = "id"];
-    int64 version = 3 [json_name = "version"];
-    string name = 4 [json_name = "name"];
-    string namespace = 5 [json_name = "namespace"];
-    string parent_namespace = 6 [json_name = "parentNamespace"];
-    string target_namespace = 7 [json_name = "target_namespace"];
-    string timestamp = 8 [json_name = "timestamp"];
-    string topic = 9 [json_name = "topic"];
-    string service = 10 [json_name = "service"];
-    string session_id = 11 [json_name = "sessionId"];
-    string trace_id = 12 [json_name = "traceId"];
-    string user_id = 13 [json_name = "userId"];
-    string client_id = 14 [json_name = "clientId"];
-}
-
-// path: #/components/messages/dsStatusChanged/payload/properties/payload
-message AnonymousSchema5 {
+// path: #/components/schemas/dsStatusChangedPayloadData
+message DsStatusChangedPayloadData { // previously known as 'AnonymousSchema5'
     Server server = 1 [json_name = "server"];
     bool is_buffered = 2 [json_name = "isBuffered"];
 }
 
-// path: #/components/messages/dsStatusChanged/payload
-message DsStatusChanged {
-    AnonymousSchema5 payload = 1 [json_name = "payload"];
+// path: #/components/schemas/sessionEndedPayloadData
+message SessionEndedPayloadData { // previously known as 'AnonymousSchema6'
+    Session session = 1 [json_name = "session"];
+}
+
+// path: #/components/messages/allocationComplete/payload
+message AllocationComplete {
+    AllocationCompletePayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -205,14 +138,69 @@ message DsStatusChanged {
     string client_id = 14 [json_name = "clientId"];
 }
 
-// path: #/components/messages/sessionEnded/payload/properties/payload
-message AnonymousSchema6 {
-    Session session = 1 [json_name = "session"];
+// path: #/components/messages/dsClaimed/payload
+message DsClaimed {
+    DsClaimedPayloadData payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string target_namespace = 7 [json_name = "target_namespace"];
+    string timestamp = 8 [json_name = "timestamp"];
+    string topic = 9 [json_name = "topic"];
+    string service = 10 [json_name = "service"];
+    string session_id = 11 [json_name = "sessionId"];
+    string trace_id = 12 [json_name = "traceId"];
+    string user_id = 13 [json_name = "userId"];
+    string client_id = 14 [json_name = "clientId"];
+}
+
+// path: #/components/messages/dsCount/payload
+message DsCount {
+    map<string, google.protobuf.ListValue> payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string target_namespace = 7 [json_name = "target_namespace"];
+    string timestamp = 8 [json_name = "timestamp"];
+    string topic = 9 [json_name = "topic"];
+    string service = 10 [json_name = "service"];
+    string session_id = 11 [json_name = "sessionId"];
+    string trace_id = 12 [json_name = "traceId"];
+    string user_id = 13 [json_name = "userId"];
+    string client_id = 14 [json_name = "clientId"];
+}
+
+// path: #/components/messages/dsStatusChanged/payload
+message DsStatusChanged {
+    DsStatusChangedPayloadData payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string target_namespace = 7 [json_name = "target_namespace"];
+    string timestamp = 8 [json_name = "timestamp"];
+    string topic = 9 [json_name = "topic"];
+    string service = 10 [json_name = "service"];
+    string session_id = 11 [json_name = "sessionId"];
+    string trace_id = 12 [json_name = "traceId"];
+    string user_id = 13 [json_name = "userId"];
+    string client_id = 14 [json_name = "clientId"];
 }
 
 // path: #/components/messages/sessionEnded/payload
 message SessionEnded {
-    AnonymousSchema6 payload = 1 [json_name = "payload"];
+    SessionEndedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];

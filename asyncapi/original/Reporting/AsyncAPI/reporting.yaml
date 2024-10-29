@@ -85,7 +85,12 @@ components:
           format: date-time
         UserID:
           type: string
-
+    hideContentPayloadData:
+      type: object
+      properties:
+        autoHideContent:
+          $ref: '#/components/schemas/autoHideContent'
+      x-uid0: AnonymousSchema1
   messages:
     hideContent:
       name: hideContent
@@ -95,11 +100,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              autoHideContent:
-                $ref: '#/components/schemas/autoHideContent'
-
+            $ref: '#/components/schemas/hideContentPayloadData'
     userReport:
       name: userReport
       payload:

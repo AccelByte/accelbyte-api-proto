@@ -116,14 +116,104 @@ message UgcContentGroup {
     string created_time = 6 [json_name = "createdTime"];
 }
 
-// path: #/components/messages/ugcContentUpdated/payload/properties/payload
-message AnonymousSchema1 {
+// path: #/components/schemas/ugcContentUpdatedPayloadData
+message UgcContentUpdatedPayloadData { // previously known as 'AnonymousSchema1'
     UgcContent ugc_content = 1 [json_name = "ugcContent"];
+}
+
+// path: #/components/schemas/ugcContentDeletedPayloadData
+message UgcContentDeletedPayloadData { // previously known as 'AnonymousSchema2'
+    UgcContentDelete ugc_content_delete = 1 [json_name = "ugcContentDelete"];
+}
+
+// path: #/components/schemas/ugcContentHidePayloadData
+message UgcContentHidePayloadData { // previously known as 'AnonymousSchema3'
+    UgcContentHide ugc_content_hide = 1 [json_name = "ugcContentHide"];
+}
+
+// path: #/components/schemas/ugcContentUnHidePayloadData
+message UgcContentUnHidePayloadData { // previously known as 'AnonymousSchema4'
+    UgcContentHide ugc_content_hide = 1 [json_name = "ugcContentHide"];
+}
+
+// path: #/components/schemas/ugcContentCreatedPayloadData
+message UgcContentCreatedPayloadData { // previously known as 'AnonymousSchema5'
+    UgcContent ugc_content = 1 [json_name = "ugcContent"];
+}
+
+// path: #/components/schemas/ugcContentLikedPayloadData
+message UgcContentLikedPayloadData { // previously known as 'AnonymousSchema6'
+    UgcContentLike ugc_content_like = 1 [json_name = "ugcContentLike"];
+}
+
+// path: #/components/schemas/ugcContentUnLikedPayloadData
+message UgcContentUnLikedPayloadData { // previously known as 'AnonymousSchema7'
+    UgcContentLike ugc_content_like = 1 [json_name = "ugcContentLike"];
+}
+
+// path: #/components/schemas/ugcChannelCreatedPayloadData
+message UgcChannelCreatedPayloadData { // previously known as 'AnonymousSchema8'
+    UgcChannel ugc_channel = 1 [json_name = "ugcChannel"];
+}
+
+// path: #/components/schemas/ugcChannelUpdatedPayloadData
+message UgcChannelUpdatedPayloadData { // previously known as 'AnonymousSchema9'
+    UgcChannel ugc_channel = 1 [json_name = "ugcChannel"];
+}
+
+// path: #/components/schemas/ugcChannelDeletedPayloadData
+message UgcChannelDeletedPayloadData { // previously known as 'AnonymousSchema10'
+    UgcChannelDeleted ugc_channel = 1 [json_name = "ugcChannel"];
+}
+
+// path: #/components/schemas/ugcCreatorCreatedPayloadData
+message UgcCreatorCreatedPayloadData { // previously known as 'AnonymousSchema11'
+    UgcCreator ugc_creator = 1 [json_name = "ugcCreator"];
+}
+
+// path: #/components/schemas/ugcCreatorFollowedPayloadData
+message UgcCreatorFollowedPayloadData { // previously known as 'AnonymousSchema12'
+    UgcCreator ugc_creator = 1 [json_name = "ugcCreator"];
+}
+
+// path: #/components/schemas/ugcCreatorUnFollowedPayloadData
+message UgcCreatorUnFollowedPayloadData { // previously known as 'AnonymousSchema13'
+    UgcCreator ugc_creator = 1 [json_name = "ugcCreator"];
+}
+
+// path: #/components/schemas/ugcCreatorDeletedPayloadData
+message UgcCreatorDeletedPayloadData { // previously known as 'AnonymousSchema14'
+    UgcCreator ugc_creator = 1 [json_name = "ugcCreator"];
+}
+
+// path: #/components/schemas/ugcCreatorBannedPayloadData
+message UgcCreatorBannedPayloadData { // previously known as 'AnonymousSchema15'
+    UgcCreatorBan ugc_creator_ban = 1 [json_name = "ugcCreatorBan"];
+}
+
+// path: #/components/schemas/ugcCreatorUnBannedPayloadData
+message UgcCreatorUnBannedPayloadData { // previously known as 'AnonymousSchema16'
+    UgcCreatorBan ugc_creator_ban = 1 [json_name = "ugcCreatorBan"];
+}
+
+// path: #/components/schemas/ugcContentGroupCreatedPayloadData
+message UgcContentGroupCreatedPayloadData { // previously known as 'AnonymousSchema17'
+    UgcContentGroup ugc_content_group = 1 [json_name = "ugcContentGroup"];
+}
+
+// path: #/components/schemas/ugcContentGroupUpdatedPayloadData
+message UgcContentGroupUpdatedPayloadData { // previously known as 'AnonymousSchema18'
+    UgcContentGroup ugc_content_group = 1 [json_name = "ugcContentGroup"];
+}
+
+// path: #/components/schemas/ugcContentGroupDeletedPayloadData
+message UgcContentGroupDeletedPayloadData { // previously known as 'AnonymousSchema19'
+    UgcContentGroup ugc_content_group = 1 [json_name = "ugcContentGroup"];
 }
 
 // path: #/components/messages/ugcContentUpdated/payload
 message UgcContentUpdated {
-    AnonymousSchema1 payload = 1 [json_name = "payload"];
+    UgcContentUpdatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -136,16 +226,11 @@ message UgcContentUpdated {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/ugcContentDeleted/payload/properties/payload
-message AnonymousSchema2 {
-    UgcContentDelete ugc_content_delete = 1 [json_name = "ugcContentDelete"];
 }
 
 // path: #/components/messages/ugcContentDeleted/payload
 message UgcContentDeleted {
-    AnonymousSchema2 payload = 1 [json_name = "payload"];
+    UgcContentDeletedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -158,16 +243,11 @@ message UgcContentDeleted {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/ugcContentHide/payload/properties/payload
-message AnonymousSchema3 {
-    UgcContentHide ugc_content_hide = 1 [json_name = "ugcContentHide"];
 }
 
 // path: #/components/messages/ugcContentHide/payload
 message UgcContentHidePayload {
-    AnonymousSchema3 payload = 1 [json_name = "payload"];
+    UgcContentHidePayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -180,16 +260,11 @@ message UgcContentHidePayload {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/ugcContentUnHide/payload/properties/payload
-message AnonymousSchema4 {
-    UgcContentHide ugc_content_hide = 1 [json_name = "ugcContentHide"];
 }
 
 // path: #/components/messages/ugcContentUnHide/payload
 message UgcContentUnHide {
-    AnonymousSchema4 payload = 1 [json_name = "payload"];
+    UgcContentUnHidePayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -202,16 +277,11 @@ message UgcContentUnHide {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/ugcContentCreated/payload/properties/payload
-message AnonymousSchema5 {
-    UgcContent ugc_content = 1 [json_name = "ugcContent"];
 }
 
 // path: #/components/messages/ugcContentCreated/payload
 message UgcContentCreated {
-    AnonymousSchema5 payload = 1 [json_name = "payload"];
+    UgcContentCreatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -224,16 +294,11 @@ message UgcContentCreated {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/ugcContentLiked/payload/properties/payload
-message AnonymousSchema6 {
-    UgcContentLike ugc_content_like = 1 [json_name = "ugcContentLike"];
 }
 
 // path: #/components/messages/ugcContentLiked/payload
 message UgcContentLiked {
-    AnonymousSchema6 payload = 1 [json_name = "payload"];
+    UgcContentLikedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -246,16 +311,11 @@ message UgcContentLiked {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/ugcContentUnLiked/payload/properties/payload
-message AnonymousSchema7 {
-    UgcContentLike ugc_content_like = 1 [json_name = "ugcContentLike"];
 }
 
 // path: #/components/messages/ugcContentUnLiked/payload
 message UgcContentUnLiked {
-    AnonymousSchema7 payload = 1 [json_name = "payload"];
+    UgcContentUnLikedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -268,16 +328,11 @@ message UgcContentUnLiked {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/ugcChannelCreated/payload/properties/payload
-message AnonymousSchema8 {
-    UgcChannel ugc_channel = 1 [json_name = "ugcChannel"];
 }
 
 // path: #/components/messages/ugcChannelCreated/payload
 message UgcChannelCreated {
-    AnonymousSchema8 payload = 1 [json_name = "payload"];
+    UgcChannelCreatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -290,16 +345,11 @@ message UgcChannelCreated {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/ugcChannelUpdated/payload/properties/payload
-message AnonymousSchema9 {
-    UgcChannel ugc_channel = 1 [json_name = "ugcChannel"];
 }
 
 // path: #/components/messages/ugcChannelUpdated/payload
 message UgcChannelUpdated {
-    AnonymousSchema9 payload = 1 [json_name = "payload"];
+    UgcChannelUpdatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -312,16 +362,11 @@ message UgcChannelUpdated {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/ugcChannelDeleted/payload/properties/payload
-message AnonymousSchema10 {
-    UgcChannelDeleted ugc_channel = 1 [json_name = "ugcChannel"];
 }
 
 // path: #/components/messages/ugcChannelDeleted/payload
 message UgcChannelDeletedPayload {
-    AnonymousSchema10 payload = 1 [json_name = "payload"];
+    UgcChannelDeletedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -334,16 +379,11 @@ message UgcChannelDeletedPayload {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/ugcCreatorCreated/payload/properties/payload
-message AnonymousSchema11 {
-    UgcCreator ugc_creator = 1 [json_name = "ugcCreator"];
 }
 
 // path: #/components/messages/ugcCreatorCreated/payload
 message UgcCreatorCreated {
-    AnonymousSchema11 payload = 1 [json_name = "payload"];
+    UgcCreatorCreatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -356,16 +396,11 @@ message UgcCreatorCreated {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/ugcCreatorFollowed/payload/properties/payload
-message AnonymousSchema12 {
-    UgcCreator ugc_creator = 1 [json_name = "ugcCreator"];
 }
 
 // path: #/components/messages/ugcCreatorFollowed/payload
 message UgcCreatorFollowed {
-    AnonymousSchema12 payload = 1 [json_name = "payload"];
+    UgcCreatorFollowedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -378,16 +413,11 @@ message UgcCreatorFollowed {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/ugcCreatorUnFollowed/payload/properties/payload
-message AnonymousSchema13 {
-    UgcCreator ugc_creator = 1 [json_name = "ugcCreator"];
 }
 
 // path: #/components/messages/ugcCreatorUnFollowed/payload
 message UgcCreatorUnFollowed {
-    AnonymousSchema13 payload = 1 [json_name = "payload"];
+    UgcCreatorUnFollowedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -400,16 +430,11 @@ message UgcCreatorUnFollowed {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/ugcCreatorDeleted/payload/properties/payload
-message AnonymousSchema14 {
-    UgcCreator ugc_creator = 1 [json_name = "ugcCreator"];
 }
 
 // path: #/components/messages/ugcCreatorDeleted/payload
 message UgcCreatorDeleted {
-    AnonymousSchema14 payload = 1 [json_name = "payload"];
+    UgcCreatorDeletedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -422,16 +447,11 @@ message UgcCreatorDeleted {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/ugcCreatorBanned/payload/properties/payload
-message AnonymousSchema15 {
-    UgcCreatorBan ugc_creator_ban = 1 [json_name = "ugcCreatorBan"];
 }
 
 // path: #/components/messages/ugcCreatorBanned/payload
 message UgcCreatorBanned {
-    AnonymousSchema15 payload = 1 [json_name = "payload"];
+    UgcCreatorBannedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -444,16 +464,11 @@ message UgcCreatorBanned {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/ugcCreatorUnBanned/payload/properties/payload
-message AnonymousSchema16 {
-    UgcCreatorBan ugc_creator_ban = 1 [json_name = "ugcCreatorBan"];
 }
 
 // path: #/components/messages/ugcCreatorUnBanned/payload
 message UgcCreatorUnBanned {
-    AnonymousSchema16 payload = 1 [json_name = "payload"];
+    UgcCreatorUnBannedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -466,16 +481,11 @@ message UgcCreatorUnBanned {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/ugcContentGroupCreated/payload/properties/payload
-message AnonymousSchema17 {
-    UgcContentGroup ugc_content_group = 1 [json_name = "ugcContentGroup"];
 }
 
 // path: #/components/messages/ugcContentGroupCreated/payload
 message UgcContentGroupCreated {
-    AnonymousSchema17 payload = 1 [json_name = "payload"];
+    UgcContentGroupCreatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -488,16 +498,11 @@ message UgcContentGroupCreated {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/ugcContentGroupUpdated/payload/properties/payload
-message AnonymousSchema18 {
-    UgcContentGroup ugc_content_group = 1 [json_name = "ugcContentGroup"];
 }
 
 // path: #/components/messages/ugcContentGroupUpdated/payload
 message UgcContentGroupUpdated {
-    AnonymousSchema18 payload = 1 [json_name = "payload"];
+    UgcContentGroupUpdatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -512,14 +517,9 @@ message UgcContentGroupUpdated {
     string session_id = 11 [json_name = "sessionId"];
 }
 
-// path: #/components/messages/ugcContentGroupDeleted/payload/properties/payload
-message AnonymousSchema19 {
-    UgcContentGroup ugc_content_group = 1 [json_name = "ugcContentGroup"];
-}
-
 // path: #/components/messages/ugcContentGroupDeleted/payload
 message UgcContentGroupDeleted {
-    AnonymousSchema19 payload = 1 [json_name = "payload"];
+    UgcContentGroupDeletedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];

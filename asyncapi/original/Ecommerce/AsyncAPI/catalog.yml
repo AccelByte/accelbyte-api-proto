@@ -688,7 +688,156 @@ components:
         published:
           type: boolean
           description: true if the target store is a published store
-
+    storeCreatedPayloadData:
+      type: object
+      properties:
+        store:
+          $ref: '#/components/schemas/store'
+      x-uid0: AnonymousSchema13
+    storeUpdatedPayloadData:
+      type: object
+      properties:
+        store:
+          $ref: '#/components/schemas/store'
+        oldStore:
+          $ref: '#/components/schemas/store'
+      x-uid0: AnonymousSchema14
+    storeDeletedPayloadData:
+      type: object
+      properties:
+        store:
+          $ref: '#/components/schemas/store'
+      x-uid0: AnonymousSchema15
+    storeExportedPayloadData:
+      type: object
+      properties:
+        storeId:
+          type: string
+          description: store id
+      x-uid0: AnonymousSchema16
+    storeImportedPayloadData:
+      type: object
+      properties:
+        storeId:
+          type: string
+          description: store id
+      x-uid0: AnonymousSchema17
+    storeClonedPayloadData:
+      type: object
+      properties:
+        storeId:
+          type: string
+          description: store id
+        storeClone:
+          $ref: '#/components/schemas/storeClone'
+      x-uid0: AnonymousSchema18
+    storeRollbackedPayloadData:
+      type: object
+      properties:
+        storeId:
+          type: string
+          description: store id
+      x-uid0: AnonymousSchema19
+    storePublishedPayloadData:
+      type: object
+      properties:
+        storeId:
+          type: string
+          description: store id
+        storePublishSchema:
+          $ref: '#/components/schemas/storePublish'
+      x-uid0: AnonymousSchema20
+    categoryCreatedPayloadData:
+      type: object
+      properties:
+        storeId:
+          type: string
+        category:
+          $ref: '#/components/schemas/category'
+      x-uid0: AnonymousSchema21
+    categoryUpdatedPayloadData:
+      type: object
+      properties:
+        storeId:
+          type: string
+        category:
+          $ref: '#/components/schemas/category'
+        oldCategory:
+          $ref: '#/components/schemas/category'
+      x-uid0: AnonymousSchema22
+    categoryDeletedPayloadData:
+      type: object
+      properties:
+        storeId:
+          type: string
+          description: store id
+        category:
+          $ref: '#/components/schemas/category'
+      x-uid0: AnonymousSchema23
+    itemCreatedPayloadData:
+      type: object
+      properties:
+        storeId:
+          type: string
+        item:
+          $ref: '#/components/schemas/item'
+      x-uid0: AnonymousSchema24
+    itemUpdatedPayloadData:
+      type: object
+      properties:
+        storeId:
+          type: string
+          description: store id
+        item:
+          $ref: '#/components/schemas/item'
+        oldItem:
+          $ref: '#/components/schemas/item'
+      x-uid0: AnonymousSchema25
+    itemDeletedPayloadData:
+      type: object
+      properties:
+        storeId:
+          type: string
+          description: store id
+        item:
+          $ref: '#/components/schemas/item'
+      x-uid0: AnonymousSchema26
+    inGameItemSyncedPayloadData:
+      type: object
+      properties:
+        storeId:
+          type: string
+          description: store id
+        item:
+          $ref: '#/components/schemas/item'
+      x-uid0: AnonymousSchema27
+    itemDisabledPayloadData:
+      type: object
+      properties:
+        storeId:
+          type: string
+          description: store id
+        itemStatusChange:
+          $ref: '#/components/schemas/itemStatusChange'
+      x-uid0: AnonymousSchema28
+    itemEnabledPayloadData:
+      type: object
+      properties:
+        storeId:
+          type: string
+        itemStatusChange:
+          $ref: '#/components/schemas/itemStatusChange'
+      x-uid0: AnonymousSchema29
+    appUpdatedPayloadData:
+      type: object
+      properties:
+        storeId:
+          type: string
+        app:
+          $ref: '#/components/schemas/app'
+        oldApp:
+          $ref: '#/components/schemas/app'
+      x-uid0: AnonymousSchema30
   messages:
     storeCreated:
       name: storeCreated
@@ -699,11 +848,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              store:
-                $ref: '#/components/schemas/store'
-
+            $ref: '#/components/schemas/storeCreatedPayloadData'
     storeUpdated:
       name: storeUpdated
       description: message is sent when store is updated
@@ -713,13 +858,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              store:
-                $ref: '#/components/schemas/store'
-              oldStore:
-                $ref: '#/components/schemas/store'
-
+            $ref: '#/components/schemas/storeUpdatedPayloadData'
     storeDeleted:
       name: storeDeleted
       description: message is sent when store is deleted
@@ -729,11 +868,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              store:
-                $ref: '#/components/schemas/store'
-
+            $ref: '#/components/schemas/storeDeletedPayloadData'
     storeExported:
       name: storeExported
       description: message is sent when store is exported
@@ -743,12 +878,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              storeId:
-                type: string
-                description: store id
-
+            $ref: '#/components/schemas/storeExportedPayloadData'
     storeImported:
       name: storeImported
       description: message is sent when store is imported
@@ -758,12 +888,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              storeId:
-                type: string
-                description: store id
-
+            $ref: '#/components/schemas/storeImportedPayloadData'
     storeCloned:
       name: storeCloned
       description: message is sent when clone a store
@@ -773,14 +898,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              storeId:
-                type: string
-                description: store id
-              storeClone:
-                $ref: '#/components/schemas/storeClone'
-
+            $ref: '#/components/schemas/storeClonedPayloadData'
     storeRollbacked:
       name: storeRollbacked
       description: message is sent when roll back a published store to a previous version
@@ -790,12 +908,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              storeId:
-                type: string
-                description: store id
-
+            $ref: '#/components/schemas/storeRollbackedPayloadData'
     storePublished:
       name: storePublished
       description: message is sent when publish store
@@ -805,14 +918,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              storeId:
-                type: string
-                description: store id
-              storePublishSchema:
-                $ref: '#/components/schemas/storePublish'
-
+            $ref: '#/components/schemas/storePublishedPayloadData'
     categoryCreated:
       name: categoryCreated
       description: message is sent when category is created
@@ -822,13 +928,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              storeId:
-                type: string
-              category:
-                $ref: '#/components/schemas/category'
-
+            $ref: '#/components/schemas/categoryCreatedPayloadData'
     categoryUpdated:
       name: categoryUpdated
       description: message is sent when category is updated
@@ -838,15 +938,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              storeId:
-                type: string
-              category:
-                $ref: '#/components/schemas/category'
-              oldCategory:
-                $ref: '#/components/schemas/category'
-
+            $ref: '#/components/schemas/categoryUpdatedPayloadData'
     categoryDeleted:
       name: categoryDeleted
       description: message is sent when category is deleted
@@ -856,14 +948,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              storeId:
-                type: string
-                description: store id
-              category:
-                $ref: '#/components/schemas/category'
-
+            $ref: '#/components/schemas/categoryDeletedPayloadData'
     itemCreated:
       name: itemCreated
       description: message is sent when item is created
@@ -873,13 +958,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              storeId:
-                type: string
-              item:
-                $ref: '#/components/schemas/item'
-
+            $ref: '#/components/schemas/itemCreatedPayloadData'
     itemUpdated:
       name: itemUpdated
       description: message is sent when item is updated
@@ -889,16 +968,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              storeId:
-                type: string
-                description: store id
-              item:
-                $ref: '#/components/schemas/item'
-              oldItem:
-                $ref: '#/components/schemas/item'
-
+            $ref: '#/components/schemas/itemUpdatedPayloadData'
     itemDeleted:
       name: itemDeleted
       description: message is sent when item is deleted
@@ -908,14 +978,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              storeId:
-                type: string
-                description: store id
-              item:
-                $ref: '#/components/schemas/item'
-
+            $ref: '#/components/schemas/itemDeletedPayloadData'
     inGameItemSynced:
       name: inGameItemSynced
       description: message is sent when sync in game item from game namespace  to publisher namespace
@@ -925,14 +988,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              storeId:
-                type: string
-                description: store id
-              item:
-                $ref: '#/components/schemas/item'
-
+            $ref: '#/components/schemas/inGameItemSyncedPayloadData'
     itemDisabled:
       name: itemDisabled
       description: message is sent when item is disabled
@@ -942,14 +998,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              storeId:
-                type: string
-                description: store id
-              itemStatusChange:
-                $ref: '#/components/schemas/itemStatusChange'
-
+            $ref: '#/components/schemas/itemDisabledPayloadData'
     itemEnabled:
       name: itemEnabled
       payload:
@@ -958,13 +1007,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              storeId:
-                type: string
-              itemStatusChange:
-                $ref: '#/components/schemas/itemStatusChange'
-
+            $ref: '#/components/schemas/itemEnabledPayloadData'
     appUpdated:
       name: appUpdated
       description: message is sent when an app is updated
@@ -974,11 +1017,4 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              storeId:
-                type: string
-              app:
-                $ref: '#/components/schemas/app'
-              oldApp:
-                $ref: '#/components/schemas/app'
+            $ref: '#/components/schemas/appUpdatedPayloadData'

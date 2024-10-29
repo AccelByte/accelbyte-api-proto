@@ -116,6 +116,22 @@ components:
         actorUserId:
           type: string
           description: requester user id
+    gameRecordCreatedPayloadData:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/recordPayload'
+      properties:
+        setBy:
+          type: string
+      x-uid0: AnonymousSchema1
+    gameRecordUpdatedPayloadData:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/recordPayload'
+      properties:
+        setBy:
+          type: string
+      x-uid: AnonymousSchema2
   messages:
     adminGameRecordCreated:
       name: adminGameRecordCreated
@@ -156,12 +172,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            allOf:
-            - $ref: '#/components/schemas/recordPayload'
-            properties:
-              setBy:
-                type: string
+            $ref: '#/components/schemas/gameRecordCreatedPayloadData'
     gameRecordUpdated:
       name: gameRecordUpdated
       description: message is sent when the Game Record is updated
@@ -171,12 +182,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            allOf:
-            - $ref: '#/components/schemas/recordPayload'
-            properties:
-              setBy:
-                type: string
+            $ref: '#/components/schemas/gameRecordUpdatedPayloadData'
     gameRecordDeleted:
       name: gameRecordDeleted
       description: message is sent when the Game Record is deleted

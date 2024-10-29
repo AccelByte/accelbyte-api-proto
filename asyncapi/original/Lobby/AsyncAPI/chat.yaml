@@ -59,25 +59,34 @@ components:
         payload:
           type: string
 
+    personalChatSentPayload:
+      type: object
+      properties:
+        chat:
+          $ref: '#/components/schemas/chatPayload'
+    partyChatSentPayload:
+      type: object
+      properties:
+        chat:
+          $ref: '#/components/schemas/chatPayload'
+
   messages:
     personalChatSent:
       name: personalChatSent
       payload:
+        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            properties:
-              chat:
-                $ref: '#/components/schemas/chatPayload'
+            $ref: '#/components/schemas/personalChatSentPayload'
 
     partyChatSent:
       name: partyChatSent
       payload:
+        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            properties:
-              chat:
-                $ref: '#/components/schemas/chatPayload'
+            $ref: '#/components/schemas/partyChatSentPayload'

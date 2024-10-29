@@ -168,8 +168,78 @@ components:
           type: string
         active:
           type: boolean
-
-
+    clientCreatedPayloadData:
+      type: object
+      properties:
+        client:
+          $ref: '#/components/schemas/clientCreateObj'
+      x-uid0: AnonymousSchema1
+    clientDeletedPayloadData:
+      type: object
+      properties:
+        client:
+          $ref: '#/components/schemas/client'
+      x-uid0: AnonymousSchema2
+    clientUpdatedPayloadData:
+      type: object
+      properties:
+        client:
+          $ref: '#/components/schemas/client'
+      x-uid0: AnonymousSchema3
+    clientPermissionsCreatedPayloadData:
+      type: object
+      properties:
+        client:
+          $ref: '#/components/schemas/client'
+        permissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/permissions'
+      x-uid0: AnonymousSchema4
+    clientPermissionsDeletedPayloadData:
+      type: object
+      properties:
+        client:
+          $ref: '#/components/schemas/client'
+        permissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/permissions'
+      x-uid0: AnonymousSchema5
+    clientPermissionsUpdatedPayloadData:
+      type: object
+      properties:
+        client:
+          $ref: '#/components/schemas/client'
+        permissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/permissions'
+      x-uid0: AnonymousSchema6
+    clientThirdPartyCreatedPayloadData:
+      type: object
+      properties:
+        client:
+          $ref: '#/components/schemas/client'
+        clientThirdParty:
+          $ref: '#/components/schemas/clientThirdParty'
+      x-uid0: AnonymousSchema7
+    clientThirdPartyDeletedPayloadData:
+      type: object
+      properties:
+        client:
+          $ref: '#/components/schemas/client'
+        clientThirdParty:
+          $ref: '#/components/schemas/clientThirdParty'
+      x-uid0: AnonymousSchema8
+    clientThirdPartyUpdatedPayloadData:
+      type: object
+      properties:
+        client:
+          $ref: '#/components/schemas/client'
+        clientThirdParty:
+          $ref: '#/components/schemas/clientThirdParty'
+      x-uid0: AnonymousSchema9
   messages:
     clientCreated:
       name: clientCreated
@@ -180,11 +250,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              client:
-                $ref: '#/components/schemas/clientCreateObj'
-
+            $ref: '#/components/schemas/clientCreatedPayloadData'
     clientDeleted:
       name: clientDeleted
       description: message is sent when IAM oauth client is deleted
@@ -194,11 +260,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              client:
-                $ref: '#/components/schemas/client'
-
+            $ref: '#/components/schemas/clientDeletedPayloadData'
     clientUpdated:
       name: clientUpdated
       description: message is sent when IAM oauth client is updated
@@ -208,11 +270,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              client:
-                $ref: '#/components/schemas/client'
-
+            $ref: '#/components/schemas/clientUpdatedPayloadData'
     clientPermissionsCreated:
       name: clientPermissionCreated
       description: message is sent when adding permission to oauth client
@@ -222,15 +280,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              client:
-                $ref: '#/components/schemas/client'
-              permissions:
-                type: array
-                items:
-                  $ref: '#/components/schemas/permissions'
-
+            $ref: '#/components/schemas/clientPermissionsCreatedPayloadData'
     clientPermissionsDeleted:
       name: clientPermissionDeleted
       description: message is sent when client's permission is deleted
@@ -240,15 +290,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              client:
-                $ref: '#/components/schemas/client'
-              permissions:
-                type: array
-                items:
-                  $ref: '#/components/schemas/permissions'
-
+            $ref: '#/components/schemas/clientPermissionsDeletedPayloadData'
     clientPermissionsUpdated:
       name: clientPermissionUpdated
       description: message is sent when client's permission is updated
@@ -258,31 +300,16 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              client:
-                $ref: '#/components/schemas/client'
-              permissions:
-                type: array
-                items:
-                  $ref: '#/components/schemas/permissions'
-
+            $ref: '#/components/schemas/clientPermissionsUpdatedPayloadData'
     clientThirdPartyCreated:
       name: clientThirdPartyCreated
-
       payload:
         type: object
         allOf:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              client:
-                $ref: '#/components/schemas/client'
-              clientThirdParty:
-                $ref: '#/components/schemas/clientThirdParty'
-
+            $ref: '#/components/schemas/clientThirdPartyCreatedPayloadData'
     clientThirdPartyDeleted:
       name: clientThirdPartyDeleted
       payload:
@@ -291,13 +318,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              client:
-                $ref: '#/components/schemas/client'
-              clientThirdParty:
-                $ref: '#/components/schemas/clientThirdParty'
-
+            $ref: '#/components/schemas/clientThirdPartyDeletedPayloadData'
     clientThirdPartyUpdated:
       name: clientThirdPartyUpdated
       description: deprecated
@@ -307,9 +328,4 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              client:
-                $ref: '#/components/schemas/client'
-              clientThirdParty:
-                $ref: '#/components/schemas/clientThirdParty'
+            $ref: '#/components/schemas/clientThirdPartyUpdatedPayloadData'

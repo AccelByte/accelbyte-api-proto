@@ -76,6 +76,24 @@ components:
           type: integer
         claimedAt:
           type: integer
+    userAchievementUnlockedPayloadData:
+      type: object
+      properties:
+        userAchievement:
+          $ref: '#/components/schemas/userAchievement'
+      x-uid0: AnonymousSchema1
+    globalAchievementUnlockedPayloadData:
+      type: object
+      properties:
+        globalAchievement:
+          $ref: '#/components/schemas/globalAchievement'
+      x-uid0: AnonymousSchema2
+    achievementRewardClaimedPayloadData:
+      type: object
+      properties:
+        achievementRewardClaimed:
+          $ref: '#/components/schemas/achievementRewardClaimed'
+      x-uid0: AnonymousSchema3
   messages:
     userAchievementUnlocked:
       name: userAchievementUnlocked
@@ -85,10 +103,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userAchievement:
-                $ref: '#/components/schemas/userAchievement'
+            $ref: '#/components/schemas/userAchievementUnlockedPayloadData'
     globalAchievementUnlocked:
       name: globalAchievementUnlocked
       payload:
@@ -97,10 +112,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              globalAchievement:
-                $ref: '#/components/schemas/globalAchievement'
+            $ref: '#/components/schemas/globalAchievementUnlockedPayloadData'
     achievementRewardClaimed:
       name: achievementRewardClaimedPayload
       payload:
@@ -109,10 +121,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              achievementRewardClaimed:
-                $ref: '#/components/schemas/achievementRewardClaimed'
+            $ref: '#/components/schemas/achievementRewardClaimedPayloadData'
 x-source: Achievement/AsyncAPI/achievement.yaml
 x-proto-package: accelbyte.achievement.achievement.v1
 x-proto-package-version: v1.0.0

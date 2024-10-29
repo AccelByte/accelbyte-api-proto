@@ -79,6 +79,30 @@ components:
           type: array
           items:
             type: string
+    rewardCreatedPayloadData:
+      type: object
+      properties:
+        rewardManage:
+          $ref: '#/components/schemas/rewardManage'
+      x-uid0: AnonymousSchema1
+    rewardUpdatedPayloadData:
+      type: object
+      properties:
+        rewardManage:
+          $ref: '#/components/schemas/rewardManage'
+      x-uid0: AnonymousSchema2
+    rewardDeletedPayloadData:
+      type: object
+      properties:
+        rewardManage:
+          $ref: '#/components/schemas/rewardManage'
+      x-uid0: AnonymousSchema3
+    rewardImportedPayloadData:
+      type: object
+      properties:
+        rewardImport:
+          $ref: '#/components/schemas/rewardImport'
+      x-uid0: AnonymousSchema4
   messages:
     rewardCreated:
       name: rewardCreated
@@ -89,10 +113,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              rewardManage:
-                $ref: '#/components/schemas/rewardManage'
+            $ref: '#/components/schemas/rewardCreatedPayloadData'
     rewardUpdated:
       name: rewardUpdated
       description: message is sent when reward is updated
@@ -102,10 +123,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              rewardManage:
-                $ref: '#/components/schemas/rewardManage'
+            $ref: '#/components/schemas/rewardUpdatedPayloadData'
     rewardDeleted:
       name: rewardDeleted
       description: message is sent when reward is deleted
@@ -115,10 +133,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              rewardManage:
-                $ref: '#/components/schemas/rewardManage'
+            $ref: '#/components/schemas/rewardDeletedPayloadData'
     rewardImported:
       name: rewardImported
       description: message is sent when import reward configuration
@@ -128,10 +143,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              rewardImport:
-                $ref: '#/components/schemas/rewardImport'
+            $ref: '#/components/schemas/rewardImportedPayloadData'
 x-source: Ecommerce/AsyncAPI/reward.yml
 x-proto-package: accelbyte.ecommerce.reward.v1
 x-proto-package-version: v1.0.0

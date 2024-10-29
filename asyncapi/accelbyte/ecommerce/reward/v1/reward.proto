@@ -55,14 +55,29 @@ message RewardImport {
     repeated string failed_reward_codes = 5 [json_name = "failedRewardCodes"];
 }
 
-// path: #/components/messages/rewardCreated/payload/properties/payload
-message AnonymousSchema1 {
+// path: #/components/schemas/rewardCreatedPayloadData
+message RewardCreatedPayloadData { // previously known as 'AnonymousSchema1'
     RewardManage reward_manage = 1 [json_name = "rewardManage"];
+}
+
+// path: #/components/schemas/rewardUpdatedPayloadData
+message RewardUpdatedPayloadData { // previously known as 'AnonymousSchema2'
+    RewardManage reward_manage = 1 [json_name = "rewardManage"];
+}
+
+// path: #/components/schemas/rewardDeletedPayloadData
+message RewardDeletedPayloadData { // previously known as 'AnonymousSchema3'
+    RewardManage reward_manage = 1 [json_name = "rewardManage"];
+}
+
+// path: #/components/schemas/rewardImportedPayloadData
+message RewardImportedPayloadData { // previously known as 'AnonymousSchema4'
+    RewardImport reward_import = 1 [json_name = "rewardImport"];
 }
 
 // path: #/components/messages/rewardCreated/payload
 message RewardCreated {
-    AnonymousSchema1 payload = 1 [json_name = "payload"];
+    RewardCreatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -75,16 +90,11 @@ message RewardCreated {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/rewardUpdated/payload/properties/payload
-message AnonymousSchema2 {
-    RewardManage reward_manage = 1 [json_name = "rewardManage"];
 }
 
 // path: #/components/messages/rewardUpdated/payload
 message RewardUpdated {
-    AnonymousSchema2 payload = 1 [json_name = "payload"];
+    RewardUpdatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -97,16 +107,11 @@ message RewardUpdated {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/rewardDeleted/payload/properties/payload
-message AnonymousSchema3 {
-    RewardManage reward_manage = 1 [json_name = "rewardManage"];
 }
 
 // path: #/components/messages/rewardDeleted/payload
 message RewardDeleted {
-    AnonymousSchema3 payload = 1 [json_name = "payload"];
+    RewardDeletedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -121,14 +126,9 @@ message RewardDeleted {
     string session_id = 11 [json_name = "sessionId"];
 }
 
-// path: #/components/messages/rewardImported/payload/properties/payload
-message AnonymousSchema4 {
-    RewardImport reward_import = 1 [json_name = "rewardImport"];
-}
-
 // path: #/components/messages/rewardImported/payload
 message RewardImported {
-    AnonymousSchema4 payload = 1 [json_name = "payload"];
+    RewardImportedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];

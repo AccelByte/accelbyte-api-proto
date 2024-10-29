@@ -228,7 +228,168 @@ components:
         previousStatus:
           type: string
           description: Payment order status before change
-
+    paymentProviderConfigCreatedPayloadData:
+      type: object
+      properties:
+        paymentProviderConfig:
+          $ref: '#/components/schemas/paymentProviderConfig'
+      x-uid0: AnonymousSchema1
+    paymentProviderConfigUpdatedPayloadData:
+      type: object
+      properties:
+        paymentProviderConfig:
+          $ref: '#/components/schemas/paymentProviderConfig'
+      x-uid0: AnonymousSchema2
+    paymentProviderConfigDeletedPayloadData:
+      type: object
+      properties:
+        paymentProviderConfig:
+          $ref: '#/components/schemas/paymentProviderConfig'
+      x-uid0: AnonymousSchema3
+    paymentTaxConfigUpdatedPayloadData:
+      type: object
+      properties:
+        paymentTaxConfig:
+          $ref: '#/components/schemas/paymentTaxConfig'
+      x-uid0: AnonymousSchema4
+    xsollaConfigUpdatedPayloadData:
+      type: object
+      properties:
+        paymentMerchantConfig:
+          $ref: '#/components/schemas/paymentMerchantConfig'
+      x-uid0: AnonymousSchema5
+    xsollaUIConfigUpdatedPayloadData:
+      type: object
+      properties:
+        paymentMerchantConfig:
+          $ref: '#/components/schemas/paymentMerchantConfig'
+      x-uid0: AnonymousSchema6
+    aliPayConfigUpdatedPayloadData:
+      type: object
+      properties:
+        paymentMerchantConfig:
+          $ref: '#/components/schemas/paymentMerchantConfig'
+      x-uid0: AnonymousSchema7
+    wxPayConfigUpdatedPayloadData:
+      type: object
+      properties:
+        paymentMerchantConfig:
+          $ref: '#/components/schemas/paymentMerchantConfig'
+      x-uid0: AnonymousSchema8
+    wxPayCertUploadedPayloadData:
+      type: object
+      properties:
+        paymentMerchantConfig:
+          $ref: '#/components/schemas/paymentMerchantConfig'
+      x-uid0: AnonymousSchema9
+    adyenConfigUpdatedPayloadData:
+      type: object
+      properties:
+        paymentMerchantConfig:
+          $ref: '#/components/schemas/paymentMerchantConfig'
+      x-uid0: AnonymousSchema10
+    stripeConfigUpdatedPayloadData:
+      type: object
+      properties:
+        paymentMerchantConfig:
+          $ref: '#/components/schemas/paymentMerchantConfig'
+      x-uid0: AnonymousSchema11
+    payPalConfigUpdatedPayloadData:
+      type: object
+      properties:
+        paymentMerchantConfig:
+          $ref: '#/components/schemas/paymentMerchantConfig'
+      x-uid0: AnonymousSchema12
+    paymentOrderCreatedPayloadData:
+      type: object
+      properties:
+        paymentOrder:
+          $ref: '#/components/schemas/paymentOrder'
+      x-uid0: AnonymousSchema13
+    paymentOrderChargedPayloadData:
+      type: object
+      properties:
+        paymentOrder:
+          $ref: '#/components/schemas/paymentOrder'
+      x-uid0: AnonymousSchema14
+    paymentOrderChargeFailedPayloadData:
+      type: object
+      properties:
+        paymentOrder:
+          $ref: '#/components/schemas/paymentOrder'
+      x-uid0: AnonymousSchema15
+    paymentOrderRefundedPayloadData:
+      type: object
+      properties:
+        paymentOrder:
+          $ref: '#/components/schemas/paymentOrder'
+      x-uid0: AnonymousSchema16
+    paymentOrderRefundFailedPayloadData:
+      type: object
+      properties:
+        paymentOrder:
+          $ref: '#/components/schemas/paymentOrder'
+      x-uid0: AnonymousSchema17
+    paymentOrderAuthorisedPayloadData:
+      type: object
+      properties:
+        paymentOrder:
+          $ref: '#/components/schemas/paymentOrder'
+      x-uid0: AnonymousSchema18
+    paymentOrderAuthorisedFailedPayloadData:
+      type: object
+      properties:
+        paymentOrder:
+          $ref: '#/components/schemas/paymentOrder'
+      x-uid0: AnonymousSchema19
+    paymentOrderNotificationOfChargebackPayloadData:
+      type: object
+      properties:
+        paymentOrder:
+          $ref: '#/components/schemas/paymentOrder'
+      x-uid0: AnonymousSchema20
+    paymentOrderRequestForInformationPayloadData:
+      type: object
+      properties:
+        paymentOrder:
+          $ref: '#/components/schemas/paymentOrder'
+      x-uid0: AnonymousSchema21
+    paymentOrderChargebackPayloadData:
+      type: object
+      properties:
+        paymentOrder:
+          $ref: '#/components/schemas/paymentOrder'
+      x-uid0: AnonymousSchema22
+    paymentOrderChargebackReversedPayloadData:
+      type: object
+      properties:
+        paymentOrder:
+          $ref: '#/components/schemas/paymentOrder'
+      x-uid0: AnonymousSchema23
+    paymentOrderRefundRequestedPayloadData:
+      type: object
+      properties:
+        paymentOrder:
+          $ref: '#/components/schemas/paymentOrder'
+      x-uid0: AnonymousSchema24
+    paymentAccountDeletedPayloadData:
+      type: object
+      properties:
+        paymentAccount:
+          $ref: '#/components/schemas/paymentAccount'
+      x-uid0: AnonymousSchema25
+    checkoutConfigUpdatedPayloadData:
+      type: object
+      properties:
+        paymentMerchantConfig:
+          $ref: '#/components/schemas/paymentMerchantConfig'
+      x-uid0: AnonymousSchema26
+    neonPayConfigUpdatedPayloadData:
+      type: object
+      properties:
+        paymentMerchantConfig:
+          $ref: '#/components/schemas/paymentMerchantConfig'
+      x-uid0: AnonymousSchema27
   messages:
     paymentProviderConfigCreated:
       name: paymentProviderConfigCreated
@@ -239,11 +400,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              paymentProviderConfig:
-                $ref: '#/components/schemas/paymentProviderConfig'
-
+            $ref: '#/components/schemas/paymentProviderConfigCreatedPayloadData'
     paymentProviderConfigUpdated:
       name: paymentProviderConfigUpdated
       description: The event is triggered by updating payment provider configuration.
@@ -253,11 +410,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              paymentProviderConfig:
-                $ref: '#/components/schemas/paymentProviderConfig'
-
+            $ref: '#/components/schemas/paymentProviderConfigUpdatedPayloadData'
     paymentProviderConfigDeleted:
       name: paymentProviderConfigDeleted
       description: The event is triggered by deleting payment provider configuration.
@@ -267,11 +420,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              paymentProviderConfig:
-                $ref: '#/components/schemas/paymentProviderConfig'
-
+            $ref: '#/components/schemas/paymentProviderConfigDeletedPayloadData'
     paymentTaxConfigUpdated:
       name: paymentTaxConfigUpdated
       description: The event is triggered by updating payment tax configuration.
@@ -281,11 +430,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              paymentTaxConfig:
-                $ref: '#/components/schemas/paymentTaxConfig'
-
+            $ref: '#/components/schemas/paymentTaxConfigUpdatedPayloadData'
     xsollaConfigUpdated:
       name: xsollaConfigUpdated
       description: The event is triggered by updating Xsolla configuration.
@@ -295,11 +440,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              paymentMerchantConfig:
-                $ref: '#/components/schemas/paymentMerchantConfig'
-
+            $ref: '#/components/schemas/xsollaConfigUpdatedPayloadData'
     xsollaUIConfigUpdated:
       name: xsollaUIConfigUpdated
       description: The event is triggered by updating Xsolla UI configuration.
@@ -309,11 +450,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              paymentMerchantConfig:
-                $ref: '#/components/schemas/paymentMerchantConfig'
-
+            $ref: '#/components/schemas/xsollaUIConfigUpdatedPayloadData'
     aliPayConfigUpdated:
       name: aliPayConfigUpdated
       description: The event is triggered by updating Alipay configuration.
@@ -323,11 +460,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              paymentMerchantConfig:
-                $ref: '#/components/schemas/paymentMerchantConfig'
-
+            $ref: '#/components/schemas/aliPayConfigUpdatedPayloadData'
     wxPayConfigUpdated:
       name: wxPayConfigUpdated
       description: The event is triggered by updating WxPay configuration.
@@ -337,11 +470,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              paymentMerchantConfig:
-                $ref: '#/components/schemas/paymentMerchantConfig'
-
+            $ref: '#/components/schemas/wxPayConfigUpdatedPayloadData'
     wxPayCertUploaded:
       name: wxPayCertUploaded
       description: The event is triggered by updating WxPay certificate configuration.
@@ -351,11 +480,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              paymentMerchantConfig:
-                $ref: '#/components/schemas/paymentMerchantConfig'
-
+            $ref: '#/components/schemas/wxPayCertUploadedPayloadData'
     adyenConfigUpdated:
       name: adyenConfigUpdated
       description: The event is triggered by updating Adyen configuration.
@@ -365,11 +490,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              paymentMerchantConfig:
-                $ref: '#/components/schemas/paymentMerchantConfig'
-
+            $ref: '#/components/schemas/adyenConfigUpdatedPayloadData'
     stripeConfigUpdated:
       name: stripeConfigUpdated
       description: The event is triggered by updating Stripe configuration.
@@ -379,11 +500,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              paymentMerchantConfig:
-                $ref: '#/components/schemas/paymentMerchantConfig'
-
+            $ref: '#/components/schemas/stripeConfigUpdatedPayloadData'
     payPalConfigUpdated:
       name: payPalConfigUpdated
       description: The event is triggered by updating PayPal configuration.
@@ -393,11 +510,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              paymentMerchantConfig:
-                $ref: '#/components/schemas/paymentMerchantConfig'
-
+            $ref: '#/components/schemas/payPalConfigUpdatedPayloadData'
     paymentOrderCreated:
       name: paymentOrderCreated
       description: The event is triggered by creating payment order. Payment order status will be INIT.
@@ -414,11 +527,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              paymentOrder:
-                $ref: '#/components/schemas/paymentOrder'
-
+            $ref: '#/components/schemas/paymentOrderCreatedPayloadData'
     paymentOrderCharged:
       name: paymentOrderCharged
       description: The event is triggered when payment order was paid/charged. Payment order status will be CHARGED.
@@ -435,11 +544,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              paymentOrder:
-                $ref: '#/components/schemas/paymentOrder'
-
+            $ref: '#/components/schemas/paymentOrderChargedPayloadData'
     paymentOrderChargeFailed:
       name: paymentOrderChargeFailed
       description: The event is triggered when payment process has failed. Payment order status will be CHARGE_FAILED.
@@ -453,11 +558,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              paymentOrder:
-                $ref: '#/components/schemas/paymentOrder'
-
+            $ref: '#/components/schemas/paymentOrderChargeFailedPayloadData'
     paymentOrderRefunded:
       name: paymentOrderRefunded
       description: The event is triggered when payment was refunded. Payment order status will be REFUNDED.
@@ -474,11 +575,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              paymentOrder:
-                $ref: '#/components/schemas/paymentOrder'
-
+            $ref: '#/components/schemas/paymentOrderRefundedPayloadData'
     paymentOrderRefundFailed:
       name: paymentOrderRefundFailed
       description: The event is triggered when payment refund process was failed. Payment order status will be REFUND_FAILED.
@@ -492,11 +589,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              paymentOrder:
-                $ref: '#/components/schemas/paymentOrder'
-
+            $ref: '#/components/schemas/paymentOrderRefundFailedPayloadData'
     paymentOrderAuthorised:
       name: paymentOrderAuthorised
       description: The event is triggered when Adyen isAuthoriseAsCapture was set to false and payment order was authorised. Payment order status will be AUTHORISED.
@@ -508,11 +601,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              paymentOrder:
-                $ref: '#/components/schemas/paymentOrder'
-
+            $ref: '#/components/schemas/paymentOrderAuthorisedPayloadData'
     paymentOrderAuthorisedFailed:
       name: paymentOrderAuthorisedFailed
       description: The event is triggered when Adyen isAuthoriseAsCapture was set to false and payment order failed to authorise. Payment order status will be AUTHORISE_FAILED.
@@ -524,11 +613,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              paymentOrder:
-                $ref: '#/components/schemas/paymentOrder'
-
+            $ref: '#/components/schemas/paymentOrderAuthorisedFailedPayloadData'
     paymentOrderNotificationOfChargeback:
       name: paymentOrderNotificationOfChargeback
       description: The event is triggered when notifying user of chargeback. Payment order status will be NOTIFICATION_OF_CHARGEBACK.
@@ -540,11 +625,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              paymentOrder:
-                $ref: '#/components/schemas/paymentOrder'
-
+            $ref: '#/components/schemas/paymentOrderNotificationOfChargebackPayloadData'
     paymentOrderRequestForInformation:
       name: paymentOrderRequestForInformation
       description: The event is triggered when requesting for payment order information notification. Payment order status will be REQUEST_FOR_INFORMATION
@@ -556,11 +637,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              paymentOrder:
-                $ref: '#/components/schemas/paymentOrder'
-
+            $ref: '#/components/schemas/paymentOrderRequestForInformationPayloadData'
     paymentOrderChargeback:
       name: paymentOrderChargeback
       description: The event is triggered when payment chargeback process was successfull. Payment order status will be CHARGEBACK.
@@ -574,11 +651,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              paymentOrder:
-                $ref: '#/components/schemas/paymentOrder'
-
+            $ref: '#/components/schemas/paymentOrderChargebackPayloadData'
     paymentOrderChargebackReversed:
       name: paymentOrderChargebackReversed
       description: The event is triggered when reverse chargeback process was successfull. Payment order status will be CHARGEBACK_REVERSED.
@@ -590,11 +663,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              paymentOrder:
-                $ref: '#/components/schemas/paymentOrder'
-
+            $ref: '#/components/schemas/paymentOrderChargebackReversedPayloadData'
     paymentOrderRefundRequested:
       name: paymentOrderRefundRequested
       description: The event is triggered when user is requesting for refund. Payment order status will be REFUNDING/REFUNDED/REFUND_FAILED.
@@ -611,11 +680,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              paymentOrder:
-                $ref: '#/components/schemas/paymentOrder'
-
+            $ref: '#/components/schemas/paymentOrderRefundRequestedPayloadData'
     paymentAccountDeleted:
       name: paymentAccountDeleted
       description: The event is triggered by deleting payment account.
@@ -628,11 +693,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              paymentAccount:
-                $ref: '#/components/schemas/paymentAccount'
-
+            $ref: '#/components/schemas/paymentAccountDeletedPayloadData'
     checkoutConfigUpdated:
       name: checkoutConfigUpdated
       description: The event is triggered by updating checkout configuration.
@@ -642,11 +703,7 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              paymentMerchantConfig:
-                $ref: '#/components/schemas/paymentMerchantConfig'
-
+            $ref: '#/components/schemas/checkoutConfigUpdatedPayloadData'
     neonPayConfigUpdated:
       name: neonPayConfigUpdated
       description: The event is triggered by updating the Neon Pay Configuration.
@@ -656,7 +713,4 @@ components:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              paymentMerchantConfig:
-                $ref: '#/components/schemas/paymentMerchantConfig'
+            $ref: '#/components/schemas/neonPayConfigUpdatedPayloadData'

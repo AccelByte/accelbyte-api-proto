@@ -116,6 +116,94 @@ components:
         displayName:
           type: string
           description: display name
+    roleCreatedPayloadData:
+      type: object
+      properties:
+        role:
+          $ref: '#/components/schemas/role'
+      x-uid0: AnonymousSchema1
+    roleDeletedPayloadData:
+      type: object
+      properties:
+        role:
+          $ref: '#/components/schemas/role'
+      x-uid0: AnonymousSchema2
+    roleUpdatedPayloadData:
+      type: object
+      properties:
+        role:
+          $ref: '#/components/schemas/role'
+      x-uid0: AnonymousSchema3
+    rolePermissionCreatedPayloadData:
+      type: object
+      properties:
+        role:
+          $ref: '#/components/schemas/role'
+        permissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/permissions'
+      x-uid0: AnonymousSchema4
+    rolePermissionDeletedPayloadData:
+      type: object
+      properties:
+        role:
+          $ref: '#/components/schemas/role'
+        permissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/permissions'
+      x-uid0: AnonymousSchema5
+    rolePermissionUpdatedPayloadData:
+      type: object
+      properties:
+        role:
+          $ref: '#/components/schemas/role'
+        permissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/permissions'
+      x-uid0: AnonymousSchema6
+    roleManagerCreatedPayloadData:
+      type: object
+      properties:
+        role:
+          $ref: '#/components/schemas/role'
+        roleManager:
+          type: array
+          items:
+            $ref: '#/components/schemas/roleManager'
+      x-uid0: AnonymousSchema7
+    roleManagerDeletedPayloadData:
+      type: object
+      properties:
+        role:
+          $ref: '#/components/schemas/role'
+        roleManager:
+          type: array
+          items:
+            $ref: '#/components/schemas/roleManager'
+      x-uid0: AnonymousSchema8
+    roleMemberCreatedPayloadData:
+      type: object
+      properties:
+        role:
+          $ref: '#/components/schemas/role'
+        roleMember:
+          type: array
+          items:
+            $ref: '#/components/schemas/roleMember'
+      x-uid0: AnonymousSchema9
+    roleMemberDeletedPayloadData:
+      type: object
+      properties:
+        role:
+          $ref: '#/components/schemas/role'
+        roleMember:
+          type: array
+          items:
+            $ref: '#/components/schemas/roleMember'
+      x-uid0: AnonymousSchema10
   messages:
     roleCreated:
       name: roleCreated
@@ -126,10 +214,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              role:
-                $ref: '#/components/schemas/role'
+            $ref: '#/components/schemas/roleCreatedPayloadData'
     roleDeleted:
       name: roleDeleted
       description: message is sent when role is deleted
@@ -139,10 +224,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              role:
-                $ref: '#/components/schemas/role'
+            $ref: '#/components/schemas/roleDeletedPayloadData'
     roleUpdated:
       name: roleUpdated
       description: message is sent when role is updated
@@ -152,10 +234,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              role:
-                $ref: '#/components/schemas/role'
+            $ref: '#/components/schemas/roleUpdatedPayloadData'
     rolePermissionCreated:
       name: rolePermissionCreated
       description: message is sent when adding role permissions
@@ -165,14 +244,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              role:
-                $ref: '#/components/schemas/role'
-              permissions:
-                type: array
-                items:
-                  $ref: '#/components/schemas/permissions'
+            $ref: '#/components/schemas/rolePermissionCreatedPayloadData'
     rolePermissionDeleted:
       name: rolePermissionDeleted
       description: message is sent when role permission is deleted
@@ -182,14 +254,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              role:
-                $ref: '#/components/schemas/role'
-              permissions:
-                type: array
-                items:
-                  $ref: '#/components/schemas/permissions'
+            $ref: '#/components/schemas/rolePermissionDeletedPayloadData'
     rolePermissionUpdated:
       name: rolePermissionUpdated
       description: message is sent when role permission is updated
@@ -199,14 +264,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              role:
-                $ref: '#/components/schemas/role'
-              permissions:
-                type: array
-                items:
-                  $ref: '#/components/schemas/permissions'
+            $ref: '#/components/schemas/rolePermissionUpdatedPayloadData'
     roleManagerCreated:
       name: roleManagerCreated
       description: deprecated
@@ -216,14 +274,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              role:
-                $ref: '#/components/schemas/role'
-              roleManager:
-                type: array
-                items:
-                  $ref: '#/components/schemas/roleManager'
+            $ref: '#/components/schemas/roleManagerCreatedPayloadData'
     roleManagerDeleted:
       name: roleManagerDeleted
       description: deprecated
@@ -233,14 +284,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              role:
-                $ref: '#/components/schemas/role'
-              roleManager:
-                type: array
-                items:
-                  $ref: '#/components/schemas/roleManager'
+            $ref: '#/components/schemas/roleManagerDeletedPayloadData'
     roleMemberCreated:
       name: roleMemberCreated
       description: message is sent when role is assigned to user
@@ -250,14 +294,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              role:
-                $ref: '#/components/schemas/role'
-              roleMember:
-                type: array
-                items:
-                  $ref: '#/components/schemas/roleMember'
+            $ref: '#/components/schemas/roleMemberCreatedPayloadData'
     roleMemberDeleted:
       name: roleMemberDeleted
       description: message is sent when user's role is removed
@@ -267,14 +304,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              role:
-                $ref: '#/components/schemas/role'
-              roleMember:
-                type: array
-                items:
-                  $ref: '#/components/schemas/roleMember'
+            $ref: '#/components/schemas/roleMemberDeletedPayloadData'
 x-source: IAM/AsyncAPI/rbac.yaml
 x-proto-package: accelbyte.iam.rbac.v1
 x-proto-package-version: v1.0.0

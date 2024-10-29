@@ -66,8 +66,18 @@ components:
         userId:
           type: string
           description: user id, can be publisher/game user id
-         
-
+    agreementCreatedPayloadData:
+      type: object
+      properties:
+        agreement:
+          $ref: '#/components/schemas/agreement'
+      x-uid0: AnonymousSchema1
+    agreementUpdatedPayloadData:
+      type: object
+      properties:
+        agreement:
+          $ref: '#/components/schemas/agreement'
+      x-uid0: AnonymousSchema2
   messages:
     agreementCreated:
       name: agreementCreated
@@ -78,11 +88,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              agreement:
-                $ref: '#/components/schemas/agreement'
-
+            $ref: '#/components/schemas/agreementCreatedPayloadData'
     agreementUpdated:
       name: agreementUpdated
       description: message is sent after user accepts legal documentation
@@ -92,7 +98,4 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              agreement:
-                $ref: '#/components/schemas/agreement'
+            $ref: '#/components/schemas/agreementUpdatedPayloadData'

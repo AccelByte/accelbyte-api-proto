@@ -97,7 +97,7 @@ message Fulfillment {
     google.protobuf.Struct metadata = 11 [json_name = "metadata"];
 }
 
-// path: #/components/messages/fulfillmentCompleted/payload/properties/payload
+// path: #/components/schemas/fulfillmentCompletedPayload
 message AnonymousSchema1 {
     Fulfillment fulfillment = 1 [json_name = "fulfillment"];
 }

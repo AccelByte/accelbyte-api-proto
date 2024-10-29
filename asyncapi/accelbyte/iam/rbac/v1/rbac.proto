@@ -69,14 +69,66 @@ message RoleMember {
     string display_name = 3 [json_name = "displayName"];
 }
 
-// path: #/components/messages/roleCreated/payload/properties/payload
-message AnonymousSchema1 {
+// path: #/components/schemas/roleCreatedPayloadData
+message RoleCreatedPayloadData { // previously known as 'AnonymousSchema1'
     Role role = 1 [json_name = "role"];
+}
+
+// path: #/components/schemas/roleDeletedPayloadData
+message RoleDeletedPayloadData { // previously known as 'AnonymousSchema2'
+    Role role = 1 [json_name = "role"];
+}
+
+// path: #/components/schemas/roleUpdatedPayloadData
+message RoleUpdatedPayloadData { // previously known as 'AnonymousSchema3'
+    Role role = 1 [json_name = "role"];
+}
+
+// path: #/components/schemas/rolePermissionCreatedPayloadData
+message RolePermissionCreatedPayloadData { // previously known as 'AnonymousSchema4'
+    Role role = 1 [json_name = "role"];
+    repeated Permissions permissions = 2 [json_name = "permissions"];
+}
+
+// path: #/components/schemas/rolePermissionDeletedPayloadData
+message RolePermissionDeletedPayloadData { // previously known as 'AnonymousSchema5'
+    Role role = 1 [json_name = "role"];
+    repeated Permissions permissions = 2 [json_name = "permissions"];
+}
+
+// path: #/components/schemas/rolePermissionUpdatedPayloadData
+message RolePermissionUpdatedPayloadData { // previously known as 'AnonymousSchema6'
+    Role role = 1 [json_name = "role"];
+    repeated Permissions permissions = 2 [json_name = "permissions"];
+}
+
+// path: #/components/schemas/roleManagerCreatedPayloadData
+message RoleManagerCreatedPayloadData { // previously known as 'AnonymousSchema7'
+    Role role = 1 [json_name = "role"];
+    repeated RoleManager role_manager = 2 [json_name = "roleManager"];
+}
+
+// path: #/components/schemas/roleManagerDeletedPayloadData
+message RoleManagerDeletedPayloadData { // previously known as 'AnonymousSchema8'
+    Role role = 1 [json_name = "role"];
+    repeated RoleManager role_manager = 2 [json_name = "roleManager"];
+}
+
+// path: #/components/schemas/roleMemberCreatedPayloadData
+message RoleMemberCreatedPayloadData { // previously known as 'AnonymousSchema9'
+    Role role = 1 [json_name = "role"];
+    repeated RoleMember role_member = 2 [json_name = "roleMember"];
+}
+
+// path: #/components/schemas/roleMemberDeletedPayloadData
+message RoleMemberDeletedPayloadData { // previously known as 'AnonymousSchema10'
+    Role role = 1 [json_name = "role"];
+    repeated RoleMember role_member = 2 [json_name = "roleMember"];
 }
 
 // path: #/components/messages/roleCreated/payload
 message RoleCreated {
-    AnonymousSchema1 payload = 1 [json_name = "payload"];
+    RoleCreatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -89,16 +141,11 @@ message RoleCreated {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/roleDeleted/payload/properties/payload
-message AnonymousSchema2 {
-    Role role = 1 [json_name = "role"];
 }
 
 // path: #/components/messages/roleDeleted/payload
 message RoleDeleted {
-    AnonymousSchema2 payload = 1 [json_name = "payload"];
+    RoleDeletedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -111,16 +158,11 @@ message RoleDeleted {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/roleUpdated/payload/properties/payload
-message AnonymousSchema3 {
-    Role role = 1 [json_name = "role"];
 }
 
 // path: #/components/messages/roleUpdated/payload
 message RoleUpdated {
-    AnonymousSchema3 payload = 1 [json_name = "payload"];
+    RoleUpdatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -133,17 +175,11 @@ message RoleUpdated {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/rolePermissionCreated/payload/properties/payload
-message AnonymousSchema4 {
-    Role role = 1 [json_name = "role"];
-    repeated Permissions permissions = 2 [json_name = "permissions"];
 }
 
 // path: #/components/messages/rolePermissionCreated/payload
 message RolePermissionCreated {
-    AnonymousSchema4 payload = 1 [json_name = "payload"];
+    RolePermissionCreatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -156,17 +192,11 @@ message RolePermissionCreated {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/rolePermissionDeleted/payload/properties/payload
-message AnonymousSchema5 {
-    Role role = 1 [json_name = "role"];
-    repeated Permissions permissions = 2 [json_name = "permissions"];
 }
 
 // path: #/components/messages/rolePermissionDeleted/payload
 message RolePermissionDeleted {
-    AnonymousSchema5 payload = 1 [json_name = "payload"];
+    RolePermissionDeletedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -179,17 +209,11 @@ message RolePermissionDeleted {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/rolePermissionUpdated/payload/properties/payload
-message AnonymousSchema6 {
-    Role role = 1 [json_name = "role"];
-    repeated Permissions permissions = 2 [json_name = "permissions"];
 }
 
 // path: #/components/messages/rolePermissionUpdated/payload
 message RolePermissionUpdated {
-    AnonymousSchema6 payload = 1 [json_name = "payload"];
+    RolePermissionUpdatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -202,17 +226,11 @@ message RolePermissionUpdated {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/roleManagerCreated/payload/properties/payload
-message AnonymousSchema7 {
-    Role role = 1 [json_name = "role"];
-    repeated RoleManager role_manager = 2 [json_name = "roleManager"];
 }
 
 // path: #/components/messages/roleManagerCreated/payload
 message RoleManagerCreated {
-    AnonymousSchema7 payload = 1 [json_name = "payload"];
+    RoleManagerCreatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -225,17 +243,11 @@ message RoleManagerCreated {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/roleManagerDeleted/payload/properties/payload
-message AnonymousSchema8 {
-    Role role = 1 [json_name = "role"];
-    repeated RoleManager role_manager = 2 [json_name = "roleManager"];
 }
 
 // path: #/components/messages/roleManagerDeleted/payload
 message RoleManagerDeleted {
-    AnonymousSchema8 payload = 1 [json_name = "payload"];
+    RoleManagerDeletedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -248,17 +260,11 @@ message RoleManagerDeleted {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/roleMemberCreated/payload/properties/payload
-message AnonymousSchema9 {
-    Role role = 1 [json_name = "role"];
-    repeated RoleMember role_member = 2 [json_name = "roleMember"];
 }
 
 // path: #/components/messages/roleMemberCreated/payload
 message RoleMemberCreated {
-    AnonymousSchema9 payload = 1 [json_name = "payload"];
+    RoleMemberCreatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -273,15 +279,9 @@ message RoleMemberCreated {
     string session_id = 11 [json_name = "sessionId"];
 }
 
-// path: #/components/messages/roleMemberDeleted/payload/properties/payload
-message AnonymousSchema10 {
-    Role role = 1 [json_name = "role"];
-    repeated RoleMember role_member = 2 [json_name = "roleMember"];
-}
-
 // path: #/components/messages/roleMemberDeleted/payload
 message RoleMemberDeleted {
-    AnonymousSchema10 payload = 1 [json_name = "payload"];
+    RoleMemberDeletedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];

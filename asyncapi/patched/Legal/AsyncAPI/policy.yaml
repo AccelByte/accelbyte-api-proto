@@ -236,6 +236,72 @@ components:
         isDefaultSelection:
           type: boolean
           deprecated: true
+    basePolicyCreatedPayloadData:
+      type: object
+      properties:
+        basePolicy:
+          $ref: '#/components/schemas/basePolicy'
+      x-uid0: AnonymousSchema1
+    basePolicyUpdatedPayloadData:
+      type: object
+      properties:
+        basePolicy:
+          $ref: '#/components/schemas/basePolicy'
+      x-uid0: AnonymousSchema2
+    policyCreatedPayloadData:
+      type: object
+      properties:
+        policy:
+          $ref: '#/components/schemas/policy'
+      x-uid0: AnonymousSchema3
+    policyUpdatedPayloadData:
+      type: object
+      properties:
+        policy:
+          $ref: '#/components/schemas/policy'
+      x-uid0: AnonymousSchema4
+    defaultPolicyUpdatedPayloadData:
+      type: object
+      properties:
+        policy:
+          $ref: '#/components/schemas/policy'
+      x-uid0: AnonymousSchema5
+    versionedPolicyCreatedPayloadData:
+      type: object
+      properties:
+        versionedPolicy:
+          $ref: '#/components/schemas/versionedPolicy'
+      x-uid0: AnonymousSchema6
+    versionedPolicyUpdatedPayloadData:
+      type: object
+      properties:
+        versionedPolicy:
+          $ref: '#/components/schemas/versionedPolicy'
+      x-uid0: AnonymousSchema7
+    versionedPolicyPublishedPayloadData:
+      type: object
+      properties:
+        versionedPolicy:
+          $ref: '#/components/schemas/versionedPolicy'
+      x-uid0: AnonymousSchema8
+    localizedPolicyCreatedPayloadData:
+      type: object
+      properties:
+        localizedPolicy:
+          $ref: '#/components/schemas/localizedPolicy'
+      x-uid0: AnonymousSchema9
+    localizedPolicyUpdatedPayloadData:
+      type: object
+      properties:
+        localizedPolicy:
+          $ref: '#/components/schemas/localizedPolicy'
+      x-uid0: AnonymousSchema10
+    defaultLocalizedPolicyUpdatedPayloadData:
+      type: object
+      properties:
+        localizedPolicy:
+          $ref: '#/components/schemas/localizedPolicy'
+      x-uid0: AnonymousSchema11
   messages:
     basePolicyCreated:
       name: basePolicyCreated
@@ -246,10 +312,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              basePolicy:
-                $ref: '#/components/schemas/basePolicy'
+            $ref: '#/components/schemas/basePolicyCreatedPayloadData'
     basePolicyUpdated:
       name: basePolicyUpdated
       payload:
@@ -258,10 +321,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              basePolicy:
-                $ref: '#/components/schemas/basePolicy'
+            $ref: '#/components/schemas/basePolicyUpdatedPayloadData'
     policyCreated:
       name: policyCreated
       description: message is sent when country based policy is created
@@ -271,10 +331,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              policy:
-                $ref: '#/components/schemas/policy'
+            $ref: '#/components/schemas/policyCreatedPayloadData'
     policyUpdated:
       name: policyUpdated
       description: message is sent when country base policy is updated
@@ -284,10 +341,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              policy:
-                $ref: '#/components/schemas/policy'
+            $ref: '#/components/schemas/policyUpdatedPayloadData'
     defaultPolicyUpdated:
       name: defaultPolicyUpdated
       description: message is sent when country based policy is set to default
@@ -297,10 +351,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              policy:
-                $ref: '#/components/schemas/policy'
+            $ref: '#/components/schemas/defaultPolicyUpdatedPayloadData'
     versionedPolicyCreated:
       name: versionedPolicyCreated
       description: message is sent when policy version is created
@@ -310,10 +361,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              versionedPolicy:
-                $ref: '#/components/schemas/versionedPolicy'
+            $ref: '#/components/schemas/versionedPolicyCreatedPayloadData'
     versionedPolicyUpdated:
       name: versionedPolicyUpdated
       description: message is sent when policy version is updated
@@ -323,10 +371,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              versionedPolicy:
-                $ref: '#/components/schemas/versionedPolicy'
+            $ref: '#/components/schemas/versionedPolicyUpdatedPayloadData'
     versionedPolicyPublished:
       name: versionedPolicyPublished
       description: message is sent when policy version is published
@@ -336,10 +381,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              versionedPolicy:
-                $ref: '#/components/schemas/versionedPolicy'
+            $ref: '#/components/schemas/versionedPolicyPublishedPayloadData'
     localizedPolicyCreated:
       name: localizedPolicyCreated
       description: message is sent when localized policy is created
@@ -349,10 +391,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              localizedPolicy:
-                $ref: '#/components/schemas/localizedPolicy'
+            $ref: '#/components/schemas/localizedPolicyCreatedPayloadData'
     localizedPolicyUpdated:
       name: localizedPolicyUpdated
       description: message is sent when localized policy is updated
@@ -362,10 +401,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              localizedPolicy:
-                $ref: '#/components/schemas/localizedPolicy'
+            $ref: '#/components/schemas/localizedPolicyUpdatedPayloadData'
     defaultLocalizedPolicyUpdated:
       name: defaultLocalizedPolicyUpdated
       deprecated: true
@@ -375,10 +411,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              localizedPolicy:
-                $ref: '#/components/schemas/localizedPolicy'
+            $ref: '#/components/schemas/defaultLocalizedPolicyUpdatedPayloadData'
 x-source: Legal/AsyncAPI/policy.yaml
 x-proto-package: accelbyte.legal.policy.v1
 x-proto-package-version: v1.0.0

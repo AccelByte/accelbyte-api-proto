@@ -58,14 +58,26 @@ message UserContent {
     string content_type = 4 [json_name = "contentType"];
 }
 
-// path: #/components/messages/userContentUrlCreated/payload/properties/payload
-message AnonymousSchema1 {
+// path: #/components/schemas/userContentUrlCreatedPayloadData
+message UserContentUrlCreatedPayloadData { // previously known as 'AnonymousSchema1'
     UserContent simple_event = 1 [json_name = "simpleEvent"];
+}
+
+// path: #/components/schemas/countryGroupCreatedPayloadData
+message CountryGroupCreatedPayloadData { // previously known as 'AnonymousSchema2'
+    CountryGroup country_group = 1 [json_name = "countryGroup"];
+    repeated Country countries = 2 [json_name = "countries"];
+}
+
+// path: #/components/schemas/countryGroupUpdatedPayloadData
+message CountryGroupUpdatedPayloadData { // previously known as 'AnonymousSchema3'
+    CountryGroup country_group = 1 [json_name = "countryGroup"];
+    repeated Country countries = 2 [json_name = "countries"];
 }
 
 // path: #/components/messages/userContentUrlCreated/payload
 message UserContentUrlCreated {
-    AnonymousSchema1 payload = 1 [json_name = "payload"];
+    UserContentUrlCreatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -78,17 +90,11 @@ message UserContentUrlCreated {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/countryGroupCreated/payload/properties/payload
-message AnonymousSchema2 {
-    CountryGroup country_group = 1 [json_name = "countryGroup"];
-    repeated Country countries = 2 [json_name = "countries"];
 }
 
 // path: #/components/messages/countryGroupCreated/payload
 message CountryGroupCreated {
-    AnonymousSchema2 payload = 1 [json_name = "payload"];
+    CountryGroupCreatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -103,15 +109,9 @@ message CountryGroupCreated {
     string session_id = 11 [json_name = "sessionId"];
 }
 
-// path: #/components/messages/countryGroupUpdated/payload/properties/payload
-message AnonymousSchema3 {
-    CountryGroup country_group = 1 [json_name = "countryGroup"];
-    repeated Country countries = 2 [json_name = "countries"];
-}
-
 // path: #/components/messages/countryGroupUpdated/payload
 message CountryGroupUpdated {
-    AnonymousSchema3 payload = 1 [json_name = "payload"];
+    CountryGroupUpdatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];

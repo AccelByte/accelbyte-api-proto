@@ -71,6 +71,32 @@ components:
         contentType:
           type: string
           description: content type
+    userContentUrlCreatedPayloadData:
+      type: object
+      properties:
+        simpleEvent:
+          $ref: '#/components/schemas/userContent'
+      x-uid0: AnonymousSchema1
+    countryGroupCreatedPayloadData:
+      type: object
+      properties:
+        countryGroup:
+          $ref: '#/components/schemas/countryGroup'
+        countries:
+          type: array
+          items:
+            $ref: '#/components/schemas/country'
+      x-uid0: AnonymousSchema2
+    countryGroupUpdatedPayloadData:
+      type: object
+      properties:
+        countryGroup:
+          $ref: '#/components/schemas/countryGroup'
+        countries:
+          type: array
+          items:
+            $ref: '#/components/schemas/country'
+      x-uid0: AnonymousSchema3
   messages:
     userContentUrlCreated:
       name: userContentUrlCreated
@@ -81,10 +107,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              simpleEvent:
-                $ref: '#/components/schemas/userContent'
+            $ref: '#/components/schemas/userContentUrlCreatedPayloadData'
     countryGroupCreated:
       name: countryGroupCreated
       description: message is sent when add a country group
@@ -94,14 +117,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              countryGroup:
-                $ref: '#/components/schemas/countryGroup'
-              countries:
-                type: array
-                items:
-                  $ref: '#/components/schemas/country'
+            $ref: '#/components/schemas/countryGroupCreatedPayloadData'
     countryGroupUpdated:
       name: countryGroupUpdated
       description: message is sent when country group is updated
@@ -111,14 +127,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              countryGroup:
-                $ref: '#/components/schemas/countryGroup'
-              countries:
-                type: array
-                items:
-                  $ref: '#/components/schemas/country'
+            $ref: '#/components/schemas/countryGroupUpdatedPayloadData'
 x-source: Basic/AsyncAPI/util.yaml
 x-proto-package: accelbyte.basic.util.v1
 x-proto-package-version: v1.0.0

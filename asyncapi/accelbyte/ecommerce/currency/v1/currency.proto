@@ -38,14 +38,10 @@ message Event {
     string session_id = 10 [json_name = "sessionId"];
 }
 
-// path: #/components/schemas/currency/properties/localizationDescriptions
-message AnonymousSchema1 {
-}
-
 // path: #/components/schemas/currency
 message Currency {
     string currency_code = 1 [json_name = "currencyCode"];
-    AnonymousSchema1 localization_descriptions = 2 [json_name = "localizationDescriptions"];
+    map<string, string> localization_descriptions = 2 [json_name = "localizationDescriptions"];
     string currency_symbol = 3 [json_name = "currencySymbol"];
     string namespace = 4 [json_name = "namespace"];
     string currency_type = 5 [json_name = "currencyType"]; // Allowed values: REAL, VIRTUAL
@@ -54,14 +50,25 @@ message Currency {
     string updated_at = 8 [json_name = "updatedAt"];
 }
 
-// path: #/components/messages/currencyCreated/payload/properties/payload
-message AnonymousSchema2 {
+// path: #/components/schemas/currencyCreatedPayloadData
+message CurrencyCreatedPayloadData { // previously known as 'AnonymousSchema2'
+    Currency currency = 1 [json_name = "currency"];
+}
+
+// path: #/components/schemas/currencyUpdatedPayloadData
+message CurrencyUpdatedPayloadData { // previously known as 'AnonymousSchema3'
+    Currency currency = 1 [json_name = "currency"];
+    Currency old_currency = 2 [json_name = "oldCurrency"];
+}
+
+// path: #/components/schemas/currencyDeletedPayloadData
+message CurrencyDeletedPayloadData { // previously known as 'AnonymousSchema4'
     Currency currency = 1 [json_name = "currency"];
 }
 
 // path: #/components/messages/currencyCreated/payload
 message CurrencyCreated {
-    AnonymousSchema2 payload = 1 [json_name = "payload"];
+    CurrencyCreatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -74,17 +81,11 @@ message CurrencyCreated {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/currencyUpdated/payload/properties/payload
-message AnonymousSchema3 {
-    Currency currency = 1 [json_name = "currency"];
-    Currency old_currency = 2 [json_name = "oldCurrency"];
 }
 
 // path: #/components/messages/currencyUpdated/payload
 message CurrencyUpdated {
-    AnonymousSchema3 payload = 1 [json_name = "payload"];
+    CurrencyUpdatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -99,14 +100,9 @@ message CurrencyUpdated {
     string session_id = 11 [json_name = "sessionId"];
 }
 
-// path: #/components/messages/currencyDeleted/payload/properties/payload
-message AnonymousSchema4 {
-    Currency currency = 1 [json_name = "currency"];
-}
-
 // path: #/components/messages/currencyDeleted/payload
 message CurrencyDeleted {
-    AnonymousSchema4 payload = 1 [json_name = "payload"];
+    CurrencyDeletedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];

@@ -71,260 +71,421 @@ message ErrorCode {
 
 // path: #/components/schemas/partyUserJoinedPayload
 message PartyUserJoinedPayload {
+    string party_code = 1 [json_name = "partyCode"];
 
     // allOf(#/components/schemas/partyPayload)
-    string party_id = 1 [json_name = "partyId"];
-    string leader_id = 2 [json_name = "leaderId"];
+    string party_id = 2 [json_name = "partyId"];
+    string leader_id = 3 [json_name = "leaderId"];
 
     // allOf(#/components/schemas/invitePayload)
-    string inviter_id = 3 [json_name = "inviterId"];
-    repeated string invitees_id = 4 [json_name = "inviteesId"];
-    string invitation_token = 5 [json_name = "invitationToken"];
+    string inviter_id = 4 [json_name = "inviterId"];
+    repeated string invitees_id = 5 [json_name = "inviteesId"];
+    string invitation_token = 6 [json_name = "invitationToken"];
 
     // allOf(#/components/schemas/platformPayload)
-    string platform = 6 [json_name = "platform"];
-    string platform_user_id = 7 [json_name = "platformUserId"];
+    string platform = 7 [json_name = "platform"];
+    string platform_user_id = 8 [json_name = "platformUserId"];
 }
 
 // path: #/components/schemas/partyUserJoinFailedPayload
 message PartyUserJoinFailedPayload {
+    string party_code = 1 [json_name = "partyCode"];
 
     // allOf(#/components/schemas/partyPayload)
-    string party_id = 1 [json_name = "partyId"];
-    string leader_id = 2 [json_name = "leaderId"];
+    string party_id = 2 [json_name = "partyId"];
+    string leader_id = 3 [json_name = "leaderId"];
 
     // allOf(#/components/schemas/invitePayload)
+    string inviter_id = 4 [json_name = "inviterId"];
+    repeated string invitees_id = 5 [json_name = "inviteesId"];
+    string invitation_token = 6 [json_name = "invitationToken"];
+
+    // allOf(#/components/schemas/platformPayload)
+    string platform = 7 [json_name = "platform"];
+    string platform_user_id = 8 [json_name = "platformUserId"];
+
+    // allOf(#/components/schemas/errorCode)
+    int64 errorcode = 9 [json_name = "errorcode"];
+}
+
+// path: #/components/schemas/partyCreatedData
+message PartyCreatedData {
+    repeated string members = 1 [json_name = "members"];
+    string party_code = 2 [json_name = "partyCode"];
+
+    // allOf(#/components/schemas/partyPayload)
+    string party_id = 3 [json_name = "partyId"];
+    string leader_id = 4 [json_name = "leaderId"];
+
+    // allOf(#/components/schemas/invitePayload)
+    string inviter_id = 5 [json_name = "inviterId"];
+    repeated string invitees_id = 6 [json_name = "inviteesId"];
+    string invitation_token = 7 [json_name = "invitationToken"];
+
+    // allOf(#/components/schemas/platformPayload)
+    string platform = 8 [json_name = "platform"];
+    string platform_user_id = 9 [json_name = "platformUserId"];
+}
+
+// path: #/components/schemas/partyCreatedPayloadData
+message PartyCreatedPayloadData {
+    PartyCreatedData party = 1 [json_name = "party"];
+}
+
+// path: #/components/schemas/partyUserInvitedData
+message PartyUserInvitedData {
+    string invitee_id = 1 [json_name = "inviteeId"];
+
+    // allOf(#/components/schemas/partyPayload)
+    string party_id = 2 [json_name = "partyId"];
+    string leader_id = 3 [json_name = "leaderId"];
+
+    // allOf(#/components/schemas/invitePayload)
+    string inviter_id = 4 [json_name = "inviterId"];
+    repeated string invitees_id = 5 [json_name = "inviteesId"];
+    string invitation_token = 6 [json_name = "invitationToken"];
+
+    // allOf(#/components/schemas/platformPayload)
+    string platform = 7 [json_name = "platform"];
+    string platform_user_id = 8 [json_name = "platformUserId"];
+}
+
+// path: #/components/schemas/partyUserInvitedPayloadData
+message PartyUserInvitedPayloadData {
+    PartyUserInvitedData party = 1 [json_name = "party"];
+}
+
+// path: #/components/schemas/partyUserJoinedPayloadData
+message PartyUserJoinedPayloadData {
+    PartyUserJoinedPayload party = 1 [json_name = "party"];
+}
+
+// path: #/components/schemas/partyUserJoinFailedPayloadData
+message PartyUserJoinFailedPayloadData {
+    PartyUserJoinFailedPayload party = 1 [json_name = "party"];
+}
+
+// path: #/components/schemas/partyUserLeftData
+message PartyUserLeftData {
+    string left_user_id = 1 [json_name = "leftUserId"];
+
+    // allOf(#/components/schemas/partyPayload)
+    string party_id = 2 [json_name = "partyId"];
+    string leader_id = 3 [json_name = "leaderId"];
+
+    // allOf(#/components/schemas/invitePayload)
+    string inviter_id = 4 [json_name = "inviterId"];
+    repeated string invitees_id = 5 [json_name = "inviteesId"];
+    string invitation_token = 6 [json_name = "invitationToken"];
+}
+
+// path: #/components/schemas/partyUserLeftPayloadData
+message PartyUserLeftPayloadData {
+    PartyUserLeftData party = 1 [json_name = "party"];
+}
+
+// path: #/components/schemas/partyUserKickedData
+message PartyUserKickedData {
+    string kicked_user_id = 1 [json_name = "kickedUserId"];
+
+    // allOf(#/components/schemas/partyPayload)
+    string party_id = 2 [json_name = "partyId"];
+    string leader_id = 3 [json_name = "leaderId"];
+
+    // allOf(#/components/schemas/invitePayload)
+    string inviter_id = 4 [json_name = "inviterId"];
+    repeated string invitees_id = 5 [json_name = "inviteesId"];
+    string invitation_token = 6 [json_name = "invitationToken"];
+}
+
+// path: #/components/schemas/partyUserKickedPayloadData
+message PartyUserKickedPayloadData {
+    PartyUserKickedData party = 1 [json_name = "party"];
+}
+
+// path: #/components/schemas/partyUserRejectData
+message PartyUserRejectData {
+    string party_id = 1 [json_name = "partyId"];
+    string leader_id = 2 [json_name = "leaderId"];
     string inviter_id = 3 [json_name = "inviterId"];
     repeated string invitees_id = 4 [json_name = "inviteesId"];
     string invitation_token = 5 [json_name = "invitationToken"];
+}
+
+// path: #/components/schemas/partyUserRejectPayloadData
+message PartyUserRejectPayloadData {
+    PartyUserRejectData party = 1 [json_name = "party"];
+}
+
+// path: #/components/schemas/partyUserNewLeaderPayloadData
+message PartyUserNewLeaderPayloadData {
+    PartyPayload party = 1 [json_name = "party"];
+}
+
+// path: #/components/schemas/partyDeleteCodeData
+message PartyDeleteCodeData {
+    string party_id = 1 [json_name = "partyId"];
+}
+
+// path: #/components/schemas/partyJoinViaCodeData
+message PartyJoinViaCodeData {
+    string party_id = 1 [json_name = "partyId"];
 
     // allOf(#/components/schemas/platformPayload)
-    string platform = 6 [json_name = "platform"];
-    string platform_user_id = 7 [json_name = "platformUserId"];
+    string platform = 2 [json_name = "platform"];
+    string platform_user_id = 3 [json_name = "platformUserId"];
+}
 
-    // allOf(#/components/schemas/errorCode)
-    int64 errorcode = 8 [json_name = "errorcode"];
+// path: #/components/schemas/partyChatSentData
+message PartyChatSentData {
+    string message_id = 1 [json_name = "messageId"];
+    string sender_id = 2 [json_name = "senderId"];
+    string target_id = 3 [json_name = "targetId"];
+    string payload = 4 [json_name = "payload"];
+}
+
+// path: #/components/schemas/partyGenerateCodePayloadData
+message PartyGenerateCodePayloadData {
+    PartyCode party = 1 [json_name = "party"];
+}
+
+// path: #/components/schemas/partyGetCodePayloadData
+message PartyGetCodePayloadData {
+    PartyCode party = 1 [json_name = "party"];
 }
 
 // path: #/components/messages/partyCreated/payload
 message PartyCreated {
+    PartyCreatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 1 [json_name = "id"];
-    int64 version = 2 [json_name = "version"];
-    string name = 3 [json_name = "name"];
-    string namespace = 4 [json_name = "namespace"];
-    string parent_namespace = 5 [json_name = "parentNamespace"];
-    string timestamp = 6 [json_name = "timestamp"];
-    string client_id = 7 [json_name = "clientId"];
-    string user_id = 8 [json_name = "userId"];
-    string trace_id = 9 [json_name = "traceId"];
-    string session_id = 10 [json_name = "sessionId"];
-    string span_context = 11 [json_name = "spanContext"];
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+    string span_context = 12 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/partyUserInvited/payload
 message PartyUserInvited {
+    PartyUserInvitedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 1 [json_name = "id"];
-    int64 version = 2 [json_name = "version"];
-    string name = 3 [json_name = "name"];
-    string namespace = 4 [json_name = "namespace"];
-    string parent_namespace = 5 [json_name = "parentNamespace"];
-    string timestamp = 6 [json_name = "timestamp"];
-    string client_id = 7 [json_name = "clientId"];
-    string user_id = 8 [json_name = "userId"];
-    string trace_id = 9 [json_name = "traceId"];
-    string session_id = 10 [json_name = "sessionId"];
-    string span_context = 11 [json_name = "spanContext"];
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+    string span_context = 12 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/partyUserJoined/payload
 message PartyUserJoined {
+    PartyUserJoinedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 1 [json_name = "id"];
-    int64 version = 2 [json_name = "version"];
-    string name = 3 [json_name = "name"];
-    string namespace = 4 [json_name = "namespace"];
-    string parent_namespace = 5 [json_name = "parentNamespace"];
-    string timestamp = 6 [json_name = "timestamp"];
-    string client_id = 7 [json_name = "clientId"];
-    string user_id = 8 [json_name = "userId"];
-    string trace_id = 9 [json_name = "traceId"];
-    string session_id = 10 [json_name = "sessionId"];
-    string span_context = 11 [json_name = "spanContext"];
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+    string span_context = 12 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/partyUserJoinFailed/payload
 message PartyUserJoinFailed {
+    PartyUserJoinFailedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 1 [json_name = "id"];
-    int64 version = 2 [json_name = "version"];
-    string name = 3 [json_name = "name"];
-    string namespace = 4 [json_name = "namespace"];
-    string parent_namespace = 5 [json_name = "parentNamespace"];
-    string timestamp = 6 [json_name = "timestamp"];
-    string client_id = 7 [json_name = "clientId"];
-    string user_id = 8 [json_name = "userId"];
-    string trace_id = 9 [json_name = "traceId"];
-    string session_id = 10 [json_name = "sessionId"];
-    string span_context = 11 [json_name = "spanContext"];
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+    string span_context = 12 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/partyUserLeft/payload
 message PartyUserLeft {
+    PartyUserLeftPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 1 [json_name = "id"];
-    int64 version = 2 [json_name = "version"];
-    string name = 3 [json_name = "name"];
-    string namespace = 4 [json_name = "namespace"];
-    string parent_namespace = 5 [json_name = "parentNamespace"];
-    string timestamp = 6 [json_name = "timestamp"];
-    string client_id = 7 [json_name = "clientId"];
-    string user_id = 8 [json_name = "userId"];
-    string trace_id = 9 [json_name = "traceId"];
-    string session_id = 10 [json_name = "sessionId"];
-    string span_context = 11 [json_name = "spanContext"];
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+    string span_context = 12 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/partyUserKicked/payload
 message PartyUserKicked {
+    PartyUserKickedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 1 [json_name = "id"];
-    int64 version = 2 [json_name = "version"];
-    string name = 3 [json_name = "name"];
-    string namespace = 4 [json_name = "namespace"];
-    string parent_namespace = 5 [json_name = "parentNamespace"];
-    string timestamp = 6 [json_name = "timestamp"];
-    string client_id = 7 [json_name = "clientId"];
-    string user_id = 8 [json_name = "userId"];
-    string trace_id = 9 [json_name = "traceId"];
-    string session_id = 10 [json_name = "sessionId"];
-    string span_context = 11 [json_name = "spanContext"];
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+    string span_context = 12 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/partyUserReject/payload
 message PartyUserReject {
+    PartyUserRejectPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 1 [json_name = "id"];
-    int64 version = 2 [json_name = "version"];
-    string name = 3 [json_name = "name"];
-    string namespace = 4 [json_name = "namespace"];
-    string parent_namespace = 5 [json_name = "parentNamespace"];
-    string timestamp = 6 [json_name = "timestamp"];
-    string client_id = 7 [json_name = "clientId"];
-    string user_id = 8 [json_name = "userId"];
-    string trace_id = 9 [json_name = "traceId"];
-    string session_id = 10 [json_name = "sessionId"];
-    string span_context = 11 [json_name = "spanContext"];
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+    string span_context = 12 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/partyUserNewLeader/payload
 message PartyUserNewLeader {
+    PartyUserNewLeaderPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 1 [json_name = "id"];
-    int64 version = 2 [json_name = "version"];
-    string name = 3 [json_name = "name"];
-    string namespace = 4 [json_name = "namespace"];
-    string parent_namespace = 5 [json_name = "parentNamespace"];
-    string timestamp = 6 [json_name = "timestamp"];
-    string client_id = 7 [json_name = "clientId"];
-    string user_id = 8 [json_name = "userId"];
-    string trace_id = 9 [json_name = "traceId"];
-    string session_id = 10 [json_name = "sessionId"];
-    string span_context = 11 [json_name = "spanContext"];
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+    string span_context = 12 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/partyDeleteCode/payload
 message PartyDeleteCode {
+    PartyDeleteCodeData party = 1 [json_name = "party"];
 
     // allOf(#/components/schemas/event)
-    string id = 1 [json_name = "id"];
-    int64 version = 2 [json_name = "version"];
-    string name = 3 [json_name = "name"];
-    string namespace = 4 [json_name = "namespace"];
-    string parent_namespace = 5 [json_name = "parentNamespace"];
-    string timestamp = 6 [json_name = "timestamp"];
-    string client_id = 7 [json_name = "clientId"];
-    string user_id = 8 [json_name = "userId"];
-    string trace_id = 9 [json_name = "traceId"];
-    string session_id = 10 [json_name = "sessionId"];
-    string span_context = 11 [json_name = "spanContext"];
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+    string span_context = 12 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/partyJoinViaCode/payload
 message PartyJoinViaCode {
+    PartyJoinViaCodeData party = 1 [json_name = "party"];
 
     // allOf(#/components/schemas/event)
-    string id = 1 [json_name = "id"];
-    int64 version = 2 [json_name = "version"];
-    string name = 3 [json_name = "name"];
-    string namespace = 4 [json_name = "namespace"];
-    string parent_namespace = 5 [json_name = "parentNamespace"];
-    string timestamp = 6 [json_name = "timestamp"];
-    string client_id = 7 [json_name = "clientId"];
-    string user_id = 8 [json_name = "userId"];
-    string trace_id = 9 [json_name = "traceId"];
-    string session_id = 10 [json_name = "sessionId"];
-    string span_context = 11 [json_name = "spanContext"];
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+    string span_context = 12 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/partyChatSent/payload
 message PartyChatSent {
+    PartyChatSentData party = 1 [json_name = "party"];
 
     // allOf(#/components/schemas/event)
-    string id = 1 [json_name = "id"];
-    int64 version = 2 [json_name = "version"];
-    string name = 3 [json_name = "name"];
-    string namespace = 4 [json_name = "namespace"];
-    string parent_namespace = 5 [json_name = "parentNamespace"];
-    string timestamp = 6 [json_name = "timestamp"];
-    string client_id = 7 [json_name = "clientId"];
-    string user_id = 8 [json_name = "userId"];
-    string trace_id = 9 [json_name = "traceId"];
-    string session_id = 10 [json_name = "sessionId"];
-    string span_context = 11 [json_name = "spanContext"];
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+    string span_context = 12 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/partyGenerateCode/payload
 message PartyGenerateCode {
+    PartyGenerateCodePayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 1 [json_name = "id"];
-    int64 version = 2 [json_name = "version"];
-    string name = 3 [json_name = "name"];
-    string namespace = 4 [json_name = "namespace"];
-    string parent_namespace = 5 [json_name = "parentNamespace"];
-    string timestamp = 6 [json_name = "timestamp"];
-    string client_id = 7 [json_name = "clientId"];
-    string user_id = 8 [json_name = "userId"];
-    string trace_id = 9 [json_name = "traceId"];
-    string session_id = 10 [json_name = "sessionId"];
-    string span_context = 11 [json_name = "spanContext"];
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+    string span_context = 12 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/partyGetCode/payload
 message PartyGetCode {
+    PartyGetCodePayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 1 [json_name = "id"];
-    int64 version = 2 [json_name = "version"];
-    string name = 3 [json_name = "name"];
-    string namespace = 4 [json_name = "namespace"];
-    string parent_namespace = 5 [json_name = "parentNamespace"];
-    string timestamp = 6 [json_name = "timestamp"];
-    string client_id = 7 [json_name = "clientId"];
-    string user_id = 8 [json_name = "userId"];
-    string trace_id = 9 [json_name = "traceId"];
-    string session_id = 10 [json_name = "sessionId"];
-    string span_context = 11 [json_name = "spanContext"];
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+    string span_context = 12 [json_name = "spanContext"];
 }
 
 

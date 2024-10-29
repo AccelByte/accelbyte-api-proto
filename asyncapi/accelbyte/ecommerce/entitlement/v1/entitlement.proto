@@ -143,10 +143,48 @@ message EntitlementStatusChange {
     string previous_status = 5 [json_name = "previousStatus"]; // Allowed values: ACTIVE, INACTIVE, CONSUMED, REVOKED, SOLD
 }
 
-// path: #/components/messages/entitlementGranted/payload/properties/payload
+// path: #/components/schemas/entitlementGrantedPayloadData
 message AnonymousSchema1 {
     repeated StackableEntitlement grants = 1 [json_name = "grants"];
     google.protobuf.Struct metadata = 2 [json_name = "metadata"];
+}
+
+// path: #/components/schemas/entitlementUpdatedPayloadData
+message EntitlementUpdatedPayloadData { // previously known as 'AnonymousSchema2'
+    Entitlement entitlement = 1 [json_name = "entitlement"];
+    Entitlement old_entitlement = 2 [json_name = "oldEntitlement"];
+}
+
+// path: #/components/schemas/entitlementConsumedPayloadData
+message AnonymousSchema3 {
+    EntitlementConsumption entitlement_consumption = 1 [json_name = "entitlementConsumption"];
+    google.protobuf.Struct metadata = 2 [json_name = "metadata"];
+}
+
+// path: #/components/schemas/entitlementUseCountRevokedPayloadData
+message AnonymousSchema4 {
+    EntitlementUseCountRevocation entitlement_use_count_revocation = 1 [json_name = "entitlementUseCountRevocation"];
+}
+
+// path: #/components/schemas/entitlementRevokedPayloadData
+message AnonymousSchema5 {
+    EntitlementRevocation entitlement_revocation = 1 [json_name = "entitlementRevocation"];
+    google.protobuf.Struct metadata = 2 [json_name = "metadata"];
+}
+
+// path: #/components/schemas/entitlementDisabledPayloadData
+message EntitlementDisabledPayloadData { // previously known as 'AnonymousSchema6'
+    EntitlementStatusChange entitlement_status_change = 1 [json_name = "entitlementStatusChange"];
+}
+
+// path: #/components/schemas/entitlementEnabledPayloadData
+message EntitlementEnabledPayloadData { // previously known as 'AnonymousSchema7'
+    EntitlementStatusChange entitlement_status_change = 1 [json_name = "entitlementStatusChange"];
+}
+
+// path: #/components/schemas/entitlementSellbackPayloadData
+message EntitlementSellbackPayloadData { // previously known as 'AnonymousSchema8'
+    EntitlementSale entitlement_sale = 1 [json_name = "entitlementSale"];
 }
 
 // path: #/components/messages/entitlementGranted/payload
@@ -166,15 +204,9 @@ message EntitlementGranted {
     string session_id = 11 [json_name = "sessionId"];
 }
 
-// path: #/components/messages/entitlementUpdated/payload/properties/payload
-message AnonymousSchema2 {
-    Entitlement entitlement = 1 [json_name = "entitlement"];
-    Entitlement old_entitlement = 2 [json_name = "oldEntitlement"];
-}
-
 // path: #/components/messages/entitlementUpdated/payload
 message EntitlementUpdated {
-    AnonymousSchema2 payload = 1 [json_name = "payload"];
+    EntitlementUpdatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -187,12 +219,6 @@ message EntitlementUpdated {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/entitlementConsumed/payload/properties/payload
-message AnonymousSchema3 {
-    EntitlementConsumption entitlement_consumption = 1 [json_name = "entitlementConsumption"];
-    google.protobuf.Struct metadata = 2 [json_name = "metadata"];
 }
 
 // path: #/components/messages/entitlementConsumed/payload
@@ -212,11 +238,6 @@ message EntitlementConsumed {
     string session_id = 11 [json_name = "sessionId"];
 }
 
-// path: #/components/messages/entitlementUseCountRevoked/payload/properties/payload
-message AnonymousSchema4 {
-    EntitlementUseCountRevocation entitlement_use_count_revocation = 1 [json_name = "entitlementUseCountRevocation"];
-}
-
 // path: #/components/messages/entitlementUseCountRevoked/payload
 message EntitlementUseCountRevoked {
     AnonymousSchema4 payload = 1 [json_name = "payload"];
@@ -232,12 +253,6 @@ message EntitlementUseCountRevoked {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/entitlementRevoked/payload/properties/payload
-message AnonymousSchema5 {
-    EntitlementRevocation entitlement_revocation = 1 [json_name = "entitlementRevocation"];
-    google.protobuf.Struct metadata = 2 [json_name = "metadata"];
 }
 
 // path: #/components/messages/entitlementRevoked/payload
@@ -257,14 +272,9 @@ message EntitlementRevoked {
     string session_id = 11 [json_name = "sessionId"];
 }
 
-// path: #/components/messages/entitlementDisabled/payload/properties/payload
-message AnonymousSchema6 {
-    EntitlementStatusChange entitlement_status_change = 1 [json_name = "entitlementStatusChange"];
-}
-
 // path: #/components/messages/entitlementDisabled/payload
 message EntitlementDisabled {
-    AnonymousSchema6 payload = 1 [json_name = "payload"];
+    EntitlementDisabledPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -277,16 +287,11 @@ message EntitlementDisabled {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/entitlementEnabled/payload/properties/payload
-message AnonymousSchema7 {
-    EntitlementStatusChange entitlement_status_change = 1 [json_name = "entitlementStatusChange"];
 }
 
 // path: #/components/messages/entitlementEnabled/payload
 message EntitlementEnabled {
-    AnonymousSchema7 payload = 1 [json_name = "payload"];
+    EntitlementEnabledPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -301,14 +306,9 @@ message EntitlementEnabled {
     string session_id = 11 [json_name = "sessionId"];
 }
 
-// path: #/components/messages/entitlementSellback/payload/properties/payload
-message AnonymousSchema8 {
-    EntitlementSale entitlement_sale = 1 [json_name = "entitlementSale"];
-}
-
 // path: #/components/messages/entitlementSellback/payload
 message EntitlementSellback {
-    AnonymousSchema8 payload = 1 [json_name = "payload"];
+    EntitlementSellbackPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];

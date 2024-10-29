@@ -90,198 +90,278 @@ components:
         topic:
           type: string
 
+    freeformNotificationSentPayload:
+      type: object
+      properties:
+        notification:
+          $ref: '#/components/schemas/notificationPayload'
+    freeformNotificationSentToUserNotification:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/notificationPayload'
+      properties:
+        targetUserId:
+          type: string
+    freeformNotificationSentToUserPayload:
+      type: object
+      properties:
+        notification:
+          $ref: '#/components/schemas/freeformNotificationSentToUserNotification'
+    freeformNotificationSentToPartyNotification:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/notificationPayload'
+      properties:
+        partyId:
+          type: string
+    freeformNotificationSentToPartyPayload:
+      type: object
+      properties:
+        notification:
+          $ref: '#/components/schemas/freeformNotificationSentToPartyNotification'
+    templatedNotificationCreatedNotification:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/localizedTemplatePayload'
+      properties:
+        templateContent:
+          type: string
+    templatedNotificationCreatedPayload:
+      type: object
+      properties:
+        notification:
+          $ref: '#/components/schemas/templatedNotificationCreatedNotification'
+    templatedNotificationLocalizationDeletedPayload:
+      type: object
+      properties:
+        notification:
+          $ref: '#/components/schemas/localizedTemplatePayload'
+    templatedNotificationLocalizationPublishedPayload:
+      type: object
+      properties:
+        notification:
+          $ref: '#/components/schemas/localizedTemplatePayload'
+    templatedNotificationLocalizationUpdatedNotification:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/localizedTemplatePayload'
+      properties:
+        templateContent:
+          type: string
+    templatedNotificationLocalizationUpdatedPayload:
+      type: object
+      properties:
+        notification:
+          $ref: '#/components/schemas/templatedNotificationLocalizationUpdatedNotification'
+    templatedNotificationDeletedNotification:
+      type: object
+      properties:
+        templateSlug:
+          type: string
+        namespace:
+          type: string
+    templatedNotificationDeletedPayload:
+      type: object
+      properties:
+        notification:
+          $ref: '#/components/schemas/templatedNotificationDeletedNotification'
+    templatedNotificationSentNotification:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/localizedTemplatePayload'
+      properties:
+        topic:
+          type: string
+        templateContext:
+          type: object
+    templatedNotificationSentPayload:
+      type: object
+      properties:
+        notification:
+          $ref: '#/components/schemas/templatedNotificationSentNotification'
+    templatedNotificationSentToUserNotification:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/localizedTemplatePayload'
+      properties:
+        topic:
+          type: string
+        templateContext:
+          type: object
+    templatedNotificationSentToUserPayload:
+      type: object
+      properties:
+        notification:
+          $ref: '#/components/schemas/templatedNotificationSentToUserNotification'
+    topicCreatedPayload:
+      type: object
+      properties:
+        topic:
+          $ref: '#/components/schemas/topicsPayload'
+    topicDeletedPayload:
+      type: object
+      properties:
+        topic:
+          $ref: '#/components/schemas/topicsPayload'
+    topicModifiedPayload:
+      type: object
+      properties:
+        topic:
+          $ref: '#/components/schemas/topicsPayload'
+    templatedNotificationSentToPartyNotification:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/localizedTemplatePayload'
+      properties:
+        topic:
+          type: string
+        templateContext:
+          type: object
+        partyId:
+          type: string
+    templatedNotificationSentToPartyPayload:
+      type: object
+      properties:
+        notification:
+          $ref: '#/components/schemas/templatedNotificationSentToPartyNotification'
+
   messages:
     freeformNotificationSent:
       name: freeformNotificationSent
       payload:
+        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            properties:
-              notification:
-                $ref: '#/components/schemas/notificationPayload'
+            $ref: '#/components/schemas/freeformNotificationSentPayload'
 
     freeformNotificationSentToUser:
       name: freeformNotificationSentToUser
       payload:
+        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            properties:
-              notification:
-                allOf:
-                 - $ref: '#/components/schemas/notificationPayload'
-                properties:
-                  targetUserId:
-                    type: string
+            $ref: '#/components/schemas/freeformNotificationSentToUserPayload'
 
     freeformNotificationSentToParty:
       name: freeformNotificationSentToParty
       payload:
+        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            properties:
-              notification:
-                allOf:
-                  - $ref: '#/components/schemas/notificationPayload'
-                properties:
-                  partyId:
-                    type: string
+            $ref: '#/components/schemas/freeformNotificationSentToPartyPayload'
 
     templatedNotificationCreated:
       name: templatedNotificationCreated
       payload:
+        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            properties:
-              notification:
-                allOf:
-                  - $ref: '#/components/schemas/localizedTemplatePayload'
-                properties:
-                  templateContent:
-                    type: string
+            $ref: '#/components/schemas/templatedNotificationCreatedPayload'
 
     templatedNotificationLocalizationDeleted:
       name: templatedNotificationLocalizationDeleted
       payload:
+        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            properties:
-              notification:
-                $ref: '#/components/schemas/localizedTemplatePayload'
+            $ref: '#/components/schemas/templatedNotificationLocalizationDeletedPayload'
 
     templatedNotificationLocalizationPublished:
       name: templatedNotificationLocalizationPublished
       payload:
+        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            properties:
-              notification:
-                $ref: '#/components/schemas/localizedTemplatePayload'
+            $ref: '#/components/schemas/templatedNotificationLocalizationPublishedPayload'
 
     templatedNotificationLocalizationUpdated:
       name: templatedNotificationLocalizationUpdated
       payload:
+        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            properties:
-              notification:
-                allOf:
-                  - $ref: '#/components/schemas/localizedTemplatePayload'
-                properties:
-                  templateContent:
-                    type: string
+            $ref: '#/components/schemas/templatedNotificationLocalizationUpdatedPayload'
 
     templatedNotificationDeleted:
       name: templatedNotificationDeleted
       payload:
+        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            properties:
-              notification:
-                type: object
-                properties:
-                  templateSlug:
-                    type: string
-                  namespace:
-                    type: string
+            $ref: '#/components/schemas/templatedNotificationDeletedNotification'
 
     templatedNotificationSent:
       name: templatedNotificationSent
       payload:
+        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            properties:
-              notification:
-                allOf:
-                  - $ref: '#/components/schemas/localizedTemplatePayload'
-                properties:
-                  topic:
-                    type: string
-                  templateContext:
-                    type: object
+            $ref: '#/components/schemas/templatedNotificationSentPayload'
 
     templatedNotificationSentToUser:
       name: templatedNotificationSentToUser
       payload:
+        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            properties:
-              notification:
-                allOf:
-                  - $ref: '#/components/schemas/localizedTemplatePayload'
-                properties:
-                  topic:
-                    type: string
-                  templateContext:
-                    type: object
+            $ref: '#/components/schemas/templatedNotificationSentToUserPayload'
 
     topicCreated:
       name: topicCreated
       payload:
+        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            properties:
-              topic:
-                $ref: '#/components/schemas/topicsPayload'
+            $ref: '#/components/schemas/topicCreatedPayload'
 
     topicDeleted:
       name: topicDeleted
       payload:
+        type: object
         allOf:
-          - $ref: '#/components/schemas/event'
+          - $ref: '#/components/schemas/topicDeletedPayload'
         properties:
           payload:
-            properties:
-              topic:
-                $ref: '#/components/schemas/topicsPayload'
+            $ref: '#/components/schemas/event'
 
     topicModified:
       name: topicModified
       payload:
+        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            properties:
-              topic:
-                $ref: '#/components/schemas/topicsPayload'
+            $ref: '#/components/schemas/topicModifiedPayload'
 
     templatedNotificationSentToParty:
       name: templatedNotificationSentToParty
       payload:
+        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            properties:
-              notification:
-                allOf:
-                  - $ref: '#/components/schemas/localizedTemplatePayload'
-                properties:
-                  topic:
-                    type: string
-                  templateContext:
-                    type: object
-                  partyId:
-                    type: string
+            $ref: '#/components/schemas/templatedNotificationSentToPartyPayload'

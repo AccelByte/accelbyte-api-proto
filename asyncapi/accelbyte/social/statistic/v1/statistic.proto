@@ -37,10 +37,6 @@ message Event {
     string session_id = 9 [json_name = "sessionId"];
 }
 
-// path: #/components/schemas/stat/properties/tags
-message AnonymousSchema1 {
-}
-
 // path: #/components/schemas/stat
 message Stat {
     string namespace = 1 [json_name = "namespace"];
@@ -54,7 +50,7 @@ message Stat {
     bool increment_only = 9 [json_name = "incrementOnly"];
     bool set_as_global = 10 [json_name = "setAsGlobal"];
     string set_by = 11 [json_name = "setBy"];
-    AnonymousSchema1 tags = 12 [json_name = "tags"];
+    map<string, string> tags = 12 [json_name = "tags"];
     string created_at = 13 [json_name = "createdAt"];
     string updated_at = 14 [json_name = "updatedAt"];
     bool ignore_additional_data_on_value_rejected = 15 [json_name = "ignoreAdditionalDataOnValueRejected"];
@@ -75,14 +71,6 @@ message StatImport {
     repeated string failed_stat_codes = 5 [json_name = "failedStatCodes"];
 }
 
-// path: #/components/schemas/statItem/properties/additionalData/additionalProperties
-message AnonymousSchema2 {
-}
-
-// path: #/components/schemas/statItem/properties/additionalData
-message AnonymousSchema3 {
-}
-
 // path: #/components/schemas/statItem
 message StatItem {
     string namespace = 1 [json_name = "namespace"];
@@ -90,7 +78,7 @@ message StatItem {
     string user_id = 3 [json_name = "userId"];
     double latest_value = 4 [json_name = "latestValue"];
     double inc = 5 [json_name = "inc"];
-    AnonymousSchema3 additional_data = 6 [json_name = "additionalData"];
+    google.protobuf.Struct additional_data = 6 [json_name = "additionalData"];
     bool ignore_additional_data_on_value_rejected = 7 [json_name = "ignoreAdditionalDataOnValueRejected"];
     double default_value = 8 [json_name = "defaultValue"];
     double request_value = 9 [json_name = "requestValue"];

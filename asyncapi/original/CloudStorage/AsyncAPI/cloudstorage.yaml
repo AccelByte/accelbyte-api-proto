@@ -235,7 +235,60 @@ components:
           type: string
         userId:
           type: string
-
+    namespaceSlotConfigCreatedPayloadData:
+      type: object
+      properties:
+        namespaceSlotConfig:
+          $ref: '#/components/schemas/namespaceSlotConfig'
+      x-uid0: AnonymousSchema6
+    namespaceSlotConfigDeletedPayloadData:
+      type: object
+      properties:
+        namespaceSlotConfig:
+          $ref: '#/components/schemas/namespaceSlotConfig'
+      x-uid0: AnonymousSchema7
+    namespaceSlotConfigUpdatedPayloadData:
+      type: object
+      properties:
+        namespaceSlotConfig:
+          $ref: '#/components/schemas/namespaceSlotConfig'
+      x-uid0: AnonymousSchema8
+    slotCreatedPayloadData:
+      type: object
+      properties:
+        slot:
+          $ref: '#/components/schemas/slots'
+      x-uid0: AnonymousSchema9
+    slotDeletedPayloadData:
+      type: object
+      properties:
+        slot:
+          $ref: '#/components/schemas/slots'
+      x-uid0: AnonymousSchema10
+    slotUpdatedPayloadData:
+      type: object
+      properties:
+        slot:
+          $ref: '#/components/schemas/slots'
+      x-uid0: AnonymousSchema11
+    slotConfigCreatedPayloadData:
+      type: object
+      properties:
+        slotConfig:
+          $ref: '#/components/schemas/slotConfig'
+      x-uid0: AnonymousSchema12
+    slotConfigDeletedPayloadData:
+      type: object
+      properties:
+        slotConfig:
+          $ref: '#/components/schemas/slotConfig'
+      x-uid0: AnonymousSchema13
+    slotConfigUpdatedPayloadData:
+      type: object
+      properties:
+        slotConfig:
+          $ref: '#/components/schemas/slotConfig'
+      x-uid0: AnonymousSchema14
   messages:
     namespaceSlotConfigCreated:
       name: namespaceSlotConfigCreated
@@ -245,11 +298,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              namespaceSlotConfig:
-                $ref: '#/components/schemas/namespaceSlotConfig'
-
+            $ref: '#/components/schemas/namespaceSlotConfigCreatedPayloadData'
     namespaceSlotConfigDeleted:
       name: namespaceSlotConfigDeleted
       payload:
@@ -258,11 +307,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              namespaceSlotConfig:
-                $ref: '#/components/schemas/namespaceSlotConfig'
-
+            $ref: '#/components/schemas/namespaceSlotConfigDeletedPayloadData'
     namespaceSlotConfigUpdated:
       name: namespaceSlotConfigUpdated
       payload:
@@ -271,11 +316,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              namespaceSlotConfig:
-                $ref: '#/components/schemas/namespaceSlotConfig'
-
+            $ref: '#/components/schemas/namespaceSlotConfigUpdatedPayloadData'
     slotCreated:
       name: slotCreated
       payload:
@@ -284,11 +325,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              slot:
-                $ref: '#/components/schemas/slots'
-
+            $ref: '#/components/schemas/slotCreatedPayloadData'
     slotDeleted:
       name: slotDeleted
       payload:
@@ -297,11 +334,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              slot:
-                $ref: '#/components/schemas/slots'
-
+            $ref: '#/components/schemas/slotDeletedPayloadData'
     slotUpdated:
       name: slotUpdated
       payload:
@@ -310,11 +343,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              slot:
-                $ref: '#/components/schemas/slots'
-
+            $ref: '#/components/schemas/slotUpdatedPayloadData'
     slotConfigCreated:
       name: slotConfigCreated
       payload:
@@ -323,11 +352,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              slotConfig:
-                $ref: '#/components/schemas/slotConfig'
-
+            $ref: '#/components/schemas/slotConfigCreatedPayloadData'
     slotConfigDeleted:
       name: slotConfigDeleted
       payload:
@@ -336,11 +361,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              slotConfig:
-                $ref: '#/components/schemas/slotConfig'
-
+            $ref: '#/components/schemas/slotConfigDeletedPayloadData'
     slotConfigUpdated:
       name: slotConfigUpdated
       payload:
@@ -349,7 +370,4 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              slotConfig:
-                $ref: '#/components/schemas/slotConfig'
+            $ref: '#/components/schemas/slotConfigUpdatedPayloadData'

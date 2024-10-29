@@ -194,6 +194,16 @@ components:
         displayName:
           type: string
           description: display name
+    userTestAccountGameDataItem:
+      type: object
+      properties:
+        gameUserId:
+          type: string
+          description: justice game user id in game namespace
+        gameNamespace:
+          type: string
+          description: game namespace
+      x-uid0: AnonymousSchema1
     userTestAccount:
       type: object
       properties:
@@ -219,14 +229,7 @@ components:
         gameData:
           type: array
           items:
-            type: object
-            properties:
-              gameUserId:
-                type: string
-                description: justice game user id in game namespace
-              gameNamespace:
-                type: string
-                description: game namespace
+            $ref: '#/components/schemas/userTestAccountGameDataItem'
           description: justice game user ids in game namespace
     userGameAccount:
       type: object
@@ -260,36 +263,38 @@ components:
         verified:
           type: boolean
           description: a flag indicates whether user account is verified or not
+    userAccountBanItem:
+      type: object
+      properties:
+        banId:
+          type: string
+          description: ban id
+        targetNamespace:
+          type: string
+          description: target namespace
+        targetUserId:
+          type: string
+          description: target user id
+        name:
+          type: string
+          description: ban type
+        reason:
+          type: string
+          description: reason
+        comment:
+          type: string
+          description: comment
+        enabled:
+          type: boolean
+          description: a flag indicates whether this user ban is enabled or not
+      x-uid0: AnonymousSchema2
     userAccountBan:
       type: object
       properties:
         ban:
           type: array
           items:
-            type: object
-            properties:
-              banId:
-                type: string
-                description: ban id
-              targetNamespace:
-                type: string
-                description: target namespace
-              targetUserId:
-                type: string
-                description: target user id
-              name:
-                type: string
-                description: ban type
-              reason:
-                type: string
-                description: reason
-              comment:
-                type: string
-                description: comment
-              enabled:
-                type: boolean
-                description: a flag indicates whether this user ban is enabled or
-                  not
+            $ref: '#/components/schemas/userAccountBanItem'
     userInformation:
       type: object
       properties:
@@ -518,6 +523,372 @@ components:
           type: boolean
           description: a flag to indicates the user is a test account. this field
             will be omitted if its a real account
+    userAccountCreatedPayloadData:
+      type: object
+      properties:
+        userAccount:
+          $ref: '#/components/schemas/userTestAccount'
+        userAccountStatus:
+          $ref: '#/components/schemas/userAccountStatus'
+        namespace:
+          type: string
+          description: namespace
+        userId:
+          type: string
+          description: user id
+      x-uid0: AnonymousSchema3
+    userAccountDeletedPayloadData:
+      type: object
+      properties:
+        userAccount:
+          $ref: '#/components/schemas/userTestAccount'
+        userAccountStatus:
+          $ref: '#/components/schemas/userAccountStatus'
+        namespace:
+          type: string
+          description: namespace
+        userId:
+          type: string
+          description: user id
+      x-uid0: AnonymousSchema4
+    userAccountEnabledPayloadData:
+      type: object
+      properties:
+        userAccount:
+          $ref: '#/components/schemas/userAccount'
+        userAccountStatus:
+          $ref: '#/components/schemas/userAccountStatus'
+        namespace:
+          type: string
+          description: namespace
+        userId:
+          type: string
+          description: user id
+      x-uid0: AnonymousSchema5
+    userAccountDisabledPayloadData:
+      type: object
+      properties:
+        userAccount:
+          $ref: '#/components/schemas/userAccount'
+        userAccountStatus:
+          $ref: '#/components/schemas/userAccountStatus'
+        namespace:
+          type: string
+          description: namespace
+        userId:
+          type: string
+          description: user id
+      x-uid0: AnonymousSchema6
+    userAccountEmailUpdatedPayloadData:
+      type: object
+      properties:
+        userAccount:
+          $ref: '#/components/schemas/userTestAccount'
+        userAccountStatus:
+          $ref: '#/components/schemas/userAccountStatus'
+        namespace:
+          type: string
+          description: namespace
+        userId:
+          type: string
+          description: user id
+      x-uid0: AnonymousSchema7
+    userAccountPasswordUpdatedPayloadData:
+      type: object
+      properties:
+        userAccount:
+          $ref: '#/components/schemas/userTestAccount'
+        userAccountStatus:
+          $ref: '#/components/schemas/userAccountStatus'
+        namespace:
+          type: string
+          description: namespace
+        userId:
+          type: string
+          description: user id
+      x-uid0: AnonymousSchema8
+    userAccountBannedPayloadData:
+      type: object
+      properties:
+        userAccount:
+          $ref: '#/components/schemas/userTestAccount'
+        userAccountBan:
+          $ref: '#/components/schemas/userAccountBan'
+      x-uid0: AnonymousSchema9
+    userAccountUnbannedPayloadData:
+      type: object
+      properties:
+        userAccount:
+          $ref: '#/components/schemas/userTestAccount'
+        userAccountBan:
+          $ref: '#/components/schemas/userAccountBan'
+      x-uid0: AnonymousSchema10
+    userAccountVerifiedPayloadData:
+      type: object
+      properties:
+        userAccount:
+          $ref: '#/components/schemas/userAccount'
+        userAccountStatus:
+          $ref: '#/components/schemas/userAccountStatus'
+        namespace:
+          type: string
+          description: namespace
+        userId:
+          type: string
+          description: user id
+      x-uid0: AnonymousSchema11
+    userAccountLinkedPayloadData:
+      type: object
+      properties:
+        userAccount:
+          $ref: '#/components/schemas/userAccountLink'
+        userAccountThirdParty:
+          $ref: '#/components/schemas/userAccountThirdPartyLink'
+      x-uid: AnonymousSchema12
+    userAccountUnlinkedPayloadData:
+      type: object
+      properties:
+        userAccount:
+          $ref: '#/components/schemas/userAccountUnlink'
+        userAccountThirdParty:
+          $ref: '#/components/schemas/userAccountThirdParty'
+      x-uid: AnonymousSchema13
+    userAccountUpgradedPayloadData:
+      type: object
+      properties:
+        userAccount:
+          $ref: '#/components/schemas/userAccountUpgrade'
+      x-uid0: AnonymousSchema14
+    gameUserAccountCreatedPayloadData:
+      type: object
+      properties:
+        userAccount:
+          $ref: '#/components/schemas/userGameAccount'
+        userAccountStatus:
+          $ref: '#/components/schemas/userAccountStatus'
+        namespace:
+          type: string
+        userId:
+          type: string
+      x-uid0: AnonymousSchema15
+    gameUserCreatedPayloadData:
+      type: object
+      properties:
+        platform:
+          $ref: '#/components/schemas/platform'
+      x-uid0: AnonymousSchema16
+    thirdPartyAccountCreatedPayloadData:
+      type: object
+      properties:
+        thirdParty:
+          $ref: '#/components/schemas/thirdParty'
+        namespace:
+          type: string
+          description: publisher namespace
+        userId:
+          type: string
+          description: publisher user id
+      x-uid0: AnonymousSchema17
+    userAccountTypeChangedPayloadData:
+      type: object
+      properties:
+        userAccount:
+          $ref: '#/components/schemas/userAccountTypeChange'
+      x-uid0: AnonymousSchema18
+    userLoggedInPayloadData:
+      type: object
+      properties:
+        userAccount:
+          $ref: '#/components/schemas/userAccount'
+        userAuthentication:
+          $ref: '#/components/schemas/userAuthentication'
+      x-uid: AnonymousSchema19
+    userLoggedOutPayloadData:
+      type: object
+      properties:
+        userAccount:
+          $ref: '#/components/schemas/userAccount'
+        userAuthentication:
+          $ref: '#/components/schemas/userAuthentication'
+      x-uid: AnonymousSchema20
+    userThirdPartyLoggedInPayloadData:
+      type: object
+      properties:
+        userAccount:
+          $ref: '#/components/schemas/userAccount'
+        userAuthentication:
+          $ref: '#/components/schemas/userAuthentication'
+      x-uid: AnonymousSchema21
+    userLoginFailedPayloadData:
+      type: object
+      properties:
+        userAccount:
+          $ref: '#/components/schemas/userAccount'
+        userAuthenticationFailed:
+          $ref: '#/components/schemas/userAuthenticationFailed'
+      x-uid0: AnonymousSchema22
+    userThirdPartyLoginFailedPayloadData:
+      type: object
+      properties:
+        userAccount:
+          $ref: '#/components/schemas/userAccount'
+        userAuthenticationFailed:
+          $ref: '#/components/schemas/userAuthenticationFailed'
+      x-uid0: AnonymousSchema23
+    userInformationCreatedPayloadData:
+      type: object
+      properties:
+        userAccount:
+          $ref: '#/components/schemas/userTestAccount'
+        userInformation:
+          $ref: '#/components/schemas/userInformation'
+      x-uid: AnonymousSchema24
+    userInformationDisplayNameUpdatedPayloadData:
+      type: object
+      properties:
+        userAccount:
+          $ref: '#/components/schemas/userTestAccount'
+        userInformation:
+          $ref: '#/components/schemas/userInformation'
+      x-uid: AnonymousSchema25
+    userInformationCountryUpdatedPayloadData:
+      type: object
+      properties:
+        userAccount:
+          $ref: '#/components/schemas/userTestAccount'
+        userInformation:
+          $ref: '#/components/schemas/userInformation'
+      x-uid0: AnonymousSchema26
+    userInformationLanguageUpdatedPayloadData:
+      type: object
+      properties:
+        userAccount:
+          $ref: '#/components/schemas/userTestAccount'
+        userInformation:
+          $ref: '#/components/schemas/userInformation'
+      x-uid0: AnonymousSchema27
+    userInformationUsernameUpdatedPayloadData:
+      type: object
+      properties:
+        userAccount:
+          $ref: '#/components/schemas/userTestAccount'
+        userInformation:
+          $ref: '#/components/schemas/userInformation'
+      x-uid0: AnonymousSchema28
+    userInformationDateOfBirthUpdatedPayloadData:
+      type: object
+      properties:
+        userAccount:
+          $ref: '#/components/schemas/userTestAccount'
+        userInformation:
+          $ref: '#/components/schemas/userInformation'
+      x-uid0: AnonymousSchema29
+    userPermissionsCreatedPayloadData:
+      type: object
+      properties:
+        userAccount:
+          $ref: '#/components/schemas/userTestAccount'
+        permissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/permissions'
+      x-uid0: AnonymousSchema30
+    userPermissionsDeletedPayloadData:
+      type: object
+      properties:
+        userAccount:
+          $ref: '#/components/schemas/userTestAccount'
+        permissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/permissions'
+      x-uid0: AnonymousSchema31
+    userRolesCreatedPayloadData:
+      type: object
+      properties:
+        userAccount:
+          $ref: '#/components/schemas/userTestAccount'
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/role'
+      x-uid0: AnonymousSchema32
+    userRolesDeletedPayloadData:
+      type: object
+      properties:
+        userAccount:
+          $ref: '#/components/schemas/userTestAccount'
+        roles:
+          type: array
+          items:
+            type: string
+      x-uid0: AnonymousSchema33
+    countryAgeRestrictionCreatedPayloadData:
+      type: object
+      properties:
+        countryAgeRestriction:
+          $ref: '#/components/schemas/countryAgeRestriction'
+      x-uid0: AnonymousSchema34
+    countryAgeRestrictionUpdatedPayloadData:
+      type: object
+      properties:
+        countryAgeRestriction:
+          $ref: '#/components/schemas/countryAgeRestriction'
+      x-uid0: AnonymousSchema35
+    chatAllBannedPayloadData:
+      type: object
+      properties:
+        userFeatureBan:
+          $ref: '#/components/schemas/userFeatureBan'
+      x-uid0: AnonymousSchema36
+    chatSendBannedPayloadData:
+      type: object
+      properties:
+        userFeatureBan:
+          $ref: '#/components/schemas/userFeatureBan'
+      x-uid0: AnonymousSchema37
+    leaderboardBannedPayloadData:
+      type: object
+      properties:
+        userFeatureBan:
+          $ref: '#/components/schemas/userFeatureBan'
+      x-uid0: AnonymousSchema38
+    statisticsBannedPayloadData:
+      type: object
+      properties:
+        userFeatureBan:
+          $ref: '#/components/schemas/userFeatureBan'
+      x-uid0: AnonymousSchema39
+    orderAndPaymentBannedPayloadData:
+      type: object
+      properties:
+        userFeatureBan:
+          $ref: '#/components/schemas/userFeatureBan'
+      x-uid0: AnonymousSchema40
+    matchmakingBannedPayloadData:
+      type: object
+      properties:
+        userFeatureBan:
+          $ref: '#/components/schemas/userFeatureBan'
+      x-uid0: AnonymousSchema41
+    ugcCreateUpdateBannedPayloadData:
+      type: object
+      properties:
+        userFeatureBan:
+          $ref: '#/components/schemas/userFeatureBan'
+      x-uid0: AnonymousSchema42
+    userDisconnectRequestedPayloadData:
+      type: object
+      properties:
+        userId:
+          type: string
+      x-uid0: AnonymousSchema43
+    gdprRequestDataDeletionResponsePayloadData:
+      type: object
+      properties:
+        deletionGDPR:
+          $ref: '#/components/schemas/deletionGDPR'
+      x-uid0: AnonymousSchema44
   messages:
     userAccountCreated:
       name: userAccountCreated
@@ -528,18 +899,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userAccount:
-                $ref: '#/components/schemas/userTestAccount'
-              userAccountStatus:
-                $ref: '#/components/schemas/userAccountStatus'
-              namespace:
-                type: string
-                description: namespace
-              userId:
-                type: string
-                description: user id
+            $ref: '#/components/schemas/userAccountCreatedPayloadData'
     userAccountDeleted:
       name: userAccountDeleted
       description: message is sent when user account is deleted
@@ -549,18 +909,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userAccount:
-                $ref: '#/components/schemas/userTestAccount'
-              userAccountStatus:
-                $ref: '#/components/schemas/userAccountStatus'
-              namespace:
-                type: string
-                description: namespace
-              userId:
-                type: string
-                description: user id
+            $ref: '#/components/schemas/userAccountDeletedPayloadData'
     userAccountEnabled:
       name: userAccountEnabled
       description: message is sent when user account is enabled
@@ -570,18 +919,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userAccount:
-                $ref: '#/components/schemas/userAccount'
-              userAccountStatus:
-                $ref: '#/components/schemas/userAccountStatus'
-              namespace:
-                type: string
-                description: namespace
-              userId:
-                type: string
-                description: user id
+            $ref: '#/components/schemas/userAccountEnabledPayloadData'
     userAccountDisabled:
       name: userAccountDisabled
       description: message is sent when user account is disabled
@@ -591,18 +929,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userAccount:
-                $ref: '#/components/schemas/userAccount'
-              userAccountStatus:
-                $ref: '#/components/schemas/userAccountStatus'
-              namespace:
-                type: string
-                description: namespace
-              userId:
-                type: string
-                description: user id
+            $ref: '#/components/schemas/userAccountDisabledPayloadData'
     userAccountEmailUpdated:
       name: userAccountEmailUpdated
       description: message is sent when user change own email/admin change user's
@@ -613,18 +940,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userAccount:
-                $ref: '#/components/schemas/userTestAccount'
-              userAccountStatus:
-                $ref: '#/components/schemas/userAccountStatus'
-              namespace:
-                type: string
-                description: namespace
-              userId:
-                type: string
-                description: user id
+            $ref: '#/components/schemas/userAccountEmailUpdatedPayloadData'
     userAccountPasswordUpdated:
       name: userAccountPasswordUpdated
       description: message is sent when user update password
@@ -634,18 +950,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userAccount:
-                $ref: '#/components/schemas/userTestAccount'
-              userAccountStatus:
-                $ref: '#/components/schemas/userAccountStatus'
-              namespace:
-                type: string
-                description: namespace
-              userId:
-                type: string
-                description: user id
+            $ref: '#/components/schemas/userAccountPasswordUpdatedPayloadData'
     userAccountBanned:
       name: userAccountBanned
       description: message is sent when user is banned
@@ -655,12 +960,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userAccount:
-                $ref: '#/components/schemas/userTestAccount'
-              userAccountBan:
-                $ref: '#/components/schemas/userAccountBan'
+            $ref: '#/components/schemas/userAccountBannedPayloadData'
     userAccountUnbanned:
       name: userAccountUnbanned
       description: message is sent when user is unbanned
@@ -670,12 +970,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userAccount:
-                $ref: '#/components/schemas/userTestAccount'
-              userAccountBan:
-                $ref: '#/components/schemas/userAccountBan'
+            $ref: '#/components/schemas/userAccountUnbannedPayloadData'
     userAccountVerified:
       name: userAccountVerified
       description: message is sent when user account is verified
@@ -685,18 +980,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userAccount:
-                $ref: '#/components/schemas/userAccount'
-              userAccountStatus:
-                $ref: '#/components/schemas/userAccountStatus'
-              namespace:
-                type: string
-                description: namespace
-              userId:
-                type: string
-                description: user id
+            $ref: '#/components/schemas/userAccountVerifiedPayloadData'
     userAccountLinked:
       name: userAccountLinked
       description: message is sent when user account is linked to a third party platform
@@ -706,12 +990,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userAccount:
-                $ref: '#/components/schemas/userAccountLink'
-              userAccountThirdParty:
-                $ref: '#/components/schemas/userAccountThirdPartyLink'
+            $ref: '#/components/schemas/userAccountLinkedPayloadData'
     userAccountUnlinked:
       name: userAccountUnlinked
       description: message is sent when user account and third party platform are
@@ -722,12 +1001,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userAccount:
-                $ref: '#/components/schemas/userAccountUnlink'
-              userAccountThirdParty:
-                $ref: '#/components/schemas/userAccountThirdParty'
+            $ref: '#/components/schemas/userAccountUnlinkedPayloadData'
     userAccountUpgraded:
       name: userAccountUpgraded
       payload:
@@ -736,10 +1010,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userAccount:
-                $ref: '#/components/schemas/userAccountUpgrade'
+            $ref: '#/components/schemas/userAccountUpgradedPayloadData'
     gameUserAccountCreated:
       name: gameUserAccountCreated
       description: message is sent when user account in game namespace is created
@@ -749,16 +1020,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userAccount:
-                $ref: '#/components/schemas/userGameAccount'
-              userAccountStatus:
-                $ref: '#/components/schemas/userAccountStatus'
-              namespace:
-                type: string
-              userId:
-                type: string
+            $ref: '#/components/schemas/gameUserAccountCreatedPayloadData'
     gameUserCreated:
       name: gameUserCreated
       description: message is sent when a game account is created
@@ -768,10 +1030,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              platform:
-                $ref: '#/components/schemas/platform'
+            $ref: '#/components/schemas/gameUserCreatedPayloadData'
     thirdPartyAccountCreated:
       name: thirdPartyAccountCreated
       description: message is sent when a third party is linked to an account or first
@@ -782,16 +1041,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              thirdParty:
-                $ref: '#/components/schemas/thirdParty'
-              namespace:
-                type: string
-                description: publisher namespace
-              userId:
-                type: string
-                description: publisher user id
+            $ref: '#/components/schemas/thirdPartyAccountCreatedPayloadData'
     userAccountTypeChanged:
       name: userAccountTypeChanged
       description: message is sent when user's account type is changed
@@ -801,10 +1051,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userAccount:
-                $ref: '#/components/schemas/userAccountTypeChange'
+            $ref: '#/components/schemas/userAccountTypeChangedPayloadData'
     userLoggedIn:
       name: userLoggedIn
       description: message is sent when user login
@@ -814,12 +1061,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userAccount:
-                $ref: '#/components/schemas/userAccount'
-              userAuthentication:
-                $ref: '#/components/schemas/userAuthentication'
+            $ref: '#/components/schemas/userLoggedInPayloadData'
     userLoggedOut:
       name: userLoggedOut
       description: message is sent when user logout
@@ -829,12 +1071,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userAccount:
-                $ref: '#/components/schemas/userAccount'
-              userAuthentication:
-                $ref: '#/components/schemas/userAuthentication'
+            $ref: '#/components/schemas/userLoggedOutPayloadData'
     userThirdPartyLoggedIn:
       name: userThirdPartyLoggedIn
       description: message is sent when user login with a third party account
@@ -844,12 +1081,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userAccount:
-                $ref: '#/components/schemas/userAccount'
-              userAuthentication:
-                $ref: '#/components/schemas/userAuthentication'
+            $ref: '#/components/schemas/userThirdPartyLoggedInPayloadData'
     userLoginFailed:
       name: userLoginFailed
       description: message is sent when user login failed
@@ -859,12 +1091,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userAccount:
-                $ref: '#/components/schemas/userAccount'
-              userAuthenticationFailed:
-                $ref: '#/components/schemas/userAuthenticationFailed'
+            $ref: '#/components/schemas/userLoginFailedPayloadData'
     userThirdPartyLoginFailed:
       name: userThirdPartyLoginFailed
       description: message is sent when user login platform failed
@@ -874,12 +1101,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userAccount:
-                $ref: '#/components/schemas/userAccount'
-              userAuthenticationFailed:
-                $ref: '#/components/schemas/userAuthenticationFailed'
+            $ref: '#/components/schemas/userThirdPartyLoginFailedPayloadData'
     userInformationCreated:
       name: userInformationCreated
       description: message is sent when user account is created
@@ -889,12 +1111,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userAccount:
-                $ref: '#/components/schemas/userTestAccount'
-              userInformation:
-                $ref: '#/components/schemas/userInformation'
+            $ref: '#/components/schemas/userInformationCreatedPayloadData'
     userInformationDisplayNameUpdated:
       name: userInformationDisplayNameUpdated
       description: message is sent when user's display name is changed
@@ -904,12 +1121,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userAccount:
-                $ref: '#/components/schemas/userTestAccount'
-              userInformation:
-                $ref: '#/components/schemas/userInformation'
+            $ref: '#/components/schemas/userInformationDisplayNameUpdatedPayloadData'
     userInformationCountryUpdated:
       name: userInformationCountryUpdated
       description: message is sent when user's country is changed
@@ -919,12 +1131,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userAccount:
-                $ref: '#/components/schemas/userTestAccount'
-              userInformation:
-                $ref: '#/components/schemas/userInformation'
+            $ref: '#/components/schemas/userInformationCountryUpdatedPayloadData'
     userInformationLanguageUpdated:
       name: userInformationLanguageUpdated
       description: message is sent when user's language is changed
@@ -934,12 +1141,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userAccount:
-                $ref: '#/components/schemas/userTestAccount'
-              userInformation:
-                $ref: '#/components/schemas/userInformation'
+            $ref: '#/components/schemas/userInformationLanguageUpdatedPayloadData'
     userInformationUsernameUpdated:
       name: userInformationUsernameUpdated
       description: message is sent when user's username is changed
@@ -949,12 +1151,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userAccount:
-                $ref: '#/components/schemas/userTestAccount'
-              userInformation:
-                $ref: '#/components/schemas/userInformation'
+            $ref: '#/components/schemas/userInformationUsernameUpdatedPayloadData'
     userInformationDateOfBirthUpdated:
       name: userInformationDateOfBirthUpdated
       description: message is sent when user's birthday is changed
@@ -964,12 +1161,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userAccount:
-                $ref: '#/components/schemas/userTestAccount'
-              userInformation:
-                $ref: '#/components/schemas/userInformation'
+            $ref: '#/components/schemas/userInformationDateOfBirthUpdatedPayloadData'
     userPermissionsCreated:
       name: userPermissionCreated
       description: message is sent when adding user permissions
@@ -979,14 +1171,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userAccount:
-                $ref: '#/components/schemas/userTestAccount'
-              permissions:
-                type: array
-                items:
-                  $ref: '#/components/schemas/permissions'
+            $ref: '#/components/schemas/userPermissionsCreatedPayloadData'
     userPermissionsDeleted:
       name: userPermissionDeleted
       description: message is sent when user's permission is deleted
@@ -996,14 +1181,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userAccount:
-                $ref: '#/components/schemas/userTestAccount'
-              permissions:
-                type: array
-                items:
-                  $ref: '#/components/schemas/permissions'
+            $ref: '#/components/schemas/userPermissionsDeletedPayloadData'
     userRolesCreated:
       name: userRoleCreated
       description: message is sent when role is assigned to user
@@ -1013,14 +1191,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userAccount:
-                $ref: '#/components/schemas/userTestAccount'
-              roles:
-                type: array
-                items:
-                  $ref: '#/components/schemas/role'
+            $ref: '#/components/schemas/userRolesCreatedPayloadData'
     userRolesDeleted:
       name: userRoleDeleted
       description: message is sent when user's role is deleted
@@ -1030,14 +1201,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userAccount:
-                $ref: '#/components/schemas/userTestAccount'
-              roles:
-                type: array
-                items:
-                  type: string
+            $ref: '#/components/schemas/userRolesDeletedPayloadData'
     countryAgeRestrictionCreated:
       name: countryAgeRestrictionCreated
       payload:
@@ -1046,10 +1210,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              countryAgeRestriction:
-                $ref: '#/components/schemas/countryAgeRestriction'
+            $ref: '#/components/schemas/countryAgeRestrictionCreatedPayloadData'
     countryAgeRestrictionUpdated:
       name: countryAgeRestrictionUpdated
       description: message is sent when country age restriction is updated
@@ -1059,10 +1220,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              countryAgeRestriction:
-                $ref: '#/components/schemas/countryAgeRestriction'
+            $ref: '#/components/schemas/countryAgeRestrictionUpdatedPayloadData'
     chatAllBanned:
       name: chatAllBanned
       description: message is sent when user is banned with feature restriction CHAT_ALL
@@ -1072,10 +1230,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userFeatureBan:
-                $ref: '#/components/schemas/userFeatureBan'
+            $ref: '#/components/schemas/chatAllBannedPayloadData'
     chatSendBanned:
       name: chatSendBanned
       description: message is sent when user is banned with feature restriction CHAT_SEND
@@ -1085,10 +1240,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userFeatureBan:
-                $ref: '#/components/schemas/userFeatureBan'
+            $ref: '#/components/schemas/chatSendBannedPayloadData'
     leaderboardBanned:
       name: leaderboardBanned
       description: message is sent when user is banned with feature restriction LEADERBOARD
@@ -1098,10 +1250,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userFeatureBan:
-                $ref: '#/components/schemas/userFeatureBan'
+            $ref: '#/components/schemas/leaderboardBannedPayloadData'
     statisticsBanned:
       name: statisticsBanned
       description: message is sent when user is banned with feature restriction STATISTICS
@@ -1111,10 +1260,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userFeatureBan:
-                $ref: '#/components/schemas/userFeatureBan'
+            $ref: '#/components/schemas/statisticsBannedPayloadData'
     orderAndPaymentBanned:
       name: orderAndPaymentBanned
       description: message is sent when user is banned with feature restriction ORDER_AND_PAYMENT
@@ -1124,10 +1270,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userFeatureBan:
-                $ref: '#/components/schemas/userFeatureBan'
+            $ref: '#/components/schemas/orderAndPaymentBannedPayloadData'
     matchmakingBanned:
       name: matchmakingBanned
       description: message is sent when user is banned with feature restriction MATCHMAKING
@@ -1137,10 +1280,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userFeatureBan:
-                $ref: '#/components/schemas/userFeatureBan'
+            $ref: '#/components/schemas/matchmakingBannedPayloadData'
     ugcCreateUpdateBanned:
       name: ugcCreateUpdateBanned
       description: message is sent when user is banned with feature restriction UGC_CREATE_UPDATE
@@ -1150,10 +1290,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userFeatureBan:
-                $ref: '#/components/schemas/userFeatureBan'
+            $ref: '#/components/schemas/ugcCreateUpdateBannedPayloadData'
     userDisconnectRequested:
       name: userDisconnectRequested
       description: message is sent when user is (scheduled to be)deleted/user's permission
@@ -1164,10 +1301,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              userId:
-                type: string
+            $ref: '#/components/schemas/userDisconnectRequestedPayloadData'
     gdprRequestDataDeletionResponse:
       name: gdprRequestDataDeletionResponse
       description: message is sent after IAM receive account deletion and then delete
@@ -1178,10 +1312,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              deletionGDPR:
-                $ref: '#/components/schemas/deletionGDPR'
+            $ref: '#/components/schemas/gdprRequestDataDeletionResponsePayloadData'
 x-source: IAM/AsyncAPI/account.yaml
 x-proto-package: accelbyte.iam.account.v1
 x-proto-package-version: v1.0.0

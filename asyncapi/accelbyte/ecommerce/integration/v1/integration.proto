@@ -82,14 +82,24 @@ message Notification {
     string notification_type = 6 [json_name = "notificationType"]; // Allowed values: DID_CHANGE_RENEWAL_PREF, EXPIRED, GRACE_PERIOD_EXPIRED, RENEWAL_EXTENDED, DID_RENEW, SUBSCRIBED, REVOKE, REFUND, REFUND_REVERSED, OFFER_REDEEMED, DID_CHANGE_RENEWAL_STATUS, DID_FAIL_TO_RENEW, PRICE_INCREASE, REFUND_DECLINED, CONSUMPTION_REQUEST, RENEWAL_EXTENSION, EXTERNAL_PURCHASE_TOKEN, ONE_TIME_CHARGE, TEST, Subscription, OneTimePurchase, VoidPurchase, Test, UNKNOWN
 }
 
-// path: #/components/messages/iapProcessed/payload/properties/payload
-message AnonymousSchema1 {
+// path: #/components/schemas/iapProcessedPayloadData
+message IapProcessedPayloadData { // previously known as 'AnonymousSchema1'
     Iap iap = 1 [json_name = "iap"];
+}
+
+// path: #/components/schemas/dlcSyncedPayloadData
+message DlcSyncedPayloadData { // previously known as 'AnonymousSchema2'
+    Dlc dlc = 1 [json_name = "dlc"];
+}
+
+// path: #/components/schemas/notificationProcessedPayloadData
+message NotificationProcessedPayloadData { // previously known as 'AnonymousSchema3'
+    Notification notification = 1 [json_name = "notification"];
 }
 
 // path: #/components/messages/iapProcessed/payload
 message IapProcessed {
-    AnonymousSchema1 payload = 1 [json_name = "payload"];
+    IapProcessedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -102,16 +112,11 @@ message IapProcessed {
     string user_id = 9 [json_name = "userId"];
     string trace_id = 10 [json_name = "traceId"];
     string session_id = 11 [json_name = "sessionId"];
-}
-
-// path: #/components/messages/dlcSynced/payload/properties/payload
-message AnonymousSchema2 {
-    Dlc dlc = 1 [json_name = "dlc"];
 }
 
 // path: #/components/messages/dlcSynced/payload
 message DlcSynced {
-    AnonymousSchema2 payload = 1 [json_name = "payload"];
+    DlcSyncedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -126,14 +131,9 @@ message DlcSynced {
     string session_id = 11 [json_name = "sessionId"];
 }
 
-// path: #/components/messages/notificationProcessed/payload/properties/payload
-message AnonymousSchema3 {
-    Notification notification = 1 [json_name = "notification"];
-}
-
 // path: #/components/messages/notificationProcessed/payload
 message NotificationProcessed {
-    AnonymousSchema3 payload = 1 [json_name = "payload"];
+    NotificationProcessedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];

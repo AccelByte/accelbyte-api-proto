@@ -76,8 +76,40 @@ components:
         displayName:
           type: string
           description: display name
-
-
+    oauthRequestAuthorizedPayloadData:
+      type: object
+      properties:
+        oauth:
+          $ref: '#/components/schemas/oauth'
+      x-uid0: AnonymousSchema1
+    oauthTokenGeneratedPayloadData:
+      type: object
+      properties:
+        oauth:
+          $ref: '#/components/schemas/oauth'
+      x-uid0: AnonymousSchema2
+    oauthTokenRevokedPayloadData:
+      type: object
+      properties:
+        oauth:
+          $ref: '#/components/schemas/oauth'
+      x-uid0: AnonymousSchema3
+    oauthThirdPartyRequestAuthorizedPayloadData:
+      type: object
+      properties:
+        oauth:
+          $ref: '#/components/schemas/oauth'
+        oauthThirdParty:
+          $ref: '#/components/schemas/oauthThirdParty'
+      x-uid0: AnonymousSchema4
+    oauthThirdPartyTokenGeneratedPayloadData:
+      type: object
+      properties:
+        oauth:
+          $ref: '#/components/schemas/oauth'
+        oauthThirdParty:
+          $ref: '#/components/schemas/oauthThirdParty'
+      x-uid0: AnonymousSchema5
   messages:
     oauthRequestAuthorized:
       name: oauthRequestAuthorized
@@ -88,11 +120,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              oauth:
-                $ref: '#/components/schemas/oauth'
-
+            $ref: '#/components/schemas/oauthRequestAuthorizedPayloadData'
     oauthTokenGenerated:
       name: oauthTokenGenerated
       description: message is sent after user successfully login/refresh token(not login by third party)
@@ -102,11 +130,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              oauth:
-                $ref: '#/components/schemas/oauth'
-
+            $ref: '#/components/schemas/oauthTokenGeneratedPayloadData'
     oauthTokenRevoked:
       name: oauthTokenRevoked
       description: message is sent after user is revoked or token is revoked
@@ -116,11 +140,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              oauth:
-                $ref: '#/components/schemas/oauth'
-
+            $ref: '#/components/schemas/oauthTokenRevokedPayloadData'
     oauthThirdPartyRequestAuthorized:
       name: oauthThirdPartyRequestAuthorized
       description: message is sent after user initializes third party authorization
@@ -130,13 +150,7 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              oauth:
-                $ref: '#/components/schemas/oauth'
-              oauthThirdParty:
-                $ref: '#/components/schemas/oauthThirdParty'
-
+            $ref: '#/components/schemas/oauthThirdPartyRequestAuthorizedPayloadData'
     oauthThirdPartyTokenGenerated:
       name: oauthThirdPartyTokenGenerated
       description: message is sent after user successfully login with third party account
@@ -146,9 +160,4 @@ components:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            type: object
-            properties:
-              oauth:
-                $ref: '#/components/schemas/oauth'
-              oauthThirdParty:
-                $ref: '#/components/schemas/oauthThirdParty'
+            $ref: '#/components/schemas/oauthThirdPartyTokenGeneratedPayloadData'

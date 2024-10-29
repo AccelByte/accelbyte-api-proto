@@ -55,6 +55,38 @@ message UserBlockRemovedPayload {
     UserBlock blocked = 1 [json_name = "blocked"];
 }
 
+// path: #/components/schemas/userConnect
+message UserConnect {
+    UserConnectedPayload user_connected = 1 [json_name = "userConnected"];
+}
+
+// path: #/components/schemas/userDisconnect
+message UserDisconnect {
+    UserDisconnectedPayload user_disconnected = 1 [json_name = "userDisconnected"];
+}
+
+// path: #/components/schemas/matchmakingTicketsPublishedPayload
+message MatchmakingTicketsPublishedPayload {
+    int64 total_matchmaking_request = 1 [json_name = "totalMatchmakingRequest"];
+    int64 average_matchmaking_execution_time = 2 [json_name = "averageMatchmakingExecutionTime"];
+}
+
+// path: #/components/schemas/totalUsersOnlinePublishedPayload
+message TotalUsersOnlinePublishedPayload {
+    int64 total_users_online = 1 [json_name = "totalUsersOnline"];
+    int64 total_users_online_steam = 2 [json_name = "totalUsersOnlineSteam"];
+    int64 total_users_online_xbox = 3 [json_name = "totalUsersOnlineXbox"];
+    int64 total_users_online_playstation = 4 [json_name = "totalUsersOnlinePlaystation"];
+}
+
+// path: #/components/schemas/userConnectedPayload
+message UserConnectedPayload {
+    string lobby_session_id = 1 [json_name = "lobbySessionId"];
+    string lobby_login_type = 2 [json_name = "lobbyLoginType"];
+    int64 reconnect_from = 3 [json_name = "reconnectFrom"];
+    string connection_id = 4 [json_name = "connectionId"];
+}
+
 // path: #/components/schemas/userDisconnectedPayload
 message UserDisconnectedPayload {
     string reason = 1 [json_name = "reason"];
@@ -67,70 +99,74 @@ message UserDisconnectedPayload {
 
 // path: #/components/messages/userConnected/payload
 message UserConnected {
+    UserConnect payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 1 [json_name = "id"];
-    int64 version = 2 [json_name = "version"];
-    string name = 3 [json_name = "name"];
-    string namespace = 4 [json_name = "namespace"];
-    string parent_namespace = 5 [json_name = "parentNamespace"];
-    string timestamp = 6 [json_name = "timestamp"];
-    string client_id = 7 [json_name = "clientId"];
-    string user_id = 8 [json_name = "userId"];
-    string trace_id = 9 [json_name = "traceId"];
-    string session_id = 10 [json_name = "sessionId"];
-    string span_context = 11 [json_name = "spanContext"];
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+    string span_context = 12 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/userDisconnected/payload
 message UserDisconnected {
+    UserDisconnect payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 1 [json_name = "id"];
-    int64 version = 2 [json_name = "version"];
-    string name = 3 [json_name = "name"];
-    string namespace = 4 [json_name = "namespace"];
-    string parent_namespace = 5 [json_name = "parentNamespace"];
-    string timestamp = 6 [json_name = "timestamp"];
-    string client_id = 7 [json_name = "clientId"];
-    string user_id = 8 [json_name = "userId"];
-    string trace_id = 9 [json_name = "traceId"];
-    string session_id = 10 [json_name = "sessionId"];
-    string span_context = 11 [json_name = "spanContext"];
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+    string span_context = 12 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/matchmakingTicketsPublished/payload
 message MatchmakingTicketsPublished {
+    MatchmakingTicketsPublishedPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 1 [json_name = "id"];
-    int64 version = 2 [json_name = "version"];
-    string name = 3 [json_name = "name"];
-    string namespace = 4 [json_name = "namespace"];
-    string parent_namespace = 5 [json_name = "parentNamespace"];
-    string timestamp = 6 [json_name = "timestamp"];
-    string client_id = 7 [json_name = "clientId"];
-    string user_id = 8 [json_name = "userId"];
-    string trace_id = 9 [json_name = "traceId"];
-    string session_id = 10 [json_name = "sessionId"];
-    string span_context = 11 [json_name = "spanContext"];
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+    string span_context = 12 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/totalUsersOnlinePublished/payload
 message TotalUsersOnlinePublished {
+    TotalUsersOnlinePublishedPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 1 [json_name = "id"];
-    int64 version = 2 [json_name = "version"];
-    string name = 3 [json_name = "name"];
-    string namespace = 4 [json_name = "namespace"];
-    string parent_namespace = 5 [json_name = "parentNamespace"];
-    string timestamp = 6 [json_name = "timestamp"];
-    string client_id = 7 [json_name = "clientId"];
-    string user_id = 8 [json_name = "userId"];
-    string trace_id = 9 [json_name = "traceId"];
-    string session_id = 10 [json_name = "sessionId"];
-    string span_context = 11 [json_name = "spanContext"];
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+    string span_context = 12 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/userBlockAdded/payload
