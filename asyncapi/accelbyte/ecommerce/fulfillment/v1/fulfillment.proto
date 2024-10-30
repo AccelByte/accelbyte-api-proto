@@ -98,7 +98,7 @@ message Fulfillment {
 }
 
 // path: #/components/schemas/fulfillmentCompletedPayload
-message AnonymousSchema1 {
+message AnonymousSchema1 { // Message name is kept for backward compatibility
     Fulfillment fulfillment = 1 [json_name = "fulfillment"];
 }
 

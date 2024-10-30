@@ -79,7 +79,7 @@ message GameRecordCreatedPayloadData { // previously known as 'AnonymousSchema1'
 }
 
 // path: #/components/schemas/gameRecordUpdatedPayloadData
-message AnonymousSchema2 {
+message AnonymousSchema2 { // Message name is kept for backward compatibility
     string set_by = 1 [json_name = "setBy"];
 
     // allOf(#/components/schemas/recordPayload)

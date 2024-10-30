@@ -144,7 +144,7 @@ message EntitlementStatusChange {
 }
 
 // path: #/components/schemas/entitlementGrantedPayloadData
-message AnonymousSchema1 {
+message AnonymousSchema1 { // Message name is kept for backward compatibility
     repeated StackableEntitlement grants = 1 [json_name = "grants"];
     google.protobuf.Struct metadata = 2 [json_name = "metadata"];
 }
@@ -156,18 +156,18 @@ message EntitlementUpdatedPayloadData { // previously known as 'AnonymousSchema2
 }
 
 // path: #/components/schemas/entitlementConsumedPayloadData
-message AnonymousSchema3 {
+message AnonymousSchema3 { // Message name is kept for backward compatibility
     EntitlementConsumption entitlement_consumption = 1 [json_name = "entitlementConsumption"];
     google.protobuf.Struct metadata = 2 [json_name = "metadata"];
 }
 
 // path: #/components/schemas/entitlementUseCountRevokedPayloadData
-message AnonymousSchema4 {
+message AnonymousSchema4 { // Message name is kept for backward compatibility
     EntitlementUseCountRevocation entitlement_use_count_revocation = 1 [json_name = "entitlementUseCountRevocation"];
 }
 
 // path: #/components/schemas/entitlementRevokedPayloadData
-message AnonymousSchema5 {
+message AnonymousSchema5 { // Message name is kept for backward compatibility
     EntitlementRevocation entitlement_revocation = 1 [json_name = "entitlementRevocation"];
     google.protobuf.Struct metadata = 2 [json_name = "metadata"];
 }

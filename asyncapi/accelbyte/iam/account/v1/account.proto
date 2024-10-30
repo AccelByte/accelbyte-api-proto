@@ -305,13 +305,13 @@ message UserAccountVerifiedPayloadData { // previously known as 'AnonymousSchema
 }
 
 // path: #/components/schemas/userAccountLinkedPayloadData
-message AnonymousSchema12 {
+message AnonymousSchema12 { // Message name is kept for backward compatibility
     UserAccountLink user_account = 1 [json_name = "userAccount"];
     UserAccountThirdPartyLink user_account_third_party = 2 [json_name = "userAccountThirdParty"];
 }
 
 // path: #/components/schemas/userAccountUnlinkedPayloadData
-message AnonymousSchema13 {
+message AnonymousSchema13 { // Message name is kept for backward compatibility
     UserAccountUnlink user_account = 1 [json_name = "userAccount"];
     UserAccountThirdParty user_account_third_party = 2 [json_name = "userAccountThirdParty"];
 }
@@ -347,19 +347,19 @@ message UserAccountTypeChangedPayloadData { // previously known as 'AnonymousSch
 }
 
 // path: #/components/schemas/userLoggedInPayloadData
-message AnonymousSchema19 {
+message AnonymousSchema19 { // Message name is kept for backward compatibility
     UserAccount user_account = 1 [json_name = "userAccount"];
     UserAuthentication user_authentication = 2 [json_name = "userAuthentication"];
 }
 
 // path: #/components/schemas/userLoggedOutPayloadData
-message AnonymousSchema20 {
+message AnonymousSchema20 { // Message name is kept for backward compatibility
     UserAccount user_account = 1 [json_name = "userAccount"];
     UserAuthentication user_authentication = 2 [json_name = "userAuthentication"];
 }
 
 // path: #/components/schemas/userThirdPartyLoggedInPayloadData
-message AnonymousSchema21 {
+message AnonymousSchema21 { // Message name is kept for backward compatibility
     UserAccount user_account = 1 [json_name = "userAccount"];
     UserAuthentication user_authentication = 2 [json_name = "userAuthentication"];
 }
@@ -377,13 +377,13 @@ message UserThirdPartyLoginFailedPayloadData { // previously known as 'Anonymous
 }
 
 // path: #/components/schemas/userInformationCreatedPayloadData
-message AnonymousSchema24 {
+message AnonymousSchema24 { // Message name is kept for backward compatibility
     UserTestAccount user_account = 1 [json_name = "userAccount"];
     UserInformation user_information = 2 [json_name = "userInformation"];
 }
 
 // path: #/components/schemas/userInformationDisplayNameUpdatedPayloadData
-message AnonymousSchema25 {
+message AnonymousSchema25 { // Message name is kept for backward compatibility
     UserTestAccount user_account = 1 [json_name = "userAccount"];
     UserInformation user_information = 2 [json_name = "userInformation"];
 }

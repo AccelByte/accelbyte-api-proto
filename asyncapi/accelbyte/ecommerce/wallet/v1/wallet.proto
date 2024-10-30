@@ -78,17 +78,17 @@ message WalletEnabledPayloadData { // previously known as 'AnonymousSchema2'
 }
 
 // path: #/components/schemas/walletCreditedPayloadData
-message AnonymousSchema3 {
+message AnonymousSchema3 { // Message name is kept for backward compatibility
     WalletBalanceChange wallet_balance_change = 1 [json_name = "walletBalanceChange"];
 }
 
 // path: #/components/schemas/walletDebitedPayloadData
-message AnonymousSchema4 {
+message AnonymousSchema4 { // Message name is kept for backward compatibility
     WalletBalanceChange wallet_balance_change = 1 [json_name = "walletBalanceChange"];
 }
 
 // path: #/components/schemas/walledPaidPayloadData
-message AnonymousSchema5 {
+message AnonymousSchema5 { // Message name is kept for backward compatibility
     WalletBalanceChange wallet_balance_change = 1 [json_name = "walletBalanceChange"];
 }
 
