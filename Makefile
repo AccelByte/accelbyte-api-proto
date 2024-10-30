@@ -13,7 +13,7 @@ breaking:
 	docker run -t --rm --volume $$(pwd):/workspace --workdir /workspace bufbuild/buf:1.31.0 breaking \
     	--against ".git#branch=$(COMPARE_AGAINST_BRANCH)"
 
-governance: check_governance_package_name_all check_governance_version_comment_all
+governance: check_governance_package_name_all check_governance_version_comment_all check_governance_anonymousschema_all
 
 check_governance_package_name:
 	@test -n "$(FILE_PATH)" || (echo "FILE_PATH is not set" ; exit 1)
@@ -53,3 +53,13 @@ check_governance_version_comment_all:
 	@echo "Checking version comment on all .proto file"
 	@find asyncapi -type f -iname '*.proto' | xargs -I '{}' make -s check_governance_version_comment FILE_PATH='{}'
 	@find proto -type f -iname '*.proto' | xargs -I '{}' make -s check_governance_version_comment FILE_PATH='{}'
+
+check_governance_anonymousschema:
+	@test -n "$(FILE_PATH)" || (echo "FILE_PATH is not set" ; exit 1)
+	@echo "# $(FILE_PATH)"
+	@awk 'BEGIN { status = 0; } /^message AnonymousSchema[0-9]+/ && !/Message name is kept for backward compatibility/ { status = 100; print; } END { exit status }' \
+			"$(FILE_PATH)"
+
+check_governance_anonymousschema_all:
+	@echo "Checking anonymousschema on all .proto file"
+	@find asyncapi -type f -iname '*.proto' | xargs -I '{}' make -s check_governance_anonymousschema FILE_PATH='{}'
