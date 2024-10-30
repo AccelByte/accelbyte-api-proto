@@ -14,6 +14,7 @@ channels:
           - $ref: '#/components/messages/userRateLimited'
           - $ref: '#/components/messages/userBlockAdded'
           - $ref: '#/components/messages/userBlockRemoved'
+          - $ref: '#/components/messages/concurrentConnectedUserStats'
 
   lobbyMatchmakingTickets:
     publish:
@@ -138,6 +139,11 @@ components:
           type: boolean
         connectionId:
           type: string
+    concurrentConnectedUserStatsPayload:
+      type: object
+      properties:
+        totalConnectedUser:
+          type: integer
 
 
   messages:
@@ -211,3 +217,13 @@ components:
         properties:
           payload:
             $ref: '#/components/schemas/userBlockRemovedPayload'
+
+    concurrentConnectedUserStats:
+      name: concurrentConnectedUserStats
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/concurrentConnectedUserStatsPayload'

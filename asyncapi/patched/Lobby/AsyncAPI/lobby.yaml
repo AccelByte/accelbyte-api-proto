@@ -14,6 +14,7 @@ channels:
         - $ref: '#/components/messages/userRateLimited'
         - $ref: '#/components/messages/userBlockAdded'
         - $ref: '#/components/messages/userBlockRemoved'
+        - $ref: '#/components/messages/concurrentConnectedUserStats'
   lobbyMatchmakingTickets:
     publish:
       message:
@@ -140,6 +141,11 @@ components:
           type: boolean
         connectionId:
           type: string
+    concurrentConnectedUserStatsPayload:
+      type: object
+      properties:
+        totalConnectedUser:
+          type: integer
   messages:
     userConnected:
       name: userConnected
@@ -203,6 +209,15 @@ components:
         properties:
           payload:
             $ref: '#/components/schemas/userBlockRemovedPayload'
+    concurrentConnectedUserStats:
+      name: concurrentConnectedUserStats
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/concurrentConnectedUserStatsPayload'
 x-source: Lobby/AsyncAPI/lobby.yaml
 x-proto-package: accelbyte.lobby.lobby.v1
 x-proto-package-version: v1.0.0

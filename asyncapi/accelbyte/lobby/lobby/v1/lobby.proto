@@ -97,6 +97,11 @@ message UserDisconnectedPayload {
     string connection_id = 6 [json_name = "connectionId"];
 }
 
+// path: #/components/schemas/concurrentConnectedUserStatsPayload
+message ConcurrentConnectedUserStatsPayload {
+    int64 total_connected_user = 1 [json_name = "totalConnectedUser"];
+}
+
 // path: #/components/messages/userConnected/payload
 message UserConnected {
     UserConnect payload = 1 [json_name = "payload"];
@@ -205,6 +210,24 @@ message UserBlockRemoved {
     string span_context = 12 [json_name = "spanContext"];
 }
 
+// path: #/components/messages/concurrentConnectedUserStats/payload
+message ConcurrentConnectedUserStats {
+    ConcurrentConnectedUserStatsPayload payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+    string span_context = 12 [json_name = "spanContext"];
+}
+
 
 // --- #/components/messages/{message_name} ---
 
@@ -248,6 +271,11 @@ message UserBlockRemovedMessage {
     UserBlockRemoved payload = 1;
 }
 
+// path: #/components/messages/concurrentConnectedUserStats
+message ConcurrentConnectedUserStatsMessage {
+    ConcurrentConnectedUserStats payload = 1;
+}
+
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
@@ -260,6 +288,7 @@ message LobbyPublish {
         UserRateLimitedMessage variant3 = 4;
         UserBlockAddedMessage variant4 = 5;
         UserBlockRemovedMessage variant5 = 6;
+        ConcurrentConnectedUserStatsMessage variant6 = 7;
     }
 }
 
@@ -295,6 +324,11 @@ service LobbyUserBlockAddedService {
 // Publishes a UserBlockRemoved to the Lobby channel. (oneOf variant) (lobby UserBlockRemoved)
 service LobbyUserBlockRemovedService {
     rpc OnMessage(UserBlockRemoved) returns (google.protobuf.Empty);
+}
+
+// Publishes a ConcurrentConnectedUserStats to the Lobby channel. (oneOf variant) (lobby ConcurrentConnectedUserStats)
+service LobbyConcurrentConnectedUserStatsService {
+    rpc OnMessage(ConcurrentConnectedUserStats) returns (google.protobuf.Empty);
 }
 
 // Publishes a message to the Lobby Matchmaking Tickets channel. (lobbyMatchmakingTickets MatchmakingTicketsPublished)
