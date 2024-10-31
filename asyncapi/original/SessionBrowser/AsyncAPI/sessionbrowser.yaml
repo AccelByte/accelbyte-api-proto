@@ -46,15 +46,19 @@ components:
         p2p:
           type: integer
 
+    gameSessionMetricUpdatedPayloadData:
+      type: object
+      properties:
+        gameSessionCount:
+          $ref: '#/components/schemas/gamePayload'
+
   messages:
     gameSessionMetricUpdated:
       name: gameSessionMetricUpdated
       payload:
+        type: object
         allOf:
           - $ref: '#/components/schemas/event'
         properties:
           payload:
-            properties:
-              gameSessionCount:
-                $ref: '#/components/schemas/gamePayload'
-
+            $ref: '#/components/schemas/gameSessionMetricUpdatedPayloadData'

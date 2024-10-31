@@ -43,17 +43,21 @@ components:
           type: integer
         p2p:
           type: integer
+    gameSessionMetricUpdatedPayloadData:
+      type: object
+      properties:
+        gameSessionCount:
+          $ref: '#/components/schemas/gamePayload'
   messages:
     gameSessionMetricUpdated:
       name: gameSessionMetricUpdated
       payload:
+        type: object
         allOf:
         - $ref: '#/components/schemas/event'
         properties:
           payload:
-            properties:
-              gameSessionCount:
-                $ref: '#/components/schemas/gamePayload'
+            $ref: '#/components/schemas/gameSessionMetricUpdatedPayloadData'
 x-source: SessionBrowser/AsyncAPI/sessionbrowser.yaml
 x-proto-package: accelbyte.session_browser.sessionbrowser.v1
 x-proto-package-version: v1.0.0

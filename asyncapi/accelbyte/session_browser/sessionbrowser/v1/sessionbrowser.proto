@@ -45,20 +45,26 @@ message GamePayload {
     int64 p2p = 3 [json_name = "p2p"];
 }
 
+// path: #/components/schemas/gameSessionMetricUpdatedPayloadData
+message GameSessionMetricUpdatedPayloadData {
+    GamePayload game_session_count = 1 [json_name = "gameSessionCount"];
+}
+
 // path: #/components/messages/gameSessionMetricUpdated/payload
 message GameSessionMetricUpdated {
+    GameSessionMetricUpdatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
-    string id = 1 [json_name = "id"];
-    int64 version = 2 [json_name = "version"];
-    string name = 3 [json_name = "name"];
-    string namespace = 4 [json_name = "namespace"];
-    string parent_namespace = 5 [json_name = "parentNamespace"];
-    string timestamp = 6 [json_name = "timestamp"];
-    string client_id = 7 [json_name = "clientId"];
-    string user_id = 8 [json_name = "userId"];
-    string trace_id = 9 [json_name = "traceId"];
-    string session_id = 10 [json_name = "sessionId"];
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
 }
 
 
