@@ -102,6 +102,16 @@ message WalletTransactionCancelledPayloadData { // previously known as 'Anonymou
     WalletBalanceChange wallet_balance_change = 1 [json_name = "walletBalanceChange"];
 }
 
+// path: #/components/schemas/walletPaidPayloadData
+message WalletPaidPayloadData {
+    WalletBalanceChange wallet_balance_change = 1 [json_name = "walletBalanceChange"];
+}
+
+// path: #/components/schemas/walletExpiredPayloadData
+message WalletExpiredPayloadData {
+    WalletBalanceChange wallet_balance_change = 1 [json_name = "walletBalanceChange"];
+}
+
 // path: #/components/messages/walletDisabled/payload
 message WalletDisabled {
     WalletDisabledPayloadData payload = 1 [json_name = "payload"];
@@ -187,9 +197,43 @@ message WalledPaid {
     string session_id = 11 [json_name = "sessionId"];
 }
 
+// path: #/components/messages/walletPaid/payload
+message WalletPaid {
+    WalletPaidPayloadData payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+}
+
 // path: #/components/messages/walledExpired/payload
 message WalledExpired {
     WalledExpiredPayloadData payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+}
+
+// path: #/components/messages/walletExpired/payload
+message WalletExpired {
+    WalletExpiredPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -249,9 +293,19 @@ message WalledPaidMessage {
     WalledPaid payload = 1;
 }
 
+// path: #/components/messages/walletPaid
+message WalletPaidMessage {
+    WalletPaid payload = 1;
+}
+
 // path: #/components/messages/walledExpired
 message WalledExpiredMessage {
     WalledExpired payload = 1;
+}
+
+// path: #/components/messages/walletExpired
+message WalletExpiredMessage {
+    WalletExpired payload = 1;
 }
 
 // path: #/components/messages/walletTransactionCancelled
@@ -272,6 +326,8 @@ message WalletProcessingPublish {
         WalledPaidMessage variant4 = 5;
         WalledExpiredMessage variant5 = 6;
         WalletTransactionCancelledMessage variant6 = 7;
+        WalletPaidMessage variant7 = 8;
+        WalletExpiredMessage variant8 = 9;
     }
 }
 
@@ -312,4 +368,14 @@ service WalletProcessingWalledExpiredService {
 // Publishes a WalletTransactionCancelled to the Wallet Processing channel. (oneOf variant) (walletProcessing WalletTransactionCancelled)
 service WalletProcessingWalletTransactionCancelledService {
     rpc OnMessage(WalletTransactionCancelled) returns (google.protobuf.Empty);
+}
+
+// Publishes a WalletPaid to the Wallet Processing channel. (oneOf variant) (walletProcessing WalletPaid)
+service WalletProcessingWalletPaidService {
+    rpc OnMessage(WalletPaid) returns (google.protobuf.Empty);
+}
+
+// Publishes a WalletExpired to the Wallet Processing channel. (oneOf variant) (walletProcessing WalletExpired)
+service WalletProcessingWalletExpiredService {
+    rpc OnMessage(WalletExpired) returns (google.protobuf.Empty);
 }

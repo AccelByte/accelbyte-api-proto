@@ -16,6 +16,8 @@ channels:
           - $ref: '#/components/messages/walledPaid'
           - $ref: '#/components/messages/walledExpired'
           - $ref: '#/components/messages/walletTransactionCancelled'
+          - $ref: '#/components/messages/walletPaid'
+          - $ref: '#/components/messages/walletExpired'
 
 components:
   schemas:
@@ -203,6 +205,16 @@ components:
         walletBalanceChange:
           $ref: '#/components/schemas/walletBalanceChange'
       x-uid0: AnonymousSchema7
+    walletPaidPayloadData:
+      type: object
+      properties:
+        walletBalanceChange:
+          $ref: '#/components/schemas/walletBalanceChange'
+    walletExpiredPayloadData:
+      type: object
+      properties:
+        walletBalanceChange:
+          $ref: '#/components/schemas/walletBalanceChange'
   messages:
     walletDisabled:
       name: walletDisabled
@@ -246,7 +258,7 @@ components:
             $ref: '#/components/schemas/walletDebitedPayloadData'
     walledPaid:
       name: walledPaid
-      description: message is sent when pay with wallet
+      description: message is sent when pay with wallet, this event has been deprecated, please use [walletPaid event](#message-walletpaid) instead of it.
       payload:
         type: object
         allOf:
@@ -254,9 +266,20 @@ components:
         properties:
           payload:
             $ref: '#/components/schemas/walledPaidPayloadData'
+
+    walletPaid:
+      name: walletPaid
+      description: message is sent when pay with wallet, only available in AGS version 3.79+
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/walletPaidPayloadData'
     walledExpired:
       name: walledExpired
-      description: message is sent when wallet balance is expired
+      description: message is sent when wallet balance is expired, this event has been deprecated, please use [walletExpired event](#message-walletexpired) instead of it.
       payload:
         type: object
         allOf:
@@ -264,6 +287,17 @@ components:
         properties:
           payload:
             $ref: '#/components/schemas/walledExpiredPayloadData'
+
+    walletExpired:
+      name: walletExpired
+      description: message is sent when wallet balance is expired, only available in AGS version 3.79+
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/walletExpiredPayloadData'
     walletTransactionCancelled:
       name: walletTransactionCancelled
       description: message is sent when cancelling wallet transaction
