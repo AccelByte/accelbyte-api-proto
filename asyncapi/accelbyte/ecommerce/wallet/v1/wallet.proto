@@ -58,6 +58,7 @@ message WalletBalanceChange {
     string reason = 8 [json_name = "reason"];
     string origin = 9 [json_name = "origin"]; // Allowed values: Playstation, Xbox, Steam, Epic, IOS, GooglePlay, Twitch, Nintendo, Oculus, System, Other
     repeated WalletBalanceChangeDetail details = 10 [json_name = "details"];
+    google.protobuf.Struct metadata = 11 [json_name = "metadata"];
 }
 
 // path: #/components/schemas/walletBalanceChangeDetail

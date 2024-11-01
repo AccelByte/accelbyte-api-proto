@@ -136,6 +136,10 @@ components:
           description: Details of specific wallet balance changes
           items:
             $ref: '#/components/schemas/walletBalanceChangeDetail'
+        metadata:
+          type: object
+          description: wallet balance change metadata, it's from wallet operation request body. only available in AGS version 3.79+
+          additionalProperties: true
 
     walletBalanceChangeDetail:
       type: object
