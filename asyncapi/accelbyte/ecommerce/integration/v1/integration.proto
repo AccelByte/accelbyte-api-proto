@@ -82,6 +82,19 @@ message Notification {
     string notification_type = 6 [json_name = "notificationType"]; // Allowed values: DID_CHANGE_RENEWAL_PREF, EXPIRED, GRACE_PERIOD_EXPIRED, RENEWAL_EXTENDED, DID_RENEW, SUBSCRIBED, REVOKE, REFUND, REFUND_REVERSED, OFFER_REDEEMED, DID_CHANGE_RENEWAL_STATUS, DID_FAIL_TO_RENEW, PRICE_INCREASE, REFUND_DECLINED, CONSUMPTION_REQUEST, RENEWAL_EXTENSION, EXTERNAL_PURCHASE_TOKEN, ONE_TIME_CHARGE, TEST, Subscription, OneTimePurchase, VoidPurchase, Test, UNKNOWN
 }
 
+// path: #/components/schemas/iapItemEntry
+message IapItemEntry {
+    string item_identity_type = 1 [json_name = "itemIdentityType"]; // Allowed values: ITEM_SKU, ITEM_ID
+    string item_identity = 2 [json_name = "itemIdentity"];
+    map<string, string> platform_product_id_map = 3 [json_name = "platformProductIdMap"];
+}
+
+// path: #/components/schemas/iapItemConfig
+message IapItemConfig {
+    string namespace = 1 [json_name = "namespace"];
+    repeated IapItemEntry data = 2 [json_name = "data"];
+}
+
 // path: #/components/schemas/iapProcessedPayloadData
 message IapProcessedPayloadData { // previously known as 'AnonymousSchema1'
     Iap iap = 1 [json_name = "iap"];
@@ -95,6 +108,11 @@ message DlcSyncedPayloadData { // previously known as 'AnonymousSchema2'
 // path: #/components/schemas/notificationProcessedPayloadData
 message NotificationProcessedPayloadData { // previously known as 'AnonymousSchema3'
     Notification notification = 1 [json_name = "notification"];
+}
+
+// path: #/components/schemas/iapItemConfigUpdatedPayloadData
+message IapItemConfigUpdatedPayloadData {
+    IapItemConfig iap_item_config = 1 [json_name = "iapItemConfig"];
 }
 
 // path: #/components/messages/iapProcessed/payload
@@ -134,6 +152,23 @@ message DlcSynced {
 // path: #/components/messages/notificationProcessed/payload
 message NotificationProcessed {
     NotificationProcessedPayloadData payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+}
+
+// path: #/components/messages/iapItemConfigUpdated/payload
+message IapItemConfigUpdated {
+    IapItemConfigUpdatedPayloadData payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -254,6 +289,11 @@ message DlcSyncedMessage {
 // path: #/components/messages/notificationProcessed
 message NotificationProcessedMessage {
     NotificationProcessed payload = 1;
+}
+
+// path: #/components/messages/iapItemConfigUpdated
+message IapItemConfigUpdatedMessage {
+    IapItemConfigUpdated payload = 1;
 }
 
 
@@ -390,4 +430,9 @@ service IapNotificationNotificationProcessedService {
 // Publishes a message to the Iap Processing channel. (iapProcessing IapProcessed)
 service IapProcessingIapProcessedService {
     rpc OnMessage(IapProcessed) returns (google.protobuf.Empty);
+}
+
+// Publishes a message to the Iap Item Config Management channel. (iapItemConfigManagement IapItemConfigUpdated)
+service IapItemConfigManagementIapItemConfigUpdatedService {
+    rpc OnMessage(IapItemConfigUpdated) returns (google.protobuf.Empty);
 }

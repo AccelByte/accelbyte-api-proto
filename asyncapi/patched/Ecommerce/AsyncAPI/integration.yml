@@ -39,6 +39,10 @@ channels:
     publish:
       message:
         $ref: '#/components/messages/iapProcessed'
+  iapItemConfigManagement:
+    publish:
+      message:
+        $ref: '#/components/messages/iapItemConfigUpdated'
 components:
   schemas:
     dlc:
@@ -241,6 +245,35 @@ components:
           - VoidPurchase
           - Test
           - UNKNOWN
+    iapItemEntry:
+      type: object
+      properties:
+        itemIdentityType:
+          type: string
+          description: AGS item identity type, can be item id or sku
+          enum:
+          - ITEM_SKU
+          - ITEM_ID
+        itemIdentity:
+          type: string
+          description: AGS item identity
+        platformProductIdMap:
+          type: object
+          description: Map that contains third party id and third party product id.
+            The key will be third party id eg. XBOX, PLAYSTATION, APPLE, GOOGLE, etc.
+          additionalProperties:
+            type: string
+    iapItemConfig:
+      type: object
+      properties:
+        namespace:
+          type: string
+          description: AGS namespace
+        data:
+          type: array
+          description: Array of item mapping between AGS item and third party item
+          items:
+            $ref: '#/components/schemas/iapItemEntry'
     iapProcessedPayloadData:
       type: object
       properties:
@@ -259,6 +292,11 @@ components:
         notification:
           $ref: '#/components/schemas/notification'
       x-uid0: AnonymousSchema3
+    iapItemConfigUpdatedPayloadData:
+      type: object
+      properties:
+        iapItemConfig:
+          $ref: '#/components/schemas/iapItemConfig'
   messages:
     appleIAPConfigDeleted:
       name: appleIAPConfigDeleted
@@ -384,6 +422,17 @@ components:
         properties:
           payload:
             $ref: '#/components/schemas/notificationProcessedPayloadData'
+    iapItemConfigUpdated:
+      name: iapItemConfigUpdated
+      description: The message will be sent when AGS item mapping with third party
+        platform is updated.
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/iapItemConfigUpdatedPayloadData'
 x-source: Ecommerce/AsyncAPI/integration.yml
 x-proto-package: accelbyte.ecommerce.integration.v1
 x-proto-package-version: v1.0.0
