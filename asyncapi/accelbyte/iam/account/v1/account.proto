@@ -118,6 +118,7 @@ message UserAccountBanItem { // previously known as 'AnonymousSchema2'
     string reason = 5 [json_name = "reason"];
     string comment = 6 [json_name = "comment"];
     bool enabled = 7 [json_name = "enabled"];
+    string end_date = 8 [json_name = "endDate"];
 }
 
 // path: #/components/schemas/userAccountBan

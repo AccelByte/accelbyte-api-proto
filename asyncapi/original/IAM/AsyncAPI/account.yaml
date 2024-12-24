@@ -302,6 +302,10 @@ components:
         enabled:
           type: boolean
           description: a flag indicates whether this user ban is enabled or not
+        endDate:
+          type: string
+          format: date-time
+          description: end date of this ban
       x-uid0: AnonymousSchema2
 
     userAccountBan:
