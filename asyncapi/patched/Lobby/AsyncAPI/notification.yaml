@@ -323,10 +323,10 @@ components:
       payload:
         type: object
         allOf:
-        - $ref: '#/components/schemas/topicDeletedPayload'
+        - $ref: '#/components/schemas/event'
         properties:
           payload:
-            $ref: '#/components/schemas/event'
+            $ref: '#/components/schemas/topicDeletedPayload'
     topicModified:
       name: topicModified
       payload:

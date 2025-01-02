@@ -413,10 +413,20 @@ message TopicCreated {
 
 // path: #/components/messages/topicDeleted/payload
 message TopicDeleted {
-    Event payload = 1 [json_name = "payload"];
+    TopicDeletedPayload payload = 1 [json_name = "payload"];
 
-    // allOf(#/components/schemas/topicDeletedPayload)
-    TopicsPayload topic = 2 [json_name = "topic"];
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+    string span_context = 12 [json_name = "spanContext"];
 }
 
 // path: #/components/messages/topicModified/payload
