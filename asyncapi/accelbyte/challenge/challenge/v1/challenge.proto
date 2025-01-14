@@ -51,9 +51,37 @@ message GoalCompletedPayload {
     string schedule_end = 8 [json_name = "scheduleEnd"];
 }
 
+// path: #/components/schemas/rewardsClaimedPayload
+message RewardsClaimedPayload {
+    string namespace = 1 [json_name = "namespace"];
+    string challenge_code = 2 [json_name = "challengeCode"];
+    string goal_code = 3 [json_name = "goalCode"];
+    string claimed_at = 4 [json_name = "claimedAt"];
+    repeated string reward_ids = 5 [json_name = "rewardIds"];
+    string user_id = 6 [json_name = "userId"];
+}
+
 // path: #/components/messages/goalCompleted/payload
 message GoalCompleted {
     GoalCompletedPayload payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+    string span_context = 12 [json_name = "spanContext"];
+}
+
+// path: #/components/messages/rewardsClaimed/payload
+message RewardsClaimed {
+    RewardsClaimedPayload payload = 1 [json_name = "payload"];
 
     // allOf(#/components/schemas/event)
     string id = 2 [json_name = "id"];
@@ -77,6 +105,11 @@ message GoalCompletedMessage {
     GoalCompleted payload = 1;
 }
 
+// path: #/components/messages/rewardsClaimed
+message RewardsClaimedMessage {
+    RewardsClaimed payload = 1;
+}
+
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
@@ -87,4 +120,9 @@ message GoalCompletedMessage {
 // Publishes a message to the Goal Completed channel. (goalCompleted GoalCompleted)
 service GoalCompletedGoalCompletedService {
     rpc OnMessage(GoalCompleted) returns (google.protobuf.Empty);
+}
+
+// Publishes a message to the Rewards Claimed channel. (rewardsClaimed RewardsClaimed)
+service RewardsClaimedRewardsClaimedService {
+    rpc OnMessage(RewardsClaimed) returns (google.protobuf.Empty);
 }
