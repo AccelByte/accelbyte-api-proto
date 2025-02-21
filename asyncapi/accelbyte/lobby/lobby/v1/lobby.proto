@@ -102,6 +102,35 @@ message ConcurrentConnectedUserStatsPayload {
     int64 total_connected_user = 1 [json_name = "totalConnectedUser"];
 }
 
+// path: #/components/schemas/userBlockAddedsPayload
+message UserBlockAddedsPayload {
+    string blocked_by_user_id = 1 [json_name = "blockedByUserId"];
+    string blocked_user_id = 2 [json_name = "blockedUserId"];
+}
+
+// path: #/components/schemas/userRegisteredsPayload
+message UserRegisteredsPayload {
+    string platform = 1 [json_name = "platform"];
+    string lobby_session_id = 2 [json_name = "lobbySessionId"];
+}
+
+// path: #/components/schemas/userUnregisteredsPayload
+message UserUnregisteredsPayload {
+    string platform = 1 [json_name = "platform"];
+    string lobby_session_id = 2 [json_name = "lobbySessionId"];
+    int64 code = 3 [json_name = "code"];
+}
+
+// path: #/components/schemas/userRegisteredPayload
+message UserRegisteredPayload {
+    UserRegisteredsPayload user_registered = 1 [json_name = "userRegistered"];
+}
+
+// path: #/components/schemas/userUnregisteredPayload
+message UserUnregisteredPayload {
+    UserUnregisteredsPayload user_unregistered = 1 [json_name = "userUnregistered"];
+}
+
 // path: #/components/messages/userConnected/payload
 message UserConnected {
     UserConnect payload = 1 [json_name = "payload"];
@@ -228,6 +257,42 @@ message ConcurrentConnectedUserStats {
     string span_context = 12 [json_name = "spanContext"];
 }
 
+// path: #/components/messages/userUnregistered/payload
+message UserUnregistered {
+    UserUnregisteredPayload payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+    string span_context = 12 [json_name = "spanContext"];
+}
+
+// path: #/components/messages/userRegistered/payload
+message UserRegistered {
+    UserRegisteredPayload payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+    string span_context = 12 [json_name = "spanContext"];
+}
+
 
 // --- #/components/messages/{message_name} ---
 
@@ -276,6 +341,16 @@ message ConcurrentConnectedUserStatsMessage {
     ConcurrentConnectedUserStats payload = 1;
 }
 
+// path: #/components/messages/userUnregistered
+message UserUnregisteredMessage {
+    UserUnregistered payload = 1;
+}
+
+// path: #/components/messages/userRegistered
+message UserRegisteredMessage {
+    UserRegistered payload = 1;
+}
+
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
@@ -289,6 +364,16 @@ message LobbyPublish {
         UserBlockAddedMessage variant4 = 5;
         UserBlockRemovedMessage variant5 = 6;
         ConcurrentConnectedUserStatsMessage variant6 = 7;
+        UserRegisteredMessage variant7 = 8;
+        UserUnregisteredMessage variant8 = 9;
+    }
+}
+
+// path: #/channels/userBlocked/publish/message
+message UserBlockedPublish {
+    oneof payload {
+        UserBlockAddedMessage variant0 = 1;
+        UserBlockRemovedMessage variant1 = 2;
     }
 }
 
@@ -329,6 +414,26 @@ service LobbyUserBlockRemovedService {
 // Publishes a ConcurrentConnectedUserStats to the Lobby channel. (oneOf variant) (lobby ConcurrentConnectedUserStats)
 service LobbyConcurrentConnectedUserStatsService {
     rpc OnMessage(ConcurrentConnectedUserStats) returns (google.protobuf.Empty);
+}
+
+// Publishes a UserRegistered to the Lobby channel. (oneOf variant) (lobby UserRegistered)
+service LobbyUserRegisteredService {
+    rpc OnMessage(UserRegistered) returns (google.protobuf.Empty);
+}
+
+// Publishes a UserUnregistered to the Lobby channel. (oneOf variant) (lobby UserUnregistered)
+service LobbyUserUnregisteredService {
+    rpc OnMessage(UserUnregistered) returns (google.protobuf.Empty);
+}
+
+// Publishes a UserBlockAdded to the User Blocked channel. (oneOf variant) (userBlocked UserBlockAdded)
+service UserBlockedUserBlockAddedService {
+    rpc OnMessage(UserBlockAdded) returns (google.protobuf.Empty);
+}
+
+// Publishes a UserBlockRemoved to the User Blocked channel. (oneOf variant) (userBlocked UserBlockRemoved)
+service UserBlockedUserBlockRemovedService {
+    rpc OnMessage(UserBlockRemoved) returns (google.protobuf.Empty);
 }
 
 // Publishes a message to the Lobby Matchmaking Tickets channel. (lobbyMatchmakingTickets MatchmakingTicketsPublished)

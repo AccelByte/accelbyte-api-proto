@@ -226,6 +226,8 @@ message FriendRequestsPublish {
         FriendRequestCancelledMessage variant1 = 2;
         FriendRemovedMessage variant2 = 3;
         FriendAddedBulkMessage variant3 = 4;
+        FriendRequestAcceptedMessage variant4 = 5;
+        FriendRequestRejectedMessage variant5 = 6;
     }
 }
 
@@ -259,6 +261,16 @@ service FriendRequestsFriendRemovedService {
 // Publishes a FriendAddedBulk to the Friend Requests channel. (oneOf variant) (friendRequests FriendAddedBulk)
 service FriendRequestsFriendAddedBulkService {
     rpc OnMessage(FriendAddedBulk) returns (google.protobuf.Empty);
+}
+
+// Publishes a FriendRequestAccepted to the Friend Requests channel. (oneOf variant) (friendRequests FriendRequestAccepted)
+service FriendRequestsFriendRequestAcceptedService {
+    rpc OnMessage(FriendRequestAccepted) returns (google.protobuf.Empty);
+}
+
+// Publishes a FriendRequestRejected to the Friend Requests channel. (oneOf variant) (friendRequests FriendRequestRejected)
+service FriendRequestsFriendRequestRejectedService {
+    rpc OnMessage(FriendRequestRejected) returns (google.protobuf.Empty);
 }
 
 // Publishes a FriendRequestAccepted to the Incoming Friend Requests channel. (oneOf variant) (incomingFriendRequests FriendRequestAccepted)

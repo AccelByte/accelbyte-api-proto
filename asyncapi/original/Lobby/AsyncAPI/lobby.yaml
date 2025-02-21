@@ -15,6 +15,16 @@ channels:
           - $ref: '#/components/messages/userBlockAdded'
           - $ref: '#/components/messages/userBlockRemoved'
           - $ref: '#/components/messages/concurrentConnectedUserStats'
+          - $ref: '#/components/messages/userRegistered'
+          - $ref: '#/components/messages/userUnregistered'
+
+  userBlocked:
+    publish:
+      message:
+        oneOf:
+          - $ref: '#/components/messages/userBlockAdded'
+          - $ref: '#/components/messages/userBlockRemoved'
+
 
   lobbyMatchmakingTickets:
     publish:
@@ -145,6 +155,49 @@ components:
         totalConnectedUser:
           type: integer
 
+    userBlockAddedsPayload:
+      type: object
+      properties:
+        blockedByUserId:
+          type: string
+          format: uuid
+        blockedUserId:
+          type: string
+          format: uuid
+
+    userRegisteredsPayload:
+      type: object
+      properties:
+        platform:
+          type: string
+          format: uuid
+        lobbySessionId:
+          type: string
+          format: uuid
+
+    userUnregisteredsPayload:
+      type: object
+      properties:
+        platform:
+          type: string
+          format: uuid
+        lobbySessionId:
+          type: string
+          format: uuid
+        code:
+          type: integer
+
+    userRegisteredPayload:
+      type: object
+      properties:
+        userRegistered:
+          $ref: '#/components/schemas/userRegisteredsPayload'
+
+    userUnregisteredPayload:
+      type: object
+      properties:
+        userUnregistered:
+          $ref: '#/components/schemas/userUnregisteredsPayload'
 
   messages:
     userConnected:
@@ -227,3 +280,23 @@ components:
         properties:
           payload:
             $ref: '#/components/schemas/concurrentConnectedUserStatsPayload'
+
+    userUnregistered:
+      name: userUnregistered
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/userUnregisteredPayload'
+
+    userRegistered:
+      name: userRegistered
+      payload:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/userRegisteredPayload'

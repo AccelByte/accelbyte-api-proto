@@ -12,13 +12,16 @@ channels:
           - $ref: '#/components/messages/friendRequestCancelled'
           - $ref: '#/components/messages/friendRemoved'
           - $ref: '#/components/messages/friendAddedBulk'
+          - $ref: '#/components/messages/friendRequestAccepted'
+          - $ref: '#/components/messages/friendRequestRejected'
+
 
   incomingFriendRequests:
     publish:
       message:
         oneOf:
           - $ref: '#/components/messages/friendRequestAccepted'
-          - $ref: '#/components/messages/friendRequestRejected'
+          - $ref: '#/components/messages/friendRequestRejected' 
 
 components:
   schemas:
@@ -59,7 +62,7 @@ components:
         friendId:
           type: string
           format: uuid
-
+  
     friendRequestSentPayload:
       type: object
       properties:

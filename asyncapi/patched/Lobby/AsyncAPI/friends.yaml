@@ -12,6 +12,8 @@ channels:
         - $ref: '#/components/messages/friendRequestCancelled'
         - $ref: '#/components/messages/friendRemoved'
         - $ref: '#/components/messages/friendAddedBulk'
+        - $ref: '#/components/messages/friendRequestAccepted'
+        - $ref: '#/components/messages/friendRequestRejected'
   incomingFriendRequests:
     publish:
       message:
