@@ -46,6 +46,40 @@ message NotificationPayload {
     string message = 4 [json_name = "message"];
 }
 
+// path: #/components/schemas/GameSessionNotificationCreatedV1
+message GameSessionNotificationCreatedV1 {
+    string created_by = 1 [json_name = "CreatedBy"];
+    repeated UserV1 members = 2 [json_name = "Members"];
+    string session_id = 3 [json_name = "SessionID"];
+    repeated Team teams = 4 [json_name = "Teams"];
+    bool text_chat = 5 [json_name = "TextChat"];
+    string text_chat_mode = 6 [json_name = "TextChatMode"];
+}
+
+// path: #/components/schemas/Team
+message Team {
+    repeated PartyMembers parties = 1 [json_name = "parties"];
+    string team_id = 2 [json_name = "teamID"];
+    repeated string user_i_ds = 3 [json_name = "userIDs"];
+}
+
+// path: #/components/schemas/UserV1
+message UserV1 {
+    string id = 1 [json_name = "ID"];
+    string platform_id = 2 [json_name = "PlatformID"];
+    string platform_user_id = 3 [json_name = "PlatformUserID"];
+    string previous_status = 4 [json_name = "PreviousStatus"];
+    string status = 5 [json_name = "Status"];
+    string status_v2 = 6 [json_name = "StatusV2"];
+    string updated_at = 7 [json_name = "UpdatedAt"];
+}
+
+// path: #/components/schemas/PartyMembers
+message PartyMembers {
+    string party_id = 1 [json_name = "partyID"];
+    repeated string user_i_ds = 2 [json_name = "userIDs"];
+}
+
 // path: #/components/messages/sessionNotification/payload
 message SessionNotification {
     NotificationPayload payload = 1 [json_name = "payload"];

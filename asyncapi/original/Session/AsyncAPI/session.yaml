@@ -84,6 +84,68 @@ components:
         message:
           type: string
 
+    GameSessionNotificationCreatedV1:
+      type: object
+      properties:
+        CreatedBy:
+          type: string
+        Members:
+          type: array
+          items:
+            "$ref": "#/components/schemas/UserV1"
+        SessionID:
+          type: string
+        Teams:
+          type: array
+          items:
+            "$ref": "#/components/schemas/Team"
+        TextChat:
+          type: boolean
+        TextChatMode:
+          type: string
+
+    Team:
+      type: object
+      properties:
+        parties:
+          type: array
+          items:
+            "$ref": "#/components/schemas/PartyMembers"
+        teamID:
+          type: string
+        userIDs:
+          type: array
+          items:
+            type: string
+
+    UserV1:
+      type: object
+      properties:
+        ID:
+          type: string
+        PlatformID:
+          type: string
+        PlatformUserID:
+          type: string
+        PreviousStatus:
+          type: string
+        Status:
+          type: string
+        StatusV2:
+          type: string
+        UpdatedAt:
+          type: string
+
+    PartyMembers:
+      type: object
+      properties:
+        partyID:
+          type: string
+        userIDs:
+          type: array
+          items:
+            type: string
+
   messages:
     onPartyCreated:
       name: onPartyCreated
