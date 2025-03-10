@@ -1,0 +1,3 @@
+---
+source: Inventory/AsyncAPI/inventory.yaml
+destination: accelbyte/inventory/inventory/v1/inventory.proto
