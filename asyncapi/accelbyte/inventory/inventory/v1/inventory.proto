@@ -1,0 +1,92 @@
+// Copyright (c) 2025 AccelByte Inc. All Rights Reserved.
+// This is licensed software from AccelByte Inc, for limitations
+// and restrictions contact your company contract manager.
+
+// source: Inventory/AsyncAPI/inventory.yaml (1.0.0)
+
+syntax = "proto3";
+
+package accelbyte.inventory.inventory.v1;
+// Version v1.0.0
+
+// --- imports ---
+
+import "google/protobuf/any.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/struct.proto";
+
+// --- options ---
+
+option csharp_namespace = "AccelByte.Inventory.Inventory";
+option go_package = "accelbyte.net/inventory/inventory";
+option java_multiple_files = true;
+option java_package = "net.accelbyte.inventory.inventory";
+
+// --- schema objects ---
+
+// path: #/components/schemas/event
+message Event {
+    string id = 1 [json_name = "id"];
+    int64 version = 2 [json_name = "version"];
+    string name = 3 [json_name = "name"];
+    string namespace = 4 [json_name = "namespace"];
+    string parent_namespace = 5 [json_name = "parentNamespace"];
+    string timestamp = 6 [json_name = "timestamp"];
+    string client_id = 7 [json_name = "clientId"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
+}
+
+// path: #/components/schemas/inventoryItemSavedPayload
+message InventoryItemSavedPayload {
+    string id = 1 [json_name = "id"];
+    string namespace = 2 [json_name = "namespace"];
+    string user_id = 3 [json_name = "userId"];
+    string inventory_id = 4 [json_name = "inventoryId"];
+    string slot_id = 5 [json_name = "slotId"];
+    int64 slot_used = 6 [json_name = "slotUsed"];
+    string source_item_id = 7 [json_name = "sourceItemId"];
+    string type = 8 [json_name = "type"];
+    string source = 9 [json_name = "source"];
+    int64 qty = 10 [json_name = "qty"];
+    int64 final_qty = 11 [json_name = "finalQty"];
+    string source_origin = 12 [json_name = "sourceOrigin"]; // Allowed values: entitlement, inventory
+}
+
+// path: #/components/messages/inventoryItemSaved/payload
+message InventoryItemSaved {
+    InventoryItemSavedPayload payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+}
+
+
+// --- #/components/messages/{message_name} ---
+
+// path: #/components/messages/inventoryItemSaved
+message InventoryItemSavedMessage {
+    InventoryItemSaved payload = 1;
+}
+
+
+// --- #/channels/{channel_name}/{operation_type}/message ---
+
+
+// --- service ---
+
+
+// Publishes a message to the Inventory Item channel. (inventoryItem InventoryItemSaved)
+service InventoryItemInventoryItemSavedService {
+    rpc OnMessage(InventoryItemSaved) returns (google.protobuf.Empty);
+}
