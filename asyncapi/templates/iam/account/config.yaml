@@ -1,3 +1,0 @@
----
-source: IAM/AsyncAPI/account.yaml
-destination: accelbyte/iam/account/v1/account.proto

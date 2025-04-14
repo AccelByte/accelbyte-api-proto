@@ -1,3 +1,0 @@
----
-source: Legal/AsyncAPI/agreement.yaml
-destination: accelbyte/legal/agreement/v1/agreement.proto

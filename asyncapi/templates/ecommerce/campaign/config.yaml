@@ -1,3 +1,0 @@
----
-source: Ecommerce/AsyncAPI/campaign.yml
-destination: accelbyte/ecommerce/campaign/v1/campaign.proto

@@ -1,7 +1,0 @@
----
-- op: 'test'
-  path: '/components/messages/GameSessionJoinedEvent/name'
-  value: 'GameSessionInvitedEvent'
-- op: 'replace'
-  path: '/components/messages/GameSessionJoinedEvent/name'
-  value: 'GameSessionJoinedEvent'

@@ -1,3 +1,0 @@
----
-source: Ecommerce/AsyncAPI/wallet.yml
-destination: accelbyte/ecommerce/wallet/v1/wallet.proto

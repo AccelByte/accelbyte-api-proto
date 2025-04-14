@@ -1,7 +1,0 @@
----
-- op: 'test'
-  path: '/components/messages/userChatRateLimited/name'
-  value: 'userChatRateLimited'
-- op: 'replace'
-  path: '/components/messages/userChatRateLimited/name'
-  value: 'userChatRateLimitedPayload'

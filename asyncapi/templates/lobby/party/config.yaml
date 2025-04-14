@@ -1,3 +1,0 @@
----
-source: Lobby/AsyncAPI/party.yaml
-destination: accelbyte/lobby/party/v1/party.proto

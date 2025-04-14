@@ -1,3 +1,0 @@
----
-source: CloudStorage/AsyncAPI/cloudstorage.yaml
-destination: accelbyte/cloud_storage/cloudstorage/v1/cloudstorage.proto

@@ -1,3 +1,0 @@
----
-source: Reporting/AsyncAPI/reporting.yaml
-destination: accelbyte/reporting/reporting/v1/reporting.proto

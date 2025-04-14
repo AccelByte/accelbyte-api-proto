@@ -1,3 +1,0 @@
----
-source: Lobby/AsyncAPI/friends.yaml
-destination: accelbyte/lobby/friends/v1/friends.proto

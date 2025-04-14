@@ -1,3 +1,0 @@
----
-source: IAM/AsyncAPI/client.yaml
-destination: accelbyte/iam/client/v1/client.proto

@@ -1,3 +1,0 @@
----
-source: Ecommerce/AsyncAPI/integration.yml
-destination: accelbyte/ecommerce/integration/v1/integration.proto

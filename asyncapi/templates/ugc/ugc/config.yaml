@@ -1,3 +1,0 @@
----
-source: Ugc/AsyncAPI/ugc.yaml
-destination: accelbyte/ugc/ugc/v1/ugc.proto

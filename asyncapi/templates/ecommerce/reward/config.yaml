@@ -1,3 +1,0 @@
----
-source: Ecommerce/AsyncAPI/reward.yml
-destination: accelbyte/ecommerce/reward/v1/reward.proto

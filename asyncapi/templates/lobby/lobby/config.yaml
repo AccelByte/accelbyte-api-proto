@@ -1,3 +1,0 @@
----
-source: Lobby/AsyncAPI/lobby.yaml
-destination: accelbyte/lobby/lobby/v1/lobby.proto

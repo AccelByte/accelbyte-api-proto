@@ -1,3 +1,0 @@
----
-source: Session/AsyncAPI/session.yaml
-destination: accelbyte/session/session/v1/session.proto

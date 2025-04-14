@@ -1,3 +1,0 @@
----
-source: Lobby/AsyncAPI/presence.yaml
-destination: accelbyte/lobby/presence/v1/presence.proto

@@ -1,3 +1,0 @@
----
-source: Achievement/AsyncAPI/achievement.yaml
-destination: accelbyte/achievement/achievement/v1/achievement.proto

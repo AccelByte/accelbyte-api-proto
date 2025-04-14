@@ -1,3 +1,0 @@
----
-source: Lobby/AsyncAPI/notification.yaml
-destination: accelbyte/lobby/notification/v1/notification.proto

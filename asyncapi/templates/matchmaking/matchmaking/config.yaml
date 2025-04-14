@@ -1,3 +1,0 @@
----
-source: Matchmaking/AsyncAPI/matchmaking.yaml
-destination: accelbyte/matchmaking/matchmaking/v1/matchmaking.proto

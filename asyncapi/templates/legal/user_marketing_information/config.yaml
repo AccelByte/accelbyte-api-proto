@@ -1,3 +1,0 @@
----
-source: Legal/AsyncAPI/userMarketingInformation.yaml
-destination: accelbyte/legal/user_marketing_information/v1/userMarketingInformation.proto

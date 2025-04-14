@@ -1,3 +1,0 @@
----
-source: Basic/AsyncAPI/namespace.yaml
-destination: accelbyte/basic/namespace/v1/namespace.proto

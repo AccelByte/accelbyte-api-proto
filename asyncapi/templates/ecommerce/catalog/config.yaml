@@ -1,3 +1,0 @@
----
-source: Ecommerce/AsyncAPI/catalog.yml
-destination: accelbyte/ecommerce/catalog/v1/catalog.proto

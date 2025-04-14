@@ -1,3 +1,0 @@
----
-source: Ecommerce/AsyncAPI/currency.yml
-destination: accelbyte/ecommerce/currency/v1/currency.proto

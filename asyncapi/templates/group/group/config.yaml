@@ -1,3 +1,0 @@
----
-source: Group/AsyncAPI/group.yaml
-destination: accelbyte/group/group/v1/group.proto

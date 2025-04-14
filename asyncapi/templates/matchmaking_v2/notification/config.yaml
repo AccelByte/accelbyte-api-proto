@@ -1,3 +1,0 @@
----
-source: MatchmakingV2/AsyncAPI/notification.yaml
-destination: accelbyte/matchmaking_v2/notification/v1/notification.proto

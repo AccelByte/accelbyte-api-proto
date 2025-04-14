@@ -1,3 +1,0 @@
----
-source: Ecommerce/AsyncAPI/payment.yml
-destination: accelbyte/ecommerce/payment/v1/payment.proto

@@ -1,3 +1,0 @@
----
-source: Legal/AsyncAPI/policy.yaml
-destination: accelbyte/legal/policy/v1/policy.proto

@@ -1,3 +1,0 @@
----
-source: SessionBrowser/AsyncAPI/sessionbrowser.yaml
-destination: accelbyte/session_browser/sessionbrowser/v1/sessionbrowser.proto
