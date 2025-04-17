@@ -41,7 +41,7 @@ pipeline {
         stage("Prepare") {
             steps {
                 script {
-                    repoPath = "${env.WORKSPACE}/${repoName}"
+                    repoPath = "${env.WORKSPACE}"
                     specRepoPath = "${env.WORKSPACE}/${specRepoName}"
                     codegenRepoPath = "${env.WORKSPACE}/${codegenRepoName}"
                     toolsRepoPath = "${env.WORKSPACE}/${toolsRepoName}"
