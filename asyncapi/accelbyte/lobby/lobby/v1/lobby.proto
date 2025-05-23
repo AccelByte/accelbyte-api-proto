@@ -85,6 +85,7 @@ message UserConnectedPayload {
     string lobby_login_type = 2 [json_name = "lobbyLoginType"];
     int64 reconnect_from = 3 [json_name = "reconnectFrom"];
     string connection_id = 4 [json_name = "connectionId"];
+    string platform = 5 [json_name = "platform"];
 }
 
 // path: #/components/schemas/userDisconnectedPayload
