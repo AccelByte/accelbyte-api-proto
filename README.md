@@ -1,15 +1,9 @@
 # AccelByte API Proto
 
-# Extend
+## AccelByte Gaming Services (AGS)
 
-### Override Feature
+### Extend Event Handler
 
-Proto (gRPC) files for AccelByte Extend Override.
-
-* [All Overrides](proto/accelbyte)
-
-### Event Handler
-
-Proto (gRPC) files for AccelByte Extend Event Handler.
+Proto (gRPC) files for AGS Extend Event Handler.
 
 * [All Events](asyncapi/accelbyte/)

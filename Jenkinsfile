@@ -69,7 +69,6 @@ pipeline {
         stage('Lint Proto') {
           steps {
             sh "[ -f asyncapi/buf.yaml ]"   // Make sure asyncapi/buf.yaml exists
-            sh "[ -f proto/buf.yaml ]"      // Make sure proto/buf.yaml exists
             sh "make lint"
           }
         }
