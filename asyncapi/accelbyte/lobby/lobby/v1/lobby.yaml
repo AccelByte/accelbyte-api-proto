@@ -1,0 +1,299 @@
+asyncapi: 2.0.0
+id: http://justice-lobby-server
+info:
+  title: Lobby Server
+  version: 0.1.0
+channels:
+  lobby:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/userConnected'
+        - $ref: '#/components/messages/userDisconnected'
+        - $ref: '#/components/messages/userChatRateLimited'
+        - $ref: '#/components/messages/userRateLimited'
+        - $ref: '#/components/messages/userBlockAdded'
+        - $ref: '#/components/messages/userBlockRemoved'
+        - $ref: '#/components/messages/concurrentConnectedUserStats'
+        - $ref: '#/components/messages/userRegistered'
+        - $ref: '#/components/messages/userUnregistered'
+  userBlocked:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/userBlockAdded'
+        - $ref: '#/components/messages/userBlockRemoved'
+  lobbyMatchmakingTickets:
+    publish:
+      message:
+        $ref: '#/components/messages/matchmakingTicketsPublished'
+  lobbyTotalUsersOnline:
+    publish:
+      message:
+        $ref: '#/components/messages/totalUsersOnlinePublished'
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+        version:
+          type: integer
+        name:
+          type: string
+        namespace:
+          type: string
+        parentNamespace:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        clientId:
+          type: string
+        userId:
+          type: string
+          description: UserId of the operator for this event (optional)
+        traceId:
+          type: string
+        sessionId:
+          type: string
+        spanContext:
+          type: string
+    userBlock:
+      type: object
+      properties:
+        blockedByUserId:
+          type: string
+        blockedUserId:
+          type: string
+    userBlockAddedPayload:
+      type: object
+      properties:
+        blocked:
+          $ref: '#/components/schemas/userBlock'
+    userBlockRemovedPayload:
+      type: object
+      properties:
+        blocked:
+          $ref: '#/components/schemas/userBlock'
+    userConnect:
+      type: object
+      properties:
+        userConnected:
+          $ref: '#/components/schemas/userConnectedPayload'
+    userDisconnect:
+      type: object
+      properties:
+        userDisconnected:
+          $ref: '#/components/schemas/userDisconnectedPayload'
+    matchmakingTicketsPublishedPayload:
+      type: object
+      properties:
+        totalMatchmakingRequest:
+          type: integer
+        averageMatchmakingExecutionTime:
+          type: integer
+    totalUsersOnlinePublishedPayload:
+      type: object
+      properties:
+        totalUsersOnline:
+          type: integer
+        totalUsersOnlineSteam:
+          type: integer
+        totalUsersOnlineXbox:
+          type: integer
+        totalUsersOnlinePlaystation:
+          type: integer
+    userConnectedPayload:
+      type: object
+      properties:
+        lobbySessionId:
+          type: string
+        lobbyLoginType:
+          type: string
+          description: '* **NewRegister** Fresh connect, no active connection.
+
+            * **MultipleSessionLogin** An active connection exists, a new connection
+            with different token, old connection will be closed.
+
+            * **FastReconnect** An active connection exists, a new connection with
+            same token and same lobbySessionId, old connection will be closed.
+
+            * **WrongSessionID** An active connection exists, a new connection with
+            same token and different lobbySessionId, new connection is rejected, event
+            is **not** published.
+
+            '
+        reconnectFrom:
+          type: integer
+          description: '* **5000** Fresh connect, this wasn''t a reconnect.
+
+            * **5001** The user is still connected.
+
+            '
+        connectionId:
+          type: string
+        platform:
+          type: string
+    userDisconnectedPayload:
+      type: object
+      properties:
+        reason:
+          type: string
+        code:
+          type: integer
+        platform:
+          type: string
+        lobbySessionId:
+          type: string
+        isReconnecting:
+          type: boolean
+        connectionId:
+          type: string
+    concurrentConnectedUserStatsPayload:
+      type: object
+      properties:
+        totalConnectedUser:
+          type: integer
+    userBlockAddedsPayload:
+      type: object
+      properties:
+        blockedByUserId:
+          type: string
+          format: uuid
+        blockedUserId:
+          type: string
+          format: uuid
+    userRegisteredsPayload:
+      type: object
+      properties:
+        platform:
+          type: string
+          format: uuid
+        lobbySessionId:
+          type: string
+          format: uuid
+    userUnregisteredsPayload:
+      type: object
+      properties:
+        platform:
+          type: string
+          format: uuid
+        lobbySessionId:
+          type: string
+          format: uuid
+        code:
+          type: integer
+    userRegisteredPayload:
+      type: object
+      properties:
+        userRegistered:
+          $ref: '#/components/schemas/userRegisteredsPayload'
+    userUnregisteredPayload:
+      type: object
+      properties:
+        userUnregistered:
+          $ref: '#/components/schemas/userUnregisteredsPayload'
+  messages:
+    userConnected:
+      name: userConnected
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/userConnect'
+    userDisconnected:
+      name: userDisconnected
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/userDisconnect'
+    userChatRateLimited:
+      name: userChatRateLimited
+      payload:
+        $ref: '#/components/schemas/event'
+    userRateLimited:
+      name: userRateLimited
+      payload:
+        $ref: '#/components/schemas/event'
+    matchmakingTicketsPublished:
+      name: matchmakingTicketsPublished
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/matchmakingTicketsPublishedPayload'
+    totalUsersOnlinePublished:
+      name: totalUsersOnlinePublished
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/totalUsersOnlinePublishedPayload'
+    userBlockAdded:
+      name: userBlockAdded
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/userBlockAddedPayload'
+    userBlockRemoved:
+      name: userBlockRemoved
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/userBlockRemovedPayload'
+    concurrentConnectedUserStats:
+      name: concurrentConnectedUserStats
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/concurrentConnectedUserStatsPayload'
+    userUnregistered:
+      name: userUnregistered
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/userUnregisteredPayload'
+    userRegistered:
+      name: userRegistered
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/userRegisteredPayload'
+x-source: Lobby/AsyncAPI/lobby.yaml
+x-proto-package: accelbyte.lobby.lobby.v1
+x-proto-package-version: v1.0.0
+x-proto-package-semver:
+- 1
+- 0
+- 0
+x-proto-options:
+  csharp_namespace: '"AccelByte.Lobby.Lobby"'
+  go_package: '"accelbyte.net/lobby/lobby"'
+  java_multiple_files: 'true'
+  java_package: '"net.accelbyte.lobby.lobby"'

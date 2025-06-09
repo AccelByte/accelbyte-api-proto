@@ -1,0 +1,104 @@
+asyncapi: 2.0.0
+id: http://justice-inventory-service
+info:
+  title: Inventory Service Events
+  version: 1.0.0
+defaultContentType: application/json
+channels:
+  inventoryItem:
+    publish:
+      summary: Event fired when an item is saved in user inventory
+      message:
+        $ref: '#/components/messages/inventoryItemSaved'
+components:
+  messages:
+    inventoryItemSaved:
+      name: inventoryItemSaved
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            $ref: '#/components/schemas/inventoryItemSavedPayload'
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+        version:
+          type: integer
+        name:
+          type: string
+        namespace:
+          type: string
+        parentNamespace:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        clientId:
+          type: string
+        userId:
+          type: string
+          description: UserId of the operator for this event (optional)
+        traceId:
+          type: string
+        sessionId:
+          type: string
+    inventoryItemSavedPayload:
+      type: object
+      properties:
+        id:
+          type: string
+          description: id of the saved item
+        namespace:
+          type: string
+          description: namespace origin of saved item
+        userId:
+          type: string
+          description: userId that owns the item
+        inventoryId:
+          type: string
+          description: inventoryId where the item is saved
+        slotId:
+          type: string
+          description: slotId of the item in the inventory
+        slotUsed:
+          type: integer
+          description: slotUsed of the item in the inventory
+        sourceItemId:
+          type: string
+          description: sourceItemId of the item
+        type:
+          type: string
+          description: type of the item
+        source:
+          type: string
+          description: source of the item
+        qty:
+          type: integer
+          description: quantity of the item being added to the inventory
+        finalQty:
+          type: integer
+          description: total quantity, sum of existing quantity and newly added quantity
+        sourceOrigin:
+          type: string
+          description: sourceOrigin where the item saving request is coming from
+          enum:
+          - entitlement
+          - inventory
+x-source: Inventory/AsyncAPI/inventory.yaml
+x-proto-package: accelbyte.inventory.inventory.v1
+x-proto-package-version: v1.0.0
+x-proto-package-semver:
+- 1
+- 0
+- 0
+x-proto-options:
+  csharp_namespace: '"AccelByte.Inventory.Inventory"'
+  go_package: '"accelbyte.net/inventory/inventory"'
+  java_multiple_files: 'true'
+  java_package: '"net.accelbyte.inventory.inventory"'

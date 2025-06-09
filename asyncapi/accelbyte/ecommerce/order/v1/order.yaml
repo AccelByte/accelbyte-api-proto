@@ -1,0 +1,465 @@
+asyncapi: 2.0.0
+id: urn:net:accelbyte:platform:order
+info:
+  title: AsyncAPI for justice order service
+  version: 0.0.1
+defaultContentType: application/json
+channels:
+  orderProcessing:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/orderCreated'
+        - $ref: '#/components/messages/orderCancelled'
+        - $ref: '#/components/messages/orderFulfilled'
+        - $ref: '#/components/messages/orderFulfillFailed'
+        - $ref: '#/components/messages/orderCharged'
+        - $ref: '#/components/messages/orderRefunded'
+        - $ref: '#/components/messages/orderRefundRequested'
+        - $ref: '#/components/messages/orderRefundFailed'
+        - $ref: '#/components/messages/orderChargeback'
+        - $ref: '#/components/messages/orderChargebackReversed'
+        - $ref: '#/components/messages/orderExpired'
+        - $ref: '#/components/messages/orderStatusUpdated'
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+          description: event id
+        version:
+          type: integer
+        name:
+          type: string
+          description: event name
+        namespace:
+          type: string
+          description: event namespace
+        parentNamespace:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        clientId:
+          type: string
+          description: client id
+        userId:
+          type: string
+          description: the operator id
+        traceId:
+          type: string
+          description: trace id
+        sessionId:
+          type: string
+          description: session id
+    currencySummary:
+      type: object
+      properties:
+        currencyCode:
+          type: string
+          description: currency code
+        currencySymbol:
+          type: string
+          description: currency symbol
+        currencyType:
+          type: string
+          description: currency type
+          enum:
+          - REAL
+          - VIRTUAL
+        namespace:
+          type: string
+          description: namespace
+        decimals:
+          type: integer
+          format: int32
+          description: decimals
+    orderBundleItemInfo:
+      type: object
+      properties:
+        price:
+          type: integer
+          description: current available price per item
+        discountedPrice:
+          type: integer
+          description: current available discounted price per item
+        itemName:
+          type: string
+          description: item name
+        itemId:
+          type: string
+          description: item id
+        itemSku:
+          type: string
+          description: item sku
+        quantity:
+          type: integer
+          description: quantity
+        purchased:
+          type: boolean
+          description: whether this item has been purchased in this order
+    discountItem:
+      type: object
+      properties:
+        itemId:
+          type: string
+        itemName:
+          type: string
+    discountCategory:
+      type: object
+      properties:
+        categoryPath:
+          type: string
+        includeSubCategories:
+          type: boolean
+    discountConfig:
+      type: object
+      properties:
+        currencyNamespace:
+          type: string
+        currencyCode:
+          type: string
+        discountType:
+          type: string
+          enum:
+          - AMOUNT
+          - PERCENTAGE
+        discountPercentage:
+          type: integer
+        discountAmount:
+          type: integer
+        stackable:
+          type: boolean
+        restrictType:
+          type: string
+          enum:
+          - NONE
+          - ITEMS_AND_CATEGORIES
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/discountItem'
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/discountCategory'
+    discountCodeInfo:
+      type: object
+      properties:
+        code:
+          type: string
+        campaignId:
+          type: string
+        campaignName:
+          type: string
+        deduction:
+          type: integer
+        discountConfig:
+          $ref: '#/components/schemas/discountConfig'
+    discountCodeDeductionDetail:
+      type: object
+      properties:
+        totalDeduction:
+          type: integer
+        totalPercentageDeduction:
+          type: integer
+        totalAmountDeduction:
+          type: integer
+        discountPercentageCodes:
+          type: array
+          items:
+            $ref: '#/components/schemas/discountCodeInfo'
+        discountAmountCodes:
+          type: array
+          items:
+            $ref: '#/components/schemas/discountCodeInfo'
+    deductionDetail:
+      type: object
+      properties:
+        deductionType:
+          type: string
+          description: deduction type
+          enum:
+          - DISCOUNT_CODE
+        discountCodeDeductionDetail:
+          description: discount code info
+          $ref: '#/components/schemas/discountCodeDeductionDetail'
+    order:
+      type: object
+      properties:
+        orderNo:
+          type: string
+          description: Order number
+        paymentOrderNo:
+          type: string
+          description: Payment order number
+        namespace:
+          type: string
+          description: Order namespace
+        userId:
+          type: string
+          description: User id
+        itemId:
+          type: string
+          description: Item id
+        itemName:
+          type: string
+          description: Item Name
+        sandbox:
+          type: boolean
+          description: isSandbox, indicate if order is sandbox
+        quantity:
+          type: integer
+          format: int32
+          description: Item quantity
+        price:
+          type: integer
+          format: int32
+          description: Order price
+        discountedPrice:
+          type: integer
+          format: int32
+          description: Order discounted price
+        paymentProvider:
+          type: string
+          description: Payment provider
+        currency:
+          description: Order currency info
+          $ref: '#/components/schemas/currencySummary'
+        region:
+          type: string
+        language:
+          type: string
+        status:
+          type: string
+          description: Order status
+        statusReason:
+          type: string
+          description: Order status reason
+        previousStatus:
+          type: string
+          description: Order status before action
+        orderBundleItemInfos:
+          type: array
+          description: flexible bundle item price details for order, included ownership
+            info
+          items:
+            $ref: '#/components/schemas/orderBundleItemInfo'
+        deduction:
+          type: integer
+          format: int32
+          description: Total of deduction
+        deductionDetails:
+          type: array
+          description: Deduction details, include every discount code actual deducted
+            value
+          items:
+            $ref: '#/components/schemas/deductionDetail'
+    orderCreatedPayloadData:
+      type: object
+      properties:
+        order:
+          $ref: '#/components/schemas/order'
+      x-uid0: AnonymousSchema1
+    orderCancelledPayloadData:
+      type: object
+      properties:
+        order:
+          $ref: '#/components/schemas/order'
+      x-uid0: AnonymousSchema2
+    orderRefundRequestedPayloadData:
+      type: object
+      properties:
+        order:
+          $ref: '#/components/schemas/order'
+      x-uid0: AnonymousSchema3
+    orderStatusUpdatedPayloadData:
+      type: object
+      properties:
+        order:
+          $ref: '#/components/schemas/order'
+      x-uid0: AnonymousSchema4
+    orderFulfilledPayloadData:
+      type: object
+      properties:
+        order:
+          $ref: '#/components/schemas/order'
+      x-uid0: AnonymousSchema5
+    orderFulfillFailedPayloadData:
+      type: object
+      properties:
+        order:
+          $ref: '#/components/schemas/order'
+      x-uid0: AnonymousSchema6
+    orderChargedPayloadData:
+      type: object
+      properties:
+        order:
+          $ref: '#/components/schemas/order'
+      x-uid0: AnonymousSchema7
+    orderRefundedPayloadData:
+      type: object
+      properties:
+        order:
+          $ref: '#/components/schemas/order'
+      x-uid0: AnonymousSchema8
+    orderRefundFailedPayloadData:
+      type: object
+      properties:
+        order:
+          $ref: '#/components/schemas/order'
+      x-uid0: AnonymousSchema9
+    orderChargebackPayloadData:
+      type: object
+      properties:
+        order:
+          $ref: '#/components/schemas/order'
+      x-uid0: AnonymousSchema10
+    orderChargebackReversedPayloadData:
+      type: object
+      properties:
+        order:
+          $ref: '#/components/schemas/order'
+      x-uid0: AnonymousSchema11
+    orderExpiredPayloadData:
+      type: object
+      properties:
+        order:
+          $ref: '#/components/schemas/order'
+      x-uid0: AnonymousSchema12
+  messages:
+    orderCreated:
+      name: orderCreated
+      description: order status will be INIT after created
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/orderCreatedPayloadData'
+    orderCancelled:
+      name: orderCancelled
+      description: order status will be CLOSED after cancelled
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/orderCancelledPayloadData'
+    orderRefundRequested:
+      name: orderRefundRequested
+      description: order status will be REFUNDING/REFUNDED/REFUND_FAILED after refund
+        requested
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/orderRefundRequestedPayloadData'
+    orderStatusUpdated:
+      name: orderStatusUpdated
+      description: order status will be target status after updated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/orderStatusUpdatedPayloadData'
+    orderFulfilled:
+      name: orderFulfilled
+      description: order status will be FULFILLED fulfilled
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/orderFulfilledPayloadData'
+    orderFulfillFailed:
+      name: orderFulfillFailed
+      description: order status will be FULFILL_FAILED fulfilled
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/orderFulfillFailedPayloadData'
+    orderCharged:
+      name: orderCharged
+      description: order status will be CHARGED
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/orderChargedPayloadData'
+    orderRefunded:
+      name: orderRefunded
+      description: order status will be REFUNDED
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/orderRefundedPayloadData'
+    orderRefundFailed:
+      name: orderRefundFailed
+      description: order status will be REFUND_FAILED
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/orderRefundFailedPayloadData'
+    orderChargeback:
+      name: orderChargeback
+      description: order status will be CHARGEBACK
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/orderChargebackPayloadData'
+    orderChargebackReversed:
+      name: orderChargebackReversed
+      description: order status will be CHARGEBACK_REVERSED
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/orderChargebackReversedPayloadData'
+    orderExpired:
+      name: orderExpired
+      description: order status will be CLOSED
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/orderExpiredPayloadData'
+x-source: Ecommerce/AsyncAPI/order.yml
+x-proto-package: accelbyte.ecommerce.order.v1
+x-proto-package-version: v1.0.0
+x-proto-package-semver:
+- 1
+- 0
+- 0
+x-proto-options:
+  csharp_namespace: '"AccelByte.Ecommerce.Order"'
+  go_package: '"accelbyte.net/ecommerce/order"'
+  java_multiple_files: 'true'
+  java_package: '"net.accelbyte.ecommerce.order"'

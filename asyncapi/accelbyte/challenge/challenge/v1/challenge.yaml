@@ -1,0 +1,147 @@
+asyncapi: 2.0.0
+id: http://justice-challenge-service
+info:
+  title: Challenge Service Events
+  version: 1.0.0
+channels:
+  goalCompleted:
+    publish:
+      summary: Event fired when a user completes a goal
+      message:
+        $ref: '#/components/messages/goalCompleted'
+  rewardsClaimed:
+    publish:
+      summary: Event fired when reward(s) has been claimed
+      message:
+        $ref: '#/components/messages/rewardsClaimed'
+components:
+  messages:
+    goalCompleted:
+      name: goalCompleted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            $ref: '#/components/schemas/goalCompletedPayload'
+    rewardsClaimed:
+      name: rewardsClaimed
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            type: object
+            $ref: '#/components/schemas/rewardsClaimedPayload'
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+        version:
+          type: integer
+        name:
+          type: string
+        namespace:
+          type: string
+        parentNamespace:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        clientId:
+          type: string
+        userId:
+          type: string
+          description: UserId of the operator for this event (optional)
+        traceId:
+          type: string
+        sessionId:
+          type: string
+        spanContext:
+          type: string
+    goalCompletedPayload:
+      type: object
+      required:
+      - namespace
+      - challengeCode
+      - goalCode
+      - completedAt
+      - userId
+      - scheduleId
+      - scheduleStart
+      properties:
+        namespace:
+          type: string
+          description: namespace origin of completed goal
+        challengeCode:
+          type: string
+          description: associated challengeCode from completed goal
+        goalCode:
+          type: string
+          description: completed goalCode
+        completedAt:
+          type: string
+          format: date-time
+          description: timestamp of completion
+        userId:
+          type: string
+          description: userId that completes the goal
+        scheduleId:
+          type: string
+          description: scheduleId which the goal completed
+        scheduleStart:
+          type: string
+          format: date-time
+          description: timestamp of the schedule's start time
+        scheduleEnd:
+          type: string
+          format: date-time
+          description: timestamp of the schedule's end time (optional)
+    rewardsClaimedPayload:
+      type: object
+      required:
+      - namespace
+      - challengeCode
+      - goalCode
+      - claimedAt
+      - rewardIds
+      - userId
+      properties:
+        namespace:
+          type: string
+          description: namespace origin of claimed reward's goal
+        challengeCode:
+          type: string
+          description: associated challengeCode from claimed reward's goal
+        goalCode:
+          type: string
+          description: claimed reward goalCode
+        claimedAt:
+          type: string
+          format: date-time
+          description: timestamp of reward(s) claimed
+        rewardIds:
+          type: array
+          items:
+            type: string
+          description: list of reward ID(s) claimed
+        userId:
+          type: string
+          description: userId that got the reward(s)
+x-source: Challenge/AsyncAPI/challenge.yaml
+x-proto-package: accelbyte.challenge.challenge.v1
+x-proto-package-version: v1.0.0
+x-proto-package-semver:
+- 1
+- 0
+- 0
+x-proto-options:
+  csharp_namespace: '"AccelByte.Challenge.Challenge"'
+  go_package: '"accelbyte.net/challenge/challenge"'
+  java_multiple_files: 'true'
+  java_package: '"net.accelbyte.challenge.challenge"'

@@ -1,0 +1,157 @@
+asyncapi: 2.0.0
+id: http://justice-lobby-friends-service
+info:
+  title: Lobby Friends Events
+  version: 0.1.0
+channels:
+  friendRequests:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/friendRequestSent'
+        - $ref: '#/components/messages/friendRequestCancelled'
+        - $ref: '#/components/messages/friendRemoved'
+        - $ref: '#/components/messages/friendAddedBulk'
+        - $ref: '#/components/messages/friendRequestAccepted'
+        - $ref: '#/components/messages/friendRequestRejected'
+  incomingFriendRequests:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/friendRequestAccepted'
+        - $ref: '#/components/messages/friendRequestRejected'
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+        version:
+          type: integer
+        name:
+          type: string
+        namespace:
+          type: string
+        parentNamespace:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        clientId:
+          type: string
+        userId:
+          type: string
+          description: UserId of the operator for this event (optional)
+        traceId:
+          type: string
+        sessionId:
+          type: string
+        spanContext:
+          type: string
+    friendRequestsPayload:
+      type: object
+      properties:
+        userId:
+          type: string
+          format: uuid
+        friendId:
+          type: string
+          format: uuid
+    friendRequestSentPayload:
+      type: object
+      properties:
+        relation:
+          $ref: '#/components/schemas/friendRequestsPayload'
+    friendRequestCancelledPayload:
+      type: object
+      properties:
+        relation:
+          $ref: '#/components/schemas/friendRequestsPayload'
+    friendRequestAcceptedPayload:
+      type: object
+      properties:
+        relation:
+          $ref: '#/components/schemas/friendRequestsPayload'
+    friendRequestRejectedPayload:
+      type: object
+      properties:
+        relation:
+          $ref: '#/components/schemas/friendRequestsPayload'
+    friendRemovedPayload:
+      type: object
+      properties:
+        relation:
+          $ref: '#/components/schemas/friendRequestsPayload'
+    friendAddedBulkPayload:
+      type: object
+      properties:
+        relation:
+          $ref: '#/components/schemas/friendRequestsPayload'
+  messages:
+    friendRequestSent:
+      name: friendRequestSent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/friendRequestSentPayload'
+    friendRequestCancelled:
+      name: friendRequestCancelled
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/friendRequestCancelledPayload'
+    friendRequestAccepted:
+      name: friendRequestAccepted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/friendRequestAcceptedPayload'
+    friendRequestRejected:
+      name: friendRequestRejected
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/friendRequestRejectedPayload'
+    friendRemoved:
+      name: friendRemoved
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/friendRemovedPayload'
+    friendAddedBulk:
+      name: friendAddedBulk
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/friendAddedBulkPayload'
+x-source: Lobby/AsyncAPI/friends.yaml
+x-proto-package: accelbyte.lobby.friends.v1
+x-proto-package-version: v1.0.0
+x-proto-package-semver:
+- 1
+- 0
+- 0
+x-proto-options:
+  csharp_namespace: '"AccelByte.Lobby.Friends"'
+  go_package: '"accelbyte.net/lobby/friends"'
+  java_multiple_files: 'true'
+  java_package: '"net.accelbyte.lobby.friends"'

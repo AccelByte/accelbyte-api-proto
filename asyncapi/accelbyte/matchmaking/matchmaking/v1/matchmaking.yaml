@@ -1,0 +1,622 @@
+asyncapi: 2.0.0
+id: http://justice-lobby-matchmaking-service
+info:
+  title: Lobby Matchmaking Events
+  version: 0.1.0
+channels:
+  matchmaking:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/matchmakingRequested'
+        - $ref: '#/components/messages/matchmakingCanceled'
+        - $ref: '#/components/messages/matchmakingStarted'
+        - $ref: '#/components/messages/matchmakingTimeout'
+        - $ref: '#/components/messages/matchmakingRejected'
+        - $ref: '#/components/messages/matchmakingChannelCreated'
+        - $ref: '#/components/messages/matchmakingChannelDeleted'
+        - $ref: '#/components/messages/matchmakingChannelUpdated'
+        - $ref: '#/components/messages/matchmakingSessionStatusChanged'
+        - $ref: '#/components/messages/matchmakingTicketStatusChanged'
+  matchmakingTotalPlayersInQueue:
+    publish:
+      message:
+        $ref: '#/components/messages/matchmakingTotalPlayersInQueue'
+  readyConsent:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/readyConsentSuccess'
+        - $ref: '#/components/messages/readyConsentFailed'
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+        version:
+          type: integer
+        name:
+          type: string
+        namespace:
+          type: string
+        parentNamespace:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        clientId:
+          type: string
+        userId:
+          type: string
+          description: as operator id
+        sessionId:
+          type: string
+        spanContext:
+          type: string
+    allianceCombinationAlliance:
+      type: object
+      properties:
+        name:
+          type: string
+        min:
+          type: integer
+        max:
+          type: integer
+      x-uid0: AnonymousSchema1
+    allianceCombination:
+      type: object
+      properties:
+        role_flexing_enable:
+          type: boolean
+        role_flexing_second:
+          type: integer
+        role_flexing_player:
+          type: integer
+        has_combination:
+          type: boolean
+        alliances:
+          type: array
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/allianceCombinationAlliance'
+      x-uid0: AnonymousSchema2
+    alliance:
+      type: object
+      properties:
+        min_number:
+          type: integer
+        max_number:
+          type: integer
+        player_min_number:
+          type: integer
+        player_max_number:
+          type: integer
+        combination:
+          $ref: '#/components/schemas/allianceCombination'
+    matching_rule:
+      type: object
+      properties:
+        attribute:
+          type: string
+        criteria:
+          type: string
+        reference:
+          type: number
+          format: float
+    rulesetFlexingRule:
+      type: object
+      properties:
+        duration:
+          type: integer
+        matching_rule:
+          type: object
+          $ref: '#/components/schemas/matching_rule'
+      x-uid0: AnonymousSchema3
+    rulesetAllianceFlexingRule:
+      type: object
+      properties:
+        duration:
+          type: integer
+        AllianceRule:
+          type: object
+          $ref: '#/components/schemas/alliance'
+      x-uid0: AnonymousSchema4
+    rulesetMatchOptionsOption:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+      x-uid0: AnonymousSchema5
+    rulesetMatchOption:
+      type: object
+      properties:
+        options:
+          $ref: '#/components/schemas/rulesetMatchOptionsOption'
+      x-uid0: AnonymousSchema6
+    rulesetSubGameMode:
+      type: object
+      properties:
+        name:
+          type: string
+        alliance:
+          type: object
+          $ref: '#/components/schemas/alliance'
+        alliance_flexing_rule:
+          type: array
+          items:
+            $ref: '#/components/schemas/rulesetAllianceFlexingRule'
+    ruleset:
+      type: object
+      properties:
+        alliance:
+          type: object
+          $ref: '#/components/schemas/alliance'
+        matching_rule:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/matching_rule'
+        flexing_rule:
+          type: array
+          items:
+            $ref: '#/components/schemas/rulesetFlexingRule'
+        alliance_flexing_rule:
+          type: array
+          items:
+            $ref: '#/components/schemas/rulesetAllianceFlexingRule'
+        match_options:
+          type: array
+          items:
+            $ref: '#/components/schemas/rulesetMatchOption'
+        sub_game_modes:
+          type: array
+          items:
+            $ref: '#/components/schemas/rulesetSubGameMode'
+        rebalance_enable:
+          type: boolean
+    matchingParty:
+      type: object
+      properties:
+        ticket_id:
+          type: string
+        party_id:
+          type: string
+        party_members:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/partyMember'
+        party_attributes:
+          type: object
+        ticket_created_at:
+          type: integer
+        first_ticket_created_at:
+          type: integer
+    matchmaking:
+      type: object
+      properties:
+        status:
+          type: string
+        matchId:
+          type: string
+        channel:
+          type: string
+        namespace:
+          type: string
+        gameMode:
+          type: string
+        matchingParties:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/matchingParty'
+    lobbyMatchmakingRequest:
+      type: object
+      properties:
+        priority:
+          type: string
+        createdAt:
+          type: string
+        channel:
+          type: string
+        partyId:
+          type: string
+        ticketId:
+          type: string
+        partyMembers:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/partyMemberV1'
+        timestamp:
+          type: string
+          format: date-time
+        event:
+          type: string
+    lobbyMatchmaking:
+      type: object
+      properties:
+        status:
+          type: string
+        matchId:
+          type: string
+        channel:
+          type: string
+        namespace:
+          type: string
+        gameMode:
+          type: string
+        matchingParties:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/partyMemberV1'
+            partyId:
+              type: string
+        ticketId:
+          type: string
+        ticketIds:
+          type: array
+          items:
+            type: string
+    MatchmakingRequestRegion:
+      type: object
+      properties:
+        region:
+          type: string
+        latency:
+          type: integer
+      x-uid0: AnonymousSchema7
+    MatchmakingRequest:
+      type: object
+      properties:
+        priority:
+          type: integer
+        created_at:
+          type: integer
+        channel:
+          type: string
+        namespace:
+          type: string
+        ticket_id:
+          type: string
+        party_id:
+          type: string
+        party_leader_id:
+          type: string
+        party_attributes:
+          type: object
+        party_members:
+          type: array
+          items:
+            $ref: '#/components/schemas/partyMember'
+        additional_criteria:
+          type: object
+        latency_map:
+          type: object
+          additionalProperties:
+            type: integer
+        sorted_latency:
+          type: array
+          items:
+            $ref: '#/components/schemas/MatchmakingRequestRegion'
+        first_ticket_created_at:
+          type: integer
+    matchmakingResultMatchingAlly:
+      type: object
+      properties:
+        matching_parties:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/matchingParty'
+        playerCount:
+          type: integer
+      x-uid0: AnonymousSchema8
+    matchmakingResult:
+      type: object
+      properties:
+        status:
+          type: string
+        event:
+          type: string
+        party_id:
+          type: string
+        ticket_id:
+          type: string
+        match_id:
+          type: string
+        channel:
+          type: string
+        namespace:
+          type: string
+        game_mode:
+          type: string
+        server_name:
+          type: string
+        client_version:
+          type: string
+        region:
+          type: string
+        joinable:
+          type: boolean
+        matching_allies:
+          type: array
+          items:
+            $ref: '#/components/schemas/matchmakingResultMatchingAlly'
+        deployment:
+          type: string
+        updatedAt:
+          type: string
+          format: date-time
+        queueAt:
+          type: integer
+        partyAttributes:
+          type: string
+        errorCode:
+          type: integer
+        errorMessage:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+    partyMemberV1:
+      type: object
+      properties:
+        userId:
+          type: string
+        extraAttributes:
+          type: object
+    partyMember:
+      type: object
+      properties:
+        user_id:
+          type: string
+        extra_attributes:
+          type: object
+    successTickets:
+      type: object
+      properties:
+        partyId:
+          type: string
+        memberIds:
+          type: array
+          items:
+            type: string
+        ticketCreatedAt:
+          type: integer
+    failedTickets:
+      type: object
+      properties:
+        partyId:
+          type: string
+        succeedMemberIds:
+          type: array
+          items:
+            type: string
+        failedMemberIds:
+          type: array
+          items:
+            type: string
+        ticketCreatedAt:
+          type: integer
+    matchmakingChannelCreatedPayload:
+      type: object
+      properties:
+        ruleset:
+          $ref: '#/components/schemas/ruleset'
+        description:
+          type: string
+        gameMode:
+          type: string
+        findMatchTimeoutSeconds:
+          type: integer
+    matchmakingChannelDeletedPayload:
+      type: object
+      properties:
+        ruleset:
+          $ref: '#/components/schemas/ruleset'
+        description:
+          type: string
+        gameMode:
+          type: string
+        findMatchTimeoutSeconds:
+          type: integer
+    matchmakingChannelUpdatedPayload:
+      type: object
+      properties:
+        ruleset:
+          $ref: '#/components/schemas/ruleset'
+        description:
+          type: string
+        gameMode:
+          type: string
+        findMatchTimeoutSeconds:
+          type: integer
+    matchmakingRequestedPayload:
+      type: object
+      properties:
+        matchmakingRequest:
+          $ref: '#/components/schemas/lobbyMatchmakingRequest'
+    matchmakingCanceledPayload:
+      type: object
+      properties:
+        matchmaking:
+          $ref: '#/components/schemas/lobbyMatchmaking'
+    matchmakingTimeoutPayload:
+      type: object
+      properties:
+        matchmaking:
+          $ref: '#/components/schemas/lobbyMatchmaking'
+    matchmakingRejectedPayload:
+      type: object
+      properties:
+        matchmaking:
+          $ref: '#/components/schemas/lobbyMatchmaking'
+    matchmakingStartedPayload:
+      type: object
+      properties:
+        matchmaking:
+          $ref: '#/components/schemas/matchmaking'
+    matchmakingSessionStatusChangedPayload:
+      type: object
+      properties:
+        session:
+          $ref: '#/components/schemas/matchmakingResult'
+    matchmakingTicketStatusChangedPayload:
+      type: object
+      properties:
+        ticket:
+          $ref: '#/components/schemas/MatchmakingRequest'
+    matchmakingTotalPlayersInQueuePayload:
+      type: object
+      properties:
+        totalPlayersInQueue:
+          type: integer
+    readyConsentFailedPayload:
+      type: object
+      properties:
+        successTickets:
+          $ref: '#/components/schemas/successTickets'
+        failedTickets:
+          $ref: '#/components/schemas/failedTickets'
+    readyConsentSuccessPayload:
+      type: object
+      properties:
+        successTickets:
+          $ref: '#/components/schemas/successTickets'
+  messages:
+    matchmakingChannelCreated:
+      name: matchmakingChannelCreated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/matchmakingChannelCreatedPayload'
+    matchmakingChannelDeleted:
+      name: matchmakingChannelDeleted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/matchmakingChannelDeletedPayload'
+    matchmakingChannelUpdated:
+      name: matchmakingChannelUpdated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/matchmakingChannelUpdatedPayload'
+    matchmakingRequested:
+      name: matchmakingRequested
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/matchmakingRequestedPayload'
+    matchmakingCanceled:
+      name: matchmakingCanceled
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/matchmakingCanceledPayload'
+    matchmakingTimeout:
+      name: matchmakingTimeout
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/matchmakingTimeoutPayload'
+    matchmakingRejected:
+      name: matchmakingRejected
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/matchmakingRejectedPayload'
+    matchmakingStarted:
+      name: matchmakingStarted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/matchmakingStartedPayload'
+    matchmakingSessionStatusChanged:
+      name: matchmakingSessionStatusChanged
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/matchmakingSessionStatusChangedPayload'
+    matchmakingTicketStatusChanged:
+      name: matchmakingTicketStatusChanged
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/matchmakingTicketStatusChangedPayload'
+    matchmakingTotalPlayersInQueue:
+      name: matchmakingTotalPlayersInQueue
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/matchmakingTotalPlayersInQueuePayload'
+    readyConsentFailed:
+      name: readyConsentFailed
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/readyConsentFailedPayload'
+    readyConsentSuccess:
+      name: readyConsentSuccess
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/readyConsentSuccessPayload'
+x-source: Matchmaking/AsyncAPI/matchmaking.yaml
+x-proto-package: accelbyte.matchmaking.matchmaking.v1
+x-proto-package-version: v1.0.0
+x-proto-package-semver:
+- 1
+- 0
+- 0
+x-proto-options:
+  csharp_namespace: '"AccelByte.Matchmaking.Matchmaking"'
+  go_package: '"accelbyte.net/matchmaking/matchmaking"'
+  java_multiple_files: 'true'
+  java_package: '"net.accelbyte.matchmaking.matchmaking"'

@@ -1,0 +1,171 @@
+asyncapi: 2.0.0
+id: http://justice-iam-service
+info:
+  title: IAM Service OAuth Events
+  version: 0.1.0
+channels:
+  oauthRequest:
+    publish:
+      message:
+        $ref: '#/components/messages/oauthRequestAuthorized'
+  oauthToken:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/oauthTokenGenerated'
+        - $ref: '#/components/messages/oauthTokenRevoked'
+  oauthThirdPartyRequest:
+    publish:
+      message:
+        $ref: '#/components/messages/oauthThirdPartyRequestAuthorized'
+  oauthThirdPartyToken:
+    publish:
+      message:
+        $ref: '#/components/messages/oauthThirdPartyTokenGenerated'
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+        version:
+          type: integer
+        name:
+          type: string
+        namespace:
+          type: string
+        parentNamespace:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        clientId:
+          type: string
+        userId:
+          type: string
+        traceId:
+          type: string
+        sessionId:
+          type: string
+    oauth:
+      type: object
+      properties:
+        clientId:
+          type: string
+          description: oauth client id
+        responseType:
+          type: string
+          description: response type, code/token
+        platformId:
+          type: string
+          description: third party platform id
+    oauthThirdParty:
+      type: object
+      properties:
+        platformId:
+          type: string
+          description: third party platform id
+        displayName:
+          type: string
+          description: display name
+    oauthRequestAuthorizedPayloadData:
+      type: object
+      properties:
+        oauth:
+          $ref: '#/components/schemas/oauth'
+      x-uid0: AnonymousSchema1
+    oauthTokenGeneratedPayloadData:
+      type: object
+      properties:
+        oauth:
+          $ref: '#/components/schemas/oauth'
+      x-uid0: AnonymousSchema2
+    oauthTokenRevokedPayloadData:
+      type: object
+      properties:
+        oauth:
+          $ref: '#/components/schemas/oauth'
+      x-uid0: AnonymousSchema3
+    oauthThirdPartyRequestAuthorizedPayloadData:
+      type: object
+      properties:
+        oauth:
+          $ref: '#/components/schemas/oauth'
+        oauthThirdParty:
+          $ref: '#/components/schemas/oauthThirdParty'
+      x-uid0: AnonymousSchema4
+    oauthThirdPartyTokenGeneratedPayloadData:
+      type: object
+      properties:
+        oauth:
+          $ref: '#/components/schemas/oauth'
+        oauthThirdParty:
+          $ref: '#/components/schemas/oauthThirdParty'
+      x-uid0: AnonymousSchema5
+  messages:
+    oauthRequestAuthorized:
+      name: oauthRequestAuthorized
+      description: message is sent when user initializes OAuth 2.0 authorization code
+        flow
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/oauthRequestAuthorizedPayloadData'
+    oauthTokenGenerated:
+      name: oauthTokenGenerated
+      description: message is sent after user successfully login/refresh token(not
+        login by third party)
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/oauthTokenGeneratedPayloadData'
+    oauthTokenRevoked:
+      name: oauthTokenRevoked
+      description: message is sent after user is revoked or token is revoked
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/oauthTokenRevokedPayloadData'
+    oauthThirdPartyRequestAuthorized:
+      name: oauthThirdPartyRequestAuthorized
+      description: message is sent after user initializes third party authorization
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/oauthThirdPartyRequestAuthorizedPayloadData'
+    oauthThirdPartyTokenGenerated:
+      name: oauthThirdPartyTokenGenerated
+      description: message is sent after user successfully login with third party
+        account
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/oauthThirdPartyTokenGeneratedPayloadData'
+x-source: IAM/AsyncAPI/oauth.yaml
+x-proto-package: accelbyte.iam.oauth.v1
+x-proto-package-version: v1.0.0
+x-proto-package-semver:
+- 1
+- 0
+- 0
+x-proto-options:
+  csharp_namespace: '"AccelByte.IAM.Oauth"'
+  go_package: '"accelbyte.net/iam/oauth"'
+  java_multiple_files: 'true'
+  java_package: '"net.accelbyte.iam.oauth"'

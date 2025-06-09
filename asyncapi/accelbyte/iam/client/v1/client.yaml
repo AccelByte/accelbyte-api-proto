@@ -1,0 +1,336 @@
+asyncapi: 2.0.0
+id: http://justice-iam-service
+info:
+  title: IAM Service Client Events
+  version: 0.1.0
+channels:
+  client:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/clientCreated'
+        - $ref: '#/components/messages/clientDeleted'
+        - $ref: '#/components/messages/clientUpdated'
+  clientThirdParty:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/clientThirdPartyCreated'
+        - $ref: '#/components/messages/clientThirdPartyDeleted'
+        - $ref: '#/components/messages/clientThirdPartyUpdated'
+  clientPermissions:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/clientPermissionsCreated'
+        - $ref: '#/components/messages/clientPermissionsDeleted'
+        - $ref: '#/components/messages/clientPermissionsUpdated'
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+        version:
+          type: integer
+        name:
+          type: string
+        namespace:
+          type: string
+        parentNamespace:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        clientId:
+          type: string
+        userId:
+          type: string
+        traceId:
+          type: string
+        sessionId:
+          type: string
+    permissions:
+      type: object
+      properties:
+        resoure:
+          type: string
+          description: resource
+        action:
+          type: string
+          description: action
+        SchedAction:
+          type: integer
+          description: action, between 1 to 15
+          deprecated: true
+        SchedCron:
+          type: string
+          description: cron string or date range (both are UTC, also in cron syntax)
+            to indicate when a permission and action are in effect
+          deprecated: true
+        SchedRange:
+          type: array
+          items:
+            type: string
+          description: start and end date when a permission and action are in effect
+          deprecated: true
+    client:
+      type: object
+      properties:
+        clientId:
+          type: string
+          description: client id
+        name:
+          type: string
+          description: client name
+        clientType:
+          type: string
+          description: client type, Confidential/Public
+        baseUri:
+          type: string
+          description: base uri of this client
+        redirectUri:
+          type: string
+          description: redirect uri for server to redirect to after authentication
+        secret:
+          type: string
+          description: client secret
+        audiences:
+          type: array
+          items:
+            type: string
+          description: target client ids who will receive token
+        clientPlatform:
+          type: string
+          description: third party platform that will use this client, Playstation/Xbox/Steam/Epic/IOS/GooglePlay/Nintendo
+        twoFactorEnabled:
+          type: boolean
+          description: a flag indicates whether tow factor is enabled or not
+        namespace:
+          type: string
+          description: namespace
+    clientCreateObj:
+      type: object
+      properties:
+        clientId:
+          type: string
+          description: client id
+        name:
+          type: string
+          description: client name
+        clientType:
+          type: string
+          description: client type, Confidential/Public
+        baseUri:
+          type: string
+          description: base uri of this client
+        redirectUri:
+          type: string
+          description: redirect uri for server to redirect to after authentication
+        secret:
+          type: string
+          description: client secret
+        audiences:
+          type: array
+          items:
+            type: string
+          description: target client ids who will receive token
+        clientPlatform:
+          type: string
+          description: third party platform that will use this client, Playstation/Xbox/Steam/Epic/IOS/GooglePlay/Nintendo
+        twoFactorEnabled:
+          type: boolean
+          description: a flag indicates whether tow factor is enabled or not
+        namespace:
+          type: string
+          description: namespace
+        parentNamespace:
+          type: string
+          description: studio/publisher namespace in multi tenant mode
+    clientThirdParty:
+      type: object
+      properties:
+        platformId:
+          type: string
+        appId:
+          type: string
+        redirectUri:
+          type: string
+        secret:
+          type: string
+        active:
+          type: boolean
+    clientCreatedPayloadData:
+      type: object
+      properties:
+        client:
+          $ref: '#/components/schemas/clientCreateObj'
+      x-uid0: AnonymousSchema1
+    clientDeletedPayloadData:
+      type: object
+      properties:
+        client:
+          $ref: '#/components/schemas/client'
+      x-uid0: AnonymousSchema2
+    clientUpdatedPayloadData:
+      type: object
+      properties:
+        client:
+          $ref: '#/components/schemas/client'
+      x-uid0: AnonymousSchema3
+    clientPermissionsCreatedPayloadData:
+      type: object
+      properties:
+        client:
+          $ref: '#/components/schemas/client'
+        permissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/permissions'
+      x-uid0: AnonymousSchema4
+    clientPermissionsDeletedPayloadData:
+      type: object
+      properties:
+        client:
+          $ref: '#/components/schemas/client'
+        permissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/permissions'
+      x-uid0: AnonymousSchema5
+    clientPermissionsUpdatedPayloadData:
+      type: object
+      properties:
+        client:
+          $ref: '#/components/schemas/client'
+        permissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/permissions'
+      x-uid0: AnonymousSchema6
+    clientThirdPartyCreatedPayloadData:
+      type: object
+      properties:
+        client:
+          $ref: '#/components/schemas/client'
+        clientThirdParty:
+          $ref: '#/components/schemas/clientThirdParty'
+      x-uid0: AnonymousSchema7
+    clientThirdPartyDeletedPayloadData:
+      type: object
+      properties:
+        client:
+          $ref: '#/components/schemas/client'
+        clientThirdParty:
+          $ref: '#/components/schemas/clientThirdParty'
+      x-uid0: AnonymousSchema8
+    clientThirdPartyUpdatedPayloadData:
+      type: object
+      properties:
+        client:
+          $ref: '#/components/schemas/client'
+        clientThirdParty:
+          $ref: '#/components/schemas/clientThirdParty'
+      x-uid0: AnonymousSchema9
+  messages:
+    clientCreated:
+      name: clientCreated
+      description: message is sent when an IAM oauth client is created
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/clientCreatedPayloadData'
+    clientDeleted:
+      name: clientDeleted
+      description: message is sent when IAM oauth client is deleted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/clientDeletedPayloadData'
+    clientUpdated:
+      name: clientUpdated
+      description: message is sent when IAM oauth client is updated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/clientUpdatedPayloadData'
+    clientPermissionsCreated:
+      name: clientPermissionCreated
+      description: message is sent when adding permission to oauth client
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/clientPermissionsCreatedPayloadData'
+    clientPermissionsDeleted:
+      name: clientPermissionDeleted
+      description: message is sent when client's permission is deleted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/clientPermissionsDeletedPayloadData'
+    clientPermissionsUpdated:
+      name: clientPermissionUpdated
+      description: message is sent when client's permission is updated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/clientPermissionsUpdatedPayloadData'
+    clientThirdPartyCreated:
+      name: clientThirdPartyCreated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/clientThirdPartyCreatedPayloadData'
+    clientThirdPartyDeleted:
+      name: clientThirdPartyDeleted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/clientThirdPartyDeletedPayloadData'
+    clientThirdPartyUpdated:
+      name: clientThirdPartyUpdated
+      description: deprecated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/clientThirdPartyUpdatedPayloadData'
+x-source: IAM/AsyncAPI/client.yaml
+x-proto-package: accelbyte.iam.client.v1
+x-proto-package-version: v1.0.0
+x-proto-package-semver:
+- 1
+- 0
+- 0
+x-proto-options:
+  csharp_namespace: '"AccelByte.IAM.Client"'
+  go_package: '"accelbyte.net/iam/client"'
+  java_multiple_files: 'true'
+  java_package: '"net.accelbyte.iam.client"'

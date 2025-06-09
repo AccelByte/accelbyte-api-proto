@@ -1,0 +1,68 @@
+asyncapi: 2.0.0
+id: http://justice-legal-service
+info:
+  title: Legal Service User Marketing Information Events
+  version: 0.1.0
+channels:
+  userMarketingInformation:
+    publish:
+      message:
+        $ref: '#/components/messages/userMarketingPreferenceUpdated'
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+        version:
+          type: integer
+        name:
+          type: string
+        namespace:
+          type: string
+        parentNamespace:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        clientId:
+          type: string
+        userId:
+          type: string
+        traceId:
+          type: string
+        sessionId:
+          type: string
+    userMarketingPreferencePayload:
+      type: object
+      properties:
+        subscribed:
+          type: boolean
+          description: a flag indicates whether user accepted this policy
+        userId:
+          type: string
+          description: user id
+  messages:
+    userMarketingPreferenceUpdated:
+      name: userMarketingPreferenceUpdated
+      description: message is sent when the accepted policy type is Marketing Preference
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/userMarketingPreferencePayload'
+x-source: Legal/AsyncAPI/userMarketingInformation.yaml
+x-proto-package: accelbyte.legal.user_marketing_information.v1
+x-proto-package-version: v1.0.0
+x-proto-package-semver:
+- 1
+- 0
+- 0
+x-proto-options:
+  csharp_namespace: '"AccelByte.Legal.UserMarketingInformation"'
+  go_package: '"accelbyte.net/legal/userMarketingInformation"'
+  java_multiple_files: 'true'
+  java_package: '"net.accelbyte.legal.userMarketingInformation"'

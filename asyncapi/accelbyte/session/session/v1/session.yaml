@@ -1,0 +1,344 @@
+asyncapi: 2.0.0
+id: http://justice-session-service
+info:
+  title: Session Notification Events
+  version: 0.1.0
+channels:
+  session:
+    publish:
+      message:
+        $ref: '#/components/messages/onPartyCreated'
+  sessionNotification:
+    publish:
+      message:
+        $ref: '#/components/messages/sessionNotification'
+  sessionEvent:
+    publish:
+      message:
+        $ref: '#/components/messages/OnSessionEnded'
+  mpv2SessionHistory:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/GameSessionEndedEvent'
+        - $ref: '#/components/messages/GameSessionInvitedEvent'
+        - $ref: '#/components/messages/GameSessionJoinedEvent'
+        - $ref: '#/components/messages/GameSessionMembersChangedEvent'
+        - $ref: '#/components/messages/GameSessionKickedEvent'
+        - $ref: '#/components/messages/GameSessionCreatedEvent'
+        - $ref: '#/components/messages/GameSessionUpdatedEvent'
+        - $ref: '#/components/messages/GameSessionRejectedEvent'
+        - $ref: '#/components/messages/GameSessionDSStatusChangedEvent'
+        - $ref: '#/components/messages/GameSessionCodeChangedEvent'
+        - $ref: '#/components/messages/GameSessionCodeRevokedEvent'
+        - $ref: '#/components/messages/PartyCreatedEvent'
+        - $ref: '#/components/messages/PartyUpdatedEvent'
+        - $ref: '#/components/messages/PartyKickedEvent'
+        - $ref: '#/components/messages/PartyLeaveEvent'
+        - $ref: '#/components/messages/PartyInvitedEvent'
+        - $ref: '#/components/messages/PartyRejectedEvent'
+        - $ref: '#/components/messages/PartyJoinedEvent'
+        - $ref: '#/components/messages/PartyMembersChangedEvent'
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+        version:
+          type: integer
+        name:
+          type: string
+        namespace:
+          type: string
+        parentNamespace:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        userId:
+          type: string
+        traceId:
+          type: string
+        sessionId:
+          type: string
+        spanContext:
+          type: string
+    notificationPayload:
+      type: object
+      properties:
+        userIds:
+          type: array
+          items:
+            type: string
+        namespace:
+          type: string
+        topicName:
+          type: string
+        message:
+          type: string
+    GameSessionNotificationCreatedV1:
+      type: object
+      properties:
+        CreatedBy:
+          type: string
+        Members:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserV1'
+        SessionID:
+          type: string
+        Teams:
+          type: array
+          items:
+            $ref: '#/components/schemas/Team'
+        TextChat:
+          type: boolean
+        TextChatMode:
+          type: string
+    Team:
+      type: object
+      properties:
+        parties:
+          type: array
+          items:
+            $ref: '#/components/schemas/PartyMembers'
+        teamID:
+          type: string
+        userIDs:
+          type: array
+          items:
+            type: string
+    UserV1:
+      type: object
+      properties:
+        ID:
+          type: string
+        PlatformID:
+          type: string
+        PlatformUserID:
+          type: string
+        PreviousStatus:
+          type: string
+        Status:
+          type: string
+        StatusV2:
+          type: string
+        UpdatedAt:
+          type: string
+    PartyMembers:
+      type: object
+      properties:
+        partyID:
+          type: string
+        userIDs:
+          type: array
+          items:
+            type: string
+  messages:
+    onPartyCreated:
+      name: onPartyCreated
+      payload:
+        $ref: '#/components/schemas/event'
+    sessionNotification:
+      name: sessionNotification
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    OnSessionEnded:
+      name: OnSessionEnded
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    GameSessionEndedEvent:
+      name: GameSessionEndedEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    GameSessionInvitedEvent:
+      name: GameSessionInvitedEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    GameSessionJoinedEvent:
+      name: GameSessionJoinedEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    GameSessionMembersChangedEvent:
+      name: GameSessionMembersChangedEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    GameSessionKickedEvent:
+      name: GameSessionKickedEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    GameSessionCreatedEvent:
+      name: GameSessionCreatedEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    GameSessionUpdatedEvent:
+      name: GameSessionUpdatedEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    GameSessionRejectedEvent:
+      name: GameSessionRejectedEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    GameSessionDSStatusChangedEvent:
+      name: GameSessionDSStatusChangedEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    GameSessionCodeChangedEvent:
+      name: GameSessionCodeChangedEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    GameSessionCodeRevokedEvent:
+      name: GameSessionCodeRevokedEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    PartyCreatedEvent:
+      name: PartyCreatedEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    PartyUpdatedEvent:
+      name: PartyUpdatedEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    PartyLeaveEvent:
+      name: PartyLeaveEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    PartyKickedEvent:
+      name: PartyKickedEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    PartyInvitedEvent:
+      name: PartyInvitedEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    PartyRejectedEvent:
+      name: PartyRejectedEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    PartyJoinedEvent:
+      name: PartyJoinedEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    PartyMembersChangedEvent:
+      name: PartyMembersChangedEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+x-source: Session/AsyncAPI/session.yaml
+x-proto-package: accelbyte.session.session.v1
+x-proto-package-version: v1.0.0
+x-proto-package-semver:
+- 1
+- 0
+- 0
+x-proto-options:
+  csharp_namespace: '"AccelByte.Session.Session"'
+  go_package: '"accelbyte.net/session/session"'
+  java_multiple_files: 'true'
+  java_package: '"net.accelbyte.session.session"'
