@@ -186,6 +186,23 @@ message DeletionGDPR {
     string message = 5 [json_name = "message"];
 }
 
+// path: #/components/schemas/namespaceUserIdPair
+message NamespaceUserIdPair {
+    string namespace = 1 [json_name = "namespace"];
+    string user_id = 2 [json_name = "userId"];
+}
+
+// path: #/components/schemas/userAccountTransformedSchema
+message UserAccountTransformedSchema {
+    string initiator_game_user_id = 1 [json_name = "initiatorGameUserId"];
+    string initiator_namespace = 2 [json_name = "initiatorNamespace"];
+    string initiator_user_id = 3 [json_name = "initiatorUserId"];
+    string link_platform_id = 4 [json_name = "linkPlatformId"];
+    string user_id = 5 [json_name = "userId"];
+    repeated NamespaceUserIdPair chosen_accounts = 6 [json_name = "chosenAccounts"];
+    repeated NamespaceUserIdPair deleted_accounts = 7 [json_name = "deletedAccounts"];
+}
+
 // path: #/components/schemas/userAccountThirdParty
 message UserAccountThirdParty {
     string platform_id = 1 [json_name = "platformId"];
@@ -490,6 +507,11 @@ message UserDisconnectRequestedPayloadData { // previously known as 'AnonymousSc
 // path: #/components/schemas/gdprRequestDataDeletionResponsePayloadData
 message GdprRequestDataDeletionResponsePayloadData { // previously known as 'AnonymousSchema44'
     DeletionGDPR deletion_gdpr = 1 [json_name = "deletionGDPR"];
+}
+
+// path: #/components/schemas/userAccountTransformedPayloadData
+message UserAccountTransformedPayloadData {
+    UserAccountTransformedSchema user_account_transformed = 1 [json_name = "userAccountTransformed"];
 }
 
 // path: #/components/messages/userAccountCreated/payload
@@ -1206,6 +1228,23 @@ message GdprRequestDataDeletionResponse {
     string session_id = 11 [json_name = "sessionId"];
 }
 
+// path: #/components/messages/userAccountTransformed/payload
+message UserAccountTransformed {
+    UserAccountTransformedPayloadData payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+}
+
 
 // --- #/components/messages/{message_name} ---
 
@@ -1417,6 +1456,11 @@ message UserDisconnectRequestedMessage {
 // path: #/components/messages/gdprRequestDataDeletionResponse
 message GdprRequestDataDeletionResponseMessage {
     GdprRequestDataDeletionResponse payload = 1;
+}
+
+// path: #/components/messages/userAccountTransformed
+message UserAccountTransformedMessage {
+    UserAccountTransformed payload = 1;
 }
 
 
@@ -1715,4 +1759,9 @@ service LobbyUserDisconnectRequestedService {
 // Publishes a message to the Deletion Account Gdpr channel. (deletion_account_gdpr GdprRequestDataDeletionResponse)
 service DeletionAccountGdprGdprRequestDataDeletionResponseService {
     rpc OnMessage(GdprRequestDataDeletionResponse) returns (google.protobuf.Empty);
+}
+
+// Publishes a message to the One Time Code Linked channel. (oneTimeCodeLinked UserAccountTransformed)
+service OneTimeCodeLinkedUserAccountTransformedService {
+    rpc OnMessage(UserAccountTransformed) returns (google.protobuf.Empty);
 }

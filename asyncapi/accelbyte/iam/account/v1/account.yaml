@@ -83,6 +83,10 @@ channels:
     publish:
       message:
         $ref: '#/components/messages/gdprRequestDataDeletionResponse'
+  oneTimeCodeLinked:
+    publish:
+      message:
+        $ref: '#/components/messages/userAccountTransformed'
 components:
   schemas:
     event:
@@ -420,6 +424,44 @@ components:
         message:
           type: string
           description: message details of the deletion result
+    namespaceUserIdPair:
+      type: object
+      properties:
+        namespace:
+          type: string
+        userId:
+          type: string
+    userAccountTransformedSchema:
+      type: object
+      properties:
+        initiatorGameUserId:
+          type: string
+          description: the game user id who started the one time link code flow
+        initiatorNamespace:
+          type: string
+          description: the namespace where the one time link code flow was started
+        initiatorUserId:
+          type: string
+          description: the publisher user id who started the one time link code flow
+        linkPlatformId:
+          type: string
+          description: the platform id of the game user account
+        userId:
+          type: string
+          description: the target publisher user id that the game accounts are transformed
+            to
+        chosenAccounts:
+          type: array
+          description: the game namespace and user id pairs that have been chosen
+            to be transformed to the target publish user id
+          items:
+            $ref: '#/components/schemas/namespaceUserIdPair'
+        deletedAccounts:
+          type: array
+          description: the game namespace and user id pairs that were deleted from
+            the target publisher user id
+          items:
+            $ref: '#/components/schemas/namespaceUserIdPair'
     userAccountThirdParty:
       type: object
       properties:
@@ -893,6 +935,11 @@ components:
         deletionGDPR:
           $ref: '#/components/schemas/deletionGDPR'
       x-uid0: AnonymousSchema44
+    userAccountTransformedPayloadData:
+      type: object
+      properties:
+        userAccountTransformed:
+          $ref: '#/components/schemas/userAccountTransformedSchema'
   messages:
     userAccountCreated:
       name: userAccountCreated
@@ -1317,6 +1364,17 @@ components:
         properties:
           payload:
             $ref: '#/components/schemas/gdprRequestDataDeletionResponsePayloadData'
+    userAccountTransformed:
+      name: userAccountTransformed
+      description: message is sent when users choose any game account to be transformed
+        in one time code link flow
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/userAccountTransformedPayloadData'
 x-source: IAM/AsyncAPI/account.yaml
 x-proto-package: accelbyte.iam.account.v1
 x-proto-package-version: v1.0.0
