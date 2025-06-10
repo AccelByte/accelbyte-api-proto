@@ -6,7 +6,7 @@ githubUrl = "git@github.com:${githubOwner}/${githubRepo}.git"
 
 pipeline {
   agent {
-    label "extend-builder-batch"
+    label "extend-builder-ci"
   }
   stages {
     stage('Prepare') {
