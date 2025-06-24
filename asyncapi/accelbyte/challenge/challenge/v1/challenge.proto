@@ -113,16 +113,24 @@ message RewardsClaimedMessage {
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
+// path: #/channels/challenge/publish/message
+message ChallengePublish {
+    oneof payload {
+        GoalCompletedMessage variant0 = 1;
+        RewardsClaimedMessage variant1 = 2;
+    }
+}
+
 
 // --- service ---
 
 
-// Publishes a message to the Goal Completed channel. (goalCompleted GoalCompleted)
-service GoalCompletedGoalCompletedService {
+// Publishes a GoalCompleted to the Challenge channel. (oneOf variant) (challenge GoalCompleted)
+service ChallengeGoalCompletedService {
     rpc OnMessage(GoalCompleted) returns (google.protobuf.Empty);
 }
 
-// Publishes a message to the Rewards Claimed channel. (rewardsClaimed RewardsClaimed)
-service RewardsClaimedRewardsClaimedService {
+// Publishes a RewardsClaimed to the Challenge channel. (oneOf variant) (challenge RewardsClaimed)
+service ChallengeRewardsClaimedService {
     rpc OnMessage(RewardsClaimed) returns (google.protobuf.Empty);
 }

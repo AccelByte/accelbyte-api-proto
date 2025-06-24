@@ -4,16 +4,13 @@ info:
   title: Challenge Service Events
   version: 1.0.0
 channels:
-  goalCompleted:
+  challenge:
     publish:
-      summary: Event fired when a user completes a goal
+      summary: Event fired when a user completes a challenge or claim rewards
       message:
-        $ref: '#/components/messages/goalCompleted'
-  rewardsClaimed:
-    publish:
-      summary: Event fired when reward(s) has been claimed
-      message:
-        $ref: '#/components/messages/rewardsClaimed'
+        oneOf:
+        - $ref: '#/components/messages/goalCompleted'
+        - $ref: '#/components/messages/rewardsClaimed'
 components:
   messages:
     goalCompleted:
