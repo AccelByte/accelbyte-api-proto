@@ -262,72 +262,108 @@ components:
       properties:
         order:
           $ref: '#/components/schemas/order'
+        timestamp:
+          type: string
+          format: date-time
       x-uid0: AnonymousSchema1
     orderCancelledPayloadData:
       type: object
       properties:
         order:
           $ref: '#/components/schemas/order'
+        timestamp:
+          type: string
+          format: date-time
       x-uid0: AnonymousSchema2
     orderRefundRequestedPayloadData:
       type: object
       properties:
         order:
           $ref: '#/components/schemas/order'
+        timestamp:
+          type: string
+          format: date-time
       x-uid0: AnonymousSchema3
     orderStatusUpdatedPayloadData:
       type: object
       properties:
         order:
           $ref: '#/components/schemas/order'
+        timestamp:
+          type: string
+          format: date-time
       x-uid0: AnonymousSchema4
     orderFulfilledPayloadData:
       type: object
       properties:
         order:
           $ref: '#/components/schemas/order'
+        timestamp:
+          type: string
+          format: date-time
       x-uid0: AnonymousSchema5
     orderFulfillFailedPayloadData:
       type: object
       properties:
         order:
           $ref: '#/components/schemas/order'
+        timestamp:
+          type: string
+          format: date-time
       x-uid0: AnonymousSchema6
     orderChargedPayloadData:
       type: object
       properties:
         order:
           $ref: '#/components/schemas/order'
+        timestamp:
+          type: string
+          format: date-time
       x-uid0: AnonymousSchema7
     orderRefundedPayloadData:
       type: object
       properties:
         order:
           $ref: '#/components/schemas/order'
+        timestamp:
+          type: string
+          format: date-time
       x-uid0: AnonymousSchema8
     orderRefundFailedPayloadData:
       type: object
       properties:
         order:
           $ref: '#/components/schemas/order'
+        timestamp:
+          type: string
+          format: date-time
       x-uid0: AnonymousSchema9
     orderChargebackPayloadData:
       type: object
       properties:
         order:
           $ref: '#/components/schemas/order'
+        timestamp:
+          type: string
+          format: date-time
       x-uid0: AnonymousSchema10
     orderChargebackReversedPayloadData:
       type: object
       properties:
         order:
           $ref: '#/components/schemas/order'
+        timestamp:
+          type: string
+          format: date-time
       x-uid0: AnonymousSchema11
     orderExpiredPayloadData:
       type: object
       properties:
         order:
           $ref: '#/components/schemas/order'
+        timestamp:
+          type: string
+          format: date-time
       x-uid0: AnonymousSchema12
   messages:
     orderCreated:

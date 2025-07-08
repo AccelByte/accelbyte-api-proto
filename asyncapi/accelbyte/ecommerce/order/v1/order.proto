@@ -134,61 +134,73 @@ message Order {
 // path: #/components/schemas/orderCreatedPayloadData
 message OrderCreatedPayloadData { // previously known as 'AnonymousSchema1'
     Order order = 1 [json_name = "order"];
+    string timestamp = 2 [json_name = "timestamp"];
 }
 
 // path: #/components/schemas/orderCancelledPayloadData
 message OrderCancelledPayloadData { // previously known as 'AnonymousSchema2'
     Order order = 1 [json_name = "order"];
+    string timestamp = 2 [json_name = "timestamp"];
 }
 
 // path: #/components/schemas/orderRefundRequestedPayloadData
 message OrderRefundRequestedPayloadData { // previously known as 'AnonymousSchema3'
     Order order = 1 [json_name = "order"];
+    string timestamp = 2 [json_name = "timestamp"];
 }
 
 // path: #/components/schemas/orderStatusUpdatedPayloadData
 message OrderStatusUpdatedPayloadData { // previously known as 'AnonymousSchema4'
     Order order = 1 [json_name = "order"];
+    string timestamp = 2 [json_name = "timestamp"];
 }
 
 // path: #/components/schemas/orderFulfilledPayloadData
 message OrderFulfilledPayloadData { // previously known as 'AnonymousSchema5'
     Order order = 1 [json_name = "order"];
+    string timestamp = 2 [json_name = "timestamp"];
 }
 
 // path: #/components/schemas/orderFulfillFailedPayloadData
 message OrderFulfillFailedPayloadData { // previously known as 'AnonymousSchema6'
     Order order = 1 [json_name = "order"];
+    string timestamp = 2 [json_name = "timestamp"];
 }
 
 // path: #/components/schemas/orderChargedPayloadData
 message OrderChargedPayloadData { // previously known as 'AnonymousSchema7'
     Order order = 1 [json_name = "order"];
+    string timestamp = 2 [json_name = "timestamp"];
 }
 
 // path: #/components/schemas/orderRefundedPayloadData
 message OrderRefundedPayloadData { // previously known as 'AnonymousSchema8'
     Order order = 1 [json_name = "order"];
+    string timestamp = 2 [json_name = "timestamp"];
 }
 
 // path: #/components/schemas/orderRefundFailedPayloadData
 message OrderRefundFailedPayloadData { // previously known as 'AnonymousSchema9'
     Order order = 1 [json_name = "order"];
+    string timestamp = 2 [json_name = "timestamp"];
 }
 
 // path: #/components/schemas/orderChargebackPayloadData
 message OrderChargebackPayloadData { // previously known as 'AnonymousSchema10'
     Order order = 1 [json_name = "order"];
+    string timestamp = 2 [json_name = "timestamp"];
 }
 
 // path: #/components/schemas/orderChargebackReversedPayloadData
 message OrderChargebackReversedPayloadData { // previously known as 'AnonymousSchema11'
     Order order = 1 [json_name = "order"];
+    string timestamp = 2 [json_name = "timestamp"];
 }
 
 // path: #/components/schemas/orderExpiredPayloadData
 message OrderExpiredPayloadData { // previously known as 'AnonymousSchema12'
     Order order = 1 [json_name = "order"];
+    string timestamp = 2 [json_name = "timestamp"];
 }
 
 // path: #/components/messages/orderCreated/payload
