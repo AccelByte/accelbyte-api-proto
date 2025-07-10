@@ -70,6 +70,15 @@ message Iap {
     string fulfilled_time = 13 [json_name = "fulfilledTime"];
     double price = 14 [json_name = "price"];
     string currency = 15 [json_name = "currency"];
+    IapProductDetail product_details = 16 [json_name = "productDetails"];
+}
+
+// path: #/components/schemas/iapProductDetail
+message IapProductDetail {
+    string product_id = 1 [json_name = "productId"];
+    string product_id_type = 2 [json_name = "productIdType"]; // Allowed values: ITEM_SKU, ITEM_ID
+    string ext_product_id = 3 [json_name = "extProductId"];
+    double quantity = 4 [json_name = "quantity"];
 }
 
 // path: #/components/schemas/notification

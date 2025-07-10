@@ -143,7 +143,7 @@ components:
           description: user id
         productId:
           type: string
-          description: product id
+          description: product id (deprecated)
         transactionId:
           type: string
           description: transaction id
@@ -165,7 +165,7 @@ components:
           description: language value from language tag
         quantity:
           type: integer
-          description: number of items
+          description: number of items (deprecated)
         sandbox:
           type: boolean
           description: a flag indicates whether the user has sanbox permission
@@ -189,6 +189,26 @@ components:
           format: double
         currency:
           type: string
+        productDetails:
+          $ref: '#/components/schemas/iapProductDetail'
+    iapProductDetail:
+      type: object
+      properties:
+        productId:
+          type: string
+          description: AGS product identity
+        productIdType:
+          type: string
+          description: AGS product identifier type
+          enum:
+          - ITEM_SKU
+          - ITEM_ID
+        extProductId:
+          type: string
+          description: first party product identity
+        quantity:
+          type: number
+          description: number of items
     notification:
       type: object
       properties:
