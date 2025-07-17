@@ -129,6 +129,7 @@ message Order {
     repeated OrderBundleItemInfo order_bundle_item_infos = 18 [json_name = "orderBundleItemInfos"];
     int32 deduction = 19 [json_name = "deduction"];
     repeated DeductionDetail deduction_details = 20 [json_name = "deductionDetails"];
+    int32 actual_paid = 21 [json_name = "actualPaid"];
 }
 
 // path: #/components/schemas/orderCreatedPayloadData

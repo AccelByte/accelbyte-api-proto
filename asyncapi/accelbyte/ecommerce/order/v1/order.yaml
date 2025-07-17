@@ -257,6 +257,10 @@ components:
             value
           items:
             $ref: '#/components/schemas/deductionDetail'
+        actualPaid:
+          type: integer
+          format: int32
+          description: Final paid price of the order
     orderCreatedPayloadData:
       type: object
       properties:
