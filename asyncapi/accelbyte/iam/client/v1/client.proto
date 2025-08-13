@@ -136,6 +136,24 @@ message ClientThirdPartyUpdatedPayloadData { // previously known as 'AnonymousSc
     ClientThirdParty client_third_party = 2 [json_name = "clientThirdParty"];
 }
 
+// path: #/components/schemas/platformClientCreatedPayloadData
+message PlatformClientCreatedPayloadData { // previously known as 'AnonymousSchema10'
+    string namespace = 1 [json_name = "namespace"];
+    string platform_id = 2 [json_name = "platformId"];
+}
+
+// path: #/components/schemas/platformClientUpdatedPayloadData
+message PlatformClientUpdatedPayloadData { // previously known as 'AnonymousSchema11'
+    string namespace = 1 [json_name = "namespace"];
+    string platform_id = 2 [json_name = "platformId"];
+}
+
+// path: #/components/schemas/platformClientDeletedPayloadData
+message PlatformClientDeletedPayloadData { // previously known as 'AnonymousSchema12'
+    string namespace = 1 [json_name = "namespace"];
+    string platform_id = 2 [json_name = "platformId"];
+}
+
 // path: #/components/messages/clientCreated/payload
 message ClientCreated {
     ClientCreatedPayloadData payload = 1 [json_name = "payload"];
@@ -289,6 +307,57 @@ message ClientThirdPartyUpdated {
     string session_id = 11 [json_name = "sessionId"];
 }
 
+// path: #/components/messages/platformClientCreated/payload
+message PlatformClientCreated {
+    PlatformClientCreatedPayloadData payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+}
+
+// path: #/components/messages/platformClientUpdated/payload
+message PlatformClientUpdated {
+    PlatformClientUpdatedPayloadData payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+}
+
+// path: #/components/messages/platformClientDeleted/payload
+message PlatformClientDeleted {
+    PlatformClientDeletedPayloadData payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string client_id = 8 [json_name = "clientId"];
+    string user_id = 9 [json_name = "userId"];
+    string trace_id = 10 [json_name = "traceId"];
+    string session_id = 11 [json_name = "sessionId"];
+}
+
 
 // --- #/components/messages/{message_name} ---
 
@@ -337,6 +406,21 @@ message ClientThirdPartyUpdatedMessage {
     ClientThirdPartyUpdated payload = 1;
 }
 
+// path: #/components/messages/platformClientCreated
+message PlatformClientCreatedMessage {
+    PlatformClientCreated payload = 1;
+}
+
+// path: #/components/messages/platformClientUpdated
+message PlatformClientUpdatedMessage {
+    PlatformClientUpdated payload = 1;
+}
+
+// path: #/components/messages/platformClientDeleted
+message PlatformClientDeletedMessage {
+    PlatformClientDeleted payload = 1;
+}
+
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
@@ -364,6 +448,15 @@ message ClientPermissionsPublish {
         ClientPermissionsCreatedMessage variant0 = 1;
         ClientPermissionsDeletedMessage variant1 = 2;
         ClientPermissionsUpdatedMessage variant2 = 3;
+    }
+}
+
+// path: #/channels/platformClient/publish/message
+message PlatformClientPublish {
+    oneof payload {
+        PlatformClientCreatedMessage variant0 = 1;
+        PlatformClientUpdatedMessage variant1 = 2;
+        PlatformClientDeletedMessage variant2 = 3;
     }
 }
 
@@ -414,4 +507,19 @@ service ClientPermissionsClientPermissionsDeletedService {
 // Publishes a ClientPermissionUpdated to the Client Permissions channel. (oneOf variant) (clientPermissions ClientPermissionsUpdated)
 service ClientPermissionsClientPermissionsUpdatedService {
     rpc OnMessage(ClientPermissionUpdated) returns (google.protobuf.Empty);
+}
+
+// Publishes a PlatformClientCreated to the Platform Client channel. (oneOf variant) (platformClient PlatformClientCreated)
+service PlatformClientPlatformClientCreatedService {
+    rpc OnMessage(PlatformClientCreated) returns (google.protobuf.Empty);
+}
+
+// Publishes a PlatformClientUpdated to the Platform Client channel. (oneOf variant) (platformClient PlatformClientUpdated)
+service PlatformClientPlatformClientUpdatedService {
+    rpc OnMessage(PlatformClientUpdated) returns (google.protobuf.Empty);
+}
+
+// Publishes a PlatformClientDeleted to the Platform Client channel. (oneOf variant) (platformClient PlatformClientDeleted)
+service PlatformClientPlatformClientDeletedService {
+    rpc OnMessage(PlatformClientDeleted) returns (google.protobuf.Empty);
 }

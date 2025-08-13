@@ -25,6 +25,13 @@ channels:
         - $ref: '#/components/messages/clientPermissionsCreated'
         - $ref: '#/components/messages/clientPermissionsDeleted'
         - $ref: '#/components/messages/clientPermissionsUpdated'
+  platformClient:
+    publish:
+      message:
+        oneOf:
+        - $ref: '#/components/messages/platformClientCreated'
+        - $ref: '#/components/messages/platformClientUpdated'
+        - $ref: '#/components/messages/platformClientDeleted'
 components:
   schemas:
     event:
@@ -233,6 +240,30 @@ components:
         clientThirdParty:
           $ref: '#/components/schemas/clientThirdParty'
       x-uid0: AnonymousSchema9
+    platformClientCreatedPayloadData:
+      type: object
+      properties:
+        namespace:
+          type: string
+        platformId:
+          type: string
+      x-uid0: AnonymousSchema10
+    platformClientUpdatedPayloadData:
+      type: object
+      properties:
+        namespace:
+          type: string
+        platformId:
+          type: string
+      x-uid0: AnonymousSchema11
+    platformClientDeletedPayloadData:
+      type: object
+      properties:
+        namespace:
+          type: string
+        platformId:
+          type: string
+      x-uid0: AnonymousSchema12
   messages:
     clientCreated:
       name: clientCreated
@@ -296,6 +327,7 @@ components:
             $ref: '#/components/schemas/clientPermissionsUpdatedPayloadData'
     clientThirdPartyCreated:
       name: clientThirdPartyCreated
+      description: obsolete
       payload:
         type: object
         allOf:
@@ -305,6 +337,7 @@ components:
             $ref: '#/components/schemas/clientThirdPartyCreatedPayloadData'
     clientThirdPartyDeleted:
       name: clientThirdPartyDeleted
+      description: obsolete
       payload:
         type: object
         allOf:
@@ -314,7 +347,7 @@ components:
             $ref: '#/components/schemas/clientThirdPartyDeletedPayloadData'
     clientThirdPartyUpdated:
       name: clientThirdPartyUpdated
-      description: deprecated
+      description: obsolete
       payload:
         type: object
         allOf:
@@ -322,6 +355,36 @@ components:
         properties:
           payload:
             $ref: '#/components/schemas/clientThirdPartyUpdatedPayloadData'
+    platformClientCreated:
+      name: platformClientCreated
+      description: message is sent when platform client config is created
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/platformClientCreatedPayloadData'
+    platformClientUpdated:
+      name: platformClientUpdated
+      description: message is sent when platform client config is updated
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/platformClientUpdatedPayloadData'
+    platformClientDeleted:
+      name: platformClientDeleted
+      description: message is sent when platform client config is deleted
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/platformClientDeletedPayloadData'
 x-source: IAM/AsyncAPI/client.yaml
 x-proto-package: accelbyte.iam.client.v1
 x-proto-package-version: v1.0.0
