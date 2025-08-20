@@ -174,6 +174,9 @@ components:
           type: string
           description: login platform, third platform(eg:steam, psn) or justice if
             it is not a headless login
+        loginLocation:
+          type: object
+          $ref: '#/components/schemas/loginLocation'
     userAccount:
       type: object
       properties:
@@ -569,6 +572,18 @@ components:
           type: boolean
           description: a flag to indicates the user is a test account. this field
             will be omitted if its a real account
+    loginLocation:
+      type: object
+      properties:
+        country:
+          type: string
+          description: country
+        state:
+          type: string
+          description: state
+        city:
+          type: string
+          description: city
     userAccountCreatedPayloadData:
       type: object
       properties:
@@ -748,6 +763,8 @@ components:
           $ref: '#/components/schemas/userAccount'
         userAuthentication:
           $ref: '#/components/schemas/userAuthentication'
+        loginLocation:
+          $ref: '#/components/schemas/loginLocation'
       x-uid: AnonymousSchema19
     userLoggedOutPayloadData:
       type: object
@@ -764,6 +781,8 @@ components:
           $ref: '#/components/schemas/userAccount'
         userAuthentication:
           $ref: '#/components/schemas/userAuthentication'
+        loginLocation:
+          $ref: '#/components/schemas/loginLocation'
       x-uid: AnonymousSchema21
     userLoginFailedPayloadData:
       type: object

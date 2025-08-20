@@ -63,6 +63,7 @@ message UserAuthenticationFailed {
     string country = 3 [json_name = "country"];
     string detail = 4 [json_name = "detail"];
     string platform = 5 [json_name = "platform"];
+    LoginLocation login_location = 6 [json_name = "loginLocation"];
 }
 
 // path: #/components/schemas/userAccount
@@ -254,6 +255,13 @@ message UserAccountTypeChange {
     bool test_account = 3 [json_name = "testAccount"];
 }
 
+// path: #/components/schemas/loginLocation
+message LoginLocation {
+    string country = 1 [json_name = "country"];
+    string state = 2 [json_name = "state"];
+    string city = 3 [json_name = "city"];
+}
+
 // path: #/components/schemas/userAccountCreatedPayloadData
 message UserAccountCreatedPayloadData { // previously known as 'AnonymousSchema3'
     UserTestAccount user_account = 1 [json_name = "userAccount"];
@@ -368,6 +376,7 @@ message UserAccountTypeChangedPayloadData { // previously known as 'AnonymousSch
 message AnonymousSchema19 { // Message name is kept for backward compatibility
     UserAccount user_account = 1 [json_name = "userAccount"];
     UserAuthentication user_authentication = 2 [json_name = "userAuthentication"];
+    LoginLocation login_location = 3 [json_name = "loginLocation"];
 }
 
 // path: #/components/schemas/userLoggedOutPayloadData
@@ -380,6 +389,7 @@ message AnonymousSchema20 { // Message name is kept for backward compatibility
 message AnonymousSchema21 { // Message name is kept for backward compatibility
     UserAccount user_account = 1 [json_name = "userAccount"];
     UserAuthentication user_authentication = 2 [json_name = "userAuthentication"];
+    LoginLocation login_location = 3 [json_name = "loginLocation"];
 }
 
 // path: #/components/schemas/userLoginFailedPayloadData
