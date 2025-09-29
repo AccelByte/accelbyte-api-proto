@@ -115,6 +115,9 @@ components:
           type: string
           format: date-time
           description: time when the entitlement becomes expired
+        name:
+          type: string
+          description: item name
     creditSummary:
       type: object
       properties:
@@ -131,6 +134,9 @@ components:
           type: integer
           format: int64
           description: amount to be paid
+        currencyCode:
+          type: string
+          description: currency code
     fulfillmentItem:
       type: object
       properties:

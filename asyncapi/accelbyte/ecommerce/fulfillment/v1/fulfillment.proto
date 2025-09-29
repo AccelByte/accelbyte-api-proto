@@ -61,6 +61,7 @@ message EntitlementSummary {
     string updated_at = 12 [json_name = "updatedAt"];
     string start_date = 13 [json_name = "startDate"];
     string end_date = 14 [json_name = "endDate"];
+    string name = 15 [json_name = "name"];
 }
 
 // path: #/components/schemas/creditSummary
@@ -69,6 +70,7 @@ message CreditSummary {
     string namespace = 2 [json_name = "namespace"];
     string user_id = 3 [json_name = "userId"];
     int64 amount = 4 [json_name = "amount"];
+    string currency_code = 5 [json_name = "currencyCode"];
 }
 
 // path: #/components/schemas/fulfillmentItem
