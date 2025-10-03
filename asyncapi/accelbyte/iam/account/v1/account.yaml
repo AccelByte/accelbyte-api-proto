@@ -1124,7 +1124,8 @@ components:
             $ref: '#/components/schemas/userAccountTypeChangedPayloadData'
     userLoggedIn:
       name: userLoggedIn
-      description: message is sent when user login
+      description: message is sent when user login with a username/email and password.
+        For login with third party logins please refer to `userThirdPartyLoggedIn`
       payload:
         type: object
         allOf:
