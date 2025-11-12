@@ -1125,7 +1125,7 @@ components:
     userLoggedIn:
       name: userLoggedIn
       description: message is sent when user login with a username/email and password.
-        For login with third party logins please refer to `userThirdPartyLoggedIn`
+        For logins using third-party accounts or device login, please refer to `userThirdPartyLoggedIn`.
       payload:
         type: object
         allOf:
@@ -1145,7 +1145,8 @@ components:
             $ref: '#/components/schemas/userLoggedOutPayloadData'
     userThirdPartyLoggedIn:
       name: userThirdPartyLoggedIn
-      description: message is sent when user login with a third party account
+      description: message is sent when user login with a third party account or through
+        device login.
       payload:
         type: object
         allOf:
