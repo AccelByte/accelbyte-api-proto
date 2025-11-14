@@ -437,6 +437,74 @@ message PartyMembersChangedEvent {
     string span_context = 11 [json_name = "spanContext"];
 }
 
+// path: #/components/messages/MetricTotalActiveSessionEvent/payload
+message MetricTotalActiveSessionEvent {
+    NotificationPayload payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
+    string span_context = 11 [json_name = "spanContext"];
+}
+
+// path: #/components/messages/MetricAcquiringDsWaitTimeEvent/payload
+message MetricAcquiringDsWaitTimeEvent {
+    NotificationPayload payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
+    string span_context = 11 [json_name = "spanContext"];
+}
+
+// path: #/components/messages/MetricAcquiringDsEvent/payload
+message MetricAcquiringDsEvent {
+    NotificationPayload payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
+    string span_context = 11 [json_name = "spanContext"];
+}
+
+// path: #/components/messages/MetricMatchLengthDurationEvent/payload
+message MetricMatchLengthDurationEvent {
+    NotificationPayload payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
+    string span_context = 11 [json_name = "spanContext"];
+}
+
 
 // --- #/components/messages/{message_name} ---
 
@@ -550,6 +618,26 @@ message PartyMembersChangedEventMessage {
     PartyMembersChangedEvent payload = 1;
 }
 
+// path: #/components/messages/MetricTotalActiveSessionEvent
+message MetricTotalActiveSessionEventMessage {
+    MetricTotalActiveSessionEvent payload = 1;
+}
+
+// path: #/components/messages/MetricAcquiringDsWaitTimeEvent
+message MetricAcquiringDsWaitTimeEventMessage {
+    MetricAcquiringDsWaitTimeEvent payload = 1;
+}
+
+// path: #/components/messages/MetricAcquiringDsEvent
+message MetricAcquiringDsEventMessage {
+    MetricAcquiringDsEvent payload = 1;
+}
+
+// path: #/components/messages/MetricMatchLengthDurationEvent
+message MetricMatchLengthDurationEventMessage {
+    MetricMatchLengthDurationEvent payload = 1;
+}
+
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
@@ -575,6 +663,10 @@ message Mpv2SessionHistoryPublish {
         PartyRejectedEventMessage variant16 = 17;
         PartyJoinedEventMessage variant17 = 18;
         PartyMembersChangedEventMessage variant18 = 19;
+        MetricTotalActiveSessionEventMessage variant19 = 20;
+        MetricAcquiringDsWaitTimeEventMessage variant20 = 21;
+        MetricAcquiringDsEventMessage variant21 = 22;
+        MetricMatchLengthDurationEventMessage variant22 = 23;
     }
 }
 
@@ -690,4 +782,24 @@ service Mpv2SessionHistoryPartyJoinedEventService {
 // Publishes a PartyMembersChangedEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory PartyMembersChangedEvent)
 service Mpv2SessionHistoryPartyMembersChangedEventService {
     rpc OnMessage(PartyMembersChangedEvent) returns (google.protobuf.Empty);
+}
+
+// Publishes a MetricTotalActiveSessionEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory MetricTotalActiveSessionEvent)
+service Mpv2SessionHistoryMetricTotalActiveSessionEventService {
+    rpc OnMessage(MetricTotalActiveSessionEvent) returns (google.protobuf.Empty);
+}
+
+// Publishes a MetricAcquiringDsWaitTimeEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory MetricAcquiringDsWaitTimeEvent)
+service Mpv2SessionHistoryMetricAcquiringDsWaitTimeEventService {
+    rpc OnMessage(MetricAcquiringDsWaitTimeEvent) returns (google.protobuf.Empty);
+}
+
+// Publishes a MetricAcquiringDsEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory MetricAcquiringDsEvent)
+service Mpv2SessionHistoryMetricAcquiringDsEventService {
+    rpc OnMessage(MetricAcquiringDsEvent) returns (google.protobuf.Empty);
+}
+
+// Publishes a MetricMatchLengthDurationEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory MetricMatchLengthDurationEvent)
+service Mpv2SessionHistoryMetricMatchLengthDurationEventService {
+    rpc OnMessage(MetricMatchLengthDurationEvent) returns (google.protobuf.Empty);
 }

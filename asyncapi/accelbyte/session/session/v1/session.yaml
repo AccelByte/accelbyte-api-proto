@@ -39,6 +39,10 @@ channels:
         - $ref: '#/components/messages/PartyRejectedEvent'
         - $ref: '#/components/messages/PartyJoinedEvent'
         - $ref: '#/components/messages/PartyMembersChangedEvent'
+        - $ref: '#/components/messages/MetricTotalActiveSessionEvent'
+        - $ref: '#/components/messages/MetricAcquiringDsWaitTimeEvent'
+        - $ref: '#/components/messages/MetricAcquiringDsEvent'
+        - $ref: '#/components/messages/MetricMatchLengthDurationEvent'
 components:
   schemas:
     event:
@@ -323,6 +327,42 @@ components:
             $ref: '#/components/schemas/notificationPayload'
     PartyMembersChangedEvent:
       name: PartyMembersChangedEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    MetricTotalActiveSessionEvent:
+      name: MetricTotalActiveSessionEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    MetricAcquiringDsWaitTimeEvent:
+      name: MetricAcquiringDsWaitTimeEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    MetricAcquiringDsEvent:
+      name: MetricAcquiringDsEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    MetricMatchLengthDurationEvent:
+      name: MetricMatchLengthDurationEvent
       payload:
         type: object
         allOf:
