@@ -76,6 +76,8 @@ pipeline {
                     sh "make zrun CODEGEN_SDK_PATH=${codegenRepoPath} SPEC_PATH=${specRepoPath} OUTPUT_PATH=${repoPath}/asyncapi"
                 }
                 sh "cp asyncapi.old/buf.yaml asyncapi/buf.yaml"     // Restore asyncapi/buf.yaml
+                sh "mkdir -p asyncapi/accelbyte/extend"
+                sh "cp -rfv asyncapi.old/accelbyte/extend/* asyncapi/accelbyte/extend"      // Restore extend async messaging proto
                 sh "rm -rf asyncapi.old"
             }
         }
