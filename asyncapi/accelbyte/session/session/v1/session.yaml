@@ -43,6 +43,17 @@ channels:
         - $ref: '#/components/messages/MetricAcquiringDsWaitTimeEvent'
         - $ref: '#/components/messages/MetricAcquiringDsEvent'
         - $ref: '#/components/messages/MetricMatchLengthDurationEvent'
+        - $ref: '#/components/messages/GameSessionBackfillUpdateEvent'
+        - $ref: '#/components/messages/MatchHistoryEvent'
+        - $ref: '#/components/messages/MetricCreatedMatchmakingTicketEvent'
+        - $ref: '#/components/messages/MetricMatchMatchmakingEvent'
+        - $ref: '#/components/messages/MetricMatchMatchmakingTicketEvent'
+        - $ref: '#/components/messages/PartyDeletedEvent'
+        - $ref: '#/components/messages/PartyDisconnectedEvent'
+        - $ref: '#/components/messages/PartyInviteCancelled'
+        - $ref: '#/components/messages/PartyLeaderChanged'
+        - $ref: '#/components/messages/PartyLeftEvent'
+        - $ref: '#/components/messages/PartyRejoinedEvent'
 components:
   schemas:
     event:
@@ -363,6 +374,105 @@ components:
             $ref: '#/components/schemas/notificationPayload'
     MetricMatchLengthDurationEvent:
       name: MetricMatchLengthDurationEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    PartyLeftEvent:
+      name: PartyLeftEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    MetricMatchMatchmakingEvent:
+      name: MetricMatchMatchmakingEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    MetricMatchMatchmakingTicketEvent:
+      name: MetricMatchMatchmakingTicketEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    MatchHistoryEvent:
+      name: MatchHistoryEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    MetricCreatedMatchmakingTicketEvent:
+      name: MetricCreatedMatchmakingTicketEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    PartyDeletedEvent:
+      name: PartyDeletedEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    PartyRejoinedEvent:
+      name: PartyRejoinedEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    PartyDisconnectedEvent:
+      name: PartyDisconnectedEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    PartyInviteCancelled:
+      name: PartyInviteCancelled
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    PartyLeaderChanged:
+      name: PartyLeaderChanged
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    GameSessionBackfillUpdateEvent:
+      name: GameSessionBackfillUpdateEvent
       payload:
         type: object
         allOf:

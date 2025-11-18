@@ -254,6 +254,156 @@ message BackfillTicketExpiredEvent {
     string span_context = 9 [json_name = "spanContext"];
 }
 
+// path: #/components/messages/MatchmakingTicketReturnedToPoolEvent/payload
+message MatchmakingTicketReturnedToPoolEvent {
+    NotificationPayload payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string trace_id = 8 [json_name = "traceId"];
+    string span_context = 9 [json_name = "spanContext"];
+}
+
+// path: #/components/messages/PartialBackfillProposalRejectedEvent/payload
+message PartialBackfillProposalRejectedEvent {
+    NotificationPayload payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string trace_id = 8 [json_name = "traceId"];
+    string span_context = 9 [json_name = "spanContext"];
+}
+
+// path: #/components/messages/MatchmakingSessionTickEvent/payload
+message MatchmakingSessionTickEvent {
+    NotificationPayload payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string trace_id = 8 [json_name = "traceId"];
+    string span_context = 9 [json_name = "spanContext"];
+}
+
+// path: #/components/messages/MatchmakingTickEvent/payload
+message MatchmakingTickEvent {
+    NotificationPayload payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string trace_id = 8 [json_name = "traceId"];
+    string span_context = 9 [json_name = "spanContext"];
+}
+
+// path: #/components/messages/MatchHistoryEvent/payload
+message MatchHistoryEvent {
+    NotificationPayload payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string trace_id = 8 [json_name = "traceId"];
+    string span_context = 9 [json_name = "spanContext"];
+}
+
+// path: #/components/messages/MetricCreatedMatchmakingTicketEvent/payload
+message MetricCreatedMatchmakingTicketEvent {
+    NotificationPayload payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string trace_id = 8 [json_name = "traceId"];
+    string span_context = 9 [json_name = "spanContext"];
+}
+
+// path: #/components/messages/MetricCanceledMatchmakingTicketEvent/payload
+message MetricCanceledMatchmakingTicketEvent {
+    NotificationPayload payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string trace_id = 8 [json_name = "traceId"];
+    string span_context = 9 [json_name = "spanContext"];
+}
+
+// path: #/components/messages/MetricExpiredMatchmakingTicketEvent/payload
+message MetricExpiredMatchmakingTicketEvent {
+    NotificationPayload payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string trace_id = 8 [json_name = "traceId"];
+    string span_context = 9 [json_name = "spanContext"];
+}
+
+// path: #/components/messages/MetricMatchMatchmakingTicketEvent/payload
+message MetricMatchMatchmakingTicketEvent {
+    NotificationPayload payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string trace_id = 8 [json_name = "traceId"];
+    string span_context = 9 [json_name = "spanContext"];
+}
+
+// path: #/components/messages/MetricMatchMatchmakingEvent/payload
+message MetricMatchMatchmakingEvent {
+    NotificationPayload payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string trace_id = 8 [json_name = "traceId"];
+    string span_context = 9 [json_name = "spanContext"];
+}
+
 
 // --- #/components/messages/{message_name} ---
 
@@ -327,6 +477,56 @@ message BackfillTicketExpiredEventMessage {
     BackfillTicketExpiredEvent payload = 1;
 }
 
+// path: #/components/messages/MatchmakingTicketReturnedToPoolEvent
+message MatchmakingTicketReturnedToPoolEventMessage {
+    MatchmakingTicketReturnedToPoolEvent payload = 1;
+}
+
+// path: #/components/messages/PartialBackfillProposalRejectedEvent
+message PartialBackfillProposalRejectedEventMessage {
+    PartialBackfillProposalRejectedEvent payload = 1;
+}
+
+// path: #/components/messages/MatchmakingSessionTickEvent
+message MatchmakingSessionTickEventMessage {
+    MatchmakingSessionTickEvent payload = 1;
+}
+
+// path: #/components/messages/MatchmakingTickEvent
+message MatchmakingTickEventMessage {
+    MatchmakingTickEvent payload = 1;
+}
+
+// path: #/components/messages/MatchHistoryEvent
+message MatchHistoryEventMessage {
+    MatchHistoryEvent payload = 1;
+}
+
+// path: #/components/messages/MetricCreatedMatchmakingTicketEvent
+message MetricCreatedMatchmakingTicketEventMessage {
+    MetricCreatedMatchmakingTicketEvent payload = 1;
+}
+
+// path: #/components/messages/MetricCanceledMatchmakingTicketEvent
+message MetricCanceledMatchmakingTicketEventMessage {
+    MetricCanceledMatchmakingTicketEvent payload = 1;
+}
+
+// path: #/components/messages/MetricExpiredMatchmakingTicketEvent
+message MetricExpiredMatchmakingTicketEventMessage {
+    MetricExpiredMatchmakingTicketEvent payload = 1;
+}
+
+// path: #/components/messages/MetricMatchMatchmakingTicketEvent
+message MetricMatchMatchmakingTicketEventMessage {
+    MetricMatchMatchmakingTicketEvent payload = 1;
+}
+
+// path: #/components/messages/MetricMatchMatchmakingEvent
+message MetricMatchMatchmakingEventMessage {
+    MetricMatchMatchmakingEvent payload = 1;
+}
+
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
@@ -346,6 +546,16 @@ message Mpv2SessionHistoryPublish {
         BackfillProposalRejectedEventMessage variant10 = 11;
         BackfillProposalExpiredEventMessage variant11 = 12;
         BackfillTicketExpiredEventMessage variant12 = 13;
+        MatchHistoryEventMessage variant13 = 14;
+        MatchmakingSessionTickEventMessage variant14 = 15;
+        MatchmakingTicketReturnedToPoolEventMessage variant15 = 16;
+        MatchmakingTickEventMessage variant16 = 17;
+        MetricCanceledMatchmakingTicketEventMessage variant17 = 18;
+        MetricCreatedMatchmakingTicketEventMessage variant18 = 19;
+        MetricExpiredMatchmakingTicketEventMessage variant19 = 20;
+        MetricMatchMatchmakingEventMessage variant20 = 21;
+        MetricMatchMatchmakingTicketEventMessage variant21 = 22;
+        PartialBackfillProposalRejectedEventMessage variant22 = 23;
     }
 }
 
@@ -421,4 +631,54 @@ service Mpv2SessionHistoryBackfillProposalExpiredEventService {
 // Publishes a BackfillTicketExpiredEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory BackfillTicketExpiredEvent)
 service Mpv2SessionHistoryBackfillTicketExpiredEventService {
     rpc OnMessage(BackfillTicketExpiredEvent) returns (google.protobuf.Empty);
+}
+
+// Publishes a MatchHistoryEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory MatchHistoryEvent)
+service Mpv2SessionHistoryMatchHistoryEventService {
+    rpc OnMessage(MatchHistoryEvent) returns (google.protobuf.Empty);
+}
+
+// Publishes a MatchmakingSessionTickEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory MatchmakingSessionTickEvent)
+service Mpv2SessionHistoryMatchmakingSessionTickEventService {
+    rpc OnMessage(MatchmakingSessionTickEvent) returns (google.protobuf.Empty);
+}
+
+// Publishes a MatchmakingTicketReturnedToPoolEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory MatchmakingTicketReturnedToPoolEvent)
+service Mpv2SessionHistoryMatchmakingTicketReturnedToPoolEventService {
+    rpc OnMessage(MatchmakingTicketReturnedToPoolEvent) returns (google.protobuf.Empty);
+}
+
+// Publishes a MatchmakingTickEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory MatchmakingTickEvent)
+service Mpv2SessionHistoryMatchmakingTickEventService {
+    rpc OnMessage(MatchmakingTickEvent) returns (google.protobuf.Empty);
+}
+
+// Publishes a MetricCanceledMatchmakingTicketEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory MetricCanceledMatchmakingTicketEvent)
+service Mpv2SessionHistoryMetricCanceledMatchmakingTicketEventService {
+    rpc OnMessage(MetricCanceledMatchmakingTicketEvent) returns (google.protobuf.Empty);
+}
+
+// Publishes a MetricCreatedMatchmakingTicketEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory MetricCreatedMatchmakingTicketEvent)
+service Mpv2SessionHistoryMetricCreatedMatchmakingTicketEventService {
+    rpc OnMessage(MetricCreatedMatchmakingTicketEvent) returns (google.protobuf.Empty);
+}
+
+// Publishes a MetricExpiredMatchmakingTicketEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory MetricExpiredMatchmakingTicketEvent)
+service Mpv2SessionHistoryMetricExpiredMatchmakingTicketEventService {
+    rpc OnMessage(MetricExpiredMatchmakingTicketEvent) returns (google.protobuf.Empty);
+}
+
+// Publishes a MetricMatchMatchmakingEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory MetricMatchMatchmakingEvent)
+service Mpv2SessionHistoryMetricMatchMatchmakingEventService {
+    rpc OnMessage(MetricMatchMatchmakingEvent) returns (google.protobuf.Empty);
+}
+
+// Publishes a MetricMatchMatchmakingTicketEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory MetricMatchMatchmakingTicketEvent)
+service Mpv2SessionHistoryMetricMatchMatchmakingTicketEventService {
+    rpc OnMessage(MetricMatchMatchmakingTicketEvent) returns (google.protobuf.Empty);
+}
+
+// Publishes a PartialBackfillProposalRejectedEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory PartialBackfillProposalRejectedEvent)
+service Mpv2SessionHistoryPartialBackfillProposalRejectedEventService {
+    rpc OnMessage(PartialBackfillProposalRejectedEvent) returns (google.protobuf.Empty);
 }

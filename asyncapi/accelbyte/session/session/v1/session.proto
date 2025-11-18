@@ -505,6 +505,193 @@ message MetricMatchLengthDurationEvent {
     string span_context = 11 [json_name = "spanContext"];
 }
 
+// path: #/components/messages/PartyLeftEvent/payload
+message PartyLeftEvent {
+    NotificationPayload payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
+    string span_context = 11 [json_name = "spanContext"];
+}
+
+// path: #/components/messages/MetricMatchMatchmakingEvent/payload
+message MetricMatchMatchmakingEvent {
+    NotificationPayload payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
+    string span_context = 11 [json_name = "spanContext"];
+}
+
+// path: #/components/messages/MetricMatchMatchmakingTicketEvent/payload
+message MetricMatchMatchmakingTicketEvent {
+    NotificationPayload payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
+    string span_context = 11 [json_name = "spanContext"];
+}
+
+// path: #/components/messages/MatchHistoryEvent/payload
+message MatchHistoryEvent {
+    NotificationPayload payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
+    string span_context = 11 [json_name = "spanContext"];
+}
+
+// path: #/components/messages/MetricCreatedMatchmakingTicketEvent/payload
+message MetricCreatedMatchmakingTicketEvent {
+    NotificationPayload payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
+    string span_context = 11 [json_name = "spanContext"];
+}
+
+// path: #/components/messages/PartyDeletedEvent/payload
+message PartyDeletedEvent {
+    NotificationPayload payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
+    string span_context = 11 [json_name = "spanContext"];
+}
+
+// path: #/components/messages/PartyRejoinedEvent/payload
+message PartyRejoinedEvent {
+    NotificationPayload payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
+    string span_context = 11 [json_name = "spanContext"];
+}
+
+// path: #/components/messages/PartyDisconnectedEvent/payload
+message PartyDisconnectedEvent {
+    NotificationPayload payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
+    string span_context = 11 [json_name = "spanContext"];
+}
+
+// path: #/components/messages/PartyInviteCancelled/payload
+message PartyInviteCancelled {
+    NotificationPayload payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
+    string span_context = 11 [json_name = "spanContext"];
+}
+
+// path: #/components/messages/PartyLeaderChanged/payload
+message PartyLeaderChanged {
+    NotificationPayload payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
+    string span_context = 11 [json_name = "spanContext"];
+}
+
+// path: #/components/messages/GameSessionBackfillUpdateEvent/payload
+message GameSessionBackfillUpdateEvent {
+    NotificationPayload payload = 1 [json_name = "payload"];
+
+    // allOf(#/components/schemas/event)
+    string id = 2 [json_name = "id"];
+    int64 version = 3 [json_name = "version"];
+    string name = 4 [json_name = "name"];
+    string namespace = 5 [json_name = "namespace"];
+    string parent_namespace = 6 [json_name = "parentNamespace"];
+    string timestamp = 7 [json_name = "timestamp"];
+    string user_id = 8 [json_name = "userId"];
+    string trace_id = 9 [json_name = "traceId"];
+    string session_id = 10 [json_name = "sessionId"];
+    string span_context = 11 [json_name = "spanContext"];
+}
+
 
 // --- #/components/messages/{message_name} ---
 
@@ -638,6 +825,61 @@ message MetricMatchLengthDurationEventMessage {
     MetricMatchLengthDurationEvent payload = 1;
 }
 
+// path: #/components/messages/PartyLeftEvent
+message PartyLeftEventMessage {
+    PartyLeftEvent payload = 1;
+}
+
+// path: #/components/messages/MetricMatchMatchmakingEvent
+message MetricMatchMatchmakingEventMessage {
+    MetricMatchMatchmakingEvent payload = 1;
+}
+
+// path: #/components/messages/MetricMatchMatchmakingTicketEvent
+message MetricMatchMatchmakingTicketEventMessage {
+    MetricMatchMatchmakingTicketEvent payload = 1;
+}
+
+// path: #/components/messages/MatchHistoryEvent
+message MatchHistoryEventMessage {
+    MatchHistoryEvent payload = 1;
+}
+
+// path: #/components/messages/MetricCreatedMatchmakingTicketEvent
+message MetricCreatedMatchmakingTicketEventMessage {
+    MetricCreatedMatchmakingTicketEvent payload = 1;
+}
+
+// path: #/components/messages/PartyDeletedEvent
+message PartyDeletedEventMessage {
+    PartyDeletedEvent payload = 1;
+}
+
+// path: #/components/messages/PartyRejoinedEvent
+message PartyRejoinedEventMessage {
+    PartyRejoinedEvent payload = 1;
+}
+
+// path: #/components/messages/PartyDisconnectedEvent
+message PartyDisconnectedEventMessage {
+    PartyDisconnectedEvent payload = 1;
+}
+
+// path: #/components/messages/PartyInviteCancelled
+message PartyInviteCancelledMessage {
+    PartyInviteCancelled payload = 1;
+}
+
+// path: #/components/messages/PartyLeaderChanged
+message PartyLeaderChangedMessage {
+    PartyLeaderChanged payload = 1;
+}
+
+// path: #/components/messages/GameSessionBackfillUpdateEvent
+message GameSessionBackfillUpdateEventMessage {
+    GameSessionBackfillUpdateEvent payload = 1;
+}
+
 
 // --- #/channels/{channel_name}/{operation_type}/message ---
 
@@ -667,6 +909,17 @@ message Mpv2SessionHistoryPublish {
         MetricAcquiringDsWaitTimeEventMessage variant20 = 21;
         MetricAcquiringDsEventMessage variant21 = 22;
         MetricMatchLengthDurationEventMessage variant22 = 23;
+        GameSessionBackfillUpdateEventMessage variant23 = 24;
+        MatchHistoryEventMessage variant24 = 25;
+        MetricCreatedMatchmakingTicketEventMessage variant25 = 26;
+        MetricMatchMatchmakingEventMessage variant26 = 27;
+        MetricMatchMatchmakingTicketEventMessage variant27 = 28;
+        PartyDeletedEventMessage variant28 = 29;
+        PartyDisconnectedEventMessage variant29 = 30;
+        PartyInviteCancelledMessage variant30 = 31;
+        PartyLeaderChangedMessage variant31 = 32;
+        PartyLeftEventMessage variant32 = 33;
+        PartyRejoinedEventMessage variant33 = 34;
     }
 }
 
@@ -802,4 +1055,59 @@ service Mpv2SessionHistoryMetricAcquiringDsEventService {
 // Publishes a MetricMatchLengthDurationEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory MetricMatchLengthDurationEvent)
 service Mpv2SessionHistoryMetricMatchLengthDurationEventService {
     rpc OnMessage(MetricMatchLengthDurationEvent) returns (google.protobuf.Empty);
+}
+
+// Publishes a GameSessionBackfillUpdateEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory GameSessionBackfillUpdateEvent)
+service Mpv2SessionHistoryGameSessionBackfillUpdateEventService {
+    rpc OnMessage(GameSessionBackfillUpdateEvent) returns (google.protobuf.Empty);
+}
+
+// Publishes a MatchHistoryEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory MatchHistoryEvent)
+service Mpv2SessionHistoryMatchHistoryEventService {
+    rpc OnMessage(MatchHistoryEvent) returns (google.protobuf.Empty);
+}
+
+// Publishes a MetricCreatedMatchmakingTicketEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory MetricCreatedMatchmakingTicketEvent)
+service Mpv2SessionHistoryMetricCreatedMatchmakingTicketEventService {
+    rpc OnMessage(MetricCreatedMatchmakingTicketEvent) returns (google.protobuf.Empty);
+}
+
+// Publishes a MetricMatchMatchmakingEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory MetricMatchMatchmakingEvent)
+service Mpv2SessionHistoryMetricMatchMatchmakingEventService {
+    rpc OnMessage(MetricMatchMatchmakingEvent) returns (google.protobuf.Empty);
+}
+
+// Publishes a MetricMatchMatchmakingTicketEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory MetricMatchMatchmakingTicketEvent)
+service Mpv2SessionHistoryMetricMatchMatchmakingTicketEventService {
+    rpc OnMessage(MetricMatchMatchmakingTicketEvent) returns (google.protobuf.Empty);
+}
+
+// Publishes a PartyDeletedEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory PartyDeletedEvent)
+service Mpv2SessionHistoryPartyDeletedEventService {
+    rpc OnMessage(PartyDeletedEvent) returns (google.protobuf.Empty);
+}
+
+// Publishes a PartyDisconnectedEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory PartyDisconnectedEvent)
+service Mpv2SessionHistoryPartyDisconnectedEventService {
+    rpc OnMessage(PartyDisconnectedEvent) returns (google.protobuf.Empty);
+}
+
+// Publishes a PartyInviteCancelled to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory PartyInviteCancelled)
+service Mpv2SessionHistoryPartyInviteCancelledService {
+    rpc OnMessage(PartyInviteCancelled) returns (google.protobuf.Empty);
+}
+
+// Publishes a PartyLeaderChanged to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory PartyLeaderChanged)
+service Mpv2SessionHistoryPartyLeaderChangedService {
+    rpc OnMessage(PartyLeaderChanged) returns (google.protobuf.Empty);
+}
+
+// Publishes a PartyLeftEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory PartyLeftEvent)
+service Mpv2SessionHistoryPartyLeftEventService {
+    rpc OnMessage(PartyLeftEvent) returns (google.protobuf.Empty);
+}
+
+// Publishes a PartyRejoinedEvent to the Mpv2 Session History channel. (oneOf variant) (mpv2SessionHistory PartyRejoinedEvent)
+service Mpv2SessionHistoryPartyRejoinedEventService {
+    rpc OnMessage(PartyRejoinedEvent) returns (google.protobuf.Empty);
 }

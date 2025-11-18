@@ -25,6 +25,16 @@ channels:
         - $ref: '#/components/messages/BackfillProposalRejectedEvent'
         - $ref: '#/components/messages/BackfillProposalExpiredEvent'
         - $ref: '#/components/messages/BackfillTicketExpiredEvent'
+        - $ref: '#/components/messages/MatchHistoryEvent'
+        - $ref: '#/components/messages/MatchmakingSessionTickEvent'
+        - $ref: '#/components/messages/MatchmakingTicketReturnedToPoolEvent'
+        - $ref: '#/components/messages/MatchmakingTickEvent'
+        - $ref: '#/components/messages/MetricCanceledMatchmakingTicketEvent'
+        - $ref: '#/components/messages/MetricCreatedMatchmakingTicketEvent'
+        - $ref: '#/components/messages/MetricExpiredMatchmakingTicketEvent'
+        - $ref: '#/components/messages/MetricMatchMatchmakingEvent'
+        - $ref: '#/components/messages/MetricMatchMatchmakingTicketEvent'
+        - $ref: '#/components/messages/PartialBackfillProposalRejectedEvent'
 components:
   schemas:
     event:
@@ -180,6 +190,96 @@ components:
             $ref: '#/components/schemas/notificationPayload'
     BackfillTicketExpiredEvent:
       name: BackfillTicketExpiredEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    MatchmakingTicketReturnedToPoolEvent:
+      name: MatchmakingTicketReturnedToPoolEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    PartialBackfillProposalRejectedEvent:
+      name: PartialBackfillProposalRejectedEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    MatchmakingSessionTickEvent:
+      name: MatchmakingSessionTickEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    MatchmakingTickEvent:
+      name: MatchmakingTickEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    MatchHistoryEvent:
+      name: MatchHistoryEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    MetricCreatedMatchmakingTicketEvent:
+      name: MetricCreatedMatchmakingTicketEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    MetricCanceledMatchmakingTicketEvent:
+      name: MetricCanceledMatchmakingTicketEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    MetricExpiredMatchmakingTicketEvent:
+      name: MetricExpiredMatchmakingTicketEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    MetricMatchMatchmakingTicketEvent:
+      name: MetricMatchMatchmakingTicketEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    MetricMatchMatchmakingEvent:
+      name: MetricMatchMatchmakingEvent
       payload:
         type: object
         allOf:
