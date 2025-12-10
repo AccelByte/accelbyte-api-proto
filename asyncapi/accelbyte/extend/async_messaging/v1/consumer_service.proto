@@ -7,7 +7,7 @@ import "google/protobuf/empty.proto";
 import "google/protobuf/descriptor.proto";
 
 option csharp_namespace = "AccelByte.Extend.AsyncMessaging";
-option go_package = "accelbyte.net/extend-async-messaging-bridge";
+option go_package = "accelbyte.net/extend/asyncMessaging";
 option java_multiple_files = true;
 option java_package = "net.accelbyte.extend.asyncmessaging";
 

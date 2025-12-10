@@ -8,10 +8,10 @@ package accelbyte.extend.task_scheduler.v1;
 // Version v1.0.0
 
 // --- options ---
-option csharp_namespace = "AccelByte.Generic.TaskScheduler";
-option go_package = "accelbyte.net/generic/taskscheduler";
+option csharp_namespace = "AccelByte.Extend.TaskScheduler";
+option go_package = "accelbyte.net/extend/taskscheduler";
 option java_multiple_files = true;
-option java_package = "net.accelbyte.generic.taskscheduler";
+option java_package = "net.accelbyte.extend.taskscheduler";
 
 import "google/protobuf/timestamp.proto";
 
