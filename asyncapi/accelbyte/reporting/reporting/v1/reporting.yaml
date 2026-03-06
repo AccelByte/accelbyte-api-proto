@@ -73,6 +73,9 @@ components:
           type: string
         ReporterID:
           type: string
+          description: 'ReporterID is the userID who reported the content or clientID
+            (format: client-{clientID}) who reported the content when client token
+            is used.'
         TicketID:
           type: string
         UpdatedAt:
