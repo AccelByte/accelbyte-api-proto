@@ -54,6 +54,9 @@ channels:
         - $ref: '#/components/messages/PartyLeaderChanged'
         - $ref: '#/components/messages/PartyLeftEvent'
         - $ref: '#/components/messages/PartyRejoinedEvent'
+        - $ref: '#/components/messages/PartyDroppedEvent'
+        - $ref: '#/components/messages/PartyBanEvent'
+        - $ref: '#/components/messages/MetricTotalPlayerPersessionEvent'
 components:
   schemas:
     event:
@@ -473,6 +476,33 @@ components:
             $ref: '#/components/schemas/notificationPayload'
     GameSessionBackfillUpdateEvent:
       name: GameSessionBackfillUpdateEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    PartyBanEvent:
+      name: PartyBanEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    PartyDroppedEvent:
+      name: PartyDroppedEvent
+      payload:
+        type: object
+        allOf:
+        - $ref: '#/components/schemas/event'
+        properties:
+          payload:
+            $ref: '#/components/schemas/notificationPayload'
+    MetricTotalPlayerPersessionEvent:
+      name: MetricTotalPlayerPersessionEvent
       payload:
         type: object
         allOf:
